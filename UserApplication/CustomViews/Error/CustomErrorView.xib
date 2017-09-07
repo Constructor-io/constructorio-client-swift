@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="CustomErrorView" customModule="UserApplication" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_error" translatesAutoresizingMaskIntoConstraints="NO" id="l3P-jc-aOM">
+                    <rect key="frame" x="117" y="105" width="140" height="140"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="l3P-jc-aOM" secondAttribute="height" multiplier="1:1" id="EHs-hO-sbF"/>
+                        <constraint firstAttribute="width" constant="140" id="fnm-DY-qV4"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGA-tN-FBV">
+                    <rect key="frame" x="8" y="279" width="359" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom error view" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv0-iw-TB2">
+                    <rect key="frame" x="117" y="64" width="141" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="XGA-tN-FBV" firstAttribute="top" secondItem="l3P-jc-aOM" secondAttribute="bottom" constant="34" id="34V-ml-pZX"/>
+                <constraint firstItem="l3P-jc-aOM" firstAttribute="top" secondItem="Sv0-iw-TB2" secondAttribute="bottom" constant="20" id="6PF-cq-ig4"/>
+                <constraint firstAttribute="trailing" secondItem="XGA-tN-FBV" secondAttribute="trailing" constant="8" id="EPa-eW-YnY"/>
+                <constraint firstItem="Sv0-iw-TB2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YMQ-CU-T4p"/>
+                <constraint firstItem="Sv0-iw-TB2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="ear-ls-pLQ"/>
+                <constraint firstItem="XGA-tN-FBV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="sV1-Uu-iFz"/>
+                <constraint firstItem="l3P-jc-aOM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wjo-BW-a6O"/>
+            </constraints>
+            <connections>
+                <outlet property="labelError" destination="XGA-tN-FBV" id="EcG-8b-Kcd"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="59.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_error" width="550" height="550"/>
+    </resources>
+</document>

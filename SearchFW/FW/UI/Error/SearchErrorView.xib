@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="SearchErrorView" customModule="SearchFW" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpI-Lu-923">
+                    <rect key="frame" x="32" y="323" width="311" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="constructor-io-error-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="5TE-DB-vHN">
+                    <rect key="frame" x="32" y="178" width="311" height="311"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="5TE-DB-vHN" secondAttribute="height" multiplier="1:1" id="SIi-JQ-f9B"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="lpI-Lu-923" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2sG-zE-da0"/>
+                <constraint firstAttribute="trailing" secondItem="lpI-Lu-923" secondAttribute="trailing" constant="32" id="AVj-ti-tiS"/>
+                <constraint firstItem="5TE-DB-vHN" firstAttribute="width" secondItem="lpI-Lu-923" secondAttribute="width" id="G74-Lr-syg"/>
+                <constraint firstItem="lpI-Lu-923" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PfI-b1-oBW"/>
+                <constraint firstItem="lpI-Lu-923" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="g4q-mG-mhD"/>
+                <constraint firstItem="5TE-DB-vHN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wEu-Rx-zs1"/>
+                <constraint firstItem="5TE-DB-vHN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xUA-X9-Ihh"/>
+            </constraints>
+            <connections>
+                <outlet property="labelText" destination="lpI-Lu-923" id="GYy-vX-0Hd"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="90.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="constructor-io-error-icon.png" width="2000" height="1600"/>
+    </resources>
+</document>

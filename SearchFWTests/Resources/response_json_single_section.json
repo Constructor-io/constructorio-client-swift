@@ -1,0 +1,14 @@
+{
+    "ad_based": true,
+    "suggestions": [{
+                    "value": "api"
+                    }, {
+                    "value": "app"
+                    }, {
+                    "value": "application"
+                    }, {
+                    "value": "angular"
+                    }, {
+                    "value": "apps"
+                    }]
+}

@@ -1,0 +1,51 @@
+{
+    "ad_based": true,
+    "sections": {
+        "packages": [{
+                     "data": {
+                     "description": "Angular2 Admin Dashboard Template",
+                     "suggested_score": 13460,
+                     "url": "/package/angular2-dashboard"
+                     },
+                     "value": "angular2-dashboard"
+                     }, {
+                     "data": {
+                     "suggested_score": 13300,
+                     "url": "/package/angular2-typescript"
+                     },
+                     "value": "angular2-typescript"
+                     }, {
+                     "data": {
+                     "description": "Node-API is an easy to use module for creating APIs in Node.JS",
+                     "suggested_score": 13460,
+                     "url": "/package/node-http-api"
+                     },
+                     "value": "node-http-api"
+                     }, {
+                     "data": {
+                     "description": "Promise based HTTP client for the browser and node.js",
+                     "suggested_score": 13300,
+                     "url": "/package/axios-es6"
+                     },
+                     "value": "axios-es6"
+                     }, {
+                     "data": {
+                     "description": "This project provides a simple Zip compression API for NodeJS.",
+                     "suggested_score": 13300,
+                     "url": "/package/zip-archiver"
+                     },
+                     "value": "zip-archiver"
+                     }],
+        "standard": [{
+                     "value": "api"
+                     }, {
+                     "value": "app"
+                     }, {
+                     "value": "application"
+                     }, {
+                     "value": "angular"
+                     }, {
+                     "value": "apps"
+                     }]
+    }
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomBackgroundView" customModule="UserApplication" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0A-Wx-cHc">
+                    <rect key="frame" x="119.5" y="382" width="136" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_gear" translatesAutoresizingMaskIntoConstraints="NO" id="PIt-6b-7ac">
+                    <rect key="frame" x="67.5" y="212" width="240" height="154"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="YGt-gN-BN9"/>
+                        <constraint firstAttribute="width" secondItem="PIt-6b-7ac" secondAttribute="height" multiplier="120:77" id="w9T-7p-TTe"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.958125" green="0.958125" blue="0.958125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="T0A-Wx-cHc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4ro-To-H9I"/>
+                <constraint firstItem="T0A-Wx-cHc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="60" id="HFH-h5-An4"/>
+                <constraint firstItem="T0A-Wx-cHc" firstAttribute="top" secondItem="PIt-6b-7ac" secondAttribute="bottom" constant="16" id="bN6-FW-Oev"/>
+                <constraint firstItem="PIt-6b-7ac" firstAttribute="centerX" secondItem="T0A-Wx-cHc" secondAttribute="centerX" id="cZg-hF-eMC"/>
+            </constraints>
+            <connections>
+                <outlet property="labelText" destination="T0A-Wx-cHc" id="8ox-kT-YAo"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_gear" width="932" height="932"/>
+    </resources>
+</document>
