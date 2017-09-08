@@ -82,14 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         }else{
             cell.contentView.backgroundColor = UIColor.white
         }
-        
     }
-    
-    
-//
-//    func fontNormal(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
-//        return UI
-//    }
 
     var i = 1
     func randomColor() -> UIColor {
@@ -116,10 +109,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 //        return CustomTableViewCellTwo.self
 //    }
 
-    // no background view
-    //    func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
-    //        return nil
-    //    }
+    // No background view
+//    func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
+//        return nil
+//    }
 
     // MARK: SearchBar
 
@@ -158,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         print("Search controller did load")
     }
 
-//    func searchBarPlaceholder(in autocompleteController: CIOAutocompleteViewController) -> String {
-//        return "Custom search placeholder"
-//    }
+    func searchBarPlaceholder(in autocompleteController: CIOAutocompleteViewController) -> String {
+        return "Custom search placeholder"
+    }
 }
