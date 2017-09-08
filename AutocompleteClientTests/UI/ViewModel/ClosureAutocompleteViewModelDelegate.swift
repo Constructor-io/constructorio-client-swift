@@ -7,7 +7,7 @@
 //
 
 import UIKit
-@testable import ConstructorIO
+@testable import ConstructorAutocomplete
 
 class ClosureAutocompleteViewModelDelegate: AutocompleteViewModelDelegate {
 

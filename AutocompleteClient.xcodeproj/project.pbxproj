@@ -41,7 +41,7 @@
 		F631A5D61F5861F600A49BD1 /* SearchErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D51F5861F600A49BD1 /* SearchErrorView.xib */; };
 		F631A5D81F58629B00A49BD1 /* constructor-io-error-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */; };
 		F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F631A5D91F5867E300A49BD1 /* CIOErrorView.swift */; };
-		F63374A91F5A8FBF00E481E7 /* ConstructorIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorIO.framework */; };
+		F63374A91F5A8FBF00E481E7 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
 		F63374AC1F5A941700E481E7 /* AutocompleteDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63374AB1F5A941700E481E7 /* AutocompleteDataSourceTests.swift */; };
 		F63374AE1F5A95E800E481E7 /* AutocompleteDataSourceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63374AD1F5A95E800E481E7 /* AutocompleteDataSourceWrapper.swift */; };
 		F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63374AF1F5AA1C000E481E7 /* ExpectationHandler.swift */; };
@@ -81,8 +81,8 @@
 		F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154A1F587213008E50C0 /* CIOStyle.swift */; };
 		F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154D1F58724B008E50C0 /* UIColor+RGB.swift */; };
 		F680EDBE1F57FBBD0002F4E1 /* constructor-io-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F699C34D1F57F45B00FD681A /* constructor-io-logo.png */; };
-		F688A4491F56B4B600F169C1 /* ConstructorIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorIO.framework */; };
-		F688A4501F56B4B600F169C1 /* AutocompleteClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* AutocompleteClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
+		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */; };
 		F688A4941F56B57E00F169C1 /* CIOAutocompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F688A4921F56B57E00F169C1 /* CIOAutocompleteViewController.xib */; };
 		F68A72FA1F56D22B00FA4D1B /* AutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A72F91F56D22B00FA4D1B /* AutocompleteViewModel.swift */; };
@@ -201,8 +201,8 @@
 		F65015471F586A42008E50C0 /* UIView+FadeInOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FadeInOut.swift"; sourceTree = "<group>"; };
 		F650154A1F587213008E50C0 /* CIOStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOStyle.swift; sourceTree = "<group>"; };
 		F650154D1F58724B008E50C0 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
-		F688A43F1F56B4B600F169C1 /* ConstructorIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConstructorIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F688A4421F56B4B600F169C1 /* AutocompleteClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutocompleteClient.h; sourceTree = "<group>"; };
+		F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConstructorAutocomplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConstructorAutocomplete-Swift.h"; sourceTree = "<group>"; };
 		F688A4431F56B4B600F169C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F688A4481F56B4B600F169C1 /* AutocompleteClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocompleteClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F688A44F1F56B4B600F169C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -230,7 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F63374A91F5A8FBF00E481E7 /* ConstructorIO.framework in Frameworks */,
+				F63374A91F5A8FBF00E481E7 /* ConstructorAutocomplete.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +259,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F688A4491F56B4B600F169C1 /* ConstructorIO.framework in Frameworks */,
+				F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,7 +694,7 @@
 		F688A4401F56B4B600F169C1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F688A43F1F56B4B600F169C1 /* ConstructorIO.framework */,
+				F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */,
 				F688A4481F56B4B600F169C1 /* AutocompleteClientTests.xctest */,
 				F64F46CD1F59CE750094C697 /* UserApplication.app */,
 				F64F46E01F59CE750094C697 /* UserApplicationTests.xctest */,
@@ -709,7 +709,7 @@
 				F1F68DDB1F58B7C600B42602 /* Constants */,
 				F68A73101F56E5EC00FA4D1B /* Utils */,
 				F688A48F1F56B51A00F169C1 /* FW */,
-				F688A4421F56B4B600F169C1 /* AutocompleteClient.h */,
+				F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */,
 				F688A4431F56B4B600F169C1 /* Info.plist */,
 			);
 			path = AutocompleteClient;
@@ -912,7 +912,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F688A4501F56B4B600F169C1 /* AutocompleteClient.h in Headers */,
+				F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,7 +987,7 @@
 			);
 			name = AutocompleteClient;
 			productName = SearchFW;
-			productReference = F688A43F1F56B4B600F169C1 /* ConstructorIO.framework */;
+			productReference = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F688A4471F56B4B600F169C1 /* AutocompleteClientTests */ = {
@@ -1483,7 +1483,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xd.SearchFW;
-				PRODUCT_NAME = ConstructorIO;
+				PRODUCT_MODULE_NAME = ConstructorAutocomplete;
+				PRODUCT_NAME = ConstructorAutocomplete;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1507,7 +1508,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xd.SearchFW;
-				PRODUCT_NAME = ConstructorIO;
+				PRODUCT_MODULE_NAME = ConstructorAutocomplete;
+				PRODUCT_NAME = ConstructorAutocomplete;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

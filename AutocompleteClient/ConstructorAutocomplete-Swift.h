@@ -1,5 +1,5 @@
 //
-//  AutocompleteClient.h
+//  ConstructorAutocomplete-Swift.h
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -15,6 +15,3 @@ FOUNDATION_EXPORT double AutocompleteClientVersionNumber;
 FOUNDATION_EXPORT const unsigned char AutocompleteClientVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <AutocompleteClient/PublicHeader.h>
-
-
-

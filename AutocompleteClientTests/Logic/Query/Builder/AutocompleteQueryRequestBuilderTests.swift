@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ConstructorIO
+@testable import ConstructorAutocomplete
 
 class AutocompleteQueryRequestBuilderTests: XCTestCase {
 
@@ -25,6 +25,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: queryString)
         builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey)
         let request = builder.getRequest()
+        
         XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)"))
         XCTAssertEqual(request.httpMethod, "GET")
     }

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ConstructorIO
+@testable import ConstructorAutocomplete
 
 class CIOHighlighterTests: XCTestCase {
 

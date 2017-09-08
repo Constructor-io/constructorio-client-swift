@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ConstructorIO
+import ConstructorAutocomplete
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, CIOAutocompleteDataSource {

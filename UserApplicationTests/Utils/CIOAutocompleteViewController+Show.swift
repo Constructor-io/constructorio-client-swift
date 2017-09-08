@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import ConstructorIO
+import ConstructorAutocomplete
 
 extension CIOAutocompleteViewController {
 

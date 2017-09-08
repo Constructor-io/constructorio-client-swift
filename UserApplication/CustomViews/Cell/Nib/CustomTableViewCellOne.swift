@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ConstructorIO
+import ConstructorAutocomplete
 
 class CustomTableViewCellOne: UITableViewCell, CIOAutocompleteCell {
 
