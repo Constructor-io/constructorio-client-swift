@@ -13,8 +13,17 @@ import UIKit
  */
 
 public class CIOAutocompleteViewController: UIViewController {
-
-    private static var bundle = Bundle(for: CIOAutocompleteViewController.self)
+    private static let __bundle = Bundle(for: CIOAutocompleteViewController.self)
+    private static var bundle: Bundle{
+        get{
+            if let bundleURL = __bundle.url(forResource: "ConstructorAutocomplete", withExtension: "bundle"),
+               let bundle = Bundle(url: bundleURL) {
+                return bundle
+            }else{
+                return __bundle
+            }
+        }
+    }
     
     /**
      Results table view.
