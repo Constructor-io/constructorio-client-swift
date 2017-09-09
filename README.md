@@ -3,7 +3,6 @@
 * An Xcode project targeting iOS 8.0 or above
 * Objective-C or
 * Swift project using swift 3.0 or later
-* CocoaPods 1.0.0 or later
 * A constructor.io account
 
 ## 1a. Import using CocoaPods
@@ -12,7 +11,7 @@ Next step is to create an empty text file in your project’s root directory cal
 
 ```use_frameworks!
 target ‘YOUR_TARGET_NAME’ do
-pod ‘constructor.io'
+pod ‘ConstructorAutocomplete'
 end
 ```
 Open the terminal and make sure you’re located in the project root(where your Podfile is located) and type
@@ -23,23 +22,30 @@ That’s it! Make sure to open the ```.xcworkspace``` file instead of the ```.xc
 ## 1b. Import using Carthage
 Framework can be also installed via Carthage. First, make sure you have [Carthage installed](https://github.com/Carthage/Carthage#installing-carthage). Then, create an empty text file called ‘Cartfile’ in your project root directory. Now, add the following lines:
 
-```github “constructor.io/releases”```
+```github "Constructor-io/constructorio-client-swift"```
 
 Run ```carthage update```
 
-Drag the ConstructorIO.framework from Carthage/Checkouts/releases-ios into your project and link it with your application target.
-
-TODO finish
+Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project and link it with your application target. Also, make sure to copy the framework by adding a new Copy Files phase.
 
 ## 1c. Manual import
-* Go to our releases repository and get the latest distribution of ConstructorIO.framework. 
-* Drag the framework into the project and link it with your application target.
+* Get the lastest source code from ```https://github.com/Constructor-io/constructorio-client-swift.git```
+* Open and build the project in Xcode
+* Drag the ```ConstructorAutocomplete.framework``` file into your project and link it with your application target.
+* Make sure to copy the framework by adding a new Copy Files phase(image above).
+
 That’s it! You are now ready to use constructor.io autocomplete framework.
 
 ## 2. Get the autocomplete key from constructor.io dashboard
 TODO
 
 ## 3. Implement the autocomplete features in your app
+Make sure to import the ConstructorAutocomplete module at the top of your source file
+
+Swift ```import ConstructorAutocomplete```
+
+Objective-C ```@import ConstructorAutocomplete;```
+
 ```
 // Instantiate the autocomplete controller
 let viewController = CIOAutocompleteViewController(autocompleteKey: “YOUR AUTOCOMPLETE KEY")
