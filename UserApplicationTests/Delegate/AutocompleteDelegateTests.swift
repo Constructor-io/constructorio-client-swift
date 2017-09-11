@@ -57,7 +57,6 @@ class AutocompleteDelegateTests: XCTestCase {
         let expectation = self.expectation(description: "searchControllerWillAppear delegate method should get called.")
         let viewController = CIOAutocompleteViewController.instantiate()
 
-        let searchBar = UISearchBar()
         let searchTerm = "term"
 
         let delegate = AutocompleteDelegateWrapper()
@@ -69,8 +68,7 @@ class AutocompleteDelegateTests: XCTestCase {
         }
 
         viewController.showInNewWindow()
-
-        viewController.searchBar(searchBar, textDidChange: searchTerm)
+        viewController.searchController.searchBar.text = searchTerm
         self.waitForExpectationWithDefaultHandler()
     }
 

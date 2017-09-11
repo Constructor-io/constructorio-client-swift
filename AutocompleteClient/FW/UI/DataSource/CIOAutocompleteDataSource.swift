@@ -28,15 +28,6 @@ public protocol CIOAutocompleteDataSource: class {
     optional func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass
 
     /**
-     Customizes the SearchBar.
-
-     - parameter autocompleteController: The sender CIOAutocompleteViewController
-     - parameter searchBar: UISearchBar shown in the CIOAutocompleteViewController
-     */
-    @objc
-    optional func styleSearchBar(searchBar: UISearchBar, in autocompleteController: CIOAutocompleteViewController)
-
-    /**
      Customizes the search controller.
      
      - parameter searchController: UISearchController controlling the search bar shown in the CIOAutocompleteViewController

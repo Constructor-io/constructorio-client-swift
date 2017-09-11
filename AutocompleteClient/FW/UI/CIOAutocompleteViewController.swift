@@ -28,12 +28,12 @@ public class CIOAutocompleteViewController: UIViewController {
     /**
      Results table view.
      */
-    weak var tableView: UITableView!
+    public weak var tableView: UITableView!
     
     /**
      Results search controller.
      */
-    fileprivate var searchController: UISearchController!
+    public var searchController: UISearchController!
     
     fileprivate var errorView: CIOErrorView?
     
