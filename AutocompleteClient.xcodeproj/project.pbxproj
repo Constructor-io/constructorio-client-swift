@@ -37,6 +37,7 @@
 		F60FE9041F5C5B220037A0AB /* QueryRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9031F5C5B220037A0AB /* QueryRequestBuilder.swift */; };
 		F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9051F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift */; };
 		F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */; };
+		F61A6B061F66AFD4007826CA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B041F66AFD4007826CA /* DetailsViewController.swift */; };
 		F631A5D41F5861ED00A49BD1 /* SearchErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F631A5D31F5861ED00A49BD1 /* SearchErrorView.swift */; };
 		F631A5D61F5861F600A49BD1 /* SearchErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D51F5861F600A49BD1 /* SearchErrorView.xib */; };
 		F631A5D81F58629B00A49BD1 /* constructor-io-error-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */; };
@@ -84,7 +85,6 @@
 		F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
 		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */; };
-		F688A4941F56B57E00F169C1 /* CIOAutocompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F688A4921F56B57E00F169C1 /* CIOAutocompleteViewController.xib */; };
 		F68A72FA1F56D22B00FA4D1B /* AutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A72F91F56D22B00FA4D1B /* AutocompleteViewModel.swift */; };
 		F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A72FB1F56D31700FA4D1B /* DefaultSearchItemCell.swift */; };
 		F68A72FE1F56D31700FA4D1B /* DefaultSearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68A72FC1F56D31700FA4D1B /* DefaultSearchItemCell.xib */; };
@@ -156,6 +156,7 @@
 		F60FE9031F5C5B220037A0AB /* QueryRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryRequestBuilder.swift; sourceTree = "<group>"; };
 		F60FE9051F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilder.swift; sourceTree = "<group>"; };
 		F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
+		F61A6B041F66AFD4007826CA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F631A5D31F5861ED00A49BD1 /* SearchErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchErrorView.swift; sourceTree = "<group>"; };
 		F631A5D51F5861F600A49BD1 /* SearchErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchErrorView.xib; sourceTree = "<group>"; };
 		F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-error-icon.png"; sourceTree = "<group>"; };
@@ -207,7 +208,6 @@
 		F688A4481F56B4B600F169C1 /* AutocompleteClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocompleteClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F688A44F1F56B4B600F169C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteViewController.swift; sourceTree = "<group>"; };
-		F688A4921F56B57E00F169C1 /* CIOAutocompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CIOAutocompleteViewController.xib; sourceTree = "<group>"; };
 		F68A72F91F56D22B00FA4D1B /* AutocompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteViewModel.swift; sourceTree = "<group>"; };
 		F68A72FB1F56D31700FA4D1B /* DefaultSearchItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchItemCell.swift; sourceTree = "<group>"; };
 		F68A72FC1F56D31700FA4D1B /* DefaultSearchItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultSearchItemCell.xib; sourceTree = "<group>"; };
@@ -435,6 +435,14 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
+		F61A6B031F66AFB6007826CA /* DetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F61A6B041F66AFD4007826CA /* DetailsViewController.swift */,
+			);
+			name = DetailsViewController;
+			sourceTree = "<group>";
+		};
 		F631A5D21F5861A200A49BD1 /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +616,7 @@
 		F64F46CE1F59CE750094C697 /* UserApplication */ = {
 			isa = PBXGroup;
 			children = (
+				F61A6B031F66AFB6007826CA /* DetailsViewController */,
 				F60338B71F5EAAC60047DDB4 /* CustomHighlighting */,
 				F6B352AD1F5B407C0054D303 /* CustomViews */,
 				F64F46CF1F59CE750094C697 /* AppDelegate.swift */,
@@ -751,7 +760,6 @@
 				F60BEA181F57193B008F0053 /* Delegate */,
 				F68A72F61F56D1A000FA4D1B /* ViewModel */,
 				F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */,
-				F688A4921F56B57E00F169C1 /* CIOAutocompleteViewController.xib */,
 				F68A72FB1F56D31700FA4D1B /* DefaultSearchItemCell.swift */,
 				F68A72FC1F56D31700FA4D1B /* DefaultSearchItemCell.xib */,
 			);
@@ -1099,7 +1107,6 @@
 				F68A72FE1F56D31700FA4D1B /* DefaultSearchItemCell.xib in Resources */,
 				F60BEA221F5726D8008F0053 /* EmptyScreenView.xib in Resources */,
 				F631A5D61F5861F600A49BD1 /* SearchErrorView.xib in Resources */,
-				F688A4941F56B57E00F169C1 /* CIOAutocompleteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1123,6 +1130,7 @@
 				F6B352B21F5B409F0054D303 /* CustomBackgroundView.swift in Sources */,
 				F6B352C01F5B498A0054D303 /* CustomTableViewCellTwo.swift in Sources */,
 				F6B352B61F5B41E10054D303 /* CustomErrorView.swift in Sources */,
+				F61A6B061F66AFD4007826CA /* DetailsViewController.swift in Sources */,
 				F60338B91F5EAAD70047DDB4 /* CustomAttributesProvider.swift in Sources */,
 				F6B352BD1F5B45C60054D303 /* CustomTableViewCellOne.swift in Sources */,
 			);

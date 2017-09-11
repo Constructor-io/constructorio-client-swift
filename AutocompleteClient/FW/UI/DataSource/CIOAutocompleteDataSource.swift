@@ -37,6 +37,15 @@ public protocol CIOAutocompleteDataSource: class {
     optional func styleSearchBar(searchBar: UISearchBar, in autocompleteController: CIOAutocompleteViewController)
 
     /**
+     Customizes the search controller.
+     
+     - parameter searchController: UISearchController controlling the search bar shown in the CIOAutocompleteViewController
+     - parameter autocompleteController: The sender CIOAutocompleteViewController
+     */
+    @objc
+    optional func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController)
+    
+    /**
      Styles the cell label used in the default UI. This method will not be called if you're using a custom cell nib or class.
      
      - parameter label: The UILabel to be customized
