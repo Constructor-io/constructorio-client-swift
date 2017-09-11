@@ -11,7 +11,7 @@ Next step is to create an empty text file in your project’s root directory cal
 
 ```use_frameworks!
 target ‘YOUR_TARGET_NAME’ do
-     pod ‘ConstructorAutocomplete'
+   pod ‘ConstructorAutocomplete'
 end
 ```
 Open the terminal and make sure you’re located in the project root(where your Podfile is located) and type
