@@ -28,12 +28,12 @@ public class CIOAutocompleteViewController: UIViewController {
     /**
      Results table view.
      */
-    @IBOutlet fileprivate weak var tableView: UITableView!
+    weak var tableView: UITableView!
     
     /**
-     Default search bar.
+     Results search controller.
      */
-    @IBOutlet fileprivate weak var searchBar: UISearchBar!
+    fileprivate var searchController: UISearchController!
     
     fileprivate var errorView: CIOErrorView?
     
@@ -82,9 +82,8 @@ public class CIOAutocompleteViewController: UIViewController {
      Default initializer for this controller. Pass in the autocomplete key you got from the constructor.io dashboard.
      */
     public init(autocompleteKey: String) {
-        super.init(nibName: "CIOAutocompleteViewController", bundle: CIOAutocompleteViewController.bundle)
+        super.init(nibName: nil, bundle: nil)
         self.autocompleteKey = autocompleteKey
-        
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -96,17 +95,33 @@ public class CIOAutocompleteViewController: UIViewController {
 
         self.title = self.viewModel.screenTitle
 
-        self.edgesForExtendedLayout = []
-
+        // we retain tableView property weakly, so we define a temp var to make sure it doesn't get released before we assign it
+        let tblView = UITableView()
+        
+        self.tableView = tblView
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.fitViewInsideLayoutGuides(self.tableView)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.backgroundColor = UIColor.clear
+        
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.searchResultsUpdater = self
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        
+        self.searchController.searchBar.sizeToFit()
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        
+        self.searchController.searchBar.placeholder = self.dataSource?.searchBarPlaceholder?(in: self) ?? Constants.UI.defaultSearchBarPlaceholder
+        self.dataSource?.customizeSearchController?(searchController: self.searchController, in: self)
 
-        self.searchBar.placeholder = self.dataSource?.searchBarPlaceholder?(in: self) ?? Constants.UI.defaultSearchBarPlaceholder
-        self.dataSource?.styleSearchBar?(searchBar: self.searchBar, in: self)
-        self.searchBar.delegate = self
-
+        self.definesPresentationContext = true
+        self.extendedLayoutIncludesOpaqueBars = true
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.edgesForExtendedLayout = [.top]
+        
         var backgroundView: UIView! = nil
 
         // show background empty screen
@@ -155,8 +170,6 @@ public class CIOAutocompleteViewController: UIViewController {
             self.tableView.register(nib, forCellReuseIdentifier: Constants.UI.CellIdentifier)
         }
 
-        self.definesPresentationContext = true
-
         self.delegate?.autocompleteControllerDidLoad?(controller: self)
 
         if autocompleteKey == "" {
@@ -170,7 +183,7 @@ public class CIOAutocompleteViewController: UIViewController {
         super.viewWillAppear(animated)
         self.delegate?.autocompleteControllerWillAppear?(controller: self)
     }
-
+    
     fileprivate func setResultsReceived(from autocompleteResult: AutocompleteResult) {
         // we have data, hide error view if visible
         self.errorView?.asView().fadeOutAndRemove(duration: Constants.UI.fadeOutDuration)
@@ -205,7 +218,7 @@ public class CIOAutocompleteViewController: UIViewController {
             errorView.asView().pinToSuperviewBottom()
             errorView.asView().pinToSuperviewLeft()
             errorView.asView().pinToSuperviewRight()
-            self.view.pinVertical(errorView.asView(), topView: self.searchBar)
+            errorView.asView().pinToSuperviewTop(self.searchController.searchBar.frame.size.height)
 
             // fade in
             errorView.asView().fadeIn(duration: Constants.UI.fadeInDuration)
@@ -245,6 +258,7 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
 
         return cell
     }
+    
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
@@ -270,58 +284,60 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
 
         return self.dataSource?.rowHeight?(in: self) ?? Constants.UI.defaultRowHeight
     }
-}
-
-// MARK: - UISearchBarDelegate
-extension CIOAutocompleteViewController: UISearchBarDelegate {
-
-    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // invalidate the old timer
-        self.timerQueryFire?.invalidate()
-        let searchTerm = searchText.trim().lowercased()
-
-        // check whether we have a valid search term
-        if searchTerm.characters.count == 0 {
-            let query = CIOAutocompleteQuery(query: "", numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
-            self.setResultsReceived(from: AutocompleteResult(query: query))
-            return
-        }
-
-        // reschedule the timer
-        self.timerQueryFire = Timer.scheduledTimer(timeInterval: Constants.UI.fireQueryDelayInSeconds, target: self, selector: #selector(timerFire), userInfo: searchTerm, repeats: false)
-    }
-
+    
     @objc
-    private func timerFire(timer: Timer) {
+    fileprivate func timerFire(timer: Timer) {
         guard let searchTerm = timer.userInfo as? String else {
             return
         }
-
+        
         let query = CIOAutocompleteQuery(query: searchTerm, numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
-
+        
         // initiatedOn timestamp has to be created before the query is sent, otherwise we might get inconsistent UI results
         let initiatedOn: TimeInterval = NSDate().timeIntervalSince1970
         self.constructorIO.autocomplete(forQuery: query) { [weak self] response in
-
+            
             guard let selfRef = self else { return }
-
+            
             // Inform delegate of search
             self?.delegate?.autocompleteController?(controller: selfRef, didPerformSearch: searchTerm)
-
+            
             // Check for errors
             if let error = response.error {
                 self?.displayError(error: error)
                 self?.delegate?.autocompleteController?(controller: selfRef, errorDidOccur: error)
                 return
             }
-
+            
             // No errors
             let response = response.data!
-
+            
             // Display the response
             let result = AutocompleteResult(query: query, timestamp: initiatedOn)
             result.response = response
             self?.setResultsReceived(from: result)
         }
+    }
+
+}
+
+extension CIOAutocompleteViewController: UISearchResultsUpdating {
+    public func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+        
+        // invalidate the old timer
+        self.timerQueryFire?.invalidate()
+        let searchTerm = searchText.trim().lowercased()
+        
+        // check whether we have a valid search term
+        if searchTerm.characters.count == 0 {
+            let query = CIOAutocompleteQuery(query: "", numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
+            self.setResultsReceived(from: AutocompleteResult(query: query))
+            return
+        }
+        
+        // reschedule the timer
+        self.timerQueryFire = Timer.scheduledTimer(timeInterval: Constants.UI.fireQueryDelayInSeconds, target: self, selector: #selector(timerFire), userInfo: searchTerm, repeats: false)
+
     }
 }

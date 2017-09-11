@@ -116,11 +116,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     // MARK: SearchBar
 
-    func styleSearchBar(searchBar: UISearchBar, in autocompleteController: CIOAutocompleteViewController) {
-        searchBar.autocapitalizationType = UITextAutocapitalizationType.none
-        searchBar.returnKeyType = .yahoo
-    }
+    func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController) {
+        searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
+        searchController.searchBar.returnKeyType = .yahoo
 
+    }
     // MARK: Delegate
 
     func autocompleteController(controller: CIOAutocompleteViewController, errorDidOccur error: Error) {
@@ -137,6 +137,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
         print("item selected \(result)")
+        
+        if let navigationController = self.window?.rootViewController as? UINavigationController{
+            let detailsVC = DetailsViewController()
+            detailsVC.itemName = result.value
+            navigationController.pushViewController(detailsVC, animated: true)
+        }
     }
 
     func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String) {
