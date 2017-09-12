@@ -11,9 +11,9 @@ import XCTest
 
 class AutocompleteQueryRequestBuilderTests: XCTestCase {
 
-    fileprivate let queryString = "testing query?!-123"
-    fileprivate var encodedQueryString: String!
-    fileprivate let testACKey = "abcdefgh123"
+    fileprivate let queryString: String = "testing query?!-123"
+    fileprivate var encodedQueryString: String = ""
+    fileprivate let testACKey: String = "abcdefgh123"
     fileprivate var builder: AutocompleteQueryRequestBuilder!
 
     override func setUp() {
@@ -25,7 +25,6 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: queryString)
         builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey)
         let request = builder.getRequest()
-        
         XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)"))
         XCTAssertEqual(request.httpMethod, "GET")
     }

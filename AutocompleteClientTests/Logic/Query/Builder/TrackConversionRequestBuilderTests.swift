@@ -17,9 +17,9 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     fileprivate let sectionName = "some section name@"
     fileprivate let revenue = 99999
 
-    fileprivate var encodedSearchTerm: String!
-    fileprivate var encodedItemName: String!
-    fileprivate var encodedSectionName: String!
+    fileprivate var encodedSearchTerm: String = ""
+    fileprivate var encodedItemName: String = ""
+    fileprivate var encodedSectionName: String = ""
 
     fileprivate var builder: TrackConversionRequestBuilder!
 

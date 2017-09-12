@@ -16,9 +16,9 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     fileprivate let clickedItemName = "testing#@#??!!asd"
     fileprivate let sectionName = "product"
 
-    fileprivate var encodedSearchTerm: String!
-    fileprivate var encodedClickedItemName: String!
-    fileprivate var encodedSectionName: String!
+    fileprivate var encodedSearchTerm: String = ""
+    fileprivate var encodedClickedItemName: String = ""
+    fileprivate var encodedSectionName: String = ""
     fileprivate var builder: TrackAutocompleteClickRequestBuilder!
 
     override func setUp() {

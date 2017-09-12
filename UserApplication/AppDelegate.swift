@@ -117,9 +117,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     // MARK: SearchBar
 
     func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController) {
+        // customize search bar
         searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
-        searchController.searchBar.returnKeyType = .yahoo
-
+        searchController.searchBar.returnKeyType = .search
+        
+        // customize search controller behaviour
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
     }
     // MARK: Delegate
 
