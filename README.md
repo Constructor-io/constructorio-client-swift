@@ -28,6 +28,8 @@ Run ```carthage update```
 
 Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project and link it with your application target. Also, make sure to copy the framework by adding a new Copy Files phase.
 
+<img src="https://constructor.io/images/ios_screenshots/ss_copy_frameworks.png" width="60%">
+
 ## 1c. Manual import
 * Get the lastest source code from ```https://github.com/Constructor-io/constructorio-client-swift.git```
 * Open and build the project in Xcode
@@ -151,6 +153,8 @@ class CustomTableViewCell: UITableViewCell, CIOAutocompleteCell {
 ```
 Our framework will call this method on your cell and pass all the necessary data.
 
+<img src="https://constructor.io/images/ios_screenshots/ss_custom_cell.png" width="60%">
+
 There are a couple of more views that you can fully replace with a custom UIView of your choice.
 ## Background View
 Background view appears behind your search results. You can replace the default framework view by implementing the backgroundView method.
@@ -159,6 +163,9 @@ func backgroundView(in autocompleteController: CIOAutocompleteViewController) ->
     return MyCustomBackgroundView()
 }
 ```
+
+<img src="https://constructor.io/images/ios_screenshots/ss_custom_background_view.png" width="60%" />
+
 ## Error View
 If an error occurs, error view will be shown displaying the error message. If you decide to use a custom error view, you should implement
 ```
@@ -181,6 +188,8 @@ class CustomErrorView: UIView, CIOErrorView {
     }
 }
 ```
+
+<img src="https://constructor.io/images/ios_screenshots/ss_custom_error_view.png" width="60%" />
 
 ## Bug reporting
 
