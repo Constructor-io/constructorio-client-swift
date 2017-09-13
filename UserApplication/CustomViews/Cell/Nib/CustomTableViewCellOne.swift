@@ -31,8 +31,8 @@ class CustomTableViewCellOne: UITableViewCell, CIOAutocompleteCell {
         // Configure the view for the selected state
     }
 
-    func setup(title: String, searchTerm: String, highlighter: CIOHighlighter) {
-        self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: title)
+    func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
+        self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.value)
         self.imageViewIcon.image = self.randomImage
     }
 

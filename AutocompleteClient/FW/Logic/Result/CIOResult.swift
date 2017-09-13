@@ -12,12 +12,16 @@ import Foundation
  Class encapsulating a single autocomplete result item.
  */
 @objc public class CIOResult: NSObject {
+    
     /// Convenience dictionary that contains all String only properties of this item.
     public let stringData: [String: String]
+    
     /// The nested data JSON object of this item.
     public let data: JSONObject
+    
     /// The name of this item.
     public let value: String
+    
     /// The raw JSON of this item.
     public let json: JSONObject
 

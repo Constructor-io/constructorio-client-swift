@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol CIOAutocompleteCell {
-    func setup(title: String, searchTerm: String, highlighter: CIOHighlighter)
+    func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter)
 }
