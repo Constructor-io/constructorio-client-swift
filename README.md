@@ -144,8 +144,8 @@ class CustomTableViewCell: UITableViewCell, CIOAutocompleteCell {
         // Initialization code
     }
 
-    func setup(title: String, searchTerm: String, highlighter: CIOHighlighter) {
-        self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: title)
+    func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
+        self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.value)
         self.imageViewIcon.image = UIImage(named: "icon-autocomplete")
     }
 
