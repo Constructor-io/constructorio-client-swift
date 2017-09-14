@@ -1,5 +1,5 @@
 //
-//  AutocompleteViewModelItem.swift
+//  AutocompleteViewModelSection.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.

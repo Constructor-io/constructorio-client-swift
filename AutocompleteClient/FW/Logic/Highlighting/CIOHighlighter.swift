@@ -63,7 +63,7 @@ public class CIOHighlighter {
             if prefixer.characters.count > prefixee.characters.count {
                 continue
             }
-            guard prefixee.hasPrefix(prefixer), prefixer.characters.count > bestMatch else { continue }
+            guard prefixee.lowercased().hasPrefix(prefixer.lowercased()), prefixer.characters.count > bestMatch else { continue }
             bestMatch = prefixer.characters.count
         }
         let index = prefixee.index(prefixee.startIndex, offsetBy: bestMatch)

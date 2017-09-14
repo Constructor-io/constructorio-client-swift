@@ -64,6 +64,12 @@ struct Constants {
         static let data = "data"
         static let value = "value"
         static let description = "description"
+        
+        // groups
+        static let groups = "groups"
+        static let displayName = "display_name"
+        static let groupID = "group_id"
+        static let path = "path"
     }
 
     struct Track {

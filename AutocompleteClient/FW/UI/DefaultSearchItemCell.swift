@@ -18,6 +18,11 @@ class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
     }
 
     func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
-        self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.value)
+        if let group = result.group{
+            self.labelText.text = "in \(group.displayName)"
+        }else{
+            self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value)
+        }
+        
     }
 }

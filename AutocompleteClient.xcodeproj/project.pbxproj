@@ -38,6 +38,8 @@
 		F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9051F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift */; };
 		F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */; };
 		F61A6B061F66AFD4007826CA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B041F66AFD4007826CA /* DetailsViewController.swift */; };
+		F61A6B091F698877007826CA /* CIOGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B081F698877007826CA /* CIOGroup.swift */; };
+		F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B0A1F698D03007826CA /* CIOAutocompleteResult.swift */; };
 		F631A5D41F5861ED00A49BD1 /* SearchErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F631A5D31F5861ED00A49BD1 /* SearchErrorView.swift */; };
 		F631A5D61F5861F600A49BD1 /* SearchErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D51F5861F600A49BD1 /* SearchErrorView.xib */; };
 		F631A5D81F58629B00A49BD1 /* constructor-io-error-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */; };
@@ -48,7 +50,7 @@
 		F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63374AF1F5AA1C000E481E7 /* ExpectationHandler.swift */; };
 		F63374B11F5AA20500E481E7 /* ExpectationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63374AF1F5AA1C000E481E7 /* ExpectationHandler.swift */; };
 		F636E03B1F57E68A004C85FA /* String+URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F636E03A1F57E68A004C85FA /* String+URLEncode.swift */; };
-		F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63808EE1F5D2F5B00C3B322 /* AutocompleteViewModelItem.swift */; };
+		F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63808EE1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift */; };
 		F63808F21F5D47AF00C3B322 /* URLSessionNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63808F11F5D47AF00C3B322 /* URLSessionNetworkClient.swift */; };
 		F63808F41F5D47BB00C3B322 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63808F31F5D47BB00C3B322 /* NetworkClient.swift */; };
 		F63808F81F5D497200C3B322 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63808F71F5D497200C3B322 /* NetworkResponse.swift */; };
@@ -157,6 +159,8 @@
 		F60FE9051F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilder.swift; sourceTree = "<group>"; };
 		F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
 		F61A6B041F66AFD4007826CA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		F61A6B081F698877007826CA /* CIOGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOGroup.swift; sourceTree = "<group>"; };
+		F61A6B0A1F698D03007826CA /* CIOAutocompleteResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteResult.swift; sourceTree = "<group>"; };
 		F631A5D31F5861ED00A49BD1 /* SearchErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchErrorView.swift; sourceTree = "<group>"; };
 		F631A5D51F5861F600A49BD1 /* SearchErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchErrorView.xib; sourceTree = "<group>"; };
 		F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-error-icon.png"; sourceTree = "<group>"; };
@@ -165,7 +169,7 @@
 		F63374AD1F5A95E800E481E7 /* AutocompleteDataSourceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteDataSourceWrapper.swift; sourceTree = "<group>"; };
 		F63374AF1F5AA1C000E481E7 /* ExpectationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectationHandler.swift; sourceTree = "<group>"; };
 		F636E03A1F57E68A004C85FA /* String+URLEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URLEncode.swift"; sourceTree = "<group>"; };
-		F63808EE1F5D2F5B00C3B322 /* AutocompleteViewModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteViewModelItem.swift; sourceTree = "<group>"; };
+		F63808EE1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteViewModelSection.swift; sourceTree = "<group>"; };
 		F63808F11F5D47AF00C3B322 /* URLSessionNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkClient.swift; sourceTree = "<group>"; };
 		F63808F31F5D47BB00C3B322 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		F63808F71F5D497200C3B322 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
@@ -331,6 +335,8 @@
 				F63809041F5D6D8D00C3B322 /* Parser */,
 				F1F68DD51F58B68700B42602 /* CIOResponse.swift */,
 				F1F68DD71F58B69000B42602 /* CIOResult.swift */,
+				F61A6B081F698877007826CA /* CIOGroup.swift */,
+				F61A6B0A1F698D03007826CA /* CIOAutocompleteResult.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -441,6 +447,13 @@
 				F61A6B041F66AFD4007826CA /* DetailsViewController.swift */,
 			);
 			name = DetailsViewController;
+			sourceTree = "<group>";
+		};
+		F61A6B0E1F699E4D007826CA /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Delegate;
 			sourceTree = "<group>";
 		};
 		F631A5D21F5861A200A49BD1 /* Error */ = {
@@ -769,10 +782,11 @@
 		F68A72F61F56D1A000FA4D1B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F61A6B0E1F699E4D007826CA /* Delegate */,
 				F1B17CB11F58E5830015FF62 /* AutocompleteResult.swift */,
 				F68A72F91F56D22B00FA4D1B /* AutocompleteViewModel.swift */,
 				F64F46C41F59A6890094C697 /* AutocompleteViewModelDelegate.swift */,
-				F63808EE1F5D2F5B00C3B322 /* AutocompleteViewModelItem.swift */,
+				F63808EE1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1174,16 +1188,18 @@
 				F1F68DE51F58BBA400B42602 /* String+CharacterSetIterator.swift in Sources */,
 				F19E28A31F5F220B0022C814 /* CIOAutocompleteClickTracker.swift in Sources */,
 				F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */,
-				F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelItem.swift in Sources */,
+				F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift in Sources */,
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,
 				F60BEA1A1F571956008F0053 /* CIOAutocompleteDelegate.swift in Sources */,
 				F19E289D1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift in Sources */,
 				F636E03B1F57E68A004C85FA /* String+URLEncode.swift in Sources */,
+				F61A6B091F698877007826CA /* CIOGroup.swift in Sources */,
 				F60FE9041F5C5B220037A0AB /* QueryRequestBuilder.swift in Sources */,
 				F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */,
 				F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */,
 				F1F68DDA1F58B6A300B42602 /* CIOResponseParser.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
+				F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */,
 				F1F68DD41F58B59F00B42602 /* CIOQuery.swift in Sources */,
 				F63808F81F5D497200C3B322 /* NetworkResponse.swift in Sources */,
 				F699C3471F57ED4200FD681A /* CIOAutocompleteDataSource.swift in Sources */,

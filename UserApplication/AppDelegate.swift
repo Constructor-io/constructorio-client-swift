@@ -45,7 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
-        let viewController = CIOAutocompleteViewController(autocompleteKey: "CD06z4gVeqSXRiDL2ZNK")
+        let key = "key_AttLywTIsQjS0nao"
+//        let key = "CD06z4gVeqSXRiDL2ZNK"
+        let viewController = CIOAutocompleteViewController(autocompleteKey: key)
 
         // set the delegate in order to react to various events
         viewController.delegate = self
@@ -144,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         
         if let navigationController = self.window?.rootViewController as? UINavigationController{
             let detailsVC = DetailsViewController()
-            detailsVC.itemName = result.value
+            detailsVC.itemName = result.autocompleteResult.value
             navigationController.pushViewController(detailsVC, animated: true)
         }
     }
