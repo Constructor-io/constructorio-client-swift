@@ -27,7 +27,8 @@ struct CIOResponseParser: AbstractResponseParser {
             throw CIOError.invalidResponse
         }
 
-        let results = section.map { CIOResult(json: $0) }.flatMap { $0 }
+        
+        let results = self.jsonToAutocompleteItems(jsonObjects: section)
         var metadata = json
         metadata[Constants.Response.singleSectionResultField] = nil
         return CIOResponse(sections: [Constants.Response.singleSectionResultField: results],
@@ -40,8 +41,9 @@ struct CIOResponseParser: AbstractResponseParser {
         }
 
         var results = [String: [CIOResult]]()
+        
         for section in sections {
-            results[section.key] = section.value.map { CIOResult(json: $0) }.flatMap { $0 }
+            results[section.key] = self.jsonToAutocompleteItems(jsonObjects: section.value)
         }
 
         var metadata = json
@@ -49,4 +51,21 @@ struct CIOResponseParser: AbstractResponseParser {
         return CIOResponse(sections: results, metadata: metadata, json: json)
     }
 
+    fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOResult]{
+        return jsonObjects.flatMap { CIOAutocompleteResult(json: $0) }
+                        .reduce([CIOResult](), { (arr, autocompleteResult) in
+                            let first = CIOResult(autocompleteResult: autocompleteResult, group: nil)
+                            
+                            var itemsInGroups: [CIOResult] = []
+                            if let groups = autocompleteResult.groups{
+                                for group in groups{
+                                    let itemInGroup = CIOResult(autocompleteResult: autocompleteResult, group: group)
+                                    itemsInGroups.append(itemInGroup)
+                                }
+                            }
+                            
+                            return arr + [first] + itemsInGroups
+                        })
+    }
+    
 }

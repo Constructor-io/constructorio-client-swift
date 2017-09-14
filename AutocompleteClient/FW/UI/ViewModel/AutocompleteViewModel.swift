@@ -1,5 +1,5 @@
 //
-//  SearchViewModel.swift
+//  AutocompleteViewModel.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.

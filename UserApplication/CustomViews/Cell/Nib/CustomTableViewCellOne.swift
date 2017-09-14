@@ -32,8 +32,14 @@ class CustomTableViewCellOne: UITableViewCell, CIOAutocompleteCell {
     }
 
     func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
-        self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.value)
-        self.imageViewIcon.image = self.randomImage
+        if let group = result.group{
+            self.labelText.attributedText = highlighter.highlight(searchTerm: group.displayName, itemTitle: "  in \(group.displayName)")
+            self.imageViewIcon.image = nil
+        }else{
+            self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value)
+            self.imageViewIcon.image = self.randomImage
+        }
+        
     }
 
 }

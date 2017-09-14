@@ -266,14 +266,14 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
 
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.value, sectionName: sectionName)
+        let selectTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName)
 
         // TODO: For now, ignore any errors
         constructorIO.trackAutocompleteClick(for: selectTracker)
 
         // Run behavioural tracking 'search' if its an autocomplete suggestion
         if sectionName == "standard" {
-            let searchTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.value)
+            let searchTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
             constructorIO.trackAutocompleteClick(for: searchTracker)
         }
 
