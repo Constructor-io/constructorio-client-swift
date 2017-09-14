@@ -79,6 +79,73 @@ You should now see your autocomplete view controller.
 
 * This method is called when the search query is sent to the server, again giving you a chance to do any necessary background work.
 
+## Search in group
+Any data value can belong to multiple groups. We will show the search-in-group options right below the item itself.
+
+Let's remember the selection delegate method.
+
+```optional func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult)```
+
+The result is of type ```CIOResult``` which looks like this:
+```
+@objc
+public class CIOResult: NSObject{
+    public let autocompleteResult: CIOAutocompleteResult
+    public let group: CIOGroup?
+    
+    init(autocompleteResult: CIOAutocompleteResult, group: CIOGroup? = nil){
+        self.autocompleteResult = autocompleteResult
+        self.group = group
+    }
+}
+```
+It represents an autocomplete item in a group. Let's say you search for 'apple' and the results coming back from server are:
+```
+"suggestions": [
+      {
+        "data": {
+          "groups": [
+            {
+              "display_name": "food", 
+              "group_id": "12", 
+              "path": "/0/222/344"
+            }, 
+            {
+              "display_name": "gadgets", 
+              "group_id": "34", 
+              "path": "/0/252/346/350"
+            }
+          ]
+        }, 
+        "value": "apple"
+      }
+]
+```
+We received two groups: food and gadgets. This means we'll have three items in total:
+1. apple on it's own
+2. Search for 'apple' in group 'food'
+3. Search for 'apple' in group 'gadgets'
+
+When the user taps on (1), you'll receive a CIOResult with a group property of nil.
+
+When the user taps on (2), you'll receive a CIOResult with the food group property.
+
+When the user taps on (3), you'll receive a CIOResult with the gadgets group property.
+
+In other words, you can simply check whether the group property is nil to find out if the user tapped on a search-in-group result.
+
+```
+func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult){
+   if let group = result.group{
+      // user tapped on search-in-group result
+      print("User tapped on \(result.autocompleteResult.value) in group \(group.displayName)")
+   }else{
+      // user tapped on an autocomplete result
+      print("User tapped on \(result.autocompleteResult.value)")
+   }
+}
+```
+
 ## Customizing the UI
 ```CIOAutocompleteDataSource``` protocol contains various methods allowing you to customize the look and feel of the autocomplete view.
 
