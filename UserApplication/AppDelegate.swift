@@ -79,11 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     }
     
     func styleResultCell(cell: UITableViewCell, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
-        if indexPath.row % 2 == 0{
-            cell.contentView.backgroundColor = UIColor.lightGray
-        }else{
-            cell.contentView.backgroundColor = UIColor.white
-        }
+        let val: Float = 0.97
+        cell.backgroundColor = UIColor(colorLiteralRed: val, green: val, blue: val, alpha: 1.0)
     }
 
     var i = 1
@@ -106,11 +103,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
         return UINib(nibName: "CustomTableViewCellOne", bundle: nil)
     }
-
-//    func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass {
-//        return CustomTableViewCellTwo.self
-//    }
-
+/*
+    func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass {
+        return CustomTableViewCellTwo.self
+    }
+*/
     // No background view
 //    func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
 //        return nil
