@@ -146,6 +146,24 @@ func autocompleteController(controller: CIOAutocompleteViewController, didSelect
 }
 ```
 
+## Filtering results
+If you want certain results or groups to be filtered out, you can do so by implementing ```shouldParseResult``` delegate method.
+
+```
+func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
+   // lets ignore all results that contain the word "guitar"
+   if result.value.contains("guitar") {
+      return false
+   }
+
+   // also, lets disallow all searches in group "food"
+   if let group = group, group.displayName.lowercased() == "food" {
+      return false
+   }
+   
+   return true
+}
+```
 ## Customizing the UI
 ```CIOAutocompleteDataSource``` protocol contains various methods allowing you to customize the look and feel of the autocomplete view.
 
