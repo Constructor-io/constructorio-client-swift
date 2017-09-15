@@ -13,6 +13,9 @@ struct TestResource {
         static let singleSectionJSONFilename = "response_json_single_section"
         static let multipleSectionsJSONFilename = "response_json_multiple_sections"
         static let numberOfSectionsInMultipleSectionsResponse = 2
+        
+        static let multipleGroupsJSONFilename = "response_json_multiple_groups"
+        static let numberOfGroupsInMultipleSectionsResponse = 3
     }
 
     static func load(name: String, type: String = "json") -> Data {

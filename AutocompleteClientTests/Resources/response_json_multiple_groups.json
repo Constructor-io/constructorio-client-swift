@@ -1,0 +1,26 @@
+{
+    "suggestions": [
+                    {
+                    "data": {
+                    "groups": [
+                               {
+                               "display_name": "instruments",
+                               "group_id": "12",
+                               "path": "/0/222/344"
+                               },
+                               {
+                               "display_name": "food",
+                               "group_id": "34", 
+                               "path": "/0/252/346/350"
+                               },
+                               {
+                               "display_name": "accessories",
+                               "group_id": "56",
+                               "path": "350/59/2/346"
+                               }
+                               ]
+                    }, 
+                    "value": "guitar"
+                    }
+                ]
+}

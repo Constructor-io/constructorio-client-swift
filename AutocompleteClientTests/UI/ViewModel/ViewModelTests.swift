@@ -74,8 +74,8 @@ class ViewModelTests: XCTestCase {
     }
 
     // TODO: move to an extension
-    func mockCIOResult(_ value: String) -> CIOResult {
-        return CIOResult(json: ["value": value])!
+    func mockCIOResult(_ value: String, groupName: String? = nil) -> CIOResult {
+        return CIOResult(autocompleteResult: CIOAutocompleteResult(json: ["value": value])!, group: nil)
     }
 
     func test_SettingEarlierInitiatedQueryResult_ShouldNotChangeViewModelData() {

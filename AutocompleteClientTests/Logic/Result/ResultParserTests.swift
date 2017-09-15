@@ -64,4 +64,18 @@ class ResultParserTests: XCTestCase {
         }
     }
 
+    func test_ParsingMultipleGroupsJSONString_HasCorrectItemCount() {
+        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename)
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            
+            if let results = response.sections[Constants.Response.singleSectionResultField]{
+                XCTAssertEqual(results.count, TestResource.Response.numberOfGroupsInMultipleSectionsResponse+1, "Number of parsed items with multiple groups should match the number of groups plus one.")
+            }else{
+                XCTFail("Results incorrectly parsed, no results array for key \(Constants.Response.singleSectionResultField) when server returns a single section")
+            }
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
 }

@@ -101,6 +101,7 @@
 		F6B352BB1F5B45A00054D303 /* CustomTableViewCellOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6B352BA1F5B45A00054D303 /* CustomTableViewCellOne.xib */; };
 		F6B352BD1F5B45C60054D303 /* CustomTableViewCellOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352BC1F5B45C60054D303 /* CustomTableViewCellOne.swift */; };
 		F6B352C01F5B498A0054D303 /* CustomTableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352BF1F5B498A0054D303 /* CustomTableViewCellTwo.swift */; };
+		F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */ = {isa = PBXBuildFile; fileRef = F6B4627E1F6BA61C0082C20B /* response_json_multiple_groups.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +228,7 @@
 		F6B352BA1F5B45A00054D303 /* CustomTableViewCellOne.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCellOne.xib; sourceTree = "<group>"; };
 		F6B352BC1F5B45C60054D303 /* CustomTableViewCellOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellOne.swift; sourceTree = "<group>"; };
 		F6B352BF1F5B498A0054D303 /* CustomTableViewCellTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellTwo.swift; sourceTree = "<group>"; };
+		F6B4627E1F6BA61C0082C20B /* response_json_multiple_groups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response_json_multiple_groups.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -566,6 +568,7 @@
 		F64F46A81F5960CC0094C697 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F6B4627E1F6BA61C0082C20B /* response_json_multiple_groups.json */,
 				F64F46B01F5970140094C697 /* response_json_single_section.json */,
 				F64F46A91F5960FB0094C697 /* response_json_multiple_sections.json */,
 				F64F46AE1F59641D0094C697 /* TestResource.swift */,
@@ -1128,6 +1131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */,
 				F64F46B11F5970140094C697 /* response_json_single_section.json in Resources */,
 				F64F46AA1F5960FB0094C697 /* response_json_multiple_sections.json in Resources */,
 			);
