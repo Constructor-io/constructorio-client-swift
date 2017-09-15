@@ -70,6 +70,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     // MARK: DataSource
 
+    /*
+    func shouldShowSectionHeader(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> Bool {
+        return sectionName.lowercased() != "products"
+    }
+    */
+
+    func sectionHeaderView(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> UIView? {
+        let headerView = UIView(frame: CGRect.zero)
+        headerView.backgroundColor = UIColor.white
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        headerView.addSubview(label)
+        
+        let constraintCenterHorizontally = NSLayoutConstraint(item: headerView, attribute: .centerX, relatedBy: .equal, toItem: label, attribute: .centerX, multiplier: 1.0, constant: 0)
+        headerView.addConstraint(constraintCenterHorizontally)
+        
+        let constraintCenterVertically = NSLayoutConstraint(item: headerView, attribute: .centerY, relatedBy: .equal, toItem: label, attribute: .centerY, multiplier: 1.0, constant: 0)
+        headerView.addConstraint(constraintCenterVertically)
+        
+        label.text = sectionName
+        label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
+        return headerView
+    }
+    
+    func sectionHeaderViewHeight(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> CGFloat {
+        return 30
+    }
+    
+    func sectionSort(in autocompleteController: CIOAutocompleteViewController) -> ((String, String) -> Bool) {
+        return { (s1, s2) in return s1 > s2 }
+    }
+    
     func rowHeight(in autocompleteController: CIOAutocompleteViewController) -> CGFloat {
         return 35
     }
@@ -152,6 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
             }
         }
     }
+
 
     func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
         print("item selected \(result)")

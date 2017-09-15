@@ -87,6 +87,39 @@ public protocol CIOAutocompleteDataSource: class {
     optional func rowHeight(in autocompleteController: CIOAutocompleteViewController) -> CGFloat
 
     /**
+     Determines whether the section header is shown. True by default.
+     
+     - parameter sectionName: Section name
+     - parameter autocompleteController: The sender CIOAutocompleteViewController
+     
+     - returns: Whether the section header should be displayed.
+     */
+    @objc
+    optional func shouldShowSectionHeader(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> Bool
+    
+    /**
+     Provides a section header view.
+     
+     - parameter sectionName: Section name
+     - parameter autocompleteController: The sender CIOAutocompleteViewController
+     
+     - returns: Section header view.
+     */
+    @objc
+    optional func sectionHeaderView(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> UIView?
+    
+    /**
+     Provides a section header view height. 44 by default
+     
+     - parameter sectionName: Section name
+     - parameter autocompleteController: The sender CIOAutocompleteViewController
+     
+     - returns: Section header height.
+     */
+    @objc
+    optional func sectionHeaderViewHeight(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> CGFloat
+    
+    /**
      Provides the search bar placeholder.
      
      - parameter autocompleteController: The sender CIOAutocompleteViewController
