@@ -189,6 +189,11 @@ public class CIOAutocompleteViewController: UIViewController {
         // we have data, hide error view if visible
         self.errorView?.asView().fadeOutAndRemove(duration: Constants.UI.fadeOutDuration)
 
+        // before passing the result to view model, ask the dataSource to provide the custom sort function
+        if let customSortFunction = self.dataSource?.sectionSort?(in: self){
+            self.viewModel.modelSorter = customSortFunction
+        }
+        
         self.viewModel.set(searchResult: autocompleteResult) { [weak self] in
             self?.tableView.reloadData()
         }

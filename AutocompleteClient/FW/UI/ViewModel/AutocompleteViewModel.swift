@@ -16,7 +16,8 @@ class AutocompleteViewModel {
     var results: [AutocompleteViewModelSection]
 
     var screenTitle: String
-
+    var modelSorter: (String, String) -> Bool = { return $0 < $1 }
+    
     weak var delegate: AutocompleteViewModelDelegate?
 
     init() {
@@ -41,7 +42,7 @@ class AutocompleteViewModel {
 
     internal func setResultFromDictionary(dictionary: [String: [CIOResult]]?) {
         self.results = (dictionary ?? [:]).map { (section, items) in AutocompleteViewModelSection(items: items, sectionName: section) }
-                                          .sorted { (s1, s2) in s1.sectionName < s2.sectionName }
+                                          .sorted { (s1, s2) in self.modelSorter(s1.sectionName,s2.sectionName) }
     }
 
     func set(searchResult: AutocompleteResult, completionHandler: @escaping () -> Void) {

@@ -107,6 +107,16 @@ public protocol CIOAutocompleteDataSource: class {
     optional func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView?
 
     /**
+     Provides a sort sections function.
+     
+     - parameter autocompleteController: The sender CIOAutocompleteViewController
+     
+     - returns: Sort section function. The two parameters of type strings represent section names.
+     */
+    @objc
+    optional func sectionSort(in autocompleteController: CIOAutocompleteViewController) -> ((String, String) -> Bool)
+    
+    /**
      Provides the view to be shown when an error occurs. Not implementing this method will show the default error view. The view should conform to the CIOErrorView protocol.
      
      - parameter autocompleteController: The sender CIOAutocompleteViewController
