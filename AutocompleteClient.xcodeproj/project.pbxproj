@@ -102,6 +102,7 @@
 		F6B352BD1F5B45C60054D303 /* CustomTableViewCellOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352BC1F5B45C60054D303 /* CustomTableViewCellOne.swift */; };
 		F6B352C01F5B498A0054D303 /* CustomTableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352BF1F5B498A0054D303 /* CustomTableViewCellTwo.swift */; };
 		F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */ = {isa = PBXBuildFile; fileRef = F6B4627E1F6BA61C0082C20B /* response_json_multiple_groups.json */; };
+		F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B462811F6BACE80082C20B /* ResponseParserDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 		F6B352BC1F5B45C60054D303 /* CustomTableViewCellOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellOne.swift; sourceTree = "<group>"; };
 		F6B352BF1F5B498A0054D303 /* CustomTableViewCellTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellTwo.swift; sourceTree = "<group>"; };
 		F6B4627E1F6BA61C0082C20B /* response_json_multiple_groups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response_json_multiple_groups.json; sourceTree = "<group>"; };
+		F6B462811F6BACE80082C20B /* ResponseParserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParserDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,7 +336,6 @@
 		F1F68DDF1F58B83E00B42602 /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				F63809041F5D6D8D00C3B322 /* Parser */,
 				F1F68DD51F58B68700B42602 /* CIOResponse.swift */,
 				F1F68DD71F58B69000B42602 /* CIOResult.swift */,
 				F61A6B081F698877007826CA /* CIOGroup.swift */,
@@ -517,15 +518,6 @@
 				F63809021F5D6D1400C3B322 /* DependencyContainer.swift */,
 			);
 			path = DependencyInjection;
-			sourceTree = "<group>";
-		};
-		F63809041F5D6D8D00C3B322 /* Parser */ = {
-			isa = PBXGroup;
-			children = (
-				F1F68DD91F58B6A300B42602 /* CIOResponseParser.swift */,
-				F63809051F5D6D9C00C3B322 /* AbstractResponseParser.swift */,
-			);
-			path = Parser;
 			sourceTree = "<group>";
 		};
 		F63809071F5E853900C3B322 /* Highlighting */ = {
@@ -797,20 +789,21 @@
 		F68A72FF1F56D59500FA4D1B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				F6B462801F6BAC8F0082C20B /* Parser */,
 				F63808F01F5D478600C3B322 /* Network */,
 				F699C3491F57F21800FD681A /* Error */,
 				F68A73091F56DA8900FA4D1B /* Data */,
-				F68A73051F56DA3700FA4D1B /* Source */,
+				F68A73051F56DA3700FA4D1B /* DataSource */,
 			);
 			path = API;
 			sourceTree = "<group>";
 		};
-		F68A73051F56DA3700FA4D1B /* Source */ = {
+		F68A73051F56DA3700FA4D1B /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
 				F1F68DE81F58D23D00B42602 /* AbstractConstructorDataSource.swift */,
 			);
-			path = Source;
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		F68A73091F56DA8900FA4D1B /* Data */ = {
@@ -928,6 +921,16 @@
 				F6B352BF1F5B498A0054D303 /* CustomTableViewCellTwo.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		F6B462801F6BAC8F0082C20B /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				F1F68DD91F58B6A300B42602 /* CIOResponseParser.swift */,
+				F63809051F5D6D9C00C3B322 /* AbstractResponseParser.swift */,
+				F6B462811F6BACE80082C20B /* ResponseParserDelegate.swift */,
+			);
+			path = Parser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1224,6 +1227,7 @@
 				F192DDEA1F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift in Sources */,
 				F638090D1F5E880900C3B322 /* CIOHighlighter.swift in Sources */,
 				F1F68DD81F58B69000B42602 /* CIOResult.swift in Sources */,
+				F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */,
 				F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */,
 				F64F46C51F59A6890094C697 /* AutocompleteViewModelDelegate.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,

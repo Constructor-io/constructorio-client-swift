@@ -10,6 +10,8 @@ import Foundation
 
 struct CIOResponseParser: AbstractResponseParser {
 
+    weak var delegate: ResponseParserDelegate?
+    
     func parse(autocompleteResponseData: Data) throws -> CIOResponse {
         do {
             let json = try JSONSerialization.jsonObject(with: autocompleteResponseData) as! JSONObject
@@ -56,11 +58,19 @@ struct CIOResponseParser: AbstractResponseParser {
                         .reduce([CIOResult](), { (arr, autocompleteResult) in
                             let first = CIOResult(autocompleteResult: autocompleteResult, group: nil)
                             
+                            // If the base result is filtered out, we don't show
+                            // the group search options.
+                            if !self.delegateFilter(autocompleteResult, nil){
+                                return []
+                            }
+                            
                             var itemsInGroups: [CIOResult] = []
                             if let groups = autocompleteResult.groups{
                                 for group in groups{
-                                    let itemInGroup = CIOResult(autocompleteResult: autocompleteResult, group: group)
-                                    itemsInGroups.append(itemInGroup)
+                                    if self.delegateFilter(autocompleteResult, group){
+                                        let itemInGroup = CIOResult(autocompleteResult: autocompleteResult, group: group)
+                                        itemsInGroups.append(itemInGroup)
+                                    }
                                 }
                             }
                             
@@ -68,4 +78,7 @@ struct CIOResponseParser: AbstractResponseParser {
                         })
     }
     
+    fileprivate func delegateFilter(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool{
+        return self.delegate?.shouldParseResult(result: result, inGroup: group) ?? true
+    }
 }

@@ -177,6 +177,7 @@ public class CIOAutocompleteViewController: UIViewController {
         }
 
         self.constructorIO = ConstructorIO(autocompleteKey: autocompleteKey)
+        self.constructorIO.parser.delegate = self
     }
 
     public override func viewWillAppear(_ animated: Bool) {
@@ -295,6 +296,7 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         
         // initiatedOn timestamp has to be created before the query is sent, otherwise we might get inconsistent UI results
         let initiatedOn: TimeInterval = NSDate().timeIntervalSince1970
+        
         self.constructorIO.autocomplete(forQuery: query) { [weak self] response in
             
             guard let selfRef = self else { return }
@@ -340,4 +342,12 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
         self.timerQueryFire = Timer.scheduledTimer(timeInterval: Constants.UI.fireQueryDelayInSeconds, target: self, selector: #selector(timerFire), userInfo: searchTerm, repeats: false)
 
     }
+}
+
+extension CIOAutocompleteViewController: ResponseParserDelegate {
+    
+    public func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool{
+        return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group) ?? true
+    }
+    
 }

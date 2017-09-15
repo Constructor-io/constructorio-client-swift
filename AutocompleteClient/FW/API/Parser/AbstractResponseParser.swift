@@ -8,6 +8,9 @@
 
 import Foundation
 
-protocol AbstractResponseParser {
+public protocol AbstractResponseParser {
+    
+    var delegate: ResponseParserDelegate? { get set }
+    
     func parse(autocompleteResponseData: Data) throws -> CIOResponse
 }

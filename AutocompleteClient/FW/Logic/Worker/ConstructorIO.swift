@@ -12,14 +12,16 @@ public typealias QueryCompletionHandler = (QueryResponse) -> Void
 public typealias TrackingCompletionHandler = (Error?) -> Void
 
 /**
- The main struct to be used for getting autocomplete results and tracking behavioural data.
+ The main class to be used for getting autocomplete results and tracking behavioural data.
  */
-public struct ConstructorIO: AbstractConstructorDataSource {
+public class ConstructorIO: AbstractConstructorDataSource {
 
     public let autocompleteKey: String
 
     private let networkClient: NetworkClient = DependencyContainer.sharedInstance.networkClient()
 
+    public var parser: AbstractResponseParser = DependencyContainer.sharedInstance.responseParser()
+    
     public init(autocompleteKey: String) {
         self.autocompleteKey = autocompleteKey
     }
@@ -106,8 +108,7 @@ public struct ConstructorIO: AbstractConstructorDataSource {
     }
 
     private func parse(_ autocompleteResponseData: Data) throws -> CIOResponse {
-        let parser = DependencyContainer.sharedInstance.responseParser()
-        return try parser.parse(autocompleteResponseData: autocompleteResponseData)
+        return try self.parser.parse(autocompleteResponseData: autocompleteResponseData)
     }
 
 }

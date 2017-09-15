@@ -103,6 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
         return UINib(nibName: "CustomTableViewCellOne", bundle: nil)
     }
+    
 /*
     func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass {
         return CustomTableViewCellTwo.self
@@ -113,6 +114,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 //        return nil
 //    }
 
+    // MARK: Parsing
+    
+    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
+        if let group = group{
+            return group.displayName.lowercased() != "dry food"
+        }else{
+            return true
+        }
+    }
+    
     // MARK: SearchBar
 
     func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController) {

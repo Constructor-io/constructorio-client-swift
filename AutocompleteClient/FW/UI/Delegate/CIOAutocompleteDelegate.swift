@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol CIOAutocompleteDelegate: class {
+public protocol CIOAutocompleteDelegate: class{
 
     /**
      Called when CIOAutocompleteViewController's view is loaded (viewDidLoad).
@@ -41,6 +41,16 @@ public protocol CIOAutocompleteDelegate: class {
     @objc
     optional func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String)
 
+    /**
+     Called during parsing to ask whether to parse a certain result. If the user returns false for an item
+     with nil group (the original item), the search-in-group items won't get parsed.
+     
+     - parameter controller: A CIOAutocompleteViewController in which the search occurred.
+     - parameter result: An autocomplete result received from the server.
+     - parameter group: A group in which the search should be performed.
+     */
+    @objc
+    optional func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool
     
     /**
      Called if an error occurs.
