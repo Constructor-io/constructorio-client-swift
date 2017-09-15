@@ -117,11 +117,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     // MARK: Parsing
     
     func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
-        if let group = group{
-            return group.displayName.lowercased() != "dry food"
-        }else{
-            return true
+        if result.value.contains("guitar"){
+            return false
         }
+        
+        if let group = group, group.displayName.lowercased() == "food"{
+            return false
+        }
+        
+        return true
     }
     
     // MARK: SearchBar
