@@ -15,6 +15,7 @@ struct Constants {
         
         static let defaultFontSize: CGFloat = 16
         static let defaultRowHeight: CGFloat = 44
+        static let defaultSectionHeaderHeight: CGFloat = 44
         static let defaultSearchBarPlaceholder = ""
         static let defaultScreenTitle = ""
         static let fadeInDuration: TimeInterval = 0.4

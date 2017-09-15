@@ -189,6 +189,11 @@ public class CIOAutocompleteViewController: UIViewController {
         // we have data, hide error view if visible
         self.errorView?.asView().fadeOutAndRemove(duration: Constants.UI.fadeOutDuration)
 
+        // before passing the result to view model, ask the dataSource to provide the custom sort function
+        if let customSortFunction = self.dataSource?.sectionSort?(in: self){
+            self.viewModel.modelSorter = customSortFunction
+        }
+        
         self.viewModel.set(searchResult: autocompleteResult) { [weak self] in
             self?.tableView.reloadData()
         }
@@ -230,6 +235,42 @@ public class CIOAutocompleteViewController: UIViewController {
 
         self.errorView = errorView
     }
+    
+    @objc
+    fileprivate func timerFire(timer: Timer) {
+        guard let searchTerm = timer.userInfo as? String else {
+            return
+        }
+        
+        let query = CIOAutocompleteQuery(query: searchTerm, numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
+        
+        // initiatedOn timestamp has to be created before the query is sent, otherwise we might get inconsistent UI results
+        let initiatedOn: TimeInterval = NSDate().timeIntervalSince1970
+        
+        self.constructorIO.autocomplete(forQuery: query) { [weak self] response in
+            
+            guard let selfRef = self else { return }
+            
+            // Inform delegate of search
+            self?.delegate?.autocompleteController?(controller: selfRef, didPerformSearch: searchTerm)
+            
+            // Check for errors
+            if let error = response.error {
+                self?.displayError(error: error)
+                self?.delegate?.autocompleteController?(controller: selfRef, errorDidOccur: error)
+                return
+            }
+            
+            // No errors
+            let response = response.data!
+            
+            // Display the response
+            let result = AutocompleteResult(query: query, timestamp: initiatedOn)
+            result.response = response
+            self?.setResultsReceived(from: result)
+        }
+    }
+
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -282,45 +323,40 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
+        
         return self.dataSource?.rowHeight?(in: self) ?? Constants.UI.defaultRowHeight
     }
     
-    @objc
-    fileprivate func timerFire(timer: Timer) {
-        guard let searchTerm = timer.userInfo as? String else {
-            return
-        }
-        
-        let query = CIOAutocompleteQuery(query: searchTerm, numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
-        
-        // initiatedOn timestamp has to be created before the query is sent, otherwise we might get inconsistent UI results
-        let initiatedOn: TimeInterval = NSDate().timeIntervalSince1970
-        
-        self.constructorIO.autocomplete(forQuery: query) { [weak self] response in
-            
-            guard let selfRef = self else { return }
-            
-            // Inform delegate of search
-            self?.delegate?.autocompleteController?(controller: selfRef, didPerformSearch: searchTerm)
-            
-            // Check for errors
-            if let error = response.error {
-                self?.displayError(error: error)
-                self?.delegate?.autocompleteController?(controller: selfRef, errorDidOccur: error)
-                return
-            }
-            
-            // No errors
-            let response = response.data!
-            
-            // Display the response
-            let result = AutocompleteResult(query: query, timestamp: initiatedOn)
-            result.response = response
-            self?.setResultsReceived(from: result)
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let sectionName = viewModel.getSectionName(atIndex: section)
+     
+        if self.dataSource?.shouldShowSectionHeader?(sectionName: sectionName, in: self) ?? true{
+            let height = self.dataSource?.sectionHeaderViewHeight?(sectionName: sectionName, in: self) ?? Constants.UI.defaultSectionHeaderHeight
+            return height
+        }else{
+            return 0
         }
     }
-
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionName = viewModel.getSectionName(atIndex: section)
+        if let customViewFunction = self.dataSource?.sectionHeaderView{
+            return customViewFunction(sectionName, self)
+        }else{
+            let headerView = UIView(frame: CGRect.zero)
+            headerView.backgroundColor = UIColor.white
+            
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            headerView.addSubview(label)
+            label.centerInSuperviewVertical()
+            label.pinToSuperviewLeft(16)
+            label.text = sectionName
+            
+            return headerView
+        }
+    }
+    
 }
 
 extension CIOAutocompleteViewController: UISearchResultsUpdating {
