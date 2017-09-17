@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ConstructorAutocomplete'
-  spec.version      = '0.0.6'
+  spec.version      = '0.0.7'
   spec.license      = { :type => 'MIT', :file => 'LICENSE' }
   spec.homepage     = 'https://www.constructor.io'
   spec.authors      = { 'Nikola Markovic' => 'nikola.markovic@toptal.com'  }
