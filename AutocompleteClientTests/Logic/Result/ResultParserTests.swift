@@ -78,4 +78,49 @@ class ResultParserTests: XCTestCase {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
     }
+    
+    func test_ParsingSpecificSectionInMultisectionJSON_ReturnsCorrectResults(){
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
+        
+        // let's only parse items from the 'standard' section
+        let sectionName = "standard"
+        
+        // create mock delegate
+        let del = MockResponseParserDelegate()
+        del.shouldParseResultsInSection = { name in
+            return name.lowercased() == sectionName
+        }
+        self.responseParser.delegate = del
+        
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            
+            XCTAssertNotNil(response.sections[sectionName], "Results should include the section with the filtered name.")
+            XCTAssertEqual(response.sections.count, 1, "Results should only include the section with the filtered name.")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+    
+    func test_ParsingNonexistingSectionInMultisectionJSON_ReturnsNoResults(){
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
+        
+        // let's pass a non existing section name
+        let sectionName = "non-existing-section-name"
+        
+        // create mock delegate
+        let del = MockResponseParserDelegate()
+        del.shouldParseResultsInSection = { name in
+            return name.lowercased() == sectionName
+        }
+        self.responseParser.delegate = del
+        
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            
+            XCTAssertEqual(response.sections.count, 0, "Results should be empty if the specified section doesn't exist within the JSON response.")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
 }

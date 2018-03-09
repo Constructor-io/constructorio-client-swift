@@ -386,4 +386,7 @@ extension CIOAutocompleteViewController: ResponseParserDelegate {
         return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group) ?? true
     }
     
+    public func shouldParseResults(inSectionWithName name: String) -> Bool {
+        return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name) ?? true
+    }
 }

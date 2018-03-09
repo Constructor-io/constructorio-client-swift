@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
         let key = "key_AttLywTIsQjS0nao"
-//        let key = "CD06z4gVeqSXRiDL2ZNK"
+
         let viewController = CIOAutocompleteViewController(autocompleteKey: key)
 
         // set the delegate in order to react to various events
@@ -150,15 +150,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     // MARK: Parsing
     
     func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
-        if result.value.contains("guitar"){
-            return false
-        }
-        
-        if let group = group, group.displayName.lowercased() == "food"{
-            return false
-        }
-        
         return true
+    }
+    
+    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResultsInSection sectionName: String) -> Bool {
+        return sectionName.lowercased() != "products"
     }
     
     // MARK: SearchBar
