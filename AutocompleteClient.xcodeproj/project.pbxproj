@@ -40,6 +40,7 @@
 		F61A6B061F66AFD4007826CA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B041F66AFD4007826CA /* DetailsViewController.swift */; };
 		F61A6B091F698877007826CA /* CIOGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B081F698877007826CA /* CIOGroup.swift */; };
 		F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B0A1F698D03007826CA /* CIOAutocompleteResult.swift */; };
+		F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510C420529DD40040E3DF /* Collection+MapKeys.swift */; };
 		F631A5D41F5861ED00A49BD1 /* SearchErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F631A5D31F5861ED00A49BD1 /* SearchErrorView.swift */; };
 		F631A5D61F5861F600A49BD1 /* SearchErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D51F5861F600A49BD1 /* SearchErrorView.xib */; };
 		F631A5D81F58629B00A49BD1 /* constructor-io-error-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */; };
@@ -164,6 +165,7 @@
 		F61A6B041F66AFD4007826CA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F61A6B081F698877007826CA /* CIOGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOGroup.swift; sourceTree = "<group>"; };
 		F61A6B0A1F698D03007826CA /* CIOAutocompleteResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteResult.swift; sourceTree = "<group>"; };
+		F62510C420529DD40040E3DF /* Collection+MapKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+MapKeys.swift"; sourceTree = "<group>"; };
 		F631A5D31F5861ED00A49BD1 /* SearchErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchErrorView.swift; sourceTree = "<group>"; };
 		F631A5D51F5861F600A49BD1 /* SearchErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchErrorView.xib; sourceTree = "<group>"; };
 		F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-error-icon.png"; sourceTree = "<group>"; };
@@ -459,6 +461,14 @@
 			children = (
 			);
 			name = Delegate;
+			sourceTree = "<group>";
+		};
+		F62510C320529DC70040E3DF /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				F62510C420529DD40040E3DF /* Collection+MapKeys.swift */,
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		F631A5D21F5861A200A49BD1 /* Error */ = {
@@ -820,6 +830,7 @@
 		F68A73101F56E5EC00FA4D1B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F62510C320529DC70040E3DF /* Collection */,
 				F19E289B1F5F1DA20022C814 /* Date */,
 				F650154C1F587240008E50C0 /* Color */,
 				F65015461F586A35008E50C0 /* UIView */,
@@ -1065,11 +1076,11 @@
 					};
 					F688A43E1F56B4B600F169C1 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0920;
 					};
 					F688A4471F56B4B600F169C1 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0920;
 					};
 				};
 			};
@@ -1234,6 +1245,7 @@
 				F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */,
 				F64F46C51F59A6890094C697 /* AutocompleteViewModelDelegate.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,
+				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F699C34B1F57F22400FD681A /* NSError+Errors.swift in Sources */,
 			);
@@ -1523,7 +1535,8 @@
 				PRODUCT_NAME = ConstructorAutocomplete;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1547,7 +1560,8 @@
 				PRODUCT_MODULE_NAME = ConstructorAutocomplete;
 				PRODUCT_NAME = ConstructorAutocomplete;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1562,7 +1576,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xd.SearchFWTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1577,7 +1592,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xd.SearchFWTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

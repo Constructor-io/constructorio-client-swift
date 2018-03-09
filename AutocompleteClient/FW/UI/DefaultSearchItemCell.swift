@@ -20,8 +20,13 @@ class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
     func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
         if let group = result.group{
             let groupString = NSMutableAttributedString()
-            groupString.append(NSAttributedString(string: "  in ", attributes: highlighter.attributesProvider.defaultSubstringAttributes()))
-            groupString.append(NSAttributedString(string: group.displayName, attributes: highlighter.attributesProvider.highlightedSubstringAttributes()))
+            
+            let defaultAttributes: [NSAttributedStringKey: Any] = highlighter.attributesProvider.defaultSubstringAttributes().mapToAttributedStringKeys()
+            
+            let highlightedAttributes: [NSAttributedStringKey: Any] = highlighter.attributesProvider.highlightedSubstringAttributes().mapToAttributedStringKeys()
+            
+            groupString.append(NSAttributedString(string: "  in ", attributes: defaultAttributes))
+            groupString.append(NSAttributedString(string: group.displayName, attributes: highlightedAttributes))
             self.labelText.attributedText =  groupString
         }else{
             self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value)

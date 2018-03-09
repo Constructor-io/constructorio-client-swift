@@ -23,7 +23,7 @@ class CIOHighlighterTests: XCTestCase {
 
     func testHighlighter_NoMatches_NoHighlights() {
         let result = highlighter.highlight(searchTerm: "this is a test", itemTitle: "no matches in item!")
-        XCTAssertEqual(result, NSAttributedString(string: "no matches in item!", attributes: [NSFontAttributeName: provider.fontNormal]))
+        XCTAssertEqual(result, NSAttributedString(string: "no matches in item!", attributes: [NSAttributedStringKey.font: provider.fontNormal]))
     }
 
     func testHighlighter_AllMatch_AllHighlighted() {
@@ -53,12 +53,12 @@ class CIOHighlighterTests: XCTestCase {
         for string in strings {
             guard shouldHighlight else {
                 
-                highlightedString.append(NSAttributedString(string: string, attributes: [NSFontAttributeName: provider.fontNormal]))
+                highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedStringKey.font: provider.fontNormal]))
                 shouldHighlight = !shouldHighlight
                 continue
             }
 
-            highlightedString.append(NSAttributedString(string: string, attributes: [NSFontAttributeName: provider.fontBold]))
+            highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedStringKey.font: provider.fontBold]))
             shouldHighlight = !shouldHighlight
         }
 

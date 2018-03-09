@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         // set the data source to customize the look and feel of the UI
         viewController.dataSource = self
         
-        let bgColor = UIColor(colorLiteralRed: 67/255.0, green: 152/255.0, blue: 234/255.0, alpha: 1.0)
+        let bgColor = UIColor(red: 67/255.0, green: 152/255.0, blue: 234/255.0, alpha: 1.0)
         
         // embed it in the navigation controller
         let navigationController = UINavigationController(rootViewController: viewController)
@@ -112,8 +112,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     }
     
     func styleResultCell(cell: UITableViewCell, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
-        let val: Float = 0.97
-        cell.backgroundColor = UIColor(colorLiteralRed: val, green: val, blue: val, alpha: 1.0)
+        let val: CGFloat = 0.97
+        cell.backgroundColor = UIColor(red: val, green: val, blue: val, alpha: 1.0)
     }
 
     var i = 1
