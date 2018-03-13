@@ -176,7 +176,9 @@ public class CIOAutocompleteViewController: UIViewController {
             self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingAutocompleteKey)
         }
 
-        self.constructorIO = ConstructorIO(autocompleteKey: autocompleteKey)
+        let userID = DependencyContainer.sharedInstance.userIDGenerator().generateUserID()
+        
+        self.constructorIO = ConstructorIO(autocompleteKey: autocompleteKey, userID: userID)
         self.constructorIO.parser.delegate = self
     }
 
