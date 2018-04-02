@@ -23,11 +23,11 @@ public class ConstructorIO: AbstractConstructorDataSource {
     
     public var parser: AbstractResponseParser = DependencyContainer.sharedInstance.responseParser()
     
-    let userID: String?
+    let clientID: String?
     
-    public init(autocompleteKey: String, userID: String?) {
+    public init(autocompleteKey: String, clientID: String?) {
         self.autocompleteKey = autocompleteKey
-        self.userID = userID
+        self.clientID = clientID
     }
 
     /// Get autocomplete suggestions for a query.
@@ -72,7 +72,7 @@ public class ConstructorIO: AbstractConstructorDataSource {
     }
 
     private func buildRequest(fromQuery query: CIOAutocompleteQuery) -> URLRequest {
-        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: autocompleteKey, session: self.sessionManager.getSession(), userID: self.userID )
+        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: autocompleteKey, session: self.sessionManager.getSession(), clientID: self.clientID )
         return requestBuilder.getRequest()
     }
 

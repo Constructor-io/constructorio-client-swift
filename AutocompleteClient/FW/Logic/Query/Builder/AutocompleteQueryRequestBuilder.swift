@@ -10,18 +10,18 @@ import Foundation
 
 class AutocompleteQueryRequestBuilder: QueryRequestBuilder {
 
-    init(query: CIOAutocompleteQuery, autocompleteKey: String, session: Int, userID: String?) {
+    init(query: CIOAutocompleteQuery, autocompleteKey: String, session: Int, clientID: String?) {
         super.init(query: query.query, autocompleteKey: autocompleteKey)
         set(numResults: query.numResults)
         set(numResultsForSection: query.numResultsForSection)
         set(session: session)
-        if let uID = userID{
-            self.set(userID: uID)
+        if let cID = clientID{
+            self.set(clientID: cID)
         }
     }
     
-    func set(userID: String){
-        queryItems.append(URLQueryItem(name: "u", value: userID))
+    func set(clientID: String){
+        queryItems.append(URLQueryItem(name: "i", value: clientID))
     }
     
     func set(session: Int){

@@ -178,7 +178,7 @@ public class CIOAutocompleteViewController: UIViewController {
 
         let userID = DependencyContainer.sharedInstance.userIDGenerator().generateUserID()
         
-        self.constructorIO = ConstructorIO(autocompleteKey: autocompleteKey, userID: userID)
+        self.constructorIO = ConstructorIO(autocompleteKey: autocompleteKey, clientID: userID)
         self.constructorIO.parser.delegate = self
     }
 
