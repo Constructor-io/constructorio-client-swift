@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
         let key = "key_AttLywTIsQjS0nao"
-//        let key = "CD06z4gVeqSXRiDL2ZNK"
+
         let viewController = CIOAutocompleteViewController(autocompleteKey: key)
 
         // set the delegate in order to react to various events
@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         // set the data source to customize the look and feel of the UI
         viewController.dataSource = self
         
-        let bgColor = UIColor(colorLiteralRed: 67/255.0, green: 152/255.0, blue: 234/255.0, alpha: 1.0)
+        let bgColor = UIColor(red: 67/255.0, green: 152/255.0, blue: 234/255.0, alpha: 1.0)
         
         // embed it in the navigation controller
         let navigationController = UINavigationController(rootViewController: viewController)
@@ -112,8 +112,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     }
     
     func styleResultCell(cell: UITableViewCell, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
-        let val: Float = 0.97
-        cell.backgroundColor = UIColor(colorLiteralRed: val, green: val, blue: val, alpha: 1.0)
+        let val: CGFloat = 0.97
+        cell.backgroundColor = UIColor(red: val, green: val, blue: val, alpha: 1.0)
     }
 
     var i = 1
@@ -150,15 +150,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     // MARK: Parsing
     
     func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
-        if result.value.contains("guitar"){
-            return false
-        }
-        
-        if let group = group, group.displayName.lowercased() == "food"{
-            return false
-        }
-        
         return true
+    }
+    
+    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResultsInSection sectionName: String) -> Bool {
+        return sectionName.lowercased() != "products"
     }
     
     // MARK: SearchBar

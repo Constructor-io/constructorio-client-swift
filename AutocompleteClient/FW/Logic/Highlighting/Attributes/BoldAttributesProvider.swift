@@ -20,10 +20,10 @@ class BoldAttributesProvider: CIOHighlightingAttributesProvider {
     }
 
     func defaultSubstringAttributes() -> [String: Any] {
-        return [NSFontAttributeName: self.fontNormal]
+        return [NSAttributedStringKey.font.rawValue: self.fontNormal]
     }
 
     func highlightedSubstringAttributes() -> [String: Any] {
-        return [NSFontAttributeName: self.fontBold]
+        return [NSAttributedStringKey.font.rawValue: self.fontBold]
     }
 }

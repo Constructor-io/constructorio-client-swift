@@ -40,7 +40,7 @@ public class CIOHighlighter {
         while let (matches, result) = iterator.next() {
             guard matches else {
                 // Not-matched, add specified font for default
-                finalString.append(NSAttributedString(string: result, attributes: self.attributesProvider.defaultSubstringAttributes()))
+                finalString.append(NSAttributedString(string: result, attributes: self.attributesProvider.defaultSubstringAttributes().mapToAttributedStringKeys()))
                 continue
             }
             
@@ -49,9 +49,9 @@ public class CIOHighlighter {
             let (prefix, suffix) = getBestPrefixBetween(prefixers: searchTokens, prefixee: result)
             
             // Add specified font for highlighted
-            finalString.append(NSAttributedString(string: prefix, attributes: self.attributesProvider.highlightedSubstringAttributes()))
+            finalString.append(NSAttributedString(string: prefix, attributes: self.attributesProvider.highlightedSubstringAttributes().mapToAttributedStringKeys()))
             // Add specified font for non-highlighted
-            finalString.append(NSAttributedString(string: suffix, attributes: self.attributesProvider.defaultSubstringAttributes()))
+            finalString.append(NSAttributedString(string: suffix, attributes: self.attributesProvider.defaultSubstringAttributes().mapToAttributedStringKeys()))
         }
         return finalString
     }
@@ -60,15 +60,15 @@ public class CIOHighlighter {
     private func getBestPrefixBetween(prefixers: [String], prefixee: String) -> (String, String) {
         var bestMatch = 0
         for prefixer in prefixers {
-            if prefixer.characters.count > prefixee.characters.count {
+            if prefixer.count > prefixee.count {
                 continue
             }
-            guard prefixee.lowercased().hasPrefix(prefixer.lowercased()), prefixer.characters.count > bestMatch else { continue }
-            bestMatch = prefixer.characters.count
+            guard prefixee.lowercased().hasPrefix(prefixer.lowercased()), prefixer.count > bestMatch else { continue }
+            bestMatch = prefixer.count
         }
         let index = prefixee.index(prefixee.startIndex, offsetBy: bestMatch)
-        return (prefixee.substring(to: index), prefixee.substring(from: index))
-//        return (String(prefixee[..<index]), String(prefixee[index...]))
+        
+        return (String(prefixee[..<index]), String(prefixee[index...]))
     }
 }
 

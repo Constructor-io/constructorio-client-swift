@@ -44,8 +44,10 @@ struct CIOResponseParser: AbstractResponseParser {
 
         var results = [String: [CIOResult]]()
         
-        for section in sections {
-            results[section.key] = self.jsonToAutocompleteItems(jsonObjects: section.value)
+        for section in sections{
+            if self.delegate?.shouldParseResults(inSectionWithName: section.key) ?? true{
+                results[section.key] = self.jsonToAutocompleteItems(jsonObjects: section.value)
+            }
         }
 
         var metadata = json

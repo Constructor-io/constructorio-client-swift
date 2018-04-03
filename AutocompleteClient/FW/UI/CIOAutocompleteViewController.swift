@@ -176,7 +176,9 @@ public class CIOAutocompleteViewController: UIViewController {
             self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingAutocompleteKey)
         }
 
-        self.constructorIO = ConstructorIO(autocompleteKey: autocompleteKey)
+        let userID = DependencyContainer.sharedInstance.userIDGenerator().generateUserID()
+        
+        self.constructorIO = ConstructorIO(autocompleteKey: autocompleteKey, clientID: userID)
         self.constructorIO.parser.delegate = self
     }
 
@@ -368,7 +370,7 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
         let searchTerm = searchText.trim().lowercased()
         
         // check whether we have a valid search term
-        if searchTerm.characters.count == 0 {
+        if searchTerm.count == 0 {
             let query = CIOAutocompleteQuery(query: "", numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
             self.setResultsReceived(from: AutocompleteResult(query: query))
             return
@@ -386,4 +388,7 @@ extension CIOAutocompleteViewController: ResponseParserDelegate {
         return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group) ?? true
     }
     
+    public func shouldParseResults(inSectionWithName name: String) -> Bool {
+        return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name) ?? true
+    }
 }
