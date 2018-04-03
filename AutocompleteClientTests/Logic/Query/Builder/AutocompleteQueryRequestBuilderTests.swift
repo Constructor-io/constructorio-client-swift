@@ -23,42 +23,42 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
     
     func testAutocompleteQueryBuilder_OnlyQueryString() {
         let query = CIOAutocompleteQuery(query: queryString)
-        builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey, session: 1, userID: nil)
+        builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey, session: 1, clientID: nil)
         let request = builder.getRequest()
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)&s=1"))
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
     func testAutocompleteQueryBuilder_WithNumResults() {
         let query = CIOAutocompleteQuery(query: queryString, numResults: 20)
-        builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey, session: 1, userID: nil)
+        builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey, session: 1, clientID: nil)
         let request = builder.getRequest()
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)&num_results=20"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)&num_results=20&s=1"))
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
     func testAutocompleteQueryBuilder_WithNumResultsForSection() {
         // one section
         let singleSectionQuery = CIOAutocompleteQuery(query: queryString, numResultsForSection: ["section1": 1])
-        builder = AutocompleteQueryRequestBuilder(query: singleSectionQuery, autocompleteKey: testACKey, session: 1, userID: nil)
+        builder = AutocompleteQueryRequestBuilder(query: singleSectionQuery, autocompleteKey: testACKey, session: 1, clientID: nil)
         var request = builder.getRequest()
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)&num_results_section1=1"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)&num_results_section1=1&s=1"))
         XCTAssertEqual(request.httpMethod, "GET")
 
 
         // multiple sections
         let multiSectionQuery = CIOAutocompleteQuery(query: queryString, numResultsForSection: ["section1": 1, "section_999": 999])
-        builder = AutocompleteQueryRequestBuilder(query: multiSectionQuery, autocompleteKey: testACKey, session: 1, userID: nil)
+        builder = AutocompleteQueryRequestBuilder(query: multiSectionQuery, autocompleteKey: testACKey, session: 1, clientID: nil)
         request = builder.getRequest()
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)&num_results_section_999=999&num_results_section1=1"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)&num_results_section_999=999&num_results_section1=1&s=1"))
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
     func testAutocompleteQueryBuilder_WithNumResultsAndNumResultsForSection() {
         let query = CIOAutocompleteQuery(query: queryString, numResults: 20, numResultsForSection: ["section1": 1, "section_999": 999])
-        builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey, session: 1, userID: nil)
+        builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey, session: 1, clientID: nil)
         let request = builder.getRequest()
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)&num_results=20&num_results_section_999=999&num_results_section1=1"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedQueryString)?autocomplete_key=\(testACKey)&num_results=20&num_results_section_999=999&num_results_section1=1&s=1"))
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
