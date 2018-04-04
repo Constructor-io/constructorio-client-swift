@@ -46,6 +46,4 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/search?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&tr=click&_dt=\(requestDate)"))
     }
     
-
-    
 }

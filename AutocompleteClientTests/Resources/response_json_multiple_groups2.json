@@ -1,0 +1,176 @@
+{
+"sections": {
+"Products": [{
+"data": {
+"groups": [{
+"display_name": "coats & jackets",
+"group_id": "255",
+"path": "/0/242/244"
+}],
+"image_url": "https://s7d1.scene7.com/is/image/PETCO/2436828-center-1",
+"url": "https://www.petco.com/shop/en/petcostore/product/pup-crew-red-and-navy-tech-bomber-jacket"
+},
+"matched_terms": [
+"red"
+],
+"value": "Pup Crew Red and Navy Tech Bomber Jacket"
+},
+{
+"data": {
+"groups": [{
+"display_name": "bully sticks",
+"group_id": "375",
+"path": "/0/242/371"
+}],
+"image_url": "https://s7d1.scene7.com/is/image/PETCO/2487300-center-1",
+"url": "https://www.petco.com/shop/en/petcostore/product/red-barn-naturals-bully-springs-dog-treats"
+},
+"matched_terms": [
+"red"
+],
+"value": "Red Barn Naturals Bully Springs Dog Treats"
+},
+{
+"data": {
+"groups": [{
+"display_name": "dry",
+"group_id": "121",
+"path": "/0/94/120"
+}],
+"image_url": "https://s7d1.scene7.com/is/image/PETCO/2263971-center-1",
+"url": "https://www.petco.com/shop/en/petcostore/product/blue-buffalo-wilderness-grain-free-rocky-mountain-red-meat-adult-cat-food"
+},
+"matched_terms": [
+"red"
+],
+"value": "Blue Buffalo Wilderness Grain Free Rocky Mountain Red Meat Adult Cat Food"
+},
+{
+"data": {
+"groups": [{
+"display_name": "seat covers & protectors",
+"group_id": "500",
+"path": "/0/242/495"
+}],
+"image_url": "https://s7d1.scene7.com/is/image/PETCO/2633725-center-1",
+"url": "https://www.petco.com/shop/en/petcostore/product/kurgo-grey-and-red-journey-hammock"
+},
+"matched_terms": [
+"red"
+],
+"value": "Kurgo Grey and Red Journey Hammock Style Car Seat Cover for Dogs"
+},
+{
+"data": {
+"groups": [{
+"display_name": "coats & jackets",
+"group_id": "255",
+"path": "/0/242/244"
+}],
+"image_url": "https://s7d1.scene7.com/is/image/PETCO/2605388-center-2",
+"url": "https://www.petco.com/shop/en/petcostore/product/molly-and-olly-red-quilted-vest"
+},
+"matched_terms": [
+"red"
+],
+"value": "Molly & Olly Red Quilted Vest"
+}
+],
+"Search Suggestions": [{
+"data": {
+"groups": [{
+"display_name": "bully sticks",
+"group_id": "375",
+"path": "/0/242/371"
+},
+{
+"display_name": "coats & jackets",
+"group_id": "255",
+"path": "/0/242/244"
+}
+]
+},
+"matched_terms": [
+"red"
+],
+"value": "red"
+},
+{
+"data": {
+"groups": [{
+"display_name": "rawhide",
+"group_id": "381",
+"path": "/0/242/371"
+},
+{
+"display_name": "bully sticks",
+"group_id": "375",
+"path": "/0/242/371"
+}
+]
+},
+"matched_terms": [
+"red"
+],
+"value": "red barn"
+},
+{
+"data": {
+"groups": [{
+"display_name": "harnesses",
+"group_id": "148",
+"path": "/0/94/143"
+},
+{
+"display_name": "coats & jackets",
+"group_id": "255",
+"path": "/0/242/244"
+}
+]
+},
+"matched_terms": [
+"red"
+],
+"value": "good2go red"
+},
+{
+"data": {
+"groups": [{
+"display_name": "bully sticks",
+"group_id": "375",
+"path": "/0/242/371"
+},
+{
+"display_name": "ears, hooves & tendons",
+"group_id": "377",
+"path": "/0/242/371"
+}
+]
+},
+"matched_terms": [
+"red"
+],
+"value": "red barn naturals"
+},
+{
+"data": {
+"groups": [{
+"display_name": "bully sticks",
+"group_id": "375",
+"path": "/0/242/371"
+},
+{
+"display_name": "ears, hooves & tendons",
+"group_id": "377",
+"path": "/0/242/371"
+}
+]
+},
+"matched_terms": [
+"red"
+],
+"value": "red naturals"
+}
+]
+}
+}

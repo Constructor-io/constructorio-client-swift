@@ -384,11 +384,11 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
 
 extension CIOAutocompleteViewController: ResponseParserDelegate {
     
-    public func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool{
-        return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group) ?? true
+    public func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool?{
+        return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group)
     }
     
-    public func shouldParseResults(inSectionWithName name: String) -> Bool {
-        return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name) ?? true
+    public func shouldParseResults(inSectionWithName name: String) -> Bool? {
+        return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name)
     }
 }
