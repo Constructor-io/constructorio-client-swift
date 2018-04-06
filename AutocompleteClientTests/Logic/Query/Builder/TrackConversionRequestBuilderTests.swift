@@ -71,4 +71,13 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&item=\(encodedItemName)&autocomplete_section=\(encodedSectionName)&revenue=\(revenue)"))
     }
     
+    func testTrackConversionBuilder_containsVersionString() {
+        let tracker = CIOConversionTracker(searchTerm: searchTerm, itemName: itemName, sectionName: sectionName, revenue: revenue)
+        builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        let request = builder.getRequest()
+        
+        let versionString = Constants.versionString()
+        let containsVersionString = request.url!.absoluteString.contains(versionString)
+        XCTAssertTrue(containsVersionString, "Track call should contain the version string.")
+    }
 }

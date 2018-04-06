@@ -21,6 +21,16 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
          self.encodedQueryString = queryString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
     }
     
+    func testAutocompleteQueryBuilder_ContainsVersionString() {
+        let query = CIOAutocompleteQuery(query: queryString)
+        builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey, session: 1, clientID: nil)
+        let request = builder.getRequest()
+        
+        let versionString = Constants.versionString()
+        let containsVersionString = request.url!.absoluteString.contains(versionString)
+        XCTAssertTrue(containsVersionString, "Query should contain the version string.")
+    }
+    
     func testAutocompleteQueryBuilder_OnlyQueryString() {
         let query = CIOAutocompleteQuery(query: queryString)
         builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey, session: 1, clientID: nil)

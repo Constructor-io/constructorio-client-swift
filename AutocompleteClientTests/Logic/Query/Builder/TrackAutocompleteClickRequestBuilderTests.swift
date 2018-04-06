@@ -46,6 +46,14 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/search?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&tr=click&_dt=\(requestDate)"))
     }
     
-
+    func testTrackACClickBuilder_containsVersionString() {
+        let tracker = CIOAutocompleteClickTracker(searchTerm: searchTerm, clickedItemName: clickedItemName)
+        builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        let request = builder.getRequest()
+        
+        let versionString = Constants.versionString()
+        let containsVersionString = request.url!.absoluteString.contains(versionString)
+        XCTAssertTrue(containsVersionString, "Track call should contain the version string.")
+    }
     
 }
