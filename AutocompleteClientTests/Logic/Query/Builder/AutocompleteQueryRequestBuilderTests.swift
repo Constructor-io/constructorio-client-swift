@@ -21,6 +21,10 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
          self.encodedQueryString = queryString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
     }
     
+    func testVersionString_ContainsCorrectPrefix(){
+        XCTAssertTrue(Constants.versionString().hasPrefix("cioios-"), "Version string should have the cioios prefix.")
+    }
+    
     func testAutocompleteQueryBuilder_ContainsVersionString() {
         let query = CIOAutocompleteQuery(query: queryString)
         builder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: testACKey, session: 1, clientID: nil)
