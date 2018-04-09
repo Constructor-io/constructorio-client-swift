@@ -20,11 +20,14 @@ public struct CIOAutocompleteClickTracker {
     public let searchTerm: String
     public let clickedItemName: String
     public let sectionName: String?
+    
+    public let group: CIOGroup?
 
-    public init(searchTerm: String, clickedItemName: String, sectionName: String? = nil) {
+    public init(searchTerm: String, clickedItemName: String, sectionName: String? = nil, group: CIOGroup? = nil) {
         self.searchTerm = searchTerm
         self.clickedItemName = clickedItemName
         self.sectionName = sectionName
+        self.group = group
     }
 
 }

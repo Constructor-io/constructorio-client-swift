@@ -308,9 +308,9 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         self.tableView.deselectRow(at: indexPath, animated: true)
         let result = self.viewModel.getResult(atIndexPath: indexPath)
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
-
+        
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName)
+        let selectTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
 
         // TODO: For now, ignore any errors
         constructorIO.trackAutocompleteClick(for: selectTracker)
