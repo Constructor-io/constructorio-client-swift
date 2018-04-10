@@ -120,6 +120,16 @@ public protocol CIOAutocompleteDataSource: class {
     optional func sectionHeaderViewHeight(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> CGFloat
     
     /**
+     Provides a search suggestion section display name. By default, this value is "Search Suggestions".
+     
+     - parameter autocompleteController: The sender CIOAutocompleteViewController
+     
+     - returns: Section name to be displayed in the section view
+     */
+    @objc
+    optional func searchSuggestionsSectionName(in autocompleteController: CIOAutocompleteViewController) -> String
+    
+    /**
      Provides the search bar placeholder.
      
      - parameter autocompleteController: The sender CIOAutocompleteViewController

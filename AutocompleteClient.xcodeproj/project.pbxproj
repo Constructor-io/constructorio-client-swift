@@ -104,6 +104,7 @@
 		F699C3471F57ED4200FD681A /* CIOAutocompleteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C3461F57ED4200FD681A /* CIOAutocompleteDataSource.swift */; };
 		F699C34B1F57F22400FD681A /* NSError+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34A1F57F22400FD681A /* NSError+Errors.swift */; };
 		F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */; };
+		F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */; };
 		F6B352B21F5B409F0054D303 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352B11F5B409F0054D303 /* CustomBackgroundView.swift */; };
 		F6B352B41F5B40AD0054D303 /* CustomBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6B352B31F5B40AD0054D303 /* CustomBackgroundView.xib */; };
 		F6B352B61F5B41E10054D303 /* CustomErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352B51F5B41E10054D303 /* CustomErrorView.swift */; };
@@ -242,6 +243,7 @@
 		F699C34A1F57F22400FD681A /* NSError+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Errors.swift"; sourceTree = "<group>"; };
 		F699C34D1F57F45B00FD681A /* constructor-io-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-logo.png"; sourceTree = "<group>"; };
 		F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SearchSuggestionsSection.swift"; sourceTree = "<group>"; };
 		F6B352B11F5B409F0054D303 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		F6B352B31F5B40AD0054D303 /* CustomBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomBackgroundView.xib; sourceTree = "<group>"; };
 		F6B352B51F5B41E10054D303 /* CustomErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorView.swift; sourceTree = "<group>"; };
@@ -894,6 +896,7 @@
 				F68A73121F56E5FB00FA4D1B /* String+Trim.swift */,
 				F636E03A1F57E68A004C85FA /* String+URLEncode.swift */,
 				F1F68DE41F58BBA400B42602 /* String+CharacterSetIterator.swift */,
+				F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -1283,6 +1286,7 @@
 				F63808F41F5D47BB00C3B322 /* NetworkClient.swift in Sources */,
 				F63809091F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift in Sources */,
 				F19E28A71F5F44C30022C814 /* CIOConversionTracker.swift in Sources */,
+				F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */,
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,
 				F62510C82052CC6B0040E3DF /* CIOSessionManager.swift in Sources */,

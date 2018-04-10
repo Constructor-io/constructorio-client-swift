@@ -70,6 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     // MARK: DataSource
 
+//    func searchSuggestionsSectionName(in autocompleteController: CIOAutocompleteViewController) -> String {
+//        return "All items"
+//    }
+    
     /*
     func shouldShowSectionHeader(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> Bool {
         return sectionName.lowercased() != "products"

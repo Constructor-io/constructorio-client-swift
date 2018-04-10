@@ -341,7 +341,11 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionName = viewModel.getSectionName(atIndex: section)
+        var sectionName = viewModel.getSectionName(atIndex: section)
+        if sectionName.isSearchSuggestionString(){
+            sectionName = self.dataSource?.searchSuggestionsSectionName?(in: self) ?? sectionName
+        }
+        
         if let customViewFunction = self.dataSource?.sectionHeaderView{
             return customViewFunction(sectionName, self)
         }else{
