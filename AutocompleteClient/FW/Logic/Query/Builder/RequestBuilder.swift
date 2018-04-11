@@ -33,18 +33,24 @@ class RequestBuilder {
         return
     }
 
-    func getRequest() -> URLRequest {
+    final func getRequest() -> URLRequest {
         let urlString = getURLString()
 
-        // TODO: Try not to force unwrap!
         var urlComponents = URLComponents(string: urlString)!
         addAdditionalQueryItems()
-        urlComponents.queryItems = queryItems
+        
+        // create array copy, so the version string is added only once even if we can call this method multiple times
+        var allQueryItems = self.queryItems
+        
+        let versionString = Constants.versionString()
+        allQueryItems.append(URLQueryItem(name: "c", value: versionString))
+        
+        urlComponents.queryItems = allQueryItems
 
-        // TODO: Try not to force unwrap!
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = getHttpMethod()
+        
         return request
     }
 }

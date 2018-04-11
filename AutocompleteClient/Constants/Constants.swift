@@ -10,6 +10,15 @@ import UIKit
 
 struct Constants {
 
+    static var versionString: () -> String = {
+        var prefix = "cioios-"
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String{
+            return "\(prefix)\(version)"
+        }else{
+            return prefix
+        }
+    }
+    
     struct UI {
         static let CellIdentifier = "SearchItemCellID"
         

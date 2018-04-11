@@ -34,7 +34,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/select?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&autocomplete_section=\(encodedSectionName)&tr=click&_dt=\(requestDate)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/select?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&autocomplete_section=\(encodedSectionName)&tr=click&_dt=\(requestDate)&c=cioios-"))
     }
 
     func testTrackACClickBuilder_sectionNameUnspecified_searchType() {
@@ -43,9 +43,19 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/search?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&tr=click&_dt=\(requestDate)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/search?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&tr=click&_dt=\(requestDate)&c=cioios-"))
     }
     
+    func testTrackACClickBuilder_containsVersionString() {
+        let tracker = CIOAutocompleteClickTracker(searchTerm: searchTerm, clickedItemName: clickedItemName)
+        builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        let request = builder.getRequest()
+        
+        let versionString = Constants.versionString()
+        let containsVersionString = request.url!.absoluteString.contains(versionString)
+        XCTAssertTrue(containsVersionString, "Track call should contain the version string.")
+    }
+  
     func testTrackACClickBuilder_tappingOnItemWithGroup_SendsGroupNameAsQueryParameter() {
         let groupName = "groupName1"
         let groupID = "groupID2"
