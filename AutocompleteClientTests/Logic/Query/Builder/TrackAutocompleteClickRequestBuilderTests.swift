@@ -34,7 +34,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/select?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&autocomplete_section=\(encodedSectionName)&tr=click&_dt=\(requestDate)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/select?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&autocomplete_section=\(encodedSectionName)&tr=click&_dt=\(requestDate)&c=cioios-"))
     }
 
     func testTrackACClickBuilder_sectionNameUnspecified_searchType() {
@@ -43,7 +43,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/search?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&tr=click&_dt=\(requestDate)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/search?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&tr=click&_dt=\(requestDate)&c=cioios-"))
     }
     
     func testTrackACClickBuilder_containsVersionString() {

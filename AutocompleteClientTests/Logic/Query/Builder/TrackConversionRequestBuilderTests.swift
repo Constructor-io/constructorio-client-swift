@@ -35,7 +35,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&c=cioios-"))
 
     }
 
@@ -44,7 +44,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&item=\(encodedItemName)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&item=\(encodedItemName)&c=cioios-"))
     }
 
     func testTrackConversionBuilder_withSectionName() {
@@ -52,7 +52,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&autocomplete_section=\(encodedSectionName)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&autocomplete_section=\(encodedSectionName)&c=cioios-"))
     }
 
     func testTrackConversionBuilder_withRevenue() {
@@ -60,7 +60,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&revenue=\(revenue)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&revenue=\(revenue)&c=cioios-"))
     }
 
     func testTrackConversionBuilder_AllFields() {
@@ -68,7 +68,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&item=\(encodedItemName)&autocomplete_section=\(encodedSectionName)&revenue=\(revenue)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&item=\(encodedItemName)&autocomplete_section=\(encodedSectionName)&revenue=\(revenue)&c=cioios-"))
     }
     
     func testTrackConversionBuilder_containsVersionString() {
