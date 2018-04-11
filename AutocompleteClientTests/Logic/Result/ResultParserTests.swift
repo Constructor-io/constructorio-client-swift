@@ -139,7 +139,7 @@ class ResultParserTests: XCTestCase {
             let firstItemResult = searchSuggestions.first!.autocompleteResult
             
             let resultsContainingFirstItem = searchSuggestions.filter({ item in item.autocompleteResult == firstItemResult })
-            XCTAssertEqual(resultsContainingFirstItem.count, 3, "There should be 3 group results returned for the first item.")
+            XCTAssertGreaterThan(resultsContainingFirstItem.count, 1, "There should be more than one result returned for the first item.")
             
             let resultsContainingNonNilGroupResults = searchSuggestions.filter({ item in item.autocompleteResult != firstItemResult })
                                                                        .filter{ $0.group != nil }

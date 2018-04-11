@@ -1,176 +1,318 @@
 {
-"sections": {
-"Products": [{
-"data": {
-"groups": [{
-"display_name": "coats & jackets",
-"group_id": "255",
-"path": "/0/242/244"
-}],
-"image_url": "https://s7d1.scene7.com/is/image/PETCO/2436828-center-1",
-"url": "https://www.petco.com/shop/en/petcostore/product/pup-crew-red-and-navy-tech-bomber-jacket"
-},
-"matched_terms": [
-"red"
-],
-"value": "Pup Crew Red and Navy Tech Bomber Jacket"
-},
-{
-"data": {
-"groups": [{
-"display_name": "bully sticks",
-"group_id": "375",
-"path": "/0/242/371"
-}],
-"image_url": "https://s7d1.scene7.com/is/image/PETCO/2487300-center-1",
-"url": "https://www.petco.com/shop/en/petcostore/product/red-barn-naturals-bully-springs-dog-treats"
-},
-"matched_terms": [
-"red"
-],
-"value": "Red Barn Naturals Bully Springs Dog Treats"
-},
-{
-"data": {
-"groups": [{
-"display_name": "dry",
-"group_id": "121",
-"path": "/0/94/120"
-}],
-"image_url": "https://s7d1.scene7.com/is/image/PETCO/2263971-center-1",
-"url": "https://www.petco.com/shop/en/petcostore/product/blue-buffalo-wilderness-grain-free-rocky-mountain-red-meat-adult-cat-food"
-},
-"matched_terms": [
-"red"
-],
-"value": "Blue Buffalo Wilderness Grain Free Rocky Mountain Red Meat Adult Cat Food"
-},
-{
-"data": {
-"groups": [{
-"display_name": "seat covers & protectors",
-"group_id": "500",
-"path": "/0/242/495"
-}],
-"image_url": "https://s7d1.scene7.com/is/image/PETCO/2633725-center-1",
-"url": "https://www.petco.com/shop/en/petcostore/product/kurgo-grey-and-red-journey-hammock"
-},
-"matched_terms": [
-"red"
-],
-"value": "Kurgo Grey and Red Journey Hammock Style Car Seat Cover for Dogs"
-},
-{
-"data": {
-"groups": [{
-"display_name": "coats & jackets",
-"group_id": "255",
-"path": "/0/242/244"
-}],
-"image_url": "https://s7d1.scene7.com/is/image/PETCO/2605388-center-2",
-"url": "https://www.petco.com/shop/en/petcostore/product/molly-and-olly-red-quilted-vest"
-},
-"matched_terms": [
-"red"
-],
-"value": "Molly & Olly Red Quilted Vest"
-}
-],
-"Search Suggestions": [{
-"data": {
-"groups": [{
-"display_name": "bully sticks",
-"group_id": "375",
-"path": "/0/242/371"
-},
-{
-"display_name": "coats & jackets",
-"group_id": "255",
-"path": "/0/242/244"
-}
-]
-},
-"matched_terms": [
-"red"
-],
-"value": "red"
-},
-{
-"data": {
-"groups": [{
-"display_name": "rawhide",
-"group_id": "381",
-"path": "/0/242/371"
-},
-{
-"display_name": "bully sticks",
-"group_id": "375",
-"path": "/0/242/371"
-}
-]
-},
-"matched_terms": [
-"red"
-],
-"value": "red barn"
-},
-{
-"data": {
-"groups": [{
-"display_name": "harnesses",
-"group_id": "148",
-"path": "/0/94/143"
-},
-{
-"display_name": "coats & jackets",
-"group_id": "255",
-"path": "/0/242/244"
-}
-]
-},
-"matched_terms": [
-"red"
-],
-"value": "good2go red"
-},
-{
-"data": {
-"groups": [{
-"display_name": "bully sticks",
-"group_id": "375",
-"path": "/0/242/371"
-},
-{
-"display_name": "ears, hooves & tendons",
-"group_id": "377",
-"path": "/0/242/371"
-}
-]
-},
-"matched_terms": [
-"red"
-],
-"value": "red barn naturals"
-},
-{
-"data": {
-"groups": [{
-"display_name": "bully sticks",
-"group_id": "375",
-"path": "/0/242/371"
-},
-{
-"display_name": "ears, hooves & tendons",
-"group_id": "377",
-"path": "/0/242/371"
-}
-]
-},
-"matched_terms": [
-"red"
-],
-"value": "red naturals"
-}
-]
-}
+    "sections": {
+        "Products": [
+                     {
+                     "data": {
+                     "groups": [
+                                {
+                                "display_name": "Action",
+                                "group_id": "28",
+                                "path": null
+                                },
+                                {
+                                "display_name": "Drama",
+                                "group_id": "18",
+                                "path": null
+                                },
+                                {
+                                "display_name": "Thriller",
+                                "group_id": "53",
+                                "path": null
+                                }
+                                ],
+                     "id": "raise the titanic",
+                     "image_url": "https://image.tmdb.org/t/p/w185_and_h278_bestv2/7cahPJXA1fRXRwqqMVQkX3MTZy3.jpg",
+                     "url": "https://www.top250.tv/movies/24575"
+                     },
+                     "matched_terms": [
+                                       "titanic"
+                                       ],
+                     "value": "Raise the Titanic"
+                     },
+                     {
+                     "data": {
+                     "groups": [
+                                {
+                                "display_name": "Documentary",
+                                "group_id": "99",
+                                "path": null
+                                }
+                                ],
+                     "id": "drain the titanic",
+                     "image_url": "https://image.tmdb.org/t/p/w185_and_h278_bestv2/2A9OPQHztBsfFRMzintaOhn4Rry.jpg",
+                     "url": "https://www.top250.tv/movies/428950"
+                     },
+                     "matched_terms": [
+                                       "titanic"
+                                       ],
+                     "value": "Drain the Titanic"
+                     },
+                     {
+                     "data": {
+                     "groups": [
+                                {
+                                "display_name": "Drama",
+                                "group_id": "18",
+                                "path": null
+                                },
+                                {
+                                "display_name": "Romance",
+                                "group_id": "10749",
+                                "path": null
+                                },
+                                {
+                                "display_name": "Thriller",
+                                "group_id": "53",
+                                "path": null
+                                }
+                                ],
+                     "id": "titanic",
+                     "image_url": "https://image.tmdb.org/t/p/w185_and_h278_bestv2/kHXEpyfl6zqn8a6YuozZUujufXf.jpg",
+                     "url": "https://www.top250.tv/movies/597"
+                     },
+                     "matched_terms": [
+                                       "titanic"
+                                       ],
+                     "value": "Titanic"
+                     },
+                     {
+                     "data": {
+                     "groups": [
+                                {
+                                "display_name": "Drama",
+                                "group_id": "18",
+                                "path": null
+                                }
+                                ],
+                     "id": "titanic town",
+                     "image_url": "https://image.tmdb.org/t/p/w185_and_h278_bestv2/zfx8YMEG3sR9t4rKYgOD3O0FoPN.jpg",
+                     "url": "https://www.top250.tv/movies/83036"
+                     },
+                     "matched_terms": [
+                                       "titanic"
+                                       ],
+                     "value": "Titanic Town"
+                     },
+                     {
+                     "data": {
+                     "groups": [
+                                {
+                                "display_name": "Drama",
+                                "group_id": "18",
+                                "path": null
+                                }
+                                ],
+                     "id": "the chambermaid on the titanic",
+                     "image_url": "https://image.tmdb.org/t/p/w185_and_h278_bestv2/jSsKHwtqk0XNdABR2R5wI3grfxV.jpg",
+                     "url": "https://www.top250.tv/movies/115872"
+                     },
+                     "matched_terms": [
+                                       "titanic"
+                                       ],
+                     "value": "The Chambermaid on the Titanic"
+                     }
+                     ],
+        "Search Suggestions": [
+                               {
+                               "data": {
+                               "groups": [
+                                          {
+                                          "display_name": "Drama",
+                                          "group_id": "18",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Action",
+                                          "group_id": "28",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Thriller",
+                                          "group_id": "53",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Mystery",
+                                          "group_id": "9648",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Family",
+                                          "group_id": "10751",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Foreign",
+                                          "group_id": "10769",
+                                          "path": null
+                                          }
+                                          ]
+                               },
+                               "matched_terms": [
+                                                 "titanic"
+                                                 ],
+                               "value": "titanics"
+                               },
+                               {
+                               "data": {
+                               "groups": [
+                                          {
+                                          "display_name": "Documentary",
+                                          "group_id": "99",
+                                          "path": null
+                                          }
+                                          ]
+                               },
+                               "matched_terms": [
+                                                 "titanic"
+                                                 ],
+                               "value": "titanica"
+                               },
+                               {
+                               "data": {
+                               "groups": [
+                                          {
+                                          "display_name": "Drama",
+                                          "group_id": "18",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Romance",
+                                          "group_id": "10749",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Thriller",
+                                          "group_id": "53",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Action",
+                                          "group_id": "28",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Documentary",
+                                          "group_id": "99",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "History",
+                                          "group_id": "36",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Adventure",
+                                          "group_id": "12",
+                                          "path": null
+                                          }
+                                          ]
+                               },
+                               "matched_terms": [
+                                                 "titanic"
+                                                 ],
+                               "value": "titanic"
+                               },
+                               {
+                               "data": {
+                               "groups": [
+                                          {
+                                          "display_name": "Drama",
+                                          "group_id": "18",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Adventure",
+                                          "group_id": "12",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Fantasy",
+                                          "group_id": "14",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Family",
+                                          "group_id": "10751",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Action",
+                                          "group_id": "28",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Animation",
+                                          "group_id": "16",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Science Fiction",
+                                          "group_id": "878",
+                                          "path": null
+                                          }
+                                          ]
+                               },
+                               "matched_terms": [
+                                                 "titans"
+                                                 ],
+                               "value": "titans"
+                               },
+                               {
+                               "data": {
+                               "groups": [
+                                          {
+                                          "display_name": "Animation",
+                                          "group_id": "16",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Action",
+                                          "group_id": "28",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Science Fiction",
+                                          "group_id": "878",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Family",
+                                          "group_id": "10751",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Adventure",
+                                          "group_id": "12",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Documentary",
+                                          "group_id": "99",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Horror",
+                                          "group_id": "27",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Fantasy",
+                                          "group_id": "14",
+                                          "path": null
+                                          },
+                                          {
+                                          "display_name": "Drama",
+                                          "group_id": "18",
+                                          "path": null
+                                          }
+                                          ]
+                               },
+                               "matched_terms": [
+                                                 "titan"
+                                                 ],
+                               "value": "titan"
+                               }
+                               ]
+    }
 }
