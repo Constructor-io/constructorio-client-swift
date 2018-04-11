@@ -105,6 +105,8 @@ struct Constants {
         static let triggerType = "click"
         static let originalQuery = "original_query"
         static let dateTime = "_dt"
+        static let groupName = "group[group_name]"
+        static let groupID = "group[group_id]"
     }
 
     struct TrackConversion {

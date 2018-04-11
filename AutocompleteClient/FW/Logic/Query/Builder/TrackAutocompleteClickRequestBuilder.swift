@@ -18,6 +18,11 @@ class TrackAutocompleteClickRequestBuilder: RequestBuilder {
         set(itemName: tracker.clickedItemName)
         set(originalQuery: tracker.searchTerm)
         set(autocompleteSection: tracker.sectionName)
+        if let group = tracker.group{
+            set(groupName: group.displayName)
+            set(groupID: group.groupID)
+        }
+        
     }
 
     func set(itemName: String) {
@@ -28,6 +33,14 @@ class TrackAutocompleteClickRequestBuilder: RequestBuilder {
         queryItems.append(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.originalQuery, value: originalQuery))
     }
 
+    func set(groupName: String){
+        queryItems.append(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupName, value: groupName))
+    }
+    
+    func set(groupID: String){
+        queryItems.append(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupID, value: groupID))
+    }
+    
     func set(autocompleteSection: String?) {
         guard let sectionName = autocompleteSection else { return }
         self.hasSectionName = true
