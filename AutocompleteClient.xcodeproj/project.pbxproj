@@ -104,6 +104,8 @@
 		F699C3471F57ED4200FD681A /* CIOAutocompleteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C3461F57ED4200FD681A /* CIOAutocompleteDataSource.swift */; };
 		F699C34B1F57F22400FD681A /* NSError+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34A1F57F22400FD681A /* NSError+Errors.swift */; };
 		F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */; };
+		F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */; };
+		F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */; };
 		F6B352B21F5B409F0054D303 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352B11F5B409F0054D303 /* CustomBackgroundView.swift */; };
 		F6B352B41F5B40AD0054D303 /* CustomBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6B352B31F5B40AD0054D303 /* CustomBackgroundView.xib */; };
 		F6B352B61F5B41E10054D303 /* CustomErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352B51F5B41E10054D303 /* CustomErrorView.swift */; };
@@ -242,6 +244,8 @@
 		F699C34A1F57F22400FD681A /* NSError+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Errors.swift"; sourceTree = "<group>"; };
 		F699C34D1F57F45B00FD681A /* constructor-io-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-logo.png"; sourceTree = "<group>"; };
 		F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOLogger.swift; sourceTree = "<group>"; };
+		F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOPrintLogger.swift; sourceTree = "<group>"; };
 		F6B352B11F5B409F0054D303 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		F6B352B31F5B40AD0054D303 /* CustomBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomBackgroundView.xib; sourceTree = "<group>"; };
 		F6B352B51F5B41E10054D303 /* CustomErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorView.swift; sourceTree = "<group>"; };
@@ -809,6 +813,7 @@
 		F688A48F1F56B51A00F169C1 /* FW */ = {
 			isa = PBXGroup;
 			children = (
+				F69C2CA0207FAD9B0060B2B9 /* Logging */,
 				F63809011F5D6CD500C3B322 /* DependencyInjection */,
 				F60BEA231F57288B008F0053 /* Logic */,
 				F68A72FF1F56D59500FA4D1B /* API */,
@@ -929,6 +934,15 @@
 				F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */,
 			);
 			path = AutoLayout;
+			sourceTree = "<group>";
+		};
+		F69C2CA0207FAD9B0060B2B9 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */,
+				F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		F6B352AD1F5B407C0054D303 /* CustomViews */ = {
@@ -1250,6 +1264,7 @@
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
 				F63808FD1F5D4C0C00C3B322 /* QueryResponse.swift in Sources */,
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
+				F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */,
 				F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */,
 				F19E28A51F5F42830022C814 /* TrackConversionRequestBuilder.swift in Sources */,
 				F638090B1F5E855B00C3B322 /* BoldAttributesProvider.swift in Sources */,
@@ -1282,6 +1297,7 @@
 				F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */,
 				F63808F41F5D47BB00C3B322 /* NetworkClient.swift in Sources */,
 				F63809091F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift in Sources */,
+				F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */,
 				F19E28A71F5F44C30022C814 /* CIOConversionTracker.swift in Sources */,
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,
