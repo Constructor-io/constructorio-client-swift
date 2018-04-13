@@ -18,6 +18,8 @@ public class ConstructorIO: AbstractConstructorDataSource {
 
     public let autocompleteKey: String
 
+    public static var logger: CIOLogger = CIOPrintLogger()
+    
     private let networkClient: NetworkClient = DependencyContainer.sharedInstance.networkClient()
     private let sessionManager: SessionManager = DependencyContainer.sharedInstance.sessionManager()
     
