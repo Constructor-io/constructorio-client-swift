@@ -123,4 +123,72 @@ class ResultParserTests: XCTestCase {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
     }
+    
+    func test_ParsingValidJSONReturnsGroupResultsOnlyForFirstItem_IfDelegateMethodNotImplemented(){
+        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename2)
+        
+        // create mock delegate
+        let del = MockResponseParserDelegate()
+        del.shouldParseResultInGroup = nil
+        responseParser.delegate = del
+        
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            let searchSuggestions = response.getSearchSuggestions()!
+            
+            let firstItemResult = searchSuggestions.first!.autocompleteResult
+            
+            let resultsContainingFirstItem = searchSuggestions.filter({ item in item.autocompleteResult == firstItemResult })
+            XCTAssertGreaterThan(resultsContainingFirstItem.count, 1, "There should be more than one result returned for the first item.")
+            
+            let resultsContainingNonNilGroupResults = searchSuggestions.filter({ item in item.autocompleteResult != firstItemResult })
+                                                                       .filter{ $0.group != nil }
+            
+            XCTAssertEqual(resultsContainingNonNilGroupResults.count, 0, "There should be no items with non nil group past the first item parsed.")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+    
+    func test_ParsingValidJSONReturnsGroupResultsForMultipleItems_IfDelegateMethodReturnsTrue(){
+        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename2)
+        
+        // create mock delegate
+        let del = MockResponseParserDelegate()
+        del.shouldParseResultInGroup = { _,_ in return true}
+        responseParser.delegate = del
+        
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            let searchSuggestions = response.getSearchSuggestions()!
+            
+            let suggestionsContainingNonNilGroup = searchSuggestions.filter{ $0.group != nil }
+            
+            // first item contains two group results, so we're looking for more than two results where group is not nil
+            XCTAssertGreaterThan(suggestionsContainingNonNilGroup.count, 2, "There should be at least one item with non nil group past the first item parsed.")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+    
+    func test_ParsingValidJSONReturnsNoGroupResults_IfDelegateMethodReturnsFalse(){
+        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename2)
+        
+        // create mock delegate
+        let del = MockResponseParserDelegate()
+        del.shouldParseResultInGroup = { _,_ in return false }
+        responseParser.delegate = del
+        
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            let searchSuggestions = response.getSearchSuggestions()!
+            
+            let suggestionsContainingNonNilGroup = searchSuggestions.filter{ $0.group != nil }
+            
+            // first item contains two group results, so we're looking for more than two results where group is not nil
+            XCTAssertEqual(suggestionsContainingNonNilGroup.count, 0, "There should be no items with non nil group if the delegate returns false.")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
 }

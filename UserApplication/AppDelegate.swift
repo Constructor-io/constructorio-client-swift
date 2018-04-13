@@ -149,9 +149,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     // MARK: Parsing
     
-    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
-        return true
-    }
+//    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
+//        return true
+//    }
     
     func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResultsInSection sectionName: String) -> Bool {
         return sectionName.lowercased() != "products"
