@@ -1,9 +1,9 @@
 //
 //  SessionManager.swift
-//  AutocompleteClient
+//  Constructor.io
 //
-//  Created by Nikola Markovic on 3/9/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import Foundation
