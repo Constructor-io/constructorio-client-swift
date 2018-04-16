@@ -13,7 +13,7 @@ class TrackAutocompleteClickRequestBuilder: RequestBuilder {
     private var itemName = ""
     private var hasSectionName = false
 
-    init(tracker: CIOAutocompleteClickTracker, autocompleteKey: String) {
+    init(tracker: CIOAutocompleteClickTrackData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
         set(itemName: tracker.clickedItemName)
         set(originalQuery: tracker.searchTerm)

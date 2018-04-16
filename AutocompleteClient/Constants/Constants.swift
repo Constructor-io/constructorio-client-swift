@@ -97,6 +97,11 @@ struct Constants {
         static let autocompleteSection = "autocomplete_section"
     }
 
+    struct TrackSearch{
+        static let format = "%@/autocomplete/%@/search"
+        static let originalQuery = "original_query"
+    }
+    
     struct TrackAutocompleteResultClicked {
         static let selectType = "select"
         static let searchType = "search"

@@ -12,7 +12,7 @@ class TrackConversionRequestBuilder: RequestBuilder {
 
     private var searchTerm = ""
 
-    init(tracker: CIOConversionTracker, autocompleteKey: String) {
+    init(tracker: CIOConversionTrackData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
         set(searchTerm: tracker.searchTerm)
         set(itemName: tracker.itemName)
