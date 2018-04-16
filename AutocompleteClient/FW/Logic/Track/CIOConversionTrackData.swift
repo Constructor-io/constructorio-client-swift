@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set set in order to track a conversion for an autocomplete.
  */
-public struct CIOConversionTracker {
+public struct CIOConversionTrackData {
 
     public let searchTerm: String
     public let itemName: String?

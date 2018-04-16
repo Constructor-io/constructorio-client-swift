@@ -20,6 +20,14 @@ class RequestBuilder {
     func set(autocompleteKey: String) {
         queryItems.append(URLQueryItem(name: Constants.Query.autocompleteKey, value: autocompleteKey))
     }
+    
+    func set(clientID: String){
+        queryItems.append(URLQueryItem(name: "i", value: clientID))
+    }
+    
+    func set(session: Int){
+        queryItems.append(URLQueryItem(name: "s", value: String(session)))
+    }
 
     func getURLString() -> String {
         fatalError("Override this method in the subclass!")

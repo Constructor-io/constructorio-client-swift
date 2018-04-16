@@ -110,6 +110,7 @@ public class CIOAutocompleteViewController: UIViewController {
         self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.searchResultsUpdater = self
         self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.delegate = self
         
         self.searchController.searchBar.sizeToFit()
         self.tableView.tableHeaderView = self.searchController.searchBar
@@ -310,14 +311,18 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
         
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
+        let selectTracker = CIOAutocompleteClickTrackData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
 
         // TODO: For now, ignore any errors
         constructorIO.trackAutocompleteClick(for: selectTracker)
 
+        // Track search
+        let searchTrackData = CIOSearchTrackData(searchTerm: viewModel.searchTerm, itemName: result.autocompleteResult.value)
+        constructorIO.trackSearch(for: searchTrackData)
+        
         // Run behavioural tracking 'search' if its an autocomplete suggestion
         if sectionName == "standard" {
-            let searchTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
+            let searchTracker = CIOAutocompleteClickTrackData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
             constructorIO.trackAutocompleteClick(for: searchTracker)
         }
 
@@ -359,6 +364,15 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         }
     }
     
+}
+
+extension CIOAutocompleteViewController: UISearchBarDelegate {
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        // Track search
+        let searchTrackData = CIOSearchTrackData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
+        constructorIO.trackSearch(for: searchTrackData)
+    }
 }
 
 extension CIOAutocompleteViewController: UISearchResultsUpdating {

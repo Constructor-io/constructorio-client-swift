@@ -29,7 +29,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     }
     
     func testTrackACClickBuilder_sectionNameSpecified_selectType() {
-        let tracker = CIOAutocompleteClickTracker(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: sectionName)
+        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: sectionName)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -38,7 +38,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     }
     
     func testTrackACClickBuilder_sectionNameUnspecified_searchType() {
-        let tracker = CIOAutocompleteClickTracker(searchTerm: searchTerm, clickedItemName: clickedItemName)
+        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -52,7 +52,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         let groupPath = "path/to/group"
         let group = CIOGroup(displayName: groupName, groupID: groupID, path: groupPath)
         
-        let tracker = CIOAutocompleteClickTracker(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: group)
+        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: group)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         
@@ -68,7 +68,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         let groupPath = "path/to/group"
         let group = CIOGroup(displayName: groupName, groupID: groupID, path: groupPath)
         
-        let tracker = CIOAutocompleteClickTracker(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: group)
+        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: group)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         
@@ -79,7 +79,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     }
     
     func testTrackACClickBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupIDAsQueryParameter() {
-        let tracker = CIOAutocompleteClickTracker(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: nil)
+        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: nil)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         
@@ -90,7 +90,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     }
     
     func testTrackACClickBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupNameAsQueryParameter() {
-        let tracker = CIOAutocompleteClickTracker(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: nil)
+        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: nil)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         

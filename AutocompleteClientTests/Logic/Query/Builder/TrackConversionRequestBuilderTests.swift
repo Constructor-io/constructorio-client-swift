@@ -31,7 +31,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
     
     func testTrackConversionBuilder_onlySearchTerm() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
@@ -40,7 +40,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withItemName() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm, itemName: itemName)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, itemName: itemName)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
@@ -48,7 +48,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withSectionName() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm, sectionName: sectionName)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, sectionName: sectionName)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
@@ -56,7 +56,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withRevenue() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm, revenue: revenue)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, revenue: revenue)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
@@ -64,7 +64,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_AllFields() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm, itemName: itemName, sectionName: sectionName, revenue: revenue)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, itemName: itemName, sectionName: sectionName, revenue: revenue)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
@@ -72,7 +72,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
     
     func testTrackConversionBuilder_containsVersionString() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm, itemName: itemName, sectionName: sectionName, revenue: revenue)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, itemName: itemName, sectionName: sectionName, revenue: revenue)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         
