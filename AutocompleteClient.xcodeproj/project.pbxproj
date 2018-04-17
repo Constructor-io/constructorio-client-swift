@@ -92,6 +92,7 @@
 		F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65015471F586A42008E50C0 /* UIView+FadeInOut.swift */; };
 		F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154A1F587213008E50C0 /* CIOStyle.swift */; };
 		F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154D1F58724B008E50C0 /* UIColor+RGB.swift */; };
+		F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6548833208633E20044E403 /* NSAttributedString+Build.swift */; };
 		F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674157A204D489B004F313B /* MockResponseParserDelegate.swift */; };
 		F67E224E2074CCA4009EBCD9 /* response_json_multiple_groups2.json in Resources */ = {isa = PBXBuildFile; fileRef = F67E224D2074CCA4009EBCD9 /* response_json_multiple_groups2.json */; };
 		F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */; };
@@ -233,6 +234,7 @@
 		F65015471F586A42008E50C0 /* UIView+FadeInOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FadeInOut.swift"; sourceTree = "<group>"; };
 		F650154A1F587213008E50C0 /* CIOStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOStyle.swift; sourceTree = "<group>"; };
 		F650154D1F58724B008E50C0 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		F6548833208633E20044E403 /* NSAttributedString+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Build.swift"; sourceTree = "<group>"; };
 		F674157A204D489B004F313B /* MockResponseParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F67E224D2074CCA4009EBCD9 /* response_json_multiple_groups2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_json_multiple_groups2.json; sourceTree = "<group>"; };
 		F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIOResponse+SearchSuggestions.swift"; sourceTree = "<group>"; };
@@ -911,6 +913,7 @@
 				F68A73121F56E5FB00FA4D1B /* String+Trim.swift */,
 				F636E03A1F57E68A004C85FA /* String+URLEncode.swift */,
 				F1F68DE41F58BBA400B42602 /* String+CharacterSetIterator.swift */,
+				F6548833208633E20044E403 /* NSAttributedString+Build.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -1322,6 +1325,7 @@
 				F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */,
 				F192DDEA1F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift in Sources */,
 				F638090D1F5E880900C3B322 /* CIOHighlighter.swift in Sources */,
+				F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */,
 				F1F68DD81F58B69000B42602 /* CIOResult.swift in Sources */,
 				F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */,
 				F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */,
@@ -1624,7 +1628,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1649,7 +1653,7 @@
 				PRODUCT_NAME = ConstructorAutocomplete;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

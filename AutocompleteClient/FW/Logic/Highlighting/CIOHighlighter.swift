@@ -40,7 +40,8 @@ public class CIOHighlighter {
         while let (matches, result) = iterator.next() {
             guard matches else {
                 // Not-matched, add specified font for default
-                finalString.append(NSAttributedString(string: result, attributes: self.attributesProvider.defaultSubstringAttributes().mapToAttributedStringKeys()))
+//                finalString.append(NSAttributedString(string: result, attributes: self.attributesProvider.defaultSubstringAttributes().mapToAttributedStringKeys()))
+                finalString.append(NSAttributedString.build(string: result, attributes: self.attributesProvider.defaultSubstringAttributes()))
                 continue
             }
             
@@ -49,9 +50,12 @@ public class CIOHighlighter {
             let (prefix, suffix) = getBestPrefixBetween(prefixers: searchTokens, prefixee: result)
             
             // Add specified font for highlighted
-            finalString.append(NSAttributedString(string: prefix, attributes: self.attributesProvider.highlightedSubstringAttributes().mapToAttributedStringKeys()))
+//            finalString.append(NSAttributedString(string: prefix, attributes: self.attributesProvider.highlightedSubstringAttributes().mapToAttributedStringKeys()))
+            finalString.append(NSAttributedString.build(string: prefix, attributes: self.attributesProvider.highlightedSubstringAttributes()))
+            
             // Add specified font for non-highlighted
-            finalString.append(NSAttributedString(string: suffix, attributes: self.attributesProvider.defaultSubstringAttributes().mapToAttributedStringKeys()))
+//            finalString.append(NSAttributedString(string: suffix, attributes: self.attributesProvider.defaultSubstringAttributes().mapToAttributedStringKeys()))
+            finalString.append(NSAttributedString.build(string: suffix, attributes: self.attributesProvider.defaultSubstringAttributes()))
         }
         return finalString
     }
