@@ -19,12 +19,18 @@ class BoldAttributesProvider: CIOHighlightingAttributesProvider {
     }
 
     func defaultSubstringAttributes() -> [String: Any] {
-        return [NSFontAttributeName: self.fontNormal]
-//        return [NSAttributedStringKey.font.rawValue: self.fontNormal]
+        #if swift(>=4.0)
+            return [NSAttributedStringKey.font.rawValue: self.fontNormal]
+        #else
+            return [NSFontAttributeName: self.fontNormal]
+        #endif
     }
 
     func highlightedSubstringAttributes() -> [String: Any] {
-        return [NSFontAttributeName: self.fontBold]
-//        return [NSAttributedStringKey.font.rawValue: self.fontBold]
+        #if swift(>=4.0)
+          return [NSAttributedStringKey.font.rawValue: self.fontBold]
+        #else
+            return [NSFontAttributeName: self.fontBold]
+        #endif
     }
 }
