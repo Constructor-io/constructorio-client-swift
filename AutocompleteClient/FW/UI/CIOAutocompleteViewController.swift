@@ -30,6 +30,15 @@ public class CIOAutocompleteViewController: UIViewController {
      */
     public weak var tableView: UITableView!
     
+    public override var preferredStatusBarStyle: UIStatusBarStyle{
+        return self.customStatusBarStyle
+    }
+    
+    /**
+     Custom status bar style
+     */
+    public var customStatusBarStyle: UIStatusBarStyle = .default
+    
     /**
      Results search controller.
      */

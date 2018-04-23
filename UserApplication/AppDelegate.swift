@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         let key = "key_AttLywTIsQjS0nao"
 
         let viewController = CIOAutocompleteViewController(autocompleteKey: key)
-
+        
         // set the delegate in order to react to various events
         viewController.delegate = self
         
