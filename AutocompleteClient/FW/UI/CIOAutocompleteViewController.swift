@@ -26,6 +26,11 @@ public class CIOAutocompleteViewController: UIViewController {
     }
     
     /**
+     Defines how search bar should be displayed.
+     */
+    public var searchBarDisplayMode: CIOSearchBarDisplayMode = .TableViewHeader
+    
+    /**
      Results table view.
      */
     public weak var tableView: UITableView!
@@ -122,7 +127,13 @@ public class CIOAutocompleteViewController: UIViewController {
         self.searchController.searchBar.delegate = self
         
         self.searchController.searchBar.sizeToFit()
-        self.tableView.tableHeaderView = self.searchController.searchBar
+        
+        switch(self.searchBarDisplayMode){
+            case .TableViewHeader:
+                self.tableView.tableHeaderView = self.searchController.searchBar
+            case .NavigationBar:
+                self.navigationItem.titleView = self.searchController.searchBar
+        }
         
         self.searchController.searchBar.placeholder = self.dataSource?.searchBarPlaceholder?(in: self) ?? Constants.UI.defaultSearchBarPlaceholder
         self.dataSource?.customizeSearchController?(searchController: self.searchController, in: self)

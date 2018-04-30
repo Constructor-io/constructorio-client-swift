@@ -109,6 +109,7 @@
 		F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */; };
 		F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */; };
 		F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */; };
+		F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */; };
 		F6B352B21F5B409F0054D303 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352B11F5B409F0054D303 /* CustomBackgroundView.swift */; };
 		F6B352B41F5B40AD0054D303 /* CustomBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6B352B31F5B40AD0054D303 /* CustomBackgroundView.xib */; };
 		F6B352B61F5B41E10054D303 /* CustomErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352B51F5B41E10054D303 /* CustomErrorView.swift */; };
@@ -254,6 +255,7 @@
 		F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOLogger.swift; sourceTree = "<group>"; };
 		F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOPrintLogger.swift; sourceTree = "<group>"; };
+		F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchBarDisplayMode.swift; sourceTree = "<group>"; };
 		F6B352B11F5B409F0054D303 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		F6B352B31F5B40AD0054D303 /* CustomBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomBackgroundView.xib; sourceTree = "<group>"; };
 		F6B352B51F5B41E10054D303 /* CustomErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorView.swift; sourceTree = "<group>"; };
@@ -839,6 +841,7 @@
 		F688A4901F56B52D00F169C1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F6A37CB2209378AC00F82A55 /* SearchBar */,
 				F144AB631F60BCFD00B2FB46 /* Config */,
 				F65015491F587203008E50C0 /* Style */,
 				F631A5D21F5861A200A49BD1 /* Error */,
@@ -958,6 +961,14 @@
 				F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */,
 			);
 			path = Logging;
+			sourceTree = "<group>";
+		};
+		F6A37CB2209378AC00F82A55 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */,
+			);
+			path = SearchBar;
 			sourceTree = "<group>";
 		};
 		F6B352AD1F5B407C0054D303 /* CustomViews */ = {
@@ -1335,6 +1346,7 @@
 				F62510D62057F8980040E3DF /* UserIDGenerator.swift in Sources */,
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
+				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,
 				F62510CC20568B9B0040E3DF /* DateProvider.swift in Sources */,
 				F699C34B1F57F22400FD681A /* NSError+Errors.swift in Sources */,
 			);
