@@ -49,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
         let viewController = CIOAutocompleteViewController(autocompleteKey: key)
         
+        viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.NavigationBar
+        
         // set the delegate in order to react to various events
         viewController.delegate = self
         
@@ -166,10 +168,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         
         // customize search controller behaviour
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = true
     }
     // MARK: Delegate
 
+    func shouldShowSectionHeader(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> Bool {
+        return false
+    }
+    
     func autocompleteController(controller: CIOAutocompleteViewController, errorDidOccur error: Error) {
 
         if let err = error as? CIOError {
