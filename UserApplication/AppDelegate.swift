@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         let viewController = CIOAutocompleteViewController(autocompleteKey: key)
         
         viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.NavigationBar
+        viewController.searchBarShouldShowCancelButton = true
         
         // set the delegate in order to react to various events
         viewController.delegate = self
@@ -165,7 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         // customize search bar
         searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
         searchController.searchBar.returnKeyType = .search
-        
+//        searchController.searchBar.showsCancelButton = true
         // customize search controller behaviour
         searchController.dimsBackgroundDuringPresentation = false
     }

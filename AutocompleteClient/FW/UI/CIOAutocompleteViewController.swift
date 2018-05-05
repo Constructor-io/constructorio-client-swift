@@ -26,6 +26,15 @@ public class CIOAutocompleteViewController: UIViewController {
     }
     
     /**
+     A flag that determines whether the cancel button should show when search bar gains focus.
+     */
+    public var searchBarShouldShowCancelButton: Bool = false{
+        didSet{
+            (self.searchController?.searchBar as? CustomSearchBar)?.shouldShowCancelButton = self.searchBarShouldShowCancelButton
+        }
+    }
+    
+    /**
      Defines how search bar should be displayed.
      */
     public var searchBarDisplayMode: CIOSearchBarDisplayMode = .TableViewHeader
@@ -120,11 +129,12 @@ public class CIOAutocompleteViewController: UIViewController {
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.backgroundColor = UIColor.clear
         
-        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController = CustomSearchController(searchResultsController: nil)
         self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.searchResultsUpdater = self
         self.searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.searchBar.delegate = self
+        (self.searchController.searchBar as? CustomSearchBar)?.shouldShowCancelButton = self.searchBarShouldShowCancelButton
         
         self.searchController.searchBar.sizeToFit()
         
