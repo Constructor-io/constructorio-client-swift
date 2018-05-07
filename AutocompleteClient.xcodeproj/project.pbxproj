@@ -110,6 +110,8 @@
 		F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */; };
 		F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */; };
 		F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */; };
+		F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B220EA209C68F8003A5D48 /* CustomSearchBar.swift */; };
+		F6B220ED209C692D003A5D48 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B220EC209C692D003A5D48 /* CustomSearchController.swift */; };
 		F6B352B21F5B409F0054D303 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352B11F5B409F0054D303 /* CustomBackgroundView.swift */; };
 		F6B352B41F5B40AD0054D303 /* CustomBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6B352B31F5B40AD0054D303 /* CustomBackgroundView.xib */; };
 		F6B352B61F5B41E10054D303 /* CustomErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352B51F5B41E10054D303 /* CustomErrorView.swift */; };
@@ -256,6 +258,8 @@
 		F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOLogger.swift; sourceTree = "<group>"; };
 		F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOPrintLogger.swift; sourceTree = "<group>"; };
 		F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchBarDisplayMode.swift; sourceTree = "<group>"; };
+		F6B220EA209C68F8003A5D48 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		F6B220EC209C692D003A5D48 /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 		F6B352B11F5B409F0054D303 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		F6B352B31F5B40AD0054D303 /* CustomBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomBackgroundView.xib; sourceTree = "<group>"; };
 		F6B352B51F5B41E10054D303 /* CustomErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorView.swift; sourceTree = "<group>"; };
@@ -751,12 +755,12 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		F65015461F586A35008E50C0 /* UIView */ = {
+		F65015461F586A35008E50C0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				F65015471F586A42008E50C0 /* UIView+FadeInOut.swift */,
 			);
-			path = UIView;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		F65015491F587203008E50C0 /* Style */ = {
@@ -903,7 +907,7 @@
 				F62510C320529DC70040E3DF /* Collection */,
 				F19E289B1F5F1DA20022C814 /* Date */,
 				F650154C1F587240008E50C0 /* Color */,
-				F65015461F586A35008E50C0 /* UIView */,
+				F65015461F586A35008E50C0 /* UI */,
 				F699C34E1F57F5FA00FD681A /* AutoLayout */,
 				F68A73111F56E5F100FA4D1B /* String */,
 			);
@@ -967,6 +971,8 @@
 			isa = PBXGroup;
 			children = (
 				F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */,
+				F6B220EA209C68F8003A5D48 /* CustomSearchBar.swift */,
+				F6B220EC209C692D003A5D48 /* CustomSearchController.swift */,
 			);
 			path = SearchBar;
 			sourceTree = "<group>";
@@ -1291,6 +1297,7 @@
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
 				F63808FD1F5D4C0C00C3B322 /* QueryResponse.swift in Sources */,
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
+				F6B220ED209C692D003A5D48 /* CustomSearchController.swift in Sources */,
 				F6DF7B9220849C4300A7CDAD /* TrackSearchRequestBuilder.swift in Sources */,
 				F6DF7B9420849E8D00A7CDAD /* CIOSearchTrack.swift in Sources */,
 				F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */,
@@ -1308,6 +1315,7 @@
 				F636E03B1F57E68A004C85FA /* String+URLEncode.swift in Sources */,
 				F61A6B091F698877007826CA /* CIOGroup.swift in Sources */,
 				F60FE9041F5C5B220037A0AB /* QueryRequestBuilder.swift in Sources */,
+				F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */,
 				F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */,
 				F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */,
 				F1F68DDA1F58B6A300B42602 /* CIOResponseParser.swift in Sources */,
