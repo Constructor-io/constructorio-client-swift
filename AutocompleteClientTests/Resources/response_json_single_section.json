@@ -1,14 +1,211 @@
 {
-    "ad_based": true,
-    "suggestions": [{
-                    "value": "api"
-                    }, {
-                    "value": "app"
-                    }, {
-                    "value": "application"
-                    }, {
-                    "value": "angular"
-                    }, {
-                    "value": "apps"
-                    }]
+  "sections": {
+    "Search Suggestions": [
+      {
+        "data": {
+          "groups": [
+            {
+              "display_name": "Drama",
+              "group_id": "18",
+              "path": null
+            },
+            {
+              "display_name": "Romance",
+              "group_id": "10749",
+              "path": null
+            },
+            {
+              "display_name": "Thriller",
+              "group_id": "53",
+              "path": null
+            },
+            {
+              "display_name": "Action",
+              "group_id": "28",
+              "path": null
+            },
+            {
+              "display_name": "Documentary",
+              "group_id": "99",
+              "path": null
+            },
+            {
+              "display_name": "History",
+              "group_id": "36",
+              "path": null
+            },
+            {
+              "display_name": "Adventure",
+              "group_id": "12",
+              "path": null
+            }
+          ],
+          "id": "titanic"
+        },
+        "matched_terms": [
+          "titanic"
+        ],
+        "value": "titanic"
+      },
+      {
+        "data": {
+          "groups": [
+            {
+              "display_name": "Documentary",
+              "group_id": "99",
+              "path": null
+            }
+          ],
+          "id": "titanica"
+        },
+        "matched_terms": [
+          "titanica"
+        ],
+        "value": "titanica"
+      },
+      {
+        "data": {
+          "groups": [
+            {
+              "display_name": "Drama",
+              "group_id": "18",
+              "path": null
+            },
+            {
+              "display_name": "Action",
+              "group_id": "28",
+              "path": null
+            },
+            {
+              "display_name": "Thriller",
+              "group_id": "53",
+              "path": null
+            },
+            {
+              "display_name": "Mystery",
+              "group_id": "9648",
+              "path": null
+            },
+            {
+              "display_name": "Family",
+              "group_id": "10751",
+              "path": null
+            },
+            {
+              "display_name": "Foreign",
+              "group_id": "10769",
+              "path": null
+            }
+          ],
+          "id": "titanics"
+        },
+        "matched_terms": [
+          "titanics"
+        ],
+        "value": "titanics"
+      },
+      {
+        "data": {
+          "groups": [
+            {
+              "display_name": "Animation",
+              "group_id": "16",
+              "path": null
+            },
+            {
+              "display_name": "Action",
+              "group_id": "28",
+              "path": null
+            },
+            {
+              "display_name": "Science Fiction",
+              "group_id": "878",
+              "path": null
+            },
+            {
+              "display_name": "Family",
+              "group_id": "10751",
+              "path": null
+            },
+            {
+              "display_name": "Adventure",
+              "group_id": "12",
+              "path": null
+            },
+            {
+              "display_name": "Documentary",
+              "group_id": "99",
+              "path": null
+            },
+            {
+              "display_name": "Horror",
+              "group_id": "27",
+              "path": null
+            },
+            {
+              "display_name": "Fantasy",
+              "group_id": "14",
+              "path": null
+            },
+            {
+              "display_name": "Drama",
+              "group_id": "18",
+              "path": null
+            }
+          ],
+          "id": "titan"
+        },
+        "matched_terms": [
+          "titan"
+        ],
+        "value": "titan"
+      },
+      {
+        "data": {
+          "groups": [
+            {
+              "display_name": "Drama",
+              "group_id": "18",
+              "path": null
+            },
+            {
+              "display_name": "Adventure",
+              "group_id": "12",
+              "path": null
+            },
+            {
+              "display_name": "Fantasy",
+              "group_id": "14",
+              "path": null
+            },
+            {
+              "display_name": "Family",
+              "group_id": "10751",
+              "path": null
+            },
+            {
+              "display_name": "Action",
+              "group_id": "28",
+              "path": null
+            },
+            {
+              "display_name": "Animation",
+              "group_id": "16",
+              "path": null
+            },
+            {
+              "display_name": "Science Fiction",
+              "group_id": "878",
+              "path": null
+            }
+          ],
+          "id": "titans"
+        },
+        "matched_terms": [
+          "titans"
+        ],
+        "value": "titans"
+      }
+    ]
+  }
 }
