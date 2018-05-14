@@ -124,7 +124,7 @@ class ResultParserTests: XCTestCase {
     }
     
     func test_ParsingValidJSONReturnsGroupResultsOnlyForFirstItem_IfDelegateMethodNotImplemented(){
-        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename2)
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
         // create mock delegate
         let del = MockResponseParserDelegate()
@@ -150,7 +150,7 @@ class ResultParserTests: XCTestCase {
     }
     
     func test_ParsingValidJSONReturnsGroupResultsForMultipleItems_IfDelegateMethodReturnsTrue(){
-        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename2)
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
         // create mock delegate
         let del = MockResponseParserDelegate()
@@ -171,7 +171,7 @@ class ResultParserTests: XCTestCase {
     }
     
     func test_ParsingValidJSONReturnsNoGroupResults_IfDelegateMethodReturnsFalse(){
-        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename2)
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
         // create mock delegate
         let del = MockResponseParserDelegate()
