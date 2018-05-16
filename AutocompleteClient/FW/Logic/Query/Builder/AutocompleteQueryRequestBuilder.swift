@@ -20,14 +20,6 @@ class AutocompleteQueryRequestBuilder: QueryRequestBuilder {
         }
     }
     
-    func set(clientID: String){
-        queryItems.append(URLQueryItem(name: "i", value: clientID))
-    }
-    
-    func set(session: Int){
-        queryItems.append(URLQueryItem(name: "s", value: String(session)))
-    }
-
     func set(numResults: Int?) {
         guard let numResults = numResults else { return }
         queryItems.append(URLQueryItem(name: Constants.AutocompleteQuery.numResults, value: String(numResults)))

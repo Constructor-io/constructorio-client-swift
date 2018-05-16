@@ -45,18 +45,18 @@ import Foundation
         
         // parse groups
         if let data = json[Constants.Result.data] as? [String: Any],
-            let groupsArr = data[Constants.Result.groups] as? [[String:String]]{
+            let groupsArr = data[Constants.Result.groups] as? [[String:Any]]{
             var groups = [CIOGroup]()
             for dict in groupsArr{
-                guard let name = dict[Constants.Result.displayName] else{
+                guard let name = dict[Constants.Result.displayName] as? String else{
                     continue
                 }
                 
-                guard let groupID = dict[Constants.Result.groupID] else{
+                guard let groupID = dict[Constants.Result.groupID] as? String else{
                     continue
                 }
                 
-                let path = dict[Constants.Result.path]
+                let path = dict[Constants.Result.path] as? String
                 
                 groups.append(CIOGroup(displayName: name, groupID: groupID, path: path))
             }

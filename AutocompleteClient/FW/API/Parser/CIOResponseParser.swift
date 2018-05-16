@@ -15,9 +15,8 @@ struct CIOResponseParser: AbstractResponseParser {
     func parse(autocompleteResponseData: Data) throws -> CIOResponse {
         do {
             let json = try JSONSerialization.jsonObject(with: autocompleteResponseData) as! JSONObject
-            // TODO: Use string constants
             let isSingleSection = json.keys.contains(Constants.Response.singleSectionResultField)
-
+            
             return isSingleSection ? try parse(singleSectionJson: json) : try parse(multiSectionJson: json)
         } catch {
             throw CIOError.invalidResponse
@@ -56,22 +55,43 @@ struct CIOResponseParser: AbstractResponseParser {
     }
 
     fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOResult]{
+        
         return jsonObjects.flatMap { CIOAutocompleteResult(json: $0) }
-                        .reduce([CIOResult](), { (arr, autocompleteResult) in
+                        .enumerated()
+                        .reduce([CIOResult](), { (arr, enumeratedAutocompleteResult) in
+                         
+                            let autocompleteResult = enumeratedAutocompleteResult.element
+                            let index = enumeratedAutocompleteResult.offset
+                            
                             let first = CIOResult(autocompleteResult: autocompleteResult, group: nil)
                             
                             // If the base result is filtered out, we don't show
                             // the group search options.
-                            if !self.delegateFilter(autocompleteResult, nil){
+                            if let shouldParseResult = self.delegateFilter(autocompleteResult, nil), shouldParseResult == false{
                                 return []
                             }
                             
                             var itemsInGroups: [CIOResult] = []
+                            
+                            // create a parse handler to avoid code duplication down below
+                            let parseItemHandler = { (group: CIOGroup) in
+                                let itemInGroup = CIOResult(autocompleteResult: autocompleteResult, group: group)
+                                itemsInGroups.append(itemInGroup)
+                            }
+                            
                             if let groups = autocompleteResult.groups{
                                 for group in groups{
-                                    if self.delegateFilter(autocompleteResult, group){
-                                        let itemInGroup = CIOResult(autocompleteResult: autocompleteResult, group: group)
-                                        itemsInGroups.append(itemInGroup)
+                                    if let shouldParseResultInGroup = self.delegateFilter(autocompleteResult, group){
+                                        if shouldParseResultInGroup{
+                                            // method implemented by the delegate and returns true
+                                            parseItemHandler(group)
+                                        }
+                                    }else{
+                                        // method not implemeneted by the delegate
+                                        // we parse only the groups for the first item
+                                        if index == 0{
+                                            parseItemHandler(group)
+                                        }
                                     }
                                 }
                             }
@@ -80,7 +100,8 @@ struct CIOResponseParser: AbstractResponseParser {
                         })
     }
     
-    fileprivate func delegateFilter(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool{
-        return self.delegate?.shouldParseResult(result: result, inGroup: group) ?? true
+    
+    fileprivate func delegateFilter(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool?{
+        return self.delegate?.shouldParseResult(result: result, inGroup: group)
     }
 }

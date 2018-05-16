@@ -31,44 +31,53 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
     
     func testTrackConversionBuilder_onlySearchTerm() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&c=cioios-"))
 
     }
 
     func testTrackConversionBuilder_withItemName() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm, itemName: itemName)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, itemName: itemName)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&item=\(encodedItemName)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&item=\(encodedItemName)&c=cioios-"))
     }
 
     func testTrackConversionBuilder_withSectionName() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm, sectionName: sectionName)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, sectionName: sectionName)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&autocomplete_section=\(encodedSectionName)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&autocomplete_section=\(encodedSectionName)&c=cioios-"))
     }
 
     func testTrackConversionBuilder_withRevenue() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm, revenue: revenue)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, revenue: revenue)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&revenue=\(revenue)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&revenue=\(revenue)&c=cioios-"))
     }
 
     func testTrackConversionBuilder_AllFields() {
-        let tracker = CIOConversionTracker(searchTerm: searchTerm, itemName: itemName, sectionName: sectionName, revenue: revenue)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, itemName: itemName, sectionName: sectionName, revenue: revenue)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&item=\(encodedItemName)&autocomplete_section=\(encodedSectionName)&revenue=\(revenue)"))
+        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?autocomplete_key=\(testACKey)&item=\(encodedItemName)&autocomplete_section=\(encodedSectionName)&revenue=\(revenue)&c=cioios-"))
     }
     
+    func testTrackConversionBuilder_containsVersionString() {
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, itemName: itemName, sectionName: sectionName, revenue: revenue)
+        builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        let request = builder.getRequest()
+        
+        let versionString = Constants.versionString()
+        let containsVersionString = request.url!.absoluteString.contains(versionString)
+        XCTAssertTrue(containsVersionString, "Track call should contain the version string.")
+    }
 }

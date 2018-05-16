@@ -1,5 +1,5 @@
 //
-//  SessionManager.swift
+//  CIOLogger.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SessionManager{
-    func getSession() -> Int
+public protocol CIOLogger{
+    func log(_ message: String)
 }

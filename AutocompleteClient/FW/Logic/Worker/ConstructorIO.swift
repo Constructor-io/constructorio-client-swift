@@ -18,6 +18,8 @@ public class ConstructorIO: AbstractConstructorDataSource {
 
     public let autocompleteKey: String
 
+    public static var logger: CIOLogger = CIOPrintLogger()
+    
     private let networkClient: NetworkClient = DependencyContainer.sharedInstance.networkClient()
     private let sessionManager: SessionManager = DependencyContainer.sharedInstance.sessionManager()
     
@@ -46,7 +48,7 @@ public class ConstructorIO: AbstractConstructorDataSource {
     /// - Parameters:
     ///   - tracker: The object containing the necessary and additional tracking parameters.
     ///   - completionHandler: The callback to execute on completion.
-    public func trackAutocompleteClick(for tracker: CIOAutocompleteClickTracker, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackAutocompleteClick(for tracker: CIOAutocompleteClickTrackData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
     }
@@ -56,24 +58,49 @@ public class ConstructorIO: AbstractConstructorDataSource {
     /// - Parameters:
     ///   - tracker: The object containing the necessary and additional tracking parameters.
     ///   - completionHandler: The callback to execute on completion.
-    public func trackConversion(for tracker: CIOConversionTracker, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackConversion(for tracker: CIOConversionTrackData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
     }
 
-    private func buildRequest(fromTracker tracker: CIOConversionTracker) -> URLRequest {
-        let requestBuilder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: autocompleteKey)
+    /// Track a search event when the user taps on Search button on keyboard or when an item in the list is tapped on.
+    ///
+    /// - Parameters:
+    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackSearch(for tracker: CIOSearchTrackData, completionHandler: TrackingCompletionHandler? = nil) {
+        let request = buildRequest(fromTracker: tracker)
+        execute(request, completionHandler: completionHandler)
+    }
+    
+    private func buildRequest(fromTracker tracker: CIOSearchTrackData) -> URLRequest{
+        let requestBuilder = TrackSearchRequestBuilder(trackData: tracker, autocompleteKey: self.autocompleteKey)
+        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+        return requestBuilder.getRequest()
+    }
+    
+    private func buildRequest(fromTracker tracker: CIOConversionTrackData) -> URLRequest {
+        let requestBuilder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
         return requestBuilder.getRequest()
     }
 
-    private func buildRequest(fromTracker tracker: CIOAutocompleteClickTracker) -> URLRequest {
-        let requestBuilder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: autocompleteKey)
+    private func buildRequest(fromTracker tracker: CIOAutocompleteClickTrackData) -> URLRequest {
+        let requestBuilder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
         return requestBuilder.getRequest()
     }
 
     private func buildRequest(fromQuery query: CIOAutocompleteQuery) -> URLRequest {
-        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: autocompleteKey, session: self.sessionManager.getSession(), clientID: self.clientID )
+        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: self.autocompleteKey, session: self.sessionManager.getSession(), clientID: self.clientID )
+        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+        
         return requestBuilder.getRequest()
+    }
+    
+    private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
+        if let cID = self.clientID{
+            requestBuilder.set(clientID: cID)
+        }
+        requestBuilder.set(session: self.sessionManager.getSession())
     }
 
     private func execute(_ request: URLRequest, completionHandler: @escaping QueryCompletionHandler) {

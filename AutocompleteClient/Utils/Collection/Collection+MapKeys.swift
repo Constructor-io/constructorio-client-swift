@@ -1,9 +1,9 @@
 //
 //  Collection+MapKeys.swift
-//  AutocompleteClient
+//  Constructor.io
 //
-//  Created by Nikola Markovic on 3/9/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import Foundation
@@ -12,7 +12,6 @@ extension Dictionary{
     func mapKeys<T>(_ mapping: (_ key: Key) -> T) -> [T: Value]{
         var newDictionary: [T: Value] = [:]
         for (k,v) in self{
-            
             newDictionary[mapping(k)] = v
         }
         
@@ -20,10 +19,3 @@ extension Dictionary{
     }
 }
 
-extension Dictionary where Key == String, Value == Any{
-    
-    func mapToAttributedStringKeys() -> [NSAttributedStringKey: Any]{
-        let keyMapping: (String) -> NSAttributedStringKey = { key in return NSAttributedStringKey(rawValue: key) }
-        return self.mapKeys(keyMapping)
-    }
-}

@@ -10,6 +10,15 @@ import UIKit
 
 struct Constants {
 
+    static var versionString: () -> String = {
+        var prefix = "cioios-"
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String{
+            return "\(prefix)\(version)"
+        }else{
+            return prefix
+        }
+    }
+    
     struct UI {
         static let CellIdentifier = "SearchItemCellID"
         
@@ -88,6 +97,11 @@ struct Constants {
         static let autocompleteSection = "autocomplete_section"
     }
 
+    struct TrackSearch{
+        static let format = "%@/autocomplete/%@/search"
+        static let originalQuery = "original_query"
+    }
+    
     struct TrackAutocompleteResultClicked {
         static let selectType = "select"
         static let searchType = "search"
@@ -96,6 +110,8 @@ struct Constants {
         static let triggerType = "click"
         static let originalQuery = "original_query"
         static let dateTime = "_dt"
+        static let groupName = "group[group_name]"
+        static let groupID = "group[group_id]"
     }
 
     struct TrackConversion {
@@ -107,5 +123,12 @@ struct Constants {
 
     struct TrackSearchTermTyped {
         static let type = "search"
+    }
+    
+    struct Logging{
+        private static let prefix = "[ConstructorIO]:"
+        private static let format: (_ message: String) -> String = { message in return "\(Logging.prefix) \(message)" }
+        
+        static let performURLRequest: (_ request: URLRequest) -> String = { request in return Logging.format("Performing URL Request \(request)") }
     }
 }

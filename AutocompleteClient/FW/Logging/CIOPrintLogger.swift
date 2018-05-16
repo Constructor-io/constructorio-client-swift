@@ -1,5 +1,5 @@
 //
-//  CurrentTimeDateProvider.swift
+//  CIOPrintLogger.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-struct CurrentTimeDateProvider: DateProvider{
- 
-    func provideDate() -> Date{
-        return Date()
+public class CIOPrintLogger: CIOLogger{
+    public func log(_ message: String){
+        print(message)
     }
 }

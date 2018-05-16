@@ -26,9 +26,32 @@ public class CIOAutocompleteViewController: UIViewController {
     }
     
     /**
+     A flag that determines whether the cancel button should show when search bar gains focus.
+     */
+    public var searchBarShouldShowCancelButton: Bool = false{
+        didSet{
+            (self.searchController?.searchBar as? CustomSearchBar)?.shouldShowCancelButton = self.searchBarShouldShowCancelButton
+        }
+    }
+    
+    /**
+     Defines how search bar should be displayed.
+     */
+    public var searchBarDisplayMode: CIOSearchBarDisplayMode = .TableViewHeader
+    
+    /**
      Results table view.
      */
     public weak var tableView: UITableView!
+    
+    public override var preferredStatusBarStyle: UIStatusBarStyle{
+        return self.customStatusBarStyle
+    }
+    
+    /**
+     Custom status bar style
+     */
+    public var customStatusBarStyle: UIStatusBarStyle = .default
     
     /**
      Results search controller.
@@ -106,13 +129,21 @@ public class CIOAutocompleteViewController: UIViewController {
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.backgroundColor = UIColor.clear
         
-        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController = CustomSearchController(searchResultsController: nil)
         self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.searchResultsUpdater = self
         self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.delegate = self
+        (self.searchController.searchBar as? CustomSearchBar)?.shouldShowCancelButton = self.searchBarShouldShowCancelButton
         
         self.searchController.searchBar.sizeToFit()
-        self.tableView.tableHeaderView = self.searchController.searchBar
+        
+        switch(self.searchBarDisplayMode){
+            case .TableViewHeader:
+                self.tableView.tableHeaderView = self.searchController.searchBar
+            case .NavigationBar:
+                self.navigationItem.titleView = self.searchController.searchBar
+        }
         
         self.searchController.searchBar.placeholder = self.dataSource?.searchBarPlaceholder?(in: self) ?? Constants.UI.defaultSearchBarPlaceholder
         self.dataSource?.customizeSearchController?(searchController: self.searchController, in: self)
@@ -308,16 +339,20 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         self.tableView.deselectRow(at: indexPath, animated: true)
         let result = self.viewModel.getResult(atIndexPath: indexPath)
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
-
+        
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName)
+        let selectTracker = CIOAutocompleteClickTrackData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
 
         // TODO: For now, ignore any errors
         constructorIO.trackAutocompleteClick(for: selectTracker)
 
+        // Track search
+        let searchTrackData = CIOSearchTrackData(searchTerm: viewModel.searchTerm, itemName: result.autocompleteResult.value)
+        constructorIO.trackSearch(for: searchTrackData)
+        
         // Run behavioural tracking 'search' if its an autocomplete suggestion
         if sectionName == "standard" {
-            let searchTracker = CIOAutocompleteClickTracker(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
+            let searchTracker = CIOAutocompleteClickTrackData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
             constructorIO.trackAutocompleteClick(for: searchTracker)
         }
 
@@ -365,6 +400,15 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
     
 }
 
+extension CIOAutocompleteViewController: UISearchBarDelegate {
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        // Track search
+        let searchTrackData = CIOSearchTrackData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
+        constructorIO.trackSearch(for: searchTrackData)
+    }
+}
+
 extension CIOAutocompleteViewController: UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
@@ -388,11 +432,11 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
 
 extension CIOAutocompleteViewController: ResponseParserDelegate {
     
-    public func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool{
-        return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group) ?? true
+    public func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool?{
+        return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group)
     }
     
-    public func shouldParseResults(inSectionWithName name: String) -> Bool {
-        return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name) ?? true
+    public func shouldParseResults(inSectionWithName name: String) -> Bool? {
+        return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name)
     }
 }
