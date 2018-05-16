@@ -93,6 +93,7 @@
 		F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154D1F58724B008E50C0 /* UIColor+RGB.swift */; };
 		F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6548833208633E20044E403 /* NSAttributedString+Build.swift */; };
 		F672F6BA20ABE9EC00EA1525 /* CIOConversionTrackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A61F5F44C30022C814 /* CIOConversionTrackData.swift */; };
+		F672F6BB20ABEABD00EA1525 /* CIOResponse+SearchSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */; };
 		F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674157A204D489B004F313B /* MockResponseParserDelegate.swift */; };
 		F67E224E2074CCA4009EBCD9 /* response_json_multiple_groups2.json in Resources */ = {isa = PBXBuildFile; fileRef = F67E224D2074CCA4009EBCD9 /* response_json_multiple_groups2.json */; };
 		F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */; };
@@ -1319,6 +1320,7 @@
 				F636E03B1F57E68A004C85FA /* String+URLEncode.swift in Sources */,
 				F61A6B091F698877007826CA /* CIOGroup.swift in Sources */,
 				F60FE9041F5C5B220037A0AB /* QueryRequestBuilder.swift in Sources */,
+				F672F6BB20ABEABD00EA1525 /* CIOResponse+SearchSuggestions.swift in Sources */,
 				F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */,
 				F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */,
 				F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */,

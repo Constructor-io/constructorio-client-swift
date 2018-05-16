@@ -42,6 +42,9 @@ class AutocompleteViewModel {
 
     internal func setResultFromDictionary(dictionary: [String: [CIOResult]]?) {
         self.results = (dictionary ?? [:]).map { (section, items) in AutocompleteViewModelSection(items: items, sectionName: section) }
+                                          .filter({ (section) -> Bool in
+                                              return section.sectionName.isSearchSuggestionString()
+                                          })
                                           .sorted { (s1, s2) in self.modelSorter(s1.sectionName,s2.sectionName) }
     }
 
