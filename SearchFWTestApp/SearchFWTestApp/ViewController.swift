@@ -47,7 +47,7 @@ class ViewController: UIViewController, CIOAutocompleteDelegate, CIOAutocomplete
 
     @IBAction func didTapOnSearch(_ sender: Any) {
         let vc = CIOAutocompleteViewController()
-        vc.autocompleteKey = "CD06z4gVeqSXRiDL2ZNK"
+        vc.autocompleteKey = "key_OucJxxrfiTVUQx0C"
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))
         vc.delegate = self
         vc.dataSource = self
