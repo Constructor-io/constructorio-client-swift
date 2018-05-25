@@ -30,21 +30,21 @@ class TrackAutocompleteClickRequestBuilder: RequestBuilder {
     }
 
     func set(originalQuery: String) {
-        queryItems.append(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.originalQuery, value: originalQuery))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.originalQuery, value: originalQuery))
     }
 
     func set(groupName: String){
-        queryItems.append(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupName, value: groupName))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupName, value: groupName))
     }
     
     func set(groupID: String){
-        queryItems.append(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupID, value: groupID))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupID, value: groupID))
     }
     
     func set(autocompleteSection: String?) {
         guard let sectionName = autocompleteSection else { return }
         self.hasSectionName = true
-        queryItems.append(URLQueryItem(name: Constants.TrackAutocomplete.autocompleteSection, value: sectionName))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocomplete.autocompleteSection, value: sectionName))
     }
 
     override func getURLString() -> String {
@@ -61,11 +61,11 @@ class TrackAutocompleteClickRequestBuilder: RequestBuilder {
     }
 
     private func addTriggerQueryItem() {
-        queryItems.append(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.trigger, value: Constants.TrackAutocompleteResultClicked.triggerType))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.trigger, value: Constants.TrackAutocompleteResultClicked.triggerType))
     }
 
     private func addDateQueryItem() {
-        queryItems.append(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.dateTime, value: String(Date().millisecondsSince1970)))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.dateTime, value: String(Date().millisecondsSince1970)))
     }
 
 }
