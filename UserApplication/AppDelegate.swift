@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
-        let key = "key_AttLywTIsQjS0nao"
+        let key = "key_OucJxxrfiTVUQx0C"
 
         let viewController = CIOAutocompleteViewController(autocompleteKey: key)
         

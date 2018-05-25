@@ -82,19 +82,18 @@ class ResultParserTests: XCTestCase {
     func test_ParsingSpecificSectionInMultisectionJSON_ReturnsCorrectResults(){
         let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
-        // let's only parse items from the 'standard' section
-        let sectionName = "standard"
+        // let's only parse items from the 'Search Suggestions' section
+        let sectionName = "Search Suggestions"
         
         // create mock delegate
         let del = MockResponseParserDelegate()
         del.shouldParseResultsInSection = { name in
-            return name.lowercased() == sectionName
+            return name.lowercased() == sectionName.lowercased()
         }
         self.responseParser.delegate = del
         
         do {
             let response = try responseParser.parse(autocompleteResponseData: data)
-            
             XCTAssertNotNil(response.sections[sectionName], "Results should include the section with the filtered name.")
             XCTAssertEqual(response.sections.count, 1, "Results should only include the section with the filtered name.")
         } catch {
@@ -125,7 +124,7 @@ class ResultParserTests: XCTestCase {
     }
     
     func test_ParsingValidJSONReturnsGroupResultsOnlyForFirstItem_IfDelegateMethodNotImplemented(){
-        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename2)
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
         // create mock delegate
         let del = MockResponseParserDelegate()
@@ -151,7 +150,7 @@ class ResultParserTests: XCTestCase {
     }
     
     func test_ParsingValidJSONReturnsGroupResultsForMultipleItems_IfDelegateMethodReturnsTrue(){
-        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename2)
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
         // create mock delegate
         let del = MockResponseParserDelegate()
@@ -172,7 +171,7 @@ class ResultParserTests: XCTestCase {
     }
     
     func test_ParsingValidJSONReturnsNoGroupResults_IfDelegateMethodReturnsFalse(){
-        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename2)
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
         // create mock delegate
         let del = MockResponseParserDelegate()
