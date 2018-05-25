@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         let viewController = CIOAutocompleteViewController(autocompleteKey: key)
         
         viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.NavigationBar
-        viewController.searchBarShouldShowCancelButton = true
+        viewController.searchBarShouldShowCancelButton = false
         
         // set the delegate in order to react to various events
         viewController.delegate = self
@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         // set the data source to customize the look and feel of the UI
         viewController.dataSource = self
         
-        let bgColor = UIColor(red: 67/255.0, green: 152/255.0, blue: 234/255.0, alpha: 1.0)
+        let bgColor = UIColor.white
         
         // embed it in the navigation controller
         let navigationController = UINavigationController(rootViewController: viewController)
@@ -136,9 +136,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         return view
     }
 
-    func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
-        return UINib(nibName: "CustomErrorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
-    }
+//    func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
+//        return UINib(nibName: "CustomErrorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
+//    }
 
     func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
         return UINib(nibName: "CustomTableViewCellOne", bundle: nil)
@@ -170,7 +170,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         // customize search bar
         searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
         searchController.searchBar.returnKeyType = .search
-//        searchController.searchBar.showsCancelButton = true
+        
+        if let textField = searchController.searchBar.searchTextField(){
+            let val: CGFloat = 0.94
+            textField.backgroundColor = UIColor(red: val, green: val, blue: val, alpha: 1.0)
+        }
+        
         // customize search controller behaviour
         searchController.dimsBackgroundDuringPresentation = false
     }
@@ -216,6 +221,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     }
 
     func searchBarPlaceholder(in autocompleteController: CIOAutocompleteViewController) -> String {
-        return "Custom search placeholder"
+        return "Search"
     }
 }
