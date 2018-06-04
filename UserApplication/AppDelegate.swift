@@ -160,9 +160,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 //        return true
 //    }
     
-    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResultsInSection sectionName: String) -> Bool {
-        return sectionName.lowercased() != "products"
-    }
+//    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResultsInSection sectionName: String) -> Bool {
+//        return sectionName.lowercased() != "products"
+//    }
     
     // MARK: SearchBar
 
