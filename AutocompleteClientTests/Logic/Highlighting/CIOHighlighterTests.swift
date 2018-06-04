@@ -17,7 +17,10 @@ class CIOHighlighterTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        provider = BoldAttributesProvider(fontNormal: .systemFont(ofSize: fontSize), fontBold: .boldSystemFont(ofSize: fontSize))
+        provider = BoldAttributesProvider(fontNormal: .systemFont(ofSize: fontSize),
+                                          fontBold: .boldSystemFont(ofSize: fontSize),
+                                          colorNormal: UIColor.gray,
+                                          colorBold: UIColor.black)
         highlighter = CIOHighlighter(attributesProvider: provider)
     }
 
