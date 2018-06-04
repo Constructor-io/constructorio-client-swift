@@ -131,10 +131,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         return color
     }
 
-    func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
-        let view = UINib(nibName: "CustomBackgroundView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! CustomBackgroundView
-        return view
-    }
+//    func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
+//        let view = UINib(nibName: "CustomBackgroundView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
+//        return view
+//    }
 
 //    func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
 //        return UINib(nibName: "CustomErrorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView

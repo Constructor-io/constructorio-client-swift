@@ -6,49 +6,30 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Medium</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ubS-Md-dQb" customClass="CustomBackgroundView" customModule="UserApplication" customModuleProvider="target">
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OD7-AT-MY3" customClass="CustomBackgroundView" customModule="UserApplication" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_empty" translatesAutoresizingMaskIntoConstraints="NO" id="CX1-VK-h6t">
-                    <rect key="frame" x="132" y="178.5" width="110" height="110"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="CX1-VK-h6t" secondAttribute="height" multiplier="1:1" id="SHK-ZX-koC"/>
-                        <constraint firstAttribute="width" constant="110" id="r2s-TW-NWE"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_logo" translatesAutoresizingMaskIntoConstraints="NO" id="n6p-Gt-EAa">
+                    <rect key="frame" x="0.0" y="320" width="375" height="27"/>
+                    <color key="tintColor" red="0.156903759" green="1" blue="0.30279322809999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Constructor.io iOS Library Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rpr-YB-3oi">
-                    <rect key="frame" x="24" y="140" width="327" height="26.5"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="0.958125" green="0.958125" blue="0.958125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="CX1-VK-h6t" firstAttribute="centerX" secondItem="Rpr-YB-3oi" secondAttribute="centerX" id="6ok-tc-O88"/>
-                <constraint firstItem="Rpr-YB-3oi" firstAttribute="centerX" secondItem="ubS-Md-dQb" secondAttribute="centerX" id="Bdn-T3-bZX"/>
-                <constraint firstItem="CX1-VK-h6t" firstAttribute="top" secondItem="Rpr-YB-3oi" secondAttribute="bottom" constant="12" id="Ieu-HX-T6x"/>
-                <constraint firstItem="Rpr-YB-3oi" firstAttribute="top" secondItem="ubS-Md-dQb" secondAttribute="top" constant="140" id="U1T-T8-Dtw"/>
-                <constraint firstItem="Rpr-YB-3oi" firstAttribute="leading" secondItem="ubS-Md-dQb" secondAttribute="leading" constant="24" id="xMq-GF-D1I"/>
+                <constraint firstItem="n6p-Gt-EAa" firstAttribute="leading" secondItem="OD7-AT-MY3" secondAttribute="leading" id="Og0-WI-1eq"/>
+                <constraint firstItem="n6p-Gt-EAa" firstAttribute="centerY" secondItem="OD7-AT-MY3" secondAttribute="centerY" id="Zvh-pi-Gl9"/>
+                <constraint firstItem="n6p-Gt-EAa" firstAttribute="trailing" secondItem="OD7-AT-MY3" secondAttribute="trailing" id="gW8-BX-BJA"/>
             </constraints>
-            <connections>
-                <outlet property="labelText" destination="Rpr-YB-3oi" id="8f2-eD-ufY"/>
-            </connections>
             <point key="canvasLocation" x="34.5" y="90.5"/>
         </view>
     </objects>
     <resources>
-        <image name="icon_empty" width="198" height="196"/>
+        <image name="icon_logo" width="168" height="27"/>
     </resources>
 </document>
