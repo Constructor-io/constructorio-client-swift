@@ -73,6 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     // MARK: DataSource
 
+//    func searchSuggestionsSectionName(in autocompleteController: CIOAutocompleteViewController) -> String {
+//        return "All items"
+//    }
+    
     /*
     func shouldShowSectionHeader(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> Bool {
         return sectionName.lowercased() != "products"
@@ -156,9 +160,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 //        return true
 //    }
     
-    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResultsInSection sectionName: String) -> Bool {
-        return sectionName.lowercased() != "products"
-    }
+//    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResultsInSection sectionName: String) -> Bool {
+//        return sectionName.lowercased() != "products"
+//    }
     
     // MARK: SearchBar
 

@@ -15,7 +15,6 @@
 		F19E289D1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E289C1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift */; };
 		F19E28A31F5F220B0022C814 /* CIOAutocompleteClickTrackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A21F5F220B0022C814 /* CIOAutocompleteClickTrackData.swift */; };
 		F19E28A51F5F42830022C814 /* TrackConversionRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A41F5F42830022C814 /* TrackConversionRequestBuilder.swift */; };
-		F19E28A71F5F44C30022C814 /* CIOConversionTrackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A61F5F44C30022C814 /* CIOConversionTrackData.swift */; };
 		F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B17CB11F58E5830015FF62 /* AutocompleteResult.swift */; };
 		F1C557411F5F67CA0040D6AD /* CIOHighlighterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C557401F5F67CA0040D6AD /* CIOHighlighterTests.swift */; };
 		F1C557431F605C910040D6AD /* TrackAutocompleteClickRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C557421F605C910040D6AD /* TrackAutocompleteClickRequestBuilderTests.swift */; };
@@ -93,6 +92,7 @@
 		F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154A1F587213008E50C0 /* CIOStyle.swift */; };
 		F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154D1F58724B008E50C0 /* UIColor+RGB.swift */; };
 		F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6548833208633E20044E403 /* NSAttributedString+Build.swift */; };
+		F672F6BA20ABE9EC00EA1525 /* CIOConversionTrackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A61F5F44C30022C814 /* CIOConversionTrackData.swift */; };
 		F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674157A204D489B004F313B /* MockResponseParserDelegate.swift */; };
 		F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */; };
 		F680EDBE1F57FBBD0002F4E1 /* constructor-io-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F699C34D1F57F45B00FD681A /* constructor-io-logo.png */; };
@@ -106,6 +106,7 @@
 		F699C3471F57ED4200FD681A /* CIOAutocompleteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C3461F57ED4200FD681A /* CIOAutocompleteDataSource.swift */; };
 		F699C34B1F57F22400FD681A /* NSError+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34A1F57F22400FD681A /* NSError+Errors.swift */; };
 		F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */; };
+		F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */; };
 		F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */; };
 		F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */; };
 		F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */; };
@@ -253,6 +254,7 @@
 		F699C34A1F57F22400FD681A /* NSError+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Errors.swift"; sourceTree = "<group>"; };
 		F699C34D1F57F45B00FD681A /* constructor-io-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-logo.png"; sourceTree = "<group>"; };
 		F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SearchSuggestionsSection.swift"; sourceTree = "<group>"; };
 		F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOLogger.swift; sourceTree = "<group>"; };
 		F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOPrintLogger.swift; sourceTree = "<group>"; };
 		F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchBarDisplayMode.swift; sourceTree = "<group>"; };
@@ -918,6 +920,7 @@
 				F636E03A1F57E68A004C85FA /* String+URLEncode.swift */,
 				F1F68DE41F58BBA400B42602 /* String+CharacterSetIterator.swift */,
 				F6548833208633E20044E403 /* NSAttributedString+Build.swift */,
+				F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -1288,6 +1291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F672F6BA20ABE9EC00EA1525 /* CIOConversionTrackData.swift in Sources */,
 				F1F68DE91F58D23D00B42602 /* AbstractConstructorDataSource.swift in Sources */,
 				F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */,
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
@@ -1331,7 +1335,7 @@
 				F63808F41F5D47BB00C3B322 /* NetworkClient.swift in Sources */,
 				F63809091F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift in Sources */,
 				F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */,
-				F19E28A71F5F44C30022C814 /* CIOConversionTrackData.swift in Sources */,
+				F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */,
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,
 				F62510C82052CC6B0040E3DF /* CIOSessionManager.swift in Sources */,
