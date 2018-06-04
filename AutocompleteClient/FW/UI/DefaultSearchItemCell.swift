@@ -21,12 +21,18 @@ class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
         if let group = result.group{
             let groupString = NSMutableAttributedString()
             
-            let defaultAttributes = highlighter.attributesProvider.defaultSubstringAttributes()
+            groupString.append(highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value))
             
-            let highlightedAttributes = highlighter.attributesProvider.highlightedSubstringAttributes()
+            let fontGroup = Constants.UI.Font.defaultFontNormal.withSize(11)
+            #if swift(>=4.0)
+                let groupAttributes: [String: Any] = [NSAttributedStringKey.font.rawValue: fontGroup,
+                                       NSAttributedStringKey.foregroundColor.rawValue: Constants.UI.Color.defaultFontColorNormal]
+            #else
+                let groupAttributes: [String: Any] = [NSFontAttributeName: fontGroup,
+                NSForegroundColorAttributeName: Constants.UI.Color.defaultFontColorNormal ]
+            #endif
             
-            groupString.append(NSAttributedString.build(string: "  in ", attributes: defaultAttributes))
-            groupString.append(NSAttributedString.build(string: group.displayName, attributes: highlightedAttributes))
+            groupString.append(NSAttributedString.build(string: "\nin \(group.displayName)", attributes: groupAttributes))
             self.labelText.attributedText = groupString
         }else{
             self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value)

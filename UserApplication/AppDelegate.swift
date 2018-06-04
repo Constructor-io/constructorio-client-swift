@@ -68,7 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         
-        viewController.highlighter.attributesProvider = CustomAttributesProvider()
+        // set custom highlighting attributes provider
+//        viewController.highlighter.attributesProvider = CustomAttributesProvider()
     }
 
     // MARK: DataSource
@@ -110,18 +111,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         return { (s1, s2) in return s1 > s2 }
     }
     
-    func rowHeight(in autocompleteController: CIOAutocompleteViewController) -> CGFloat {
-        return 35
-    }
+//    func rowHeight(in autocompleteController: CIOAutocompleteViewController) -> CGFloat {
+//        return 35
+//    }
 
-    func styleResultLabel(label: UILabel, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
-        label.textColor = self.randomColor()
-    }
-    
-    func styleResultCell(cell: UITableViewCell, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
-        let val: CGFloat = 0.97
-        cell.backgroundColor = UIColor(red: val, green: val, blue: val, alpha: 1.0)
-    }
+//    func styleResultLabel(label: UILabel, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
+//        label.textColor = self.randomColor()
+//    }
+//
+//    func styleResultCell(cell: UITableViewCell, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
+//        let val: CGFloat = 0.97
+//        cell.backgroundColor = UIColor(red: val, green: val, blue: val, alpha: 1.0)
+//    }
 
     var i = 1
     func randomColor() -> UIColor {
@@ -140,9 +141,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 //        return UINib(nibName: "CustomErrorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
 //    }
 
-    func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
-        return UINib(nibName: "CustomTableViewCellOne", bundle: nil)
-    }
+//    func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
+//        return UINib(nibName: "CustomTableViewCellOne", bundle: nil)
+//    }
     
 /*
     func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass {
