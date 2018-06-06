@@ -19,14 +19,15 @@ class CIOHighlighterTests: XCTestCase {
         super.setUp()
         provider = BoldAttributesProvider(fontNormal: .systemFont(ofSize: fontSize),
                                           fontBold: .boldSystemFont(ofSize: fontSize),
-                                          colorNormal: UIColor.gray,
+                                          colorNormal: UIColor.black,
                                           colorBold: UIColor.black)
         highlighter = CIOHighlighter(attributesProvider: provider)
     }
 
     func testHighlighter_NoMatches_NoHighlights() {
         let result = highlighter.highlight(searchTerm: "this is a test", itemTitle: "no matches in item!")
-        XCTAssertEqual(result, NSAttributedString(string: "no matches in item!", attributes: [NSAttributedStringKey.font: provider.fontNormal]))
+        XCTAssertEqual(result, NSAttributedString(string: "no matches in item!", attributes: [NSAttributedStringKey.font: provider.fontBold,
+                                                                                              NSAttributedStringKey.foregroundColor: provider.colorBold]))
     }
 
     func testHighlighter_AllMatch_AllHighlighted() {
@@ -55,13 +56,14 @@ class CIOHighlighterTests: XCTestCase {
         var shouldHighlight = onEvenTokens
         for string in strings {
             guard shouldHighlight else {
-                
-                highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedStringKey.font: provider.fontNormal]))
+                highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedStringKey.font: provider.fontBold,
+                                                                                        NSAttributedStringKey.foregroundColor: provider.colorBold]))
                 shouldHighlight = !shouldHighlight
                 continue
             }
 
-            highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedStringKey.font: provider.fontBold]))
+            highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedStringKey.font: provider.fontNormal,
+                                                                                     NSAttributedStringKey.foregroundColor: provider.colorNormal]))
             shouldHighlight = !shouldHighlight
         }
 
