@@ -20,7 +20,7 @@ class TrackSearchRequestBuilder: RequestBuilder {
     }
     
     func set(originalQuery: String) {
-        queryItems.append(URLQueryItem(name: Constants.TrackSearch.originalQuery, value: originalQuery))
+        queryItems.add(URLQueryItem(name: Constants.TrackSearch.originalQuery, value: originalQuery))
     }
     
     override func getURLString() -> String {

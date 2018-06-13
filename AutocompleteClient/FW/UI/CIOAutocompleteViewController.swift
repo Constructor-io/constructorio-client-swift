@@ -75,7 +75,12 @@ public class CIOAutocompleteViewController: UIViewController {
     /**
      Default highlighter used for displaying result items.
      */
-    public var highlighter: CIOHighlighter = CIOHighlighter(attributesProvider: BoldAttributesProvider(fontNormal: Constants.UI.Font.defaultFontNormal, fontBold: Constants.UI.Font.defaultFontBold))
+    public var highlighter: CIOHighlighter = CIOHighlighter(attributesProvider:
+        BoldAttributesProvider(fontNormal: Constants.UI.Font.defaultFontNormal,
+                               fontBold: Constants.UI.Font.defaultFontBold,
+                               colorNormal: Constants.UI.Color.defaultFontColorNormal,
+                               colorBold: Constants.UI.Color.defaultFontColorBold)
+    )
 
     // MARK: Query Firing
     fileprivate var timerQueryFire: Timer?

@@ -22,14 +22,14 @@ class AutocompleteQueryRequestBuilder: QueryRequestBuilder {
     
     func set(numResults: Int?) {
         guard let numResults = numResults else { return }
-        queryItems.append(URLQueryItem(name: Constants.AutocompleteQuery.numResults, value: String(numResults)))
+        queryItems.add(URLQueryItem(name: Constants.AutocompleteQuery.numResults, value: String(numResults)))
     }
 
     func set(numResultsForSection: [String: Int]?) {
         guard let numResultsForSection = numResultsForSection else { return }
         numResultsForSection.forEach {
             let name = AutocompleteQueryRequestBuilder.queryItemNameForSection(withName: $0.key)
-            queryItems.append(URLQueryItem(name: name, value: String($0.value)))
+            queryItems.add(URLQueryItem(name: name, value: String($0.value)))
         }
     }
 

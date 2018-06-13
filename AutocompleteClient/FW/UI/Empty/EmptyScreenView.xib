@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AWC-jS-72e" customClass="EmptyScreenView" customModule="ConstructorAutocomplete" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="constructor-io-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="2hL-lw-m9b">
-                    <rect key="frame" x="0.0" y="320" width="375" height="27"/>
-                    <color key="tintColor" red="0.156903759" green="1" blue="0.30279322809999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_empty" translatesAutoresizingMaskIntoConstraints="NO" id="kXe-R2-Z5C">
+                    <rect key="frame" x="132" y="178.5" width="110" height="110"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="5kx-b0-kye"/>
+                        <constraint firstAttribute="width" secondItem="kXe-R2-Z5C" secondAttribute="height" multiplier="1:1" id="Ilu-g5-wI0"/>
+                    </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Constructor.io iOS Library Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="RTp-EF-6Eu">
+                    <rect key="frame" x="24" y="140" width="327" height="26.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="0.95812499995" green="0.95812499995" blue="0.95812499995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.958125" green="0.958125" blue="0.958125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="2hL-lw-m9b" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="4UZ-VA-ZzA"/>
-                <constraint firstItem="2hL-lw-m9b" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BtM-mk-id8"/>
-                <constraint firstItem="2hL-lw-m9b" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oEB-1w-tHO"/>
+                <constraint firstItem="kXe-R2-Z5C" firstAttribute="top" secondItem="RTp-EF-6Eu" secondAttribute="bottom" constant="12" id="8lO-X8-63w"/>
+                <constraint firstItem="RTp-EF-6Eu" firstAttribute="top" secondItem="AWC-jS-72e" secondAttribute="top" constant="140" id="M1T-2C-9w5"/>
+                <constraint firstItem="RTp-EF-6Eu" firstAttribute="leading" secondItem="AWC-jS-72e" secondAttribute="leading" constant="24" id="QoT-h3-Pmo"/>
+                <constraint firstItem="RTp-EF-6Eu" firstAttribute="centerX" secondItem="AWC-jS-72e" secondAttribute="centerX" id="kQv-Yy-3gJ"/>
+                <constraint firstItem="kXe-R2-Z5C" firstAttribute="centerX" secondItem="RTp-EF-6Eu" secondAttribute="centerX" id="m9y-qF-Dqs"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="90.5"/>
         </view>
     </objects>
     <resources>
-        <image name="constructor-io-logo.png" width="168" height="27"/>
+        <image name="icon_empty" width="198" height="196"/>
     </resources>
 </document>

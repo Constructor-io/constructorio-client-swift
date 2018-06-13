@@ -26,17 +26,17 @@ class TrackConversionRequestBuilder: RequestBuilder {
 
     func set(itemName: String?) {
         guard let itemName = itemName else { return }
-        queryItems.append(URLQueryItem(name: Constants.TrackConversion.item, value: itemName))
+        queryItems.add(URLQueryItem(name: Constants.TrackConversion.item, value: itemName))
     }
 
     func set(autocompleteSection: String?) {
         guard let sectionName = autocompleteSection else { return }
-        queryItems.append(URLQueryItem(name: Constants.TrackAutocomplete.autocompleteSection, value: sectionName))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocomplete.autocompleteSection, value: sectionName))
     }
 
     func set(revenue: Int?) {
         guard let revenue = revenue else { return }
-        queryItems.append(URLQueryItem(name: Constants.TrackConversion.revenue, value: String(revenue)))
+        queryItems.add(URLQueryItem(name: Constants.TrackConversion.revenue, value: String(revenue)))
     }
 
     override func getURLString() -> String {

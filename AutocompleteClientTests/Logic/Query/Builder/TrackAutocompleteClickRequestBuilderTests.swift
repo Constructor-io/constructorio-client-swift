@@ -28,22 +28,47 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         self.encodedSectionName = sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     }
     
-    func testTrackACClickBuilder_sectionNameSpecified_selectType() {
-        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: sectionName)
-        builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
-        let request = builder.getRequest()
-        let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/select?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&autocomplete_section=\(encodedSectionName)&tr=click&_dt=\(requestDate)&c=\(Constants.versionString())"))
-    }
-    
-    func testTrackACClickBuilder_sectionNameUnspecified_searchType() {
+    private func initializeClickTrackDataRequestWithNoSectionName() -> URLRequest{
         let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
+        return request
+    }
+    
+    private func initializeClickTrackDataRequestWithSectionName() -> URLRequest{
+        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: sectionName)
+        builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        let request = builder.getRequest()
+        return request
+    }
+    
+    // with section name
+    
+    func testTrackACClickBuilder_sectionNameSpecified_selectType() {
+        let request = self.initializeClickTrackDataRequestWithSectionName()
+        let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
+        
+        XCTAssertEqual(request.httpMethod, "GET")
+        XCTAssertTrue(request.url!.absoluteString.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/select?"), "URL base string should contain the encoded clicked item name.")
+        XCTAssertTrue(request.url!.absoluteString.contains("original_query=\(encodedSearchTerm)"), "URL should contain the original query")
+        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section")
+        XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(requestDate)"), "URL should contain the request date")
+        XCTAssertTrue(request.url!.absoluteString.contains("c=\(Constants.versionString())"), "URL should contain the version string")
+        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
+    }
+    
+    // No section name
+    
+    func testTrackACClickBuilder_withNoSectionName_selectType() {
+        let request = self.initializeClickTrackDataRequestWithNoSectionName()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertEqual(request.url, URL(string: "https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/search?autocomplete_key=\(testACKey)&original_query=\(encodedSearchTerm)&tr=click&_dt=\(requestDate)&c=\(Constants.versionString())"))
+        XCTAssertTrue(request.url!.absoluteString.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedClickedItemName)/search?"), "URL base string should contain the encoded clicked item name.")
+        XCTAssertTrue(request.url!.absoluteString.contains("original_query=\(encodedSearchTerm)"), "URL should contain the original query")
+        XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(requestDate)"), "URL should contain the request date")
+        XCTAssertTrue(request.url!.absoluteString.contains("c=\(Constants.versionString())"), "URL should contain the version string")
+        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
+        XCTAssertTrue(request.url!.absoluteString.contains("tr=click"), "URL should contain the track type")
     }
     
     func testTrackACClickBuilder_tappingOnItemWithGroup_SendsGroupNameAsQueryParameter() {

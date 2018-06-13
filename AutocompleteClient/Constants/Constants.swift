@@ -23,7 +23,7 @@ struct Constants {
         static let CellIdentifier = "SearchItemCellID"
         
         static let defaultFontSize: CGFloat = 16
-        static let defaultRowHeight: CGFloat = 44
+        static let defaultRowHeight: CGFloat = 50
         static let defaultSectionHeaderHeight: CGFloat = 44
         static let defaultSearchBarPlaceholder = ""
         static let defaultScreenTitle = ""
@@ -31,15 +31,20 @@ struct Constants {
         static let fadeOutDuration: TimeInterval = 0.4
         static let fireQueryDelayInSeconds: TimeInterval = 0.5
 
+        struct Color {
+            static var defaultFontColorNormal: UIColor = UIColor(red: 0.61, green: 0.61, blue: 0.61, alpha: 1.0)
+            static var defaultFontColorBold: UIColor = UIColor.black
+        }
+        
         struct Font {
             static var defaultFontNormal: UIFont {
                 let fontSize: CGFloat = Constants.UI.defaultFontSize
-                return UIFont.systemFont(ofSize: fontSize)
+                return UIFont(name: "HelveticaNeue", size: fontSize)!
             }
 
             static var defaultFontBold: UIFont {
                 let fontSize: CGFloat = Constants.UI.defaultFontSize
-                return UIFont.boldSystemFont(ofSize: fontSize)
+                return UIFont(name: "HelveticaNeue-Bold", size: fontSize)!
             }
         }
     }

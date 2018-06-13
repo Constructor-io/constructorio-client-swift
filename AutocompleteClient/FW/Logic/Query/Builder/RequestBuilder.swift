@@ -10,7 +10,7 @@ import Foundation
 
 class RequestBuilder {
 
-    var queryItems = [URLQueryItem]()
+    var queryItems = QueryItemCollection()
 
     init(autocompleteKey: String) {
         set(autocompleteKey: autocompleteKey)
@@ -18,15 +18,15 @@ class RequestBuilder {
 
     // There is no need to encode query parameters. Not sure about those in the URL path string.
     func set(autocompleteKey: String) {
-        queryItems.append(URLQueryItem(name: Constants.Query.autocompleteKey, value: autocompleteKey))
+        queryItems.add(URLQueryItem(name: Constants.Query.autocompleteKey, value: autocompleteKey))
     }
     
     func set(clientID: String){
-        queryItems.append(URLQueryItem(name: "i", value: clientID))
+        queryItems.add(URLQueryItem(name: "i", value: clientID))
     }
     
     func set(session: Int){
-        queryItems.append(URLQueryItem(name: "s", value: String(session)))
+        queryItems.add(URLQueryItem(name: "s", value: String(session)))
     }
 
     func getURLString() -> String {
@@ -51,9 +51,9 @@ class RequestBuilder {
         var allQueryItems = self.queryItems
         
         let versionString = Constants.versionString()
-        allQueryItems.append(URLQueryItem(name: "c", value: versionString))
+        allQueryItems.add(URLQueryItem(name: "c", value: versionString))
         
-        urlComponents.queryItems = allQueryItems
+        urlComponents.queryItems = allQueryItems.all()
 
         let url = urlComponents.url!
         var request = URLRequest(url: url)
