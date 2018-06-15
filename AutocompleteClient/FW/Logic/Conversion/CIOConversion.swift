@@ -25,8 +25,8 @@ public class CIOConversion: NSObject {
     ///   - itemID: ID of an item.
     ///   - revenue: Revenue of an item.
     ///   - completionHandler: The callback to execute on completion.
-    func trackConversion(itemID: String, revenue: Int?, completionHandler: TrackingCompletionHandler? = nil){
-        let trackData = CIOConversionTrackData(searchTerm: "TERM_UNKNOWN", itemName: nil, sectionName: nil, revenue: revenue)
+    public func trackConversion(itemID: String, revenue: Int?, completionHandler: TrackingCompletionHandler? = nil){
+        let trackData = CIOConversionTrackData(searchTerm: "TERM_UNKNOWN", itemName: nil, itemID: itemID, sectionName: nil, revenue: revenue)
         self.tracker?.trackConversion(for: trackData, completionHandler: completionHandler)
     }
     

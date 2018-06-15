@@ -30,7 +30,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
     /**
      Conversion property. It simplifies tracking conversions. To fully customize the data that's being sent, use ConstructorIO's CIOTracker protocol functions.
      */
-    private(set) var conversion: CIOConversion!
+    public private(set) var conversion: CIOConversion!
     
     public init(autocompleteKey: String, clientID: String?) {
         self.autocompleteKey = autocompleteKey
