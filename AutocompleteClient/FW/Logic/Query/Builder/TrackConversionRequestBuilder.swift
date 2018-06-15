@@ -15,7 +15,6 @@ class TrackConversionRequestBuilder: RequestBuilder {
     init(tracker: CIOConversionTrackData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
         set(searchTerm: tracker.searchTerm)
-        set(itemName: tracker.itemName)
         set(itemID: tracker.itemID)
         set(autocompleteSection: tracker.sectionName)
         set(revenue: tracker.revenue)
