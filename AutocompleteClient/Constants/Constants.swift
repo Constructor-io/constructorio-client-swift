@@ -95,6 +95,7 @@ struct Constants {
         static let baseURLString = "https://ac.cnstrc.com"
         static let trackStringFormat = "%@/%@/%@/%@"
         static let expectedStatusCode = 204
+        static let dateTime = "_dt"
     }
 
     struct TrackAutocomplete {
@@ -114,7 +115,6 @@ struct Constants {
         static let trigger = "tr"
         static let triggerType = "click"
         static let originalQuery = "original_query"
-        static let dateTime = "_dt"
         static let groupName = "group[group_name]"
         static let groupID = "group[group_id]"
     }
