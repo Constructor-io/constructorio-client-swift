@@ -59,7 +59,7 @@ struct CIOResponseParser: AbstractResponseParser {
         return jsonObjects.flatMap { CIOAutocompleteResult(json: $0) }
                         .enumerated()
                         .reduce([CIOResult](), { (arr, enumeratedAutocompleteResult) in
-                         
+                            
                             let autocompleteResult = enumeratedAutocompleteResult.element
                             let index = enumeratedAutocompleteResult.offset
                             
@@ -80,7 +80,13 @@ struct CIOResponseParser: AbstractResponseParser {
                             }
                             
                             if let groups = autocompleteResult.groups{
-                                for group in groups{
+                                let maximumNumberOfGroupItems = self.maximumNumberOfResultsForItem(result: autocompleteResult, at: index)
+                                
+                                groupLoop: for group in groups{
+                                    if itemsInGroups.count >= maximumNumberOfGroupItems{
+                                        break groupLoop
+                                    }
+                                    
                                     if let shouldParseResultInGroup = self.delegateFilter(autocompleteResult, group){
                                         if shouldParseResultInGroup{
                                             // method implemented by the delegate and returns true
@@ -88,10 +94,8 @@ struct CIOResponseParser: AbstractResponseParser {
                                         }
                                     }else{
                                         // method not implemeneted by the delegate
-                                        // we parse only the groups for the first item
-                                        if index == 0{
-                                            parseItemHandler(group)
-                                        }
+                                        // we parse the result by default
+                                        parseItemHandler(group)
                                     }
                                 }
                             }
@@ -100,6 +104,9 @@ struct CIOResponseParser: AbstractResponseParser {
                         })
     }
     
+    fileprivate func maximumNumberOfResultsForItem(result: CIOAutocompleteResult, at index: Int) -> Int{
+        return self.delegate?.maximumNumberOfResultsForItem(result: result, at: index) ?? Int.max
+    }
     
     fileprivate func delegateFilter(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool?{
         return self.delegate?.shouldParseResult(result: result, inGroup: group)

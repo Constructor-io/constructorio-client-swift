@@ -11,4 +11,5 @@ import Foundation
 public protocol ResponseParserDelegate: class{
     func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool?
     func shouldParseResults(inSectionWithName name: String) -> Bool?
+    func maximumNumberOfResultsForItem(result: CIOAutocompleteResult, at index: Int) -> Int
 }

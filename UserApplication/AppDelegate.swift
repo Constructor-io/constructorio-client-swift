@@ -209,6 +209,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         }
     }
 
+//    func autocompleteController(controller: CIOAutocompleteViewController, maximumNumberOfGroupsForItem item: CIOAutocompleteResult, itemIndex: Int) -> Int{
+//        return 3
+//    }
+    
     func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String) {
         print("Search performed for term \(searchTerm)")
     }
