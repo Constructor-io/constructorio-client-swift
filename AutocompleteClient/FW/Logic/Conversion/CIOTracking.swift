@@ -1,5 +1,5 @@
 //
-//  CIOConversion.swift
+//  CIOTracking.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,9 +9,9 @@
 import UIKit
 
 /**
- Conversion tracking class. Tracking functions are implemented in the ConstructorIO class but they require specifying exactly what data is being sent. CIOConversion uses default values for most parameters except ones that need to be specified by the user (convention over configuration).
+ Tracking class. Tracking functions are implemented in the ConstructorIO class but they require specifying exactly what data is being sent. CIOTracking uses default values for most parameters except ones that need to be specified by the user (convention over configuration).
  */
-public class CIOConversion: NSObject {
+public class CIOTracking: NSObject {
 
     private weak var tracker: CIOTracker?
     

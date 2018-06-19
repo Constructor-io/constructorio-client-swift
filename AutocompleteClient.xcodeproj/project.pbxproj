@@ -113,7 +113,7 @@
 		F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */; };
 		F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */; };
 		F6B0214320C5107400968A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6B0214220C5107400968A98 /* Assets.xcassets */; };
-		F6B0216920D28FB300968A98 /* CIOConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B0216820D28FB300968A98 /* CIOConversion.swift */; };
+		F6B0216920D28FB300968A98 /* CIOTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B0216820D28FB300968A98 /* CIOTracking.swift */; };
 		F6B0216B20D296D200968A98 /* CIOTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B0216A20D296D200968A98 /* CIOTracker.swift */; };
 		F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B220EA209C68F8003A5D48 /* CustomSearchBar.swift */; };
 		F6B220ED209C692D003A5D48 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B220EC209C692D003A5D48 /* CustomSearchController.swift */; };
@@ -265,7 +265,7 @@
 		F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOPrintLogger.swift; sourceTree = "<group>"; };
 		F6A37CB4209378C900F82A55 /* CIOSearchBarDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchBarDisplayMode.swift; sourceTree = "<group>"; };
 		F6B0214220C5107400968A98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F6B0216820D28FB300968A98 /* CIOConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOConversion.swift; sourceTree = "<group>"; };
+		F6B0216820D28FB300968A98 /* CIOTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTracking.swift; sourceTree = "<group>"; };
 		F6B0216A20D296D200968A98 /* CIOTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTracker.swift; sourceTree = "<group>"; };
 		F6B220EA209C68F8003A5D48 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		F6B220EC209C692D003A5D48 /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
@@ -992,7 +992,7 @@
 		F6B0216720D28FA500968A98 /* Conversion */ = {
 			isa = PBXGroup;
 			children = (
-				F6B0216820D28FB300968A98 /* CIOConversion.swift */,
+				F6B0216820D28FB300968A98 /* CIOTracking.swift */,
 				F6B0216A20D296D200968A98 /* CIOTracker.swift */,
 			);
 			path = Conversion;
@@ -1355,7 +1355,7 @@
 				F63808F41F5D47BB00C3B322 /* NetworkClient.swift in Sources */,
 				F63809091F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift in Sources */,
 				F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */,
-				F6B0216920D28FB300968A98 /* CIOConversion.swift in Sources */,
+				F6B0216920D28FB300968A98 /* CIOTracking.swift in Sources */,
 				F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */,
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,

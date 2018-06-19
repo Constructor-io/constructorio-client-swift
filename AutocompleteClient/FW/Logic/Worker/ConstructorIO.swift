@@ -28,15 +28,15 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
     let clientID: String?
     
     /**
-     Conversion property. It simplifies tracking conversions. To fully customize the data that's being sent, use ConstructorIO's CIOTracker protocol functions.
+     Tracking property that simplifies tracking events. To fully customize the data that's being sent, use ConstructorIO's CIOTracker protocol functions.
      */
-    public private(set) var conversion: CIOConversion!
+    public private(set) var tracking: CIOTracking!
     
     public init(autocompleteKey: String, clientID: String?) {
         self.autocompleteKey = autocompleteKey
         self.clientID = clientID
         
-        self.conversion = CIOConversion(tracker: self)
+        self.tracking = CIOTracking(tracker: self)
     }
 
     /// Get autocomplete suggestions for a query.
