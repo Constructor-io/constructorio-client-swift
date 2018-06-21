@@ -123,32 +123,6 @@ class ResultParserTests: XCTestCase {
         }
     }
     
-    func test_ParsingValidJSONReturnsGroupResultsOnlyForFirstItem_IfDelegateMethodNotImplemented(){
-        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
-        
-        // create mock delegate
-        let del = MockResponseParserDelegate()
-        del.shouldParseResultInGroup = nil
-        responseParser.delegate = del
-        
-        do {
-            let response = try responseParser.parse(autocompleteResponseData: data)
-            let searchSuggestions = response.getSearchSuggestions()!
-            
-            let firstItemResult = searchSuggestions.first!.autocompleteResult
-            
-            let resultsContainingFirstItem = searchSuggestions.filter({ item in item.autocompleteResult == firstItemResult })
-            XCTAssertGreaterThan(resultsContainingFirstItem.count, 1, "There should be more than one result returned for the first item.")
-            
-            let resultsContainingNonNilGroupResults = searchSuggestions.filter({ item in item.autocompleteResult != firstItemResult })
-                                                                       .filter{ $0.group != nil }
-            
-            XCTAssertEqual(resultsContainingNonNilGroupResults.count, 0, "There should be no items with non nil group past the first item parsed.")
-        } catch {
-            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
-        }
-    }
-    
     func test_ParsingValidJSONReturnsGroupResultsForMultipleItems_IfDelegateMethodReturnsTrue(){
         let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
