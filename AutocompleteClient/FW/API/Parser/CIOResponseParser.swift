@@ -67,7 +67,7 @@ struct CIOResponseParser: AbstractResponseParser {
                             
                             // If the base result is filtered out, we don't show
                             // the group search options.
-                            if let shouldParseResult = self.delegateFilter(autocompleteResult, nil), shouldParseResult == false{
+                            if let shouldParseResult = self.delegateShouldParseResult(autocompleteResult, nil), shouldParseResult == false{
                                 return []
                             }
                             
@@ -80,14 +80,14 @@ struct CIOResponseParser: AbstractResponseParser {
                             }
                             
                             if let groups = autocompleteResult.groups{
-                                let maximumNumberOfGroupItems = self.maximumNumberOfResultsForItem(result: autocompleteResult, at: index)
+                                let maximumNumberOfGroupItems = self.delegateMaximumGroupsShownPerResult(result: autocompleteResult, at: index)
                                 
                                 groupLoop: for group in groups{
                                     if itemsInGroups.count >= maximumNumberOfGroupItems{
                                         break groupLoop
                                     }
                                     
-                                    if let shouldParseResultInGroup = self.delegateFilter(autocompleteResult, group){
+                                    if let shouldParseResultInGroup = self.delegateShouldParseResult(autocompleteResult, group){
                                         if shouldParseResultInGroup{
                                             // method implemented by the delegate and returns true
                                             parseItemHandler(group)
@@ -104,11 +104,11 @@ struct CIOResponseParser: AbstractResponseParser {
                         })
     }
     
-    fileprivate func maximumNumberOfResultsForItem(result: CIOAutocompleteResult, at index: Int) -> Int{
+    fileprivate func delegateMaximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int{
         return self.delegate?.maximumGroupsShownPerResult(result: result, at: index) ?? Int.max
     }
     
-    fileprivate func delegateFilter(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool?{
+    fileprivate func delegateShouldParseResult(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool?{
         return self.delegate?.shouldParseResult(result: result, inGroup: group)
     }
 }
