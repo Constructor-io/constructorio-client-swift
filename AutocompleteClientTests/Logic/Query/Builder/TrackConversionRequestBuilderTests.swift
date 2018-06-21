@@ -41,13 +41,12 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withItemName() {
-        let tracker = CIOConversionTrackData(searchTerm: searchTerm, itemName: itemName)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
         XCTAssertTrue(request.url!.absoluteString.contains("c=cioios-"), "URL should contain the version string.")
-        XCTAssertTrue(request.url!.absoluteString.contains("item=\(encodedItemName)"), "URL should contain the item name.")
     }
 
     func testTrackConversionBuilder_withSectionName() {
@@ -72,13 +71,12 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_AllFields() {
-        let tracker = CIOConversionTrackData(searchTerm: searchTerm, itemName: itemName, sectionName: sectionName, revenue: revenue)
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm, sectionName: sectionName, revenue: revenue)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(request.url!.absoluteString.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
         XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
-        XCTAssertTrue(request.url!.absoluteString.contains("item=\(encodedItemName)"), "URL should contain the item name.")
         XCTAssertTrue(request.url!.absoluteString.contains("revenue=\(revenue)"), "URL should contain the revenue parameter.")
         XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
         XCTAssertTrue(request.url!.absoluteString.contains("c=cioios-"), "URL should contain the version string.")
