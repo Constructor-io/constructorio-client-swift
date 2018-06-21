@@ -445,7 +445,7 @@ extension CIOAutocompleteViewController: ResponseParserDelegate {
         return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name) ?? name.isSearchSuggestionString()
     }
     
-    public func maximumNumberOfResultsForItem(result: CIOAutocompleteResult, at index: Int) -> Int{
-        return self.delegate?.autocompleteController?(controller: self, maximumNumberOfGroupsForItem: result, itemIndex: index) ?? (index == 0 ? 2 : 0)
+    public func maximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int {
+        return self.delegate?.autocompleteController?(controller: self, maximumGroupsShownPerResult: result, itemIndex: index) ?? (index == 0 ? 2 : 0)
     }
 }

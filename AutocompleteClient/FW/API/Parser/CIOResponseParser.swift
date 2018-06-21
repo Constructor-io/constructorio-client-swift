@@ -105,7 +105,7 @@ struct CIOResponseParser: AbstractResponseParser {
     }
     
     fileprivate func maximumNumberOfResultsForItem(result: CIOAutocompleteResult, at index: Int) -> Int{
-        return self.delegate?.maximumNumberOfResultsForItem(result: result, at: index) ?? Int.max
+        return self.delegate?.maximumGroupsShownPerResult(result: result, at: index) ?? Int.max
     }
     
     fileprivate func delegateFilter(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool?{

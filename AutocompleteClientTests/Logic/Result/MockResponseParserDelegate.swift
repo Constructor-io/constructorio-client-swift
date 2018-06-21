@@ -22,7 +22,8 @@ class MockResponseParserDelegate: NSObject, ResponseParserDelegate {
         return self.shouldParseResultsInSection?(name)
     }
     
-    func maximumNumberOfResultsForItem(result: CIOAutocompleteResult, at index: Int) -> Int {
+    func maximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int {
         return 1
     }
+
 }

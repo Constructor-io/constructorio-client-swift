@@ -70,7 +70,7 @@ public protocol CIOAutocompleteDelegate: class{
      - parameter itemIndex: Index of an item being displayed.
      */
     @objc
-    optional func autocompleteController(controller: CIOAutocompleteViewController, maximumNumberOfGroupsForItem item: CIOAutocompleteResult, itemIndex: Int) -> Int
+    optional func autocompleteController(controller: CIOAutocompleteViewController, maximumGroupsShownPerResult result: CIOAutocompleteResult, itemIndex: Int) -> Int
     
     /**
      Called if an error occurs.
