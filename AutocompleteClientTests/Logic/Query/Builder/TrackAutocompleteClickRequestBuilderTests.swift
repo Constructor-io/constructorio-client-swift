@@ -21,16 +21,24 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     fileprivate var encodedSectionName: String = ""
     fileprivate var builder: TrackAutocompleteClickRequestBuilder!
     
+    var dateProvider: DateProvider!
+    let fixedDate: Date = Date()
+    
     override func setUp() {
         super.setUp()
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedClickedItemName = clickedItemName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.encodedSectionName = sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        self.dateProvider = ClosureDateProvider(provideDateClosure: { () -> Date in
+            return self.fixedDate
+        })
     }
     
     private func initializeClickTrackDataRequestWithNoSectionName() -> URLRequest{
         let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        builder.dateProvider = self.dateProvider
         let request = builder.getRequest()
         return request
     }
@@ -38,6 +46,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     private func initializeClickTrackDataRequestWithSectionName() -> URLRequest{
         let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: sectionName)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        builder.dateProvider = self.dateProvider
         let request = builder.getRequest()
         return request
     }
@@ -69,6 +78,12 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         XCTAssertTrue(request.url!.absoluteString.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
         XCTAssertTrue(request.url!.absoluteString.contains("tr=click"), "URL should contain the track type")
+    }
+    
+    func testTrackACClickBuilder_containsDateInMiliseconds(){
+        let request = self.initializeClickTrackDataRequestWithNoSectionName()
+        let timeInMiliseconds = Int(self.fixedDate.timeIntervalSince1970 * 1000)
+        XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(timeInMiliseconds)"), "URL should contain the request date in miliseconds")
     }
     
     func testTrackACClickBuilder_tappingOnItemWithGroup_SendsGroupNameAsQueryParameter() {

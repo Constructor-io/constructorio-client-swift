@@ -57,15 +57,10 @@ class TrackAutocompleteClickRequestBuilder: RequestBuilder {
 
     override func addAdditionalQueryItems() {
         addTriggerQueryItem()
-        addDateQueryItem()
     }
 
     private func addTriggerQueryItem() {
         queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.trigger, value: Constants.TrackAutocompleteResultClicked.triggerType))
-    }
-
-    private func addDateQueryItem() {
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.dateTime, value: String(Date().millisecondsSince1970)))
     }
 
 }
