@@ -204,7 +204,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         
         if let navigationController = self.window?.rootViewController as? UINavigationController{
             let detailsVC = DetailsViewController()
-            detailsVC.itemName = result.autocompleteResult.value
+            detailsVC.result = result
+            detailsVC.constructorIO = controller.constructorIO
             navigationController.pushViewController(detailsVC, animated: true)
         }
     }
