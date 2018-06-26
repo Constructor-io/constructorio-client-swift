@@ -24,9 +24,10 @@ public class CIOTracking: NSObject {
     /// - Parameters:
     ///   - itemID: ID of an item.
     ///   - revenue: Revenue of an item.
+    ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
     ///   - completionHandler: The callback to execute on completion.
-    public func trackConversion(itemID: String, revenue: Int?, completionHandler: TrackingCompletionHandler? = nil){
-        let trackData = CIOConversionTrackData(searchTerm: "TERM_UNKNOWN", itemID: itemID, sectionName: nil, revenue: revenue)
+    public func trackConversion(itemID: String, revenue: Int?, searchTerm: String?, completionHandler: TrackingCompletionHandler? = nil){
+        let trackData = CIOConversionTrackData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemID: itemID, sectionName: nil, revenue: revenue)
         self.tracker?.trackConversion(for: trackData, completionHandler: completionHandler)
     }
     
