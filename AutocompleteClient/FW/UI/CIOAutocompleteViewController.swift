@@ -233,6 +233,11 @@ public class CIOAutocompleteViewController: UIViewController {
         }
         
         self.viewModel.set(searchResult: autocompleteResult) { [weak self] in
+            if let searchTerm = self?.viewModel.searchTerm,
+                let resultCount = self?.viewModel.results.reduce(0, { (res, nextSection) -> Int in return res + nextSection.items.count }){
+                self?.constructorIO.tracking.trackResultsLoaded(searchTerm: searchTerm, resultCount: resultCount)
+            }
+            
             self?.tableView.reloadData()
         }
     }

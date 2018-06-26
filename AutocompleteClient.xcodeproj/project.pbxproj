@@ -127,6 +127,8 @@
 		F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B462811F6BACE80082C20B /* ResponseParserDelegate.swift */; };
 		F6D2E9C120DBDCCA007F8761 /* response_json_single_result.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D2E9C020DBDCCA007F8761 /* response_json_single_result.json */; };
 		F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */; };
+		F6D2E9CC20E21022007F8761 /* CIOSearchResultsLoadedTrackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CB20E21022007F8761 /* CIOSearchResultsLoadedTrackData.swift */; };
+		F6D2E9CE20E210BD007F8761 /* TrackResultsLoadedRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CD20E210BD007F8761 /* TrackResultsLoadedRequestBuilder.swift */; };
 		F6DF7B9220849C4300A7CDAD /* TrackSearchRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9120849C4300A7CDAD /* TrackSearchRequestBuilder.swift */; };
 		F6DF7B9420849E8D00A7CDAD /* CIOSearchTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9320849E8D00A7CDAD /* CIOSearchTrack.swift */; };
 /* End PBXBuildFile section */
@@ -281,6 +283,8 @@
 		F6B462811F6BACE80082C20B /* ResponseParserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F6D2E9C020DBDCCA007F8761 /* response_json_single_result.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_json_single_result.json; sourceTree = "<group>"; };
 		F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ToJSON.swift"; sourceTree = "<group>"; };
+		F6D2E9CB20E21022007F8761 /* CIOSearchResultsLoadedTrackData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchResultsLoadedTrackData.swift; sourceTree = "<group>"; };
+		F6D2E9CD20E210BD007F8761 /* TrackResultsLoadedRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackResultsLoadedRequestBuilder.swift; sourceTree = "<group>"; };
 		F6DF7B9120849C4300A7CDAD /* TrackSearchRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchRequestBuilder.swift; sourceTree = "<group>"; };
 		F6DF7B9320849E8D00A7CDAD /* CIOSearchTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchTrack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -358,6 +362,7 @@
 				F19E28A21F5F220B0022C814 /* CIOAutocompleteClickTrackData.swift */,
 				F19E28A61F5F44C30022C814 /* CIOConversionTrackData.swift */,
 				F6DF7B9320849E8D00A7CDAD /* CIOSearchTrack.swift */,
+				F6D2E9CB20E21022007F8761 /* CIOSearchResultsLoadedTrackData.swift */,
 			);
 			path = Track;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				F19E28A41F5F42830022C814 /* TrackConversionRequestBuilder.swift */,
 				F6DF7B9120849C4300A7CDAD /* TrackSearchRequestBuilder.swift */,
 				F67BFC9620B84C2600986557 /* QueryItemCollection.swift */,
+				F6D2E9CD20E210BD007F8761 /* TrackResultsLoadedRequestBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -1344,6 +1350,7 @@
 				F19E28A31F5F220B0022C814 /* CIOAutocompleteClickTrackData.swift in Sources */,
 				F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */,
 				F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift in Sources */,
+				F6D2E9CC20E21022007F8761 /* CIOSearchResultsLoadedTrackData.swift in Sources */,
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,
 				F60BEA1A1F571956008F0053 /* CIOAutocompleteDelegate.swift in Sources */,
 				F19E289D1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift in Sources */,
@@ -1357,6 +1364,7 @@
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
 				F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */,
 				F62510CE20568BB50040E3DF /* CurrentTimeDateProvider.swift in Sources */,
+				F6D2E9CE20E210BD007F8761 /* TrackResultsLoadedRequestBuilder.swift in Sources */,
 				F1F68DD41F58B59F00B42602 /* CIOQuery.swift in Sources */,
 				F63808F81F5D497200C3B322 /* NetworkResponse.swift in Sources */,
 				F699C3471F57ED4200FD681A /* CIOAutocompleteDataSource.swift in Sources */,

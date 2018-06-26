@@ -49,7 +49,17 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
         execute(request, completionHandler: completionHandler)
 
     }
-
+    
+    /// Track search results loaded.
+    ///
+    /// - Parameters:
+    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackSearchResultsLoaded(for tracker: CIOSearchResultsLoadedTrackData, completionHandler: TrackingCompletionHandler? = nil) {
+        let request = buildRequest(fromTracker: tracker)
+        execute(request, completionHandler: completionHandler)
+    }
+    
     /// Track a user click on any autocomplete result item.
     ///
     /// - Parameters:
@@ -78,6 +88,12 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
     public func trackSearch(for tracker: CIOSearchTrackData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
+    }
+    
+    private func buildRequest(fromTracker tracker: CIOSearchResultsLoadedTrackData) -> URLRequest{
+        let requestBuilder = TrackResultsLoadedRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+        return requestBuilder.getRequest()
     }
     
     private func buildRequest(fromTracker tracker: CIOSearchTrackData) -> URLRequest{

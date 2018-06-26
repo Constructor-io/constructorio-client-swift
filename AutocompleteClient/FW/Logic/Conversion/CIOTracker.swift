@@ -15,4 +15,6 @@ public protocol CIOTracker: class{
     func trackConversion(for tracker: CIOConversionTrackData, completionHandler: TrackingCompletionHandler?)
     
     func trackSearch(for tracker: CIOSearchTrackData, completionHandler: TrackingCompletionHandler?)
+    
+    func trackSearchResultsLoaded(for tracker: CIOSearchResultsLoadedTrackData, completionHandler: TrackingCompletionHandler?)
 }

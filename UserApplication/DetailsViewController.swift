@@ -57,5 +57,5 @@ class DetailsViewController: UIViewController {
         let revenue: Int = Int(arc4random() % 1000)
         self.constructorIO.tracking.trackConversion(itemID: self.result.autocompleteResult.id, revenue: revenue)
     }
-
+    
 }
