@@ -80,6 +80,17 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
         execute(request, completionHandler: completionHandler)
     }
 
+    /// Track a conversion.
+    ///
+    /// - Parameters:
+    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackInputFocus(for tracker: CIOInputFocusTrackData, completionHandler: TrackingCompletionHandler? = nil) {
+        let request = buildRequest(fromTracker: tracker)
+        execute(request, completionHandler: completionHandler)
+    }
+
+    
     /// Track a search event when the user taps on Search button on keyboard or when an item in the list is tapped on.
     ///
     /// - Parameters:
@@ -88,6 +99,12 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
     public func trackSearch(for tracker: CIOSearchTrackData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
+    }
+    
+    private func buildRequest(fromTracker tracker: CIOInputFocusTrackData) -> URLRequest{
+        let requestBuilder = InputFocusRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+        return requestBuilder.getRequest()
     }
     
     private func buildRequest(fromTracker tracker: CIOSearchResultsLoadedTrackData) -> URLRequest{

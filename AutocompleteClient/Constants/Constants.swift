@@ -104,7 +104,8 @@ struct Constants {
         static let autocompleteSection = "autocomplete_section"
         static let searchTerm = "term"
         static let action = "action"
-        static let searchResults = "search-results"
+        static let actionSearchResults = "search-results"
+        static let actionFocus = "focus"
     }
 
     struct TrackSearch{

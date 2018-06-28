@@ -415,7 +415,12 @@ extension CIOAutocompleteViewController: UISearchBarDelegate {
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         // Track search
         let searchTrackData = CIOSearchTrackData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
-        constructorIO.trackSearch(for: searchTrackData)
+        self.constructorIO.trackSearch(for: searchTrackData)
+    }
+    
+    public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        self.constructorIO.trackInputFocus(for: CIOInputFocusTrackData(searchTerm: searchBar.text))
+        return true
     }
 }
 
