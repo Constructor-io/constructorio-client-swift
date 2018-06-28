@@ -1,5 +1,5 @@
 //
-//  InputFocusRequestBuilder.swift
+//  SessionStartRequestBuilder.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,16 +8,11 @@
 
 import UIKit
 
-class InputFocusRequestBuilder: RequestBuilder {
+class SessionStartRequestBuilder: RequestBuilder {
 
-    init(tracker: CIOInputFocusTrackData, autocompleteKey: String) {
+    init(autocompleteKey: String){
         super.init(autocompleteKey: autocompleteKey)
-        
-        if let term = tracker.searchTerm{
-            self.set(searchTerm: term)
-        }
-        
-        self.set(action: Constants.TrackAutocomplete.actionFocus)
+        self.set(action: Constants.TrackAutocomplete.actionSessionStart)
     }
     
     override func getURLString() -> String {

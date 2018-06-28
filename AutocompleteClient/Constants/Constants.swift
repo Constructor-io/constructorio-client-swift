@@ -106,6 +106,7 @@ struct Constants {
         static let action = "action"
         static let actionSearchResults = "search-results"
         static let actionFocus = "focus"
+        static let actionSessionStart = "session_start"
     }
 
     struct TrackSearch{
