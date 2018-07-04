@@ -10,6 +10,7 @@ import Foundation
 
 struct TestResource {
     struct Response {
+        static let singleResultJSONFilename = "response_json_single_result"
         static let singleSectionJSONFilename = "response_json_single_section"
         static let multipleSectionsJSONFilename = "response_json_multiple_sections"
         static let numberOfSectionsInMultipleSectionsResponse = 2

@@ -14,7 +14,7 @@ public typealias TrackingCompletionHandler = (Error?) -> Void
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
  */
-public class ConstructorIO: AbstractConstructorDataSource {
+public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
 
     public let autocompleteKey: String
 
@@ -36,10 +36,17 @@ public class ConstructorIO: AbstractConstructorDataSource {
             self.userDefinedItemSectionName = newValue
         }
     }
+
+    /**
+     Tracking property that simplifies tracking events. To fully customize the data that's being sent, use ConstructorIO's CIOTracker protocol functions.
+     */
+    public private(set) var tracking: CIOTracking!
     
     public init(autocompleteKey: String, clientID: String?) {
         self.autocompleteKey = autocompleteKey
         self.clientID = clientID
+        
+        self.tracking = CIOTracking(tracker: self)
     }
 
     /// Get autocomplete suggestions for a query.

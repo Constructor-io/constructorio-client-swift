@@ -204,11 +204,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         
         if let navigationController = self.window?.rootViewController as? UINavigationController{
             let detailsVC = DetailsViewController()
-            detailsVC.itemName = result.autocompleteResult.value
+            detailsVC.result = result
+            detailsVC.constructorIO = controller.constructorIO
             navigationController.pushViewController(detailsVC, animated: true)
         }
     }
 
+//    func autocompleteController(controller: CIOAutocompleteViewController, maximumNumberOfGroupsForItem item: CIOAutocompleteResult, itemIndex: Int) -> Int{
+//        return 3
+//    }
+    
     func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String) {
         print("Search performed for term \(searchTerm)")
     }

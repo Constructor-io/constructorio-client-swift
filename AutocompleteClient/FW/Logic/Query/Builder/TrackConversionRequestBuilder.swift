@@ -15,7 +15,7 @@ class TrackConversionRequestBuilder: RequestBuilder {
     init(tracker: CIOConversionTrackData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
         set(searchTerm: tracker.searchTerm)
-        set(itemName: tracker.itemName)
+        set(itemID: tracker.itemID)
         set(autocompleteSection: tracker.sectionName)
         set(revenue: tracker.revenue)
     }
@@ -24,6 +24,11 @@ class TrackConversionRequestBuilder: RequestBuilder {
         self.searchTerm = searchTerm
     }
 
+    func set(itemID: String?) {
+        guard let itemID = itemID else { return }
+        queryItems.add(URLQueryItem(name: Constants.TrackConversion.itemId, value: itemID))
+    }
+    
     func set(itemName: String?) {
         guard let itemName = itemName else { return }
         queryItems.add(URLQueryItem(name: Constants.TrackConversion.item, value: itemName))

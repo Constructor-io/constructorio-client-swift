@@ -14,13 +14,13 @@ import Foundation
 public struct CIOConversionTrackData: HasSectionName {
 
     public let searchTerm: String
-    public let itemName: String?
+    public let itemID: String?
     public var sectionName: String?
     public let revenue: Int?
 
-    public init(searchTerm: String, itemName: String? = nil, sectionName: String? = nil, revenue: Int? = nil) {
+    public init(searchTerm: String, itemID: String? = nil, sectionName: String? = nil, revenue: Int? = nil) {
         self.searchTerm = searchTerm
-        self.itemName = itemName
+        self.itemID = itemID
         self.sectionName = sectionName
         self.revenue = revenue
     }
