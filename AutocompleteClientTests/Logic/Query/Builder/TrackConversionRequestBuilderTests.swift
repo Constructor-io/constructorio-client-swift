@@ -82,6 +82,14 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(requestDate)"), "URL should contain the request date")
     }
 
+    func testTrackConversionBuilder_withNoSectionSpecified_hasNoSectionName() {
+        let tracker = CIOConversionTrackData(searchTerm: searchTerm)
+        builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        let request = builder.getRequest()
+        
+        XCTAssertTrue(!request.url!.absoluteString.contains("\(Constants.TrackAutocomplete.autocompleteSection)="), "URL shouldn't contain the default autocomplete section if the section name is not passed.")
+    }
+    
     func testTrackConversionBuilder_AllFields() {
         let tracker = CIOConversionTrackData(searchTerm: searchTerm, sectionName: sectionName, revenue: revenue)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)

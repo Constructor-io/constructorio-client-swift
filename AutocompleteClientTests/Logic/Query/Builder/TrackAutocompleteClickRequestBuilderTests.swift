@@ -68,6 +68,11 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     
     // No section name
     
+    func testTrackACClickBuilder_withNoSectionName_hasNoSectionName() {
+        let request = self.initializeClickTrackDataRequestWithNoSectionName()
+                XCTAssertTrue(!request.url!.absoluteString.contains("\(Constants.TrackAutocomplete.autocompleteSection)="), "URL shouldn't contain autocomplete section if the section name is not passed.")
+    }
+    
     func testTrackACClickBuilder_withNoSectionName_selectType() {
         let request = self.initializeClickTrackDataRequestWithNoSectionName()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
