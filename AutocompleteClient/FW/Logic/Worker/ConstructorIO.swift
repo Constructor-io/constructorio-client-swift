@@ -91,7 +91,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
     }
     
     private func buildRequest(fromTracker tracker: CIOSearchResultsLoadedTrackData) -> URLRequest{
-        let requestBuilder = TrackResultsLoadedRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackSearchResultsLoadedRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }

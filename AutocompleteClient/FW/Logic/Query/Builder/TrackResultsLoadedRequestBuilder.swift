@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrackResultsLoadedRequestBuilder: RequestBuilder {
+class TrackSearchResultsLoadedRequestBuilder: RequestBuilder {
 
     init(tracker: CIOSearchResultsLoadedTrackData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
