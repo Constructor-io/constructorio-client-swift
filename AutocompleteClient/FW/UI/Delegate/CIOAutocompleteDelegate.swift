@@ -73,6 +73,16 @@ public protocol CIOAutocompleteDelegate: class{
     optional func autocompleteController(controller: CIOAutocompleteViewController, maximumGroupsShownPerResult result: CIOAutocompleteResult, itemIndex: Int) -> Int
     
     /**
+     Called when a results have been loaded.
+     
+     - parameter controller: A CIOAutocompleteViewController in which the selection occurred.
+     - parameter results: Loaded results.
+     - parameter searchTerm: Requested search term.
+     */
+    @objc
+    optional func autocompleteController(controller: CIOAutocompleteViewController, didLoadResults results: [CIOResult], for searchTerm: String)
+    
+    /**
      Called if an error occurs.
      
      - parameter controller: A CIOAutocompleteViewController in which the selection occurred.
