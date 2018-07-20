@@ -198,10 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         }
     }
     
-    func autocompleteController(controller: CIOAutocompleteViewController, didLoadResults results: [CIOResult], for searchTerm: String) {
-        let resultCount = results.count
-        controller.constructorIO.tracking.trackResultsLoaded(searchTerm: searchTerm, resultCount: resultCount)
-    }
+    func autocompleteController(controller: CIOAutocompleteViewController, didLoadResults results: [CIOResult], for searchTerm: String) {}
     
     func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
         print("item selected \(result)")
