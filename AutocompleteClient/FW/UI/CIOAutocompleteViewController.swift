@@ -233,6 +233,10 @@ public class CIOAutocompleteViewController: UIViewController {
         }
         
         self.viewModel.set(searchResult: autocompleteResult) { [weak self] in
+            guard let selfRef = self else { return }
+            if let mainSection = self?.viewModel.results.first{
+                self?.delegate?.autocompleteController?(controller: selfRef, didLoadResults: mainSection.items, for: selfRef.viewModel.searchTerm)
+            }
             self?.tableView.reloadData()
         }
     }

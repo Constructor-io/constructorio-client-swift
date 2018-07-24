@@ -19,10 +19,6 @@ class TrackSearchRequestBuilder: RequestBuilder {
         self.set(originalQuery: trackData.searchTerm)
     }
     
-    func set(originalQuery: String) {
-        queryItems.add(URLQueryItem(name: Constants.TrackSearch.originalQuery, value: originalQuery))
-    }
-    
     override func getURLString() -> String {
         return String(format: Constants.TrackSearch.format, Constants.Track.baseURLString, self.searchItem.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }

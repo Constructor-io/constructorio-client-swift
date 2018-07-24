@@ -19,19 +19,6 @@ class AutocompleteQueryRequestBuilder: QueryRequestBuilder {
             self.set(clientID: cID)
         }
     }
-    
-    func set(numResults: Int?) {
-        guard let numResults = numResults else { return }
-        queryItems.add(URLQueryItem(name: Constants.AutocompleteQuery.numResults, value: String(numResults)))
-    }
-
-    func set(numResultsForSection: [String: Int]?) {
-        guard let numResultsForSection = numResultsForSection else { return }
-        numResultsForSection.forEach {
-            let name = AutocompleteQueryRequestBuilder.queryItemNameForSection(withName: $0.key)
-            queryItems.add(URLQueryItem(name: name, value: String($0.value)))
-        }
-    }
 
     override func getQueryPathString() -> String {
         return Constants.AutocompleteQuery.pathString
@@ -39,5 +26,21 @@ class AutocompleteQueryRequestBuilder: QueryRequestBuilder {
 
     static func queryItemNameForSection(withName name: String) -> String {
         return Constants.AutocompleteQuery.numResultsForSectionNamePrefix + name
+    }
+}
+
+extension RequestBuilder{
+    
+    func set(numResults: Int?) {
+        guard let numResults = numResults else { return }
+        queryItems.add(URLQueryItem(name: Constants.AutocompleteQuery.numResults, value: String(numResults)))
+    }
+    
+    func set(numResultsForSection: [String: Int]?) {
+        guard let numResultsForSection = numResultsForSection else { return }
+        numResultsForSection.forEach {
+            let name = AutocompleteQueryRequestBuilder.queryItemNameForSection(withName: $0.key)
+            queryItems.add(URLQueryItem(name: name, value: String($0.value)))
+        }
     }
 }

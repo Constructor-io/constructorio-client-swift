@@ -11,7 +11,9 @@ import Foundation
 class TrackAutocompleteClickRequestBuilder: RequestBuilder {
 
     private var itemName = ""
-    private var hasSectionName = false
+    private var hasSectionName: Bool{
+        return self.queryItems.all().contains { (item) -> Bool in return item.name == Constants.TrackAutocomplete.autocompleteSection }
+    }
 
     init(tracker: CIOAutocompleteClickTrackData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
@@ -24,27 +26,9 @@ class TrackAutocompleteClickRequestBuilder: RequestBuilder {
         }
         
     }
-
+    
     func set(itemName: String) {
         self.itemName = itemName
-    }
-
-    func set(originalQuery: String) {
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.originalQuery, value: originalQuery))
-    }
-
-    func set(groupName: String){
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupName, value: groupName))
-    }
-    
-    func set(groupID: String){
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupID, value: groupID))
-    }
-    
-    func set(autocompleteSection: String?) {
-        guard let sectionName = autocompleteSection else { return }
-        self.hasSectionName = true
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocomplete.autocompleteSection, value: sectionName))
     }
 
     override func getURLString() -> String {
@@ -62,5 +46,21 @@ class TrackAutocompleteClickRequestBuilder: RequestBuilder {
     private func addTriggerQueryItem() {
         queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.trigger, value: Constants.TrackAutocompleteResultClicked.triggerType))
     }
+}
 
+extension RequestBuilder{
+    
+    func set(originalQuery: String) {
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.originalQuery, value: originalQuery))
+    }
+    
+    func set(groupName: String){
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupName, value: groupName))
+    }
+    
+    func set(groupID: String){
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupID, value: groupID))
+    }
+    
+   
 }

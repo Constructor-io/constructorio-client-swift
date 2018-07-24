@@ -13,6 +13,8 @@ class RequestBuilder {
     var queryItems = QueryItemCollection()
     var dateProvider: DateProvider
     
+    internal(set) var searchTerm = ""
+    
     init(autocompleteKey: String, dateProvider: DateProvider = CurrentTimeDateProvider()) {
         self.dateProvider = dateProvider
         self.set(autocompleteKey: autocompleteKey)
