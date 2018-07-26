@@ -27,6 +27,16 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     
     let clientID: String?
     
+    private var userDefinedItemSectionName: String?
+    var defaultItemSectionName: String{
+        get{
+            return self.userDefinedItemSectionName ?? Constants.Track.defaultTrackingSectionName
+        }
+        set{
+            self.userDefinedItemSectionName = newValue
+        }
+    }
+
     /**
      Tracking property that simplifies tracking events. To fully customize the data that's being sent, use ConstructorIO's CIOTracker protocol functions.
      */
@@ -120,7 +130,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     }
     
     private func buildRequest(fromTracker tracker: CIOSearchResultsLoadedTrackData) -> URLRequest{
-        let requestBuilder = TrackResultsLoadedRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackSearchResultsLoadedRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }
@@ -132,12 +142,18 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     }
     
     private func buildRequest(fromTracker tracker: CIOConversionTrackData) -> URLRequest {
-        let requestBuilder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        var trackData: HasSectionName = tracker
+        self.attachDefaultSectionNameIfNeeded(&trackData)
+        
+        let requestBuilder = TrackConversionRequestBuilder(tracker: trackData as! CIOConversionTrackData, autocompleteKey: self.autocompleteKey)
         return requestBuilder.getRequest()
     }
 
     private func buildRequest(fromTracker tracker: CIOAutocompleteClickTrackData) -> URLRequest {
-        let requestBuilder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        var trackData: HasSectionName = tracker
+        self.attachDefaultSectionNameIfNeeded(&trackData)
+        
+        let requestBuilder = TrackAutocompleteClickRequestBuilder(tracker: trackData as! CIOAutocompleteClickTrackData, autocompleteKey: self.autocompleteKey)
         return requestBuilder.getRequest()
     }
 
@@ -153,6 +169,12 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
             requestBuilder.set(clientID: cID)
         }
         requestBuilder.set(session: self.sessionManager.getSession())
+    }
+    
+    private func attachDefaultSectionNameIfNeeded(_ obj: inout HasSectionName){
+        if obj.sectionName == nil{
+            obj.sectionName = self.defaultItemSectionName
+        }
     }
 
     private func execute(_ request: URLRequest, completionHandler: @escaping QueryCompletionHandler) {

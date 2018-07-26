@@ -96,7 +96,9 @@ struct Constants {
         static let trackStringFormat = "%@/%@/%@/%@"
         static let trackBehaviorStringFormat = "%@/%@"
         static let expectedStatusCode = 204
+        
         static let dateTime = "_dt"
+        static let defaultTrackingSectionName = "Products"
     }
 
     struct TrackAutocomplete {

@@ -1,5 +1,5 @@
 //
-//  CIOConversionTracker.swift
+//  CIOSearchTrackData.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
