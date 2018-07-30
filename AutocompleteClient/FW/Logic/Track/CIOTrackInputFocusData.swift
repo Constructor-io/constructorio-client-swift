@@ -1,5 +1,5 @@
 //
-//  CIOInputFocusTrackData.swift
+//  CIOTrackInputFocusData.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct CIOInputFocusTrackData{
+public struct CIOTrackInputFocusData{
     let searchTerm: String?
     
     init(searchTerm: String?){

@@ -12,7 +12,7 @@ class TrackSearchRequestBuilder: RequestBuilder {
 
     let searchItem: String
     
-    init(trackData: CIOSearchTrackData, autocompleteKey: String){
+    init(trackData: CIOTrackSearchData, autocompleteKey: String){
         self.searchItem = trackData.itemName
         super.init(autocompleteKey: autocompleteKey)
         

@@ -1,5 +1,5 @@
 //
-//  CIOConversionTracker.swift
+//  CIOTrackConversionData.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set set in order to track a conversion for an autocomplete.
  */
-public struct CIOConversionTrackData: HasSectionName {
+public struct CIOTrackConversionData: HasSectionName {
 
     public let searchTerm: String
     public let itemID: String?

@@ -31,7 +31,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
     
     func testTrackConversionBuilder_onlySearchTerm() {
-        let tracker = CIOConversionTrackData(searchTerm: searchTerm)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -44,7 +44,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withItemName() {
-        let tracker = CIOConversionTrackData(searchTerm: searchTerm)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -56,7 +56,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withSectionName() {
-        let tracker = CIOConversionTrackData(searchTerm: searchTerm, sectionName: sectionName)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, sectionName: sectionName)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -69,7 +69,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
     
     func testTrackConversionBuilder_withRevenue() {
-        let tracker = CIOConversionTrackData(searchTerm: searchTerm, revenue: revenue)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, revenue: revenue)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -83,7 +83,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withNoSectionSpecified_hasNoSectionName() {
-        let tracker = CIOConversionTrackData(searchTerm: searchTerm)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         
@@ -91,7 +91,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
     
     func testTrackConversionBuilder_AllFields() {
-        let tracker = CIOConversionTrackData(searchTerm: searchTerm, sectionName: sectionName, revenue: revenue)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, sectionName: sectionName, revenue: revenue)
         builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!

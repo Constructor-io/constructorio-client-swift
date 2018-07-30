@@ -15,7 +15,7 @@ class TrackAutocompleteClickRequestBuilder: RequestBuilder {
         return self.queryItems.all().contains { (item) -> Bool in return item.name == Constants.TrackAutocomplete.autocompleteSection }
     }
 
-    init(tracker: CIOAutocompleteClickTrackData, autocompleteKey: String) {
+    init(tracker: CIOTrackAutocompleteClickData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
         set(itemName: tracker.clickedItemName)
         set(originalQuery: tracker.searchTerm)

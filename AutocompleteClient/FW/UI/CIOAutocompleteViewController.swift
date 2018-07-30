@@ -350,18 +350,18 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
         
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOAutocompleteClickTrackData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
+        let selectTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
 
         // TODO: For now, ignore any errors
         constructorIO.trackAutocompleteClick(for: selectTracker)
 
         // Track search
-        let searchTrackData = CIOSearchTrackData(searchTerm: viewModel.searchTerm, itemName: result.autocompleteResult.value)
+        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: result.autocompleteResult.value)
         constructorIO.trackSearch(for: searchTrackData)
         
         // Run behavioural tracking 'search' if its an autocomplete suggestion
         if sectionName == "standard" {
-            let searchTracker = CIOAutocompleteClickTrackData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
+            let searchTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
             constructorIO.trackAutocompleteClick(for: searchTracker)
         }
 
@@ -413,12 +413,12 @@ extension CIOAutocompleteViewController: UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         // Track search
-        let searchTrackData = CIOSearchTrackData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
+        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
         self.constructorIO.trackSearch(for: searchTrackData)
     }
     
     public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        self.constructorIO.trackInputFocus(for: CIOInputFocusTrackData(searchTerm: searchBar.text))
+        self.constructorIO.trackInputFocus(for: CIOTrackInputFocusData(searchTerm: searchBar.text))
         return true
     }
 }

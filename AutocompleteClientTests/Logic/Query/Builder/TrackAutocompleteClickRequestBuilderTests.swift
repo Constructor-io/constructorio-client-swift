@@ -36,7 +36,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     }
     
     private func initializeClickTrackDataRequestWithNoSectionName() -> URLRequest{
-        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName)
+        let tracker = CIOTrackAutocompleteClickData(searchTerm: searchTerm, clickedItemName: clickedItemName)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         builder.dateProvider = self.dateProvider
         let request = builder.getRequest()
@@ -44,7 +44,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     }
     
     private func initializeClickTrackDataRequestWithSectionName() -> URLRequest{
-        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: sectionName)
+        let tracker = CIOTrackAutocompleteClickData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: sectionName)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         builder.dateProvider = self.dateProvider
         let request = builder.getRequest()
@@ -97,7 +97,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         let groupPath = "path/to/group"
         let group = CIOGroup(displayName: groupName, groupID: groupID, path: groupPath)
         
-        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: group)
+        let tracker = CIOTrackAutocompleteClickData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: group)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         
@@ -113,7 +113,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
         let groupPath = "path/to/group"
         let group = CIOGroup(displayName: groupName, groupID: groupID, path: groupPath)
         
-        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: group)
+        let tracker = CIOTrackAutocompleteClickData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: group)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         
@@ -124,7 +124,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     }
     
     func testTrackACClickBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupIDAsQueryParameter() {
-        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: nil)
+        let tracker = CIOTrackAutocompleteClickData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: nil)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         
@@ -135,7 +135,7 @@ class TrackAutocompleteClickRequestBuilderTests: XCTestCase {
     }
     
     func testTrackACClickBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupNameAsQueryParameter() {
-        let tracker = CIOAutocompleteClickTrackData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: nil)
+        let tracker = CIOTrackAutocompleteClickData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: nil, group: nil)
         builder = TrackAutocompleteClickRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
         let request = builder.getRequest()
         

@@ -1,5 +1,5 @@
 //
-//  CIOSearchResultsLoadedTrackData.swift
+//  CIOTrackSearchResultsLoadedData.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CIOSearchResultsLoadedTrackData{
+public struct CIOTrackSearchResultsLoadedData{
     let searchTerm: String
     let resultCount: Int
     
