@@ -92,7 +92,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         execute(request, completionHandler: completionHandler)
     }
 
-    /// Track a conversion.
+    /// Track input focus.
     ///
     /// - Parameters:
     ///   - tracker: The object containing the necessary and additional tracking parameters.

@@ -31,13 +31,13 @@ public class CIOTracking: NSObject {
         self.tracker?.trackConversion(for: trackData, completionHandler: completionHandler)
     }
     
-    /// Track results loaded.
+    /// Track search results loaded.
     ///
     /// - Parameters:
     ///   - searchTerm: Search term that the user searched for
     ///   - resultCount: Number of results loaded
     ///   - completionHandler: The callback to execute on completion.
-    public func trackResultsLoaded(searchTerm: String, resultCount: Int, completionHandler: TrackingCompletionHandler? = nil){
+    public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, completionHandler: TrackingCompletionHandler? = nil){
         let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount )
         self.tracker?.trackSearchResultsLoaded(for: data, completionHandler: completionHandler)
     }
