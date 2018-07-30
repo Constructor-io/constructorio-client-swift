@@ -118,13 +118,13 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     }
     
     private func buildRequest(fromTracker tracker: CIOInputFocusTrackData) -> URLRequest{
-        let requestBuilder = InputFocusRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackInputFocusRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }
     
     private func buildSessionStartRequest() -> URLRequest{
-        let requestBuilder = SessionStartRequestBuilder(autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackSessionStartRequestBuilder(autocompleteKey: self.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }
