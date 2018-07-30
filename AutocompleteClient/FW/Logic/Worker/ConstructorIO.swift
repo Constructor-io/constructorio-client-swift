@@ -14,7 +14,7 @@ public typealias TrackingCompletionHandler = (Error?) -> Void
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
  */
-public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
+public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessionManagerDelegate {
 
     public let autocompleteKey: String
 
@@ -47,6 +47,8 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
         self.clientID = clientID
         
         self.tracking = CIOTracking(tracker: self)
+        
+        self.sessionManager.delegate = self
     }
 
     /// Get autocomplete suggestions for a query.
@@ -90,6 +92,21 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
         execute(request, completionHandler: completionHandler)
     }
 
+    /// Track a conversion.
+    ///
+    /// - Parameters:
+    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackInputFocus(for tracker: CIOInputFocusTrackData, completionHandler: TrackingCompletionHandler? = nil) {
+        let request = buildRequest(fromTracker: tracker)
+        execute(request, completionHandler: completionHandler)
+    }
+
+    private func trackSessionStart(session: Int, completionHandler: TrackingCompletionHandler? = nil) {
+        let request = self.buildSessionStartRequest()
+        execute(request, completionHandler: completionHandler)
+    }
+    
     /// Track a search event when the user taps on Search button on keyboard or when an item in the list is tapped on.
     ///
     /// - Parameters:
@@ -98,6 +115,18 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
     public func trackSearch(for tracker: CIOSearchTrackData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
+    }
+    
+    private func buildRequest(fromTracker tracker: CIOInputFocusTrackData) -> URLRequest{
+        let requestBuilder = TrackInputFocusRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+        return requestBuilder.getRequest()
+    }
+    
+    private func buildSessionStartRequest() -> URLRequest{
+        let requestBuilder = TrackSessionStartRequestBuilder(autocompleteKey: self.autocompleteKey)
+        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+        return requestBuilder.getRequest()
     }
     
     private func buildRequest(fromTracker tracker: CIOSearchResultsLoadedTrackData) -> URLRequest{
@@ -185,6 +214,12 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker {
 
     private func parse(_ autocompleteResponseData: Data) throws -> CIOResponse {
         return try self.parser.parse(autocompleteResponseData: autocompleteResponseData)
+    }
+    
+    // MARK: CIOSessionManagerDelegate
+    
+    public func sessionDidChange(from: Int, to: Int){
+        self.trackSessionStart(session: to)
     }
 
 }
