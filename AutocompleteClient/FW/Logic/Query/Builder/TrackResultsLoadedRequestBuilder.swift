@@ -15,7 +15,7 @@ class TrackSearchResultsLoadedRequestBuilder: RequestBuilder {
         
         self.set(searchTerm: tracker.searchTerm)
         self.set(numResults: tracker.resultCount)
-        self.set(action: Constants.TrackAutocomplete.searchResults)
+        self.set(action: Constants.TrackAutocomplete.actionSearchResults)
     }
     
     override func getURLString() -> String {
@@ -25,6 +25,6 @@ class TrackSearchResultsLoadedRequestBuilder: RequestBuilder {
 
 extension RequestBuilder{
     func set(action: String){
-        self.queryItems.add(URLQueryItem(name: Constants.TrackAutocomplete.action, value: Constants.TrackAutocomplete.searchResults))
+        self.queryItems.add(URLQueryItem(name: Constants.TrackAutocomplete.action, value: action))
     }
 }

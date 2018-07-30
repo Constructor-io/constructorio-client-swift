@@ -130,6 +130,10 @@
 		F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */; };
 		F6D2E9CC20E21022007F8761 /* CIOSearchResultsLoadedTrackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CB20E21022007F8761 /* CIOSearchResultsLoadedTrackData.swift */; };
 		F6D2E9CE20E210BD007F8761 /* TrackResultsLoadedRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CD20E210BD007F8761 /* TrackResultsLoadedRequestBuilder.swift */; };
+		F6D2E9E320E52761007F8761 /* CIOInputFocusTrackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9E220E52761007F8761 /* CIOInputFocusTrackData.swift */; };
+		F6D2E9E520E527F3007F8761 /* InputFocusRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9E420E527F3007F8761 /* InputFocusRequestBuilder.swift */; };
+		F6D2E9E920E53692007F8761 /* SessionStartRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9E820E53692007F8761 /* SessionStartRequestBuilder.swift */; };
+		F6D2E9EB20E5374B007F8761 /* CIOSessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9EA20E5374B007F8761 /* CIOSessionManagerDelegate.swift */; };
 		F6DF7B9220849C4300A7CDAD /* TrackSearchRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9120849C4300A7CDAD /* TrackSearchRequestBuilder.swift */; };
 		F6DF7B9420849E8D00A7CDAD /* CIOSearchTrackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9320849E8D00A7CDAD /* CIOSearchTrackData.swift */; };
 /* End PBXBuildFile section */
@@ -287,6 +291,10 @@
 		F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ToJSON.swift"; sourceTree = "<group>"; };
 		F6D2E9CB20E21022007F8761 /* CIOSearchResultsLoadedTrackData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchResultsLoadedTrackData.swift; sourceTree = "<group>"; };
 		F6D2E9CD20E210BD007F8761 /* TrackResultsLoadedRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackResultsLoadedRequestBuilder.swift; sourceTree = "<group>"; };
+		F6D2E9E220E52761007F8761 /* CIOInputFocusTrackData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOInputFocusTrackData.swift; sourceTree = "<group>"; };
+		F6D2E9E420E527F3007F8761 /* InputFocusRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFocusRequestBuilder.swift; sourceTree = "<group>"; };
+		F6D2E9E820E53692007F8761 /* SessionStartRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStartRequestBuilder.swift; sourceTree = "<group>"; };
+		F6D2E9EA20E5374B007F8761 /* CIOSessionManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSessionManagerDelegate.swift; sourceTree = "<group>"; };
 		F6DF7B9120849C4300A7CDAD /* TrackSearchRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchRequestBuilder.swift; sourceTree = "<group>"; };
 		F6DF7B9320849E8D00A7CDAD /* CIOSearchTrackData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchTrackData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -365,8 +373,7 @@
 				F19E28A61F5F44C30022C814 /* CIOConversionTrackData.swift */,
 				F6DF7B9320849E8D00A7CDAD /* CIOSearchTrack.swift */,
 				F6D2E9CB20E21022007F8761 /* CIOSearchResultsLoadedTrackData.swift */,
-				F6DF7B9320849E8D00A7CDAD /* CIOSearchTrackData.swift */,
-				F6D2E9C920E15190007F8761 /* HasSectionName.swift */,
+				F6D2E9E220E52761007F8761 /* CIOInputFocusTrackData.swift */,
 			);
 			path = Track;
 			sourceTree = "<group>";
@@ -490,6 +497,8 @@
 				F6DF7B9120849C4300A7CDAD /* TrackSearchRequestBuilder.swift */,
 				F67BFC9620B84C2600986557 /* QueryItemCollection.swift */,
 				F6D2E9CD20E210BD007F8761 /* TrackResultsLoadedRequestBuilder.swift */,
+				F6D2E9E420E527F3007F8761 /* InputFocusRequestBuilder.swift */,
+				F6D2E9E820E53692007F8761 /* SessionStartRequestBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -538,11 +547,11 @@
 		F62510C62052CC5E0040E3DF /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				F6D2E9EC20E53750007F8761 /* Date */,
 				F62510D42057F88D0040E3DF /* User */,
 				F62510C72052CC6B0040E3DF /* CIOSessionManager.swift */,
+				F6D2E9EA20E5374B007F8761 /* CIOSessionManagerDelegate.swift */,
 				F62510C92052CF240040E3DF /* SessionManager.swift */,
-				F62510CB20568B9B0040E3DF /* DateProvider.swift */,
-				F62510CD20568BB40040E3DF /* CurrentTimeDateProvider.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -1085,6 +1094,15 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		F6D2E9EC20E53750007F8761 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				F62510CB20568B9B0040E3DF /* DateProvider.swift */,
+				F62510CD20568BB40040E3DF /* CurrentTimeDateProvider.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1348,6 +1366,7 @@
 				F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */,
 				F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */,
 				F19E28A51F5F42830022C814 /* TrackConversionRequestBuilder.swift in Sources */,
+				F6D2E9E320E52761007F8761 /* CIOInputFocusTrackData.swift in Sources */,
 				F638090B1F5E855B00C3B322 /* BoldAttributesProvider.swift in Sources */,
 				F1F68DDD1F58B7D600B42602 /* Constants.swift in Sources */,
 				F1F68DE51F58BBA400B42602 /* String+CharacterSetIterator.swift in Sources */,
@@ -1398,13 +1417,16 @@
 				F6B0216B20D296D200968A98 /* CIOTracker.swift in Sources */,
 				F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */,
 				F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */,
+				F6D2E9EB20E5374B007F8761 /* CIOSessionManagerDelegate.swift in Sources */,
 				F67BFC9720B84C2600986557 /* QueryItemCollection.swift in Sources */,
 				F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */,
 				F64F46C51F59A6890094C697 /* AutocompleteViewModelDelegate.swift in Sources */,
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,
+				F6D2E9E520E527F3007F8761 /* InputFocusRequestBuilder.swift in Sources */,
 				F62510D62057F8980040E3DF /* UserIDGenerator.swift in Sources */,
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
+				F6D2E9E920E53692007F8761 /* SessionStartRequestBuilder.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,
 				F62510CC20568B9B0040E3DF /* DateProvider.swift in Sources */,
