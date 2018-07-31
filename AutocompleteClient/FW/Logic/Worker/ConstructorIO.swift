@@ -67,7 +67,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     /// - Parameters:
     ///   - tracker: The object containing the necessary and additional tracking parameters.
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearchResultsLoaded(for tracker: CIOSearchResultsLoadedTrackData, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackSearchResultsLoaded(for tracker: CIOTrackSearchResultsLoadedData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
     }
@@ -77,7 +77,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     /// - Parameters:
     ///   - tracker: The object containing the necessary and additional tracking parameters.
     ///   - completionHandler: The callback to execute on completion.
-    public func trackAutocompleteClick(for tracker: CIOAutocompleteClickTrackData, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackAutocompleteClick(for tracker: CIOTrackAutocompleteClickData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
     }
@@ -87,17 +87,17 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     /// - Parameters:
     ///   - tracker: The object containing the necessary and additional tracking parameters.
     ///   - completionHandler: The callback to execute on completion.
-    public func trackConversion(for tracker: CIOConversionTrackData, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackConversion(for tracker: CIOTrackConversionData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
     }
 
-    /// Track a conversion.
+    /// Track input focus.
     ///
     /// - Parameters:
     ///   - tracker: The object containing the necessary and additional tracking parameters.
     ///   - completionHandler: The callback to execute on completion.
-    public func trackInputFocus(for tracker: CIOInputFocusTrackData, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackInputFocus(for tracker: CIOTrackInputFocusData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
     }
@@ -112,12 +112,12 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     /// - Parameters:
     ///   - tracker: The object containing the necessary and additional tracking parameters.
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearch(for tracker: CIOSearchTrackData, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackSearch(for tracker: CIOTrackSearchData, completionHandler: TrackingCompletionHandler? = nil) {
         let request = buildRequest(fromTracker: tracker)
         execute(request, completionHandler: completionHandler)
     }
     
-    private func buildRequest(fromTracker tracker: CIOInputFocusTrackData) -> URLRequest{
+    private func buildRequest(fromTracker tracker: CIOTrackInputFocusData) -> URLRequest{
         let requestBuilder = TrackInputFocusRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
@@ -129,31 +129,31 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         return requestBuilder.getRequest()
     }
     
-    private func buildRequest(fromTracker tracker: CIOSearchResultsLoadedTrackData) -> URLRequest{
+    private func buildRequest(fromTracker tracker: CIOTrackSearchResultsLoadedData) -> URLRequest{
         let requestBuilder = TrackSearchResultsLoadedRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }
     
-    private func buildRequest(fromTracker tracker: CIOSearchTrackData) -> URLRequest{
+    private func buildRequest(fromTracker tracker: CIOTrackSearchData) -> URLRequest{
         let requestBuilder = TrackSearchRequestBuilder(trackData: tracker, autocompleteKey: self.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }
     
-    private func buildRequest(fromTracker tracker: CIOConversionTrackData) -> URLRequest {
+    private func buildRequest(fromTracker tracker: CIOTrackConversionData) -> URLRequest {
         var trackData: HasSectionName = tracker
         self.attachDefaultSectionNameIfNeeded(&trackData)
         
-        let requestBuilder = TrackConversionRequestBuilder(tracker: trackData as! CIOConversionTrackData, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackConversionRequestBuilder(tracker: trackData as! CIOTrackConversionData, autocompleteKey: self.autocompleteKey)
         return requestBuilder.getRequest()
     }
 
-    private func buildRequest(fromTracker tracker: CIOAutocompleteClickTrackData) -> URLRequest {
+    private func buildRequest(fromTracker tracker: CIOTrackAutocompleteClickData) -> URLRequest {
         var trackData: HasSectionName = tracker
         self.attachDefaultSectionNameIfNeeded(&trackData)
         
-        let requestBuilder = TrackAutocompleteClickRequestBuilder(tracker: trackData as! CIOAutocompleteClickTrackData, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackAutocompleteClickRequestBuilder(tracker: trackData as! CIOTrackAutocompleteClickData, autocompleteKey: self.autocompleteKey)
         return requestBuilder.getRequest()
     }
 

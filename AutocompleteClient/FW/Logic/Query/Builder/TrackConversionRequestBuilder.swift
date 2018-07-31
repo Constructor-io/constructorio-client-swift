@@ -10,7 +10,7 @@ import Foundation
 
 class TrackConversionRequestBuilder: RequestBuilder {
 
-    init(tracker: CIOConversionTrackData, autocompleteKey: String) {
+    init(tracker: CIOTrackConversionData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
         self.searchTerm = tracker.searchTerm
         set(itemID: tracker.itemID)

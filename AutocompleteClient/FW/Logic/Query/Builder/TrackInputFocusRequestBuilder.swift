@@ -1,5 +1,5 @@
 //
-//  InputFocusRequestBuilder.swift
+//  TrackInputFocusRequestBuilder.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -10,7 +10,7 @@ import UIKit
 
 class TrackInputFocusRequestBuilder: RequestBuilder {
 
-    init(tracker: CIOInputFocusTrackData, autocompleteKey: String) {
+    init(tracker: CIOTrackInputFocusData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
         
         if let term = tracker.searchTerm{

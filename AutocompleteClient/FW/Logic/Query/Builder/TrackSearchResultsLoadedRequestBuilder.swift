@@ -1,5 +1,5 @@
 //
-//  TrackResultsLoadedRequestBuilder.swift
+//  TrackSearchResultsLoadedRequestBuilder.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -10,7 +10,7 @@ import Foundation
 
 class TrackSearchResultsLoadedRequestBuilder: RequestBuilder {
 
-    init(tracker: CIOSearchResultsLoadedTrackData, autocompleteKey: String) {
+    init(tracker: CIOTrackSearchResultsLoadedData, autocompleteKey: String) {
         super.init(autocompleteKey: autocompleteKey)
         
         self.set(searchTerm: tracker.searchTerm)

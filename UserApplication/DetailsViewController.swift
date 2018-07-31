@@ -37,7 +37,7 @@ class DetailsViewController: UIViewController {
         self.view.addSubview(button)
         self.buttonTrackConversion = button
         
-        button = self.createButton(title: "Track results loaded")
+        button = self.createButton(title: "Track search results loaded")
         button.addTarget(self, action: #selector(didTapOnButtonTrackResultsLoaded(_:)), for: .touchUpInside)
         self.view.addSubview(button)
         self.buttonTrackResultsLoaded = button
@@ -77,6 +77,6 @@ class DetailsViewController: UIViewController {
     
     func didTapOnButtonTrackResultsLoaded(_ sender: UIButton){
         let resultCount = 10
-        self.constructorIO.tracking.trackResultsLoaded(searchTerm: "a search term", resultCount: resultCount)
+        self.constructorIO.tracking.trackSearchResultsLoaded(searchTerm: "a search term", resultCount: resultCount)
     }
 }
