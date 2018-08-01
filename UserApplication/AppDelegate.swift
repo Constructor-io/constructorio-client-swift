@@ -10,7 +10,7 @@ import UIKit
 import ConstructorAutocomplete
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, CIOAutocompleteDataSource {
+class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, CIOAutocompleteUICustomization {
 
     var window: UIWindow?
 
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         viewController.delegate = self
         
         // set the data source to customize the look and feel of the UI
-        viewController.dataSource = self
+        viewController.uiCustomization = self
         
         let bgColor = UIColor.white
         
@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 //        viewController.highlighter.attributesProvider = CustomAttributesProvider()
     }
 
-    // MARK: DataSource
+    // MARK: ui customization
 
 //    func searchSuggestionsSectionName(in autocompleteController: CIOAutocompleteViewController) -> String {
 //        return "All items"

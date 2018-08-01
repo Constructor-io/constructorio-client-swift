@@ -1,5 +1,5 @@
 //
-//  CIOAutocompleteDataSource.swift
+//  CIOAutocompleteUICustomization.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 
 @objc
-public protocol CIOAutocompleteDataSource: class {
+public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Returns a custom cell nib to be used in the CIOAutocompleteViewController.
