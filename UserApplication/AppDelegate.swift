@@ -137,9 +137,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 //        return view
 //    }
 
-//    func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
-//        return UINib(nibName: "CustomErrorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
-//    }
+    func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
+        return UINib(nibName: "CustomErrorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
+    }
 
 //    func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
 //        return UINib(nibName: "CustomTableViewCellOne", bundle: nil)
