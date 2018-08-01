@@ -12,7 +12,7 @@ struct CIOResponseParser: AbstractResponseParser {
 
     weak var delegate: ResponseParserDelegate?
     
-    func parse(autocompleteResponseData: Data) throws -> CIOResponse {
+    func parse(autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
         do {
             let json = try JSONSerialization.jsonObject(with: autocompleteResponseData) as! JSONObject
             let isSingleSection = json.keys.contains(Constants.Response.singleSectionResultField)
@@ -23,7 +23,7 @@ struct CIOResponseParser: AbstractResponseParser {
         }
     }
 
-    private func parse(singleSectionJson json: JSONObject) throws -> CIOResponse {
+    private func parse(singleSectionJson json: JSONObject) throws -> CIOAutocompleteResponse {
         guard let section = json[Constants.Response.singleSectionResultField] as? [JSONObject] else {
             throw CIOError.invalidResponse
         }
@@ -32,11 +32,11 @@ struct CIOResponseParser: AbstractResponseParser {
         let results = self.jsonToAutocompleteItems(jsonObjects: section)
         var metadata = json
         metadata[Constants.Response.singleSectionResultField] = nil
-        return CIOResponse(sections: [Constants.Response.singleSectionResultField: results],
+        return CIOAutocompleteResponse(sections: [Constants.Response.singleSectionResultField: results],
                                      metadata: metadata, json: json)
     }
 
-    private func parse(multiSectionJson json: JSONObject) throws -> CIOResponse {
+    private func parse(multiSectionJson json: JSONObject) throws -> CIOAutocompleteResponse {
         guard let sections = json[Constants.Response.multiSectionResultField] as? [String: [JSONObject]] else {
             throw CIOError.invalidResponse
         }
@@ -51,7 +51,7 @@ struct CIOResponseParser: AbstractResponseParser {
 
         var metadata = json
         metadata[Constants.Response.multiSectionResultField] = nil
-        return CIOResponse(sections: results, metadata: metadata, json: json)
+        return CIOAutocompleteResponse(sections: results, metadata: metadata, json: json)
     }
 
     fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOResult]{

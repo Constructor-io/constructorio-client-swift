@@ -1,5 +1,5 @@
 //
-//  CIOResponse+SearchSuggestions.swift
+//  CIOAutocompleteResponse+SearchSuggestions.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 @testable import ConstructorAutocomplete
 
-extension CIOResponse{
+extension CIOAutocompleteResponse{
     func getSearchSuggestions() -> [CIOResult]?{
         return self.sections["Search Suggestions"]
     }
