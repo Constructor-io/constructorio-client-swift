@@ -19,7 +19,7 @@ class DependencyContainer {
     }
 
     var responseParser: () -> AbstractResponseParser = {
-        return CIOResponseParser()
+        return CIOAutocompleteResponseParser()
     }
     
     var sessionManager: () -> SessionManager = {
