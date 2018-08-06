@@ -21,29 +21,29 @@ class AutocompleteDataSourceTests: XCTestCase {
     }
 
     func test_styleSearchBarCalled_onLoad() {
-        let expectation = self.expectation(description: self.dataSourceExpectationDescription(methodName: "styleSearchBar"))
+        let expectation = self.expectation(description: self.uiCustomizationExpectationDescription(methodName: "styleSearchBar"))
         let viewController = CIOAutocompleteViewController.instantiate()
 
-        class TestDataSource: ExpectationHandler, CIOAutocompleteUICustomization {
+        class TestUICustomization: ExpectationHandler, CIOAutocompleteUICustomization {
 
             func styleSearchBar(searchBar: UISearchBar, in autocompleteController: CIOAutocompleteViewController) {
                 self.expectation.fulfill()
             }
         }
 
-        let testDataSource = TestDataSource(expectation: expectation)
+        let testUICustomization = TestUICustomization(expectation: expectation)
 
-        viewController.uiCustomization = testDataSource
+        viewController.uiCustomization = testUICustomization
         viewController.showInNewWindow()
 
         self.waitForExpectationWithDefaultHandler()
     }
 
     func test_setupFontCalled_onLoad() {
-        let expectation = self.expectation(description: self.dataSourceExpectationDescription(methodName: "fontNormal"))
+        let expectation = self.expectation(description: self.uiCustomizationExpectationDescription(methodName: "fontNormal"))
         let viewController = CIOAutocompleteViewController.instantiate()
 
-        class TestDataSource: ExpectationHandler, CIOAutocompleteUICustomization {
+        class TestUICustomization: ExpectationHandler, CIOAutocompleteUICustomization {
 
             func fontNormal(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
                 self.expectation.fulfill()
@@ -51,19 +51,19 @@ class AutocompleteDataSourceTests: XCTestCase {
             }
         }
 
-        let testDataSource = TestDataSource(expectation: expectation)
+        let testUICustomization = TestUICustomization(expectation: expectation)
 
-        viewController.uiCustomization = testDataSource
+        viewController.uiCustomization = testUICustomization
         viewController.showInNewWindow()
 
         self.waitForExpectationWithDefaultHandler()
     }
 
     func test_setupFontBoldCalled_onLoad() {
-        let expectation = self.expectation(description: self.dataSourceExpectationDescription(methodName: "fontBold"))
+        let expectation = self.expectation(description: self.uiCustomizationExpectationDescription(methodName: "fontBold"))
         let viewController = CIOAutocompleteViewController.instantiate()
 
-        class TestDataSource: ExpectationHandler, CIOAutocompleteUICustomization {
+        class TestUICustomization: ExpectationHandler, CIOAutocompleteUICustomization {
 
             func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
                 self.expectation.fulfill()
@@ -71,19 +71,19 @@ class AutocompleteDataSourceTests: XCTestCase {
             }
         }
 
-        let testDataSource = TestDataSource(expectation: expectation)
+        let testUICustomization = TestUICustomization(expectation: expectation)
 
-        viewController.uiCustomization = testDataSource
+        viewController.uiCustomization = testUICustomization
         viewController.showInNewWindow()
 
         self.waitForExpectationWithDefaultHandler()
     }
 
     func test_setupBackgroundViewCalled_onLoad() {
-        let expectation = self.expectation(description: self.dataSourceExpectationDescription(methodName: "fontBold"))
+        let expectation = self.expectation(description: self.uiCustomizationExpectationDescription(methodName: "fontBold"))
         let viewController = CIOAutocompleteViewController.instantiate()
 
-        class TestDataSource: ExpectationHandler, CIOAutocompleteUICustomization {
+        class TestUICustomization: ExpectationHandler, CIOAutocompleteUICustomization {
 
             func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
                 self.expectation.fulfill()
@@ -91,19 +91,19 @@ class AutocompleteDataSourceTests: XCTestCase {
             }
         }
 
-        let testDataSource = TestDataSource(expectation: expectation)
+        let testUICustomization = TestUICustomization(expectation: expectation)
 
-        viewController.uiCustomization = testDataSource
+        viewController.uiCustomization = testUICustomization
         viewController.showInNewWindow()
 
         self.waitForExpectationWithDefaultHandler()
     }
 
     func test_setupCellNibCalled_onLoad() {
-        let expectation = self.expectation(description: self.dataSourceExpectationDescription(methodName: "customCellNib"))
+        let expectation = self.expectation(description: self.uiCustomizationExpectationDescription(methodName: "customCellNib"))
         let viewController = CIOAutocompleteViewController.instantiate()
 
-        class TestDataSource: ExpectationHandler, CIOAutocompleteUICustomization {
+        class TestUICustomization: ExpectationHandler, CIOAutocompleteUICustomization {
 
             func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
                 self.expectation.fulfill()
@@ -111,19 +111,19 @@ class AutocompleteDataSourceTests: XCTestCase {
             }
         }
 
-        let testDataSource = TestDataSource(expectation: expectation)
+        let testUICustomization = TestUICustomization(expectation: expectation)
 
-        viewController.uiCustomization = testDataSource
+        viewController.uiCustomization = testUICustomization
         viewController.showInNewWindow()
 
         self.waitForExpectationWithDefaultHandler()
     }
 
     func test_setupCellClassCalled_onLoad() {
-        let expectation = self.expectation(description: self.dataSourceExpectationDescription(methodName: "customCellClass"))
+        let expectation = self.expectation(description: self.uiCustomizationExpectationDescription(methodName: "customCellClass"))
         let viewController = CIOAutocompleteViewController.instantiate()
 
-        class TestDataSource: ExpectationHandler, CIOAutocompleteUICustomization {
+        class TestUICustomization: ExpectationHandler, CIOAutocompleteUICustomization {
 
             func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass {
                 self.expectation.fulfill()
@@ -131,15 +131,15 @@ class AutocompleteDataSourceTests: XCTestCase {
             }
         }
 
-        let testDataSource = TestDataSource(expectation: expectation)
+        let testUICustomization = TestUICustomization(expectation: expectation)
 
-        viewController.uiCustomization = testDataSource
+        viewController.uiCustomization = testUICustomization
         viewController.showInNewWindow()
 
         self.waitForExpectationWithDefaultHandler()
     }
 
-    fileprivate func dataSourceExpectationDescription(methodName: String) -> String {
-        return "\(methodName) dataSource method should get called."
+    fileprivate func uiCustomizationExpectationDescription(methodName: String) -> String {
+        return "\(methodName) uiCustomization method should get called."
     }
 }

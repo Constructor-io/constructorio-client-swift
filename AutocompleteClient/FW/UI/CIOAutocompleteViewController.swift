@@ -86,14 +86,14 @@ public class CIOAutocompleteViewController: UIViewController {
     fileprivate var timerQueryFire: Timer?
 
     /**
-     The object that acts as the data source of the autocomplete view controller.
-     The data source must adopt the CIOAutocompleteDataSource protocol. The data source is not retained.
+     The object that customizes the UI of the autocomplete view controller.
+     The object must adopt the CIOAutocompleteUICustomization protocol. The uiCustomization is not retained.
      */
     public weak var uiCustomization: CIOAutocompleteUICustomization?
     
     /**
      The object that acts as the delegate of the autocomplete view controller.
-     The data source must adopt the CIOAutocompleteDelegate protocol. The delegate is not retained.
+     The object must adopt the CIOAutocompleteDelegate protocol. The delegate is not retained.
      */
     public weak var delegate: CIOAutocompleteDelegate?
 

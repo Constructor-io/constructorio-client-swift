@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         // set the delegate in order to react to various events
         viewController.delegate = self
         
-        // set the data source to customize the look and feel of the UI
+        // set the ui customization to adjust the look and feel of the UI
         viewController.uiCustomization = self
         
         let bgColor = UIColor.white
