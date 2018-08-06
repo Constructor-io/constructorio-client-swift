@@ -212,7 +212,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         }
     }
 
-    private func parse(_ autocompleteResponseData: Data) throws -> CIOResponse {
+    private func parse(_ autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
         return try self.parser.parse(autocompleteResponseData: autocompleteResponseData)
     }
     

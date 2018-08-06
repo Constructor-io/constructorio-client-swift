@@ -11,11 +11,11 @@ import XCTest
 
 class ResultParserTests: XCTestCase {
 
-    var responseParser: CIOResponseParser!
+    var responseParser: CIOAutocompleteResponseParser!
 
     override func setUp() {
         super.setUp()
-        self.responseParser = CIOResponseParser()
+        self.responseParser = CIOAutocompleteResponseParser()
     }
 
     func test_ParsingNonJSONData_ThrowsAnException() {
