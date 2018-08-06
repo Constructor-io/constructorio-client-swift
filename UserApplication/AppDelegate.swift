@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         // set the delegate in order to react to various events
         viewController.delegate = self
         
-        // set the ui customization to adjust the look and feel of the UI
+        // set the customization to adjust the look and feel of the UI
         viewController.uiCustomization = self
         
         let bgColor = UIColor.white
@@ -68,21 +68,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         
-        // set custom highlighting attributes provider
-//        viewController.highlighter.attributesProvider = CustomAttributesProvider()
     }
 
-    // MARK: ui customization
-
-//    func searchSuggestionsSectionName(in autocompleteController: CIOAutocompleteViewController) -> String {
-//        return "All items"
-//    }
+    var i = 1
+    func randomColor() -> UIColor {
+        let colors = [UIColor.red, .blue, .purple, .orange, .black]
+        let color = colors[i%colors.count]
+        i += 1
+        return color
+    }
     
-    /*
-    func shouldShowSectionHeader(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> Bool {
-        return sectionName.lowercased() != "products"
-    }
-    */
+    // MARK: UI Customization
 
     func sectionHeaderView(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> UIView? {
         let headerView = UIView(frame: CGRect.zero)
@@ -107,65 +103,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         return 30
     }
     
+    func shouldShowSectionHeader(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> Bool {
+        return false
+    }
+    
     func sectionSort(in autocompleteController: CIOAutocompleteViewController) -> ((String, String) -> Bool) {
         return { (s1, s2) in return s1 > s2 }
     }
-    
-//    func rowHeight(in autocompleteController: CIOAutocompleteViewController) -> CGFloat {
-//        return 35
-//    }
-
-//    func styleResultLabel(label: UILabel, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
-//        label.textColor = self.randomColor()
-//    }
-//
-//    func styleResultCell(cell: UITableViewCell, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
-//        let val: CGFloat = 0.97
-//        cell.backgroundColor = UIColor(red: val, green: val, blue: val, alpha: 1.0)
-//    }
-
-    var i = 1
-    func randomColor() -> UIColor {
-        let colors = [UIColor.red, .blue, .purple, .orange, .black]
-        let color = colors[i%colors.count]
-        i += 1
-        return color
-    }
-
-//    func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
-//        let view = UINib(nibName: "CustomBackgroundView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
-//        return view
-//    }
 
     func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
         return UINib(nibName: "CustomErrorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
     }
-
-//    func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
-//        return UINib(nibName: "CustomTableViewCellOne", bundle: nil)
-//    }
-    
-/*
-    func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass {
-        return CustomTableViewCellTwo.self
-    }
-*/
-    // No background view
-//    func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
-//        return nil
-//    }
-
-    // MARK: Parsing
-    
-//    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
-//        return true
-//    }
-    
-//    func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResultsInSection sectionName: String) -> Bool {
-//        return sectionName.lowercased() != "products"
-//    }
-    
-    // MARK: SearchBar
 
     func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController) {
         // customize search bar
@@ -180,12 +128,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         // customize search controller behaviour
         searchController.dimsBackgroundDuringPresentation = false
     }
+    
     // MARK: Delegate
 
-    func shouldShowSectionHeader(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> Bool {
-        return false
-    }
-    
     func autocompleteController(controller: CIOAutocompleteViewController, errorDidOccur error: Error) {
 
         if let err = error as? CIOError {
@@ -211,10 +156,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         }
     }
 
-//    func autocompleteController(controller: CIOAutocompleteViewController, maximumNumberOfGroupsForItem item: CIOAutocompleteResult, itemIndex: Int) -> Int{
-//        return 3
-//    }
-    
     func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String) {
         print("Search performed for term \(searchTerm)")
     }
