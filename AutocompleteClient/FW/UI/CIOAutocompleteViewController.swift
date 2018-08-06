@@ -247,7 +247,7 @@ public class CIOAutocompleteViewController: UIViewController {
         if let errorViewRef = self.errorView {
             // we already have an error view
             errorView = errorViewRef
-        } else if let customErrorView = self.dataSource?.errorView?(in: self) as? CIOErrorView{
+        } else if let customErrorView = self.uiCustomization?.errorView?(in: self) as? CIOErrorView{
             errorView = customErrorView
         } else {
             return
