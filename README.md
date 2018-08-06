@@ -55,8 +55,8 @@ let viewController = CIOAutocompleteViewController(autocompleteKey: “YOUR AUTO
 // set the delegate in order to react to various events
 viewController.delegate = self
 
-// set the data source to customize the look and feel of the UI
-viewController.dataSource = self
+// set the ui customization to adjust the look and feel of the UI
+viewController.uiCustomization = self
 
 // push the view controller to the stack
 self.navigationController.pushViewController(viewController, animated: true)
@@ -165,7 +165,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
 }
 ```
 ## Customizing the UI
-```CIOAutocompleteDataSource``` protocol contains various methods allowing you to customize the look and feel of the autocomplete view.
+```CIOAutocompleteUICustomization``` protocol contains various methods allowing you to customize the look and feel of the autocomplete view.
 
 ## Customize Search behaviour
 You can customize how UISearchController behaves in the autocomplete controller by implementing the following method.

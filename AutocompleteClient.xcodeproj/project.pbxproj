@@ -107,7 +107,7 @@
 		F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A72FB1F56D31700FA4D1B /* DefaultSearchItemCell.swift */; };
 		F68A72FE1F56D31700FA4D1B /* DefaultSearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68A72FC1F56D31700FA4D1B /* DefaultSearchItemCell.xib */; };
 		F68A73131F56E5FB00FA4D1B /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A73121F56E5FB00FA4D1B /* String+Trim.swift */; };
-		F699C3471F57ED4200FD681A /* CIOAutocompleteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C3461F57ED4200FD681A /* CIOAutocompleteDataSource.swift */; };
+		F699C3471F57ED4200FD681A /* CIOAutocompleteUICustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C3461F57ED4200FD681A /* CIOAutocompleteUICustomization.swift */; };
 		F699C34B1F57F22400FD681A /* NSError+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34A1F57F22400FD681A /* NSError+Errors.swift */; };
 		F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */; };
 		F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */; };
@@ -266,7 +266,7 @@
 		F68A72FB1F56D31700FA4D1B /* DefaultSearchItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchItemCell.swift; sourceTree = "<group>"; };
 		F68A72FC1F56D31700FA4D1B /* DefaultSearchItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultSearchItemCell.xib; sourceTree = "<group>"; };
 		F68A73121F56E5FB00FA4D1B /* String+Trim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Trim.swift"; sourceTree = "<group>"; };
-		F699C3461F57ED4200FD681A /* CIOAutocompleteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteDataSource.swift; sourceTree = "<group>"; };
+		F699C3461F57ED4200FD681A /* CIOAutocompleteUICustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteUICustomization.swift; sourceTree = "<group>"; };
 		F699C34A1F57F22400FD681A /* NSError+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Errors.swift"; sourceTree = "<group>"; };
 		F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SearchSuggestionsSection.swift"; sourceTree = "<group>"; };
@@ -890,7 +890,7 @@
 				F144AB631F60BCFD00B2FB46 /* Config */,
 				F65015491F587203008E50C0 /* Style */,
 				F631A5D21F5861A200A49BD1 /* Error */,
-				F699C3451F57ED3500FD681A /* DataSource */,
+				F699C3451F57ED3500FD681A /* UICustomization */,
 				F60BEA1E1F5726BA008F0053 /* Empty */,
 				F60BEA1B1F571C46008F0053 /* CustomCell */,
 				F60BEA181F57193B008F0053 /* Delegate */,
@@ -967,12 +967,12 @@
 			path = String;
 			sourceTree = "<group>";
 		};
-		F699C3451F57ED3500FD681A /* DataSource */ = {
+		F699C3451F57ED3500FD681A /* UICustomization */ = {
 			isa = PBXGroup;
 			children = (
-				F699C3461F57ED4200FD681A /* CIOAutocompleteDataSource.swift */,
+				F699C3461F57ED4200FD681A /* CIOAutocompleteUICustomization.swift */,
 			);
-			path = DataSource;
+			path = UICustomization;
 			sourceTree = "<group>";
 		};
 		F699C3491F57F21800FD681A /* Error */ = {
@@ -1385,7 +1385,7 @@
 				F6D2E9CE20E210BD007F8761 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */,
 				F1F68DD41F58B59F00B42602 /* CIOQuery.swift in Sources */,
 				F63808F81F5D497200C3B322 /* NetworkResponse.swift in Sources */,
-				F699C3471F57ED4200FD681A /* CIOAutocompleteDataSource.swift in Sources */,
+				F699C3471F57ED4200FD681A /* CIOAutocompleteUICustomization.swift in Sources */,
 				F1F68DD61F58B68700B42602 /* CIOAutocompleteResponse.swift in Sources */,
 				F68A72FA1F56D22B00FA4D1B /* AutocompleteViewModel.swift in Sources */,
 				F63808F21F5D47AF00C3B322 /* URLSessionNetworkClient.swift in Sources */,
