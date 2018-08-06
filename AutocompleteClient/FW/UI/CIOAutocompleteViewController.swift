@@ -247,15 +247,10 @@ public class CIOAutocompleteViewController: UIViewController {
         if let errorViewRef = self.errorView {
             // we already have an error view
             errorView = errorViewRef
-        } else {
-            let customErrorView = self.dataSource?.errorView?(in: self) as? CIOErrorView
-            if customErrorView != nil {
-                errorView = customErrorView!
-            } else {
-                let defaultErrorView = UINib(nibName: "SearchErrorView", bundle: CIOAutocompleteViewController.bundle).instantiate(withOwner: nil, options: nil).first as! SearchErrorView
-                defaultErrorView.labelText.font = self.fontNormal
-                errorView = defaultErrorView
-            }
+        } else if let customErrorView = self.dataSource?.errorView?(in: self) as? CIOErrorView{
+            errorView = customErrorView
+        }else{
+            return
         }
 
         if errorView.asView().superview == nil {
