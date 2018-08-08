@@ -94,17 +94,27 @@ struct Constants {
         static let autocompleteKey = "autocomplete_key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let trackStringFormat = "%@/%@/%@/%@"
+        static let trackBehaviorStringFormat = "%@/%@"
         static let expectedStatusCode = 204
+        
+        static let dateTime = "_dt"
+        static let defaultTrackingSectionName = "Products"
     }
 
     struct TrackAutocomplete {
         static let pathString = "autocomplete"
         static let autocompleteSection = "autocomplete_section"
+        static let searchTerm = "term"
+        static let action = "action"
+        static let actionSearchResults = "search-results"
+        static let actionFocus = "focus"
+        static let actionSessionStart = "session_start"
     }
 
     struct TrackSearch{
         static let format = "%@/autocomplete/%@/search"
         static let originalQuery = "original_query"
+        static let pathBehavior = "behavior"
     }
     
     struct TrackAutocompleteResultClicked {
@@ -114,7 +124,6 @@ struct Constants {
         static let trigger = "tr"
         static let triggerType = "click"
         static let originalQuery = "original_query"
-        static let dateTime = "_dt"
         static let groupName = "group[group_name]"
         static let groupID = "group[group_id]"
     }

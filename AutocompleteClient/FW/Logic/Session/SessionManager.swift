@@ -8,6 +8,8 @@
 
 import Foundation
 
-protocol SessionManager{
+protocol SessionManager: class{
+    var delegate: CIOSessionManagerDelegate? { get set }
+    
     func getSession() -> Int
 }

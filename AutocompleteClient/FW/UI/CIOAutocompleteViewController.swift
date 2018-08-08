@@ -86,14 +86,14 @@ public class CIOAutocompleteViewController: UIViewController {
     fileprivate var timerQueryFire: Timer?
 
     /**
-     The object that acts as the data source of the autocomplete view controller.
-     The data source must adopt the CIOAutocompleteDataSource protocol. The data source is not retained.
+     The object that customizes the UI of the autocomplete view controller.
+     The object must adopt the CIOAutocompleteUICustomization protocol. The uiCustomization is not retained.
      */
-    public weak var dataSource: CIOAutocompleteDataSource?
+    public weak var uiCustomization: CIOAutocompleteUICustomization?
     
     /**
      The object that acts as the delegate of the autocomplete view controller.
-     The data source must adopt the CIOAutocompleteDelegate protocol. The delegate is not retained.
+     The object must adopt the CIOAutocompleteDelegate protocol. The delegate is not retained.
      */
     public weak var delegate: CIOAutocompleteDelegate?
 
@@ -150,8 +150,8 @@ public class CIOAutocompleteViewController: UIViewController {
                 self.navigationItem.titleView = self.searchController.searchBar
         }
         
-        self.searchController.searchBar.placeholder = self.dataSource?.searchBarPlaceholder?(in: self) ?? Constants.UI.defaultSearchBarPlaceholder
-        self.dataSource?.customizeSearchController?(searchController: self.searchController, in: self)
+        self.searchController.searchBar.placeholder = self.uiCustomization?.searchBarPlaceholder?(in: self) ?? Constants.UI.defaultSearchBarPlaceholder
+        self.uiCustomization?.customizeSearchController?(searchController: self.searchController, in: self)
 
         self.definesPresentationContext = true
         self.extendedLayoutIncludesOpaqueBars = true
@@ -161,7 +161,7 @@ public class CIOAutocompleteViewController: UIViewController {
         var backgroundView: UIView! = nil
 
         // show background empty screen
-        if let backgroundViewClosure = self.dataSource?.backgroundView {
+        if let backgroundViewClosure = self.uiCustomization?.backgroundView {
             // function implemented
             if let view = backgroundViewClosure(self) {
                 backgroundView = view
@@ -181,7 +181,7 @@ public class CIOAutocompleteViewController: UIViewController {
 
         self.view.bringSubview(toFront: self.tableView)
 
-        if let fontNormal = self.dataSource?.fontNormal?(in: self) {
+        if let fontNormal = self.uiCustomization?.fontNormal?(in: self) {
             self.fontNormal = fontNormal
 
             if let boldAttributesProvider = self.highlighter.attributesProvider as? BoldAttributesProvider {
@@ -189,7 +189,7 @@ public class CIOAutocompleteViewController: UIViewController {
             }
         }
 
-        if let fontBold = self.dataSource?.fontBold?(in: self) {
+        if let fontBold = self.uiCustomization?.fontBold?(in: self) {
             self.fontBold = fontBold
             if let boldAttributesProvider = self.highlighter.attributesProvider as? BoldAttributesProvider {
                 boldAttributesProvider.fontBold = self.fontBold
@@ -197,9 +197,9 @@ public class CIOAutocompleteViewController: UIViewController {
         }
 
         // ask the delegate for custom cell class or nib
-        if let classRef = self.dataSource?.customCellClass?(in: self) {
+        if let classRef = self.uiCustomization?.customCellClass?(in: self) {
             self.tableView.register(classRef, forCellReuseIdentifier: Constants.UI.CellIdentifier)
-        } else if let nib = self.dataSource?.customCellNib?(in: self) {
+        } else if let nib = self.uiCustomization?.customCellNib?(in: self) {
             self.tableView.register(nib, forCellReuseIdentifier: Constants.UI.CellIdentifier)
         } else {
             let nib = UINib(nibName: "DefaultSearchItemCell", bundle: CIOAutocompleteViewController.bundle)
@@ -227,12 +227,16 @@ public class CIOAutocompleteViewController: UIViewController {
         // we have data, hide error view if visible
         self.errorView?.asView().fadeOutAndRemove(duration: Constants.UI.fadeOutDuration)
 
-        // before passing the result to view model, ask the dataSource to provide the custom sort function
-        if let customSortFunction = self.dataSource?.sectionSort?(in: self){
+        // before passing the result to view model, ask the uiC to provide the custom sort function
+        if let customSortFunction = self.uiCustomization?.sectionSort?(in: self){
             self.viewModel.modelSorter = customSortFunction
         }
         
         self.viewModel.set(searchResult: autocompleteResult) { [weak self] in
+            guard let selfRef = self else { return }
+            if let mainSection = self?.viewModel.results.first{
+                self?.delegate?.autocompleteController?(controller: selfRef, didLoadResults: mainSection.items, for: selfRef.viewModel.searchTerm)
+            }
             self?.tableView.reloadData()
         }
     }
@@ -243,15 +247,10 @@ public class CIOAutocompleteViewController: UIViewController {
         if let errorViewRef = self.errorView {
             // we already have an error view
             errorView = errorViewRef
+        } else if let customErrorView = self.uiCustomization?.errorView?(in: self) as? CIOErrorView{
+            errorView = customErrorView
         } else {
-            let customErrorView = self.dataSource?.errorView?(in: self) as? CIOErrorView
-            if customErrorView != nil {
-                errorView = customErrorView!
-            } else {
-                let defaultErrorView = UINib(nibName: "SearchErrorView", bundle: CIOAutocompleteViewController.bundle).instantiate(withOwner: nil, options: nil).first as! SearchErrorView
-                defaultErrorView.labelText.font = self.fontNormal
-                errorView = defaultErrorView
-            }
+            return
         }
 
         if errorView.asView().superview == nil {
@@ -325,8 +324,8 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.CellIdentifier)!
 
         if let defaultCell = cell as? DefaultSearchItemCell {
-            self.dataSource?.styleResultCell?(cell: defaultCell, indexPath: indexPath, in: self)
-            self.dataSource?.styleResultLabel?(label: defaultCell.labelText, indexPath: indexPath, in: self)
+            self.uiCustomization?.styleResultCell?(cell: defaultCell, indexPath: indexPath, in: self)
+            self.uiCustomization?.styleResultLabel?(label: defaultCell.labelText, indexPath: indexPath, in: self)
         }
 
         if let searchCell = cell as? CIOAutocompleteCell {
@@ -346,18 +345,18 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
         
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOAutocompleteClickTrackData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
+        let selectTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
 
         // TODO: For now, ignore any errors
         constructorIO.trackAutocompleteClick(for: selectTracker)
 
         // Track search
-        let searchTrackData = CIOSearchTrackData(searchTerm: viewModel.searchTerm, itemName: result.autocompleteResult.value)
+        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: result.autocompleteResult.value)
         constructorIO.trackSearch(for: searchTrackData)
         
         // Run behavioural tracking 'search' if its an autocomplete suggestion
         if sectionName == "standard" {
-            let searchTracker = CIOAutocompleteClickTrackData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
+            let searchTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
             constructorIO.trackAutocompleteClick(for: searchTracker)
         }
 
@@ -366,14 +365,14 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return self.dataSource?.rowHeight?(in: self) ?? Constants.UI.defaultRowHeight
+        return self.uiCustomization?.rowHeight?(in: self) ?? Constants.UI.defaultRowHeight
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let sectionName = viewModel.getSectionName(atIndex: section)
      
-        if self.dataSource?.shouldShowSectionHeader?(sectionName: sectionName, in: self) ?? true{
-            let height = self.dataSource?.sectionHeaderViewHeight?(sectionName: sectionName, in: self) ?? Constants.UI.defaultSectionHeaderHeight
+        if self.uiCustomization?.shouldShowSectionHeader?(sectionName: sectionName, in: self) ?? true{
+            let height = self.uiCustomization?.sectionHeaderViewHeight?(sectionName: sectionName, in: self) ?? Constants.UI.defaultSectionHeaderHeight
             return height
         }else{
             return 0
@@ -383,10 +382,10 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var sectionName = viewModel.getSectionName(atIndex: section)
         if sectionName.isSearchSuggestionString(){
-            sectionName = self.dataSource?.searchSuggestionsSectionName?(in: self) ?? sectionName
+            sectionName = self.uiCustomization?.searchSuggestionsSectionName?(in: self) ?? sectionName
         }
         
-        if let customViewFunction = self.dataSource?.sectionHeaderView{
+        if let customViewFunction = self.uiCustomization?.sectionHeaderView{
             return customViewFunction(sectionName, self)
         }else{
             let headerView = UIView(frame: CGRect.zero)
@@ -409,8 +408,13 @@ extension CIOAutocompleteViewController: UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         // Track search
-        let searchTrackData = CIOSearchTrackData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
-        constructorIO.trackSearch(for: searchTrackData)
+        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
+        self.constructorIO.trackSearch(for: searchTrackData)
+    }
+    
+    public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        self.constructorIO.trackInputFocus(for: CIOTrackInputFocusData(searchTerm: searchBar.text))
+        return true
     }
 }
 
@@ -443,5 +447,9 @@ extension CIOAutocompleteViewController: ResponseParserDelegate {
     
     public func shouldParseResults(inSectionWithName name: String) -> Bool? {
         return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name) ?? name.isSearchSuggestionString()
+    }
+    
+    public func maximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int {
+        return self.delegate?.autocompleteController?(controller: self, maximumGroupsShownPerResult: result, itemIndex: index) ?? (index == 0 ? 2 : 0)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import SearchFW
 
-class ViewController: UIViewController, CIOAutocompleteDelegate, CIOAutocompleteDataSource {
+class ViewController: UIViewController, CIOAutocompleteDelegate, CIOAutocompleteUICustomization {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class ViewController: UIViewController, CIOAutocompleteDelegate, CIOAutocomplete
         vc.autocompleteKey = "key_OucJxxrfiTVUQx0C"
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))
         vc.delegate = self
-        vc.dataSource = self
+        vc.uiCustomization = self
         self.present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
     }
 

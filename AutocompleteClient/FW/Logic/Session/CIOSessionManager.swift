@@ -10,7 +10,13 @@ import UIKit
     
 class CIOSessionManager: SessionManager {
 
-    var sessionID: Int
+    weak var delegate: CIOSessionManagerDelegate?
+    
+    var sessionID: Int{
+        didSet{
+            self.delegate?.sessionDidChange(from: oldValue, to: self.sessionID)
+        }
+    }
     var lastSessionRequest: TimeInterval
     let timeout: TimeInterval
     let dateProvider: DateProvider
@@ -24,16 +30,22 @@ class CIOSessionManager: SessionManager {
 
     func getSession() -> Int{
         if self.shouldIncrementSession(){
+            self.setSessionHasBeenRequested()
             self.incrementSession()
+        }else{
+            self.setSessionHasBeenRequested()
         }
-        
-        self.lastSessionRequest = self.dateProvider.provideDate().timeIntervalSince1970
         
         return self.sessionID
     }
     
+    private func setSessionHasBeenRequested(){
+        self.lastSessionRequest = self.dateProvider.provideDate().timeIntervalSince1970
+    }
+    
     func shouldIncrementSession() -> Bool{
-        return (self.dateProvider.provideDate().timeIntervalSince1970 - self.lastSessionRequest) >= self.timeout
+        let diff = (self.dateProvider.provideDate().timeIntervalSince1970 - self.lastSessionRequest)
+        return diff >= self.timeout
     }
     
     func incrementSession(){

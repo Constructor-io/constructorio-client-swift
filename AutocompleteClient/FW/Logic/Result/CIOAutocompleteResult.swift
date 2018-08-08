@@ -21,6 +21,9 @@ import Foundation
     
     public var groups: [CIOGroup]?
     
+    /// The ID of this item.
+    public let id: String
+    
     /// The name of this item.
     public let value: String
     
@@ -34,7 +37,10 @@ import Foundation
         
         self.data = json[Constants.Result.data] as? JSONObject ?? [:]
         
-        // TODO: Write map here
+        guard let id = data["id"] as? String else{
+            return nil
+        }
+        
         var stringData = [String: String]()
         // Build stringData dictionary
         data.forEach { key, val in
@@ -67,6 +73,7 @@ import Foundation
         
         self.stringData = stringData
         self.value = value
+        self.id = id
         self.json = json
     }
 }

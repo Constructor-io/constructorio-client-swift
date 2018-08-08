@@ -1,5 +1,5 @@
 //
-//  CIOConversionTracker.swift
+//  CIOTrackSearchData.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct CIOSearchTrackData {
+public struct CIOTrackSearchData {
     let searchTerm: String
     let itemName: String
 }

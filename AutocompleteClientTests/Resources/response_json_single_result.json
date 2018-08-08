@@ -1,0 +1,45 @@
+{
+    "data": {
+        "groups": [{
+                   "display_name": "Drama",
+                   "group_id": "18",
+                   "path": null
+                   },
+                   {
+                   "display_name": "Adventure",
+                   "group_id": "12",
+                   "path": null
+                   },
+                   {
+                   "display_name": "Fantasy",
+                   "group_id": "14",
+                   "path": null
+                   },
+                   {
+                   "display_name": "Family",
+                   "group_id": "10751",
+                   "path": null
+                   },
+                   {
+                   "display_name": "Action",
+                   "group_id": "28",
+                   "path": null
+                   },
+                   {
+                   "display_name": "Animation",
+                   "group_id": "16",
+                   "path": null
+                   },
+                   {
+                   "display_name": "Science Fiction",
+                   "group_id": "878",
+                   "path": null
+                   }
+                   ],
+        "id": "titans"
+    },
+    "matched_terms": [
+                      "titans"
+                      ],
+    "value": "titans"
+}

@@ -8,4 +8,4 @@
 
 import UIKit
 
-public class QueryResponse: TaskResponse<CIOResponse, Error> {}
+public class QueryResponse: TaskResponse<CIOAutocompleteResponse, Error> {}

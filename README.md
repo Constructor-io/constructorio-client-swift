@@ -55,8 +55,8 @@ let viewController = CIOAutocompleteViewController(autocompleteKey: “YOUR AUTO
 // set the delegate in order to react to various events
 viewController.delegate = self
 
-// set the data source to customize the look and feel of the UI
-viewController.dataSource = self
+// set the ui customization to adjust the look and feel of the UI
+viewController.uiCustomization = self
 
 // push the view controller to the stack
 self.navigationController.pushViewController(viewController, animated: true)
@@ -165,7 +165,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
 }
 ```
 ## Customizing the UI
-```CIOAutocompleteDataSource``` protocol contains various methods allowing you to customize the look and feel of the autocomplete view.
+```CIOAutocompleteUICustomization``` protocol contains various methods allowing you to customize the look and feel of the autocomplete view.
 
 ## Customize Search behaviour
 You can customize how UISearchController behaves in the autocomplete controller by implementing the following method.
@@ -242,7 +242,7 @@ Our framework will call this method on your cell and pass all the necessary data
 
 There are a couple of more views that you can fully replace with a custom UIView of your choice.
 ## Background View
-Background view appears behind your search results. You can replace the default framework view by implementing the backgroundView method.
+The background view appears behind your search results. You can replace the default framework view by implementing the backgroundView method.
 ```
 func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView?{
     return MyCustomBackgroundView()
@@ -252,12 +252,14 @@ func backgroundView(in autocompleteController: CIOAutocompleteViewController) ->
 <img src="https://constructor.io/images/ios_screenshots/ss_custom_background_view.png" width="60%" />
 
 ## Error View
-If an error occurs, error view will be shown displaying the error message. If you decide to use a custom error view, you should implement
+The error view appears if an error occurs.  No default error view exists but you can add one by implementing the errorView method.
 ```
 func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
     return UINib(nibName: "CustomErrorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
 }
-```    
+```
+
+<img src="https://constructor.io/images/ios_screenshots/ss_custom_error_view.png" width="60%" />
 Your custom error view must conform to the CIOErrorView protocol and implement the necessary methods
 ```
 class CustomErrorView: UIView, CIOErrorView {
@@ -273,8 +275,6 @@ class CustomErrorView: UIView, CIOErrorView {
     }
 }
 ```
-
-<img src="https://constructor.io/images/ios_screenshots/ss_custom_error_view.png" width="60%" />
 
 ## Bug reporting
 

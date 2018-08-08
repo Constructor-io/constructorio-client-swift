@@ -12,15 +12,11 @@ class TrackSearchRequestBuilder: RequestBuilder {
 
     let searchItem: String
     
-    init(trackData: CIOSearchTrackData, autocompleteKey: String){
+    init(trackData: CIOTrackSearchData, autocompleteKey: String){
         self.searchItem = trackData.itemName
         super.init(autocompleteKey: autocompleteKey)
         
         self.set(originalQuery: trackData.searchTerm)
-    }
-    
-    func set(originalQuery: String) {
-        queryItems.add(URLQueryItem(name: Constants.TrackSearch.originalQuery, value: originalQuery))
     }
     
     override func getURLString() -> String {

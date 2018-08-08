@@ -11,9 +11,13 @@ import Foundation
 class RequestBuilder {
 
     var queryItems = QueryItemCollection()
-
-    init(autocompleteKey: String) {
-        set(autocompleteKey: autocompleteKey)
+    var dateProvider: DateProvider
+    
+    internal(set) var searchTerm = ""
+    
+    init(autocompleteKey: String, dateProvider: DateProvider = CurrentTimeDateProvider()) {
+        self.dateProvider = dateProvider
+        self.set(autocompleteKey: autocompleteKey)
     }
 
     // There is no need to encode query parameters. Not sure about those in the URL path string.
@@ -53,6 +57,9 @@ class RequestBuilder {
         let versionString = Constants.versionString()
         allQueryItems.add(URLQueryItem(name: "c", value: versionString))
         
+        // attach date
+        self.addDateQueryItem(queryItems: &allQueryItems)
+        
         urlComponents.queryItems = allQueryItems.all()
 
         let url = urlComponents.url!
@@ -60,5 +67,10 @@ class RequestBuilder {
         request.httpMethod = getHttpMethod()
         
         return request
+    }
+    
+    private func addDateQueryItem(queryItems items: inout QueryItemCollection){
+        let dateString = String(Int(self.dateProvider.provideDate().timeIntervalSince1970 * 1000))
+        items.add(URLQueryItem(name: Constants.Track.dateTime, value: dateString))
     }
 }

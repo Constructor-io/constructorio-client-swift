@@ -1,5 +1,5 @@
 //
-//  CIOAutocompleteClickTracker.swift
+//  CIOTrackAutocompleteClickData.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -15,11 +15,11 @@ import Foundation
  - If specified, it will report the autocomplete click as a *select* type and should be used for all types of item clicks, which simply tracks a user selection on an autocomplete item.
  - Otherwise, it will report the autocomplete click as a *search* type, typically used when the clicked item is a search suggestion for tracking what users search (in addition to the *select* type).
  */
-public struct CIOAutocompleteClickTrackData {
+public struct CIOTrackAutocompleteClickData: HasSectionName {
 
     public let searchTerm: String
     public let clickedItemName: String
-    public let sectionName: String?
+    public var sectionName: String?
     
     public let group: CIOGroup?
 
