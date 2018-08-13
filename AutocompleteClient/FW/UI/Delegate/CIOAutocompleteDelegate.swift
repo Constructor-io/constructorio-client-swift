@@ -42,16 +42,6 @@ public protocol CIOAutocompleteDelegate: class{
     optional func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String)
 
     /**
-     Called during parsing to ask whether to parse results in a certain section. If the user returns false,
-     the whole section will be ignored.
-     
-     - parameter controller: A CIOAutocompleteViewController in which the search occurred.
-     - parameter sectionName: Section name
-     */
-    @objc
-    optional func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResultsInSection sectionName: String) -> Bool
-   
-    /**
      Called during parsing to ask whether to parse a certain result. If the user returns false for an item
      with nil group (the original item), the search-in-group items won't get parsed.
      

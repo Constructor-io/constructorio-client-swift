@@ -62,6 +62,11 @@ struct Constants {
         static let pathString = "autocomplete"
         static let numResults = "num_results"
         static let numResultsForSectionNamePrefix = "num_results_"
+        
+        static let sectionNameSearchSuggestions = "Search Suggestions"
+        static let sectionNameProducts = "Products"
+        
+        static let defaultItemCountPerSection = 10
     }
 
     struct SearchQuery {

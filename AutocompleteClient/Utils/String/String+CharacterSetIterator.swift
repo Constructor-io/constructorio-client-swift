@@ -40,8 +40,6 @@ extension NSString {
     }
 }
 
-extension NSRange: Equatable{}
-
 public func ==(lhs: NSRange, rhs: NSRange) -> Bool{
     return lhs.location == rhs.location && lhs.length == rhs.length
 }

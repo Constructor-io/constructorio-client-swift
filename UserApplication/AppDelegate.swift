@@ -48,7 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         let key = "key_OucJxxrfiTVUQx0C"
 
         let viewController = CIOAutocompleteViewController(autocompleteKey: key)
-        
+        let config = AutocompleteConfig(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0])
+        viewController.config = config
         viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.NavigationBar
         viewController.searchBarShouldShowCancelButton = false
         
