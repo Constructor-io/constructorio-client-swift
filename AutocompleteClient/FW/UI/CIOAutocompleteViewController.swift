@@ -279,7 +279,16 @@ public class CIOAutocompleteViewController: UIViewController {
             return
         }
         
-        let query = CIOAutocompleteQuery(query: searchTerm, numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
+        var sectionConfiguration: [String: Int]
+        
+        if let sectionMapping = self.config?.numResultsForSection{
+            sectionConfiguration = sectionMapping
+        }else{
+            sectionConfiguration = [:]
+            sectionConfiguration[Constants.AutocompleteQuery.sectionNameSearchSuggestions] = Constants.AutocompleteQuery.defaultItemCountPerSection
+        }
+        
+        let query = CIOAutocompleteQuery(query: searchTerm, numResults: config?.numResults, numResultsForSection: sectionConfiguration)
         
         // initiatedOn timestamp has to be created before the query is sent, otherwise we might get inconsistent UI results
         let initiatedOn: TimeInterval = NSDate().timeIntervalSince1970
@@ -443,10 +452,6 @@ extension CIOAutocompleteViewController: ResponseParserDelegate {
     
     public func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool?{
         return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group)
-    }
-    
-    public func shouldParseResults(inSectionWithName name: String) -> Bool? {
-        return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name) ?? name.isSearchSuggestionString()
     }
     
     public func maximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int {

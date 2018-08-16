@@ -12,14 +12,9 @@ import Foundation
 class MockResponseParserDelegate: NSObject, ResponseParserDelegate {
 
     var shouldParseResultInGroup: ((_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool)? = { _,_  in return true }
-    var shouldParseResultsInSection: ((_ name: String) -> Bool)? = { _ in return true }
     
     func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool?{
         return self.shouldParseResultInGroup?(result, group)
-    }
-    
-    func shouldParseResults(inSectionWithName name: String) -> Bool?{
-        return self.shouldParseResultsInSection?(name)
     }
     
     func maximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int {
