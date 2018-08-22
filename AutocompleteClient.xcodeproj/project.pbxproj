@@ -13,6 +13,7 @@
 		088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */; };
 		088F7D26210FA43C005B9FB4 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D24210FA43C005B9FB4 /* DateProvider.swift */; };
 		088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D25210FA43C005B9FB4 /* CurrentTimeDateProvider.swift */; };
+		651F5B9E3E0C5CC7A2090EC8 /* Pods_AutocompleteClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */; };
 		F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F144AB641F60BD1800B2FB46 /* AutocompleteConfig.swift */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
@@ -72,6 +73,11 @@
 		F63809091F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63809081F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift */; };
 		F638090B1F5E855B00C3B322 /* BoldAttributesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F638090A1F5E855B00C3B322 /* BoldAttributesProvider.swift */; };
 		F638090D1F5E880900C3B322 /* CIOHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F638090C1F5E880900C3B322 /* CIOHighlighter.swift */; };
+		F64E94DD212D7EC300E50EDE /* TrackingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E94DC212D7EC300E50EDE /* TrackingTests.swift */; };
+		F64E94DF212D7FBB00E50EDE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F64E94DE212D7FBB00E50EDE /* Podfile */; };
+		F64E94E2212D836A00E50EDE /* CIOMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E94E1212D836A00E50EDE /* CIOMatcher.swift */; };
+		F64E94E4212D83D400E50EDE /* CIOMatcherParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E94E3212D83D400E50EDE /* CIOMatcherParameter.swift */; };
+		F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E94E5212D87E200E50EDE /* CIOBuilder.swift */; };
 		F64F46A61F595B980094C697 /* ResultParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F46A51F595B980094C697 /* ResultParserTests.swift */; };
 		F64F46AA1F5960FB0094C697 /* response_json_multiple_sections.json in Resources */ = {isa = PBXBuildFile; fileRef = F64F46A91F5960FB0094C697 /* response_json_multiple_sections.json */; };
 		F64F46AD1F5963AF0094C697 /* Bundle+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F46AC1F5963AF0094C697 /* Bundle+Test.swift */; };
@@ -167,6 +173,9 @@
 		088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackInputFocusData.swift; sourceTree = "<group>"; };
 		088F7D24210FA43C005B9FB4 /* DateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateProvider.swift; path = AutocompleteClient/FW/Logic/Session/Date/DateProvider.swift; sourceTree = SOURCE_ROOT; };
 		088F7D25210FA43C005B9FB4 /* CurrentTimeDateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentTimeDateProvider.swift; path = AutocompleteClient/FW/Logic/Session/Date/CurrentTimeDateProvider.swift; sourceTree = SOURCE_ROOT; };
+		A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.release.xcconfig"; sourceTree = "<group>"; };
+		C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F144AB641F60BD1800B2FB46 /* AutocompleteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteConfig.swift; sourceTree = "<group>"; };
 		F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CharacterSetIteratorTests.swift"; sourceTree = "<group>"; };
 		F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+RangeOfCharactersTest.swift"; sourceTree = "<group>"; };
@@ -225,6 +234,11 @@
 		F63809081F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOHighlightingAttributesProvider.swift; sourceTree = "<group>"; };
 		F638090A1F5E855B00C3B322 /* BoldAttributesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldAttributesProvider.swift; sourceTree = "<group>"; };
 		F638090C1F5E880900C3B322 /* CIOHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOHighlighter.swift; sourceTree = "<group>"; };
+		F64E94DC212D7EC300E50EDE /* TrackingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTests.swift; sourceTree = "<group>"; };
+		F64E94DE212D7FBB00E50EDE /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F64E94E1212D836A00E50EDE /* CIOMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOMatcher.swift; sourceTree = "<group>"; };
+		F64E94E3212D83D400E50EDE /* CIOMatcherParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOMatcherParameter.swift; sourceTree = "<group>"; };
+		F64E94E5212D87E200E50EDE /* CIOBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBuilder.swift; sourceTree = "<group>"; };
 		F64F46A51F595B980094C697 /* ResultParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultParserTests.swift; sourceTree = "<group>"; };
 		F64F46A91F5960FB0094C697 /* response_json_multiple_sections.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_json_multiple_sections.json; sourceTree = "<group>"; };
 		F64F46AC1F5963AF0094C697 /* Bundle+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Test.swift"; sourceTree = "<group>"; };
@@ -330,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */,
+				651F5B9E3E0C5CC7A2090EC8 /* Pods_AutocompleteClientTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +359,15 @@
 			);
 			name = Date;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		D59696D4D091DDFF2013A436 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */,
+				A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		F144AB631F60BCFD00B2FB46 /* Config */ = {
@@ -592,6 +616,7 @@
 		F63374A81F5A8FBF00E481E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -658,9 +683,29 @@
 			path = Attributes;
 			sourceTree = "<group>";
 		};
+		F64E94DB212D7EB300E50EDE /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				F64E94E0212D835700E50EDE /* Matchers */,
+				F64E94DC212D7EC300E50EDE /* TrackingTests.swift */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		F64E94E0212D835700E50EDE /* Matchers */ = {
+			isa = PBXGroup;
+			children = (
+				F64E94E1212D836A00E50EDE /* CIOMatcher.swift */,
+				F64E94E3212D83D400E50EDE /* CIOMatcherParameter.swift */,
+				F64E94E5212D87E200E50EDE /* CIOBuilder.swift */,
+			);
+			path = Matchers;
+			sourceTree = "<group>";
+		};
 		F64F46A31F595B590094C697 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F64E94DB212D7EB300E50EDE /* Tracking */,
 				F62510CF20568F170040E3DF /* Session */,
 				F1C5573F1F5F67A60040D6AD /* Highlighting */,
 				F60FE9071F5C5B860037A0AB /* Query */,
@@ -823,6 +868,7 @@
 		F688A4351F56B4B600F169C1 = {
 			isa = PBXGroup;
 			children = (
+				F64E94DE212D7FBB00E50EDE /* Podfile */,
 				F699C34C1F57F44800FD681A /* Resources */,
 				F688A4411F56B4B600F169C1 /* AutocompleteClient */,
 				F688A44C1F56B4B600F169C1 /* AutocompleteClientTests */,
@@ -831,6 +877,7 @@
 				F64F46EE1F59CE750094C697 /* UserApplicationUITests */,
 				F688A4401F56B4B600F169C1 /* Products */,
 				F63374A81F5A8FBF00E481E7 /* Frameworks */,
+				D59696D4D091DDFF2013A436 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1188,9 +1235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F688A4561F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "AutocompleteClientTests" */;
 			buildPhases = (
+				E48EB48219C80AF6E085BB15 /* [CP] Check Pods Manifest.lock */,
 				F688A4441F56B4B600F169C1 /* Sources */,
 				F688A4451F56B4B600F169C1 /* Frameworks */,
 				F688A4461F56B4B600F169C1 /* Resources */,
+				62096C2BA49ADEE5658A497C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1288,6 +1337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64E94DF212D7FBB00E50EDE /* Podfile in Resources */,
 				F631A5D81F58629B00A49BD1 /* constructor-io-error-icon.png in Resources */,
 				F68A72FE1F56D31700FA4D1B /* DefaultSearchItemCell.xib in Resources */,
 				F60BEA221F5726D8008F0053 /* EmptyScreenView.xib in Resources */,
@@ -1307,6 +1357,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		62096C2BA49ADEE5658A497C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
+				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E48EB48219C80AF6E085BB15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutocompleteClientTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F64F46C91F59CE750094C697 /* Sources */ = {
@@ -1439,13 +1530,17 @@
 				F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */,
 				F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */,
 				F64F46C31F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift in Sources */,
+				F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */,
+				F64E94E2212D836A00E50EDE /* CIOMatcher.swift in Sources */,
 				F62510D120568F250040E3DF /* SessionTests.swift in Sources */,
 				F63808FF1F5D6C1000C3B322 /* ConstructorIOTests.swift in Sources */,
 				F64F46B71F59767D0094C697 /* ViewModelTests.swift in Sources */,
 				F64F46AF1F59641D0094C697 /* TestResource.swift in Sources */,
+				F64E94E4212D83D400E50EDE /* CIOMatcherParameter.swift in Sources */,
 				F64F46BE1F59846E0094C697 /* XCTest+TimeoutFail.swift in Sources */,
 				F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */,
 				F64F46A61F595B980094C697 /* ResultParserTests.swift in Sources */,
+				F64E94DD212D7EC300E50EDE /* TrackingTests.swift in Sources */,
 				F64F46AD1F5963AF0094C697 /* Bundle+Test.swift in Sources */,
 				F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */,
 				F64F46C11F59850C0094C697 /* TestConstants.swift in Sources */,
@@ -1749,6 +1844,7 @@
 		};
 		F688A4571F56B4B600F169C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -1765,6 +1861,7 @@
 		};
 		F688A4581F56B4B600F169C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
