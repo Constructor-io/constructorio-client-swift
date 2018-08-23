@@ -8,6 +8,7 @@
 
 import Foundation
 import Mockingjay
+@testable import ConstructorAutocomplete
 
 class CIOMatcher{
     
@@ -73,5 +74,11 @@ class CIOMatcher{
             
             return true
         }
+    }
+}
+
+extension CIOMatcher{
+    func attachAutocompleteKeyParameter() -> CIOMatcher{
+        return self.parameter(key: Constants.Query.autocompleteKey, value: TestConstants.testAutocompleteKey)
     }
 }
