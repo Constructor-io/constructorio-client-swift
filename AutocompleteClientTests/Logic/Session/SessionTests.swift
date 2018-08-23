@@ -102,4 +102,10 @@ class SessionTests: XCTestCase {
         XCTAssertGreaterThan(nextSession, initialSession, "After timeout is reached, session should be larger than the previous value." )
     }
     
+    func test_SessionIDCanBeRetreivedFromConstructorObject(){
+        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        
+        let _ = constructor.sessionManager.getSession()
+    }
+    
 }

@@ -115,4 +115,18 @@ class ConstructorIOTests: XCTestCase {
         })
         self.waitForExpectationWithDefaultHandler()
     }
+    
+    func testConstructor_clientIDPropertyIsAccessible(){
+        let clientID = "custom_client_id"
+        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: clientID)
+        
+        let _ = constructor.clientID
+    }
+    
+    func testConstructor_clientIDPropertyEqualsValuePassed(){
+        let clientID = "custom_client_id"
+        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: clientID)
+        
+        XCTAssertEqual(clientID, constructor.clientID, "Client id passed should match the clientID property value.")
+    }
 }

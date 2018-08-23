@@ -20,12 +20,18 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
 
     public static var logger: CIOLogger = CIOPrintLogger()
     
-    private let networkClient: NetworkClient = DependencyContainer.sharedInstance.networkClient()
-    private let sessionManager: SessionManager = DependencyContainer.sharedInstance.sessionManager()
+    private let networkClient: NetworkClient
+    public let sessionManager: SessionManager
     
-    public var parser: AbstractResponseParser = DependencyContainer.sharedInstance.responseParser()
+    public var parser: AbstractResponseParser
     
-    let clientID: String?
+    public let clientID: String?
+    
+    public var sessionID: Int{
+        get{
+            return self.sessionManager.getSession()
+        }
+    }
     
     private var itemSectionName: String?
     var defaultItemSectionName: String{
@@ -45,6 +51,10 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     public init(autocompleteKey: String, clientID: String?) {
         self.autocompleteKey = autocompleteKey
         self.clientID = clientID
+        
+        self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
+        self.parser = DependencyContainer.sharedInstance.responseParser()
+        self.networkClient = DependencyContainer.sharedInstance.networkClient()
         
         self.tracking = CIOTracking(tracker: self)
         
