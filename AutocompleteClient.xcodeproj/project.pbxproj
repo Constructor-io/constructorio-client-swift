@@ -76,6 +76,7 @@
 		F64E94DD212D7EC300E50EDE /* TrackingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E94DC212D7EC300E50EDE /* TrackingTests.swift */; };
 		F64E94DF212D7FBB00E50EDE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F64E94DE212D7FBB00E50EDE /* Podfile */; };
 		F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E94E5212D87E200E50EDE /* CIOBuilder.swift */; };
+		F64E94E9212DC93300E50EDE /* AutocompleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E94E8212DC93300E50EDE /* AutocompleteTests.swift */; };
 		F64F46A61F595B980094C697 /* ResultParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F46A51F595B980094C697 /* ResultParserTests.swift */; };
 		F64F46AA1F5960FB0094C697 /* response_json_multiple_sections.json in Resources */ = {isa = PBXBuildFile; fileRef = F64F46A91F5960FB0094C697 /* response_json_multiple_sections.json */; };
 		F64F46AD1F5963AF0094C697 /* Bundle+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F46AC1F5963AF0094C697 /* Bundle+Test.swift */; };
@@ -237,6 +238,7 @@
 		F64E94DC212D7EC300E50EDE /* TrackingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTests.swift; sourceTree = "<group>"; };
 		F64E94DE212D7FBB00E50EDE /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F64E94E5212D87E200E50EDE /* CIOBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBuilder.swift; sourceTree = "<group>"; };
+		F64E94E8212DC93300E50EDE /* AutocompleteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteTests.swift; sourceTree = "<group>"; };
 		F64F46A51F595B980094C697 /* ResultParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultParserTests.swift; sourceTree = "<group>"; };
 		F64F46A91F5960FB0094C697 /* response_json_multiple_sections.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_json_multiple_sections.json; sourceTree = "<group>"; };
 		F64F46AC1F5963AF0094C697 /* Bundle+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Test.swift"; sourceTree = "<group>"; };
@@ -702,9 +704,18 @@
 			path = Matchers;
 			sourceTree = "<group>";
 		};
+		F64E94E7212DC91900E50EDE /* Autocomplete */ = {
+			isa = PBXGroup;
+			children = (
+				F64E94E8212DC93300E50EDE /* AutocompleteTests.swift */,
+			);
+			path = Autocomplete;
+			sourceTree = "<group>";
+		};
 		F64F46A31F595B590094C697 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F64E94E7212DC91900E50EDE /* Autocomplete */,
 				F64E94DB212D7EB300E50EDE /* Tracking */,
 				F62510CF20568F170040E3DF /* Session */,
 				F1C5573F1F5F67A60040D6AD /* Highlighting */,
@@ -1537,6 +1548,7 @@
 				F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */,
 				F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */,
 				F64F46C31F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift in Sources */,
+				F64E94E9212DC93300E50EDE /* AutocompleteTests.swift in Sources */,
 				F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */,
 				F62510D120568F250040E3DF /* SessionTests.swift in Sources */,
 				F63808FF1F5D6C1000C3B322 /* ConstructorIOTests.swift in Sources */,
