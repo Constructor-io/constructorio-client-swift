@@ -13,8 +13,8 @@ import UIKit
  that has no data and no error
 */
 public class TaskResponse<T, E> {
-    let data: T?
-    let error: E?
+    public let data: T?
+    public let error: E?
 
     init(data: T) {
         self.data = data
