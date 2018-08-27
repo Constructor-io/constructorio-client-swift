@@ -27,13 +27,13 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     
     let clientID: String?
     
-    private var userDefinedItemSectionName: String?
+    private var itemSectionName: String?
     var defaultItemSectionName: String{
         get{
-            return self.userDefinedItemSectionName ?? Constants.Track.defaultTrackingSectionName
+            return self.itemSectionName ?? Constants.Track.defaultItemSectionName
         }
         set{
-            self.userDefinedItemSectionName = newValue
+            self.itemSectionName = newValue
         }
     }
 
