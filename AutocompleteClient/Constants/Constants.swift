@@ -103,7 +103,7 @@ struct Constants {
         static let expectedStatusCode = 204
         
         static let dateTime = "_dt"
-        static let defaultTrackingSectionName = "Products"
+        static let defaultItemSectionName = "Products"
     }
 
     struct TrackAutocomplete {
