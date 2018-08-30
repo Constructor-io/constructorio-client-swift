@@ -13,6 +13,7 @@ import Mockingjay
 class TrackingTests: XCTestCase {
     
     var constructor: ConstructorIO!
+    let regexTimestamp = "[1-9][0-9]*"
     
     override func setUp() {
         super.setUp()
@@ -25,19 +26,9 @@ class TrackingTests: XCTestCase {
         let revenueValue = 1
         let searchTermValue = "term_search"
         
-        // create a matcher that matches the base URL, parameters and path components
-        let matcher = CIOMatcher().URL(Constants.Query.baseURLString)
-                                  .httpMethod(.get)
-                                  .parameter(key: Constants.TrackConversion.itemId, value: itemIDValue)
-                                  .parameter(key: Constants.TrackConversion.revenue, value: String(revenueValue))
-                                  .pathComponent(Constants.TrackAutocomplete.pathString) // autocomplete path component
-                                  .pathComponent(Constants.TrackConversion.type)         // conversion path component
-                                  .pathComponent(searchTermValue)                        // searchTerm path component
-                                  .create()
-        
         // return 200 OK on success
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request.", builder: http(200))
-        stub(matcher, builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/term_search/conversion?c=cioios-&_dt=\(regexTimestamp)&item_id=item_ID&autocomplete_section=Products&revenue=1&autocomplete_key=key_OucJxxrfiTVUQx0C"), builder.create())
         
         self.constructor.tracking.trackConversion(itemID: itemIDValue, revenue: revenueValue, searchTerm: searchTermValue)
         self.wait(for: builder.expectation)
@@ -46,20 +37,11 @@ class TrackingTests: XCTestCase {
     func testTracking_AutocompleteClick(){
         let itemNameValue = "item_name"
         let searchTermValue = "term_search"
-        
-        // create a matcher that matches the base URL, parameters and path components
-        let matcher = CIOMatcher().URL(Constants.Query.baseURLString)
-            .httpMethod(.get)
-            .parameter(key: Constants.TrackAutocompleteResultClicked.originalQuery, value: searchTermValue)
-            .pathComponent(Constants.TrackAutocomplete.pathString)                // autocomplete path component
-            .pathComponent(Constants.TrackAutocompleteResultClicked.type)         // select path component
-            .pathComponent(itemNameValue)                                         // itemName path component
-            .create()
-        
+   
         // return 200 OK on success
         let builder = CIOBuilder(expectation: "Calling trackAutocomplete should send a valid request.", builder: http(200))
-        stub(matcher, builder.create())
         
+        stub(regex("https://ac.cnstrc.com/autocomplete/item_name/select?c=cioios-&tr=click&_dt=\(regexTimestamp)&autocomplete_section=Products&original_query=term_search&autocomplete_key=key_OucJxxrfiTVUQx0C"), builder.create())
         self.constructor.tracking.trackAutocompleteClick(searchTerm: searchTermValue, clickedItemName: itemNameValue)
         self.wait(for: builder.expectation)
     }
@@ -68,18 +50,9 @@ class TrackingTests: XCTestCase {
         let itemNameValue = "item_name"
         let searchTermValue = "term_search"
         
-        // create a matcher that matches the base URL, parameters and path components
-        let matcher = CIOMatcher().URL(Constants.Query.baseURLString)
-            .httpMethod(.get)
-            .parameter(key: Constants.TrackAutocompleteResultClicked.originalQuery, value: searchTermValue)
-            .pathComponent(Constants.TrackAutocomplete.pathString)                // autocomplete path component
-            .pathComponent(Constants.SearchQuery.pathString)                      // search path component
-            .pathComponent(itemNameValue)                                         // itemName path component
-            .create()
-        
         // return 200 OK on success
         let builder = CIOBuilder(expectation: "Calling trackSearch should send a valid request.", builder: http(200))
-        stub(matcher, builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/item_name/search?c=cioios-&s=1&_dt=\(regexTimestamp)&original_query=term_search&autocomplete_key=key_OucJxxrfiTVUQx0C"), builder.create())
         
         self.constructor.tracking.trackSearch(searchTerm: searchTermValue, itemName: itemNameValue)
         self.wait(for: builder.expectation)
@@ -88,19 +61,10 @@ class TrackingTests: XCTestCase {
     func testTracking_SearchResultsLoaded(){
         let searchTermValue = "term_search"
         let resultCount = 12
-        
-        // create a matcher that matches the base URL, parameters and path components
-        let matcher = CIOMatcher().URL(Constants.Query.baseURLString)
-            .httpMethod(.get)
-            .parameter(key: Constants.TrackAutocomplete.searchTerm, value: searchTermValue)
-            .parameter(key: Constants.AutocompleteQuery.numResults, value: String(resultCount))
-            .parameter(key: Constants.TrackAutocomplete.action, value: Constants.TrackAutocomplete.actionSearchResults)
-            .pathComponent(Constants.TrackSearch.pathBehavior)                    // behavior path component
-            .create()
-        
+
         // return 200 OK on success
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded should send a valid request.", builder: http(200))
-        stub(matcher, builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(regexTimestamp)&action=search-results&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&term=term_search&num_results=12"), builder.create())
         
         self.constructor.tracking.trackSearchResultsLoaded(searchTerm: searchTermValue, resultCount: resultCount)
         self.wait(for: builder.expectation)
