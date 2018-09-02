@@ -105,6 +105,7 @@
 		F67BFC9720B84C2600986557 /* QueryItemCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9620B84C2600986557 /* QueryItemCollection.swift */; };
 		F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */; };
 		F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685253F21380CAB00A27FAA /* Matcher+Regex.swift */; };
+		F6852556213BCE9E00A27FAA /* MockCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6852555213BCE9E00A27FAA /* MockCommons.swift */; };
 		F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
 		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */; };
@@ -268,6 +269,7 @@
 		F67BFC9620B84C2600986557 /* QueryItemCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItemCollection.swift; sourceTree = "<group>"; };
 		F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIOResponse+SearchSuggestions.swift"; sourceTree = "<group>"; };
 		F685253F21380CAB00A27FAA /* Matcher+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Matcher+Regex.swift"; sourceTree = "<group>"; };
+		F6852555213BCE9E00A27FAA /* MockCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCommons.swift; sourceTree = "<group>"; };
 		F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConstructorAutocomplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConstructorAutocomplete-Swift.h"; sourceTree = "<group>"; };
 		F688A4431F56B4B600F169C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 		F64E94DB212D7EB300E50EDE /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
+				F6852554213BCE8B00A27FAA /* Mock */,
 				F64E94E0212D835700E50EDE /* Matchers */,
 				F64E94DC212D7EC300E50EDE /* TrackingTests.swift */,
 			);
@@ -860,6 +863,14 @@
 				F650154D1F58724B008E50C0 /* UIColor+RGB.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		F6852554213BCE8B00A27FAA /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				F6852555213BCE9E00A27FAA /* MockCommons.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		F688A4351F56B4B600F169C1 = {
@@ -1363,13 +1374,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
-				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1544,6 +1553,7 @@
 				F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */,
 				F62510D3205690670040E3DF /* ClosureDateProvider.swift in Sources */,
 				F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */,
+				F6852556213BCE9E00A27FAA /* MockCommons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

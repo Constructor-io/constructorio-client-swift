@@ -9,6 +9,6 @@ platform :ios, '8.0'
 inhibit_all_warnings!
 
 target 'AutocompleteClientTests' do
-    pod 'Mockingjay'
+    pod 'OHHTTPStubs/Swift'
 end
 

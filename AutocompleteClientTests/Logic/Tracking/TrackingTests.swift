@@ -7,7 +7,8 @@
 //
 
 import XCTest
-import Mockingjay
+import OHHTTPStubs
+import Foundation
 @testable import ConstructorAutocomplete
 
 class TrackingTests: XCTestCase {
@@ -18,7 +19,11 @@ class TrackingTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
-        self.mockingjayRemoveStubOnTearDown = true
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        OHHTTPStubs.removeAllStubs()
     }
     
     func testTracking_Conversion(){

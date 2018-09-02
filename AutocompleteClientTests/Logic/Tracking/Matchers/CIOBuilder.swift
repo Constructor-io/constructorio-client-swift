@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import Mockingjay
 
 class CIOBuilder {
 
@@ -20,7 +19,7 @@ class CIOBuilder {
     }
     
     func create() -> Builder{
-        return { (request) -> (Response) in
+        return { request in
             // at this point we know that request has been made and we can fullfil the expectation and delegate the request object
             // to the builder provided
             self.expectation.fulfill()

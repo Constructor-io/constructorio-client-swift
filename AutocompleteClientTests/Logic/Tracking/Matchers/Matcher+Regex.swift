@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Mockingjay
 
 // Returns a MockingJay Matcher if the URL string matches a regex
 public func regex(_ pattern: String, prepare: Bool = true) -> Matcher{
