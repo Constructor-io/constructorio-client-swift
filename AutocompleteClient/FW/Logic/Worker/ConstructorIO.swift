@@ -16,7 +16,7 @@ public typealias TrackingCompletionHandler = (Error?) -> Void
  */
 public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessionManagerDelegate {
 
-    public let autocompleteKey: String
+    public let config: AutocompleteConfig
 
     public static var logger: CIOLogger = CIOPrintLogger()
     
@@ -48,14 +48,15 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
      */
     public private(set) var tracking: CIOTracking!
     
-    public init(autocompleteKey: String) {
-        self.autocompleteKey = autocompleteKey
+
+    public init(config: AutocompleteConfig) {
+        self.config = config
 
         self.clientID = DependencyContainer.sharedInstance.clientIDGenerator().generateID()
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.parser = DependencyContainer.sharedInstance.responseParser()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
-        
+
         self.tracking = CIOTracking(tracker: self)
         
         self.sessionManager.delegate = self
@@ -128,25 +129,25 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     }
     
     private func buildRequest(fromTracker tracker: CIOTrackInputFocusData) -> URLRequest{
-        let requestBuilder = TrackInputFocusRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackInputFocusRequestBuilder(tracker: tracker, autocompleteKey: self.config.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }
     
     private func buildSessionStartRequest() -> URLRequest{
-        let requestBuilder = TrackSessionStartRequestBuilder(autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackSessionStartRequestBuilder(autocompleteKey: self.config.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }
     
     private func buildRequest(fromTracker tracker: CIOTrackSearchResultsLoadedData) -> URLRequest{
-        let requestBuilder = TrackSearchResultsLoadedRequestBuilder(tracker: tracker, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackSearchResultsLoadedRequestBuilder(tracker: tracker, autocompleteKey: self.config.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }
     
     private func buildRequest(fromTracker tracker: CIOTrackSearchData) -> URLRequest{
-        let requestBuilder = TrackSearchRequestBuilder(trackData: tracker, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackSearchRequestBuilder(trackData: tracker, autocompleteKey: self.config.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         return requestBuilder.getRequest()
     }
@@ -155,7 +156,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         var trackData: HasSectionName = tracker
         self.attachDefaultSectionNameIfNeeded(&trackData)
         
-        let requestBuilder = TrackConversionRequestBuilder(tracker: trackData as! CIOTrackConversionData, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackConversionRequestBuilder(tracker: trackData as! CIOTrackConversionData, autocompleteKey: self.config.autocompleteKey)
         return requestBuilder.getRequest()
     }
 
@@ -163,19 +164,19 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         var trackData: HasSectionName = tracker
         self.attachDefaultSectionNameIfNeeded(&trackData)
         
-        let requestBuilder = TrackAutocompleteClickRequestBuilder(tracker: trackData as! CIOTrackAutocompleteClickData, autocompleteKey: self.autocompleteKey)
+        let requestBuilder = TrackAutocompleteClickRequestBuilder(tracker: trackData as! CIOTrackAutocompleteClickData, autocompleteKey: self.config.autocompleteKey)
         return requestBuilder.getRequest()
     }
 
     private func buildRequest(fromQuery query: CIOAutocompleteQuery) -> URLRequest {
-        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: self.autocompleteKey, session: self.sessionManager.getSession(), clientID: self.clientID )
+        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: self.config.autocompleteKey, session: self.sessionManager.getSession(), clientID: self.config.clientID )
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         
         return requestBuilder.getRequest()
     }
     
     private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
-        if let cID = self.clientID{
+        if let cID = self.config.clientID{
             requestBuilder.set(clientID: cID)
         }
         requestBuilder.set(session: self.sessionManager.getSession())

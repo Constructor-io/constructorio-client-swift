@@ -68,11 +68,6 @@ public class CIOAutocompleteViewController: UIViewController {
     private(set) public var constructorIO: ConstructorIO!
     
     /**
-     Autocomplete key. Make sure to set this value before showing the view controller.
-     */
-    public var autocompleteKey: String = ""
-
-    /**
      Default highlighter used for displaying result items.
      */
     public var highlighter: CIOHighlighter = CIOHighlighter(attributesProvider:
@@ -100,7 +95,7 @@ public class CIOAutocompleteViewController: UIViewController {
     /**
      The object to configure options for the autocomplete results.
      */
-    public var config: AutocompleteConfig?
+    public let config: AutocompleteConfig
 
     // MARK: Fonts
     private var fontNormal: UIFont = Constants.UI.Font.defaultFontNormal
@@ -109,12 +104,13 @@ public class CIOAutocompleteViewController: UIViewController {
     /**
      Default initializer for this controller. Pass in the autocomplete key you got from the constructor.io dashboard.
      */
-    public init(autocompleteKey: String) {
+    public init(config: AutocompleteConfig) {
+        self.config = config
         super.init(nibName: nil, bundle: nil)
-        self.autocompleteKey = autocompleteKey
     }
 
     public required init?(coder aDecoder: NSCoder) {
+        self.config = AutocompleteConfig(autocompleteKey: "")
         super.init(coder: aDecoder)
     }
 
@@ -208,11 +204,11 @@ public class CIOAutocompleteViewController: UIViewController {
 
         self.delegate?.autocompleteControllerDidLoad?(controller: self)
 
-        if autocompleteKey == "" {
+        if self.config.autocompleteKey == "" {
             self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingAutocompleteKey)
         }
         
-        self.constructorIO = ConstructorIO(autocompleteKey: autocompleteKey)
+        self.constructorIO = ConstructorIO(config: self.config)
         self.constructorIO.parser.delegate = self
     }
 
@@ -279,14 +275,14 @@ public class CIOAutocompleteViewController: UIViewController {
         
         var sectionConfiguration: [String: Int]
         
-        if let sectionMapping = self.config?.numResultsForSection{
+        if let sectionMapping = self.config.resultCount?.numResultsForSection{
             sectionConfiguration = sectionMapping
         }else{
             sectionConfiguration = [:]
             sectionConfiguration[Constants.AutocompleteQuery.sectionNameSearchSuggestions] = Constants.AutocompleteQuery.defaultItemCountPerSection
         }
         
-        let query = CIOAutocompleteQuery(query: searchTerm, numResults: config?.numResults, numResultsForSection: sectionConfiguration)
+        let query = CIOAutocompleteQuery(query: searchTerm, numResults: config.resultCount?.numResults, numResultsForSection: sectionConfiguration)
         
         // initiatedOn timestamp has to be created before the query is sent, otherwise we might get inconsistent UI results
         let initiatedOn: TimeInterval = NSDate().timeIntervalSince1970
@@ -435,7 +431,7 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
         
         // check whether we have a valid search term
         if searchTerm.count == 0 {
-            let query = CIOAutocompleteQuery(query: "", numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
+            let query = CIOAutocompleteQuery(query: "", numResults: config.resultCount?.numResults, numResultsForSection: self.config.resultCount?.numResultsForSection)
             self.setResultsReceived(from: AutocompleteResult(query: query))
             return
         }
