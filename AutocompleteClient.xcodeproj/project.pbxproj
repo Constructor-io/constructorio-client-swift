@@ -873,6 +873,16 @@
 				F6852555213BCE9E00A27FAA /* MockCommons.swift */,
 			);
 			path = Mock;
+        sourceTree = "<group>";
+        };
+
+		F6852557213D602800A27FAA /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F144AB641F60BD1800B2FB46 /* AutocompleteConfig.swift */,
+				F6852558213D604900A27FAA /* AutocompleteResultCount.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		F6852557213D602800A27FAA /* Config */ = {

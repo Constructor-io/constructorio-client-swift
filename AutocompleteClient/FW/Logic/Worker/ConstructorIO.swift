@@ -14,8 +14,9 @@ public typealias TrackingCompletionHandler = (Error?) -> Void
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
  */
+
 public class ConstructorIO: CIOSessionManagerDelegate {
-    
+
     public let config: ConstructorIOConfig
 
     public static var logger: CIOLogger = CIOPrintLogger()
@@ -32,7 +33,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             return self.sessionManager.getSession()
         }
     }
-
+    
     private var itemSectionName: String?
     var defaultItemSectionName: String{
         get{
@@ -43,13 +44,15 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
+    
     public init(config: ConstructorIOConfig) {
         self.config = config
-
+    
         self.clientID = DependencyContainer.sharedInstance.clientIDGenerator().generateID()
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.parser = DependencyContainer.sharedInstance.responseParser()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
+        
         self.sessionManager.delegate = self
     }
 
@@ -158,7 +161,6 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
         self.attachClientID(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
-        
         return requestBuilder.getRequest()
     }
     
