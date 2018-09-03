@@ -17,7 +17,7 @@ class TrackingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        self.constructor = ConstructorIO(config: AutocompleteConfig(autocompleteKey: TestConstants.testAutocompleteKey))
     }
     
     override func tearDown() {
