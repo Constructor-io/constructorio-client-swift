@@ -110,6 +110,7 @@
 		F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */; };
 		F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685253F21380CAB00A27FAA /* Matcher+Regex.swift */; };
 		F6852556213BCE9E00A27FAA /* MockCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6852555213BCE9E00A27FAA /* MockCommons.swift */; };
+		F6852559213D604900A27FAA /* AutocompleteResultCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6852558213D604900A27FAA /* AutocompleteResultCount.swift */; };
 		F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
 		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */; };
@@ -297,6 +298,7 @@
 		F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIOResponse+SearchSuggestions.swift"; sourceTree = "<group>"; };
 		F685253F21380CAB00A27FAA /* Matcher+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Matcher+Regex.swift"; sourceTree = "<group>"; };
 		F6852555213BCE9E00A27FAA /* MockCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCommons.swift; sourceTree = "<group>"; };
+		F6852558213D604900A27FAA /* AutocompleteResultCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteResultCount.swift; sourceTree = "<group>"; };
 		F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConstructorAutocomplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConstructorAutocomplete-Swift.h"; sourceTree = "<group>"; };
 		F688A4431F56B4B600F169C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -910,6 +912,15 @@
 				F6852555213BCE9E00A27FAA /* MockCommons.swift */,
 			);
 			path = Mock;
+            sourceTree = "<group>";
+        };
+		F6852557213D602800A27FAA /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F144AB641F60BD1800B2FB46 /* AutocompleteConfig.swift */,
+				F6852558213D604900A27FAA /* AutocompleteResultCount.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		F688A4351F56B4B600F169C1 = {
@@ -968,7 +979,7 @@
 		F688A48F1F56B51A00F169C1 /* FW */ = {
 			isa = PBXGroup;
 			children = (
-				0856B77721474CDC00AAFA41 /* Config */,
+				F6852557213D602800A27FAA /* Config */,
 				F69C2CA0207FAD9B0060B2B9 /* Logging */,
 				F63809011F5D6CD500C3B322 /* DependencyInjection */,
 				F60BEA231F57288B008F0053 /* Logic */,
@@ -1517,6 +1528,7 @@
 				F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */,
 				F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */,
 				F1F68DDA1F58B6A300B42602 /* CIOAutocompleteResponseParser.swift in Sources */,
+				F6852559213D604900A27FAA /* AutocompleteResultCount.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
 				F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */,
 				F6D2E9CE20E210BD007F8761 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */,

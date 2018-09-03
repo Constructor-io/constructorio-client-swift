@@ -32,7 +32,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
             return self.sessionManager.getSession()
         }
     }
-    
+
     private var itemSectionName: String?
     var defaultItemSectionName: String{
         get{
@@ -47,7 +47,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
      Tracking property that simplifies tracking events. To fully customize the data that's being sent, use ConstructorIO's CIOTracker protocol functions.
      */
     public private(set) var tracking: CIOTracking!
-    
+
 
     public init(config: AutocompleteConfig) {
         self.config = config
@@ -176,7 +176,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     }
     
     private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
-        if let cID = self.clientID{
+        if let cID = self.config.clientID{
             requestBuilder.set(clientID: cID)
         }
         requestBuilder.set(session: self.sessionManager.getSession())
