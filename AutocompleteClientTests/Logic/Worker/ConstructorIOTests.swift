@@ -11,13 +11,17 @@ import XCTest
 
 class ConstructorIOTests: XCTestCase {
 
-    override func setUp() {
+    var networkClient: NetworkClient!
+    
+    override  func setUp() {
         super.setUp()
+        self.networkClient = DependencyContainer.sharedInstance.networkClient()
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        DependencyContainer.sharedInstance.networkClient = { self.networkClient }
     }
 
     func testConstructor_returnsNonNilResponse_ifDataIsValid() {
