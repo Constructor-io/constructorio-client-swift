@@ -7,8 +7,6 @@
 //
 
 import XCTest
-import Mockingjay
-
 @testable import ConstructorAutocomplete
 
 class AutocompleteTests: XCTestCase {
@@ -18,23 +16,15 @@ class AutocompleteTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
-        self.mockingjayRemoveStubOnTearDown = true
     }
     
     func testCallingAutocomplete_CreatesValidRequest(){
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
         
-        let matcher = CIOMatcher().URL(Constants.Query.baseURLString)
-            .httpMethod(.get)
-            .pathComponent(Constants.TrackAutocomplete.pathString) // autocomplete path component
-            .pathComponent(term)                                   // searchTerm path component
-            .attachAutocompleteKeyParameter()                      // autocomplete key
-            .create()
-        
         let builder = CIOBuilder(expectation: "Calling Autocomplete should send a valid request.", builder: http(200))
-        stub(matcher, builder.create())
-        
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&s=1&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C"), builder.create())
+
         self.constructor.autocomplete(forQuery: query) { (response) in }
         self.wait(for: builder.expectation)
     }
