@@ -66,4 +66,8 @@ extension RequestBuilder{
             queryItems.add(URLQueryItem(name: name, value: String($0.value)))
         }
     }
+    
+    func set(_ value: String, forKey key: String){
+        queryItems.add(URLQueryItem(name: key, value: value))
+    }
 }

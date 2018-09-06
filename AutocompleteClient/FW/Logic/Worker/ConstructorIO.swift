@@ -116,6 +116,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     private func buildRequest(data: CIORequestData) -> URLRequest{
         let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+        self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         
         return requestBuilder.getRequest()
@@ -125,9 +126,16 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         let data = CIOTrackSessionStartData(session: session)
         let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
         self.attachClientID(requestBuilder: requestBuilder)
+        self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         
         return requestBuilder.getRequest()
+    }
+    
+    private func attachABTestCells(requestBuilder: RequestBuilder){
+        self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
+            requestBuilder.set(cell.value, forKey: Constants.ABTesting.formatKey(cell.key))
+        })
     }
 
     private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){

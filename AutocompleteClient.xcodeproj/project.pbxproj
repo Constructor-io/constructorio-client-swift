@@ -98,6 +98,8 @@
 		F685255B21413D4D00A27FAA /* CIORequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255A21413D4D00A27FAA /* CIORequestData.swift */; };
 		F685255D21414E1D00A27FAA /* CIOTrackSessionStartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */; };
 		F685255F2141543C00A27FAA /* RequestBuilder+QueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */; };
+		F68525632141708C00A27FAA /* CIOABTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68525622141708C00A27FAA /* CIOABTestCell.swift */; };
+		F685256621417E5700A27FAA /* ABTestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685256521417E5700A27FAA /* ABTestingTests.swift */; };
 		F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
 		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */; };
@@ -250,6 +252,8 @@
 		F685255A21413D4D00A27FAA /* CIORequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORequestData.swift; sourceTree = "<group>"; };
 		F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSessionStartData.swift; sourceTree = "<group>"; };
 		F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestBuilder+QueryItems.swift"; sourceTree = "<group>"; };
+		F68525622141708C00A27FAA /* CIOABTestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOABTestCell.swift; sourceTree = "<group>"; };
+		F685256521417E5700A27FAA /* ABTestingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestingTests.swift; sourceTree = "<group>"; };
 		F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConstructorAutocomplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConstructorAutocomplete-Swift.h"; sourceTree = "<group>"; };
 		F688A4431F56B4B600F169C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 		F60BEA231F57288B008F0053 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F68525612141707400A27FAA /* ABTesting */,
 				F6B0216720D28FA500968A98 /* Conversion */,
 				F62510C62052CC5E0040E3DF /* Session */,
 				F19E28A11F5F22010022C814 /* Track */,
@@ -640,6 +645,7 @@
 		F64F46A31F595B590094C697 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F685256421417E3E00A27FAA /* ABTesting */,
 				F62510CF20568F170040E3DF /* Session */,
 				F1C5573F1F5F67A60040D6AD /* Highlighting */,
 				F60FE9071F5C5B860037A0AB /* Query */,
@@ -806,6 +812,22 @@
 				F6852558213D604900A27FAA /* AutocompleteResultCount.swift */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		F68525612141707400A27FAA /* ABTesting */ = {
+			isa = PBXGroup;
+			children = (
+				F68525622141708C00A27FAA /* CIOABTestCell.swift */,
+			);
+			path = ABTesting;
+			sourceTree = "<group>";
+		};
+		F685256421417E3E00A27FAA /* ABTesting */ = {
+			isa = PBXGroup;
+			children = (
+				F685256521417E5700A27FAA /* ABTestingTests.swift */,
+			);
+			path = ABTesting;
 			sourceTree = "<group>";
 		};
 		F688A4351F56B4B600F169C1 = {
@@ -1404,6 +1426,7 @@
 				F64F46C51F59A6890094C697 /* AutocompleteViewModelDelegate.swift in Sources */,
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,
+				F68525632141708C00A27FAA /* CIOABTestCell.swift in Sources */,
 				F62510D62057F8980040E3DF /* UserIDGenerator.swift in Sources */,
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
@@ -1421,6 +1444,7 @@
 				F1C557431F605C910040D6AD /* TrackAutocompleteClickRequestBuilderTests.swift in Sources */,
 				F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */,
 				F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */,
+				F685256621417E5700A27FAA /* ABTestingTests.swift in Sources */,
 				F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */,
 				F64F46C31F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift in Sources */,
 				F62510D120568F250040E3DF /* SessionTests.swift in Sources */,
