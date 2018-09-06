@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
 		08465ECA2161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */; };
 		08465ECC2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08465ECB2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift */; };
 		0879E93F215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */; };
-=======
->>>>>>> Request flow refactored
 		088F7D1C210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */; };
 		088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */; };
 		088F7D26210FA43C005B9FB4 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D24210FA43C005B9FB4 /* DateProvider.swift */; };
@@ -26,11 +23,6 @@
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
 		F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDED1F5F123400114C8C /* RequestBuilder.swift */; };
-<<<<<<< HEAD
-=======
-		F19E289D1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E289C1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift */; };
-		F19E28A31F5F220B0022C814 /* CIOTrackAutocompleteClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A21F5F220B0022C814 /* CIOTrackAutocompleteClickData.swift */; };
->>>>>>> Request flow refactored
 		F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B17CB11F58E5830015FF62 /* AutocompleteResult.swift */; };
 		F1C557411F5F67CA0040D6AD /* CIOHighlighterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C557401F5F67CA0040D6AD /* CIOHighlighterTests.swift */; };
 		F1C557451F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C557441F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift */; };
@@ -47,10 +39,8 @@
 		F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BEA1C1F571C5C008F0053 /* SearchResultCell.swift */; };
 		F60BEA201F5726CB008F0053 /* EmptyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */; };
 		F60BEA221F5726D8008F0053 /* EmptyScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */; };
-<<<<<<< HEAD
 		F60DF22C215D639900730339 /* ConstructorIOConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DF22B215D639900730339 /* ConstructorIOConfig.swift */; };
-=======
->>>>>>> Request flow refactored
+		F60DF2DF2163864C00730339 /* CIOABTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DF2DE2163864C00730339 /* CIOABTestCell.swift */; };
 		F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */; };
 		F61A6B061F66AFD4007826CA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B041F66AFD4007826CA /* DetailsViewController.swift */; };
 		F61A6B091F698877007826CA /* CIOGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B081F698877007826CA /* CIOGroup.swift */; };
@@ -149,11 +139,7 @@
 		F6D2E9C120DBDCCA007F8761 /* response_json_single_result.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D2E9C020DBDCCA007F8761 /* response_json_single_result.json */; };
 		F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */; };
 		F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */; };
-<<<<<<< HEAD
 		F6DF7B9420849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */; };
-=======
-		F6DF7B9420849E8D00A7CDAD /* CIOTrackSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchData.swift */; };
->>>>>>> Request flow refactored
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,12 +188,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
 		08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchResultClickRequestBuilder.swift; sourceTree = "<group>"; };
 		08465ECB2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSessionStartRequestBuilder.swift; sourceTree = "<group>"; };
 		0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackAutocompleteSelectRequestBuilderTests.swift; sourceTree = "<group>"; };
-=======
->>>>>>> Request flow refactored
 		088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOSessionManagerDelegate.swift; sourceTree = "<group>"; };
 		088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackInputFocusData.swift; sourceTree = "<group>"; };
 		088F7D24210FA43C005B9FB4 /* DateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateProvider.swift; path = AutocompleteClient/FW/Logic/Session/Date/DateProvider.swift; sourceTree = SOURCE_ROOT; };
@@ -223,11 +206,6 @@
 		F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CharacterSetIteratorTests.swift"; sourceTree = "<group>"; };
 		F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+RangeOfCharactersTest.swift"; sourceTree = "<group>"; };
 		F192DDED1F5F123400114C8C /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
-		F19E289C1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+MillisecondsSince1970.swift"; sourceTree = "<group>"; };
-		F19E28A21F5F220B0022C814 /* CIOTrackAutocompleteClickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackAutocompleteClickData.swift; sourceTree = "<group>"; };
->>>>>>> Request flow refactored
 		F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackConversionData.swift; sourceTree = "<group>"; };
 		F1B17CB11F58E5830015FF62 /* AutocompleteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteResult.swift; sourceTree = "<group>"; };
 		F1C557401F5F67CA0040D6AD /* CIOHighlighterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOHighlighterTests.swift; sourceTree = "<group>"; };
@@ -245,10 +223,8 @@
 		F60BEA1C1F571C5C008F0053 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreenView.swift; sourceTree = "<group>"; };
 		F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyScreenView.xib; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		F60DF22B215D639900730339 /* ConstructorIOConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorIOConfig.swift; sourceTree = "<group>"; };
-=======
->>>>>>> Request flow refactored
+		F60DF2DE2163864C00730339 /* CIOABTestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOABTestCell.swift; sourceTree = "<group>"; };
 		F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
 		F61A6B041F66AFD4007826CA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F61A6B081F698877007826CA /* CIOGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOGroup.swift; sourceTree = "<group>"; };
@@ -349,11 +325,7 @@
 		F6D2E9C020DBDCCA007F8761 /* response_json_single_result.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_json_single_result.json; sourceTree = "<group>"; };
 		F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ToJSON.swift"; sourceTree = "<group>"; };
 		F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchResultsLoadedData.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchResultClickData.swift; sourceTree = "<group>"; };
-=======
-		F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchData.swift; sourceTree = "<group>"; };
->>>>>>> Request flow refactored
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,20 +420,9 @@
 		F174C1E91F5F4C65009E354B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */,
 				F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */,
 				F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */,
-=======
-				F19E28A21F5F220B0022C814 /* CIOTrackAutocompleteClickData.swift */,
-				F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */,
-				088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */,
-				F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */,
-				F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchData.swift */,
-				F685255A21413D4D00A27FAA /* CIORequestData.swift */,
-				F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */,
-				F6D2E9C920E15190007F8761 /* HasSectionName.swift */,
->>>>>>> Request flow refactored
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -562,6 +523,7 @@
 		F60BEA231F57288B008F0053 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F60DF2DD2163863B00730339 /* ABTesting */,
 				F65BBCB621515E34007FEB22 /* ClientID */,
 				F1F68DE11F58B8AF00B42602 /* Error */,
 				F63809071F5E853900C3B322 /* Highlighting */,
@@ -578,6 +540,15 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		F60DF2DD2163863B00730339 /* ABTesting */ = {
+			isa = PBXGroup;
+			children = (
+				F60DF2DE2163864C00730339 /* CIOABTestCell.swift */,
+			);
+			name = ABTesting;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F60FE8FF1F5C5ACD0037A0AB /* Worker */ = {
@@ -914,16 +885,6 @@
 				F6852555213BCE9E00A27FAA /* MockCommons.swift */,
 			);
 			path = Mock;
-        sourceTree = "<group>";
-        };
-
-		F6852557213D602800A27FAA /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				F144AB641F60BD1800B2FB46 /* AutocompleteConfig.swift */,
-				F6852558213D604900A27FAA /* AutocompleteResultCount.swift */,
-			);
-			path = Config;
 			sourceTree = "<group>";
 		};
 		F6852557213D602800A27FAA /* Config */ = {
@@ -1497,11 +1458,7 @@
 				F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */,
 				08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */,
 				F6B220ED209C692D003A5D48 /* CustomSearchController.swift in Sources */,
-<<<<<<< HEAD
 				F6DF7B9420849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift in Sources */,
-=======
-				F6DF7B9420849E8D00A7CDAD /* CIOTrackSearchData.swift in Sources */,
->>>>>>> Request flow refactored
 				F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */,
 				F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */,
 				F638090B1F5E855B00C3B322 /* BoldAttributesProvider.swift in Sources */,
@@ -1516,20 +1473,12 @@
 				F60BEA1A1F571956008F0053 /* CIOAutocompleteDelegate.swift in Sources */,
 				F61A6B091F698877007826CA /* CIOGroup.swift in Sources */,
 				F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */,
-<<<<<<< HEAD
-=======
-				F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */,
->>>>>>> Request flow refactored
 				F1F68DDA1F58B6A300B42602 /* CIOAutocompleteResponseParser.swift in Sources */,
 				F6852559213D604900A27FAA /* AutocompleteResultCount.swift in Sources */,
 				08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
 				F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */,
-<<<<<<< HEAD
 				F1F68DD41F58B59F00B42602 /* CIOAutocompleteQuery.swift in Sources */,
-=======
-				F1F68DD41F58B59F00B42602 /* CIOQuery.swift in Sources */,
->>>>>>> Request flow refactored
 				F63808F81F5D497200C3B322 /* NetworkResponse.swift in Sources */,
 				F699C3471F57ED4200FD681A /* CIOAutocompleteUICustomization.swift in Sources */,
 				F1F68DD61F58B68700B42602 /* CIOAutocompleteResponse.swift in Sources */,
@@ -1552,6 +1501,7 @@
 				F60BEA201F5726CB008F0053 /* EmptyScreenView.swift in Sources */,
 				F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */,
 				F638090D1F5E880900C3B322 /* CIOHighlighter.swift in Sources */,
+				F60DF2DF2163864C00730339 /* CIOABTestCell.swift in Sources */,
 				F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */,
 				F1F68DD81F58B69000B42602 /* CIOResult.swift in Sources */,
 				088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */,
@@ -1564,11 +1514,7 @@
 				F64F46C51F59A6890094C697 /* AutocompleteViewModelDelegate.swift in Sources */,
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,
-<<<<<<< HEAD
 				F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */,
-=======
-				F62510D62057F8980040E3DF /* UserIDGenerator.swift in Sources */,
->>>>>>> Request flow refactored
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,

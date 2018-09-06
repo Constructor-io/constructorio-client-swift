@@ -156,6 +156,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
     
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+        self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         
         return requestBuilder.getRequest()
@@ -166,10 +167,17 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
         self.attachClientID(requestBuilder: requestBuilder)
+        self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         return requestBuilder.getRequest()
     }
     
+    private func attachABTestCells(requestBuilder: RequestBuilder){
+        self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
+            requestBuilder.set(cell.value, forKey: Constants.ABTesting.formatKey(cell.key))
+        })
+    }
+
     private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
         self.attachClientID(requestBuilder: requestBuilder)
         self.attachSessionID(requestBuilder: requestBuilder)
