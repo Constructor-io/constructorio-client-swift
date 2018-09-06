@@ -2,8 +2,8 @@
 //  String+ToJSON.swift
 //  AutocompleteClientTests
 //
-//  Created by Nikola Markovic on 6/21/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import Foundation

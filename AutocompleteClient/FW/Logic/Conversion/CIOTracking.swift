@@ -42,4 +42,28 @@ public class CIOTracking: NSObject {
         self.tracker?.trackSearchResultsLoaded(for: data, completionHandler: completionHandler)
     }
     
+    /// Track autocomplete click.
+    ///
+    /// - Parameters:
+    ///   - searchTerm: Search term that the user searched for
+    ///   - clickedItemName: Name of the clicked item
+    ///   - sectionName: Section name of the item clicked on
+    ///   - group: Item group
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackAutocompleteClick(searchTerm: String, clickedItemName: String, sectionName: String? = nil, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackAutocompleteClickData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: sectionName, group: group)
+        self.tracker?.trackAutocompleteClick(for: data, completionHandler: completionHandler)
+    }
+    
+    /// Track search.
+    ///
+    /// - Parameters:
+    ///   - searchTerm: Search term that the user searched for
+    ///   - itemName: Name of the clicked item
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackSearch(searchTerm: String, itemName: String, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackSearchData(searchTerm: searchTerm, itemName: itemName)
+        self.tracker?.trackSearch(for: data, completionHandler: completionHandler)
+    }
+    
 }
