@@ -8,10 +8,12 @@
 
 import Foundation
 
-class RequestBuilder {
+public class RequestBuilder {
 
     var queryItems = QueryItemCollection()
     var dateProvider: DateProvider
+    
+    internal(set) var trackData: CIORequestData!
     
     internal(set) var searchTerm = ""
     
@@ -32,24 +34,16 @@ class RequestBuilder {
     func set(session: Int){
         queryItems.add(URLQueryItem(name: "s", value: String(session)))
     }
-
-    func getURLString() -> String {
-        fatalError("Override this method in the subclass!")
-    }
-
-    func getHttpMethod() -> String {
-        return "GET"
-    }
-
-    func addAdditionalQueryItems() {
-        return
+    
+    final func build(trackData: CIORequestData){
+        self.trackData = trackData
+        trackData.decorateRequest(requestBuilder: self)
     }
 
     final func getRequest() -> URLRequest {
-        let urlString = getURLString()
+        let urlString = self.trackData!.url
 
         var urlComponents = URLComponents(string: urlString)!
-        addAdditionalQueryItems()
         
         // create array copy, so the version string is added only once even if we can call this method multiple times
         var allQueryItems = self.queryItems
@@ -64,7 +58,7 @@ class RequestBuilder {
 
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpMethod = getHttpMethod()
+        request.httpMethod = self.trackData!.httpMethod()
         
         return request
     }

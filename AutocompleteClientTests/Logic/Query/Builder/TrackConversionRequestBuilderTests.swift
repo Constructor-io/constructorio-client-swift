@@ -1,5 +1,5 @@
 //
-//  TrackConversionRequestBuilderTests.swift
+//  RequestBuilderTests.swift
 //  AutocompleteClientTests
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import ConstructorAutocomplete
 
-class TrackConversionRequestBuilderTests: XCTestCase {
+class RequestBuilderTests: XCTestCase {
 
     fileprivate let testACKey = "testKey123213"
     fileprivate let searchTerm = "test search term"
@@ -21,18 +21,19 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     fileprivate var encodedItemName: String = ""
     fileprivate var encodedSectionName: String = ""
 
-    fileprivate var builder: TrackConversionRequestBuilder!
+    fileprivate var builder: RequestBuilder!
 
     override func setUp() {
         super.setUp()
         self.encodedSearchTerm = self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.encodedItemName = self.itemName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedSectionName = self.sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        self.builder = RequestBuilder(autocompleteKey: testACKey)
     }
     
     func testTrackConversionBuilder_onlySearchTerm() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm)
-        builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         
@@ -45,7 +46,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
 
     func testTrackConversionBuilder_withItemName() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm)
-        builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         
@@ -57,7 +58,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
 
     func testTrackConversionBuilder_withSectionName() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm, sectionName: sectionName)
-        builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         
@@ -70,7 +71,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     
     func testTrackConversionBuilder_withRevenue() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm, revenue: revenue)
-        builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         
@@ -84,7 +85,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
 
     func testTrackConversionBuilder_withNoSectionSpecified_hasNoSectionName() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm)
-        builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        builder.build(trackData: tracker)
         let request = builder.getRequest()
         
         XCTAssertTrue(!request.url!.absoluteString.contains("\(Constants.TrackAutocomplete.autocompleteSection)="), "URL shouldn't contain the default autocomplete section if the section name is not passed.")
@@ -92,7 +93,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     
     func testTrackConversionBuilder_AllFields() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm, sectionName: sectionName, revenue: revenue)
-        builder = TrackConversionRequestBuilder(tracker: tracker, autocompleteKey: testACKey)
+        builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         

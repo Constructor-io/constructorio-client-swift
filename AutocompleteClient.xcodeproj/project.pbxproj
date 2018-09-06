@@ -18,11 +18,9 @@
 		651F5B9E3E0C5CC7A2090EC8 /* Pods_AutocompleteClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
-		F192DDEA1F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDE91F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift */; };
 		F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDED1F5F123400114C8C /* RequestBuilder.swift */; };
 		F19E289D1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E289C1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift */; };
 		F19E28A31F5F220B0022C814 /* CIOTrackAutocompleteClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A21F5F220B0022C814 /* CIOTrackAutocompleteClickData.swift */; };
-		F19E28A51F5F42830022C814 /* TrackConversionRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A41F5F42830022C814 /* TrackConversionRequestBuilder.swift */; };
 		F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B17CB11F58E5830015FF62 /* AutocompleteResult.swift */; };
 		F1C557411F5F67CA0040D6AD /* CIOHighlighterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C557401F5F67CA0040D6AD /* CIOHighlighterTests.swift */; };
 		F1C557431F605C910040D6AD /* TrackAutocompleteClickRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C557421F605C910040D6AD /* TrackAutocompleteClickRequestBuilderTests.swift */; };
@@ -41,8 +39,6 @@
 		F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BEA1C1F571C5C008F0053 /* SearchResultCell.swift */; };
 		F60BEA201F5726CB008F0053 /* EmptyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */; };
 		F60BEA221F5726D8008F0053 /* EmptyScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */; };
-		F60FE9041F5C5B220037A0AB /* QueryRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9031F5C5B220037A0AB /* QueryRequestBuilder.swift */; };
-		F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9051F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift */; };
 		F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */; };
 		F61A6B061F66AFD4007826CA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B041F66AFD4007826CA /* DetailsViewController.swift */; };
 		F61A6B091F698877007826CA /* CIOGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B081F698877007826CA /* CIOGroup.swift */; };
@@ -111,6 +107,9 @@
 		F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685253F21380CAB00A27FAA /* Matcher+Regex.swift */; };
 		F6852556213BCE9E00A27FAA /* MockCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6852555213BCE9E00A27FAA /* MockCommons.swift */; };
 		F6852559213D604900A27FAA /* AutocompleteResultCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6852558213D604900A27FAA /* AutocompleteResultCount.swift */; };
+		F685255B21413D4D00A27FAA /* CIORequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255A21413D4D00A27FAA /* CIORequestData.swift */; };
+		F685255D21414E1D00A27FAA /* CIOTrackSessionStartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */; };
+		F685255F2141543C00A27FAA /* RequestBuilder+QueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */; };
 		F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
 		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */; };
@@ -142,8 +141,6 @@
 		F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */; };
 		F6D2E9CA20E15190007F8761 /* HasSectionName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9C920E15190007F8761 /* HasSectionName.swift */; };
 		F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */; };
-		F6D2E9CE20E210BD007F8761 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CD20E210BD007F8761 /* TrackSearchResultsLoadedRequestBuilder.swift */; };
-		F6DF7B9220849C4300A7CDAD /* TrackSearchRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9120849C4300A7CDAD /* TrackSearchRequestBuilder.swift */; };
 		F6DF7B9420849E8D00A7CDAD /* CIOTrackSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchData.swift */; };
 /* End PBXBuildFile section */
 
@@ -206,11 +203,9 @@
 		D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CharacterSetIteratorTests.swift"; sourceTree = "<group>"; };
 		F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+RangeOfCharactersTest.swift"; sourceTree = "<group>"; };
-		F192DDE91F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAutocompleteClickRequestBuilder.swift; sourceTree = "<group>"; };
 		F192DDED1F5F123400114C8C /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		F19E289C1F5F1DBF0022C814 /* Date+MillisecondsSince1970.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+MillisecondsSince1970.swift"; sourceTree = "<group>"; };
 		F19E28A21F5F220B0022C814 /* CIOTrackAutocompleteClickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackAutocompleteClickData.swift; sourceTree = "<group>"; };
-		F19E28A41F5F42830022C814 /* TrackConversionRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackConversionRequestBuilder.swift; sourceTree = "<group>"; };
 		F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackConversionData.swift; sourceTree = "<group>"; };
 		F1B17CB11F58E5830015FF62 /* AutocompleteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteResult.swift; sourceTree = "<group>"; };
 		F1C557401F5F67CA0040D6AD /* CIOHighlighterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOHighlighterTests.swift; sourceTree = "<group>"; };
@@ -230,8 +225,6 @@
 		F60BEA1C1F571C5C008F0053 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreenView.swift; sourceTree = "<group>"; };
 		F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyScreenView.xib; sourceTree = "<group>"; };
-		F60FE9031F5C5B220037A0AB /* QueryRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryRequestBuilder.swift; sourceTree = "<group>"; };
-		F60FE9051F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilder.swift; sourceTree = "<group>"; };
 		F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
 		F61A6B041F66AFD4007826CA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F61A6B081F698877007826CA /* CIOGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOGroup.swift; sourceTree = "<group>"; };
@@ -299,6 +292,9 @@
 		F685253F21380CAB00A27FAA /* Matcher+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Matcher+Regex.swift"; sourceTree = "<group>"; };
 		F6852555213BCE9E00A27FAA /* MockCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCommons.swift; sourceTree = "<group>"; };
 		F6852558213D604900A27FAA /* AutocompleteResultCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteResultCount.swift; sourceTree = "<group>"; };
+		F685255A21413D4D00A27FAA /* CIORequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORequestData.swift; sourceTree = "<group>"; };
+		F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSessionStartData.swift; sourceTree = "<group>"; };
+		F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestBuilder+QueryItems.swift"; sourceTree = "<group>"; };
 		F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConstructorAutocomplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConstructorAutocomplete-Swift.h"; sourceTree = "<group>"; };
 		F688A4431F56B4B600F169C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -333,8 +329,6 @@
 		F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ToJSON.swift"; sourceTree = "<group>"; };
 		F6D2E9C920E15190007F8761 /* HasSectionName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasSectionName.swift; sourceTree = "<group>"; };
 		F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchResultsLoadedData.swift; sourceTree = "<group>"; };
-		F6D2E9CD20E210BD007F8761 /* TrackSearchResultsLoadedRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchResultsLoadedRequestBuilder.swift; sourceTree = "<group>"; };
-		F6DF7B9120849C4300A7CDAD /* TrackSearchRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchRequestBuilder.swift; sourceTree = "<group>"; };
 		F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -436,6 +430,8 @@
 				088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */,
 				F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */,
 				F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchData.swift */,
+				F685255A21413D4D00A27FAA /* CIORequestData.swift */,
+				F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */,
 				F6D2E9C920E15190007F8761 /* HasSectionName.swift */,
 			);
 			path = Track;
@@ -553,16 +549,9 @@
 		F60FE9021F5C5B120037A0AB /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				F60FE9051F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift */,
 				F67BFC9620B84C2600986557 /* QueryItemCollection.swift */,
-				F60FE9031F5C5B220037A0AB /* QueryRequestBuilder.swift */,
 				F192DDED1F5F123400114C8C /* RequestBuilder.swift */,
-				F192DDE91F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift */,
-				F19E28A41F5F42830022C814 /* TrackConversionRequestBuilder.swift */,
-				088F7D17210FA399005B9FB4 /* TrackInputFocusRequestBuilder.swift */,
-				F6DF7B9120849C4300A7CDAD /* TrackSearchRequestBuilder.swift */,
-				F6D2E9CD20E210BD007F8761 /* TrackSearchResultsLoadedRequestBuilder.swift */,
-				088F7D18210FA39A005B9FB4 /* TrackSessionStartRequestBuilder.swift */,
+				F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -1505,11 +1494,9 @@
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
 				F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */,
 				F6B220ED209C692D003A5D48 /* CustomSearchController.swift in Sources */,
-				F6DF7B9220849C4300A7CDAD /* TrackSearchRequestBuilder.swift in Sources */,
 				F6DF7B9420849E8D00A7CDAD /* CIOTrackSearchData.swift in Sources */,
 				F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */,
 				F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */,
-				F19E28A51F5F42830022C814 /* TrackConversionRequestBuilder.swift in Sources */,
 				F638090B1F5E855B00C3B322 /* BoldAttributesProvider.swift in Sources */,
 				088F7D26210FA43C005B9FB4 /* DateProvider.swift in Sources */,
 				F1F68DDD1F58B7D600B42602 /* Constants.swift in Sources */,
@@ -1524,14 +1511,13 @@
 				F636E03B1F57E68A004C85FA /* String+URLEncode.swift in Sources */,
 				F6D2E9CA20E15190007F8761 /* HasSectionName.swift in Sources */,
 				F61A6B091F698877007826CA /* CIOGroup.swift in Sources */,
-				F60FE9041F5C5B220037A0AB /* QueryRequestBuilder.swift in Sources */,
 				F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */,
 				F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */,
+				F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */,
 				F1F68DDA1F58B6A300B42602 /* CIOAutocompleteResponseParser.swift in Sources */,
 				F6852559213D604900A27FAA /* AutocompleteResultCount.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
 				F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */,
-				F6D2E9CE20E210BD007F8761 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */,
 				F1F68DD41F58B59F00B42602 /* CIOQuery.swift in Sources */,
 				F63808F81F5D497200C3B322 /* NetworkResponse.swift in Sources */,
 				F699C3471F57ED4200FD681A /* CIOAutocompleteUICustomization.swift in Sources */,
@@ -1540,6 +1526,7 @@
 				F63808F21F5D47AF00C3B322 /* URLSessionNetworkClient.swift in Sources */,
 				F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */,
 				F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */,
+				F685255F2141543C00A27FAA /* RequestBuilder+QueryItems.swift in Sources */,
 				088F7D1C210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift in Sources */,
 				F63808F41F5D47BB00C3B322 /* NetworkClient.swift in Sources */,
 				F63809091F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift in Sources */,
@@ -1548,15 +1535,14 @@
 				0856B77B21474CF500AAFA41 /* AutocompleteResultCount.swift in Sources */,
 				F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */,
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
+				F685255B21413D4D00A27FAA /* CIORequestData.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,
 				088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */,
 				F62510C82052CC6B0040E3DF /* CIOSessionManager.swift in Sources */,
 				F68A73131F56E5FB00FA4D1B /* String+Trim.swift in Sources */,
 				F60BEA201F5726CB008F0053 /* EmptyScreenView.swift in Sources */,
 				F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */,
-				F192DDEA1F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift in Sources */,
 				F638090D1F5E880900C3B322 /* CIOHighlighter.swift in Sources */,
-				088F7D1A210FA39A005B9FB4 /* TrackSessionStartRequestBuilder.swift in Sources */,
 				F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */,
 				F1F68DD81F58B69000B42602 /* CIOResult.swift in Sources */,
 				088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */,
@@ -1565,6 +1551,7 @@
 				F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */,
 				F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */,
 				F67BFC9720B84C2600986557 /* QueryItemCollection.swift in Sources */,
+				F685255D21414E1D00A27FAA /* CIOTrackSessionStartData.swift in Sources */,
 				F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */,
 				F64F46C51F59A6890094C697 /* AutocompleteViewModelDelegate.swift in Sources */,
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
@@ -1572,6 +1559,7 @@
 				F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */,
 				0856B77A21474CF500AAFA41 /* AutocompleteConfig.swift in Sources */,
 				088F7D19210FA39A005B9FB4 /* TrackInputFocusRequestBuilder.swift in Sources */,
+				F62510D62057F8980040E3DF /* UserIDGenerator.swift in Sources */,
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,
