@@ -17,7 +17,7 @@ public struct CIOTrackSearchData: CIORequestData {
     }
     
     public func decorateRequest(requestBuilder: RequestBuilder){
-        requestBuilder.set(searchTerm: self.searchTerm)
+        requestBuilder.set(originalQuery: self.searchTerm)
         requestBuilder.set(itemName: self.itemName)
     }
 }
