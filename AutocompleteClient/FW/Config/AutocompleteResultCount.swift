@@ -1,5 +1,5 @@
 //
-//  Constants.swift
+//  AutocompleteResultCount.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,11 +8,10 @@
 
 import Foundation
 
-public struct AutocompleteConfig {
-
-    public var numResults: Int?
-    public var numResultsForSection: [String: Int]?
-
+public struct AutocompleteResultCount{
+    public let numResults: Int?
+    public let numResultsForSection: [String: Int]?
+    
     public init(numResults: Int) {
         self.numResults = numResults
         self.numResultsForSection = nil

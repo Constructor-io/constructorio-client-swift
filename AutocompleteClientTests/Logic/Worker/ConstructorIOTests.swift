@@ -37,7 +37,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
 
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        let constructor = ConstructorIO(config: TestConstants.testConfig)
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -70,7 +70,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient (error: customError) }
 
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        let constructor = ConstructorIO(config: TestConstants.testConfig)
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -99,7 +99,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
 
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        let constructor = ConstructorIO(config: TestConstants.testConfig)
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
