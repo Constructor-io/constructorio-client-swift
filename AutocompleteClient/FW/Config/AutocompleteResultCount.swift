@@ -1,5 +1,5 @@
 //
-//  ResultCount.swift
+//  AutocompleteResultCount.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
