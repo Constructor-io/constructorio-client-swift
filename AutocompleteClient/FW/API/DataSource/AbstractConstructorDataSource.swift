@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AbstractConstructorDataSource {
-    func autocomplete(forQuery query: CIOAutocompleteQuery, completionHandler: @escaping QueryCompletionHandler)
+    func autocomplete(forQuery query: CIOAutocompleteQuery, completionHandler: @escaping AutocompleteQueryCompletionHandler)
 }
