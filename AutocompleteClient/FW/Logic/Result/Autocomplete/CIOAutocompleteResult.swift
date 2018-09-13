@@ -54,6 +54,7 @@ import Foundation
             let groupsArr = data[Constants.Result.groups] as? [[String:Any]]{
             var groups = [CIOGroup]()
             for dict in groupsArr{
+                
                 guard let name = dict[Constants.Result.displayName] as? String else{
                     continue
                 }

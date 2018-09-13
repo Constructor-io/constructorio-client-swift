@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CIOAutocompleteResponseParser: AbstractResponseParser {
+struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
     weak var delegate: ResponseParserDelegate?
 

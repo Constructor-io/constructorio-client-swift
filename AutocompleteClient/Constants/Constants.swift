@@ -58,7 +58,6 @@ struct Constants {
         static let baseURLString = "https://ac.cnstrc.com"
         static let httpMethod = "GET"
         static let queryStringFormat = "%@/%@/%@"
-        
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
     }
 
@@ -71,11 +70,17 @@ struct Constants {
         static let numResults = "num_results"
         static let numResultsForSectionNamePrefix = "num_results_"
         static let queryItemForSection = { (name: String) -> String in return Constants.AutocompleteQuery.numResultsForSectionNamePrefix + name }
-        
         static let sectionNameSearchSuggestions = "Search Suggestions"
         static let sectionNameProducts = "Products"
-        
         static let defaultItemCountPerSection = 10
+    }
+    
+    struct SearchQuery {
+        static let pathString = "search"
+        static let page = "page"
+        static let groupFilter = "filters[group_id]"
+        static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
+        static let numResultsPerPage = "num_results_per_page"
     }
 
     struct Response {
@@ -100,7 +105,6 @@ struct Constants {
         static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let expectedStatusCode = 204
-    
         static let autocompleteSection = "autocomplete_section"
         static let searchTerm = "term"
         static let trigger = "tr"
@@ -147,7 +151,6 @@ struct Constants {
     struct Logging{
         private static let prefix = "[ConstructorIO]:"
         private static let format: (_ message: String) -> String = { message in return "\(Logging.prefix) \(message)" }
-        
         static let performURLRequest: (_ request: URLRequest) -> String = { request in return Logging.format("Performing URL Request \(request)") }
     }
     
