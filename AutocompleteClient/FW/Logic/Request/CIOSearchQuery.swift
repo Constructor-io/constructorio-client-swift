@@ -12,22 +12,27 @@ import Foundation
  Struct encapsulating the necessary and additional parameters required to execute an search query.
  */
 public struct CIOSearchQuery: CIORequestData{
-    public let query: String
-    public let page: Int
-    public let numResultsPerPage: Int
-
+    let query: String
+    let filters: CIOSearchQueryFilters?
+    let page: Int
+    let numResultsPerPage: Int
+    
     public var url: String{
         return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString,
                       Constants.SearchQuery.pathString, query)
     }
     
-    init(query: String, page: Int = 1, numResultsPerPage: Int = 20) {
+    init(query: String, filters: CIOSearchQueryFilters? = nil, page: Int = 1, numResultsPerPage: Int = 20) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
+        self.filters = filters
         self.page = page
         self.numResultsPerPage = numResultsPerPage
     }
     
     public func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(numResults: self.numResultsPerPage)
+        requestBuilder.set(page: self.page)
+        requestBuilder.set(numResultsPerPage: self.numResultsPerPage)
+        requestBuilder.set(groupFilter: self.filters?.groupFilter)
+        requestBuilder.set(facetFilters: self.filters?.facetFilters)
     }
 }

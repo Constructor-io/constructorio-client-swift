@@ -2,8 +2,8 @@
 //  Facet.swift
 //  AutocompleteClient
 //
-//  Created by Nikola Markovic on 9/10/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import UIKit

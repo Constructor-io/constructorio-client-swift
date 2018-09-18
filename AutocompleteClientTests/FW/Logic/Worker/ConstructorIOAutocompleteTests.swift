@@ -21,10 +21,8 @@ class ConstructorIOAutocompleteTests: XCTestCase {
     func testAutocomplete_With200() {
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
-        
         let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), builder.create())
-
         self.constructor.autocomplete(forQuery: query) { (response) in }
         self.wait(for: builder.expectation)
     }
@@ -33,9 +31,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let expectation = self.expectation(description: "Calling autocomplete with no connectvity should return noConnectivity CIOError.")
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
-        
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), noConnectivity())
-        
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let error = response.error as? CIOError{
                 XCTAssertEqual(error, CIOError.noConnection, "Returned error from network client should be type CIOError.noConnection.")
@@ -49,9 +45,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let expectation = self.expectation(description: "Calling autocomplete with 400 should return badRequest CIOError.")
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
-        
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), http(400))
-        
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let error = response.error as? CIOError{
                 XCTAssertEqual(error, CIOError.badRequest, "Returned error from network client should be type CIOError.badRequest.")
@@ -65,9 +59,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let expectation = self.expectation(description: "Calling autocomplete with 500 should return internalServerError CIOError.")
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
-        
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), http(500))
-        
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let error = response.error as? CIOError{
                 XCTAssertEqual(error, CIOError.internalServerError, "Returned error from network client should be type CIOError,internalServerError.")

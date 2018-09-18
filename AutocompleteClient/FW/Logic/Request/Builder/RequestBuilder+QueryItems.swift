@@ -63,6 +63,33 @@ extension RequestBuilder{
         }
     }
     
+    func set(numResultsPerPage: Int?) {
+        guard let numResults = numResultsPerPage else { return }
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.numResultsPerPage, value: String(numResults)))
+    }
+    
+    func set(page: Int){
+        let pageString = String(page)
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.page, value: pageString))
+    }
+    
+    func set(groupFilter: String?){
+        guard let filter = groupFilter else { return }
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.groupFilter, value: filter))
+    }
+    
+    func set(facetFilters: [Filter]?){
+        guard let filters = facetFilters else { return }
+        for filter in filters{
+            self.set(facetFilter: filter)
+        }
+    }
+    
+    func set(facetFilter: Filter?){
+        guard let filter = facetFilter else { return }
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.facetFilterKey(filter.key), value: filter.value))
+    }
+    
     func set(testCellKey: String, testCellValue: String){
         let formattedKey = String(format: Constants.ABTesting.keyFormat, testCellKey)
         queryItems.add(URLQueryItem(name: formattedKey, value: testCellValue))

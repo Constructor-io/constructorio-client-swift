@@ -24,7 +24,6 @@ class ConstructorIOUserIDTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: term)
         let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&ui=abcdefg&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), builder.create())
-        
         self.constructor.autocomplete(forQuery: query) { (response) in }
         self.wait(for: builder.expectation)
     }
