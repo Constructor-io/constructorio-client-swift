@@ -48,6 +48,20 @@ class SearchTests: XCTestCase {
         self.wait(for: expectation)
     }
     
+    func testCallingSearch_ReturnsErrorObject_IfAPIReturnsInvalidResponse(){
+        let expectation = self.expectation(description: "Calling Search returns non-nil error if API errors out.")
+        
+        let query = CIOSearchQuery(query: "potato")
+        
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&s=1&page=1&num_results_per_page=20&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C"), http(404))
+        
+        self.constructor.search(forQuery: query, completionHandler: { response in
+            XCTAssertNotNil(response.error, "Calling Search returns non-nil error if API errors out.")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
     func testCallingSearch_AttachesPageParameter(){
         let query = CIOSearchQuery(query: "potato", page: 5)
         
