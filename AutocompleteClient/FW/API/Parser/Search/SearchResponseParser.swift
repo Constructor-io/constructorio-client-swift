@@ -2,8 +2,8 @@
 //  SearchResponseParser.swift
 //  AutocompleteClient
 //
-//  Created by Nikola Markovic on 9/10/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import Foundation
@@ -33,7 +33,7 @@ class SearchResponseParser: AbstractSearchResponseParser{
                 
                 guard let id = dataObj["id"] as? String else { return nil }
                 
-                guard let value = resultObj["data"] as? String else { return nil }
+                guard let value = resultObj["value"] as? String else { return nil }
                 
                 let imageURL = dataObj["image_url"] as? String
                 let price = dataObj["price"] as? String

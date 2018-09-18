@@ -95,13 +95,18 @@
 		F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6548833208633E20044E403 /* NSAttributedString+Build.swift */; };
 		F65B9E482146957800101617 /* CIOSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E472146957800101617 /* CIOSearchResponse.swift */; };
 		F65B9E4C214698FD00101617 /* AbstractSearchResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E4B214698FD00101617 /* AbstractSearchResponseParser.swift */; };
-		F65B9E4E2146991C00101617 /* SearchResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E4D2146991C00101617 /* SearchResponseParserDelegate.swift */; };
 		F65B9E502146995800101617 /* SearchResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E4F2146995800101617 /* SearchResponseParser.swift */; };
 		F65B9E5821469CA200101617 /* SearchTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E5721469CA200101617 /* SearchTaskResponse.swift */; };
 		F65B9E5C2146A4DA00101617 /* Facet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E5B2146A4DA00101617 /* Facet.swift */; };
 		F65B9E5E2146A4FB00101617 /* FacetOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E5D2146A4FB00101617 /* FacetOption.swift */; };
 		F65B9E602146AB5200101617 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E5F2146AB5200101617 /* SearchResult.swift */; };
 		F65BBC592148223E007FEB22 /* SearchResultFacet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBC582148223E007FEB22 /* SearchResultFacet.swift */; };
+		F65BBC80214A8492007FEB22 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBC7F214A8492007FEB22 /* SearchTests.swift */; };
+		F65BBCAC214F95FB007FEB22 /* SearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCAB214F95FB007FEB22 /* SearchFilters.swift */; };
+		F65BBCAE214FC99E007FEB22 /* response_search_json.json in Resources */ = {isa = PBXBuildFile; fileRef = F65BBCAD214FC99E007FEB22 /* response_search_json.json */; };
+		F65BBCB0214FD4C7007FEB22 /* SearchParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCAF214FD4C7007FEB22 /* SearchParserTests.swift */; };
+		F65BBCB121515662007FEB22 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
+		F65BBCB221515662007FEB22 /* ConstructorAutocomplete.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */; };
 		F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674157A204D489B004F313B /* MockResponseParserDelegate.swift */; };
 		F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */; };
@@ -165,6 +170,13 @@
 			remoteGlobalIDString = F64F46CC1F59CE750094C697;
 			remoteInfo = UserApplication;
 		};
+		F65BBCB321515662007FEB22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F688A4361F56B4B600F169C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F688A43E1F56B4B600F169C1;
+			remoteInfo = AutocompleteClient;
+		};
 		F688A44A1F56B4B600F169C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F688A4361F56B4B600F169C1 /* Project object */;
@@ -173,6 +185,20 @@
 			remoteInfo = SearchFW;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F65BBCB521515662007FEB22 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F65BBCB221515662007FEB22 /* ConstructorAutocomplete.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOSessionManagerDelegate.swift; sourceTree = "<group>"; };
@@ -268,13 +294,16 @@
 		F6548833208633E20044E403 /* NSAttributedString+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Build.swift"; sourceTree = "<group>"; };
 		F65B9E472146957800101617 /* CIOSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchResponse.swift; sourceTree = "<group>"; };
 		F65B9E4B214698FD00101617 /* AbstractSearchResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractSearchResponseParser.swift; sourceTree = "<group>"; };
-		F65B9E4D2146991C00101617 /* SearchResponseParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F65B9E4F2146995800101617 /* SearchResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseParser.swift; sourceTree = "<group>"; };
 		F65B9E5721469CA200101617 /* SearchTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTaskResponse.swift; sourceTree = "<group>"; };
 		F65B9E5B2146A4DA00101617 /* Facet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facet.swift; sourceTree = "<group>"; };
 		F65B9E5D2146A4FB00101617 /* FacetOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacetOption.swift; sourceTree = "<group>"; };
 		F65B9E5F2146AB5200101617 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		F65BBC582148223E007FEB22 /* SearchResultFacet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultFacet.swift; sourceTree = "<group>"; };
+		F65BBC7F214A8492007FEB22 /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
+		F65BBCAB214F95FB007FEB22 /* SearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilters.swift; sourceTree = "<group>"; };
+		F65BBCAD214FC99E007FEB22 /* response_search_json.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_search_json.json; sourceTree = "<group>"; };
+		F65BBCAF214FD4C7007FEB22 /* SearchParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParserTests.swift; sourceTree = "<group>"; };
 		F674157A204D489B004F313B /* MockResponseParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FindSubview.swift"; sourceTree = "<group>"; };
 		F67BFC9420B845D300986557 /* UISearchBar+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+TextField.swift"; sourceTree = "<group>"; };
@@ -331,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F63374A91F5A8FBF00E481E7 /* ConstructorAutocomplete.framework in Frameworks */,
+				F65BBCB121515662007FEB22 /* ConstructorAutocomplete.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +470,7 @@
 			children = (
 				F60FE9021F5C5B120037A0AB /* Builder */,
 				F1F68DD31F58B59F00B42602 /* CIOQuery.swift */,
+				F65BBCAB214F95FB007FEB22 /* SearchFilters.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -716,6 +747,7 @@
 		F64F46A31F595B590094C697 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F65BBC7E214A8474007FEB22 /* Search */,
 				F685256421417E3E00A27FAA /* ABTesting */,
 				F64E94E7212DC91900E50EDE /* Autocomplete */,
 				F64E94DB212D7EB300E50EDE /* Tracking */,
@@ -731,6 +763,7 @@
 		F64F46A41F595B600094C697 /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				F65BBCAF214FD4C7007FEB22 /* SearchParserTests.swift */,
 				F64F46A51F595B980094C697 /* ResultParserTests.swift */,
 				F674157A204D489B004F313B /* MockResponseParserDelegate.swift */,
 			);
@@ -745,6 +778,7 @@
 				F64F46A91F5960FB0094C697 /* response_json_multiple_sections.json */,
 				F64F46AE1F59641D0094C697 /* TestResource.swift */,
 				F6D2E9C020DBDCCA007F8761 /* response_json_single_result.json */,
+				F65BBCAD214FC99E007FEB22 /* response_search_json.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -892,7 +926,6 @@
 			isa = PBXGroup;
 			children = (
 				F65B9E4B214698FD00101617 /* AbstractSearchResponseParser.swift */,
-				F65B9E4D2146991C00101617 /* SearchResponseParserDelegate.swift */,
 				F65B9E4F2146995800101617 /* SearchResponseParser.swift */,
 			);
 			path = Search;
@@ -917,6 +950,14 @@
 				F65B9E5D2146A4FB00101617 /* FacetOption.swift */,
 				F65B9E5F2146AB5200101617 /* SearchResult.swift */,
 				F65BBC582148223E007FEB22 /* SearchResultFacet.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F65BBC7E214A8474007FEB22 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F65BBC7F214A8492007FEB22 /* SearchTests.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1255,10 +1296,12 @@
 				F64F46C91F59CE750094C697 /* Sources */,
 				F64F46CA1F59CE750094C697 /* Frameworks */,
 				F64F46CB1F59CE750094C697 /* Resources */,
+				F65BBCB521515662007FEB22 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F65BBCB421515662007FEB22 /* PBXTargetDependency */,
 			);
 			name = UserApplication;
 			productName = UserApplication;
@@ -1438,6 +1481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */,
+				F65BBCAE214FC99E007FEB22 /* response_search_json.json in Resources */,
 				F64F46B11F5970140094C697 /* response_json_single_section.json in Resources */,
 				F6D2E9C120DBDCCA007F8761 /* response_json_single_result.json in Resources */,
 				F64F46AA1F5960FB0094C697 /* response_json_multiple_sections.json in Resources */,
@@ -1546,6 +1590,7 @@
 				F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */,
 				F65B9E5821469CA200101617 /* SearchTaskResponse.swift in Sources */,
 				F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift in Sources */,
+				F65BBCAC214F95FB007FEB22 /* SearchFilters.swift in Sources */,
 				F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */,
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,
 				F60BEA1A1F571956008F0053 /* CIOAutocompleteDelegate.swift in Sources */,
@@ -1598,7 +1643,6 @@
 				F685255D21414E1D00A27FAA /* CIOTrackSessionStartData.swift in Sources */,
 				F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */,
 				F64F46C51F59A6890094C697 /* AutocompleteViewModelDelegate.swift in Sources */,
-				F65B9E4E2146991C00101617 /* SearchResponseParserDelegate.swift in Sources */,
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,
 				F65B9E5C2146A4DA00101617 /* Facet.swift in Sources */,
@@ -1629,9 +1673,11 @@
 				F62510D120568F250040E3DF /* SessionTests.swift in Sources */,
 				F63808FF1F5D6C1000C3B322 /* ConstructorIOTests.swift in Sources */,
 				F64F46B71F59767D0094C697 /* ViewModelTests.swift in Sources */,
+				F65BBCB0214FD4C7007FEB22 /* SearchParserTests.swift in Sources */,
 				F64F46AF1F59641D0094C697 /* TestResource.swift in Sources */,
 				F64F46BE1F59846E0094C697 /* XCTest+TimeoutFail.swift in Sources */,
 				F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */,
+				F65BBC80214A8492007FEB22 /* SearchTests.swift in Sources */,
 				F64F46A61F595B980094C697 /* ResultParserTests.swift in Sources */,
 				F64E94DD212D7EC300E50EDE /* TrackingTests.swift in Sources */,
 				F64F46AD1F5963AF0094C697 /* Bundle+Test.swift in Sources */,
@@ -1658,6 +1704,11 @@
 			target = F64F46CC1F59CE750094C697 /* UserApplication */;
 			targetProxy = F64F46EC1F59CE750094C697 /* PBXContainerItemProxy */;
 		};
+		F65BBCB421515662007FEB22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F688A43E1F56B4B600F169C1 /* AutocompleteClient */;
+			targetProxy = F65BBCB321515662007FEB22 /* PBXContainerItemProxy */;
+		};
 		F688A44B1F56B4B600F169C1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F688A43E1F56B4B600F169C1 /* AutocompleteClient */;
@@ -1669,10 +1720,11 @@
 		F64F46F31F59CE750094C697 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GK53T2PMMR;
 				INFOPLIST_FILE = UserApplication/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1687,10 +1739,11 @@
 		F64F46F41F59CE750094C697 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GK53T2PMMR;
 				INFOPLIST_FILE = UserApplication/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1892,7 +1945,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GK53T2PMMR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1918,7 +1971,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GK53T2PMMR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

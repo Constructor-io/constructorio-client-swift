@@ -2,8 +2,8 @@
 //  ABTestingTests.swift
 //  AutocompleteClientTests
 //
-//  Created by Nikola Markovic on 9/6/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import XCTest

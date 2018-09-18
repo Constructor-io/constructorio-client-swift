@@ -35,24 +35,29 @@ public struct CIOAutocompleteQuery: CIORequestData {
 
 public struct CIOSearchQuery: CIORequestData{
     let query: String
+    let filters: SearchFilters?
     let page: Int
     let numResultsPerPage: Int
     let numResultsPerPageForSection: [String: Int]?
-
+    
     public var url: String{
         return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString,
                       Constants.SearchQuery.pathString, query)
     }
     
-    init(query: String, page: Int = 1, numResultsPerPage: Int = 20, numResultsPerPageForSection: [String: Int]? = nil) {
+    init(query: String, filters: SearchFilters? = nil, page: Int = 1, numResultsPerPage: Int = 20, numResultsPerPageForSection: [String: Int]? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
+        self.filters = filters
         self.page = page
         self.numResultsPerPage = numResultsPerPage
         self.numResultsPerPageForSection = numResultsPerPageForSection
     }
     
     public func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(numResults: self.numResultsPerPage)
+        requestBuilder.set(page: self.page)
+        requestBuilder.set(numResultsPerPage: self.numResultsPerPage)
         requestBuilder.set(numResultsForSection: self.numResultsPerPageForSection)
+        requestBuilder.set(groupFilter: self.filters?.groupFilter)
+        requestBuilder.set(facetFilters: self.filters?.facetFilters)
     }
 }
