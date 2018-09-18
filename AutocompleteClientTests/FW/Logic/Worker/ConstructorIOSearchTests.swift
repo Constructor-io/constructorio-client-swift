@@ -23,13 +23,24 @@ class ConstructorIOSearchTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSearch_ReturnsNonNilResponse(){
+    func testSearch_With200(){
         let expectation = self.expectation(description: "Calling Search with valid parameters should return a non-nil response.")
         let query = CIOSearchQuery(query: "potato")
         let dataToReturn = TestResource.load(name: TestResource.Response.searchJSONFilename)
         stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&s=1&page=1&num_results_per_page=20&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C"), http(200, data: dataToReturn))
         self.constructor.search(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Search with valid parameters should return a non-nil response.")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testSearch_With404(){
+        let expectation = self.expectation(description: "Calling Search returns non-nil error if API errors out.")
+        let query = CIOSearchQuery(query: "potato")
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&s=1&page=1&num_results_per_page=20&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C"), http(404))
+        self.constructor.search(forQuery: query, completionHandler: { response in
+            XCTAssertNotNil(response.error, "Calling Search returns non-nil error if API errors out.")
             expectation.fulfill()
         })
         self.wait(for: expectation)
