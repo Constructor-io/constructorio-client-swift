@@ -58,6 +58,10 @@ struct Constants {
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
     }
 
+    struct ClientID{
+        static let key = "kClientID"
+    }
+    
     struct AutocompleteQuery {
         static let pathString = "autocomplete"
         static let numResults = "num_results"

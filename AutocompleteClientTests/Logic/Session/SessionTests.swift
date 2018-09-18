@@ -103,7 +103,7 @@ class SessionTests: XCTestCase {
     }
     
     func test_SessionIDCanBeRetreivedFromConstructorObject(){
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
         
         let _ = constructor.sessionManager.getSession()
     }

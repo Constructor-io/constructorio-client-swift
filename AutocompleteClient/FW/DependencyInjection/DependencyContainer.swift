@@ -27,6 +27,6 @@ class DependencyContainer {
     }
 
     var userIDGenerator: () -> UserIDGenerator = {
-        return DeviceUserIDGenerator()
+        return ClientIDGenerator()
     }
 }

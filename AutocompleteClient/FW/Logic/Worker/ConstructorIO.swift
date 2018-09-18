@@ -48,9 +48,9 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
      */
     public private(set) var tracking: CIOTracking!
     
-    public init(autocompleteKey: String, clientID: String?) {
+    public init(autocompleteKey: String) {
         self.autocompleteKey = autocompleteKey
-        self.clientID = clientID
+        self.clientID = ClientIDGenerator().generateClientID()
         
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.parser = DependencyContainer.sharedInstance.responseParser()

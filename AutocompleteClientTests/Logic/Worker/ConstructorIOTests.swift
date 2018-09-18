@@ -37,7 +37,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
 
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -70,7 +70,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient (error: customError) }
 
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -99,7 +99,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
 
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -117,16 +117,9 @@ class ConstructorIOTests: XCTestCase {
     }
     
     func testConstructor_clientIDPropertyIsAccessible(){
-        let clientID = "custom_client_id"
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: clientID)
+        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
         
-        let _ = constructor.clientID
+        XCTAssertNotNil(constructor.clientID, "Client ID shouldn't be nil")
     }
     
-    func testConstructor_clientIDPropertyEqualsValuePassed(){
-        let clientID = "custom_client_id"
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: clientID)
-        
-        XCTAssertEqual(clientID, constructor.clientID, "Client id passed should match the clientID property value.")
-    }
 }
