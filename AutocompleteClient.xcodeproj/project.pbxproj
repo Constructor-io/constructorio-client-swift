@@ -98,7 +98,6 @@
 		F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154D1F58724B008E50C0 /* UIColor+RGB.swift */; };
 		F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6548833208633E20044E403 /* NSAttributedString+Build.swift */; };
 		F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCB721515E46007FEB22 /* ClientIDGenerator.swift */; };
-		F65BBCBB21515E83007FEB22 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCBA21515E83007FEB22 /* KeychainService.swift */; };
 		F65BBCBC21516107007FEB22 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
 		F65BBCBD21516107007FEB22 /* ConstructorAutocomplete.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F65BBCC22151621A007FEB22 /* UserIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCC12151621A007FEB22 /* UserIDGenerator.swift */; };
@@ -288,7 +287,6 @@
 		F650154D1F58724B008E50C0 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		F6548833208633E20044E403 /* NSAttributedString+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Build.swift"; sourceTree = "<group>"; };
 		F65BBCB721515E46007FEB22 /* ClientIDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientIDGenerator.swift; sourceTree = "<group>"; };
-		F65BBCBA21515E83007FEB22 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		F65BBCC12151621A007FEB22 /* UserIDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIDGenerator.swift; sourceTree = "<group>"; };
 		F674157A204D489B004F313B /* MockResponseParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FindSubview.swift"; sourceTree = "<group>"; };
@@ -896,19 +894,10 @@
 		F65BBCB621515E34007FEB22 /* ClientID */ = {
 			isa = PBXGroup;
 			children = (
-				F65BBCB921515E76007FEB22 /* Keychain */,
 				F65BBCB721515E46007FEB22 /* ClientIDGenerator.swift */,
 				F65BBCC12151621A007FEB22 /* UserIDGenerator.swift */,
 			);
 			path = ClientID;
-			sourceTree = "<group>";
-		};
-		F65BBCB921515E76007FEB22 /* Keychain */ = {
-			isa = PBXGroup;
-			children = (
-				F65BBCBA21515E83007FEB22 /* KeychainService.swift */,
-			);
-			path = Keychain;
 			sourceTree = "<group>";
 		};
 		F6852554213BCE8B00A27FAA /* Mock */ = {
@@ -1526,7 +1515,6 @@
 				F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */,
 				F1F68DDA1F58B6A300B42602 /* CIOAutocompleteResponseParser.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
-				F65BBCBB21515E83007FEB22 /* KeychainService.swift in Sources */,
 				F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */,
 				F6D2E9CE20E210BD007F8761 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */,
 				F1F68DD41F58B59F00B42602 /* CIOQuery.swift in Sources */,
