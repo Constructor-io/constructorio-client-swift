@@ -12,6 +12,7 @@ import Foundation
  Represents any error that may occur in using ConstructorIO services.
  */
 public enum CIOError: Int, Error {
+    case noConnection = -1009
     case badRequest = 400
     case unauthorized = 401
     case forbidden = 403
@@ -30,6 +31,7 @@ extension CIOError: CustomStringConvertible {
     /// The string representation of this CIOError.
     public var string: String {
         switch self {
+        case .noConnection: return "No Connection"
         case .badRequest: return "Bad Request"
         case .unauthorized: return "Unauthorized"
         case .forbidden: return "Forbidden"
@@ -48,6 +50,7 @@ extension CIOError: CustomStringConvertible {
     public var description: String {
         let errorMessage: String
         switch self {
+        case .noConnection: errorMessage = "The Internet connection appears to be offline."
         case .badRequest: errorMessage = "Your request is invalid."
         case .unauthorized: errorMessage = "Your API token is wrong."
         case .forbidden: errorMessage = "You are not authorized to access the requested resource."

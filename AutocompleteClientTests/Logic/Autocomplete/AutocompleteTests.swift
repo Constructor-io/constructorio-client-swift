@@ -38,7 +38,23 @@ class AutocompleteTests: XCTestCase {
         
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let e = response.error as? CIOError{
-                XCTAssertEqual(e, error, "If tracking call returns status code \(statusCode), the error should be delegated to the completion handler")
+                XCTAssertEqual(e, error, "If autocomplete call returns status code \(statusCode), the error should be delegated to the completion handler")
+                expectation.fulfill()
+            }
+        }
+        self.wait(for: expectation)
+    }
+    
+    func testCallingAutocomplete_WithNoConnectivity_ReturnsCorrectError(){
+        let expectation = self.expectation(description: "Calling autocomplete with no connectvity should return noConnectivity CIOError.")
+        let term = "a term"
+        let query = CIOAutocompleteQuery(query: term)
+        
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&s=1&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C"), noConnectivity())
+        
+        self.constructor.autocomplete(forQuery: query) { (response) in
+            if let error = response.error as? CIOError{
+                XCTAssertEqual(CIOError.noConnection, error, "If autocomplete call returns no connectivity error, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
         }
