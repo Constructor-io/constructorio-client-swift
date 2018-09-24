@@ -27,6 +27,7 @@ class URLSessionNetworkClient: NetworkClient {
             // Check if response code corresponds to a ConstructorIOError
             if let constructorError = CIOError(rawValue: httpResponse.statusCode) {
                 completionHandler(NetworkResponse(error: constructorError))
+                return
             }
 
             // No errors
