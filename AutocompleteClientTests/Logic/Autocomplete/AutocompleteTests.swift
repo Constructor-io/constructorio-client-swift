@@ -54,7 +54,7 @@ class AutocompleteTests: XCTestCase {
         
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let error = response.error as? CIOError{
-                XCTAssertEqual(CIOError.noConnection, error, "If autocomplete call returns no connectivity error, the error should be delegated to the completion handler")
+                XCTAssertEqual(CIOError.noConnection, error, "Returned error from network client should be delegated as an error of type CIOError.noConnection.")
                 expectation.fulfill()
             }
         }
