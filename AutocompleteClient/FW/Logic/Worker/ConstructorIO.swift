@@ -50,8 +50,8 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     
     public init(autocompleteKey: String) {
         self.autocompleteKey = autocompleteKey
-        self.clientID = ClientIDGenerator().generateID()
-        
+
+        self.clientID = DependencyContainer.sharedInstance.clientIDGenerator().generateID()
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.parser = DependencyContainer.sharedInstance.responseParser()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
