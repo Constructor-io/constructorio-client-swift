@@ -8,11 +8,11 @@
 
 import UIKit
     
-class CIOSessionManager: SessionManager {
+public class CIOSessionManager: SessionManager {
 
-    weak var delegate: CIOSessionManagerDelegate?
+    public weak var delegate: CIOSessionManagerDelegate?
     
-    var sessionID: Int{
+    public var sessionID: Int{
         didSet{
             self.delegate?.sessionDidChange(from: oldValue, to: self.sessionID)
         }
@@ -28,7 +28,7 @@ class CIOSessionManager: SessionManager {
         self.lastSessionRequest = self.dateProvider.provideDate().timeIntervalSince1970
     }
 
-    func getSession() -> Int{
+    public func getSession() -> Int{
         if self.shouldIncrementSession(){
             self.setSessionHasBeenRequested()
             self.incrementSession()

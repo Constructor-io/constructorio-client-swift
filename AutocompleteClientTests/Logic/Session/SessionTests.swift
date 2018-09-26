@@ -101,5 +101,5 @@ class SessionTests: XCTestCase {
         XCTAssertEqual(nextSession, initialSession+1, "After reaching timeout, getSession() should return incremented value.")
         XCTAssertGreaterThan(nextSession, initialSession, "After timeout is reached, session should be larger than the previous value." )
     }
-    
+
 }

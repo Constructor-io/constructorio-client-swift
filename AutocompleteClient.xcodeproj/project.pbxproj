@@ -51,8 +51,6 @@
 		F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510C92052CF240040E3DF /* SessionManager.swift */; };
 		F62510D120568F250040E3DF /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510D020568F250040E3DF /* SessionTests.swift */; };
 		F62510D3205690670040E3DF /* ClosureDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510D2205690670040E3DF /* ClosureDateProvider.swift */; };
-		F62510D62057F8980040E3DF /* UserIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510D52057F8980040E3DF /* UserIDGenerator.swift */; };
-		F62510D82057F8B60040E3DF /* DeviceUserIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510D72057F8B60040E3DF /* DeviceUserIDGenerator.swift */; };
 		F631A5D81F58629B00A49BD1 /* constructor-io-error-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */; };
 		F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F631A5D91F5867E300A49BD1 /* CIOErrorView.swift */; };
 		F63374A91F5A8FBF00E481E7 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
@@ -99,6 +97,10 @@
 		F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154A1F587213008E50C0 /* CIOStyle.swift */; };
 		F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650154D1F58724B008E50C0 /* UIColor+RGB.swift */; };
 		F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6548833208633E20044E403 /* NSAttributedString+Build.swift */; };
+		F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCB721515E46007FEB22 /* ClientIDGenerator.swift */; };
+		F65BBCBC21516107007FEB22 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
+		F65BBCBD21516107007FEB22 /* ConstructorAutocomplete.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F65BBCC22151621A007FEB22 /* IDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCC12151621A007FEB22 /* IDGenerator.swift */; };
 		F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */; };
 		F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674157A204D489B004F313B /* MockResponseParserDelegate.swift */; };
 		F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */; };
@@ -158,6 +160,13 @@
 			remoteGlobalIDString = F64F46CC1F59CE750094C697;
 			remoteInfo = UserApplication;
 		};
+		F65BBCBE21516107007FEB22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F688A4361F56B4B600F169C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F688A43E1F56B4B600F169C1;
+			remoteInfo = AutocompleteClient;
+		};
 		F688A44A1F56B4B600F169C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F688A4361F56B4B600F169C1 /* Project object */;
@@ -166,6 +175,20 @@
 			remoteInfo = SearchFW;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F65BBCC021516107007FEB22 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F65BBCBD21516107007FEB22 /* ConstructorAutocomplete.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		088F7D17210FA399005B9FB4 /* TrackInputFocusRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackInputFocusRequestBuilder.swift; sourceTree = "<group>"; };
@@ -215,8 +238,6 @@
 		F62510C92052CF240040E3DF /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		F62510D020568F250040E3DF /* SessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
 		F62510D2205690670040E3DF /* ClosureDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureDateProvider.swift; sourceTree = "<group>"; };
-		F62510D52057F8980040E3DF /* UserIDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIDGenerator.swift; sourceTree = "<group>"; };
-		F62510D72057F8B60040E3DF /* DeviceUserIDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUserIDGenerator.swift; sourceTree = "<group>"; };
 		F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-error-icon.png"; sourceTree = "<group>"; };
 		F631A5D91F5867E300A49BD1 /* CIOErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOErrorView.swift; sourceTree = "<group>"; };
 		F63374AB1F5A941700E481E7 /* AutocompleteDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteDataSourceTests.swift; sourceTree = "<group>"; };
@@ -265,6 +286,8 @@
 		F650154A1F587213008E50C0 /* CIOStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOStyle.swift; sourceTree = "<group>"; };
 		F650154D1F58724B008E50C0 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		F6548833208633E20044E403 /* NSAttributedString+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Build.swift"; sourceTree = "<group>"; };
+		F65BBCB721515E46007FEB22 /* ClientIDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientIDGenerator.swift; sourceTree = "<group>"; };
+		F65BBCC12151621A007FEB22 /* IDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDGenerator.swift; sourceTree = "<group>"; };
 		F674157A204D489B004F313B /* MockResponseParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FindSubview.swift"; sourceTree = "<group>"; };
 		F67BFC9420B845D300986557 /* UISearchBar+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+TextField.swift"; sourceTree = "<group>"; };
@@ -317,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F63374A91F5A8FBF00E481E7 /* ConstructorAutocomplete.framework in Frameworks */,
+				F65BBCBC21516107007FEB22 /* ConstructorAutocomplete.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +523,7 @@
 		F60BEA231F57288B008F0053 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F65BBCB621515E34007FEB22 /* ClientID */,
 				F6B0216720D28FA500968A98 /* Conversion */,
 				F62510C62052CC5E0040E3DF /* Session */,
 				F19E28A11F5F22010022C814 /* Track */,
@@ -582,7 +607,6 @@
 			children = (
 				088F7D23210FA429005B9FB4 /* Date */,
 				088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */,
-				F62510D42057F88D0040E3DF /* User */,
 				F62510C72052CC6B0040E3DF /* CIOSessionManager.swift */,
 				F62510C92052CF240040E3DF /* SessionManager.swift */,
 			);
@@ -596,15 +620,6 @@
 				F62510D2205690670040E3DF /* ClosureDateProvider.swift */,
 			);
 			path = Session;
-			sourceTree = "<group>";
-		};
-		F62510D42057F88D0040E3DF /* User */ = {
-			isa = PBXGroup;
-			children = (
-				F62510D52057F8980040E3DF /* UserIDGenerator.swift */,
-				F62510D72057F8B60040E3DF /* DeviceUserIDGenerator.swift */,
-			);
-			path = User;
 			sourceTree = "<group>";
 		};
 		F631A5D21F5861A200A49BD1 /* Error */ = {
@@ -874,6 +889,15 @@
 				F650154D1F58724B008E50C0 /* UIColor+RGB.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		F65BBCB621515E34007FEB22 /* ClientID */ = {
+			isa = PBXGroup;
+			children = (
+				F65BBCB721515E46007FEB22 /* ClientIDGenerator.swift */,
+				F65BBCC12151621A007FEB22 /* IDGenerator.swift */,
+			);
+			path = ClientID;
 			sourceTree = "<group>";
 		};
 		F6852554213BCE8B00A27FAA /* Mock */ = {
@@ -1186,10 +1210,12 @@
 				F64F46C91F59CE750094C697 /* Sources */,
 				F64F46CA1F59CE750094C697 /* Frameworks */,
 				F64F46CB1F59CE750094C697 /* Resources */,
+				F65BBCC021516107007FEB22 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F65BBCBF21516107007FEB22 /* PBXTargetDependency */,
 			);
 			name = UserApplication;
 			productName = UserApplication;
@@ -1498,7 +1524,6 @@
 				F68A72FA1F56D22B00FA4D1B /* AutocompleteViewModel.swift in Sources */,
 				F63808F21F5D47AF00C3B322 /* URLSessionNetworkClient.swift in Sources */,
 				F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */,
-				F62510D82057F8B60040E3DF /* DeviceUserIDGenerator.swift in Sources */,
 				F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */,
 				088F7D1C210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift in Sources */,
 				F63808F41F5D47BB00C3B322 /* NetworkClient.swift in Sources */,
@@ -1519,6 +1544,7 @@
 				F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */,
 				F1F68DD81F58B69000B42602 /* CIOResult.swift in Sources */,
 				088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */,
+				F65BBCC22151621A007FEB22 /* IDGenerator.swift in Sources */,
 				F6B0216B20D296D200968A98 /* CIOTracker.swift in Sources */,
 				F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */,
 				F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */,
@@ -1527,8 +1553,8 @@
 				F64F46C51F59A6890094C697 /* AutocompleteViewModelDelegate.swift in Sources */,
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,
+				F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */,
 				088F7D19210FA39A005B9FB4 /* TrackInputFocusRequestBuilder.swift in Sources */,
-				F62510D62057F8980040E3DF /* UserIDGenerator.swift in Sources */,
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,
@@ -1582,6 +1608,11 @@
 			target = F64F46CC1F59CE750094C697 /* UserApplication */;
 			targetProxy = F64F46EC1F59CE750094C697 /* PBXContainerItemProxy */;
 		};
+		F65BBCBF21516107007FEB22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F688A43E1F56B4B600F169C1 /* AutocompleteClient */;
+			targetProxy = F65BBCBE21516107007FEB22 /* PBXContainerItemProxy */;
+		};
 		F688A44B1F56B4B600F169C1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F688A43E1F56B4B600F169C1 /* AutocompleteClient */;
@@ -1593,6 +1624,7 @@
 		F64F46F31F59CE750094C697 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1611,6 +1643,7 @@
 		F64F46F41F59CE750094C697 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

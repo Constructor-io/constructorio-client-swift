@@ -1,6 +1,6 @@
 //
 //  UserIDGenerator.swift
-//  Constructor.io
+//  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
 //  http://constructor.io/
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol UserIDGenerator{
-    func generateUserID() -> String
+protocol IDGenerator{
+    func generateID() -> String?
 }

@@ -17,7 +17,7 @@ class TrackingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey, clientID: nil)
+        self.constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
     }
     
     override func tearDown() {
@@ -56,7 +56,7 @@ class TrackingTests: XCTestCase {
         
         // return 200 OK on success
         let builder = CIOBuilder(expectation: "Calling trackSearch should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/item_name/search?c=cioios-&s=1&_dt=\(kRegexTimestamp)&original_query=term_search&autocomplete_key=key_OucJxxrfiTVUQx0C"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/item_name/search?c=cioios-&s=1&_dt=\(kRegexTimestamp)&i=\(kRegexClientID)&original_query=term_search&autocomplete_key=key_OucJxxrfiTVUQx0C"), builder.create())
         
         self.constructor.tracking.trackSearch(searchTerm: searchTermValue, itemName: itemNameValue)
         self.wait(for: builder.expectation)
@@ -68,7 +68,7 @@ class TrackingTests: XCTestCase {
 
         // return 200 OK on success
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&term=term_search&num_results=12"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&term=term_search&num_results=12"), builder.create())
         
         self.constructor.tracking.trackSearchResultsLoaded(searchTerm: searchTermValue, resultCount: resultCount)
         self.wait(for: builder.expectation)
