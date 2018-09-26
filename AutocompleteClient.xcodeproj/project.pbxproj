@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0856B77A21474CF500AAFA41 /* AutocompleteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856B77821474CF400AAFA41 /* AutocompleteConfig.swift */; };
+		0856B77B21474CF500AAFA41 /* AutocompleteResultCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856B77921474CF400AAFA41 /* AutocompleteResultCount.swift */; };
 		088F7D19210FA39A005B9FB4 /* TrackInputFocusRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D17210FA399005B9FB4 /* TrackInputFocusRequestBuilder.swift */; };
 		088F7D1A210FA39A005B9FB4 /* TrackSessionStartRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D18210FA39A005B9FB4 /* TrackSessionStartRequestBuilder.swift */; };
 		088F7D1C210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */; };
@@ -14,7 +16,6 @@
 		088F7D26210FA43C005B9FB4 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D24210FA43C005B9FB4 /* DateProvider.swift */; };
 		088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D25210FA43C005B9FB4 /* CurrentTimeDateProvider.swift */; };
 		651F5B9E3E0C5CC7A2090EC8 /* Pods_AutocompleteClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */; };
-		F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F144AB641F60BD1800B2FB46 /* AutocompleteConfig.swift */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
 		F192DDEA1F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDE91F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift */; };
@@ -191,6 +192,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0856B77821474CF400AAFA41 /* AutocompleteConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutocompleteConfig.swift; path = AutocompleteClient/FW/Config/AutocompleteConfig.swift; sourceTree = SOURCE_ROOT; };
+		0856B77921474CF400AAFA41 /* AutocompleteResultCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutocompleteResultCount.swift; path = AutocompleteClient/FW/Config/AutocompleteResultCount.swift; sourceTree = SOURCE_ROOT; };
 		088F7D17210FA399005B9FB4 /* TrackInputFocusRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackInputFocusRequestBuilder.swift; sourceTree = "<group>"; };
 		088F7D18210FA39A005B9FB4 /* TrackSessionStartRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackSessionStartRequestBuilder.swift; sourceTree = "<group>"; };
 		088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOSessionManagerDelegate.swift; sourceTree = "<group>"; };
@@ -200,7 +203,6 @@
 		A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F144AB641F60BD1800B2FB46 /* AutocompleteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteConfig.swift; sourceTree = "<group>"; };
 		F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CharacterSetIteratorTests.swift"; sourceTree = "<group>"; };
 		F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+RangeOfCharactersTest.swift"; sourceTree = "<group>"; };
 		F192DDE91F5F10D500114C8C /* TrackAutocompleteClickRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAutocompleteClickRequestBuilder.swift; sourceTree = "<group>"; };
@@ -377,6 +379,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0856B77721474CDC00AAFA41 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				0856B77821474CF400AAFA41 /* AutocompleteConfig.swift */,
+				0856B77921474CF400AAFA41 /* AutocompleteResultCount.swift */,
+			);
+			name = Config;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		088F7D23210FA429005B9FB4 /* Date */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,14 +406,6 @@
 				A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		F144AB631F60BCFD00B2FB46 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				F144AB641F60BD1800B2FB46 /* AutocompleteConfig.swift */,
-			);
-			path = Config;
 			sourceTree = "<group>";
 		};
 		F174C1E91F5F4C65009E354B /* Utils */ = {
@@ -964,6 +968,7 @@
 		F688A48F1F56B51A00F169C1 /* FW */ = {
 			isa = PBXGroup;
 			children = (
+				0856B77721474CDC00AAFA41 /* Config */,
 				F69C2CA0207FAD9B0060B2B9 /* Logging */,
 				F63809011F5D6CD500C3B322 /* DependencyInjection */,
 				F60BEA231F57288B008F0053 /* Logic */,
@@ -977,7 +982,6 @@
 			isa = PBXGroup;
 			children = (
 				F6A37CB2209378AC00F82A55 /* SearchBar */,
-				F144AB631F60BCFD00B2FB46 /* Config */,
 				F65015491F587203008E50C0 /* Style */,
 				F631A5D21F5861A200A49BD1 /* Error */,
 				F699C3451F57ED3500FD681A /* UICustomization */,
@@ -1512,7 +1516,6 @@
 				F60FE9041F5C5B220037A0AB /* QueryRequestBuilder.swift in Sources */,
 				F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */,
 				F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */,
-				F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */,
 				F1F68DDA1F58B6A300B42602 /* CIOAutocompleteResponseParser.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
 				F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */,
@@ -1530,6 +1533,7 @@
 				F63809091F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift in Sources */,
 				F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */,
 				F6B0216920D28FB300968A98 /* CIOTracking.swift in Sources */,
+				0856B77B21474CF500AAFA41 /* AutocompleteResultCount.swift in Sources */,
 				F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */,
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,
@@ -1554,6 +1558,7 @@
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,
 				F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */,
+				0856B77A21474CF500AAFA41 /* AutocompleteConfig.swift in Sources */,
 				088F7D19210FA39A005B9FB4 /* TrackInputFocusRequestBuilder.swift in Sources */,
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,

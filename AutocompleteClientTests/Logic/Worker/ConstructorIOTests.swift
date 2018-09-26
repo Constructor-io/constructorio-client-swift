@@ -37,7 +37,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
 
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
+        let constructor = ConstructorIO(config: TestConstants.testConfig)
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -70,7 +70,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient (error: customError) }
 
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
+        let constructor = ConstructorIO(config: TestConstants.testConfig)
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -99,7 +99,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
 
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
+        let constructor = ConstructorIO(config: TestConstants.testConfig)
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -117,13 +117,13 @@ class ConstructorIOTests: XCTestCase {
     }
     
     func testConstructor_sessionIDPropertyIsAccessible(){
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
+        let constructor = ConstructorIO(config: TestConstants.testConfig)
         
         XCTAssertNotNil(constructor.sessionID, "Session ID shouldn't be nil")
     }
     
     func testConstructor_clientIDPropertyIsAccessible(){
-        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
+        let constructor = ConstructorIO(config: TestConstants.testConfig)
         
         XCTAssertNotNil(constructor.clientID, "Client ID shouldn't be nil")
     }
