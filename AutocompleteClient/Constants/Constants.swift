@@ -81,7 +81,6 @@ struct Constants {
     }
 
     struct Response {
-//        static let expectedStatusCode = 200
         static let singleSectionResultField = "suggestions"
         static let multiSectionResultField = "sections"
     }

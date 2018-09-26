@@ -26,7 +26,7 @@ class DependencyContainer {
         return CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: Constants.Query.sessionIncrementTimeoutInSeconds)
     }
 
-    var userIDGenerator: () -> UserIDGenerator = {
+    var clientIDGenerator: () -> IDGenerator = {
         return ClientIDGenerator()
     }
 }

@@ -21,7 +21,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     public static var logger: CIOLogger = CIOPrintLogger()
     
     private let networkClient: NetworkClient
-    public let sessionManager: SessionManager
+    private let sessionManager: SessionManager
     
     public var parser: AbstractResponseParser
     
@@ -50,7 +50,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     
     public init(autocompleteKey: String) {
         self.autocompleteKey = autocompleteKey
-        self.clientID = ClientIDGenerator().generateClientID()
+        self.clientID = ClientIDGenerator().generateID()
         
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.parser = DependencyContainer.sharedInstance.responseParser()

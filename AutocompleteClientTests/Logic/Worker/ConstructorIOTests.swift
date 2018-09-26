@@ -116,6 +116,12 @@ class ConstructorIOTests: XCTestCase {
         self.waitForExpectationWithDefaultHandler()
     }
     
+    func testConstructor_sessionIDPropertyIsAccessible(){
+        let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
+        
+        XCTAssertNotNil(constructor.sessionID, "Session ID shouldn't be nil")
+    }
+    
     func testConstructor_clientIDPropertyIsAccessible(){
         let constructor = ConstructorIO(autocompleteKey: TestConstants.testAutocompleteKey)
         

@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class ClientIDGenerator: UserIDGenerator{
-    func generateClientID() -> String?{
+class ClientIDGenerator: IDGenerator{
+    func generateID() -> String?{
         return UIDevice.current.identifierForVendor?.uuidString
     }
 }
