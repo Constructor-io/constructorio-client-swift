@@ -169,14 +169,14 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     }
 
     private func buildRequest(fromQuery query: CIOAutocompleteQuery) -> URLRequest {
-        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: self.config.autocompleteKey, session: self.sessionManager.getSession(), clientID: self.config.clientID )
+        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: self.config.autocompleteKey, session: self.sessionManager.getSession(), clientID: self.clientID )
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         
         return requestBuilder.getRequest()
     }
     
     private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
-        if let cID = self.config.clientID{
+        if let cID = self.clientID{
             requestBuilder.set(clientID: cID)
         }
         requestBuilder.set(session: self.sessionManager.getSession())
