@@ -19,6 +19,13 @@ public func http(_ statusCode: Int32) -> OHHTTPStubsResponseBlock{
     }
 }
 
+public func noConnectivity() -> OHHTTPStubsResponseBlock{
+    return { _ in
+        let error = NSError(domain: NSURLErrorDomain, code: URLError.notConnectedToInternet.rawValue, userInfo: nil)
+        return OHHTTPStubsResponse(error: error)
+    }
+}
+
 @discardableResult
 public func stub(_ matcher: @escaping Matcher, _ builder: @escaping Builder) -> OHHTTPStubsDescriptor{
     return stub(condition: matcher, response: builder)
