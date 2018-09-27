@@ -48,7 +48,6 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
      */
     public private(set) var tracking: CIOTracking!
 
-
     public init(config: AutocompleteConfig) {
         self.config = config
 
@@ -91,7 +90,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         let request = self.buildRequest(data: tracker)
         execute(request, completionHandler: completionHandler)
     }
-
+    
     /// Track a conversion.
     ///
     /// - Parameters:
@@ -101,7 +100,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         let request = self.buildRequest(data: tracker)
         execute(request, completionHandler: completionHandler)
     }
-
+    
     /// Track input focus.
     ///
     /// - Parameters:
@@ -111,7 +110,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         let request = self.buildRequest(data: tracker)
         execute(request, completionHandler: completionHandler)
     }
-
+    
     private func trackSessionStart(session: Int, completionHandler: TrackingCompletionHandler? = nil) {
         let request = self.buildSessionStartRequest(session: session)
         execute(request, completionHandler: completionHandler)
@@ -126,7 +125,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         let request = self.buildRequest(data: tracker)
         execute(request, completionHandler: completionHandler)
     }
-
+    
     private func buildRequest(data: CIORequestData) -> URLRequest{
         let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
@@ -143,22 +142,14 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         
         return requestBuilder.getRequest()
     }
-
-<<<<<<< HEAD
-    private func buildRequest(fromQuery query: CIOAutocompleteQuery) -> URLRequest {
-        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: self.config.autocompleteKey, session: self.sessionManager.getSession(), clientID: self.clientID )
-        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
-        
-        return requestBuilder.getRequest()
-=======
+    
     private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
         self.attachClientID(requestBuilder: requestBuilder)
         self.attachSessionID(requestBuilder: requestBuilder)
->>>>>>> Request flow refactored
     }
     
     private func attachClientID(requestBuilder: RequestBuilder){
-        if let cID = self.config.clientID{
+        if let cID = self.clientID{
             requestBuilder.set(clientID: cID)
         }
     }
@@ -172,20 +163,20 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
             obj.sectionName = self.defaultItemSectionName
         }
     }
-
+    
     private func execute(_ request: URLRequest, completionHandler: @escaping QueryCompletionHandler) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
                 completionHandler(response)
             }
         }
-
+        
         self.networkClient.execute(request) { response in
             if let error = response.error {
                 dispatchHandlerOnMainQueue(QueryResponse(error: error))
                 return
             }
-
+            
             let data = response.data!
             do {
                 let parsedResponse = try self.parse(data)
@@ -195,19 +186,19 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
             }
         }
     }
-
+    
     private func execute(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
         let dispatchHandlerOnMainQueue = { error in
             DispatchQueue.main.async {
                 completionHandler?(error)
             }
         }
-
+        
         self.networkClient.execute(request) { response in
             dispatchHandlerOnMainQueue(response.error)
         }
     }
-
+    
     private func parse(_ autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
         return try self.parser.parse(autocompleteResponseData: autocompleteResponseData)
     }
@@ -217,5 +208,5 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     public func sessionDidChange(from: Int, to: Int){
         self.trackSessionStart(session: to)
     }
-
+    
 }

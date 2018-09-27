@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0856B77A21474CF500AAFA41 /* AutocompleteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856B77821474CF400AAFA41 /* AutocompleteConfig.swift */; };
-		0856B77B21474CF500AAFA41 /* AutocompleteResultCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0856B77921474CF400AAFA41 /* AutocompleteResultCount.swift */; };
-		088F7D19210FA39A005B9FB4 /* TrackInputFocusRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D17210FA399005B9FB4 /* TrackInputFocusRequestBuilder.swift */; };
-		088F7D1A210FA39A005B9FB4 /* TrackSessionStartRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D18210FA39A005B9FB4 /* TrackSessionStartRequestBuilder.swift */; };
 		088F7D1C210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */; };
 		088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */; };
 		088F7D26210FA43C005B9FB4 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D24210FA43C005B9FB4 /* DateProvider.swift */; };
@@ -39,6 +35,7 @@
 		F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BEA1C1F571C5C008F0053 /* SearchResultCell.swift */; };
 		F60BEA201F5726CB008F0053 /* EmptyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */; };
 		F60BEA221F5726D8008F0053 /* EmptyScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */; };
+		F60DF22C215D639900730339 /* AutocompleteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DF22B215D639900730339 /* AutocompleteConfig.swift */; };
 		F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */; };
 		F61A6B061F66AFD4007826CA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B041F66AFD4007826CA /* DetailsViewController.swift */; };
 		F61A6B091F698877007826CA /* CIOGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B081F698877007826CA /* CIOGroup.swift */; };
@@ -190,10 +187,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0856B77821474CF400AAFA41 /* AutocompleteConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutocompleteConfig.swift; path = AutocompleteClient/FW/Config/AutocompleteConfig.swift; sourceTree = SOURCE_ROOT; };
-		0856B77921474CF400AAFA41 /* AutocompleteResultCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutocompleteResultCount.swift; path = AutocompleteClient/FW/Config/AutocompleteResultCount.swift; sourceTree = SOURCE_ROOT; };
-		088F7D17210FA399005B9FB4 /* TrackInputFocusRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackInputFocusRequestBuilder.swift; sourceTree = "<group>"; };
-		088F7D18210FA39A005B9FB4 /* TrackSessionStartRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackSessionStartRequestBuilder.swift; sourceTree = "<group>"; };
 		088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOSessionManagerDelegate.swift; sourceTree = "<group>"; };
 		088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackInputFocusData.swift; sourceTree = "<group>"; };
 		088F7D24210FA43C005B9FB4 /* DateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateProvider.swift; path = AutocompleteClient/FW/Logic/Session/Date/DateProvider.swift; sourceTree = SOURCE_ROOT; };
@@ -225,6 +218,7 @@
 		F60BEA1C1F571C5C008F0053 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreenView.swift; sourceTree = "<group>"; };
 		F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyScreenView.xib; sourceTree = "<group>"; };
+		F60DF22B215D639900730339 /* AutocompleteConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteConfig.swift; sourceTree = "<group>"; };
 		F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
 		F61A6B041F66AFD4007826CA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F61A6B081F698877007826CA /* CIOGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOGroup.swift; sourceTree = "<group>"; };
@@ -375,16 +369,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0856B77721474CDC00AAFA41 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				0856B77821474CF400AAFA41 /* AutocompleteConfig.swift */,
-				0856B77921474CF400AAFA41 /* AutocompleteResultCount.swift */,
-			);
-			name = Config;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		088F7D23210FA429005B9FB4 /* Date */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +520,13 @@
 				F1F68DDF1F58B83E00B42602 /* Result */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		F60DF22A215D62BC00730339 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		F60FE8FF1F5C5ACD0037A0AB /* Worker */ = {
@@ -901,12 +892,12 @@
 				F6852555213BCE9E00A27FAA /* MockCommons.swift */,
 			);
 			path = Mock;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		F6852557213D602800A27FAA /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				F144AB641F60BD1800B2FB46 /* AutocompleteConfig.swift */,
+				F60DF22B215D639900730339 /* AutocompleteConfig.swift */,
 				F6852558213D604900A27FAA /* AutocompleteResultCount.swift */,
 			);
 			path = Config;
@@ -925,6 +916,7 @@
 				F688A4401F56B4B600F169C1 /* Products */,
 				F63374A81F5A8FBF00E481E7 /* Frameworks */,
 				D59696D4D091DDFF2013A436 /* Pods */,
+				F60DF22A215D62BC00730339 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1503,6 +1495,7 @@
 				F1F68DE51F58BBA400B42602 /* String+CharacterSetIterator.swift in Sources */,
 				F19E28A31F5F220B0022C814 /* CIOTrackAutocompleteClickData.swift in Sources */,
 				F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */,
+				F60DF22C215D639900730339 /* AutocompleteConfig.swift in Sources */,
 				F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift in Sources */,
 				F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */,
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,
@@ -1512,8 +1505,6 @@
 				F6D2E9CA20E15190007F8761 /* HasSectionName.swift in Sources */,
 				F61A6B091F698877007826CA /* CIOGroup.swift in Sources */,
 				F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */,
-				F60FE9061F5C5B4A0037A0AB /* AutocompleteQueryRequestBuilder.swift in Sources */,
-				F144AB651F60BD1800B2FB46 /* AutocompleteConfig.swift in Sources */,
 				F1F68DDA1F58B6A300B42602 /* CIOAutocompleteResponseParser.swift in Sources */,
 				F6852559213D604900A27FAA /* AutocompleteResultCount.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
@@ -1532,7 +1523,6 @@
 				F63809091F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift in Sources */,
 				F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */,
 				F6B0216920D28FB300968A98 /* CIOTracking.swift in Sources */,
-				0856B77B21474CF500AAFA41 /* AutocompleteResultCount.swift in Sources */,
 				F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */,
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
 				F685255B21413D4D00A27FAA /* CIORequestData.swift in Sources */,
@@ -1557,9 +1547,6 @@
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,
 				F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */,
-				0856B77A21474CF500AAFA41 /* AutocompleteConfig.swift in Sources */,
-				088F7D19210FA39A005B9FB4 /* TrackInputFocusRequestBuilder.swift in Sources */,
-				F62510D62057F8980040E3DF /* UserIDGenerator.swift in Sources */,
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,
