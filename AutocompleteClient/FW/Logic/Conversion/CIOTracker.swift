@@ -6,15 +6,20 @@
 //  http://constructor.io/
 //
 
-import UIKit
+import Foundation
 
 public protocol CIOTracker: class{
+    
+    func trackInputFocus(for tracker: CIOTrackInputFocusData, completionHandler: TrackingCompletionHandler?)
 
-    func trackAutocompleteClick(for tracker: CIOTrackAutocompleteClickData, completionHandler: TrackingCompletionHandler?)
+    func trackAutocompleteSelect(for tracker: CIOTrackAutocompleteSelectData, completionHandler: TrackingCompletionHandler?)
     
-    func trackConversion(for tracker: CIOTrackConversionData, completionHandler: TrackingCompletionHandler?)
-    
-    func trackSearch(for tracker: CIOTrackSearchData, completionHandler: TrackingCompletionHandler?)
+    func trackSearchSubmit(for tracker: CIOTrackSearchSubmitData, completionHandler: TrackingCompletionHandler?)
     
     func trackSearchResultsLoaded(for tracker: CIOTrackSearchResultsLoadedData, completionHandler: TrackingCompletionHandler?)
+    
+    func trackSearchResultClick(for tracker: CIOTrackSearchResultClickData, completionHandler: TrackingCompletionHandler?)
+
+    func trackConversion(for tracker: CIOTrackConversionData, completionHandler: TrackingCompletionHandler?)
+
 }

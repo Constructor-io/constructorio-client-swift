@@ -348,20 +348,12 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
         
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
-
-        // TODO: For now, ignore any errors
-        constructorIO.trackAutocompleteClick(for: selectTracker)
+        let selectTracker = CIOTrackAutocompleteSelectData(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, sectionName: sectionName, group: result.group)
+        constructorIO.trackAutocompleteSelect(for: selectTracker)
 
         // Track search
-        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: result.autocompleteResult.value)
-        constructorIO.trackSearch(for: searchTrackData)
-        
-        // Run behavioural tracking 'search' if its an autocomplete suggestion
-        if sectionName == "standard" {
-            let searchTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
-            constructorIO.trackAutocompleteClick(for: searchTracker)
-        }
+        let searchTracker = CIOTrackSearchSubmitData(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, group: result.group)
+        constructorIO.trackSearchSubmit(for: searchTracker)
 
         self.delegate?.autocompleteController?(controller: self, didSelectResult: result)
     }
@@ -411,8 +403,8 @@ extension CIOAutocompleteViewController: UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         // Track search
-        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
-        self.constructorIO.trackSearch(for: searchTrackData)
+        let searchTracker = CIOTrackSearchSubmitData(searchTerm: viewModel.searchTerm, originalQuery: viewModel.searchTerm)
+        self.constructorIO.trackSearchSubmit(for: searchTracker)
     }
     
     public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {

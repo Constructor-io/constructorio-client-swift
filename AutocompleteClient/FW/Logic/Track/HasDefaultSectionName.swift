@@ -1,5 +1,5 @@
 //
-//  HasSectionName.swift
+//  HasDefaultSectionName.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol HasSectionName{
+protocol HasDefaultSectionName {
     var sectionName: String? { get set }
 }

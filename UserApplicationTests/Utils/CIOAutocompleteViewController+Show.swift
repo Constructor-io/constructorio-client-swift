@@ -13,7 +13,7 @@ import ConstructorAutocomplete
 extension CIOAutocompleteViewController {
 
     class func instantiate() -> CIOAutocompleteViewController {
-        let viewController = CIOAutocompleteViewController(autocompleteKey: TestConstants.testAutocompleteKey)
+        let viewController = CIOAutocompleteViewController(config: TestConstants.testConfig)
         return viewController
     }
 
