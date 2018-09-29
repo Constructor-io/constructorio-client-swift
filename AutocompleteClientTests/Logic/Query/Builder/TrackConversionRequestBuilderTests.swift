@@ -36,12 +36,13 @@ class RequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
+        let url = request.url!.absoluteString
         
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(requestDate)"), "URL should contain the request date")
-        XCTAssertTrue(request.url!.absoluteString.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
-        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
-        XCTAssertTrue(request.url!.absoluteString.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("_dt=\(requestDate)"), "URL should contain the request date")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
     }
 
     func testTrackConversionBuilder_withItemName() {
@@ -49,11 +50,12 @@ class RequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
+        let url = request.url!.absoluteString
         
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(requestDate)"), "URL should contain the request date")
-        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
-        XCTAssertTrue(request.url!.absoluteString.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("_dt=\(requestDate)"), "URL should contain the request date")
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
     }
 
     func testTrackConversionBuilder_withSectionName() {
@@ -61,12 +63,13 @@ class RequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
+        let url = request.url!.absoluteString
         
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
-        XCTAssertTrue(request.url!.absoluteString.contains("c=cioios-"), "URL should contain the version string.")
-        XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(requestDate)"), "URL should contain the request date")
-        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("_dt=\(requestDate)"), "URL should contain the request date")
+        XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
     }
     
     func testTrackConversionBuilder_withRevenue() {
@@ -74,21 +77,23 @@ class RequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
+        let url = request.url!.absoluteString
         
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(request.url!.absoluteString.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
-        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
-        XCTAssertTrue(request.url!.absoluteString.contains("revenue=\(revenue)"), "URL should contain the revenue parameter.")
-        XCTAssertTrue(request.url!.absoluteString.contains("c=cioios-"), "URL should contain the version string.")
-        XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(requestDate)"), "URL should contain the request date")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
+        XCTAssertTrue(url.contains("revenue=\(revenue)"), "URL should contain the revenue parameter.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("_dt=\(requestDate)"), "URL should contain the request date")
     }
 
     func testTrackConversionBuilder_withNoSectionSpecified_hasNoSectionName() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
+        let url = request.url!.absoluteString
         
-        XCTAssertTrue(!request.url!.absoluteString.contains("\(Constants.TrackAutocomplete.autocompleteSection)="), "URL shouldn't contain the default autocomplete section if the section name is not passed.")
+        XCTAssertTrue(!url.contains("\(Constants.TrackAutocomplete.autocompleteSection)="), "URL shouldn't contain the default autocomplete section if the section name is not passed.")
     }
     
     func testTrackConversionBuilder_AllFields() {
@@ -96,13 +101,14 @@ class RequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
+        let url = request.url!.absoluteString
         
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(request.url!.absoluteString.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
-        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
-        XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(requestDate)"), "URL should contain the request date")
-        XCTAssertTrue(request.url!.absoluteString.contains("revenue=\(revenue)"), "URL should contain the revenue parameter.")
-        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
-        XCTAssertTrue(request.url!.absoluteString.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key.")
+        XCTAssertTrue(url.contains("_dt=\(requestDate)"), "URL should contain the request date")
+        XCTAssertTrue(url.contains("revenue=\(revenue)"), "URL should contain the revenue parameter.")
+        XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
     }
 }

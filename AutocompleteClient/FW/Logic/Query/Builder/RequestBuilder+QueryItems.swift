@@ -11,19 +11,19 @@ import Foundation
 extension RequestBuilder{
     
     func addTriggerQueryItem() {
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.trigger, value: Constants.TrackAutocompleteResultClicked.triggerType))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteSelect.trigger, value: Constants.TrackAutocompleteSelect.triggerType))
     }
     
     func set(originalQuery: String) {
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.originalQuery, value: originalQuery))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteSelect.originalQuery, value: originalQuery))
     }
     
     func set(groupName: String){
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupName, value: groupName))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteSelect.groupName, value: groupName))
     }
     
     func set(groupID: String){
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteResultClicked.groupID, value: groupID))
+        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteSelect.groupID, value: groupID))
     }
     
     func set(action: String){

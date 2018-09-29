@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Struct encapsulating the parameters that must/can be set set in order to track a conversion for an autocomplete.
+ Struct encapsulating the parameters that must/can be set set in order to track a conversion for an item.
  */
 public struct CIOTrackConversionData: CIORequestData, HasSectionName {
 

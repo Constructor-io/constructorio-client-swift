@@ -120,13 +120,13 @@ struct Constants {
         static let actionSessionStart = "session_start"
     }
 
-    struct TrackSearch{
+    struct TrackSearch {
         static let format = "%@/autocomplete/%@/search"
         static let originalQuery = "original_query"
         static let pathBehavior = "behavior"
     }
     
-    struct TrackAutocompleteResultClicked {
+    struct TrackAutocompleteSelect {
         static let selectType = "select"
         static let searchType = "search"
         static let type = "select"

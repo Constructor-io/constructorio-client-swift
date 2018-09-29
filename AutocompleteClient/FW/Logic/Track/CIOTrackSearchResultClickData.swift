@@ -8,16 +8,16 @@
 
 import UIKit
 
-public struct CIOTrackSearchData: CIORequestData {
+public struct CIOTrackSearchResultClickData: CIORequestData {
     let searchTerm: String
-    let itemName: String
+    let itemID: String
     
     public var url: String {
-        return String(format: Constants.TrackSearch.format, Constants.Track.baseURLString, self.itemName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+        return String(format: Constants.TrackSearch.format, Constants.Track.baseURLString, self.itemID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
     
     public func decorateRequest(requestBuilder: RequestBuilder){
         requestBuilder.set(searchTerm: self.searchTerm)
-        requestBuilder.set(itemName: self.itemName)
+        requestBuilder.set(itemID: self.itemID)
     }
 }

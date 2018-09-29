@@ -23,7 +23,6 @@ public struct CIOTrackInputFocusData: CIORequestData{
         if let term = self.searchTerm{
             requestBuilder.set(searchTerm: term)
         }
-        
         requestBuilder.set(action: Constants.TrackAutocomplete.actionFocus)
     }
 }

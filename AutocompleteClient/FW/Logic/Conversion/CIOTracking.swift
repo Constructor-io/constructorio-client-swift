@@ -42,28 +42,29 @@ public class CIOTracking: NSObject {
         self.tracker?.trackSearchResultsLoaded(for: data, completionHandler: completionHandler)
     }
     
-    /// Track autocomplete click.
+    /// Track autocomplete select.
     ///
     /// - Parameters:
-    ///   - searchTerm: Search term that the user searched for
-    ///   - clickedItemName: Name of the clicked item
-    ///   - sectionName: Section name of the item clicked on
+    ///   - searchTerm: Search term that the user selected
+    ///   - originalQuery: The original query that the user searched for
+    ///   - sectionName The name of the autocomplete section the term came from
     ///   - group: Item group
     ///   - completionHandler: The callback to execute on completion.
-    public func trackAutocompleteClick(searchTerm: String, clickedItemName: String, sectionName: String? = nil, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
-        let data = CIOTrackAutocompleteClickData(searchTerm: searchTerm, clickedItemName: clickedItemName, sectionName: sectionName, group: group)
-        self.tracker?.trackAutocompleteClick(for: data, completionHandler: completionHandler)
+    public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String? = nil, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group)
+        self.tracker?.trackAutocompleteSelect(for: data, completionHandler: completionHandler)
     }
     
-    /// Track search.
+    /// Track search submit
     ///
     /// - Parameters:
     ///   - searchTerm: Search term that the user searched for
-    ///   - itemName: Name of the clicked item
+    ///   - originalQuery: The original query that the user search for
+    ///   - group: Item group
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearch(searchTerm: String, itemName: String, completionHandler: TrackingCompletionHandler? = nil){
-        let data = CIOTrackSearchData(searchTerm: searchTerm, itemName: itemName)
-        self.tracker?.trackSearch(for: data, completionHandler: completionHandler)
+    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
+        self.tracker?.trackSearchSubmit(for: data, completionHandler: completionHandler)
     }
     
 }
