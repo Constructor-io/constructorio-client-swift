@@ -1,5 +1,5 @@
 //
-//  HasSectionName.swift
+//  HasDefaultSectionName.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.

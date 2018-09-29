@@ -1,5 +1,5 @@
 //
-//  CIOTrackSearchData.swift
+//  CIOTrackSearchResultClickData.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
