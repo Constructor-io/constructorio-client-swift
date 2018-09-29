@@ -1,5 +1,5 @@
 //
-//  CIOQuery.swift
+//  CIOAutocompleteQuery.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -30,20 +30,5 @@ public struct CIOAutocompleteQuery: CIORequestData {
     public func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(numResults: self.numResults)
         requestBuilder.set(numResultsForSection: self.numResultsForSection)
-    }
-}
-
-/// Not used yet.
-struct CIOSearchQuery{
-    let query: String
-    let page: Int
-    let numResultsPerPage: Int
-    let numResultsPerPageForSection: [String: Int]?
-
-    init(query: String, page: Int = 1, numResultsPerPage: Int = 20, numResultsPerPageForSection: [String: Int]? = nil) {
-        self.query = query
-        self.page = page
-        self.numResultsPerPage = numResultsPerPage
-        self.numResultsPerPageForSection = numResultsPerPageForSection
     }
 }

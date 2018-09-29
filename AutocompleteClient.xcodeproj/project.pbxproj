@@ -22,7 +22,7 @@
 		F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B17CB11F58E5830015FF62 /* AutocompleteResult.swift */; };
 		F1C557411F5F67CA0040D6AD /* CIOHighlighterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C557401F5F67CA0040D6AD /* CIOHighlighterTests.swift */; };
 		F1C557451F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C557441F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift */; };
-		F1F68DD41F58B59F00B42602 /* CIOQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F68DD31F58B59F00B42602 /* CIOQuery.swift */; };
+		F1F68DD41F58B59F00B42602 /* CIOAutocompleteQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F68DD31F58B59F00B42602 /* CIOAutocompleteQuery.swift */; };
 		F1F68DD61F58B68700B42602 /* CIOAutocompleteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F68DD51F58B68700B42602 /* CIOAutocompleteResponse.swift */; };
 		F1F68DD81F58B69000B42602 /* CIOResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F68DD71F58B69000B42602 /* CIOResult.swift */; };
 		F1F68DDA1F58B6A300B42602 /* CIOAutocompleteResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F68DD91F58B6A300B42602 /* CIOAutocompleteResponseParser.swift */; };
@@ -206,7 +206,7 @@
 		F1B17CB11F58E5830015FF62 /* AutocompleteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteResult.swift; sourceTree = "<group>"; };
 		F1C557401F5F67CA0040D6AD /* CIOHighlighterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOHighlighterTests.swift; sourceTree = "<group>"; };
 		F1C557441F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackConversionRequestBuilderTests.swift; sourceTree = "<group>"; };
-		F1F68DD31F58B59F00B42602 /* CIOQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuery.swift; sourceTree = "<group>"; };
+		F1F68DD31F58B59F00B42602 /* CIOAutocompleteQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteQuery.swift; sourceTree = "<group>"; };
 		F1F68DD51F58B68700B42602 /* CIOAutocompleteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteResponse.swift; sourceTree = "<group>"; };
 		F1F68DD71F58B69000B42602 /* CIOResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOResult.swift; sourceTree = "<group>"; };
 		F1F68DD91F58B6A300B42602 /* CIOAutocompleteResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteResponseParser.swift; sourceTree = "<group>"; };
@@ -443,7 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				F60FE9021F5C5B120037A0AB /* Builder */,
-				F1F68DD31F58B59F00B42602 /* CIOQuery.swift */,
+				F1F68DD31F58B59F00B42602 /* CIOAutocompleteQuery.swift */,
 				F685255A21413D4D00A27FAA /* CIORequestData.swift */,
 			);
 			path = Query;
@@ -1513,7 +1513,7 @@
 				08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
 				F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */,
-				F1F68DD41F58B59F00B42602 /* CIOQuery.swift in Sources */,
+				F1F68DD41F58B59F00B42602 /* CIOAutocompleteQuery.swift in Sources */,
 				F63808F81F5D497200C3B322 /* NetworkResponse.swift in Sources */,
 				F699C3471F57ED4200FD681A /* CIOAutocompleteUICustomization.swift in Sources */,
 				F1F68DD61F58B68700B42602 /* CIOAutocompleteResponse.swift in Sources */,
