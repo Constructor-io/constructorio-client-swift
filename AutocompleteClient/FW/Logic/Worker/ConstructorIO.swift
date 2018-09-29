@@ -117,6 +117,8 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     ///   - tracker: The object containing the necessary and additional tracking parameters.
     ///   - completionHandler: The callback to execute on completion.
     public func trackSearchResultClick(for tracker: CIOTrackSearchResultClickData, completionHandler: TrackingCompletionHandler?) {
+        var trackData: HasSectionName = tracker
+        self.attachDefaultSectionNameIfNeeded(&trackData)
         let request = self.buildRequest(data: tracker)
         execute(request, completionHandler: completionHandler)
     }
@@ -127,6 +129,8 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     ///   - tracker: The object containing the necessary and additional tracking parameters.
     ///   - completionHandler: The callback to execute on completion.
     public func trackConversion(for tracker: CIOTrackConversionData, completionHandler: TrackingCompletionHandler? = nil) {
+        var trackData: HasSectionName = tracker
+        self.attachDefaultSectionNameIfNeeded(&trackData)
         let request = self.buildRequest(data: tracker)
         execute(request, completionHandler: completionHandler)
     }

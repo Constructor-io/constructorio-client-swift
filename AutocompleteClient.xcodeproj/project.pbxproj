@@ -561,8 +561,8 @@
 		F60FE9081F5C5B8A0037A0AB /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */,
 				F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */,
+				0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */,
 				F1C557441F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift */,
 			);
 			path = Builder;

@@ -14,7 +14,7 @@ import Foundation
 public struct CIOTrackConversionData: CIORequestData, HasSectionName {
 
     public let searchTerm: String
-    public let itemID: String?
+    public let itemID: String
     public var sectionName: String?
     public let revenue: Int?
     
@@ -22,7 +22,7 @@ public struct CIOTrackConversionData: CIORequestData, HasSectionName {
         return String(format: Constants.Track.trackStringFormat, Constants.Track.baseURLString, Constants.TrackAutocomplete.pathString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!, Constants.TrackConversion.type)
     }
 
-    public init(searchTerm: String, itemID: String? = nil, sectionName: String? = nil, revenue: Int? = nil) {
+    public init(searchTerm: String, itemID: String, sectionName: String? = nil, revenue: Int? = nil) {
         self.searchTerm = searchTerm
         self.itemID = itemID
         self.sectionName = sectionName

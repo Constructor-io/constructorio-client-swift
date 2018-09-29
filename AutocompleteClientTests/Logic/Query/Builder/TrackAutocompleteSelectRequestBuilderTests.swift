@@ -55,7 +55,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
     
     // with section name
     
-    func testTrackACClickBuilder_sectionNameSpecified_selectType() {
+    func testTrackAutocompleteSelectBuilder_sectionNameSpecified_selectType() {
         let request = self.initializeClickTrackDataRequestWithSectionName()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         let url = request.url!.absoluteString
@@ -71,12 +71,12 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
     
     // No section name
     
-    func testTrackACClickBuilder_withNoSectionName_hasNoSectionName() {
+    func testTrackAutocompleteSelectBuilder_withNoSectionName_hasNoSectionName() {
         let request = self.initializeClickTrackDataRequestWithNoSectionName()
                 XCTAssertTrue(!request.url!.absoluteString.contains("\(Constants.TrackAutocomplete.autocompleteSection)="), "URL shouldn't contain autocomplete section if the section name is not passed.")
     }
     
-    func testTrackACClickBuilder_withNoSectionName_selectType() {
+    func testTrackAutocompleteSelectBuilder_withNoSectionName_selectType() {
         let request = self.initializeClickTrackDataRequestWithNoSectionName()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         let url = request.url!.absoluteString
@@ -90,13 +90,13 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("tr=click"), "URL should contain the track type")
     }
     
-    func testTrackACClickBuilder_containsDateInMiliseconds(){
+    func testTrackAutocompleteSelectBuilder_containsDateInMiliseconds(){
         let request = self.initializeClickTrackDataRequestWithNoSectionName()
         let timeInMiliseconds = Int(self.fixedDate.timeIntervalSince1970 * 1000)
         XCTAssertTrue(request.url!.absoluteString.contains("_dt=\(timeInMiliseconds)"), "URL should contain the request date in miliseconds")
     }
     
-    func testTrackACClickBuilder_tappingOnItemWithGroup_SendsGroupNameAsQueryParameter() {
+    func testTrackAutocompleteSelectBuilder_tappingOnItemWithGroup_SendsGroupNameAsQueryParameter() {
         let groupName = "groupName1"
         let groupID = "groupID2"
         let groupPath = "path/to/group"
@@ -112,7 +112,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertTrue(containsGroupName, "URL should contain a URL query item with group name if item in group is tapped on.")
     }
     
-    func testTrackACClickBuilder_tappingOnItemWithGroup_SendsGroupIDAsQueryParameter() {
+    func testTrackAutocompleteSelectBuilder_tappingOnItemWithGroup_SendsGroupIDAsQueryParameter() {
         let groupName = "groupName1"
         let groupID = "groupID2"
         let groupPath = "path/to/group"
@@ -128,7 +128,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertTrue(containsGroupID, "URL should contain a URL query item with group id if item in group is tapped on.")
     }
     
-    func testTrackACClickBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupIDAsQueryParameter() {
+    func testTrackAutocompleteSelectBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupIDAsQueryParameter() {
         let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: nil, group: nil)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
@@ -139,7 +139,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertFalse(containsGroupID, "URL shouldn't contain a URL query item with group id if item outside a group is tapped on.")
     }
     
-    func testTrackACClickBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupNameAsQueryParameter() {
+    func testTrackAutocompleteSelectBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupNameAsQueryParameter() {
         let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: nil, group: nil)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
