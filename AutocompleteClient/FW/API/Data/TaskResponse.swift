@@ -6,7 +6,7 @@
 //  http://constructor.io/
 //
 
-import UIKit
+import Foundation
 
 /**
  Task response must be constructed through one of the two constructors so it's impossible to have a response

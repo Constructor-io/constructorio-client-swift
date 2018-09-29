@@ -6,16 +6,19 @@
 //  http://constructor.io/
 //
 
-import UIKit
+import Foundation
 
-public struct CIOTrackInputFocusData: CIORequestData{
+/**
+ Struct encapsulating the parameters that must/can be set set in order to track search bar focus
+ */
+public struct CIOTrackInputFocusData: CIORequestData {
     let searchTerm: String?
     
-    public var url: String{
+    public var url: String {
         return String(format: Constants.Track.trackBehaviorStringFormat, Constants.Track.baseURLString, Constants.TrackSearch.pathBehavior)
     }
     
-    init(searchTerm: String?){
+    init(searchTerm: String?) {
         self.searchTerm = searchTerm
     }
     

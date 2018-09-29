@@ -14,6 +14,7 @@ class RequestBuilderTests: XCTestCase {
     fileprivate let testACKey = "testKey123213"
     fileprivate let searchTerm = "test search term"
     fileprivate let itemName = "some item name"
+    fileprivate let itemID = "some item id"
     fileprivate let sectionName = "some section name@"
     fileprivate let revenue = 99999
 
@@ -32,7 +33,7 @@ class RequestBuilderTests: XCTestCase {
     }
     
     func testTrackConversionBuilder_onlySearchTerm() {
-        let tracker = CIOTrackConversionData(searchTerm: searchTerm)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemID: itemID)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -46,7 +47,7 @@ class RequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withItemName() {
-        let tracker = CIOTrackConversionData(searchTerm: searchTerm)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemID: itemID)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -59,7 +60,7 @@ class RequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withSectionName() {
-        let tracker = CIOTrackConversionData(searchTerm: searchTerm, sectionName: sectionName)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemID: itemID, sectionName: sectionName)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -73,7 +74,7 @@ class RequestBuilderTests: XCTestCase {
     }
     
     func testTrackConversionBuilder_withRevenue() {
-        let tracker = CIOTrackConversionData(searchTerm: searchTerm, revenue: revenue)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemID: itemID, revenue: revenue)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
@@ -88,7 +89,7 @@ class RequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_withNoSectionSpecified_hasNoSectionName() {
-        let tracker = CIOTrackConversionData(searchTerm: searchTerm)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemID: itemID)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
@@ -97,7 +98,7 @@ class RequestBuilderTests: XCTestCase {
     }
     
     func testTrackConversionBuilder_AllFields() {
-        let tracker = CIOTrackConversionData(searchTerm: searchTerm, sectionName: sectionName, revenue: revenue)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemID: itemID, sectionName: sectionName, revenue: revenue)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!

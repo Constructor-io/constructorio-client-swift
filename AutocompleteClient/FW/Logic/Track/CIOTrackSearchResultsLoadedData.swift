@@ -8,7 +8,10 @@
 
 import Foundation
 
-public struct CIOTrackSearchResultsLoadedData: CIORequestData{
+/**
+ Struct encapsulating the parameters that must/can be set set in order to track search results loaded
+ */
+public struct CIOTrackSearchResultsLoadedData: CIORequestData {
     let searchTerm: String
     let resultCount: Int
     

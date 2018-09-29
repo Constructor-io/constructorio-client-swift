@@ -6,7 +6,7 @@
 //  http://constructor.io/
 //
 
-import UIKit
+import Foundation
 
 /**
  Tracking class. Tracking functions are implemented in the ConstructorIO class but they require specifying exactly what data is being sent. CIOTracking uses default values for most parameters except ones that need to be specified by the user (convention over configuration).
@@ -50,7 +50,7 @@ public class CIOTracking: NSObject {
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - group: Item group
     ///   - completionHandler: The callback to execute on completion.
-    public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String? = nil, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
+    public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
         let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group)
         self.tracker?.trackAutocompleteSelect(for: data, completionHandler: completionHandler)
     }

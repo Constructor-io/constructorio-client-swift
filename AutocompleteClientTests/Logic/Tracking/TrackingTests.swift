@@ -30,8 +30,7 @@ class TrackingTests: XCTestCase {
         let itemID = "green-giant-corn-can-12oz"
         let revenue = 1
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&revenue=1&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&_dt=\(kRegexTimestamp)"), builder.create())
-        
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&revenue=1&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.tracking.trackConversion(itemID: itemID, revenue: revenue, searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
@@ -39,9 +38,10 @@ class TrackingTests: XCTestCase {
     func testTracking_AutocompleteSelect(){
         let searchTerm = "corn"
         let searchOriginalQuery = "co"
+        let searchSectionName = "search suggestions"
         let builder = CIOBuilder(expectation: "Calling trackAutocomplete should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&c=cioios-&original_query=co&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&_dt=\(kRegexTimestamp)"), builder.create())
-        self.constructor.tracking.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery)
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&original_query=co&autocomplete_key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=search%20suggestions&_dt=\(kRegexTimestamp)"), builder.create())
+        self.constructor.tracking.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName)
         self.wait(for: builder.expectation)
     }
     
@@ -58,7 +58,6 @@ class TrackingTests: XCTestCase {
         let searchTermValue = "term_search"
         let resultCount = 12
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded should send a valid request.", builder: http(200))
-
         stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&term=term_search&num_results=12"), builder.create())
         self.constructor.tracking.trackSearchResultsLoaded(searchTerm: searchTermValue, resultCount: resultCount)
         self.wait(for: builder.expectation)

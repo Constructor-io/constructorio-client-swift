@@ -11,18 +11,18 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set in order to track selecting an autocomplete result.
 */
-public struct CIOTrackAutocompleteSelectData: CIORequestData, HasSectionName {
+public struct CIOTrackAutocompleteSelectData: CIORequestData {
     
     public let searchTerm: String
     public let originalQuery: String
     public let group: CIOGroup?
-    public var sectionName: String?
+    public let sectionName: String
 
     public var url: String{
         return String(format: Constants.Track.trackStringFormat, Constants.Track.baseURLString, Constants.TrackAutocomplete.pathString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!, Constants.TrackAutocompleteSelect.selectType)
     }
     
-    public init(searchTerm: String, originalQuery: String, sectionName: String? = nil, group: CIOGroup? = nil) {
+    public init(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil) {
         self.searchTerm = searchTerm
         self.originalQuery = originalQuery
         self.group = group

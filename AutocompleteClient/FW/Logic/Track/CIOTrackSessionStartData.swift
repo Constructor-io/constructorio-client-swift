@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ Struct encapsulating the parameters that must/can be set set in order to track session start
+ */
 public struct CIOTrackSessionStartData: CIORequestData {
     let session: Int
     

@@ -6,9 +6,12 @@
 //  http://constructor.io/
 //
 
-import UIKit
+import Foundation
 
-public struct CIOTrackSearchResultClickData: CIORequestData, HasSectionName {
+/**
+ Struct encapsulating the parameters that must/can be set set in order to track search result click
+ */
+public struct CIOTrackSearchResultClickData: CIORequestData, HasDefaultSectionName {
     public let searchTerm: String
     public let itemID: String
     public var sectionName: String?

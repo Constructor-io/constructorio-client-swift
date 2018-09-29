@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol HasSectionName {
+protocol HasDefaultSectionName {
     var sectionName: String? { get set }
 }
