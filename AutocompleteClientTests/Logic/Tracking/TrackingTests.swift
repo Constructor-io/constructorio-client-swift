@@ -40,8 +40,7 @@ class TrackingTests: XCTestCase {
         let searchTerm = "corn"
         let searchOriginalQuery = "co"
         let builder = CIOBuilder(expectation: "Calling trackAutocomplete should send a valid request.", builder: http(200))
-        
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?c=cioios-&tr=click&_dt=\(kRegexTimestamp)&autocomplete_section=Products&original_query=co&autocomplete_key=key_OucJxxrfiTVUQx0C"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&c=cioios-&original_query=co&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.tracking.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery)
         self.wait(for: builder.expectation)
     }
@@ -50,9 +49,8 @@ class TrackingTests: XCTestCase {
         let searchTerm = "corn"
         let searchOriginalQuery = "corn"
         let builder = CIOBuilder(expectation: "Calling trackSearch should send a valid request.", builder: http(200))
-       
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?i=\(kRegexClientID)&item=item_name&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&term=corn&_dt=\(kRegexTimestamp)"), builder.create())
-        self.constructor.tracking.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery)
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?c=cioios-&s=1&_dt=\(kRegexTimestamp)&i=\(kRegexClientID)&original_query=corn&autocomplete_key=key_OucJxxrfiTVUQx0C"), builder.create())
+        self.constructor.tracking.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery)
         self.wait(for: builder.expectation)
     }
     
