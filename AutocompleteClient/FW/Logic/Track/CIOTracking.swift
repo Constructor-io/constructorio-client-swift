@@ -19,6 +19,16 @@ public class CIOTracking: NSObject {
         self.tracker = tracker
     }
     
+    /// Track input focus.
+    ///
+    /// - Parameters:
+    ///   - searchTerm: Search term that the user selected
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackInputFocus(searchTerm: String, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackInputFocusData(searchTerm: searchTerm)
+        self.tracker?.trackInputFocus(for: data, completionHandler: completionHandler)
+    }
+    
     /// Track autocomplete select.
     ///
     /// - Parameters:
