@@ -411,6 +411,8 @@
 		F19E28A11F5F22010022C814 /* Track */ = {
 			isa = PBXGroup;
 			children = (
+				F6B0216820D28FB300968A98 /* CIOTracking.swift */,
+				F6B0216A20D296D200968A98 /* CIOTracker.swift */,
 				08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */,
 				08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */,
 				F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */,
@@ -513,7 +515,6 @@
 			isa = PBXGroup;
 			children = (
 				F65BBCB621515E34007FEB22 /* ClientID */,
-				F6B0216720D28FA500968A98 /* Conversion */,
 				F62510C62052CC5E0040E3DF /* Session */,
 				F19E28A11F5F22010022C814 /* Track */,
 				F63809071F5E853900C3B322 /* Highlighting */,
@@ -1106,15 +1107,6 @@
 				F6B220EC209C692D003A5D48 /* CustomSearchController.swift */,
 			);
 			path = SearchBar;
-			sourceTree = "<group>";
-		};
-		F6B0216720D28FA500968A98 /* Conversion */ = {
-			isa = PBXGroup;
-			children = (
-				F6B0216820D28FB300968A98 /* CIOTracking.swift */,
-				F6B0216A20D296D200968A98 /* CIOTracker.swift */,
-			);
-			path = Conversion;
 			sourceTree = "<group>";
 		};
 		F6B352AD1F5B407C0054D303 /* CustomViews */ = {

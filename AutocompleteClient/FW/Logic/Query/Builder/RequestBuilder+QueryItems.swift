@@ -11,47 +11,38 @@ import Foundation
 extension RequestBuilder{
     
     func addTriggerQueryItem() {
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteSelect.trigger, value: Constants.TrackAutocompleteSelect.triggerType))
+        queryItems.add(URLQueryItem(name: Constants.Track.trigger, value: Constants.Track.triggerType))
     }
     
     func set(originalQuery: String) {
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteSelect.originalQuery, value: originalQuery))
+        queryItems.add(URLQueryItem(name: Constants.Track.originalQuery, value: originalQuery))
     }
     
     func set(groupName: String){
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteSelect.groupName, value: groupName))
+        queryItems.add(URLQueryItem(name: Constants.Track.groupName, value: groupName))
     }
     
     func set(groupID: String){
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocompleteSelect.groupID, value: groupID))
-    }
-    
-    func set(action: String){
-        self.queryItems.add(URLQueryItem(name: Constants.TrackAutocomplete.action, value: action))
+        queryItems.add(URLQueryItem(name: Constants.Track.groupID, value: groupID))
     }
     
     func set(searchTerm: String) {
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocomplete.searchTerm, value: searchTerm))
+        queryItems.add(URLQueryItem(name: Constants.Track.searchTerm, value: searchTerm))
     }
     
     func set(itemID: String?) {
         guard let itemID = itemID else { return }
-        queryItems.add(URLQueryItem(name: Constants.TrackConversion.itemId, value: itemID))
+        queryItems.add(URLQueryItem(name: Constants.Track.itemId, value: itemID))
     }
-    
-    func set(itemName: String?) {
-        guard let itemName = itemName else { return }
-        queryItems.add(URLQueryItem(name: Constants.TrackConversion.item, value: itemName))
-    }
-    
+
     func set(autocompleteSection: String?) {
         guard let sectionName = autocompleteSection else { return }
-        queryItems.add(URLQueryItem(name: Constants.TrackAutocomplete.autocompleteSection, value: sectionName))
+        queryItems.add(URLQueryItem(name: Constants.Track.autocompleteSection, value: sectionName))
     }
     
     func set(revenue: Int?) {
         guard let revenue = revenue else { return }
-        queryItems.add(URLQueryItem(name: Constants.TrackConversion.revenue, value: String(revenue)))
+        queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(revenue)))
     }
     
     func set(numResults: Int?) {

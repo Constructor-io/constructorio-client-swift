@@ -64,10 +64,10 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         
         let containsGroupName = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.contains { (item) -> Bool in
-            return item.name == Constants.TrackAutocompleteSelect.groupName && item.value! == groupName
+            return item.name == Constants.Track.groupName && item.value! == groupName
         }
         let containsGroupID = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.contains { (item) -> Bool in
-            return item.name == Constants.TrackAutocompleteSelect.groupID && item.value! == groupID
+            return item.name == Constants.Track.groupID && item.value! == groupID
         }
         XCTAssertTrue(containsGroupName, "URL should contain a URL query item with group name if item in group")
         XCTAssertTrue(containsGroupID, "URL should contain a URL query item with group id if item in group")
@@ -79,10 +79,10 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         
         let containsGroupID = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.contains { (item) -> Bool in
-            return item.name == Constants.TrackAutocompleteSelect.groupID
+            return item.name == Constants.Track.groupID
         }
         let containsGroupName = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.contains { (item) -> Bool in
-            return item.name == Constants.TrackAutocompleteSelect.groupName
+            return item.name == Constants.Track.groupName
         }
         XCTAssertFalse(containsGroupID, "URL shouldn't contain a URL query item with group id if item outside a group")
         XCTAssertFalse(containsGroupName, "URL shouldn't contain a URL query item with group name if item outside a group")
