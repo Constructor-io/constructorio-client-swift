@@ -16,7 +16,7 @@ public struct CIOTrackSearchResultsLoadedData: CIORequestData {
     let resultCount: Int
     
     public var url: String {
-        return String(format: Constants.Track.trackBehaviorStringFormat, Constants.Track.baseURLString, Constants.TrackSearch.pathBehavior)
+        return String(format: Constants.TrackSearchResultsLoaded.format, Constants.Track.baseURLString)
     }
     
     public init(searchTerm: String, resultCount: Int){
@@ -27,7 +27,6 @@ public struct CIOTrackSearchResultsLoadedData: CIORequestData {
     public func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(searchTerm: self.searchTerm)
         requestBuilder.set(numResults: self.resultCount)
-        requestBuilder.set(action: Constants.TrackAutocomplete.actionSearchResults)
     }
     
 }

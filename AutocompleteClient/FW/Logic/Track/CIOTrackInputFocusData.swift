@@ -15,7 +15,7 @@ public struct CIOTrackInputFocusData: CIORequestData {
     let searchTerm: String?
     
     public var url: String {
-        return String(format: Constants.Track.trackBehaviorStringFormat, Constants.Track.baseURLString, Constants.TrackSearch.pathBehavior)
+        return String(format: Constants.TrackInputFocus.format, Constants.Track.baseURLString)
     }
     
     init(searchTerm: String?) {
@@ -26,6 +26,5 @@ public struct CIOTrackInputFocusData: CIORequestData {
         if let term = self.searchTerm{
             requestBuilder.set(searchTerm: term)
         }
-        requestBuilder.set(action: Constants.TrackAutocomplete.actionFocus)
     }
 }

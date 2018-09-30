@@ -15,10 +15,9 @@ public struct CIOTrackSessionStartData: CIORequestData {
     let session: Int
     
     public var url: String {
-        return String(format: Constants.Track.trackBehaviorStringFormat, Constants.Track.baseURLString, Constants.TrackSearch.pathBehavior)
+        return String(format: Constants.TrackSessionStart.format, Constants.Track.baseURLString)
     }
     
     public func decorateRequest(requestBuilder: RequestBuilder){
-        requestBuilder.set(action: Constants.TrackAutocomplete.actionSessionStart)
     }
 }

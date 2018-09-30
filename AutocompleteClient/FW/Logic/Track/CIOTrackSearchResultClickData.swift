@@ -17,7 +17,7 @@ public struct CIOTrackSearchResultClickData: CIORequestData, HasDefaultSectionNa
     public var sectionName: String?
     
     public var url: String {
-        return String(format: Constants.TrackSearch.format, Constants.Track.baseURLString, self.itemID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+        return String(format: Constants.TrackSearchClickThrough.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
     
     public init(searchTerm: String, itemID: String, sectionName: String? = nil) {
@@ -29,6 +29,5 @@ public struct CIOTrackSearchResultClickData: CIORequestData, HasDefaultSectionNa
     public func decorateRequest(requestBuilder: RequestBuilder){
         requestBuilder.set(itemID: self.itemID)
         requestBuilder.set(autocompleteSection: self.sectionName)
-        requestBuilder.set(searchTerm: self.searchTerm)
     }
 }

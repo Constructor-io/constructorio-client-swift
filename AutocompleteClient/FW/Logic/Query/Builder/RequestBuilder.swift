@@ -44,16 +44,22 @@ public class RequestBuilder {
         let urlString = self.trackData!.url
 
         var urlComponents = URLComponents(string: urlString)!
-        
+
         // create array copy, so the version string is added only once even if we can call this method multiple times
         var allQueryItems = self.queryItems
-        
+
+        // add version string
         let versionString = Constants.versionString()
         allQueryItems.add(URLQueryItem(name: "c", value: versionString))
         
         // attach date
         self.addDateQueryItem(queryItems: &allQueryItems)
-        
+
+        // attach `action` if necessary from base url
+        if (urlComponents.queryItems != nil) {
+            allQueryItems.add((urlComponents.queryItems?.first)!)
+        }
+
         urlComponents.queryItems = allQueryItems.all()
 
         let url = urlComponents.url!

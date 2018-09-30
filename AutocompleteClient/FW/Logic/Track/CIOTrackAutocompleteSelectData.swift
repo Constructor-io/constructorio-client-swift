@@ -19,7 +19,7 @@ public struct CIOTrackAutocompleteSelectData: CIORequestData {
     public let sectionName: String
 
     public var url: String{
-        return String(format: Constants.Track.trackStringFormat, Constants.Track.baseURLString, Constants.TrackAutocomplete.pathString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!, Constants.TrackAutocompleteSelect.selectType)
+        return String(format: Constants.TrackAutocompleteSelect.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
     
     public init(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil) {

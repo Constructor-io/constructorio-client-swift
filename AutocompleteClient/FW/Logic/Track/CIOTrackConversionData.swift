@@ -19,7 +19,7 @@ public struct CIOTrackConversionData: CIORequestData, HasDefaultSectionName {
     public let revenue: Int?
     
     public var url: String{
-        return String(format: Constants.Track.trackStringFormat, Constants.Track.baseURLString, Constants.TrackAutocomplete.pathString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!, Constants.TrackConversion.type)
+        return String(format: Constants.TrackConversion.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
     public init(searchTerm: String, itemID: String, sectionName: String? = nil, revenue: Int? = nil) {

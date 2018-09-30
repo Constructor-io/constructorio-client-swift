@@ -35,18 +35,11 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         })
     }
     
-    private func initializeClickTrackDataRequestWithSectionName() -> URLRequest{
+    func testTrackAutocompleteSelectBuilder() {
         let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName)
         builder.build(trackData: tracker)
         builder.dateProvider = self.dateProvider
         let request = builder.getRequest()
-        return request
-    }
-    
-    // with section name
-    
-    func testTrackAutocompleteSelectBuilder_sectionNameSpecified_selectType() {
-        let request = self.initializeClickTrackDataRequestWithSectionName()
         let requestDate = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.first { $0.name == "_dt" }!.value!
         let url = request.url!.absoluteString
         let timeInMiliseconds = Int(self.fixedDate.timeIntervalSince1970 * 1000)
@@ -61,58 +54,38 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("_dt=\(timeInMiliseconds)"), "URL should contain the request date in miliseconds")
     }
     
-    func testTrackAutocompleteSelectBuilder_tappingOnItemWithGroup_SendsGroupNameAsQueryParameter() {
+    func testTrackAutocompleteSelectBuilder_withGroup() {
         let groupName = "groupName1"
         let groupID = "groupID2"
         let groupPath = "path/to/group"
         let group = CIOGroup(displayName: groupName, groupID: groupID, path: groupPath)
-        
         let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         
         let containsGroupName = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.contains { (item) -> Bool in
-            return item.name == Constants.TrackAutocompleteSelect.groupName && item.value! == groupName
+            return item.name == Constants.Track.groupName && item.value! == groupName
         }
-        XCTAssertTrue(containsGroupName, "URL should contain a URL query item with group name if item in group is tapped on.")
-    }
-    
-    func testTrackAutocompleteSelectBuilder_tappingOnItemWithGroup_SendsGroupIDAsQueryParameter() {
-        let groupName = "groupName1"
-        let groupID = "groupID2"
-        let groupPath = "path/to/group"
-        let group = CIOGroup(displayName: groupName, groupID: groupID, path: groupPath)
-        
-        let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group)
-        builder.build(trackData: tracker)
-        let request = builder.getRequest()
-        
         let containsGroupID = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.contains { (item) -> Bool in
-            return item.name == Constants.TrackAutocompleteSelect.groupID && item.value! == groupID
+            return item.name == Constants.Track.groupID && item.value! == groupID
         }
-        XCTAssertTrue(containsGroupID, "URL should contain a URL query item with group id if item in group is tapped on.")
+        XCTAssertTrue(containsGroupName, "URL should contain a URL query item with group name if item in group")
+        XCTAssertTrue(containsGroupID, "URL should contain a URL query item with group id if item in group")
     }
     
-    func testTrackAutocompleteSelectBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupIDAsQueryParameter() {
+    func testTrackAutocompleteSelectBuilder_withoutGroup() {
         let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: nil)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         
         let containsGroupID = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.contains { (item) -> Bool in
-            return item.name == Constants.TrackAutocompleteSelect.groupID
+            return item.name == Constants.Track.groupID
         }
-        XCTAssertFalse(containsGroupID, "URL shouldn't contain a URL query item with group id if item outside a group is tapped on.")
-    }
-    
-    func testTrackAutocompleteSelectBuilder_tappingOnItemWithNoGroup_DoesNotSendGroupNameAsQueryParameter() {
-        let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: nil)
-        builder.build(trackData: tracker)
-        let request = builder.getRequest()
-        
         let containsGroupName = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)!.queryItems!.contains { (item) -> Bool in
-            return item.name == Constants.TrackAutocompleteSelect.groupName
+            return item.name == Constants.Track.groupName
         }
-        XCTAssertFalse(containsGroupName, "URL shouldn't contain a URL query item with group name if item outside a group is tapped on.")
+        XCTAssertFalse(containsGroupID, "URL shouldn't contain a URL query item with group id if item outside a group")
+        XCTAssertFalse(containsGroupName, "URL shouldn't contain a URL query item with group name if item outside a group")
     }
 }
 
