@@ -9,7 +9,7 @@
 import XCTest
 @testable import ConstructorAutocomplete
 
-class AutocompleteTests: XCTestCase {
+class AutocompleteQueryTests: XCTestCase {
     
     var constructor: ConstructorIO!
     
@@ -18,7 +18,7 @@ class AutocompleteTests: XCTestCase {
         self.constructor =  ConstructorIO(config: TestConstants.testConfig)
     }
     
-    func testCallingAutocomplete_CreatesValidRequest(){
+    func testAutocompleteQuery_CreatesValidRequest(){
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
         

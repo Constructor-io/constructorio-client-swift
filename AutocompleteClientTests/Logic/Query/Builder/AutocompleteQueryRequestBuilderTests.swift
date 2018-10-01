@@ -11,30 +11,31 @@ import XCTest
 
 class AutocompleteQueryRequestBuilderTests: XCTestCase {
 
-    fileprivate let queryString: String = "testing query?!-123"
-    fileprivate var encodedQueryString: String = ""
+    fileprivate let query: String = "testing query?!-123"
+    fileprivate var endodedQuery: String = ""
     fileprivate let testACKey: String = "abcdefgh123"
     fileprivate var builder: RequestBuilder!
 
     override func setUp() {
         super.setUp()
-        self.encodedQueryString = queryString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
+        self.endodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.builder = RequestBuilder(autocompleteKey: self.testACKey)
     }
     
     func testAutocompleteQueryBuilder() {
-        let query = CIOAutocompleteQuery(query: queryString)
+        let query = CIOAutocompleteQuery(query: self.query)
         builder.build(trackData: query)
         let request = builder.getRequest()
-        let containsVersionString = request.url!.absoluteString.contains(Constants.versionString())
-        XCTAssertTrue(containsVersionString, "Query should contain the version string.")
-        XCTAssertTrue(request.url!.absoluteString.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
-        XCTAssertTrue(request.url!.absoluteString.contains("c=cioios-"), "URL should contain the version string URL parameter.")
+        let url = request.url!.absoluteString
+        
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
     func testAutocompleteQueryBuilder_WithNumResults() {
-        let query = CIOAutocompleteQuery(query: queryString, numResults: 20)
+        let query = CIOAutocompleteQuery(query: self.query, numResults: 20)
         builder.build(trackData: query)
         let request = builder.getRequest()
         XCTAssertTrue(request.url!.absoluteString.contains("num_results=20"), "URL should contain the num_results URL parameter.")
@@ -42,7 +43,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
     }
 
     func testAutocompleteQueryBuilder_WithNumResultsForSection() {
-        let singleSectionQuery = CIOAutocompleteQuery(query: queryString, numResultsForSection: ["section1": 1])
+        let singleSectionQuery = CIOAutocompleteQuery(query: self.query, numResultsForSection: ["section1": 1])
         builder.build(trackData: singleSectionQuery)
         var request = builder.getRequest()
         XCTAssertTrue(request.url!.absoluteString.contains("num_results_section1=1"), "URL should contain the num_results_section URL parameter.")
@@ -50,7 +51,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
     }
     
     func testAutocompleteQueryBuilder_WithNumResultsForMultipleSections() {
-        let multiSectionQuery = CIOAutocompleteQuery(query: queryString, numResultsForSection: ["section1": 3, "section_999": 999])
+        let multiSectionQuery = CIOAutocompleteQuery(query: self.query, numResultsForSection: ["section1": 3, "section_999": 999])
         builder.build(trackData: multiSectionQuery)
         var request = builder.getRequest()
         print("URL IS \(request.url!.absoluteString)")
@@ -60,7 +61,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
     }
 
     func testAutocompleteQueryBuilder_WithNumResultsAndNumResultsForSection() {
-        let query = CIOAutocompleteQuery(query: queryString, numResults: 20, numResultsForSection: ["section1": 1, "section_999": 999])
+        let query = CIOAutocompleteQuery(query: self.query, numResults: 20, numResultsForSection: ["section1": 1, "section_999": 999])
         builder.build(trackData: query)
         let request = builder.getRequest()
         XCTAssertTrue(request.url!.absoluteString.contains("num_results_section_999=999"), "URL should contain the num_results_section URL parameter.")
