@@ -1,5 +1,5 @@
 //
-//  SessionTests.swift
+//  SessionManagerTests.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import ConstructorAutocomplete
 
-class SessionTests: XCTestCase {
+class SessionManagerTests: XCTestCase {
     
     func test_SessionManager_HasCorrentInitialSession(){
         let manager = CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: 30)
