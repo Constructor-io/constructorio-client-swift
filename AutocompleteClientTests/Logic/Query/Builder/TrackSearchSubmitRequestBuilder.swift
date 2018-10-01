@@ -14,6 +14,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
     fileprivate let testACKey = "asdf1213123"
     fileprivate let searchTerm = "😃test ink[]"
     fileprivate let originalQuery = "testing#@#??!!asd"
+    fileprivate let group = CIOGroup(displayName: "groupName1", groupID: "groupID2", path: "path/to/group")
     
     fileprivate var encodedSearchTerm: String = ""
     fileprivate var encodedOriginalQuery: String = ""
@@ -40,10 +41,6 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
     }
     
     func testTrackSearchSubmitBuilder_withGroup() {
-        let groupName = "groupName1"
-        let groupID = "groupID2"
-        let groupPath = "path/to/group"
-        let group = CIOGroup(displayName: groupName, groupID: groupID, path: groupPath)
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
         builder.build(trackData: tracker)
         let request = builder.getRequest()

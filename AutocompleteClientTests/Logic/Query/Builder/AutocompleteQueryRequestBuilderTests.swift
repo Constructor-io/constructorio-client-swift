@@ -42,6 +42,8 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
         XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
@@ -53,6 +55,8 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
         XCTAssertTrue(url.contains("num_results_section1=1"), "URL should contain the num_results_section URL parameter.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
     
@@ -65,6 +69,8 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
         XCTAssertTrue(url.contains("num_results_section_999=999"), "URL should contain the num_results_section URL parameter.")
         XCTAssertTrue(url.contains("num_results_section1=3"), "URL should contain the num_results_section URL parameter.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
@@ -77,6 +83,8 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
         XCTAssertTrue(url.contains("num_results_section_999=999"), "URL should contain the num_results_section URL parameter.")
         XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
