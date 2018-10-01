@@ -18,6 +18,10 @@ public struct CIOTrackSessionStartData: CIORequestData {
         return String(format: Constants.TrackSessionStart.format, Constants.Track.baseURLString)
     }
     
+    public init(session: Int) {
+        self.session = session
+    }
+    
     public func decorateRequest(requestBuilder: RequestBuilder){
     }
 }
