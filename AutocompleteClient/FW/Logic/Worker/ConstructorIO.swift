@@ -14,7 +14,7 @@ public typealias TrackingCompletionHandler = (Error?) -> Void
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
  */
-public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessionManagerDelegate {
+public class ConstructorIO: CIOTracker, CIOSessionManagerDelegate {
     
     public let config: ConstructorIOConfig
 
