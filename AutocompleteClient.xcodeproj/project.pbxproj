@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08465ECA2161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */; };
 		0879E93F215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */; };
 		088F7D1C210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */; };
 		088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */; };
@@ -191,6 +192,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchResultClickRequestBuilder.swift; sourceTree = "<group>"; };
 		0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackAutocompleteSelectRequestBuilderTests.swift; sourceTree = "<group>"; };
 		088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOSessionManagerDelegate.swift; sourceTree = "<group>"; };
 		088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackInputFocusData.swift; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 				0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */,
 				F1C557441F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift */,
 				089399DE2161B92600BFE3D9 /* TrackInputFocusRequestBuilderTests.swift */,
+				08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */,
 				089399E22161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift */,
 				089399E02161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift */,
 			);
@@ -1578,6 +1581,7 @@
 				089399E32161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */,
 				F64F46AD1F5963AF0094C697 /* Bundle+Test.swift in Sources */,
 				F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */,
+				08465ECA2161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift in Sources */,
 				F64F46C11F59850C0094C697 /* TestConstants.swift in Sources */,
 				F1C557411F5F67CA0040D6AD /* CIOHighlighterTests.swift in Sources */,
 				F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */,

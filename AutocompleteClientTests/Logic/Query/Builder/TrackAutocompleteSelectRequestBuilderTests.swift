@@ -15,6 +15,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
     fileprivate let searchTerm = "😃test ink[]"
     fileprivate let originalQuery = "testing#@#??!!asd"
     fileprivate let sectionName = "product"
+    fileprivate let group = CIOGroup(displayName: "groupName1", groupID: "groupID2", path: "path/to/group")
     
     fileprivate var encodedSearchTerm: String = ""
     fileprivate var encodedOriginalQuery: String = ""
@@ -44,10 +45,6 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
     }
     
     func testTrackAutocompleteSelectBuilder_withGroup() {
-        let groupName = "groupName1"
-        let groupID = "groupID2"
-        let groupPath = "path/to/group"
-        let group = CIOGroup(displayName: groupName, groupID: groupID, path: groupPath)
         let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
