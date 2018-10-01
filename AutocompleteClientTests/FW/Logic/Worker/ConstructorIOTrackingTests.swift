@@ -1,5 +1,5 @@
 //
-//  TrackingTests.swift
+//  ConstructorIOTrackingTests.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -11,7 +11,7 @@ import OHHTTPStubs
 import Foundation
 @testable import ConstructorAutocomplete
 
-class TrackingTests: XCTestCase {
+class ConstructorIOTrackingTests: XCTestCase {
     
     var constructor: ConstructorIO!
     

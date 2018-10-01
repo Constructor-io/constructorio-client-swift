@@ -1,5 +1,5 @@
 //
-//  AutocompleteQueryTests.swift
+//  ConstructorIOAutocompleteTests.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import ConstructorAutocomplete
 
-class AutocompleteQueryTests: XCTestCase {
+class ConstructorIOAutocompleteTests: XCTestCase {
     
     var constructor: ConstructorIO!
     

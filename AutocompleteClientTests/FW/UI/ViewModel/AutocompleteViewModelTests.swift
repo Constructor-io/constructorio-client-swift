@@ -1,5 +1,5 @@
 //
-//  ViewModelTests.swift
+//  AutocompleteViewModelTests.swift
 //  AutocompleteClientTests
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import ConstructorAutocomplete
 
-class ViewModelTests: XCTestCase {
+class AutocompleteViewModelTests: XCTestCase {
 
     var viewModel: AutocompleteViewModel!
 
