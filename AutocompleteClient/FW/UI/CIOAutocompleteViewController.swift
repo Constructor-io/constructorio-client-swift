@@ -205,7 +205,7 @@ public class CIOAutocompleteViewController: UIViewController {
         self.delegate?.autocompleteControllerDidLoad?(controller: self)
 
         if self.config.apiKey == "" {
-            self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingapiKey)
+            self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingApiKey)
         }
         
         self.constructorIO = ConstructorIO(config: self.config)

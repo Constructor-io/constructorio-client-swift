@@ -136,7 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
         if let err = error as? CIOError {
             switch(err) {
-            case .missingapiKey:
+            case .missingApiKey:
                 print("Missing api key error")
             default:
                 print("Error occured: \(error.localizedDescription)")

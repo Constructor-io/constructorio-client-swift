@@ -21,7 +21,7 @@ public enum CIOError: Int, Error {
     case internalServerError = 500
     case serviceUnavailable = 503
     case invalidResponse = 1000
-    case missingapiKey = 1001
+    case missingApiKey = 1001
     case unknownError = 1002
 }
 
@@ -39,7 +39,7 @@ extension CIOError: CustomStringConvertible {
         case .internalServerError: return "Internal Server Error"
         case .serviceUnavailable: return "Service Unavailable"
         case .invalidResponse: return "Invalid Response"
-        case .missingapiKey: return "Missing api key"
+        case .missingApiKey: return "Missing api key"
         case .unknownError: return "Unknown error"
         }
     }
@@ -57,7 +57,7 @@ extension CIOError: CustomStringConvertible {
         case .internalServerError: errorMessage = "We had a problem with our server. Try again later."
         case .serviceUnavailable: errorMessage = "We’re temporarially offline for maintanance. Please try again later."
         case .invalidResponse: errorMessage = "We had a problem with our server. Try again later."
-        case .missingapiKey: errorMessage = "Missing api key"
+        case .missingApiKey: errorMessage = "Missing api key"
         case .unknownError: errorMessage = "Error occurred. Try again later."
         }
 
