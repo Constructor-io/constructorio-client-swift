@@ -70,6 +70,14 @@ class TrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
+    func testTracking_SearchResultClick_NoTerm(){
+        let itemID = "green-giant-corn-can-12oz"
+        let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a default section name and default term.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/click_through?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
+        self.constructor.tracking.trackSearchResultClick(itemID: itemID, searchTerm: nil, sectionName: nil)
+        self.wait(for: builder.expectation)
+    }
+    
     func testTracking_SearchResultClick_WithSection(){
         let searchTerm = "corn"
         let itemID = "green-giant-corn-can-12oz"
@@ -87,6 +95,15 @@ class TrackingTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a default section name.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&revenue=1&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.tracking.trackConversion(itemID: itemID, revenue: revenue, searchTerm: searchTerm, sectionName: nil)
+        self.wait(for: builder.expectation)
+    }
+    
+    func testTracking_Conversion_NoTerm(){
+        let itemID = "green-giant-corn-can-12oz"
+        let revenue = 1
+        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a default section name and default term.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&revenue=1&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C&s=1&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
+        self.constructor.tracking.trackConversion(itemID: itemID, revenue: revenue, searchTerm: nil, sectionName: nil)
         self.wait(for: builder.expectation)
     }
     
