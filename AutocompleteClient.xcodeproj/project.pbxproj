@@ -41,7 +41,7 @@
 		F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BEA1C1F571C5C008F0053 /* SearchResultCell.swift */; };
 		F60BEA201F5726CB008F0053 /* EmptyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */; };
 		F60BEA221F5726D8008F0053 /* EmptyScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */; };
-		F60DF22C215D639900730339 /* AutocompleteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DF22B215D639900730339 /* AutocompleteConfig.swift */; };
+		F60DF22C215D639900730339 /* ConstructorIOConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DF22B215D639900730339 /* ConstructorIOConfig.swift */; };
 		F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */; };
 		F61A6B061F66AFD4007826CA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B041F66AFD4007826CA /* DetailsViewController.swift */; };
 		F61A6B091F698877007826CA /* CIOGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B081F698877007826CA /* CIOGroup.swift */; };
@@ -230,7 +230,7 @@
 		F60BEA1C1F571C5C008F0053 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreenView.swift; sourceTree = "<group>"; };
 		F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyScreenView.xib; sourceTree = "<group>"; };
-		F60DF22B215D639900730339 /* AutocompleteConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteConfig.swift; sourceTree = "<group>"; };
+		F60DF22B215D639900730339 /* ConstructorIOConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorIOConfig.swift; sourceTree = "<group>"; };
 		F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
 		F61A6B041F66AFD4007826CA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F61A6B081F698877007826CA /* CIOGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOGroup.swift; sourceTree = "<group>"; };
@@ -908,7 +908,7 @@
 		F6852557213D602800A27FAA /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				F60DF22B215D639900730339 /* AutocompleteConfig.swift */,
+				F60DF22B215D639900730339 /* ConstructorIOConfig.swift */,
 				F6852558213D604900A27FAA /* AutocompleteResultCount.swift */,
 			);
 			path = Config;
@@ -1497,7 +1497,7 @@
 				F1F68DDD1F58B7D600B42602 /* Constants.swift in Sources */,
 				F1F68DE51F58BBA400B42602 /* String+CharacterSetIterator.swift in Sources */,
 				F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */,
-				F60DF22C215D639900730339 /* AutocompleteConfig.swift in Sources */,
+				F60DF22C215D639900730339 /* ConstructorIOConfig.swift in Sources */,
 				F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift in Sources */,
 				F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */,
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,

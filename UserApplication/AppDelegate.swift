@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
         let key = "key_OucJxxrfiTVUQx0C"
-        let config = AutocompleteConfig(autocompleteKey: key,
+        let config = ConstructorIOConfig(apiKey: key,
                                         resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]))
         let viewController = CIOAutocompleteViewController(config: config)
         
@@ -136,8 +136,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
         if let err = error as? CIOError {
             switch(err) {
-            case .missingAutocompleteKey:
-                print("Missing autocomplete key error")
+            case .missingApiKey:
+                print("Missing api key error")
             default:
                 print("Error occured: \(error.localizedDescription)")
             }

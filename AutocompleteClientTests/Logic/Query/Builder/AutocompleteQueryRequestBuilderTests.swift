@@ -19,7 +19,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.endodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        self.builder = RequestBuilder(autocompleteKey: self.testACKey)
+        self.builder = RequestBuilder(apiKey: self.testACKey)
     }
     
     func testAutocompleteQueryBuilder() {
@@ -30,7 +30,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
@@ -43,7 +43,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
         XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
@@ -56,7 +56,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
         XCTAssertTrue(url.contains("num_results_section1=1"), "URL should contain the num_results_section URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
     
@@ -70,7 +70,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("num_results_section_999=999"), "URL should contain the num_results_section URL parameter.")
         XCTAssertTrue(url.contains("num_results_section1=3"), "URL should contain the num_results_section URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
@@ -84,7 +84,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("num_results_section_999=999"), "URL should contain the num_results_section URL parameter.")
         XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain autocomplete key.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 

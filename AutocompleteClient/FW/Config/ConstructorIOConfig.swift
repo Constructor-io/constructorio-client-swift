@@ -1,5 +1,5 @@
 //
-//  Constants.swift
+//  ConstructorIOConfig.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct AutocompleteConfig {
+public struct ConstructorIOConfig {
 
-    public let autocompleteKey: String
+    public let apiKey: String
     public var resultCount: AutocompleteResultCount?
     
-    public init(autocompleteKey: String, resultCount: AutocompleteResultCount? = nil){
-        self.autocompleteKey = autocompleteKey
+    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil){
+        self.apiKey = apiKey
         self.resultCount = resultCount
     }
     

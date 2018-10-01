@@ -38,8 +38,8 @@ Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project
 
 That’s it! You are now ready to use constructor.io autocomplete framework.
 
-## 2. Get the autocomplete key from constructor.io dashboard
-[Register an account](https://constructor.io/users/sign_up) and acquire the autocomplete key.
+## 2. Get the api key from constructor.io dashboard
+[Register an account](https://constructor.io/users/sign_up) and acquire the api key.
 
 ## 3. Implement the autocomplete features in your app
 Make sure to import the ConstructorAutocomplete module at the top of your source file
@@ -50,7 +50,7 @@ Objective-C ```@import ConstructorAutocomplete;```
 
 ```
 // Instantiate the autocomplete controller
-let viewController = CIOAutocompleteViewController(autocompleteKey: “YOUR AUTOCOMPLETE KEY")
+let viewController = CIOAutocompleteViewController(apiKey: “YOUR API KEY")
 
 // set the delegate in order to react to various events
 viewController.delegate = self

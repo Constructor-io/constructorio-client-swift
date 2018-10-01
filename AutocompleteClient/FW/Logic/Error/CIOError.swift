@@ -21,7 +21,7 @@ public enum CIOError: Int, Error {
     case internalServerError = 500
     case serviceUnavailable = 503
     case invalidResponse = 1000
-    case missingAutocompleteKey = 1001
+    case missingApiKey = 1001
     case unknownError = 1002
 }
 
@@ -39,7 +39,7 @@ extension CIOError: CustomStringConvertible {
         case .internalServerError: return "Internal Server Error"
         case .serviceUnavailable: return "Service Unavailable"
         case .invalidResponse: return "Invalid Response"
-        case .missingAutocompleteKey: return "Missing Autocomplete Key"
+        case .missingApiKey: return "Missing api key"
         case .unknownError: return "Unknown error"
         }
     }
@@ -49,7 +49,7 @@ extension CIOError: CustomStringConvertible {
         let errorMessage: String
         switch self {
         case .badRequest: errorMessage = "Your request is invalid."
-        case .unauthorized: errorMessage = "Your API token is wrong."
+        case .unauthorized: errorMessage = "Your api key is wrong."
         case .forbidden: errorMessage = "You are not authorized to access the requested resource."
         case .notFound: errorMessage = "The specified resource could not be found."
         case .methodNotAllowed: errorMessage = "You tried to access a resource with an invalid method."
@@ -57,7 +57,7 @@ extension CIOError: CustomStringConvertible {
         case .internalServerError: errorMessage = "We had a problem with our server. Try again later."
         case .serviceUnavailable: errorMessage = "We’re temporarially offline for maintanance. Please try again later."
         case .invalidResponse: errorMessage = "We had a problem with our server. Try again later."
-        case .missingAutocompleteKey: errorMessage = "Missing Autocomplete Key"
+        case .missingApiKey: errorMessage = "Missing api key"
         case .unknownError: errorMessage = "Error occurred. Try again later."
         }
 

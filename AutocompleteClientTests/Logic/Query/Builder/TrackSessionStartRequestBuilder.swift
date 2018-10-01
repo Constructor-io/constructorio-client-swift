@@ -18,7 +18,7 @@ class TrackSessionStartRequestBuilderTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.builder = RequestBuilder(autocompleteKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey)
     }
     
     func testTrackSessionStartBuilder() {
@@ -31,7 +31,7 @@ class TrackSessionStartRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/behavior?"))
         XCTAssertTrue(url.contains("action=session_start"), "URL should contain the session start action")
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
 }
 

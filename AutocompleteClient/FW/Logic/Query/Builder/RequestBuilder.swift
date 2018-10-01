@@ -17,14 +17,14 @@ public class RequestBuilder {
     
     internal(set) var searchTerm = ""
     
-    init(autocompleteKey: String, dateProvider: DateProvider = CurrentTimeDateProvider()) {
+    init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider()) {
         self.dateProvider = dateProvider
-        self.set(autocompleteKey: autocompleteKey)
+        self.set(apiKey: apiKey)
     }
 
     // There is no need to encode query parameters. Not sure about those in the URL path string.
-    func set(autocompleteKey: String) {
-        queryItems.add(URLQueryItem(name: Constants.Query.autocompleteKey, value: autocompleteKey))
+    func set(apiKey: String) {
+        queryItems.add(URLQueryItem(name: Constants.Query.apiKey, value: apiKey))
     }
     
     func set(clientID: String){
