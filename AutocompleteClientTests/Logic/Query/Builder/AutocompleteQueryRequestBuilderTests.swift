@@ -38,7 +38,10 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: self.query, numResults: 20)
         builder.build(trackData: query)
         let request = builder.getRequest()
-        XCTAssertTrue(request.url!.absoluteString.contains("num_results=20"), "URL should contain the num_results URL parameter.")
+        let url = request.url!.absoluteString
+        
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
+        XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
@@ -46,7 +49,10 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         let singleSectionQuery = CIOAutocompleteQuery(query: self.query, numResultsForSection: ["section1": 1])
         builder.build(trackData: singleSectionQuery)
         var request = builder.getRequest()
-        XCTAssertTrue(request.url!.absoluteString.contains("num_results_section1=1"), "URL should contain the num_results_section URL parameter.")
+        let url = request.url!.absoluteString
+        
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
+        XCTAssertTrue(url.contains("num_results_section1=1"), "URL should contain the num_results_section URL parameter.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
     
@@ -54,9 +60,11 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         let multiSectionQuery = CIOAutocompleteQuery(query: self.query, numResultsForSection: ["section1": 3, "section_999": 999])
         builder.build(trackData: multiSectionQuery)
         var request = builder.getRequest()
-        print("URL IS \(request.url!.absoluteString)")
-        XCTAssertTrue(request.url!.absoluteString.contains("num_results_section_999=999"), "URL should contain the num_results_section URL parameter.")
-        XCTAssertTrue(request.url!.absoluteString.contains("num_results_section1=3"), "URL should contain the num_results_section URL parameter.")
+        let url = request.url!.absoluteString
+
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
+        XCTAssertTrue(url.contains("num_results_section_999=999"), "URL should contain the num_results_section URL parameter.")
+        XCTAssertTrue(url.contains("num_results_section1=3"), "URL should contain the num_results_section URL parameter.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
@@ -64,8 +72,11 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: self.query, numResults: 20, numResultsForSection: ["section1": 1, "section_999": 999])
         builder.build(trackData: query)
         let request = builder.getRequest()
-        XCTAssertTrue(request.url!.absoluteString.contains("num_results_section_999=999"), "URL should contain the num_results_section URL parameter.")
-        XCTAssertTrue(request.url!.absoluteString.contains("num_results=20"), "URL should contain the num_results URL parameter.")
+        let url = request.url!.absoluteString
+        
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
+        XCTAssertTrue(url.contains("num_results_section_999=999"), "URL should contain the num_results_section URL parameter.")
+        XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
