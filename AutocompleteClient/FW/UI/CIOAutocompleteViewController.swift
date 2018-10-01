@@ -95,22 +95,22 @@ public class CIOAutocompleteViewController: UIViewController {
     /**
      The object to configure options for the autocomplete results.
      */
-    public let config: AutocompleteConfig
+    public let config: ConstructorIOConfig
 
     // MARK: Fonts
     private var fontNormal: UIFont = Constants.UI.Font.defaultFontNormal
     private var fontBold: UIFont = Constants.UI.Font.defaultFontBold
 
     /**
-     Default initializer for this controller. Pass in the autocomplete key you got from the constructor.io dashboard.
+     Default initializer for this controller. Pass in the api key you got from the constructor.io dashboard.
      */
-    public init(config: AutocompleteConfig) {
+    public init(config: ConstructorIOConfig) {
         self.config = config
         super.init(nibName: nil, bundle: nil)
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        self.config = AutocompleteConfig(autocompleteKey: "")
+        self.config = ConstructorIOConfig(apiKey: "")
         super.init(coder: aDecoder)
     }
 
@@ -204,8 +204,8 @@ public class CIOAutocompleteViewController: UIViewController {
 
         self.delegate?.autocompleteControllerDidLoad?(controller: self)
 
-        if self.config.autocompleteKey == "" {
-            self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingAutocompleteKey)
+        if self.config.apiKey == "" {
+            self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingapiKey)
         }
         
         self.constructorIO = ConstructorIO(config: self.config)

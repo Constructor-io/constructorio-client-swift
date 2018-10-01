@@ -20,7 +20,7 @@ class TrackInputFocusRequestBuilderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        self.builder = RequestBuilder(autocompleteKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey)
     }
     
     func testTrackInputFocusBuilder() {
@@ -34,6 +34,6 @@ class TrackInputFocusRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("action=focus"), "URL should contain the focus action")
         XCTAssertTrue(url.contains("term=\(encodedSearchTerm)"), "URL should contain the search term")
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
 }

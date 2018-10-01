@@ -50,7 +50,7 @@ struct Constants {
     }
 
     struct Query {
-        static let autocompleteKey = "autocomplete_key"
+        static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let httpMethod = "GET"
         static let queryStringFormat = "%@/%@/%@"
@@ -93,7 +93,7 @@ struct Constants {
 
     struct Track {
         static let httpMethod = "GET"
-        static let autocompleteKey = "autocomplete_key"
+        static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let expectedStatusCode = 204
     

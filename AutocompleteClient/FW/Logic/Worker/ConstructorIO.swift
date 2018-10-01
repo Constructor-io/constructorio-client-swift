@@ -16,7 +16,7 @@ public typealias TrackingCompletionHandler = (Error?) -> Void
  */
 public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessionManagerDelegate {
     
-    public let config: AutocompleteConfig
+    public let config: ConstructorIOConfig
 
     public static var logger: CIOLogger = CIOPrintLogger()
     
@@ -48,7 +48,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
      */
     public private(set) var tracking: CIOTracking!
 
-    public init(config: AutocompleteConfig) {
+    public init(config: ConstructorIOConfig) {
         self.config = config
 
         self.clientID = DependencyContainer.sharedInstance.clientIDGenerator().generateID()
@@ -141,7 +141,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     }
     
     private func buildRequest(data: CIORequestData) -> URLRequest{
-        let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
+        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         
@@ -150,7 +150,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     
     private func buildSessionStartRequest(session: Int) -> URLRequest{
         let data = CIOTrackSessionStartData(session: session)
-        let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
+        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
         self.attachClientID(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         

@@ -27,7 +27,7 @@ class TrackSearchResultClickRequestBuilderTests: XCTestCase {
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.encodedItemID = itemID.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedSectionName = self.sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        self.builder = RequestBuilder(autocompleteKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey)
     }
     
     func testTrackSearchResultClickBuilder() {
@@ -40,7 +40,7 @@ class TrackSearchResultClickRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/click_through?"))
         XCTAssertTrue(url.contains("item_id=\(encodedItemID)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
     
     func testTrackSearchResultClickBuilder_withSectionName() {
@@ -54,7 +54,7 @@ class TrackSearchResultClickRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("item_id=\(encodedItemID)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
 }
 

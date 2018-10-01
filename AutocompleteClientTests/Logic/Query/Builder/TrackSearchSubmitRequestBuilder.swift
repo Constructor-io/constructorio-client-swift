@@ -24,7 +24,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         super.setUp()
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.encodedOriginalQuery = originalQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        self.builder = RequestBuilder(autocompleteKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey)
     }
     
     func testTrackSearchSubmitBuilder() {
@@ -37,7 +37,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/search?"))
         XCTAssertTrue(url.contains("original_query=\(encodedOriginalQuery)"), "URL should contain the original query")
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
     
     func testTrackSearchSubmitBuilder_withGroup() {

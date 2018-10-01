@@ -1,9 +1,9 @@
 //
-//  AutocompleteTests.swift
-//  AutocompleteClientTests
+//  AutocompleteQueryTests.swift
+//  Constructor.io
 //
-//  Created by Nikola Markovic on 8/22/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import XCTest
@@ -23,7 +23,7 @@ class AutocompleteQueryTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: term)
         
         let builder = CIOBuilder(expectation: "Calling Autocomplete should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&s=1&i=\(kRegexClientID)&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), builder.create())
 
         self.constructor.autocomplete(forQuery: query) { (response) in }
         self.wait(for: builder.expectation)

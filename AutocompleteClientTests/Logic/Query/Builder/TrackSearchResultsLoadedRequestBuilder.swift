@@ -1,5 +1,5 @@
 //
-//  TrackSearchResultsRequestBuilderTests.swift
+//  TrackSearchResultsLoadedRequestBuilderTests.swift
 //  AutocompleteClientTests
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -21,7 +21,7 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        self.builder = RequestBuilder(autocompleteKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey)
     }
     
     func testTrackSearchResultsLoadedBuilder() {
@@ -36,7 +36,7 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("term=\(encodedSearchTerm)"), "URL should contain the search term")
         XCTAssertTrue(url.contains("num_results=\(resultCount)"), "URL should contain the number of results")
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
 }
 

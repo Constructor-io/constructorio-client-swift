@@ -27,7 +27,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.encodedOriginalQuery = originalQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedSectionName = sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        self.builder = RequestBuilder(autocompleteKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey)
     }
     
     func testTrackAutocompleteSelectBuilder() {
@@ -41,7 +41,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("original_query=\(encodedOriginalQuery)"), "URL should contain the original query")
         XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section")
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
-        XCTAssertTrue(url.contains("autocomplete_key=\(testACKey)"), "URL should contain the autocomplete key")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
     
     func testTrackAutocompleteSelectBuilder_withGroup() {
