@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set set in order to track search result click
  */
-public struct CIOTrackSearchResultClickData: CIORequestData, HasDefaultSectionName {
+public struct CIOTrackSearchResultClickData: CIORequestData {
     public let searchTerm: String
     public let itemID: String
     public var sectionName: String?

@@ -14,7 +14,7 @@ public typealias TrackingCompletionHandler = (Error?) -> Void
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
  */
-public class ConstructorIO: CIOTracker, CIOSessionManagerDelegate {
+public class ConstructorIO: CIOSessionManagerDelegate {
     
     public let config: ConstructorIOConfig
 
@@ -43,11 +43,6 @@ public class ConstructorIO: CIOTracker, CIOSessionManagerDelegate {
         }
     }
 
-    /**
-     Tracking property that simplifies tracking events. To fully customize the data that's being sent, use ConstructorIO's CIOTracker protocol functions.
-     */
-    public private(set) var tracking: CIOTracking!
-
     public init(config: ConstructorIOConfig) {
         self.config = config
 
@@ -55,9 +50,6 @@ public class ConstructorIO: CIOTracker, CIOSessionManagerDelegate {
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.parser = DependencyContainer.sharedInstance.responseParser()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
-
-        self.tracking = CIOTracking(tracker: self)
-        
         self.sessionManager.delegate = self
     }
 
@@ -74,64 +66,77 @@ public class ConstructorIO: CIOTracker, CIOSessionManagerDelegate {
     /// Track input focus.
     ///
     /// - Parameters:
-    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - searchTerm: Search term that the user selected
     ///   - completionHandler: The callback to execute on completion.
-    public func trackInputFocus(for tracker: CIOTrackInputFocusData, completionHandler: TrackingCompletionHandler? = nil) {
-        let request = self.buildRequest(data: tracker)
+    public func trackInputFocus(searchTerm: String, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackInputFocusData(searchTerm: searchTerm)
+        let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
     
     /// Track a user select on any autocomplete result item.
     ///
     /// - Parameters:
-    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - searchTerm: Search term that the user selected
+    ///   - originalQuery: The original query that the user searched for
+    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - group: Item group
     ///   - completionHandler: The callback to execute on completion.
-    public func trackAutocompleteSelect(for tracker: CIOTrackAutocompleteSelectData, completionHandler: TrackingCompletionHandler? = nil) {
-        let request = self.buildRequest(data: tracker)
+    public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group)
+        let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
     
     /// Track a search event when the user taps on Search button on keyboard or when an item in the list is tapped on.
     ///
     /// - Parameters:
-    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - searchTerm: Search term that the user searched for
+    ///   - originalQuery: The original query that the user search for
+    ///   - group: Item group
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearchSubmit(for tracker: CIOTrackSearchSubmitData, completionHandler: TrackingCompletionHandler? = nil) {
-        let request = self.buildRequest(data: tracker)
+    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
+        let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
     
     /// Track search results loaded.
     ///
     /// - Parameters:
-    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - searchTerm: Search term that the user searched for
+    ///   - resultCount: Number of results loaded
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearchResultsLoaded(for tracker: CIOTrackSearchResultsLoadedData, completionHandler: TrackingCompletionHandler? = nil) {
-        let request = self.buildRequest(data: tracker)
+    public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount )
+        let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
     
     /// Track search result clicked on.
     ///
     /// - Parameters:
-    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - itemID: ID of an item.
+    ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
+    ///   - sectionName The name of the autocomplete section the term came from
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearchResultClick(for tracker: CIOTrackSearchResultClickData, completionHandler: TrackingCompletionHandler?) {
-        var trackData: HasDefaultSectionName = tracker
-        self.attachDefaultSectionNameIfNeeded(&trackData)
-        let request = self.buildRequest(data: trackData as! CIOTrackSearchResultClickData)
+    public func trackSearchResultClick(itemID: String, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackSearchResultClickData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemID: itemID, sectionName: (sectionName ?? self.defaultItemSectionName))
+        let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
 
     /// Track a conversion.
     ///
     /// - Parameters:
-    ///   - tracker: The object containing the necessary and additional tracking parameters.
+    ///   - itemID: ID of an item.
+    ///   - revenue: Revenue of an item.
+    ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
+    ///   - sectionName The name of the autocomplete section the term came from
     ///   - completionHandler: The callback to execute on completion.
-    public func trackConversion(for tracker: CIOTrackConversionData, completionHandler: TrackingCompletionHandler? = nil) {
-        var trackData: HasDefaultSectionName = tracker
-        self.attachDefaultSectionNameIfNeeded(&trackData)
-        let request = self.buildRequest(data: trackData as! CIOTrackConversionData)
+    public func trackConversion(itemID: String, revenue: Int?, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackConversionData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemID: itemID, sectionName: (sectionName ?? self.defaultItemSectionName), revenue: revenue)
+        let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
     
@@ -170,12 +175,6 @@ public class ConstructorIO: CIOTracker, CIOSessionManagerDelegate {
     
     private func attachSessionID(requestBuilder: RequestBuilder){
         requestBuilder.set(session: self.sessionManager.getSession())
-    }
-    
-    private func attachDefaultSectionNameIfNeeded(_ obj: inout HasDefaultSectionName){
-        if obj.sectionName == nil{
-            obj.sectionName = self.defaultItemSectionName
-        }
     }
     
     private func execute(_ request: URLRequest, completionHandler: @escaping QueryCompletionHandler) {

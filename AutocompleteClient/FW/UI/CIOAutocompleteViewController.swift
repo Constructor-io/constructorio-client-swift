@@ -348,12 +348,10 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
         
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOTrackAutocompleteSelectData(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, sectionName: sectionName, group: result.group)
-        constructorIO.trackAutocompleteSelect(for: selectTracker)
+        constructorIO.trackAutocompleteSelect(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, sectionName: sectionName, group: result.group)
 
         // Track search
-        let searchTracker = CIOTrackSearchSubmitData(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, group: result.group)
-        constructorIO.trackSearchSubmit(for: searchTracker)
+        constructorIO.trackSearchSubmit(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, group: result.group)
 
         self.delegate?.autocompleteController?(controller: self, didSelectResult: result)
     }
@@ -403,12 +401,11 @@ extension CIOAutocompleteViewController: UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         // Track search
-        let searchTracker = CIOTrackSearchSubmitData(searchTerm: viewModel.searchTerm, originalQuery: viewModel.searchTerm)
-        self.constructorIO.trackSearchSubmit(for: searchTracker)
+        self.constructorIO.trackSearchSubmit(searchTerm: viewModel.searchTerm, originalQuery: viewModel.searchTerm)
     }
     
     public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        self.constructorIO.trackInputFocus(for: CIOTrackInputFocusData(searchTerm: searchBar.text))
+        self.constructorIO.trackInputFocus(searchTerm: searchBar.text!)
         return true
     }
 }

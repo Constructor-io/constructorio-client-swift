@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set set in order to track a conversion for an item.
  */
-public struct CIOTrackConversionData: CIORequestData, HasDefaultSectionName {
+public struct CIOTrackConversionData: CIORequestData {
 
     public let searchTerm: String
     public let itemID: String
