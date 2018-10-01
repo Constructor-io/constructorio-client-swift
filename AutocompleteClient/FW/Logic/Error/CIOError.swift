@@ -49,7 +49,7 @@ extension CIOError: CustomStringConvertible {
         let errorMessage: String
         switch self {
         case .badRequest: errorMessage = "Your request is invalid."
-        case .unauthorized: errorMessage = "Your API token is wrong."
+        case .unauthorized: errorMessage = "Your api key is wrong."
         case .forbidden: errorMessage = "You are not authorized to access the requested resource."
         case .notFound: errorMessage = "The specified resource could not be found."
         case .methodNotAllowed: errorMessage = "You tried to access a resource with an invalid method."

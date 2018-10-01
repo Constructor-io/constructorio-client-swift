@@ -50,7 +50,7 @@ Objective-C ```@import ConstructorAutocomplete;```
 
 ```
 // Instantiate the autocomplete controller
-let viewController = CIOAutocompleteViewController(apiKey: “YOUR api key")
+let viewController = CIOAutocompleteViewController(apiKey: “YOUR API KEY")
 
 // set the delegate in order to react to various events
 viewController.delegate = self
