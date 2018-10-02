@@ -48,10 +48,10 @@ Make sure to import the `ConstructorAutocomplete` module at the top of your sour
 // Instantiate the autocomplete controller
 let viewController = CIOAutocompleteViewController(apiKey: “YOUR API KEY")
 
-// set the delegate to react to user events... self must implement `CIOAutocompleteDelegate`
+// set the delegate to react to user events... must conform to `CIOAutocompleteDelegate`
 viewController.delegate = self
 
-// set the ui customization to adjust the look and feel of the UI... self must implement `CIOAutocompleteUICustomization`
+// set the delegate to customize the ui ... must conform to `CIOAutocompleteUICustomization`
 viewController.uiCustomization = self
 
 // push the view controller to the stack
@@ -61,7 +61,7 @@ self.navigationController.pushViewController(viewController, animated: true)
 You should now see your autocomplete view controller.  `CIOAutocompleteDelegate` contains methods that notify you about autocomplete events and control autocomplete results. We’ll touch on a couple of them.
 
 #### Selecting Results
-If you want to respond to a user selecting an autocomplete result, you can do so by implementing the `didSelectResult` method.  The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.  
+To respond to a user selecting an autocomplete result, implement the `didSelectResult` method.  The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.  
 
 If the autocomplete result has both a suggested term to search for and a group to search within (as in `Apples in Juice Drinks`), the group will be a property of the result.
 
@@ -77,8 +77,8 @@ func autocompleteController(controller: CIOAutocompleteViewController, didSelect
 }
 ```
 
-#### Performing Seraches
-If you want to respond to a user performing a search instead of selecting a result, you can do so by implementing the `didPerformSearch` method. The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result. 
+#### Performing Searches
+To respond to a user performing a search (instead of selecting an autocomplete result), implement the `didPerformSearch` method. The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result. 
 
 ``` swift
 func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String){
@@ -87,7 +87,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, didPerfor
 ```
  
 #### Filtering Results
-If you want certain results or groups to be filtered out, you can do so by implementing the `shouldParseResult` method.
+To filter out certain results or groups, implement the `shouldParseResult` method.
 
 ```swift
 func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
@@ -101,7 +101,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
 ```
 
 ## 4. Customizing the Autocomplete UI
-`CIOAutocompleteUICustomization` protocol contains methods allowing you to customize the look and feel of the autocomplete interface.
+The `CIOAutocompleteUICustomization` protocol contains methods to customize the look and feel of the autocomplete interface.
 
 #### Customizing the Search Bar
 You can customize how UISearchController behaves in the autocomplete controller by implementing the `customizeSearchController` method.
@@ -118,8 +118,8 @@ func customizeSearchController(searchController: UISearchController, in autocomp
 }
 ```
 
-#### Customizing Results using Methods
-We provide the default `UITableViewCells` in which the results will be shown. You can customize these cells by implementing the following methods:
+#### Customizing Results With Methods
+The framework provides default `UITableViewCells` in which the results will be shown. You can customize these cells by implementing the following methods:
 
 ```swift
 func styleResultLabel(label: UILabel, in autocompleteController: CIOAutocompleteViewController){
@@ -139,7 +139,7 @@ func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFon
 }
 ```
 
-#### Customizing Results using Cells
+#### Customizing Results With Cells
 If you decide to use a fully custom cell, you can either pass the UINib using
 
 ```swift
@@ -175,12 +175,12 @@ class MyCustomCell: UITableViewCell, CIOAutocompleteCell {
 }
 ```
 
-Our framework will call this method on your cell and pass all the necessary data.
+The framework will call this method on your cell and pass the necessary data.
 
 <img src="https://constructor.io/images/ios_screenshots/ss_custom_cell.png" width="60%">
 
-#### Customing the Background View
-The background view appears behind your autocomplete results. You can replace the default framework view by implementing the `backgroundView` method.
+#### Customizing the Background View
+The background view appears behind your autocomplete results. You can replace the default  view by implementing the `backgroundView` method.
 
 ```swift
 func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView?{
@@ -188,7 +188,7 @@ func backgroundView(in autocompleteController: CIOAutocompleteViewController) ->
 }
 ```
 
-#### Customing the Error View
+#### Customizing the Error View
 The error view appears if an error occurs when requesting autocomplete results.  No default error view exists but you can add one by implementing the `errorView` method. Your custom error view must conform to the `CIOErrorView` protocol.
 
 ```swift
