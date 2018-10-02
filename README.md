@@ -168,7 +168,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
 ## Customizing the Autocomplete UI
 `CIOAutocompleteUICustomization` protocol contains methods allowing you to customize the look and feel of the autocomplete interface.
 
-#### Customizing the search bar
+#### Customizing the Search Bar
 You can customize how UISearchController behaves in the autocomplete controller by implementing the `customizeSearchController` method.
 
 ```swift
@@ -183,7 +183,7 @@ func customizeSearchController(searchController: UISearchController, in autocomp
 }
 ```
 
-#### Customizing using the default UI
+#### Customizing Results using Methods
 We provide the default `UITableViewCells` in which the results will be shown. You can customize these cells by implementing the following methods:
 
 ```swift
@@ -204,7 +204,7 @@ func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFon
 }
 ```
 
-#### Customizing using cells
+#### Customizing Results using Cells
 If you decide to use a fully custom cell, you can either pass the UINib using
 
 ```swift
