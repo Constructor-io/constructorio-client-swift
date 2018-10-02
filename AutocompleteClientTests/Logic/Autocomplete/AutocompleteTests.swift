@@ -2,8 +2,8 @@
 //  AutocompleteTests.swift
 //  AutocompleteClientTests
 //
-//  Created by Nikola Markovic on 8/22/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import XCTest
@@ -15,7 +15,11 @@ class AutocompleteTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+<<<<<<< HEAD
         self.constructor =  ConstructorIO(config: TestConstants.testConfig)
+=======
+        self.constructor = ConstructorIO(config: AutocompleteConfig(autocompleteKey: TestConstants.testAutocompleteKey))
+>>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
     }
     
     func testCallingAutocomplete_CreatesValidRequest(){

@@ -48,13 +48,18 @@ struct Constants {
             }
         }
     }
+    
+    struct ABTesting{
+        static let keyPrefix = "ef"
+        static let formatKey = { (key: String) in return "\(ABTesting.keyPrefix)-\(key)"  }
+    }
 
     struct Query {
         static let autocompleteKey = "autocomplete_key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let httpMethod = "GET"
         static let queryStringFormat = "%@/%@/%@"
-        
+    
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
     }
 
@@ -77,6 +82,8 @@ struct Constants {
     struct SearchQuery {
         static let pathString = "search"
         static let page = "page"
+        static let groupFilter = "filters[group_id]"
+        static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
         static let numResultsPerPage = "num_results_per_page"
         static let numResultsPerPageForSectionNamePrefix = "num_results_per_page_"
     }

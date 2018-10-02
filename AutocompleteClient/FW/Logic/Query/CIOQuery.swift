@@ -33,17 +33,36 @@ public struct CIOAutocompleteQuery: CIORequestData {
     }
 }
 
+<<<<<<< HEAD
 /// Not used yet.
 struct CIOSearchQuery{
+=======
+public struct CIOSearchQuery: CIORequestData{
+>>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
     let query: String
+    let filters: SearchFilters?
     let page: Int
     let numResultsPerPage: Int
     let numResultsPerPageForSection: [String: Int]?
-
-    init(query: String, page: Int = 1, numResultsPerPage: Int = 20, numResultsPerPageForSection: [String: Int]? = nil) {
-        self.query = query
+    
+    public var url: String{
+        return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString,
+                      Constants.SearchQuery.pathString, query)
+    }
+    
+    init(query: String, filters: SearchFilters? = nil, page: Int = 1, numResultsPerPage: Int = 20, numResultsPerPageForSection: [String: Int]? = nil) {
+        self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
+        self.filters = filters
         self.page = page
         self.numResultsPerPage = numResultsPerPage
         self.numResultsPerPageForSection = numResultsPerPageForSection
+    }
+    
+    public func decorateRequest(requestBuilder: RequestBuilder) {
+        requestBuilder.set(page: self.page)
+        requestBuilder.set(numResultsPerPage: self.numResultsPerPage)
+        requestBuilder.set(numResultsForSection: self.numResultsPerPageForSection)
+        requestBuilder.set(groupFilter: self.filters?.groupFilter)
+        requestBuilder.set(facetFilters: self.filters?.facetFilters)
     }
 }

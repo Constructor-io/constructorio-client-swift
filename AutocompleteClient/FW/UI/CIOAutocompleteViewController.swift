@@ -209,7 +209,11 @@ public class CIOAutocompleteViewController: UIViewController {
         }
         
         self.constructorIO = ConstructorIO(config: self.config)
+<<<<<<< HEAD
         self.constructorIO.parser.delegate = self
+=======
+        self.constructorIO.autocompleteParser.delegate = self
+>>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
     }
 
     public override func viewWillAppear(_ animated: Bool) {

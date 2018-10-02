@@ -8,7 +8,8 @@
 
 import Foundation
 
-public typealias QueryCompletionHandler = (QueryResponse) -> Void
+public typealias AutocompleteQueryCompletionHandler = (AutocompleteTaskResponse) -> Void
+public typealias SearchQueryCompletionHandler = (SearchTaskResponse) -> Void
 public typealias TrackingCompletionHandler = (Error?) -> Void
 
 /**
@@ -23,9 +24,14 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     private let networkClient: NetworkClient
     private let sessionManager: SessionManager
     
+<<<<<<< HEAD
     public var parser: AbstractResponseParser
     
     public let clientID: String?
+=======
+    public var autocompleteParser: AbstractAutocompleteResponseParser = DependencyContainer.sharedInstance.autocompleteResponseParser()
+    public var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
+>>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
     
     public var sessionID: Int{
         get{
@@ -47,6 +53,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
      Tracking property that simplifies tracking events. To fully customize the data that's being sent, use ConstructorIO's CIOTracker protocol functions.
      */
     public private(set) var tracking: CIOTracking!
+<<<<<<< HEAD
 
 
     public init(config: AutocompleteConfig) {
@@ -57,6 +64,12 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         self.parser = DependencyContainer.sharedInstance.responseParser()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
 
+=======
+    
+    public init(config: AutocompleteConfig) {
+        self.config = config
+        
+>>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
         self.tracking = CIOTracking(tracker: self)
         
         self.sessionManager.delegate = self
@@ -67,9 +80,20 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     /// - Parameters:
     ///   - query: The query object, consisting of the query to autocomplete and additional options.
     ///   - completionHandler: The callback to execute on completion.
+<<<<<<< HEAD
     public func autocomplete(forQuery query: CIOAutocompleteQuery, completionHandler: @escaping QueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         execute(request, completionHandler: completionHandler)
+=======
+    public func autocomplete(forQuery query: CIOAutocompleteQuery, completionHandler: @escaping AutocompleteQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeAutocomplete(request, completionHandler: completionHandler)
+    }
+    
+    public func search(forQuery query: CIOSearchQuery, completionHandler: @escaping SearchQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeSearch(request, completionHandler: completionHandler)
+>>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
     }
     
     /// Track search results loaded.
@@ -130,11 +154,26 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     private func buildRequest(data: CIORequestData) -> URLRequest{
         let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+<<<<<<< HEAD
+=======
+        self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         
         return requestBuilder.getRequest()
     }
     
+    private func buildSessionStartRequest(session: Int) -> URLRequest{
+        let data = CIOTrackSessionStartData(session: session)
+        let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
+        self.attachClientID(requestBuilder: requestBuilder)
+        self.attachABTestCells(requestBuilder: requestBuilder)
+>>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
+        requestBuilder.build(trackData: data)
+        
+        return requestBuilder.getRequest()
+    }
+    
+<<<<<<< HEAD
     private func buildSessionStartRequest(session: Int) -> URLRequest{
         let data = CIOTrackSessionStartData(session: session)
         let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
@@ -155,6 +194,17 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         self.attachClientID(requestBuilder: requestBuilder)
         self.attachSessionID(requestBuilder: requestBuilder)
 >>>>>>> Request flow refactored
+=======
+    private func attachABTestCells(requestBuilder: RequestBuilder){
+        self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
+            requestBuilder.set(cell.value, forKey: Constants.ABTesting.formatKey(cell.key))
+        })
+    }
+
+    private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
+        self.attachClientID(requestBuilder: requestBuilder)
+        self.attachSessionID(requestBuilder: requestBuilder)
+>>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
     }
     
     private func attachClientID(requestBuilder: RequestBuilder){
@@ -173,7 +223,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         }
     }
 
-    private func execute(_ request: URLRequest, completionHandler: @escaping QueryCompletionHandler) {
+    private func executeAutocomplete(_ request: URLRequest, completionHandler: @escaping AutocompleteQueryCompletionHandler) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
                 completionHandler(response)
@@ -182,16 +232,39 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
 
         self.networkClient.execute(request) { response in
             if let error = response.error {
-                dispatchHandlerOnMainQueue(QueryResponse(error: error))
+                dispatchHandlerOnMainQueue(AutocompleteTaskResponse(error: error))
                 return
             }
 
             let data = response.data!
             do {
-                let parsedResponse = try self.parse(data)
-                dispatchHandlerOnMainQueue(QueryResponse(data: parsedResponse))
+                let parsedResponse = try self.parseAutocomplete(data)
+                dispatchHandlerOnMainQueue(AutocompleteTaskResponse(data: parsedResponse))
             } catch {
-                dispatchHandlerOnMainQueue(QueryResponse(error: error))
+                dispatchHandlerOnMainQueue(AutocompleteTaskResponse(error: error))
+            }
+        }
+    }
+    
+    private func executeSearch(_ request: URLRequest, completionHandler: @escaping SearchQueryCompletionHandler) {
+        let dispatchHandlerOnMainQueue = { response in
+            DispatchQueue.main.async {
+                completionHandler(response)
+            }
+        }
+        
+        self.networkClient.execute(request) { response in
+            if let error = response.error {
+                dispatchHandlerOnMainQueue(SearchTaskResponse(error: error))
+                return
+            }
+            
+            let data = response.data!
+            do {
+                let parsedResponse = try self.parseSearch(data)
+                dispatchHandlerOnMainQueue(SearchTaskResponse(data: parsedResponse))
+            } catch {
+                dispatchHandlerOnMainQueue(SearchTaskResponse(error: error))
             }
         }
     }
@@ -207,9 +280,13 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
             dispatchHandlerOnMainQueue(response.error)
         }
     }
-
-    private func parse(_ autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
-        return try self.parser.parse(autocompleteResponseData: autocompleteResponseData)
+    
+    private func parseAutocomplete(_ autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
+        return try self.autocompleteParser.parse(autocompleteResponseData: autocompleteResponseData)
+    }
+    
+    private func parseSearch(_ searchResponseData: Data) throws -> CIOSearchResponse{
+        return try self.searchParser.parse(searchResponseData: searchResponseData)
     }
     
     // MARK: CIOSessionManagerDelegate

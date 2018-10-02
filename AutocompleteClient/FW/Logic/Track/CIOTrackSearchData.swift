@@ -17,7 +17,11 @@ public struct CIOTrackSearchData: CIORequestData {
     }
     
     public func decorateRequest(requestBuilder: RequestBuilder){
+<<<<<<< HEAD
         requestBuilder.set(searchTerm: self.searchTerm)
+=======
+        requestBuilder.set(originalQuery: self.searchTerm)
+>>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
         requestBuilder.set(itemName: self.itemName)
     }
 }
