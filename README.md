@@ -9,7 +9,7 @@ An iOS Client library for [Constructor.io](http://constructor.io/).  [Constructo
 
 ## 1. Import
 
-#### Using CocoaPods
+### Using CocoaPods
 First make sure you have [CocoaPods installed](https://guides.cocoapods.org/using/getting-started.html).  Then create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:
 
 ```use_frameworks!
@@ -24,7 +24,7 @@ Open the terminal (make sure you’re located in the project root) and type
 pod install
 ```
 
-#### Using Carthage
+### Using Carthage
 First, make sure you have [Carthage installed](https://github.com/Carthage/Carthage#installing-carthage). Then create an empty text file called ‘Cartfile’ in your project root directory. Now, add the following lines:
 
 ```
@@ -41,7 +41,7 @@ Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project
 
 <img src="https://constructor.io/images/ios_screenshots/ss_copy_frameworks.png" width="60%">
 
-#### Using Github
+### Using Github
 1. Get the lastest source code from [Github](https://github.com/Constructor-io/constructorio-client-swift.git)
 1. Open and build the project in Xcode
 1. Drag the `ConstructorAutocomplete.framework` file into your project and link it with your application target.
@@ -79,7 +79,7 @@ self.navigationController.pushViewController(viewController, animated: true)
 
 You should now see your autocomplete view controller.  `CIOAutocompleteDelegate` contains methods that notify you about autocomplete events and control autocomplete results. We’ll touch on a couple of them.
 
-#### Selecting Results
+### Selecting Results
 To respond to a user selecting an autocomplete result, implement the `didSelectResult` method.  The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.  
 
 If the autocomplete result has both a suggested term to search for and a group to search within (as in `Apples in Juice Drinks`), the group will be a property of the result.
@@ -96,7 +96,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, didSelect
 }
 ```
 
-#### Performing Searches
+### Performing Searches
 To respond to a user performing a search (instead of selecting an autocomplete result), implement the `didPerformSearch` method. The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result. 
 
 ``` swift
@@ -105,7 +105,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, didPerfor
 }
 ```
  
-#### Filtering Results
+### Filtering Results
 To filter out certain results or groups, implement the `shouldParseResult` method.
 
 ```swift
@@ -122,7 +122,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
 ## 4. Customize the Autocomplete UI
 The `CIOAutocompleteUICustomization` protocol contains methods to customize the look and feel of the autocomplete interface.
 
-#### Customizing the Search Bar
+### Customizing the Search Bar
 You can customize how UISearchController behaves in the autocomplete controller by implementing the `customizeSearchController` method.
 
 ```swift
@@ -137,7 +137,7 @@ func customizeSearchController(searchController: UISearchController, in autocomp
 }
 ```
 
-#### Customizing Results With Methods
+### Customizing Results With Methods
 The framework provides default `UITableViewCells` in which the results will be shown. You can customize these cells by implementing the following methods:
 
 ```swift
@@ -158,7 +158,7 @@ func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFon
 }
 ```
 
-#### Customizing Results With Cells
+### Customizing Results With Cells
 If you decide to use a fully custom cell, you can either pass the UINib using
 
 ```swift
@@ -198,7 +198,7 @@ The framework will call this method on your cell and pass the necessary data.
 
 <img src="https://constructor.io/images/ios_screenshots/ss_custom_cell.png" width="60%">
 
-#### Customizing the Background View
+### Customizing the Background View
 The background view appears behind your autocomplete results. You can replace the default  view by implementing the `backgroundView` method.
 
 ```swift
@@ -207,7 +207,7 @@ func backgroundView(in autocompleteController: CIOAutocompleteViewController) ->
 }
 ```
 
-#### Customizing the Error View
+### Customizing the Error View
 The error view appears if an error occurs when requesting autocomplete results.  No default error view exists but you can add one by implementing the `errorView` method. Your custom error view must conform to the `CIOErrorView` protocol.
 
 ```swift
