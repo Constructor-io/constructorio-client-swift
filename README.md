@@ -6,7 +6,7 @@ An iOS Client library for [Constructor.io](http://constructor.io/).  [Constructo
 
 ## 1. Import
 
-### via CocoaPods
+### 1.a via CocoaPods
 First make sure you have [CocoaPods installed](https://guides.cocoapods.org/using/getting-started.html).  Then create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:
 
 ```use_frameworks!
@@ -21,7 +21,7 @@ Open the terminal (make sure you’re located in the project root) and type
 pod install
 ```
 
-### via Carthage
+### 1.b via Carthage
 First, make sure you have [Carthage installed](https://github.com/Carthage/Carthage#installing-carthage). Then create an empty text file called ‘Cartfile’ in your project root directory. Now, add the following lines:
 
 ```
