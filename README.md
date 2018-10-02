@@ -164,12 +164,14 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
    return true
 }
 ```
-## Customizing the UI
-```CIOAutocompleteUICustomization``` protocol contains various methods allowing you to customize the look and feel of the autocomplete view.
 
-## Customize Search behaviour
-You can customize how UISearchController behaves in the autocomplete controller by implementing the following method.
-```
+## Customizing the Autocomplete UI
+`CIOAutocompleteUICustomization` protocol contains various methods allowing you to customize the look and feel of the autocomplete interface.
+
+#### Customize the Search Bar
+You can customize how UISearchController behaves in the autocomplete controller by implementing the `CIOAutocompleteUICustomization.customizeSearchController` method.
+
+```swift
 func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController) {
     // customize search bar
     searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
@@ -181,9 +183,10 @@ func customizeSearchController(searchController: UISearchController, in autocomp
 }
 ```
 
-## Using the default UI
-We provide the default UITableViewCells in which the results will be shown. You can customize these cells by implementing the following methods:
-```
+#### Using the default UI
+We provide the default `UITableViewCells` in which the results will be shown. You can customize these cells by implementing the following methods:
+
+```swift
 func styleResultLabel(label: UILabel, in autocompleteController: CIOAutocompleteViewController){
     label.backgrounColor = UIColor.clear
 }
@@ -198,27 +201,29 @@ func fontNormal(in autocompleteController: CIOAutocompleteViewController) -> UIF
 
 func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFont{
     return UIFont.boldSystemFont(ofSize: 15)
-}	
-
+}
 ```
 
-## Using the custom UI
+#### Using the custom UI
 If you decide to use a fully custom cell, you can either pass the UINib using
-```
+
+```swift
 func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib{
     return UINib(nibName: "CustomTableViewCell", bundle: nil)
 }
 ```
 
 or the custom cell class, if your cell is instantiated in code
-```
+
+```swift
 func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass{
     return MyCustomCell.self
 }
 ```
 
-Your custom cells must conform to the ```CIOAutocompleteCell``` protocol and implement the ```setup``` method.
-```
+Your custom cells must conform to the `CIOAutocompleteCell` protocol.
+
+```swift
 class CustomTableViewCell: UITableViewCell, CIOAutocompleteCell {
 
     @IBOutlet weak var imageViewIcon: UIImageView!
@@ -236,13 +241,12 @@ class CustomTableViewCell: UITableViewCell, CIOAutocompleteCell {
 
 }
 ```
+
 Our framework will call this method on your cell and pass all the necessary data.
 
 <img src="https://constructor.io/images/ios_screenshots/ss_custom_cell.png" width="60%">
 
-There are a couple of more views that you can fully replace with a custom UIView of your choice.
-
-## Background View
+#### Background View
 The background view appears behind your autocomplete results. You can replace the default framework view by implementing the `CIOAutocompleteUICustomization.background` method.
 
 ```swift
@@ -253,11 +257,11 @@ func backgroundView(in autocompleteController: CIOAutocompleteViewController) ->
 
 <img src="https://constructor.io/images/ios_screenshots/ss_custom_background_view.png" width="60%" />
 
-## Error View
+#### Error View
 The error view appears if an error occurs when requesting autocomplete results.  No default error view exists but you can add one by implementing the `CIOAutocompleteUICustomization.errorView` method. Your custom error view must conform to the `CIOErrorView` protocol.
 
 ```swift
 func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView?{
-    return MyErrorView()
+    return MyCustomErrorView()
 }
 ```
