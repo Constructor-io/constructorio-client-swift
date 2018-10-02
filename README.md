@@ -7,9 +7,9 @@
 
 An iOS Client library for [Constructor.io](http://constructor.io/).  [Constructor.io](http://constructor.io/) provides search as a service that optimizes results using artificial intelligence (including natural language processing, re-ranking to optimize for conversions, and user personalization).
 
-## Import
+## 1. Import
 
-#### 1a. Using CocoaPods
+#### Using CocoaPods
 First make sure you have [CocoaPods installed](https://guides.cocoapods.org/using/getting-started.html).  Then create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:
 
 ```use_frameworks!
@@ -24,7 +24,7 @@ Open the terminal (make sure you’re located in the project root) and type
 pod install
 ```
 
-#### 1b. Using Carthage
+#### Using Carthage
 First, make sure you have [Carthage installed](https://github.com/Carthage/Carthage#installing-carthage). Then create an empty text file called ‘Cartfile’ in your project root directory. Now, add the following lines:
 
 ```
@@ -41,7 +41,7 @@ Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project
 
 <img src="https://constructor.io/images/ios_screenshots/ss_copy_frameworks.png" width="60%">
 
-#### 1c. Using Github
+#### Using Github
 1. Get the lastest source code from [Github](https://github.com/Constructor-io/constructorio-client-swift.git)
 1. Open and build the project in Xcode
 1. Drag the `ConstructorAutocomplete.framework` file into your project and link it with your application target.
