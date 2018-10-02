@@ -241,9 +241,11 @@ Our framework will call this method on your cell and pass all the necessary data
 <img src="https://constructor.io/images/ios_screenshots/ss_custom_cell.png" width="60%">
 
 There are a couple of more views that you can fully replace with a custom UIView of your choice.
+
 ## Background View
-The background view appears behind your search results. You can replace the default framework view by implementing the backgroundView method.
-```
+The background view appears behind your autocomplete results. You can replace the default framework view by implementing the `CIOAutocompleteUICustomization.background` method.
+
+```swift
 func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView?{
     return MyCustomBackgroundView()
 }
@@ -252,19 +254,10 @@ func backgroundView(in autocompleteController: CIOAutocompleteViewController) ->
 <img src="https://constructor.io/images/ios_screenshots/ss_custom_background_view.png" width="60%" />
 
 ## Error View
-The error view appears if an error occurs.  No default error view exists but you can add one by implementing the `CIOAutocompleteUICustomization.errorView` method. Your custom error view must conform to the `CIOErrorView` protocol.
+The error view appears if an error occurs when requesting autocomplete results.  No default error view exists but you can add one by implementing the `CIOAutocompleteUICustomization.errorView` method. Your custom error view must conform to the `CIOErrorView` protocol.
 
 ```swift
-class CustomErrorView: UIView, CIOErrorView {
-
-    @IBOutlet weak var labelError: UILabel!
-
-    func asView() -> UIView {
-        return self
-    }
-
-    func setErrorString(errorString: String) {
-        self.labelError.text = errorString
-    }
+func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView?{
+    return MyErrorView()
 }
 ```
