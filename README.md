@@ -45,11 +45,13 @@ That’s it! You are now ready to use constructor.io autocomplete framework.
 Make sure to import the `ConstructorAutocomplete` module at the top of your source file and then write the following
 
 ```swift
-// Instantiate the autocomplete controller
+// Create the config
 let config = ConstructorIOConfig(
    apiKey: "YOUR API KEY",
    resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0])
 )
+
+// Instantiate the autocomplete controller
 let viewController = CIOAutocompleteViewController(config: config)
 
 // set the delegate to react to user events... must conform to `CIOAutocompleteDelegate`
