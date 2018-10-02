@@ -213,7 +213,7 @@ func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> 
 }
 ```
 
-or the custom cell class, if your cell is instantiated in code
+... or the custom cell class, if your cell is instantiated in code
 
 ```swift
 func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass{
@@ -224,7 +224,7 @@ func customCellClass(in autocompleteController: CIOAutocompleteViewController) -
 Your custom cells must conform to the `CIOAutocompleteCell` protocol.
 
 ```swift
-class CustomTableViewCell: UITableViewCell, CIOAutocompleteCell {
+class MyCustomCell: UITableViewCell, CIOAutocompleteCell {
 
     @IBOutlet weak var imageViewIcon: UIImageView!
     @IBOutlet weak var labelText: UILabel!
