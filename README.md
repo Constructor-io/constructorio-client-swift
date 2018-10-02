@@ -166,10 +166,10 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
 ```
 
 ## Customizing the Autocomplete UI
-`CIOAutocompleteUICustomization` protocol contains various methods allowing you to customize the look and feel of the autocomplete interface.
+`CIOAutocompleteUICustomization` protocol contains methods allowing you to customize the look and feel of the autocomplete interface.
 
-#### Customize the Search Bar
-You can customize how UISearchController behaves in the autocomplete controller by implementing the `CIOAutocompleteUICustomization.customizeSearchController` method.
+#### Customizing the search bar
+You can customize how UISearchController behaves in the autocomplete controller by implementing the `customizeSearchController` method.
 
 ```swift
 func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController) {
@@ -183,7 +183,7 @@ func customizeSearchController(searchController: UISearchController, in autocomp
 }
 ```
 
-#### Using the default UI
+#### Customizing using the default UI
 We provide the default `UITableViewCells` in which the results will be shown. You can customize these cells by implementing the following methods:
 
 ```swift
@@ -204,7 +204,7 @@ func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFon
 }
 ```
 
-#### Using the custom UI
+#### Customizing using cells
 If you decide to use a fully custom cell, you can either pass the UINib using
 
 ```swift
@@ -246,8 +246,8 @@ Our framework will call this method on your cell and pass all the necessary data
 
 <img src="https://constructor.io/images/ios_screenshots/ss_custom_cell.png" width="60%">
 
-#### Background View
-The background view appears behind your autocomplete results. You can replace the default framework view by implementing the `CIOAutocompleteUICustomization.background` method.
+#### Customing the Background View
+The background view appears behind your autocomplete results. You can replace the default framework view by implementing the `backgroundView` method.
 
 ```swift
 func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView?{
@@ -255,8 +255,8 @@ func backgroundView(in autocompleteController: CIOAutocompleteViewController) ->
 }
 ```
 
-#### Error View
-The error view appears if an error occurs when requesting autocomplete results.  No default error view exists but you can add one by implementing the `CIOAutocompleteUICustomization.errorView` method. Your custom error view must conform to the `CIOErrorView` protocol.
+#### Customing the Error View
+The error view appears if an error occurs when requesting autocomplete results.  No default error view exists but you can add one by implementing the `errorView` method. Your custom error view must conform to the `CIOErrorView` protocol.
 
 ```swift
 func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView?{
