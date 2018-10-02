@@ -58,25 +58,12 @@ viewController.uiCustomization = self
 self.navigationController.pushViewController(viewController, animated: true)
 ```
 
-You should now see your autocomplete view controller.
-
-#### Reacting to user events
-`CIOAutocompleteDelegate` contains methods that notify you about autocomplete events. We’ll touch on a couple of them:
-
-```optional func autocompleteControllerDidLoad(controller: CIOAutocompleteViewController)```
-
-* This method is called when the view controller’s view is loaded, giving you a chance to call analytics services or execute any background task.
-
-```optional func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult)```
-
-* Called when user taps a result in the table view. The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.
-
-```optional func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String)```
-
-* This method is called when the search query is sent to the server, again giving you a chance to do any necessary background work.
+You should now see your autocomplete view controller.  `CIOAutocompleteDelegate` contains methods that notify you about autocomplete events and control autocomplete results. We’ll touch on a couple of them.
 
 #### Selecting Results
-If you want to respond to a user selecting an autocomplete result, you can do so by implementing the `didSelectResult` method.  If the autocomplete result has both a suggested term to search for and a group to search within (as in `Apples in Juice Drinks`), the group will be a property of the result.
+If you want to respond to a user selecting an autocomplete result, you can do so by implementing the `didSelectResult` method.  The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.  
+
+If the autocomplete result has both a suggested term to search for and a group to search within (as in `Apples in Juice Drinks`), the group will be a property of the result.
 
 ``` swift
 func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult){
@@ -90,13 +77,21 @@ func autocompleteController(controller: CIOAutocompleteViewController, didSelect
 }
 ```
 
+#### Performing Seraches
+If you want to respond to a user performing a search instead of selecting a result, you can do so by implementing the `didPerformSearch` method. The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result. 
+
+``` swift
+func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String){
+   print("User searched for \(searchTerm)")
+}
+```
+ 
 #### Filtering Results
 If you want certain results or groups to be filtered out, you can do so by implementing the `shouldParseResult` method.
 
 ```swift
 func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
-   
-   // lets ignore all results that contain the word "guitar"
+   // ignore all results that contain the word "guitar"
    if result.value.contains("guitar") {
       return false
    }
@@ -165,7 +160,6 @@ Your custom cells must conform to the `CIOAutocompleteCell` protocol.
 
 ```swift
 class MyCustomCell: UITableViewCell, CIOAutocompleteCell {
-
     @IBOutlet weak var imageViewIcon: UIImageView!
     @IBOutlet weak var labelText: UILabel!
 
@@ -178,7 +172,6 @@ class MyCustomCell: UITableViewCell, CIOAutocompleteCell {
         self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.value)
         self.imageViewIcon.image = UIImage(named: "icon-autocomplete")
     }
-
 }
 ```
 
