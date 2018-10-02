@@ -255,8 +255,6 @@ func backgroundView(in autocompleteController: CIOAutocompleteViewController) ->
 }
 ```
 
-<img src="https://constructor.io/images/ios_screenshots/ss_custom_background_view.png" width="60%" />
-
 #### Error View
 The error view appears if an error occurs when requesting autocomplete results.  No default error view exists but you can add one by implementing the `CIOAutocompleteUICustomization.errorView` method. Your custom error view must conform to the `CIOErrorView` protocol.
 
