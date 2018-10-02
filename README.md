@@ -41,21 +41,17 @@ That’s it! You are now ready to use constructor.io autocomplete framework.
 ## 2. Get the api key from constructor.io dashboard
 [Register an account](https://constructor.io/users/sign_up) and acquire the api key.
 
-## 3. Implement the autocomplete features in your app
-Make sure to import the ConstructorAutocomplete module at the top of your source file
+## 3. Implementing the Autocomplete UI
+Make sure to import the `ConstructorAutocomplete` module at the top of your source file and then write the following
 
-Swift ```import ConstructorAutocomplete```
-
-Objective-C ```@import ConstructorAutocomplete;```
-
-```
+```swift
 // Instantiate the autocomplete controller
 let viewController = CIOAutocompleteViewController(apiKey: “YOUR API KEY")
 
-// set the delegate in order to react to various events
+// set the delegate to react to user events... self must implement `CIOAutocompleteDelegate`
 viewController.delegate = self
 
-// set the ui customization to adjust the look and feel of the UI
+// set the ui customization to adjust the look and feel of the UI... self must implement `CIOAutocompleteUICustomization`
 viewController.uiCustomization = self
 
 // push the view controller to the stack
@@ -64,8 +60,8 @@ self.navigationController.pushViewController(viewController, animated: true)
 
 You should now see your autocomplete view controller.
 
-## Reacting to user events
-```CIOAutocompleteDelegate``` contains methods that notify you about autocomplete events. We’ll touch on a couple of them:
+#### Reacting to user events
+`CIOAutocompleteDelegate` contains methods that notify you about autocomplete events. We’ll touch on a couple of them:
 
 ```optional func autocompleteControllerDidLoad(controller: CIOAutocompleteViewController)```
 
@@ -79,62 +75,10 @@ You should now see your autocomplete view controller.
 
 * This method is called when the search query is sent to the server, again giving you a chance to do any necessary background work.
 
-## Search in group
-Any data value can belong to multiple groups. We will show the search-in-group options right below the item itself.
+#### Selecting Results
+If you want to respond to a user selecting an autocomplete result, you can do so by implementing the `didSelectResult` method.  If the autocomplete result has both a suggested term to search for and a group to search within (as in `Apples in Juice Drinks`), the group will be a property of the result.
 
-Let's remember the selection delegate method.
-
-```optional func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult)```
-
-The result is of type ```CIOResult``` which looks like this:
-```
-@objc
-public class CIOResult: NSObject{
-    public let autocompleteResult: CIOAutocompleteResult
-    public let group: CIOGroup?
-    
-    init(autocompleteResult: CIOAutocompleteResult, group: CIOGroup? = nil){
-        self.autocompleteResult = autocompleteResult
-        self.group = group
-    }
-}
-```
-It represents an autocomplete item in a group. Let's say you search for 'apple' and the results coming back from server are:
-```
-"suggestions": [
-      {
-        "data": {
-          "groups": [
-            {
-              "display_name": "food", 
-              "group_id": "12", 
-              "path": "/0/222/344"
-            }, 
-            {
-              "display_name": "gadgets", 
-              "group_id": "34", 
-              "path": "/0/252/346/350"
-            }
-          ]
-        }, 
-        "value": "apple"
-      }
-]
-```
-We received two groups: food and gadgets. This means we'll have three items in total:
-1. apple on it's own
-2. Search for 'apple' in group 'food'
-3. Search for 'apple' in group 'gadgets'
-
-When the user taps on (1), you'll receive a CIOResult with a group property of nil.
-
-When the user taps on (2), you'll receive a CIOResult with the food group property.
-
-When the user taps on (3), you'll receive a CIOResult with the gadgets group property.
-
-In other words, you can simply check whether the group property is nil to find out if the user tapped on a search-in-group result.
-
-```
+``` swift
 func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult){
    if let group = result.group{
       // user tapped on search-in-group result
@@ -146,18 +90,14 @@ func autocompleteController(controller: CIOAutocompleteViewController, didSelect
 }
 ```
 
-## Filtering results
-If you want certain results or groups to be filtered out, you can do so by implementing ```shouldParseResult``` delegate method.
+#### Filtering Results
+If you want certain results or groups to be filtered out, you can do so by implementing the `shouldParseResult` method.
 
-```
+```swift
 func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
+   
    // lets ignore all results that contain the word "guitar"
    if result.value.contains("guitar") {
-      return false
-   }
-
-   // also, lets disallow all searches in group "food"
-   if let group = group, group.displayName.lowercased() == "food" {
       return false
    }
    
@@ -165,7 +105,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
 }
 ```
 
-## Customizing the Autocomplete UI
+## 4. Customizing the Autocomplete UI
 `CIOAutocompleteUICustomization` protocol contains methods allowing you to customize the look and feel of the autocomplete interface.
 
 #### Customizing the Search Bar
