@@ -1,9 +1,6 @@
-## Prerequisites
+<img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" /> <img src="https://img.shields.io/badge/Swift-3.0+-blue.svg" alt="Swift 3+ compatible" /> <img src="https://img.shields.io/badge/Objective--C-compatible-blue.svg" alt="Objective-C compatible" /> <img  src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" />
 
-* An Xcode project targeting iOS 8.0 or above
-* Objective-C or
-* Swift project using swift 3.0 or later
-* A constructor.io account
+# Constructor.io Swift Library
 
 An iOS Client library for [Constructor.io](http://constructor.io/).  [Constructor.io](http://constructor.io/) provides search as a service that optimizes results using artificial intelligence (including natural language processing, re-ranking to optimize for conversions, and user personalization).
 
