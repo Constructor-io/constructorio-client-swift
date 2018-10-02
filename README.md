@@ -39,9 +39,7 @@ Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project
 <img src="https://constructor.io/images/ios_screenshots/ss_copy_frameworks.png" width="60%">
 
 ## 2. Retrieve an autocomplete key
-You can find this in your [Constructor.io dashboard](https://constructor.io/dashboard).
-
-Contact sales if you'd like to sign up, or support if you believe your company already has an account.
+You can find this in your [Constructor.io dashboard](https://constructor.io/dashboard).  Contact sales if you'd like to sign up, or support if you believe your company already has an account.
 
 ## 3. Implement the Autocomplete UI
 Make sure to import the `ConstructorAutocomplete` module at the top of your source file and then write the following
