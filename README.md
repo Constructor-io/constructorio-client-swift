@@ -46,7 +46,11 @@ Make sure to import the `ConstructorAutocomplete` module at the top of your sour
 
 ```swift
 // Instantiate the autocomplete controller
-let viewController = CIOAutocompleteViewController(apiKey: “YOUR API KEY")
+let config = ConstructorIOConfig(
+   apiKey: "YOUR API KEY",
+   resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0])
+)
+let viewController = CIOAutocompleteViewController(config: config)
 
 // set the delegate to react to user events... must conform to `CIOAutocompleteDelegate`
 viewController.delegate = self
