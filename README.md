@@ -6,7 +6,7 @@ An iOS Client library for [Constructor.io](http://constructor.io/).  [Constructo
 
 ## 1. Import
 
-### Using CocoaPods
+### via CocoaPods
 First make sure you have [CocoaPods installed](https://guides.cocoapods.org/using/getting-started.html).  Then create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:
 
 ```use_frameworks!
@@ -21,7 +21,7 @@ Open the terminal (make sure you’re located in the project root) and type
 pod install
 ```
 
-### Using Carthage
+### via Carthage
 First, make sure you have [Carthage installed](https://github.com/Carthage/Carthage#installing-carthage). Then create an empty text file called ‘Cartfile’ in your project root directory. Now, add the following lines:
 
 ```
@@ -37,14 +37,6 @@ carthage update
 Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project and link it with your application target. Also, make sure to copy the framework by adding a new Copy Files phase.
 
 <img src="https://constructor.io/images/ios_screenshots/ss_copy_frameworks.png" width="60%">
-
-### Using Github
-1. Get the lastest source code from [Github](https://github.com/Constructor-io/constructorio-client-swift.git)
-1. Open and build the project in Xcode
-1. Drag the `ConstructorAutocomplete.framework` file into your project and link it with your application target.
-1. Make sure to copy the framework by adding a new Copy Files phase(image above).
-
-That’s it! You are now ready to use constructor.io autocomplete framework.
 
 ## 2. Retrieve an autocomplete key
 You can find this in your [Constructor.io dashboard](https://constructor.io/dashboard).
