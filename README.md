@@ -1,8 +1,8 @@
 <img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" /> <img src="https://img.shields.io/badge/Swift-3.0+-blue.svg" alt="Swift 3+ compatible" /> <img src="https://img.shields.io/badge/Objective--C-compatible-blue.svg" alt="Objective-C compatible" /> <img  src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" />
 
-# Constructor.io Swift Library
+# Constructor.io Swift Client
 
-An iOS Client library for [Constructor.io](http://constructor.io/).  [Constructor.io](http://constructor.io/) provides search as a service that optimizes results using artificial intelligence (including natural language processing, re-ranking to optimize for conversions, and user personalization).
+An iOS Client for [Constructor.io](http://constructor.io/).  [Constructor.io](http://constructor.io/) provides search as a service that optimizes results using artificial intelligence (including natural language processing, re-ranking to optimize for conversions, and user personalization).
 
 ## 1. Import
 
@@ -202,3 +202,24 @@ func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIVi
     return MyCustomErrorView()
 }
 ```
+
+# 5. Instrument Behavioral Events
+
+The iOS Client tracks behavioral events to improve results for users. Three types of these events exist:
+
+1. **General Events** are sent as needed when an instance of the Client is created or initialized
+1. **Autocomplete Events** measure user interaction with autocomplete results and the `CIOAutocompleteViewController` sends them automatically.
+1. **Search Events** measure user interaction with search results and the consuming app has to explicitly instrument them itself
+
+```swift
+// Access the worker from viewController
+let constructorIO = viewController.constructorIO
+
+// Track search results loaded
+constructorIO.trackSearchResultsLoaded(searchTerm: "a search term", resultCount: 123)
+
+// Track search result click, `nil` section name will send the default section name, "Products"
+constructorIO.trackSearchResultClick(itemID: "an item id", searchTerm: "a search term", sectionName: nil)
+
+// Track conversion, `nil` section name will send the default section name, "Products"
+constructorIO.trackConversion(itemID: "an item id", revenue: 45.00, searchTerm: "a search term", sectionName: nil)
