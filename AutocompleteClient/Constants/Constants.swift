@@ -50,7 +50,7 @@ struct Constants {
     }
 
     struct Query {
-        static let autocompleteKey = "autocomplete_key"
+        static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let httpMethod = "GET"
         static let queryStringFormat = "%@/%@/%@"
@@ -58,21 +58,23 @@ struct Constants {
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
     }
 
+    struct ClientID {
+        static let key = "kClientID"
+    }
+    
     struct AutocompleteQuery {
         static let pathString = "autocomplete"
         static let numResults = "num_results"
         static let numResultsForSectionNamePrefix = "num_results_"
-    }
-
-    struct SearchQuery {
-        static let pathString = "search"
-        static let page = "page"
-        static let numResultsPerPage = "num_results_per_page"
-        static let numResultsPerPageForSectionNamePrefix = "num_results_per_page_"
+        static let queryItemForSection = { (name: String) -> String in return Constants.AutocompleteQuery.numResultsForSectionNamePrefix + name }
+        
+        static let sectionNameSearchSuggestions = "Search Suggestions"
+        static let sectionNameProducts = "Products"
+        
+        static let defaultItemCountPerSection = 10
     }
 
     struct Response {
-//        static let expectedStatusCode = 200
         static let singleSectionResultField = "suggestions"
         static let multiSectionResultField = "sections"
     }
@@ -91,54 +93,52 @@ struct Constants {
 
     struct Track {
         static let httpMethod = "GET"
-        static let autocompleteKey = "autocomplete_key"
+        static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
-        static let trackStringFormat = "%@/%@/%@/%@"
-        static let trackBehaviorStringFormat = "%@/%@"
         static let expectedStatusCode = 204
-        
-        static let dateTime = "_dt"
-        static let defaultTrackingSectionName = "Products"
-    }
-
-    struct TrackAutocomplete {
-        static let pathString = "autocomplete"
+    
         static let autocompleteSection = "autocomplete_section"
         static let searchTerm = "term"
-        static let action = "action"
-        static let actionSearchResults = "search-results"
-        static let actionFocus = "focus"
-        static let actionSessionStart = "session_start"
-    }
-
-    struct TrackSearch{
-        static let format = "%@/autocomplete/%@/search"
-        static let originalQuery = "original_query"
-        static let pathBehavior = "behavior"
-    }
-    
-    struct TrackAutocompleteResultClicked {
-        static let selectType = "select"
-        static let searchType = "search"
-        static let type = "select"
         static let trigger = "tr"
         static let triggerType = "click"
         static let originalQuery = "original_query"
         static let groupName = "group[group_name]"
         static let groupID = "group[group_id]"
-    }
-
-    struct TrackConversion {
-        static let type = "conversion"
-        static let item = "item"
         static let itemId = "item_id"
         static let revenue = "revenue"
+        static let dateTime = "_dt"
+        static let defaultItemSectionName = "Products"
     }
 
-    struct TrackSearchTermTyped {
-        static let type = "search"
+    struct TrackSessionStart {
+        static let format = "%@/behavior?action=session_start"
     }
     
+    struct TrackInputFocus {
+        static let format = "%@/behavior?action=focus"
+    }
+    
+    struct TrackAutocompleteSelect {
+        static let format = "%@/autocomplete/%@/select"
+    }
+
+    struct TrackSearchSubmit {
+        static let format = "%@/autocomplete/%@/search"
+    }
+    
+    struct TrackSearchResultsLoaded {
+        static let format = "%@/behavior?action=search-results"
+    }
+    
+    struct TrackSearchClickThrough {
+        static let format = "%@/autocomplete/%@/click_through"
+    }
+    
+    struct TrackConversion {
+        static let format = "%@/autocomplete/%@/conversion"
+
+    }
+
     struct Logging{
         private static let prefix = "[ConstructorIO]:"
         private static let format: (_ message: String) -> String = { message in return "\(Logging.prefix) \(message)" }

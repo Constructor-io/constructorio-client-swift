@@ -17,8 +17,12 @@ extension XCTestCase {
             }
         }
     }
-
+    
     func waitForExpectationWithDefaultHandler(_ timeout: TimeInterval = TestConstants.defaultExpectationTimeout) {
         self.waitForExpectations(timeout: timeout, handler: self.defaultTimeoutFailureHandler())
+    }
+    
+    func wait(for expectation: XCTestExpectation){
+        self.wait(for: [expectation], timeout: TestConstants.defaultExpectationTimeout)
     }
 }

@@ -6,6 +6,6 @@
 //  http://constructor.io/
 //
 
-import UIKit
+import Foundation
 
 public class QueryResponse: TaskResponse<CIOAutocompleteResponse, Error> {}

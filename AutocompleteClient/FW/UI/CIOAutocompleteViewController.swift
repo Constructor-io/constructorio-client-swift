@@ -68,11 +68,6 @@ public class CIOAutocompleteViewController: UIViewController {
     private(set) public var constructorIO: ConstructorIO!
     
     /**
-     Autocomplete key. Make sure to set this value before showing the view controller.
-     */
-    public var autocompleteKey: String = ""
-
-    /**
      Default highlighter used for displaying result items.
      */
     public var highlighter: CIOHighlighter = CIOHighlighter(attributesProvider:
@@ -100,21 +95,22 @@ public class CIOAutocompleteViewController: UIViewController {
     /**
      The object to configure options for the autocomplete results.
      */
-    public var config: AutocompleteConfig?
+    public let config: ConstructorIOConfig
 
     // MARK: Fonts
     private var fontNormal: UIFont = Constants.UI.Font.defaultFontNormal
     private var fontBold: UIFont = Constants.UI.Font.defaultFontBold
 
     /**
-     Default initializer for this controller. Pass in the autocomplete key you got from the constructor.io dashboard.
+     Default initializer for this controller. Pass in the api key you got from the constructor.io dashboard.
      */
-    public init(autocompleteKey: String) {
+    public init(config: ConstructorIOConfig) {
+        self.config = config
         super.init(nibName: nil, bundle: nil)
-        self.autocompleteKey = autocompleteKey
     }
 
     public required init?(coder aDecoder: NSCoder) {
+        self.config = ConstructorIOConfig(apiKey: "")
         super.init(coder: aDecoder)
     }
 
@@ -208,13 +204,11 @@ public class CIOAutocompleteViewController: UIViewController {
 
         self.delegate?.autocompleteControllerDidLoad?(controller: self)
 
-        if autocompleteKey == "" {
-            self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingAutocompleteKey)
+        if self.config.apiKey == "" {
+            self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingApiKey)
         }
-
-        let userID = DependencyContainer.sharedInstance.userIDGenerator().generateUserID()
         
-        self.constructorIO = ConstructorIO(autocompleteKey: autocompleteKey, clientID: userID)
+        self.constructorIO = ConstructorIO(config: self.config)
         self.constructorIO.parser.delegate = self
     }
 
@@ -279,7 +273,16 @@ public class CIOAutocompleteViewController: UIViewController {
             return
         }
         
-        let query = CIOAutocompleteQuery(query: searchTerm, numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
+        var sectionConfiguration: [String: Int]
+        
+        if let sectionMapping = self.config.resultCount?.numResultsForSection{
+            sectionConfiguration = sectionMapping
+        }else{
+            sectionConfiguration = [:]
+            sectionConfiguration[Constants.AutocompleteQuery.sectionNameSearchSuggestions] = Constants.AutocompleteQuery.defaultItemCountPerSection
+        }
+        
+        let query = CIOAutocompleteQuery(query: searchTerm, numResults: config.resultCount?.numResults, numResultsForSection: sectionConfiguration)
         
         // initiatedOn timestamp has to be created before the query is sent, otherwise we might get inconsistent UI results
         let initiatedOn: TimeInterval = NSDate().timeIntervalSince1970
@@ -345,20 +348,10 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
         
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
-
-        // TODO: For now, ignore any errors
-        constructorIO.trackAutocompleteClick(for: selectTracker)
+        constructorIO.trackAutocompleteSelect(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, sectionName: sectionName, group: result.group)
 
         // Track search
-        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: result.autocompleteResult.value)
-        constructorIO.trackSearch(for: searchTrackData)
-        
-        // Run behavioural tracking 'search' if its an autocomplete suggestion
-        if sectionName == "standard" {
-            let searchTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
-            constructorIO.trackAutocompleteClick(for: searchTracker)
-        }
+        constructorIO.trackSearchSubmit(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, group: result.group)
 
         self.delegate?.autocompleteController?(controller: self, didSelectResult: result)
     }
@@ -408,12 +401,11 @@ extension CIOAutocompleteViewController: UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         // Track search
-        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
-        self.constructorIO.trackSearch(for: searchTrackData)
+        self.constructorIO.trackSearchSubmit(searchTerm: viewModel.searchTerm, originalQuery: viewModel.searchTerm)
     }
     
     public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        self.constructorIO.trackInputFocus(for: CIOTrackInputFocusData(searchTerm: searchBar.text))
+        self.constructorIO.trackInputFocus(searchTerm: searchBar.text!)
         return true
     }
 }
@@ -428,7 +420,7 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
         
         // check whether we have a valid search term
         if searchTerm.count == 0 {
-            let query = CIOAutocompleteQuery(query: "", numResults: config?.numResults, numResultsForSection: config?.numResultsForSection)
+            let query = CIOAutocompleteQuery(query: "", numResults: config.resultCount?.numResults, numResultsForSection: self.config.resultCount?.numResultsForSection)
             self.setResultsReceived(from: AutocompleteResult(query: query))
             return
         }
@@ -443,10 +435,6 @@ extension CIOAutocompleteViewController: ResponseParserDelegate {
     
     public func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool?{
         return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group)
-    }
-    
-    public func shouldParseResults(inSectionWithName name: String) -> Bool? {
-        return self.delegate?.autocompleteController?(controller: self, shouldParseResultsInSection: name) ?? name.isSearchSuggestionString()
     }
     
     public func maximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int {

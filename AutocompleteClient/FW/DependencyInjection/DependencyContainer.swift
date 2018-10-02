@@ -6,7 +6,7 @@
 //  http://constructor.io/
 //
 
-import UIKit
+import Foundation
 
 class DependencyContainer {
 
@@ -26,7 +26,7 @@ class DependencyContainer {
         return CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: Constants.Query.sessionIncrementTimeoutInSeconds)
     }
 
-    var userIDGenerator: () -> UserIDGenerator = {
-        return DeviceUserIDGenerator()
+    var clientIDGenerator: () -> IDGenerator = {
+        return ClientIDGenerator()
     }
 }

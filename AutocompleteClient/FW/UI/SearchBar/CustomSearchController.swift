@@ -10,7 +10,7 @@ import UIKit
 
 class CustomSearchController: UISearchController {
 
-    lazy var _searchBar: CustomSearchBar = {
+    @objc lazy var _searchBar: CustomSearchBar = {
         [unowned self] in
         let customSearchBar = CustomSearchBar(frame: CGRect.zero)
         return customSearchBar
