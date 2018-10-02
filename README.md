@@ -5,43 +5,56 @@
 * Swift project using swift 3.0 or later
 * A constructor.io account
 
-## 1a. Import using CocoaPods
-First make sure you have CocoaPods installed. If not, you can follow the installation guide from https://guides.cocoapods.org/using/getting-started.html.
-Next step is to create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:
+An iOS Client library for [Constructor.io](http://constructor.io/).  [Constructor.io](http://constructor.io/) provides search as a service that optimizes results using artificial intelligence (including natural language processing, re-ranking to optimize for conversions, and user personalization).
+
+## Import
+
+#### 1a. Using CocoaPods
+First make sure you have [CocoaPods installed](https://guides.cocoapods.org/using/getting-started.html).  Then create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:
 
 ```use_frameworks!
 target ‘YOUR_TARGET_NAME’ do
    pod ‘ConstructorAutocomplete'
 end
 ```
-Open the terminal and make sure you’re located in the project root(where your Podfile is located) and type
-```pod install```
 
-That’s it! Make sure to open the ```.xcworkspace``` file instead of the ```.xcodeproj``` you may have been using so far.
+Open the terminal (make sure you’re located in the project root) and type
 
-## 1b. Import using Carthage
-Framework can be also installed via Carthage. First, make sure you have [Carthage installed](https://github.com/Carthage/Carthage#installing-carthage). Then, create an empty text file called ‘Cartfile’ in your project root directory. Now, add the following lines:
+```bash
+pod install
+```
 
-```github "Constructor-io/constructorio-client-swift"```
+#### 1b. Using Carthage
+First, make sure you have [Carthage installed](https://github.com/Carthage/Carthage#installing-carthage). Then create an empty text file called ‘Cartfile’ in your project root directory. Now, add the following lines:
 
-Run ```carthage update```
+```
+github "Constructor-io/constructorio-client-swift"
+```
+
+Open the terminal (make sure you’re located in the project root) and type
+
+```bash
+carthage update
+```
 
 Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project and link it with your application target. Also, make sure to copy the framework by adding a new Copy Files phase.
 
 <img src="https://constructor.io/images/ios_screenshots/ss_copy_frameworks.png" width="60%">
 
-## 1c. Manual import
-* Get the lastest source code from ```https://github.com/Constructor-io/constructorio-client-swift.git```
-* Open and build the project in Xcode
-* Drag the ```ConstructorAutocomplete.framework``` file into your project and link it with your application target.
-* Make sure to copy the framework by adding a new Copy Files phase(image above).
+#### 1c. Using Github
+1. Get the lastest source code from [Github](https://github.com/Constructor-io/constructorio-client-swift.git)
+1. Open and build the project in Xcode
+1. Drag the `ConstructorAutocomplete.framework` file into your project and link it with your application target.
+1. Make sure to copy the framework by adding a new Copy Files phase(image above).
 
 That’s it! You are now ready to use constructor.io autocomplete framework.
 
-## 2. Get the api key from constructor.io dashboard
-[Register an account](https://constructor.io/users/sign_up) and acquire the api key.
+## 2. Retrieve an autocomplete key
+You can find this in your [Constructor.io dashboard](https://constructor.io/dashboard).
 
-## 3. Implementing the Autocomplete UI
+Contact sales if you'd like to sign up, or support if you believe your company already has an account.
+
+## 3. Implement the Autocomplete UI
 Make sure to import the `ConstructorAutocomplete` module at the top of your source file and then write the following
 
 ```swift
@@ -106,7 +119,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
 }
 ```
 
-## 4. Customizing the Autocomplete UI
+## 4. Customize the Autocomplete UI
 The `CIOAutocompleteUICustomization` protocol contains methods to customize the look and feel of the autocomplete interface.
 
 #### Customizing the Search Bar
