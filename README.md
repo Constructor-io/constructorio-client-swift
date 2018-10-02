@@ -252,16 +252,9 @@ func backgroundView(in autocompleteController: CIOAutocompleteViewController) ->
 <img src="https://constructor.io/images/ios_screenshots/ss_custom_background_view.png" width="60%" />
 
 ## Error View
-The error view appears if an error occurs.  No default error view exists but you can add one by implementing the errorView method.
-```
-func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
-    return UINib(nibName: "CustomErrorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
-}
-```
+The error view appears if an error occurs.  No default error view exists but you can add one by implementing the `CIOAutocompleteUICustomization.errorView` method. Your custom error view must conform to the CIOErrorView protocol.
 
-<img src="https://constructor.io/images/ios_screenshots/ss_custom_error_view.png" width="60%" />
-Your custom error view must conform to the CIOErrorView protocol and implement the necessary methods
-```
+```swift
 class CustomErrorView: UIView, CIOErrorView {
 
     @IBOutlet weak var labelError: UILabel!
@@ -275,7 +268,3 @@ class CustomErrorView: UIView, CIOErrorView {
     }
 }
 ```
-
-## Bug reporting
-
-Found a bug or having problems implementing any of the features? Feel free to [submit a new issue](https://github.com/Constructor-io/constructorio-client-swift/issues/new).
