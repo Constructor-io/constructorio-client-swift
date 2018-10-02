@@ -205,7 +205,9 @@ func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIVi
 
 # 5. Instrument Behavioral Events
 
-The iOS Client tracks behavioral events to improve results for users. Three types of these events exist:
+The iOS Client sends behavioral events to [Constructor.io](http://constructor.io/) in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.
+
+Three types of these events exist:
 
 1. **General Events** are sent as needed when an instance of the Client is created or initialized
 1. **Autocomplete Events** measure user interaction with autocomplete results and the `CIOAutocompleteViewController` sends them automatically.
@@ -223,3 +225,4 @@ constructorIO.trackSearchResultClick(itemID: "an item id", searchTerm: "a search
 
 // Track conversion, `nil` section name will send the default section name, "Products"
 constructorIO.trackConversion(itemID: "an item id", revenue: 45.00, searchTerm: "a search term", sectionName: nil)
+```
