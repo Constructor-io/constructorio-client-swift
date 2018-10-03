@@ -12,10 +12,13 @@ public struct ConstructorIOConfig {
 
     public let apiKey: String
     public var resultCount: AutocompleteResultCount?
+    public var testCells: [CIOABTestCell]?
     
-    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil){
+    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, testCells: [CIOABTestCell]? = nil){
         self.apiKey = apiKey
         self.resultCount = resultCount
+        self.testCells = testCells
     }
+    
     
 }
