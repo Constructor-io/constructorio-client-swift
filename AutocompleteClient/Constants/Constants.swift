@@ -48,6 +48,11 @@ struct Constants {
             }
         }
     }
+    
+    struct ABTesting{
+        static let keyPrefix = "ef"
+        static let formatKey = { (key: String) in return "\(ABTesting.keyPrefix)-\(key)"  }
+    }
 
     struct Query {
         static let apiKey = "key"
@@ -105,6 +110,8 @@ struct Constants {
         static let groupName = "group[group_name]"
         static let groupID = "group[group_id]"
         static let itemId = "item_id"
+        static let name = "name"
+        static let customerID = "customer_id"
         static let revenue = "revenue"
         static let dateTime = "_dt"
         static let defaultItemSectionName = "Products"

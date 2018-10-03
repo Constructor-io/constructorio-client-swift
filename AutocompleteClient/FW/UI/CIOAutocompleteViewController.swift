@@ -105,6 +105,7 @@ public class CIOAutocompleteViewController: UIViewController {
      Default initializer for this controller. Pass in the api key you got from the constructor.io dashboard.
      */
     public init(config: ConstructorIOConfig) {
+
         self.config = config
         super.init(nibName: nil, bundle: nil)
     }
