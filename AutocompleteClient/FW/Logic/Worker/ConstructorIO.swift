@@ -121,12 +121,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Track search result clicked on.
     ///
     /// - Parameters:
-    ///   - itemID: ID of an item.
+    ///   - name: item name.
+    ///   - customerID: customer ID.
     ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearchResultClick(itemID: String, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
-        let data = CIOTrackSearchResultClickData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemID: itemID, sectionName: (sectionName ?? self.defaultItemSectionName))
+    public func trackSearchResultClick(itemName: String, customerID: String, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackSearchResultClickData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: (sectionName ?? self.defaultItemSectionName))
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
@@ -134,13 +135,14 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Track a conversion.
     ///
     /// - Parameters:
-    ///   - itemID: ID of an item.
+    ///   - name: item name.
+    ///   - customerID: customer ID.
     ///   - revenue: Revenue of an item.
     ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - completionHandler: The callback to execute on completion.
-    public func trackConversion(itemID: String, revenue: Double?, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
-        let data = CIOTrackConversionData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemID: itemID, sectionName: (sectionName ?? self.defaultItemSectionName), revenue: revenue)
+    public func trackConversion(itemName: String, customerID: String, revenue: Double?, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
+        let data = CIOTrackConversionData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: sectionName, revenue: revenue)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
