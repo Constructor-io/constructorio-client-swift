@@ -40,9 +40,9 @@ extension RequestBuilder{
         queryItems.add(URLQueryItem(name: Constants.Track.autocompleteSection, value: sectionName))
     }
     
-    func set(revenue: Int?) {
+    func set(revenue: Double?) {
         guard let revenue = revenue else { return }
-        queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(revenue)))
+        queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(format: "%.2lf", revenue)))
     }
     
     func set(numResults: Int?) {
