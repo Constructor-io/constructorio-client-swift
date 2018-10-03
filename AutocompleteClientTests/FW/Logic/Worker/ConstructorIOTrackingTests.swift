@@ -91,18 +91,18 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTracking_Conversion(){
         let searchTerm = "corn"
         let itemID = "green-giant-corn-can-12oz"
-        let revenue = 1
+        let revenue: Double = 1
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a default section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&key=key_OucJxxrfiTVUQx0C&revenue=1&c=cioios-&s=1&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&key=key_OucJxxrfiTVUQx0C&revenue=1.00&c=cioios-&s=1&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackConversion(itemID: itemID, revenue: revenue, searchTerm: searchTerm, sectionName: nil)
         self.wait(for: builder.expectation)
     }
     
     func testTracking_Conversion_NoTerm(){
         let itemID = "green-giant-corn-can-12oz"
-        let revenue = 1
+        let revenue: Double = 1
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a default section name and default term.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&key=key_OucJxxrfiTVUQx0C&revenue=1&c=cioios-&s=1&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&key=key_OucJxxrfiTVUQx0C&revenue=1.00&c=cioios-&s=1&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackConversion(itemID: itemID, revenue: revenue, searchTerm: nil, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -110,10 +110,10 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTracking_Conversion_withSection(){
         let searchTerm = "corn"
         let itemID = "green-giant-corn-can-12oz"
-        let revenue = 1
+        let revenue: Double = 1
         let sectionName = "Search Suggestions"
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&key=key_OucJxxrfiTVUQx0C&revenue=1&c=cioios-&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?i=\(kRegexClientID)&item_id=green-giant-corn-can-12oz&key=key_OucJxxrfiTVUQx0C&revenue=1.00&c=cioios-&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackConversion(itemID: itemID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName)
         self.wait(for: builder.expectation)
     }

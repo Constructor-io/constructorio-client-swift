@@ -87,5 +87,17 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
+    
+    func testAutocompleteQueryBuilder_ContainsTwoDecimalPlacesForRevenue() {
+        let query = CIOAutocompleteQuery(query: self.query, numResults: 20, numResultsForSection: ["section1": 1, "section_999": 999])
+        let revenue: Double = 43.58473012
+        builder.set(revenue: revenue)
+        builder.build(trackData: query)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        
+        
+        XCTAssertTrue(regex(url, regex: "revenue=43.58[\\D]"), "URL should contain revenue with two decimal places.")
+    }
 
 }
