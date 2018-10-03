@@ -34,6 +34,16 @@ extension RequestBuilder{
         guard let itemID = itemID else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.itemId, value: itemID))
     }
+    
+    func set(name: String?) {
+        guard let name = name else { return }
+        queryItems.add(URLQueryItem(name: Constants.Track.name, value: name))
+    }
+    
+    func set(customerID: String?) {
+        guard let customerID = customerID else { return }
+        queryItems.add(URLQueryItem(name: Constants.Track.customerID, value: customerID))
+    }
 
     func set(autocompleteSection: String?) {
         guard let sectionName = autocompleteSection else { return }
