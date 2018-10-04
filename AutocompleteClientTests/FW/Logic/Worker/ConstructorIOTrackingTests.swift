@@ -123,4 +123,53 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName)
         self.wait(for: builder.expectation)
     }
+    
+    func testTracking_Conversion_FallsBackToConfigForSection_IfParameterIsNil(){
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let revenue: Double = 1
+        let sectionName = "section321"
+        
+        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=\(sectionName)&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        
+        let config = ConstructorIOConfig(apiKey: TestConstants.testAutocompleteKey, defaultSectionName: sectionName)
+        
+        let constructor = ConstructorIO(config: config)
+        constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm)
+        self.wait(for: builder.expectation)
+    }
+    
+    func testTracking_AutocompleteSelect_FallsBackToConfigForSection_IfParameterIsNil(){
+        let searchTerm = "corn"
+        let originalQuery = "green-giant-corn-can-12oz"
+        let sectionName = "section321"
+        
+        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=green-giant-corn-can-12oz&c=cioios-&s=1&autocomplete_section=section321&_dt=\(kRegexTimestamp)"), builder.create())
+        
+        let config = ConstructorIOConfig(apiKey: TestConstants.testAutocompleteKey, defaultSectionName: sectionName)
+        
+        let constructor = ConstructorIO(config: config)
+        constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: originalQuery)
+        self.wait(for: builder.expectation)
+    }
+    
+    func testTracking_SearchResultClick_FallsBackToConfigForSection_IfParameterIsNil(){
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let sectionName = "section321"
+
+        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=section321&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+
+        let config = ConstructorIOConfig(apiKey: TestConstants.testAutocompleteKey, defaultSectionName: sectionName)
+
+        let constructor = ConstructorIO(config: config)
+        constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: nil)
+        
+        self.wait(for: builder.expectation)
+    }
 }
