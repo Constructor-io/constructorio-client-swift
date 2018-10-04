@@ -84,8 +84,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - group: Item group
     ///   - completionHandler: The callback to execute on completion.
-    public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
-        let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group)
+    public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String? = nil, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let section = sectionName ?? self.config.defaultSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: section, group: group)
         let request = self.buildRequest(data: data)
 
         execute(request, completionHandler: completionHandler)
@@ -126,8 +127,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearchResultClick(itemName: String, customerID: String, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
-        let data = CIOTrackSearchResultClickData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: (sectionName ?? self.defaultItemSectionName))
+    public func trackSearchResultClick(itemName: String, customerID: String, searchTerm: String?, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let section = sectionName ?? self.config.defaultSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackSearchResultClickData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: section)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
@@ -141,8 +143,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - completionHandler: The callback to execute on completion.
-    public func trackConversion(itemName: String, customerID: String, revenue: Double?, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
-        let data = CIOTrackConversionData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: sectionName, revenue: revenue)
+    public func trackConversion(itemName: String, customerID: String, revenue: Double?, searchTerm: String?, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let section = sectionName ?? self.config.defaultSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackConversionData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
