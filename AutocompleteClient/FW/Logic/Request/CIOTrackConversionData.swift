@@ -14,23 +14,26 @@ import Foundation
 public struct CIOTrackConversionData: CIORequestData {
 
     public let searchTerm: String
-    public let itemID: String
+    public let itemName: String
+    public let customerID: String
     public var sectionName: String?
-    public let revenue: Int?
+    public let revenue: Double?
     
     public var url: String{
         return String(format: Constants.TrackConversion.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
-    public init(searchTerm: String, itemID: String, sectionName: String? = nil, revenue: Int? = nil) {
+    public init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil) {
         self.searchTerm = searchTerm
-        self.itemID = itemID
+        self.itemName = itemName
+        self.customerID = customerID
         self.sectionName = sectionName
         self.revenue = revenue
     }
     
     public func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(itemID: self.itemID)
+        requestBuilder.set(name: self.itemName)
+        requestBuilder.set(customerID: self.customerID)
         requestBuilder.set(autocompleteSection: self.sectionName)
         requestBuilder.set(revenue: self.revenue)
     }
