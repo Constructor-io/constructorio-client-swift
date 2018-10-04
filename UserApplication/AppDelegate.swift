@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
         let key = "key_OucJxxrfiTVUQx0C"
+
         let config = ConstructorIOConfig(apiKey: key,
                                         resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]))
         let viewController = CIOAutocompleteViewController(config: config)

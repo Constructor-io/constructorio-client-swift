@@ -40,6 +40,7 @@
 		F60BEA201F5726CB008F0053 /* EmptyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */; };
 		F60BEA221F5726D8008F0053 /* EmptyScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */; };
 		F60DF22C215D639900730339 /* ConstructorIOConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DF22B215D639900730339 /* ConstructorIOConfig.swift */; };
+		F60DF2DF2163864C00730339 /* CIOABTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DF2DE2163864C00730339 /* CIOABTestCell.swift */; };
 		F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */; };
 		F61A6B061F66AFD4007826CA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B041F66AFD4007826CA /* DetailsViewController.swift */; };
 		F61A6B091F698877007826CA /* CIOGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B081F698877007826CA /* CIOGroup.swift */; };
@@ -223,6 +224,7 @@
 		F60BEA1F1F5726CB008F0053 /* EmptyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreenView.swift; sourceTree = "<group>"; };
 		F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyScreenView.xib; sourceTree = "<group>"; };
 		F60DF22B215D639900730339 /* ConstructorIOConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorIOConfig.swift; sourceTree = "<group>"; };
+		F60DF2DE2163864C00730339 /* CIOABTestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOABTestCell.swift; sourceTree = "<group>"; };
 		F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
 		F61A6B041F66AFD4007826CA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F61A6B081F698877007826CA /* CIOGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOGroup.swift; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 		F60BEA231F57288B008F0053 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F60DF2DD2163863B00730339 /* ABTesting */,
 				F65BBCB621515E34007FEB22 /* ClientID */,
 				F1F68DE11F58B8AF00B42602 /* Error */,
 				F63809071F5E853900C3B322 /* Highlighting */,
@@ -537,6 +540,15 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		F60DF2DD2163863B00730339 /* ABTesting */ = {
+			isa = PBXGroup;
+			children = (
+				F60DF2DE2163864C00730339 /* CIOABTestCell.swift */,
+			);
+			name = ABTesting;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F60FE8FF1F5C5ACD0037A0AB /* Worker */ = {
@@ -1489,6 +1501,7 @@
 				F60BEA201F5726CB008F0053 /* EmptyScreenView.swift in Sources */,
 				F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */,
 				F638090D1F5E880900C3B322 /* CIOHighlighter.swift in Sources */,
+				F60DF2DF2163864C00730339 /* CIOABTestCell.swift in Sources */,
 				F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */,
 				F1F68DD81F58B69000B42602 /* CIOResult.swift in Sources */,
 				088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */,
