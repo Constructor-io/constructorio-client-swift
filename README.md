@@ -218,11 +218,11 @@ Three types of these events exist:
 let constructorIO = viewController.constructorIO
 
 // Track search results loaded
-constructorIO.trackSearchResultsLoaded(searchTerm: "a search term", resultCount: 123)
+constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789)
 
-// Track search result click, `nil` section name will send the default section name, "Products"
-constructorIO.trackSearchResultClick(itemID: "an item id", searchTerm: "a search term", sectionName: nil)
+// Track search result click
+constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth")
 
-// Track conversion, `nil` section name will send the default section name, "Products"
-constructorIO.trackConversion(itemID: "an item id", revenue: 45.00, searchTerm: "a search term", sectionName: nil)
+// Track conversion
+constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth")
 ```
