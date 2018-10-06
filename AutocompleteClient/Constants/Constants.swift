@@ -104,7 +104,8 @@ struct Constants {
         static let originalQuery = "original_query"
         static let groupName = "group[group_name]"
         static let groupID = "group[group_id]"
-        static let itemId = "item_id"
+        static let name = "name"
+        static let customerID = "customer_id"
         static let revenue = "revenue"
         static let dateTime = "_dt"
         static let defaultItemSectionName = "Products"
@@ -130,7 +131,7 @@ struct Constants {
         static let format = "%@/behavior?action=search-results"
     }
     
-    struct TrackSearchClickThrough {
+    struct TrackSearchResultClick {
         static let format = "%@/autocomplete/%@/click_through"
     }
     
