@@ -395,8 +395,8 @@
 				088F7D24210FA43C005B9FB4 /* DateProvider.swift */,
 			);
 			name = Date;
-			path = "New Group";
-			sourceTree = "<group>";
+			path = "/Users/rubikzube/Github/constructor.io/constructorio-client-swift/AutocompleteClient/FW/Logic/Session/Date";
+			sourceTree = "<absolute>";
 		};
 		08CCD3ED216675C700C3F234 /* ABTesting */ = {
 			isa = PBXGroup;
@@ -404,8 +404,8 @@
 				08CCD3EE216675DD00C3F234 /* CIOABTestCell.swift */,
 			);
 			name = ABTesting;
-			path = "New Group1";
-			sourceTree = "<group>";
+			path = "/Users/rubikzube/Github/constructor.io/constructorio-client-swift/AutocompleteClient/FW/Logic/ABTesting";
+			sourceTree = "<absolute>";
 		};
 		08F771702162C277005FDF06 /* FW */ = {
 			isa = PBXGroup;
