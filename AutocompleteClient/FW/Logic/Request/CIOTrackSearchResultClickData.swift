@@ -18,7 +18,7 @@ public struct CIOTrackSearchResultClickData: CIORequestData {
     public var sectionName: String?
     
     public var url: String {
-        return String(format: Constants.TrackSearchClickThrough.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+        return String(format: Constants.TrackSearchResultClick.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
     
     public init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil) {

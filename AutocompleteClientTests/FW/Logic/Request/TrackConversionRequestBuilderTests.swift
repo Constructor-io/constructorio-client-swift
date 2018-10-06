@@ -14,7 +14,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     fileprivate let testACKey = "testKey123213"
     fileprivate let searchTerm = "test search term"
     fileprivate let itemName = "some item name"
-    fileprivate let customerID = "custIDq3 qd"
+    fileprivate let customerID = "custIDq3éû qd"
     fileprivate let sectionName = "some section name@"
 
     fileprivate var encodedSearchTerm: String = ""

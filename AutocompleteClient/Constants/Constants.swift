@@ -131,7 +131,7 @@ struct Constants {
         static let format = "%@/behavior?action=search-results"
     }
     
-    struct TrackSearchClickThrough {
+    struct TrackSearchResultClick {
         static let format = "%@/autocomplete/%@/click_through"
     }
     
