@@ -97,7 +97,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let customerID = "customerID123"
         let revenue: Double = 1
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a default section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -107,7 +107,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let customerID = "customerID123"
         let revenue: Double = 1
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a default section name and default term.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: nil, sectionName: nil)
         self.wait(for: builder.expectation)
     }
