@@ -23,16 +23,6 @@ public func regex(_ pattern: String, prepare: Bool = true) -> Matcher{
     }
 }
 
-public func regex(_ string: String, regex: String) -> Bool{
-    let preparedPattern = prepareRegexPattern(regex)
-    do{
-        let matchRange = try NSRegularExpression(pattern: preparedPattern, options: []).rangeOfFirstMatch(in: string, options: [], range: NSRange(location: 0, length: string.count))
-        return matchRange.location != NSNotFound
-    }catch{
-        return false
-    }
-}
-
 // escape occurences of '?' and '/'
 private func prepareRegexPattern(_ pattern: String) -> String{
     return pattern.replacingOccurrences(of: "/", with: "\\/")
