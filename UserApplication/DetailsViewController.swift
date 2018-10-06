@@ -71,8 +71,7 @@ class DetailsViewController: UIViewController {
     }
     
     func didTapOnButtonTrackConversion(_ sender: UIButton){
-        let revenue: Int = Int(arc4random() % 1000)
-        self.constructorIO.trackConversion(itemID: self.result.autocompleteResult.id, revenue: revenue, searchTerm: "a term", sectionName: nil)
+        self.constructorIO.trackConversion(itemID: self.result.autocompleteResult.id, revenue: 12.99, searchTerm: "a term", sectionName: nil)
     }
     
     func didTapOnButtonTrackResultsLoaded(_ sender: UIButton){
