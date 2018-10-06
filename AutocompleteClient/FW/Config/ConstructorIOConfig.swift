@@ -11,11 +11,13 @@ import Foundation
 public struct ConstructorIOConfig {
 
     public let apiKey: String
+    public var defaultItemSectionName: String?
     public var resultCount: AutocompleteResultCount?
     
-    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil){
+    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil){
         self.apiKey = apiKey
         self.resultCount = resultCount
+        self.defaultItemSectionName = defaultItemSectionName
     }
     
 }

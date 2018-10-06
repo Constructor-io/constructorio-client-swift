@@ -25,7 +25,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         OHHTTPStubs.removeAllStubs()
     }
     
-    func testTracking_InputFocus(){
+    func testTrackInputFocus(){
         let searchTerm = "corn"
         let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=corn&_dt=\(kRegexTimestamp)"), builder.create())
@@ -33,7 +33,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTracking_AutocompleteSelect(){
+    func testTrackAutocompleteSelect(){
         let searchTerm = "corn"
         let searchOriginalQuery = "co"
         let searchSectionName = "Search Suggestions"
@@ -43,7 +43,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTracking_SearchSubmit(){
+    func testTrackSearchSubmit(){
         let searchTerm = "corn"
         let searchOriginalQuery = "corn"
         let builder = CIOBuilder(expectation: "Calling trackSearchSubmit should send a valid request.", builder: http(200))
@@ -52,7 +52,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTracking_SearchResultsLoaded(){
+    func testTrackSearchResultsLoaded(){
         let searchTermValue = "term_search"
         let resultCount = 12
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded should send a valid request.", builder: http(200))
@@ -61,7 +61,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTracking_SearchResultClick(){
+    func testTrackSearchResultClick(){
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
@@ -71,7 +71,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTracking_SearchResultClick_NoTerm(){
+    func testTrackSearchResultClick_NoTerm(){
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
         let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a default section name and default term.", builder: http(200))
@@ -80,7 +80,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTracking_SearchResultClick_WithSection(){
+    func testTrackSearchResultClick_WithSection(){
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
@@ -91,7 +91,24 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTracking_Conversion(){
+    func testTrackSearchResultClick_withSectionFromConfig(){
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let sectionName = "section321"
+        
+        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=section321&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
+        
+        let constructor = ConstructorIO(config: config)
+        constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: nil)
+        
+        self.wait(for: builder.expectation)
+    }
+    
+    func testTrackConversion(){
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
@@ -102,7 +119,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTracking_Conversion_NoTerm(){
+    func testTrackConversion_NoTerm(){
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
         let revenue: Double = 1
@@ -112,7 +129,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTracking_Conversion_withSection(){
+    func testTrackConversion_withSection(){
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
@@ -121,6 +138,23 @@ class ConstructorIOTrackingTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Search%20Suggestions&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName)
+        self.wait(for: builder.expectation)
+    }
+    
+    func testTrackConversion_withSectionFromConfig(){
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let revenue: Double = 1
+        let sectionName = "section321"
+        
+        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=\(sectionName)&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
+        
+        let constructor = ConstructorIO(config: config)
+        constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
 }
