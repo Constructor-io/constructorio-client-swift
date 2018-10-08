@@ -49,9 +49,8 @@ struct Constants {
         }
     }
     
-    struct ABTesting{
-        static let keyPrefix = "ef"
-        static let formatKey = { (key: String) in return "\(ABTesting.keyPrefix)-\(key)"  }
+    struct ABTesting {
+        static let keyFormat = "ef-%@"
     }
 
     struct Query {

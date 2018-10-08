@@ -160,7 +160,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     
     private func attachABTestCells(requestBuilder: RequestBuilder){
         self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
-            requestBuilder.set(cell.value, forKey: Constants.ABTesting.formatKey(cell.key))
+            requestBuilder.set(testCellKey: cell.key, testCellValue: cell.value);
         })
     }
 
