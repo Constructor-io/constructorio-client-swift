@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  SearchFWTestApp
+//  Constructor.io
 //
-//  Created by Nikola Markovic on 8/30/17.
-//  Copyright © 2017 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import UIKit
@@ -47,7 +47,7 @@ class ViewController: UIViewController, CIOAutocompleteDelegate, CIOAutocomplete
 
     @IBAction func didTapOnSearch(_ sender: Any) {
         let vc = CIOAutocompleteViewController()
-        vc.autocompleteKey = "key_OucJxxrfiTVUQx0C"
+        vc.apiKey = "key_OucJxxrfiTVUQx0C"
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))
         vc.delegate = self
         vc.uiCustomization = self

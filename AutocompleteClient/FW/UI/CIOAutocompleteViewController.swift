@@ -95,22 +95,22 @@ public class CIOAutocompleteViewController: UIViewController {
     /**
      The object to configure options for the autocomplete results.
      */
-    public let config: AutocompleteConfig
+    public let config: ConstructorIOConfig
 
     // MARK: Fonts
     private var fontNormal: UIFont = Constants.UI.Font.defaultFontNormal
     private var fontBold: UIFont = Constants.UI.Font.defaultFontBold
 
     /**
-     Default initializer for this controller. Pass in the autocomplete key you got from the constructor.io dashboard.
+     Default initializer for this controller. Pass in the api key you got from the constructor.io dashboard.
      */
-    public init(config: AutocompleteConfig) {
+    public init(config: ConstructorIOConfig) {
         self.config = config
         super.init(nibName: nil, bundle: nil)
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        self.config = AutocompleteConfig(autocompleteKey: "")
+        self.config = ConstructorIOConfig(apiKey: "")
         super.init(coder: aDecoder)
     }
 
@@ -204,8 +204,8 @@ public class CIOAutocompleteViewController: UIViewController {
 
         self.delegate?.autocompleteControllerDidLoad?(controller: self)
 
-        if self.config.autocompleteKey == "" {
-            self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingAutocompleteKey)
+        if self.config.apiKey == "" {
+            self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingApiKey)
         }
         
         self.constructorIO = ConstructorIO(config: self.config)
@@ -348,20 +348,10 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
         
         // Run behavioural tracking 'select' on autocomplete result select
-        let selectTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value, sectionName: sectionName, group: result.group)
-
-        // TODO: For now, ignore any errors
-        constructorIO.trackAutocompleteClick(for: selectTracker)
+        constructorIO.trackAutocompleteSelect(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, sectionName: sectionName, group: result.group)
 
         // Track search
-        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: result.autocompleteResult.value)
-        constructorIO.trackSearch(for: searchTrackData)
-        
-        // Run behavioural tracking 'search' if its an autocomplete suggestion
-        if sectionName == "standard" {
-            let searchTracker = CIOTrackAutocompleteClickData(searchTerm: viewModel.searchTerm, clickedItemName: result.autocompleteResult.value)
-            constructorIO.trackAutocompleteClick(for: searchTracker)
-        }
+        constructorIO.trackSearchSubmit(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, group: result.group)
 
         self.delegate?.autocompleteController?(controller: self, didSelectResult: result)
     }
@@ -411,12 +401,11 @@ extension CIOAutocompleteViewController: UISearchBarDelegate {
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         // Track search
-        let searchTrackData = CIOTrackSearchData(searchTerm: viewModel.searchTerm, itemName: viewModel.searchTerm)
-        self.constructorIO.trackSearch(for: searchTrackData)
+        self.constructorIO.trackSearchSubmit(searchTerm: viewModel.searchTerm, originalQuery: viewModel.searchTerm)
     }
     
     public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        self.constructorIO.trackInputFocus(for: CIOTrackInputFocusData(searchTerm: searchBar.text))
+        self.constructorIO.trackInputFocus(searchTerm: searchBar.text!)
         return true
     }
 }
