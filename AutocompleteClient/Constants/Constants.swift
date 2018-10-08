@@ -48,6 +48,10 @@ struct Constants {
             }
         }
     }
+    
+    struct ABTesting {
+        static let keyFormat = "ef-%@"
+    }
 
     struct Query {
         static let apiKey = "key"

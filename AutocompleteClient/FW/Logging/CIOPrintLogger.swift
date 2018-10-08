@@ -10,6 +10,8 @@ import Foundation
 
 public class CIOPrintLogger: CIOLogger{
     public func log(_ message: String){
-        print(message)
+        #if DEBUG
+            print(message)
+        #endif
     }
 }
