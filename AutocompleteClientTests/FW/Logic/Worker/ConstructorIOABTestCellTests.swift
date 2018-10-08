@@ -1,5 +1,5 @@
 //
-//  ConstructorIOABCellTests.swift
+//  ConstructorIOABTestCellTests.swift
 //  AutocompleteClientTests
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -11,7 +11,7 @@ import OHHTTPStubs
 import Foundation
 @testable import ConstructorAutocomplete
 
-class ConstructorIOABCellTests: XCTestCase {
+class ConstructorIOABTestCellTests: XCTestCase {
     
     var constructor: ConstructorIO!
     
