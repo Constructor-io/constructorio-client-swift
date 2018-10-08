@@ -33,16 +33,6 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
-    private var itemSectionName: String?
-    var defaultItemSectionName: String{
-        get{
-            return self.itemSectionName ?? Constants.Track.defaultItemSectionName
-        }
-        set{
-            self.itemSectionName = newValue
-        }
-    }
-
     public init(config: ConstructorIOConfig) {
         self.config = config
 
@@ -116,12 +106,14 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Track search result clicked on.
     ///
     /// - Parameters:
-    ///   - itemID: ID of an item.
+    ///   - name: item name.
+    ///   - customerID: customer ID.
     ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearchResultClick(itemID: String, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
-        let data = CIOTrackSearchResultClickData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemID: itemID, sectionName: (sectionName ?? self.defaultItemSectionName))
+    public func trackSearchResultClick(itemName: String, customerID: String, searchTerm: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackSearchResultClickData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: section)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
@@ -129,13 +121,15 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Track a conversion.
     ///
     /// - Parameters:
-    ///   - itemID: ID of an item.
+    ///   - name: item name.
+    ///   - customerID: customer ID.
     ///   - revenue: Revenue of an item.
     ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - completionHandler: The callback to execute on completion.
-    public func trackConversion(itemID: String, revenue: Int?, searchTerm: String?, sectionName: String?, completionHandler: TrackingCompletionHandler? = nil){
-        let data = CIOTrackConversionData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemID: itemID, sectionName: (sectionName ?? self.defaultItemSectionName), revenue: revenue)
+    public func trackConversion(itemName: String, customerID: String, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil){
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackConversionData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
@@ -147,9 +141,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     
     private func buildRequest(data: CIORequestData) -> URLRequest{
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
-        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+        self.attachClientID(requestBuilder: requestBuilder)
+        self.attachSessionID(requestBuilder: requestBuilder)
+        self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
-        
         return requestBuilder.getRequest()
     }
     
@@ -157,16 +152,17 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let data = CIOTrackSessionStartData(session: session)
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
         self.attachClientID(requestBuilder: requestBuilder)
+        self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
-        
         return requestBuilder.getRequest()
     }
     
-    private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
-        self.attachClientID(requestBuilder: requestBuilder)
-        self.attachSessionID(requestBuilder: requestBuilder)
+    private func attachABTestCells(requestBuilder: RequestBuilder){
+        self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
+            requestBuilder.set(testCellKey: cell.key, testCellValue: cell.value);
+        })
     }
-    
+
     private func attachClientID(requestBuilder: RequestBuilder){
         if let cID = self.clientID{
             requestBuilder.set(clientID: cID)

@@ -30,9 +30,14 @@ extension RequestBuilder{
         queryItems.add(URLQueryItem(name: Constants.Track.searchTerm, value: searchTerm))
     }
     
-    func set(itemID: String?) {
-        guard let itemID = itemID else { return }
-        queryItems.add(URLQueryItem(name: Constants.Track.itemId, value: itemID))
+    func set(name: String?) {
+        guard let name = name else { return }
+        queryItems.add(URLQueryItem(name: Constants.Track.name, value: name))
+    }
+    
+    func set(customerID: String?) {
+        guard let customerID = customerID else { return }
+        queryItems.add(URLQueryItem(name: Constants.Track.customerID, value: customerID))
     }
 
     func set(autocompleteSection: String?) {
@@ -40,9 +45,9 @@ extension RequestBuilder{
         queryItems.add(URLQueryItem(name: Constants.Track.autocompleteSection, value: sectionName))
     }
     
-    func set(revenue: Int?) {
+    func set(revenue: Double?) {
         guard let revenue = revenue else { return }
-        queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(revenue)))
+        queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(format: "%.2lf", revenue)))
     }
     
     func set(numResults: Int?) {
@@ -56,5 +61,10 @@ extension RequestBuilder{
             let name = Constants.AutocompleteQuery.queryItemForSection($0.key.replacingOccurrences(of: " ", with: "+"))
             queryItems.add(URLQueryItem(name: name, value: String($0.value)))
         }
+    }
+    
+    func set(testCellKey: String, testCellValue: String){
+        let formattedKey = String(format: Constants.ABTesting.keyFormat, testCellKey)
+        queryItems.add(URLQueryItem(name: formattedKey, value: testCellValue))
     }
 }

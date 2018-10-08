@@ -203,7 +203,7 @@ func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIVi
 }
 ```
 
-# 5. Instrument Behavioral Events
+## 5. Instrument Behavioral Events
 
 The iOS Client sends behavioral events to [Constructor.io](http://constructor.io/) in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.
 
@@ -213,16 +213,38 @@ Three types of these events exist:
 1. **Autocomplete Events** measure user interaction with autocomplete results and the `CIOAutocompleteViewController` sends them automatically.
 1. **Search Events** measure user interaction with search results and the consuming app has to explicitly instrument them itself
 
+### Autocomplete Events
+
+If you decide to use the `CIOAutocompleteViewController`, these events are sent automatically.
+
 ```swift
-// Access the worker from viewController
+// Create an instance of the worker
+let constructorIO = ConstructorIO(config: config)
+
+// Track when the user focuses into the search bar
+constructorIO.trackInputFocus(searchTerm: "")
+
+// Track when the user selects an autocomplete suggestion
+constructorIO.trackAutocompleteSelect(searchTerm: "toothpicks", originalQuery: "tooth", sectionName: "Search Suggestions")
+
+// Track when the user submits a search (either by selecting a suggestion or not selecting a suggestion)
+constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth")
+```
+
+### Search Events
+
+These events should be sent manually by the consuming app.
+
+```swift
+// Access the worker from view controller
 let constructorIO = viewController.constructorIO
 
-// Track search results loaded
-constructorIO.trackSearchResultsLoaded(searchTerm: "a search term", resultCount: 123)
+// Track when search results are loaded into view
+constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789)
 
-// Track search result click, `nil` section name will send the default section name, "Products"
-constructorIO.trackSearchResultClick(itemID: "an item id", searchTerm: "a search term", sectionName: nil)
+// Track when a search result is clicked
+constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth")
 
-// Track conversion, `nil` section name will send the default section name, "Products"
-constructorIO.trackConversion(itemID: "an item id", revenue: 45.00, searchTerm: "a search term", sectionName: nil)
+// Track conversion
+constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth")
 ```

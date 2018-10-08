@@ -335,7 +335,7 @@ extension CIOAutocompleteViewController:  UITableViewDelegate, UITableViewDataSo
             let item = self.viewModel.results[indexPath.section].items[indexPath.row]
             searchCell.setup(result: item, searchTerm: self.viewModel.searchTerm, highlighter: self.highlighter)
         } else {
-            print("Warning: Trying to show results in a cell that doesn't conform to CIOAutocompleteCell protocol.")
+            ConstructorIO.logger.log("Warning: Trying to show results in a cell that doesn't conform to CIOAutocompleteCell protocol.")
         }
 
         return cell
