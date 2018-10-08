@@ -66,8 +66,6 @@ extension RequestBuilder{
             queryItems.add(URLQueryItem(name: name, value: String($0.value)))
         }
     }
-<<<<<<< HEAD
-=======
     
     func set(numResultsPerPage: Int?) {
         guard let numResults = numResultsPerPage else { return }
@@ -99,5 +97,4 @@ extension RequestBuilder{
     func set(_ value: String, forKey key: String){
         queryItems.add(URLQueryItem(name: key, value: value))
     }
->>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
 }

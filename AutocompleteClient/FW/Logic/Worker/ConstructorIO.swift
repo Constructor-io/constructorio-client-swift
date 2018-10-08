@@ -24,15 +24,11 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     private let networkClient: NetworkClient
     private let sessionManager: SessionManager
     
-<<<<<<< HEAD
-    public var parser: AbstractResponseParser
-    
     public let clientID: String?
-=======
+
     public var autocompleteParser: AbstractAutocompleteResponseParser = DependencyContainer.sharedInstance.autocompleteResponseParser()
     public var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
->>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
-    
+
     public var sessionID: Int{
         get{
             return self.sessionManager.getSession()
@@ -53,38 +49,22 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
      Tracking property that simplifies tracking events. To fully customize the data that's being sent, use ConstructorIO's CIOTracker protocol functions.
      */
     public private(set) var tracking: CIOTracking!
-<<<<<<< HEAD
-
 
     public init(config: AutocompleteConfig) {
         self.config = config
 
         self.clientID = DependencyContainer.sharedInstance.clientIDGenerator().generateID()
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
-        self.parser = DependencyContainer.sharedInstance.responseParser()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
-
-=======
-    
-    public init(config: AutocompleteConfig) {
-        self.config = config
         
->>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
         self.tracking = CIOTracking(tracker: self)
-        
-        self.sessionManager.delegate = self
     }
-
+    
     /// Get autocomplete suggestions for a query.
     ///
     /// - Parameters:
     ///   - query: The query object, consisting of the query to autocomplete and additional options.
     ///   - completionHandler: The callback to execute on completion.
-<<<<<<< HEAD
-    public func autocomplete(forQuery query: CIOAutocompleteQuery, completionHandler: @escaping QueryCompletionHandler) {
-        let request = self.buildRequest(data: query)
-        execute(request, completionHandler: completionHandler)
-=======
     public func autocomplete(forQuery query: CIOAutocompleteQuery, completionHandler: @escaping AutocompleteQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeAutocomplete(request, completionHandler: completionHandler)
@@ -93,7 +73,6 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     public func search(forQuery query: CIOSearchQuery, completionHandler: @escaping SearchQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeSearch(request, completionHandler: completionHandler)
->>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
     }
     
     /// Track search results loaded.
@@ -154,8 +133,7 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
     private func buildRequest(data: CIORequestData) -> URLRequest{
         let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
         self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
-<<<<<<< HEAD
-=======
+
         self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         
@@ -167,48 +145,30 @@ public class ConstructorIO: AbstractConstructorDataSource, CIOTracker, CIOSessio
         let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
         self.attachClientID(requestBuilder: requestBuilder)
         self.attachABTestCells(requestBuilder: requestBuilder)
->>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
-        requestBuilder.build(trackData: data)
-        
-        return requestBuilder.getRequest()
-    }
-    
-<<<<<<< HEAD
-    private func buildSessionStartRequest(session: Int) -> URLRequest{
-        let data = CIOTrackSessionStartData(session: session)
-        let requestBuilder = RequestBuilder(autocompleteKey: self.config.autocompleteKey)
-        self.attachClientID(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         
         return requestBuilder.getRequest()
     }
 
-<<<<<<< HEAD
-    private func buildRequest(fromQuery query: CIOAutocompleteQuery) -> URLRequest {
-        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: self.config.autocompleteKey, session: self.sessionManager.getSession(), clientID: self.clientID )
-        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
-        
-        return requestBuilder.getRequest()
-=======
+//    private func buildRequest(fromQuery query: CIOAutocompleteQuery) -> URLRequest {
+//        let requestBuilder = AutocompleteQueryRequestBuilder(query: query, autocompleteKey: self.config.autocompleteKey, session: self.sessionManager.getSession(), clientID: self.clientID )
+//        self.attachClientSessionAndClientID(requestBuilder: requestBuilder)
+//
+//        return requestBuilder.getRequest()
+
     private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
         self.attachClientID(requestBuilder: requestBuilder)
         self.attachSessionID(requestBuilder: requestBuilder)
->>>>>>> Request flow refactored
-=======
+    }
+    
     private func attachABTestCells(requestBuilder: RequestBuilder){
         self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
             requestBuilder.set(cell.value, forKey: Constants.ABTesting.formatKey(cell.key))
         })
     }
 
-    private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
-        self.attachClientID(requestBuilder: requestBuilder)
-        self.attachSessionID(requestBuilder: requestBuilder)
->>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
-    }
-    
     private func attachClientID(requestBuilder: RequestBuilder){
-        if let cID = self.config.clientID{
+        if let cID = self.clientID{
             requestBuilder.set(clientID: cID)
         }
     }

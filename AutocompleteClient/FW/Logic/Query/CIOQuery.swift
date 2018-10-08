@@ -33,12 +33,8 @@ public struct CIOAutocompleteQuery: CIORequestData {
     }
 }
 
-<<<<<<< HEAD
-/// Not used yet.
-struct CIOSearchQuery{
-=======
 public struct CIOSearchQuery: CIORequestData{
->>>>>>> 9629388ab390297b07e997cc8e4a18eb93aba86b
+
     let query: String
     let filters: SearchFilters?
     let page: Int
