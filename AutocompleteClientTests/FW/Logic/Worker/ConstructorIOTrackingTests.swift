@@ -157,4 +157,61 @@ class ConstructorIOTrackingTests: XCTestCase {
         constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
+    
+    func testTrackConversion_With400(){
+        let expectation = self.expectation(description: "Calling trackConversion with 400 should return badRequest CIOError.")
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let revenue: Double = 1
+        
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(400))
+        
+        self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: nil, completionHandler: { error in
+            if let cioError = error as? CIOError{
+                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
+                expectation.fulfill()
+            }
+        })
+        
+        self.wait(for: expectation)
+    }
+    
+    func testTrackConversion_With500(){
+        let expectation = self.expectation(description: "Calling autocomplete with 500 should return internalServerError CIOError.")
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let revenue: Double = 1
+        
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(500))
+        
+        self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: nil, completionHandler: { error in
+            if let cioError = error as? CIOError{
+                XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
+                expectation.fulfill()
+            }
+        })
+        
+        self.wait(for: expectation)
+    }
+    
+    func testTrackConversion_WithNoConnectivity(){
+        let expectation = self.expectation(description: "Calling trackConversion with no connectvity should return noConnectivity CIOError.")
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let revenue: Double = 1
+        
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), noConnectivity())
+        
+        self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: nil, completionHandler: { error in
+            if let cioError = error as? CIOError{
+                XCTAssertEqual(cioError, CIOError.noConnection, "Returned error from network client should be delegated as an error of type CIOError.noConnection.")
+                expectation.fulfill()
+            }
+        })
+        
+        self.wait(for: expectation)
+    }
 }
