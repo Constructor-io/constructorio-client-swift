@@ -11,19 +11,19 @@ import XCTest
 
 class SessionManagerTests: XCTestCase {
     
-    func test_SessionManager_HasCorrentInitialSession(){
+    func testSessionManager_HasCorrentInitialSession(){
         let manager = CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: 30)
         XCTAssertEqual(manager.getSession(), 1, "Initial session should be 1.")
     }
     
-    func test_SessionManager_DoesNotIncrementAutomatically(){
+    func testSessionManager_DoesNotIncrementAutomatically(){
         let manager = CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: 30)
         let first = manager.getSession()
         let second = manager.getSession()
         XCTAssertEqual(first, second, "Calling getSession multiple times before timing out should not increment the session.")
     }
     
-    func test_SessionManager_DoesNotIncrementsSession_IfTimeoutIsNotReached(){
+    func testSessionManager_DoesNotIncrementsSession_IfTimeoutIsNotReached(){
         let initialDate = Date()
         let initialTimeout: TimeInterval = 30
         
@@ -44,7 +44,7 @@ class SessionManagerTests: XCTestCase {
         XCTAssertEqual(nextSession, initialSession, "Calling getSession multiple times before timing out should not increment the session.")
     }
     
-    func test_SessionManager_IncrementsSession_IfTimeoutIsReached(){
+    func testSessionManager_IncrementsSession_IfTimeoutIsReached(){
         let initialDate = Date()
         let initialTimeout: TimeInterval = 30
         
@@ -66,7 +66,7 @@ class SessionManagerTests: XCTestCase {
         XCTAssertGreaterThan(nextSession, initialSession, "After timeout is reached, session should be larger than the previous value." )
     }
     
-    func test_SessionManager_ReturnsNewSessionEachTime_IfTimeoutIsZero(){
+    func testSessionManager_ReturnsNewSessionEachTime_IfTimeoutIsZero(){
         let dateProvider = CurrentTimeDateProvider()
         
         let manager = CIOSessionManager(dateProvider: dateProvider, timeout: 0)
@@ -80,7 +80,7 @@ class SessionManagerTests: XCTestCase {
         }
     }
     
-    func test_SessionManager_IncrementsSession_AfterTimeoutIsReached(){
+    func testSessionManager_IncrementsSession_AfterTimeoutIsReached(){
         let initialDate = Date()
         let initialTimeout: TimeInterval = 30
         
@@ -102,7 +102,7 @@ class SessionManagerTests: XCTestCase {
         XCTAssertGreaterThan(nextSession, initialSession, "After timeout is reached, session should be larger than the previous value." )
     }
 
-    func test_SessionManager_IncrementsSession_IfAppEntersForegroundAndTimesOut(){
+    func testSessionManager_IncrementsSession_IfAppEntersForegroundAndTimesOut(){
         let expectation = self.expectation(description: "Invalid session should increment after application comes to foreground.")
         
         let timeout: TimeInterval = 0.05
