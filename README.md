@@ -213,14 +213,36 @@ Three types of these events exist:
 1. **Autocomplete Events** measure user interaction with autocomplete results and the `CIOAutocompleteViewController` sends them automatically.
 1. **Search Events** measure user interaction with search results and the consuming app has to explicitly instrument them itself
 
+### Autocomplete Events
+
+If you decide to use the `CIOAutocompleteViewController`, these events are sent automatically.
+
 ```swift
-// Access the worker from viewController
+// Create an instance of the worker
+let constructorIO = ConstructorIO(config: config)
+
+// Track when the user focuses into the search bar
+constructorIO.trackInputFocus(searchTerm: "")
+
+// Track when the user selects an autocomplete suggestion
+constructorIO.trackAutocompleteSelect(searchTerm: "toothpicks", originalQuery: "tooth", sectionName: "Search Suggestions")
+
+// Track when the user submits a search (either by selecting a suggestion or not selecting a suggestion)
+constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth")
+```
+
+### Search Events
+
+These events should be sent manually by the consuming app.
+
+```swift
+// Access the worker from view controller
 let constructorIO = viewController.constructorIO
 
-// Track search results loaded
+// Track when search results are loaded into view
 constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789)
 
-// Track search result click
+// Track when a search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth")
 
 // Track conversion
