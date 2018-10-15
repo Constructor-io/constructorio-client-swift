@@ -91,7 +91,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTrackSearchResultClick_withSectionFromConfig(){
+    func testTrackSearchResultClick_WithSectionFromConfig(){
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
@@ -129,7 +129,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTrackConversion_withSection(){
+    func testTrackConversion_WithSection(){
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
@@ -141,7 +141,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTrackConversion_withSectionFromConfig(){
+    func testTrackConversion_WithSectionFromConfig(){
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"

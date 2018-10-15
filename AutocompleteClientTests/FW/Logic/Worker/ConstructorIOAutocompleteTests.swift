@@ -34,7 +34,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
         
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&s=1&c=cioios-&autocomplete_key=key_OucJxxrfiTVUQx0C"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), noConnectivity())
         
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let error = response.error as? CIOError{

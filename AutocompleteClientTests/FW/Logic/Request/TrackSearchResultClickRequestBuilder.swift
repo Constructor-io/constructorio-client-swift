@@ -47,7 +47,7 @@ class TrackSearchResultClickRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
     
-    func testTrackSearchResultClickBuilder_withSectionName() {
+    func testTrackSearchResultClickBuilder_WithSectionName() {
         let tracker = CIOTrackSearchResultClickData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, sectionName: sectionName)
         
         builder.build(trackData: tracker)
