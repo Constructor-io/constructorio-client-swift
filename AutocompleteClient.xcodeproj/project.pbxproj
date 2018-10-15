@@ -103,7 +103,6 @@
 		F65B9E5E2146A4FB00101617 /* FacetOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E5D2146A4FB00101617 /* FacetOption.swift */; };
 		F65B9E602146AB5200101617 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65B9E5F2146AB5200101617 /* SearchResult.swift */; };
 		F65BBC592148223E007FEB22 /* SearchResultFacet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBC582148223E007FEB22 /* SearchResultFacet.swift */; };
-		F65BBC80214A8492007FEB22 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBC7F214A8492007FEB22 /* SearchTests.swift */; };
 		F65BBCAE214FC99E007FEB22 /* response_search_json.json in Resources */ = {isa = PBXBuildFile; fileRef = F65BBCAD214FC99E007FEB22 /* response_search_json.json */; };
 		F65BBCB121515662007FEB22 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
 		F65BBCB221515662007FEB22 /* ConstructorAutocomplete.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -426,8 +425,8 @@
 				08CCD3EE216675DD00C3F234 /* CIOABTestCell.swift */,
 			);
 			name = ABTesting;
-			path = "/Users/rubikzube/Github/constructor.io/constructorio-client-swift/AutocompleteClient/FW/Logic/ABTesting";
-			sourceTree = "<absolute>";
+			path = AutocompleteClient/FW/Logic/ABTesting;
+			sourceTree = SOURCE_ROOT;
 		};
 		08F771702162C277005FDF06 /* FW */ = {
 			isa = PBXGroup;
@@ -552,7 +551,6 @@
 		F60BEA231F57288B008F0053 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				08CCD3ED216675C700C3F234 /* ABTesting */,
 				F65BBCB621515E34007FEB22 /* ClientID */,
 				F68525612141707400A27FAA /* ABTesting */,
 				F1F68DE11F58B8AF00B42602 /* Error */,
@@ -988,7 +986,6 @@
 				F688A4401F56B4B600F169C1 /* Products */,
 				F63374A81F5A8FBF00E481E7 /* Frameworks */,
 				D59696D4D091DDFF2013A436 /* Pods */,
-				F60DF22A215D62BC00730339 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1636,7 +1633,6 @@
 				F63809061F5D6D9C00C3B322 /* AbstractResponseParser.swift in Sources */,
 				F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */,
 				F65B9E5C2146A4DA00101617 /* Facet.swift in Sources */,
-				F68525632141708C00A27FAA /* CIOABTestCell.swift in Sources */,
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,
@@ -1664,7 +1660,6 @@
 				F63808FF1F5D6C1000C3B322 /* ConstructorIOTests.swift in Sources */,
 				0874A32E216BCE2700812CDC /* ConstructorIOABTestCellTests.swift in Sources */,
 				F64F46B71F59767D0094C697 /* AutocompleteViewModelTests.swift in Sources */,
-				F65BBCB0214FD4C7007FEB22 /* SearchParserTests.swift in Sources */,
 				F64F46AF1F59641D0094C697 /* TestResource.swift in Sources */,
 				08465ECC2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift in Sources */,
 				F64F46BE1F59846E0094C697 /* XCTest+TimeoutFail.swift in Sources */,

@@ -66,8 +66,7 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato", page: 5)
         
         let builder = CIOBuilder(expectation: "Calling Search should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?page=5&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&num_results_per_page=20&_dt=\(kRegexTimestamp)"), builder.create())
-        
+        stub(regex("https://ac.cnstrc.com/search/potato?num_results_per_page=20&s=1&key=key_OucJxxrfiTVUQx0C&i=\(kRegexClientID)&c=cioios-&page=5&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
