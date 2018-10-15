@@ -47,7 +47,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
 
-    func testTrackConversionBuilder_withSectionName() {
+    func testTrackConversionBuilder_WithSectionName() {
         let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName , customerID: self.customerID, sectionName: sectionName)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
@@ -62,7 +62,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
     
-    func testTrackConversionBuilder_withRevenue() {
+    func testTrackConversionBuilder_WithRevenue() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, revenue: 9999)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
@@ -77,7 +77,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
 
-    func testTrackConversionBuilder_withSectionNameAndRevenue() {
+    func testTrackConversionBuilder_WithSectionNameAndRevenue() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, sectionName: sectionName, revenue: 12.345)
         builder.build(trackData: tracker)
         let request = builder.getRequest()

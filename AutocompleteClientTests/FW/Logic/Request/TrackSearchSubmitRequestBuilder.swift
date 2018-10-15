@@ -40,7 +40,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
     
-    func testTrackSearchSubmitBuilder_withGroup() {
+    func testTrackSearchSubmitBuilder_WithGroup() {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
@@ -50,7 +50,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("group%5Bgroup_id%5D=groupID2"), "URL should contain a URL query item with group id if item in group")
     }
     
-    func testTrackSearchSubmitBuilder_withoutGroup() {
+    func testTrackSearchSubmitBuilder_WithoutGroup() {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: nil)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
