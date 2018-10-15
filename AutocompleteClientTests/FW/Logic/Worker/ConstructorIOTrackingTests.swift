@@ -97,7 +97,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let customerID = "customerID123"
         let sectionName = "section321"
         
-        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
+        let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a section name.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=section321&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
@@ -178,7 +178,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     }
     
     func testTrackConversion_With500(){
-        let expectation = self.expectation(description: "Calling autocomplete with 500 should return internalServerError CIOError.")
+        let expectation = self.expectation(description: "Calling trackConversion with 500 should return internalServerError CIOError.")
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
