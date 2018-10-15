@@ -28,8 +28,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public let clientID: String?
     
     public var sessionID: Int{
-        get{
-            return self.sessionManager.getSession()
+        get {
+            return self.sessionManager.getSessionWithIncrement()
         }
     }
 
@@ -142,7 +142,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     private func buildRequest(data: CIORequestData) -> URLRequest{
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
         self.attachClientID(requestBuilder: requestBuilder)
-        self.attachSessionID(requestBuilder: requestBuilder)
+        self.attachSessionIDWithIncrement(requestBuilder: requestBuilder)
         self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         return requestBuilder.getRequest()
@@ -152,6 +152,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let data = CIOTrackSessionStartData(session: session)
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
         self.attachClientID(requestBuilder: requestBuilder)
+        self.attachSessionIDWithoutIncrement(requestBuilder: requestBuilder)
         self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         return requestBuilder.getRequest()
@@ -169,8 +170,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
     
-    private func attachSessionID(requestBuilder: RequestBuilder){
-        requestBuilder.set(session: self.sessionManager.getSession())
+    private func attachSessionIDWithIncrement(requestBuilder: RequestBuilder){
+        requestBuilder.set(session: self.sessionManager.getSessionWithIncrement())
+    }
+    
+    private func attachSessionIDWithoutIncrement(requestBuilder: RequestBuilder){
+        requestBuilder.set(session: self.sessionManager.getSessionWithoutIncrement())
     }
     
     private func execute(_ request: URLRequest, completionHandler: @escaping QueryCompletionHandler) {
