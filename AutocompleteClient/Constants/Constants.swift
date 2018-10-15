@@ -59,7 +59,7 @@ struct Constants {
         static let httpMethod = "GET"
         static let queryStringFormat = "%@/%@/%@"
         
-        static let sessionIncrementTimeoutInSeconds: TimeInterval = 2700 // 45 mins
+        static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
     }
 
     struct ClientID {
