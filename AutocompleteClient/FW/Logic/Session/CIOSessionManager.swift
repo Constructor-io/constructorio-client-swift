@@ -35,9 +35,12 @@ public class CIOSessionManager: SessionManager {
         self.reloadSession()
     }
     
-    public func getSession() -> Int{
+    public func getSessionWithIncrement() -> Int{
         self.reloadSession()
-        
+        return self.sessionID
+    }
+    
+    public func getSessionWithoutIncrement() -> Int{
         return self.sessionID
     }
     

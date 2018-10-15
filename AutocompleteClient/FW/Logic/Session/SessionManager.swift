@@ -11,5 +11,7 @@ import Foundation
 public protocol SessionManager: class{
     var delegate: CIOSessionManagerDelegate? { get set }
     
-    func getSession() -> Int
+    func getSessionWithIncrement() -> Int
+    
+    func getSessionWithoutIncrement() -> Int
 }
