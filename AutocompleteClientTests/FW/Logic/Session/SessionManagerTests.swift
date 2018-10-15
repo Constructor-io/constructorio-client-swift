@@ -102,4 +102,23 @@ class SessionManagerTests: XCTestCase {
         XCTAssertGreaterThan(nextSession, initialSession, "After timeout is reached, session should be larger than the previous value." )
     }
 
+    func test_SessionManager_IncrementsSession_IfAppEntersForegroundAndTimesOut(){
+        let expectation = self.expectation(description: "Invalid session should increment after application comes to foreground.")
+        
+        let timeout: TimeInterval = 0.05
+        let sessionManager = CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: timeout)
+        let delegate = ClosureSessionManagerDelegate { (from, to) in
+            XCTAssertEqual(from, 1)
+            XCTAssertEqual(to, 2)
+            expectation.fulfill()
+        }
+        sessionManager.delegate = delegate
+        
+        // delay posting the notification so the session can time out
+        sleep(1)
+        
+        NotificationCenter.default.post(Notification(name: Notification.Name.UIApplicationWillEnterForeground))
+        
+        self.wait(for: [expectation], timeout: 5.0)
+    }
 }

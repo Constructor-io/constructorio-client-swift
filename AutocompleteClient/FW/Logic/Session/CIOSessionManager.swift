@@ -26,17 +26,27 @@ public class CIOSessionManager: SessionManager {
         self.dateProvider = dateProvider
         self.timeout = timeout
         self.lastSessionRequest = self.dateProvider.provideDate().timeIntervalSince1970
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground(_:)), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
 
+    @objc
+    public func applicationDidEnterForeground(_ notification: Notification){
+        self.reloadSession()
+    }
+    
     public func getSession() -> Int{
-        if self.shouldIncrementSession(){
-            self.setSessionHasBeenRequested()
-            self.incrementSession()
-        }else{
-            self.setSessionHasBeenRequested()
-        }
+        self.reloadSession()
         
         return self.sessionID
+    }
+    
+    func reloadSession(){
+        if self.shouldIncrementSession(){
+            self.incrementSession()
+        }
+        
+        self.setSessionHasBeenRequested()
     }
     
     private func setSessionHasBeenRequested(){
@@ -50,5 +60,9 @@ public class CIOSessionManager: SessionManager {
     
     func incrementSession(){
         self.sessionID += 1
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

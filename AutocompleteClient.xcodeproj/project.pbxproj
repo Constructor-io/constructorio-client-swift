@@ -141,6 +141,7 @@
 		F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */; };
 		F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */; };
 		F6DF7B9420849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */; };
+		F6EC29AB2175161300DCFA07 /* ClosureSessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29AA2175161300DCFA07 /* ClosureSessionManagerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +329,7 @@
 		F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ToJSON.swift"; sourceTree = "<group>"; };
 		F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchResultsLoadedData.swift; sourceTree = "<group>"; };
 		F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchResultClickData.swift; sourceTree = "<group>"; };
+		F6EC29AA2175161300DCFA07 /* ClosureSessionManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureSessionManagerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,9 +407,8 @@
 			children = (
 				08CCD3EE216675DD00C3F234 /* CIOABTestCell.swift */,
 			);
-			name = ABTesting;
-			path = "/Users/rubikzube/Github/constructor.io/constructorio-client-swift/AutocompleteClient/FW/Logic/ABTesting";
-			sourceTree = "<absolute>";
+			path = ABTesting;
+			sourceTree = "<group>";
 		};
 		08F771702162C277005FDF06 /* FW */ = {
 			isa = PBXGroup;
@@ -630,6 +631,7 @@
 			children = (
 				F62510D020568F250040E3DF /* SessionManagerTests.swift */,
 				F62510D2205690670040E3DF /* ClosureDateProvider.swift */,
+				F6EC29AA2175161300DCFA07 /* ClosureSessionManagerDelegate.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -1541,6 +1543,7 @@
 				F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */,
 				F62510D120568F250040E3DF /* SessionManagerTests.swift in Sources */,
 				0879E93F215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift in Sources */,
+				F6EC29AB2175161300DCFA07 /* ClosureSessionManagerDelegate.swift in Sources */,
 				F63808FF1F5D6C1000C3B322 /* ConstructorIOTests.swift in Sources */,
 				0874A32E216BCE2700812CDC /* ConstructorIOABTestCellTests.swift in Sources */,
 				F64F46B71F59767D0094C697 /* AutocompleteViewModelTests.swift in Sources */,
