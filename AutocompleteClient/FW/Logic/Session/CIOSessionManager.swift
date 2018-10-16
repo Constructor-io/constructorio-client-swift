@@ -7,25 +7,34 @@
 //
 
 import Foundation
-    
+
+let kSession = "session"
+
 public class CIOSessionManager: SessionManager {
 
     public weak var delegate: CIOSessionManagerDelegate?
     
-    public var sessionID: Int{
+    private(set) public var session: Session{
         didSet{
-            self.delegate?.sessionDidChange(from: oldValue, to: self.sessionID)
+            self.sessionLoader.saveSession(self.session)
+            self.delegate?.sessionDidChange(from: oldValue.id, to: self.session.id)
         }
     }
-    var lastSessionRequest: TimeInterval
     let timeout: TimeInterval
     let dateProvider: DateProvider
+    let sessionLoader: SessionLoader
     
-    init(dateProvider: DateProvider, timeout: TimeInterval){
-        self.sessionID = 1
+    init(dateProvider: DateProvider, timeout: TimeInterval, sessionLoader: SessionLoader = CIOSessionLoader()){
         self.dateProvider = dateProvider
         self.timeout = timeout
-        self.lastSessionRequest = self.dateProvider.provideDate().timeIntervalSince1970
+        
+        self.sessionLoader = sessionLoader
+        
+        self.session = self.sessionLoader.loadSession() ?? Session(id: 1, createdAt: dateProvider.provideDate().timeIntervalSince1970)
+        defer{
+            self.reloadSession()
+            self.sessionLoader.saveSession(self.session)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground(_:)), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
@@ -37,32 +46,26 @@ public class CIOSessionManager: SessionManager {
     
     public func getSessionWithIncrement() -> Int{
         self.reloadSession()
-        return self.sessionID
+        return self.session.id
     }
     
     public func getSessionWithoutIncrement() -> Int{
-        return self.sessionID
+        return self.session.id
     }
     
     func reloadSession(){
         if self.shouldIncrementSession(){
             self.incrementSession()
         }
-        
-        self.setSessionHasBeenRequested()
-    }
-    
-    private func setSessionHasBeenRequested(){
-        self.lastSessionRequest = self.dateProvider.provideDate().timeIntervalSince1970
     }
     
     func shouldIncrementSession() -> Bool{
-        let diff = (self.dateProvider.provideDate().timeIntervalSince1970 - self.lastSessionRequest)
+        let diff = (self.dateProvider.provideDate().timeIntervalSince1970 - self.session.createdAt)
         return diff >= self.timeout
     }
     
     func incrementSession(){
-        self.sessionID += 1
+        self.session = Session(id: self.session.id + 1, createdAt: self.dateProvider.provideDate().timeIntervalSince1970)
     }
     
     deinit {
