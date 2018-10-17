@@ -1254,9 +1254,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "AutocompleteClient" */;
 			buildPhases = (
+				F688A43C1F56B4B600F169C1 /* Headers */,
 				F688A43A1F56B4B600F169C1 /* Sources */,
 				F688A43B1F56B4B600F169C1 /* Frameworks */,
-				F688A43C1F56B4B600F169C1 /* Headers */,
 				F688A43D1F56B4B600F169C1 /* Resources */,
 			);
 			buildRules = (

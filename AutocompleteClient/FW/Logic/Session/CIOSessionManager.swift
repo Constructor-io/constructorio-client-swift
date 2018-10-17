@@ -8,8 +8,6 @@
 
 import Foundation
 
-let kSession = "session"
-
 public class CIOSessionManager: SessionManager {
 
     public weak var delegate: CIOSessionManagerDelegate?
@@ -29,7 +27,6 @@ public class CIOSessionManager: SessionManager {
         self.timeout = timeout
         
         self.sessionLoader = sessionLoader
-        
         self.session = self.sessionLoader.loadSession() ?? Session(id: 1, createdAt: dateProvider.provideDate().timeIntervalSince1970)
         defer{
             self.reloadSession()

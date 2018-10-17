@@ -2,8 +2,8 @@
 //  CIOSessionLoader.swift
 //  AutocompleteClient
 //
-//  Created by Nikola Markovic on 10/16/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import Foundation
 public struct CIOSessionLoader: SessionLoader{
     
     public func loadSession() -> Session?{
-        if let data = UserDefaults.standard.object(forKey: kSession) as? Data{
+        if let data = UserDefaults.standard.object(forKey: Constants.Session.key) as? Data{
             return NSKeyedUnarchiver.unarchiveObject(with: data) as? Session
         }else{
             return nil
@@ -20,11 +20,11 @@ public struct CIOSessionLoader: SessionLoader{
     
     public func saveSession(_ session: Session){
         let data = NSKeyedArchiver.archivedData(withRootObject: session)
-        UserDefaults.standard.set(data, forKey: kSession)
+        UserDefaults.standard.set(data, forKey: Constants.Session.key)
     }
     
     public func clearSession() {
-        UserDefaults.standard.removeObject(forKey: kSession)
+        UserDefaults.standard.removeObject(forKey: Constants.Session.key)
     }
     
 }

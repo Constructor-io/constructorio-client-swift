@@ -8,9 +8,6 @@
 
 import Foundation
 
-let kSessionID = "id"
-let kCreatedAt = "createdAt"
-
 public class Session: NSObject, NSCoding{
     let id: Int
     let createdAt: TimeInterval
@@ -21,12 +18,12 @@ public class Session: NSObject, NSCoding{
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        self.id = aDecoder.decodeInteger(forKey: kSessionID)
-        self.createdAt = aDecoder.decodeDouble(forKey: kCreatedAt)
+        self.id = aDecoder.decodeInteger(forKey: Constants.Session.id)
+        self.createdAt = aDecoder.decodeDouble(forKey: Constants.Session.createdAt)
     }
     
     public func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.id, forKey: kSessionID)
-        aCoder.encode(self.createdAt, forKey: kCreatedAt)
+        aCoder.encode(self.id, forKey: Constants.Session.id)
+        aCoder.encode(self.createdAt, forKey: Constants.Session.createdAt)
     }
 }

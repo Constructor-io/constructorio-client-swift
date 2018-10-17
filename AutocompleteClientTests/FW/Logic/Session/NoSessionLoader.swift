@@ -2,8 +2,8 @@
 //  NoSessionLoader.swift
 //  AutocompleteClientTests
 //
-//  Created by Nikola Markovic on 10/16/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 @testable import ConstructorAutocomplete
