@@ -28,12 +28,13 @@ public class CIOSessionManager: SessionManager {
         
         self.sessionLoader = sessionLoader
         self.session = self.sessionLoader.loadSession() ?? Session(id: 1, createdAt: dateProvider.provideDate().timeIntervalSince1970)
-        defer{
-            self.reloadSession()
-            self.sessionLoader.saveSession(self.session)
-        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground(_:)), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+    }
+    
+    public func setup(){
+        self.reloadSession()
+        self.sessionLoader.saveSession(self.session)
     }
 
     @objc

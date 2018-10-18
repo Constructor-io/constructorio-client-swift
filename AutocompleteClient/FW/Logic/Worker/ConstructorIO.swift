@@ -40,7 +40,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.parser = DependencyContainer.sharedInstance.responseParser()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
+        
         self.sessionManager.delegate = self
+        self.sessionManager.setup()
     }
 
     /// Get autocomplete suggestions for a query.
