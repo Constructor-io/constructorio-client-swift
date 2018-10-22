@@ -21,7 +21,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public static var logger: CIOLogger = CIOPrintLogger()
     
     private let networkClient: NetworkClient
-    private let sessionManager: SessionManager
+    var sessionManager: SessionManager
     
     public var parser: AbstractResponseParser
     

@@ -15,7 +15,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.constructor =  ConstructorIO(config: TestConstants.testConfig)
+        self.constructor = TestConstants.testConstructor()
     }
     
     func testAutocomplete_With200() {
