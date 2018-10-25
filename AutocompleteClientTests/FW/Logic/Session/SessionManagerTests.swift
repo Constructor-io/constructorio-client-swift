@@ -113,7 +113,8 @@ class SessionManagerTests: XCTestCase {
         XCTAssertNotNil(loadedSession, "After calling save, session should be loadable.")
     
         loader.clearSession()
-        
-        XCTAssertNil(loader.loadSession(), "After calling clear, session should be nil.")
+
+        let loadedSessionAfterClear = loader.loadSession()
+        XCTAssertNil(loadedSessionAfterClear, "After calling clear, session should be nil.")
     }
 }
