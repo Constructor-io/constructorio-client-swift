@@ -141,6 +141,11 @@
 		F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */; };
 		F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */; };
 		F6DF7B9420849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */; };
+		F6EC29AB2175161300DCFA07 /* ClosureSessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29AA2175161300DCFA07 /* ClosureSessionManagerDelegate.swift */; };
+		F6EC29AD2175EF1700DCFA07 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29AC2175EF1700DCFA07 /* Session.swift */; };
+		F6EC29AF2176014C00DCFA07 /* SessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29AE2176014C00DCFA07 /* SessionLoader.swift */; };
+		F6EC29B2217601D700DCFA07 /* CIOSessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29B1217601D700DCFA07 /* CIOSessionLoader.swift */; };
+		F6EC29B421762BD700DCFA07 /* NoSessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29B321762BD700DCFA07 /* NoSessionLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +333,11 @@
 		F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ToJSON.swift"; sourceTree = "<group>"; };
 		F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchResultsLoadedData.swift; sourceTree = "<group>"; };
 		F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchResultClickData.swift; sourceTree = "<group>"; };
+		F6EC29AA2175161300DCFA07 /* ClosureSessionManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureSessionManagerDelegate.swift; sourceTree = "<group>"; };
+		F6EC29AC2175EF1700DCFA07 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		F6EC29AE2176014C00DCFA07 /* SessionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLoader.swift; sourceTree = "<group>"; };
+		F6EC29B1217601D700DCFA07 /* CIOSessionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSessionLoader.swift; sourceTree = "<group>"; };
+		F6EC29B321762BD700DCFA07 /* NoSessionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSessionLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,18 +406,16 @@
 				088F7D25210FA43C005B9FB4 /* CurrentTimeDateProvider.swift */,
 				088F7D24210FA43C005B9FB4 /* DateProvider.swift */,
 			);
-			name = Date;
-			path = "/Users/rubikzube/Github/constructor.io/constructorio-client-swift/AutocompleteClient/FW/Logic/Session/Date";
-			sourceTree = "<absolute>";
+			path = Date;
+			sourceTree = "<group>";
 		};
 		08CCD3ED216675C700C3F234 /* ABTesting */ = {
 			isa = PBXGroup;
 			children = (
 				08CCD3EE216675DD00C3F234 /* CIOABTestCell.swift */,
 			);
-			name = ABTesting;
-			path = "/Users/rubikzube/Github/constructor.io/constructorio-client-swift/AutocompleteClient/FW/Logic/ABTesting";
-			sourceTree = "<absolute>";
+			path = ABTesting;
+			sourceTree = "<group>";
 		};
 		08F771702162C277005FDF06 /* FW */ = {
 			isa = PBXGroup;
@@ -617,10 +625,12 @@
 		F62510C62052CC5E0040E3DF /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				F6EC29B0217601C400DCFA07 /* Persistence */,
 				088F7D23210FA429005B9FB4 /* Date */,
 				088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */,
 				F62510C72052CC6B0040E3DF /* CIOSessionManager.swift */,
 				F62510C92052CF240040E3DF /* SessionManager.swift */,
+				F6EC29AC2175EF1700DCFA07 /* Session.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -630,6 +640,8 @@
 			children = (
 				F62510D020568F250040E3DF /* SessionManagerTests.swift */,
 				F62510D2205690670040E3DF /* ClosureDateProvider.swift */,
+				F6EC29AA2175161300DCFA07 /* ClosureSessionManagerDelegate.swift */,
+				F6EC29B321762BD700DCFA07 /* NoSessionLoader.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -1160,6 +1172,15 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		F6EC29B0217601C400DCFA07 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				F6EC29AE2176014C00DCFA07 /* SessionLoader.swift */,
+				F6EC29B1217601D700DCFA07 /* CIOSessionLoader.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1233,9 +1254,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "AutocompleteClient" */;
 			buildPhases = (
+				F688A43C1F56B4B600F169C1 /* Headers */,
 				F688A43A1F56B4B600F169C1 /* Sources */,
 				F688A43B1F56B4B600F169C1 /* Frameworks */,
-				F688A43C1F56B4B600F169C1 /* Headers */,
 				F688A43D1F56B4B600F169C1 /* Resources */,
 			);
 			buildRules = (
@@ -1453,6 +1474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6EC29AD2175EF1700DCFA07 /* Session.swift in Sources */,
 				F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */,
 				F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */,
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
@@ -1475,6 +1497,7 @@
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,
 				F60BEA1A1F571956008F0053 /* CIOAutocompleteDelegate.swift in Sources */,
 				F61A6B091F698877007826CA /* CIOGroup.swift in Sources */,
+				F6EC29B2217601D700DCFA07 /* CIOSessionLoader.swift in Sources */,
 				F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */,
 				F1F68DDA1F58B6A300B42602 /* CIOAutocompleteResponseParser.swift in Sources */,
 				F6852559213D604900A27FAA /* AutocompleteResultCount.swift in Sources */,
@@ -1498,6 +1521,7 @@
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
 				F685255B21413D4D00A27FAA /* CIORequestData.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,
+				F6EC29AF2176014C00DCFA07 /* SessionLoader.swift in Sources */,
 				088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */,
 				F62510C82052CC6B0040E3DF /* CIOSessionManager.swift in Sources */,
 				F68A73131F56E5FB00FA4D1B /* String+Trim.swift in Sources */,
@@ -1541,6 +1565,7 @@
 				F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */,
 				F62510D120568F250040E3DF /* SessionManagerTests.swift in Sources */,
 				0879E93F215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift in Sources */,
+				F6EC29AB2175161300DCFA07 /* ClosureSessionManagerDelegate.swift in Sources */,
 				F63808FF1F5D6C1000C3B322 /* ConstructorIOTests.swift in Sources */,
 				0874A32E216BCE2700812CDC /* ConstructorIOABTestCellTests.swift in Sources */,
 				F64F46B71F59767D0094C697 /* AutocompleteViewModelTests.swift in Sources */,
@@ -1550,6 +1575,7 @@
 				F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */,
 				F64F46A61F595B980094C697 /* ResponseParserTests.swift in Sources */,
 				F64E94DD212D7EC300E50EDE /* ConstructorIOTrackingTests.swift in Sources */,
+				F6EC29B421762BD700DCFA07 /* NoSessionLoader.swift in Sources */,
 				089399DF2161B92600BFE3D9 /* TrackInputFocusRequestBuilderTests.swift in Sources */,
 				089399E32161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */,
 				F64F46AD1F5963AF0094C697 /* Bundle+Test.swift in Sources */,

@@ -18,7 +18,7 @@ class ResponseParserTests: XCTestCase {
         self.responseParser = CIOAutocompleteResponseParser()
     }
 
-    func test_ParsingNonJSONData_ThrowsAnException() {
+    func testParsingNonJSONData_ThrowsAnException() {
         let failWithMessage = "Passing invalid JSON data should throw a CIOError.InvalidResponse"
         let invalidData = "a beautiful day".data(using: String.Encoding.utf8)!
         do {
@@ -31,7 +31,7 @@ class ResponseParserTests: XCTestCase {
         }
     }
 
-    func test_ParsingJSONString_WithInvalidStructure_ThrowsAnException() {
+    func testParsingJSONString_WithInvalidStructure_ThrowsAnException() {
         let failWithMessage = "Passing valid JSON with invalid structure should throw a CIOError.InvalidResponse"
         let validJSONData = "{ \"key\": \"value\" }".data(using: String.Encoding.utf8)!
         do {
@@ -44,7 +44,7 @@ class ResponseParserTests: XCTestCase {
         }
     }
 
-    func test_ParsingMultipleSectionJSONString_HasCorrectSectionCount() {
+    func testParsingMultipleSectionJSONString_HasCorrectSectionCount() {
         let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         do {
             let response = try responseParser.parse(autocompleteResponseData: data)
@@ -54,7 +54,7 @@ class ResponseParserTests: XCTestCase {
         }
     }
 
-    func test_ParsingSingleSectionJSONString_HasSingleSection() {
+    func testParsingSingleSectionJSONString_HasSingleSection() {
         let data = TestResource.load(name: TestResource.Response.singleSectionJSONFilename)
         do {
             let response = try responseParser.parse(autocompleteResponseData: data)
@@ -64,7 +64,7 @@ class ResponseParserTests: XCTestCase {
         }
     }
 
-    func test_ParsingMultipleGroupsJSONString_HasCorrectItemCount() {
+    func testParsingMultipleGroupsJSONString_HasCorrectItemCount() {
         let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename)
         do {
             let response = try responseParser.parse(autocompleteResponseData: data)
@@ -79,7 +79,7 @@ class ResponseParserTests: XCTestCase {
         }
     }
     
-    func test_ParsingValidJSONReturnsGroupResultsForMultipleItems_IfDelegateMethodReturnsTrue(){
+    func testParsingValidJSONReturnsGroupResultsForMultipleItems_IfDelegateMethodReturnsTrue(){
         let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
         // create mock delegate
@@ -100,7 +100,7 @@ class ResponseParserTests: XCTestCase {
         }
     }
     
-    func test_ParsingValidJSONReturnsNoGroupResults_IfDelegateMethodReturnsFalse(){
+    func testParsingValidJSONReturnsNoGroupResults_IfDelegateMethodReturnsFalse(){
         let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
         
         // create mock delegate

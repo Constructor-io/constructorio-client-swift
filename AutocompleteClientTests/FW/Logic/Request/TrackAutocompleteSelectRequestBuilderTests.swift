@@ -44,7 +44,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
     
-    func testTrackAutocompleteSelectBuilder_withGroup() {
+    func testTrackAutocompleteSelectBuilder_WithGroup() {
         let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
@@ -54,7 +54,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("group%5Bgroup_id%5D=groupID2"), "URL should contain a URL query item with group id if item in group")
     }
     
-    func testTrackAutocompleteSelectBuilder_withoutGroup() {
+    func testTrackAutocompleteSelectBuilder_WithoutGroup() {
         let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: nil)
         builder.build(trackData: tracker)
         let request = builder.getRequest()

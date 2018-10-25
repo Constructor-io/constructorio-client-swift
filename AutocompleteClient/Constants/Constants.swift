@@ -150,4 +150,10 @@ struct Constants {
         
         static let performURLRequest: (_ request: URLRequest) -> String = { request in return Logging.format("Performing URL Request \(request)") }
     }
+    
+    struct Session{
+        static let key = "constructor.io/session"
+        static let id = "constructor.io/session/id"
+        static let createdAt = "constructor.io/session/createdAt"
+    }
 }

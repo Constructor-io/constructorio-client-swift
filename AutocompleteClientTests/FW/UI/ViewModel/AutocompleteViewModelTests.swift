@@ -25,7 +25,7 @@ class AutocompleteViewModelTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_SettingLastInitiatedQueryResult_ShouldChangeViewModelData() {
+    func testSettingLastInitiatedQueryResult_ShouldChangeViewModelData() {
 
         let failMessage = "Result order should follow the order in which the setters were called."
 
@@ -79,7 +79,7 @@ class AutocompleteViewModelTests: XCTestCase {
         return CIOResult(autocompleteResult: CIOAutocompleteResult(json: json)!, group: nil)
     }
 
-    func test_SettingEarlierInitiatedQueryResult_ShouldNotChangeViewModelData() {
+    func testSettingEarlierInitiatedQueryResult_ShouldNotChangeViewModelData() {
         let expectation = self.expectation(description: "Setting last initiated query result should change the ViewModel data.")
         let query = CIOAutocompleteQuery(query: "")
 
