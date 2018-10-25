@@ -16,4 +16,10 @@ struct TestConstants {
     static let defaultExpectationTimeout: TimeInterval = 10.0
     static let testApiKey = "key_OucJxxrfiTVUQx0C"
     static let testConfig = ConstructorIOConfig(apiKey: "key_OucJxxrfiTVUQx0C")
+    
+    static func testConstructor(_ config: ConstructorIOConfig = TestConstants.testConfig) -> ConstructorIO{
+        let constructor = ConstructorIO(config: config)
+        constructor.sessionManager = CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: Constants.Query.sessionIncrementTimeoutInSeconds, sessionLoader: NoSessionLoader())
+        return constructor
+    }
 }

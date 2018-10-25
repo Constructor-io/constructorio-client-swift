@@ -17,7 +17,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.constructor = ConstructorIO(config: TestConstants.testConfig)
+        self.constructor = TestConstants.testConstructor()
     }
     
     override func tearDown() {
@@ -267,7 +267,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a section name.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=section321&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
-        let constructor = ConstructorIO(config: config)
+        let constructor = TestConstants.testConstructor(config)
         constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -359,7 +359,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=\(sectionName)&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
-        let constructor = ConstructorIO(config: config)
+        let constructor = TestConstants.testConstructor(config)
         constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }

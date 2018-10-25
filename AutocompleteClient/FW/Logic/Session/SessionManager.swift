@@ -12,6 +12,7 @@ public protocol SessionManager: class{
     var delegate: CIOSessionManagerDelegate? { get set }
     
     func getSessionWithIncrement() -> Int
-    
     func getSessionWithoutIncrement() -> Int
+    
+    func setup()
 }

@@ -21,7 +21,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public static var logger: CIOLogger = CIOPrintLogger()
     
     private let networkClient: NetworkClient
-    private let sessionManager: SessionManager
+    var sessionManager: SessionManager
     
     public var parser: AbstractResponseParser
     
@@ -40,7 +40,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.parser = DependencyContainer.sharedInstance.responseParser()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
+        
         self.sessionManager.delegate = self
+        self.sessionManager.setup()
     }
 
     /// Get autocomplete suggestions for a query.
