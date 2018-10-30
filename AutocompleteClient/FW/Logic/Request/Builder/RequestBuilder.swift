@@ -27,6 +27,10 @@ public class RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.Query.apiKey, value: apiKey))
     }
     
+    func set(userID: String){
+        queryItems.add(URLQueryItem(name: "ui", value: userID))
+    }
+    
     func set(clientID: String){
         queryItems.add(URLQueryItem(name: "i", value: clientID))
     }
