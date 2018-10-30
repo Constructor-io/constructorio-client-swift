@@ -74,7 +74,7 @@ public class RequestBuilder {
     }
     
     private func addDateQueryItem(queryItems items: inout QueryItemCollection){
-        let dateString = String(Int(self.dateProvider.provideDate().timeIntervalSince1970 * 1000))
+        let dateString = String(Int64(self.dateProvider.provideDate().timeIntervalSince1970 * 1000))
         items.add(URLQueryItem(name: Constants.Track.dateTime, value: dateString))
     }
 }
