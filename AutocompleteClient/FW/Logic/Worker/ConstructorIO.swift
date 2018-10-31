@@ -27,6 +27,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     
     public let clientID: String?
     
+    public var userID: String?
+    
     public var sessionID: Int{
         get {
             return self.sessionManager.getSessionWithIncrement()
@@ -144,6 +146,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     private func buildRequest(data: CIORequestData) -> URLRequest{
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
         self.attachClientID(requestBuilder: requestBuilder)
+        self.attachUserID(requestBuilder: requestBuilder)
         self.attachSessionIDWithIncrement(requestBuilder: requestBuilder)
         self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
@@ -154,6 +157,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let data = CIOTrackSessionStartData(session: session)
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
         self.attachClientID(requestBuilder: requestBuilder)
+        self.attachUserID(requestBuilder: requestBuilder)
         self.attachSessionIDWithoutIncrement(requestBuilder: requestBuilder)
         self.attachABTestCells(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
@@ -164,6 +168,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
             requestBuilder.set(testCellKey: cell.key, testCellValue: cell.value);
         })
+    }
+    
+    private func attachUserID(requestBuilder: RequestBuilder){
+        if let uid = self.userID{
+            requestBuilder.set(userID: uid)
+        }
     }
 
     private func attachClientID(requestBuilder: RequestBuilder){

@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         let config = ConstructorIOConfig(apiKey: key,
                                         resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]))
         let viewController = CIOAutocompleteViewController(config: config)
-        
+       
         viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.NavigationBar
         viewController.searchBarShouldShowCancelButton = false
         
@@ -163,6 +163,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     func autocompleteControllerWillAppear(controller: CIOAutocompleteViewController) {
         print("Search controller will appear")
+        if controller.constructorIO.userID == nil{
+            controller.constructorIO.userID = "user_id$1 3"
+        }
     }
 
     func autocompleteControllerDidLoad(controller: CIOAutocompleteViewController) {
