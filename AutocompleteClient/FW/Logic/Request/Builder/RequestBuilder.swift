@@ -27,6 +27,10 @@ public class RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.Query.apiKey, value: apiKey))
     }
     
+    func set(userID: String){
+        queryItems.add(URLQueryItem(name: "ui", value: userID))
+    }
+    
     func set(clientID: String){
         queryItems.add(URLQueryItem(name: "i", value: clientID))
     }
@@ -70,7 +74,7 @@ public class RequestBuilder {
     }
     
     private func addDateQueryItem(queryItems items: inout QueryItemCollection){
-        let dateString = String(Int(self.dateProvider.provideDate().timeIntervalSince1970 * 1000))
+        let dateString = String(Int64(self.dateProvider.provideDate().timeIntervalSince1970 * 1000))
         items.add(URLQueryItem(name: Constants.Track.dateTime, value: dateString))
     }
 }
