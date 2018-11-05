@@ -12,11 +12,11 @@ import UIKit
 class ClosureDateProvider: DateProvider {
 
     var provideDateClosure: () -> Date
-    
-    init(provideDateClosure: @escaping () -> Date){
+
+    init(provideDateClosure: @escaping () -> Date) {
         self.provideDateClosure = provideDateClosure
     }
-    
+
     func provideDate() -> Date {
         return self.provideDateClosure()
     }

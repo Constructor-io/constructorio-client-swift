@@ -21,7 +21,7 @@ class DependencyContainer {
     var responseParser: () -> AbstractResponseParser = {
         return CIOAutocompleteResponseParser()
     }
-    
+
     var sessionManager: () -> SessionManager = {
         return CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: Constants.Query.sessionIncrementTimeoutInSeconds)
     }

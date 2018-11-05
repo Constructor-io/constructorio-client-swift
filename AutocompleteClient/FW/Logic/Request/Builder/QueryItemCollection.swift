@@ -8,27 +8,27 @@
 
 import Foundation
 
-struct QueryItemCollection{
+struct QueryItemCollection {
     private var queryItems = [String: URLQueryItem]()
-    
-    mutating func add(_ item: URLQueryItem){
+
+    mutating func add(_ item: URLQueryItem) {
         self[item.name] = item
     }
-    
-    mutating func remove(key: String){
+
+    mutating func remove(key: String) {
         self[key] = nil
     }
-    
-    private subscript(value: String) -> URLQueryItem?{
-        get{
+
+    private subscript(value: String) -> URLQueryItem? {
+        get {
             return queryItems[value]
         }
-        set{
+        set {
             queryItems[value] = newValue
         }
     }
-    
-    func all() -> [URLQueryItem]{
+
+    func all() -> [URLQueryItem] {
         return Array<URLQueryItem>(self.queryItems.values)
     }
 }

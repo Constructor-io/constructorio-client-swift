@@ -8,8 +8,8 @@
 
 import Foundation
 
-public class CIOPrintLogger: CIOLogger{
-    public func log(_ message: String){
+public class CIOPrintLogger: CIOLogger {
+    public func log(_ message: String) {
         #if DEBUG
             print(message)
         #endif

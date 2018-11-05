@@ -1,0 +1,12 @@
+included:
+- AutocompleteClient
+- AutocompleteClientTests
+excluded:
+- Tests/SwiftLintFrameworkTests/Resources
+analyzer_rules:
+- unused_import
+- unused_private_declaration
+disabled_rules:
+- line_length
+opt_in_rules:
+- control_statement
