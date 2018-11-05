@@ -14,19 +14,19 @@ import Foundation
 public struct CIOTrackSearchResultsLoadedData: CIORequestData {
     let searchTerm: String
     let resultCount: Int
-    
+
     public var url: String {
         return String(format: Constants.TrackSearchResultsLoaded.format, Constants.Track.baseURLString)
     }
-    
-    public init(searchTerm: String, resultCount: Int){
+
+    public init(searchTerm: String, resultCount: Int) {
         self.searchTerm = searchTerm
         self.resultCount = resultCount
     }
-    
+
     public func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(searchTerm: self.searchTerm)
         requestBuilder.set(numResults: self.resultCount)
     }
-    
+
 }

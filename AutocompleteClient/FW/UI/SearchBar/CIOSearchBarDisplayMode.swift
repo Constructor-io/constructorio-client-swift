@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum CIOSearchBarDisplayMode{
-    case TableViewHeader
-    case NavigationBar
+public enum CIOSearchBarDisplayMode {
+    case tableViewHeader
+    case navigationBar
 }

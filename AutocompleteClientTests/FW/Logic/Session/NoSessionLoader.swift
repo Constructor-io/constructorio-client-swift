@@ -8,11 +8,11 @@
 
 @testable import ConstructorAutocomplete
 
-class NoSessionLoader: SessionLoader{
+class NoSessionLoader: SessionLoader {
     func loadSession() -> Session? {
         return nil
     }
     func saveSession(_ session: Session) {}
-    
+
     func clearSession() {}
 }

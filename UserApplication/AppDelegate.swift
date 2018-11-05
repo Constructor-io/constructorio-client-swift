@@ -49,8 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         let config = ConstructorIOConfig(apiKey: key,
                                         resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]))
         let viewController = CIOAutocompleteViewController(config: config)
-       
-        viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.NavigationBar
+        viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.navigationBar
         viewController.searchBarShouldShowCancelButton = false
         
         // set the delegate in order to react to various events

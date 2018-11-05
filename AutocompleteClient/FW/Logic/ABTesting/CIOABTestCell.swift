@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CIOABTestCell{
+public struct CIOABTestCell {
     let key: String
     let value: String
 

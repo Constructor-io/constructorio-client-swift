@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias JSONObject = [String : Any]
+public typealias JSONObject = [String: Any]
 
 /**
  Struct representing the autocomplete data response from the server.

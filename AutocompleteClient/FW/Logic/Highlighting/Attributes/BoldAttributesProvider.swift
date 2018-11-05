@@ -12,7 +12,7 @@ class BoldAttributesProvider: CIOHighlightingAttributesProvider {
 
     var fontNormal: UIFont
     var fontBold: UIFont
-    
+
     var colorNormal: UIColor
     var colorBold: UIColor
 
@@ -25,7 +25,7 @@ class BoldAttributesProvider: CIOHighlightingAttributesProvider {
 
     func defaultSubstringAttributes() -> [String: Any] {
         #if swift(>=4.0)
-            
+
             return [NSAttributedStringKey.font.rawValue: self.fontBold,
                     NSAttributedStringKey.foregroundColor.rawValue: self.colorBold]
         #else

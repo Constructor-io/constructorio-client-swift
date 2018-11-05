@@ -12,11 +12,11 @@ public class RequestBuilder {
 
     var queryItems = QueryItemCollection()
     var dateProvider: DateProvider
-    
+
     internal(set) var trackData: CIORequestData!
-    
+
     internal(set) var searchTerm = ""
-    
+
     init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider()) {
         self.dateProvider = dateProvider
         self.set(apiKey: apiKey)
@@ -26,20 +26,20 @@ public class RequestBuilder {
     func set(apiKey: String) {
         queryItems.add(URLQueryItem(name: Constants.Query.apiKey, value: apiKey))
     }
-    
-    func set(userID: String){
+
+    func set(userID: String) {
         queryItems.add(URLQueryItem(name: "ui", value: userID))
     }
-    
-    func set(clientID: String){
+
+    func set(clientID: String) {
         queryItems.add(URLQueryItem(name: "i", value: clientID))
     }
-    
-    func set(session: Int){
+
+    func set(session: Int) {
         queryItems.add(URLQueryItem(name: "s", value: String(session)))
     }
-    
-    final func build(trackData: CIORequestData){
+
+    final func build(trackData: CIORequestData) {
         self.trackData = trackData
         trackData.decorateRequest(requestBuilder: self)
     }
@@ -55,7 +55,7 @@ public class RequestBuilder {
         // add version string
         let versionString = Constants.versionString()
         allQueryItems.add(URLQueryItem(name: "c", value: versionString))
-        
+
         // attach date
         self.addDateQueryItem(queryItems: &allQueryItems)
 
@@ -69,11 +69,11 @@ public class RequestBuilder {
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = self.trackData!.httpMethod()
-        
+
         return request
     }
-    
-    private func addDateQueryItem(queryItems items: inout QueryItemCollection){
+
+    private func addDateQueryItem(queryItems items: inout QueryItemCollection) {
         let dateString = String(Int64(self.dateProvider.provideDate().timeIntervalSince1970 * 1000))
         items.add(URLQueryItem(name: Constants.Track.dateTime, value: dateString))
     }
