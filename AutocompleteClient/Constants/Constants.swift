@@ -58,7 +58,6 @@ struct Constants {
         static let baseURLString = "https://ac.cnstrc.com"
         static let httpMethod = "GET"
         static let queryStringFormat = "%@/%@/%@"
-
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
     }
 
@@ -110,6 +109,7 @@ struct Constants {
         static let groupID = "group[group_id]"
         static let name = "name"
         static let customerID = "customer_id"
+        static let customerIDs = "customer_ids"
         static let revenue = "revenue"
         static let dateTime = "_dt"
         static let defaultItemSectionName = "Products"
@@ -141,13 +141,15 @@ struct Constants {
 
     struct TrackConversion {
         static let format = "%@/autocomplete/%@/conversion"
-
+    }
+    
+    struct TrackPurchase {
+        static let format = "%@/autocomplete/TERM_UNKNOWN/purchase"
     }
 
     struct Logging {
         private static let prefix = "[ConstructorIO]:"
         private static let format: (_ message: String) -> String = { message in return "\(Logging.prefix) \(message)" }
-
         static let performURLRequest: (_ request: URLRequest) -> String = { request in return Logging.format("Performing URL Request \(request)") }
     }
 
