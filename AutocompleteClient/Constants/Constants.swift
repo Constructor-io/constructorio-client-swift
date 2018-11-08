@@ -142,7 +142,7 @@ struct Constants {
     struct TrackConversion {
         static let format = "%@/autocomplete/%@/conversion"
     }
-    
+
     struct TrackPurchase {
         static let format = "%@/autocomplete/TERM_UNKNOWN/purchase"
     }
