@@ -150,7 +150,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
-    
+
     private func trackSessionStart(session: Int, completionHandler: TrackingCompletionHandler? = nil) {
         let request = self.buildSessionStartRequest(session: session)
         execute(request, completionHandler: completionHandler)

@@ -20,6 +20,7 @@
 		089399E12161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089399E02161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift */; };
 		089399E32161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089399E22161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift */; };
 		08C1E6052193BE3600A2E24E /* CIOTrackPurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1E6042193BE3600A2E24E /* CIOTrackPurchaseData.swift */; };
+		08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */; };
 		08CCD3EF216675DD00C3F234 /* CIOABTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CCD3EE216675DD00C3F234 /* CIOABTestCell.swift */; };
 		08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */; };
 		08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */; };
@@ -209,6 +210,7 @@
 		089399E02161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchSubmitRequestBuilder.swift; sourceTree = "<group>"; };
 		089399E22161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchResultsLoadedRequestBuilder.swift; sourceTree = "<group>"; };
 		08C1E6042193BE3600A2E24E /* CIOTrackPurchaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackPurchaseData.swift; sourceTree = "<group>"; };
+		08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPurchaseRequestBuilderTests.swift; sourceTree = "<group>"; };
 		08CCD3EE216675DD00C3F234 /* CIOABTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CIOABTestCell.swift; path = AutocompleteClient/FW/Logic/ABTesting/CIOABTestCell.swift; sourceTree = SOURCE_ROOT; };
 		08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackAutocompleteSelectData.swift; sourceTree = "<group>"; };
 		08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchSubmitData.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 				F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */,
 				0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */,
 				F1C557441F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift */,
+				08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */,
 				089399DE2161B92600BFE3D9 /* TrackInputFocusRequestBuilderTests.swift */,
 				08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */,
 				089399E22161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift */,
@@ -1560,6 +1563,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */,
 				08689F0121897914000D3565 /* ConstructorIOUserIDTests.swift in Sources */,
 				F64F46B51F5975070094C697 /* AutocompleteResultTests.swift in Sources */,
 				F1C557451F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift in Sources */,

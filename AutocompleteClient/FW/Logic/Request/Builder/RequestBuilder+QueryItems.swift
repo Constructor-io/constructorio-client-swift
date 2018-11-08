@@ -39,7 +39,7 @@ extension RequestBuilder{
         guard let customerID = customerID else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.customerID, value: customerID))
     }
-    
+
     func set(customerIDs: [String]?) {
         guard let customerIDs = customerIDs else { return }
         let joinedIDs = customerIDs.joined(separator: ",")
