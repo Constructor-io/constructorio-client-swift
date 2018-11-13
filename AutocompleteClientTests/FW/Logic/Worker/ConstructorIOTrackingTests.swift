@@ -411,7 +411,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testTrackPurchase() {
         let customerIDs = ["customer_id_q2ew"]
         let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a default section name.", builder: http(200))
@@ -419,7 +419,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil)
         self.wait(for: builder.expectation)
     }
-    
+
     func testTrackPurchase_WithMultipleIDs() {
         let customerIDs = ["bumble", "bee", "autobot"]
         let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a default section name.", builder: http(200))
@@ -427,7 +427,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil)
         self.wait(for: builder.expectation)
     }
-    
+
     func testTrackPurchase_WithSection() {
         let customerIDs = ["customer_id_q2ew"]
         let sectionName = "Search Suggestions"
@@ -436,7 +436,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: sectionName)
         self.wait(for: builder.expectation)
     }
-    
+
     func testTrackPurchase_With400() {
         let expectation = self.expectation(description: "Calling trackPurchase with 400 should return badRequest CIOError.")
         let customerIDs = ["customer_id_q2ew"]
@@ -449,7 +449,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testTrackPurchase_With500() {
         let expectation = self.expectation(description: "Calling trackPurchase with 500 should return internalServerError CIOError.")
         let customerIDs = ["customer_id_q2ew"]
@@ -462,7 +462,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testTrackPurchase_WithNoConnectivity() {
         let expectation = self.expectation(description: "Calling trackPurchase with no connectvity should return noConnectivity CIOError.")
         let customerIDs = ["customer_id_q2ew"]

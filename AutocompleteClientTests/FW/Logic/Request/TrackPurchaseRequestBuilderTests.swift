@@ -23,8 +23,8 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        self.encodedCustomerID1 = "customer_ids=" + customerIDs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
-        self.encodedCustomerID2 = "customer_ids=" + customerIDs[1].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+        self.encodedCustomerID1 = "customer_ids=" + customerIDs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        self.encodedCustomerID2 = "customer_ids=" + customerIDs[1].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedSectionName = self.sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.builder = RequestBuilder(apiKey: testACKey)
     }
@@ -42,13 +42,13 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
-    
+
     func testTrackPurchaseBuilder_WithSectionName() {
         let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs, sectionName: self.sectionName)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
-        
+
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?"))
         XCTAssertTrue(url.contains(encodedCustomerID1), "URL should contain the customer ID[1].")
