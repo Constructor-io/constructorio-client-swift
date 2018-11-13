@@ -15,16 +15,20 @@ struct QueryItemCollection {
         self[item.name] = item
     }
 
-    mutating func remove(key: String) {
-        self[key] = nil
+    mutating func addMultiple(index: Int, item: URLQueryItem) {
+        self[item.name + String(index)] = item
     }
 
-    private subscript(value: String) -> URLQueryItem? {
+    mutating func remove(name: String) {
+        self[name] = nil
+    }
+
+    private subscript(name: String) -> URLQueryItem? {
         get {
-            return queryItems[value]
+            return queryItems[name]
         }
         set {
-            queryItems[value] = newValue
+            queryItems[name] = newValue
         }
     }
 
