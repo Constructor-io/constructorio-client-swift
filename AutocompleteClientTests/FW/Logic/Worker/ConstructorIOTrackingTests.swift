@@ -420,6 +420,14 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
+    func testTrackPurchase_WithMultipleIDs() {
+        let customerIDs = ["bumble", "bee", "autobot"]
+        let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a default section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?_dt=\(kRegexTimestamp)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&customer_ids=autobot&c=cioios-&s=1&customer_ids=bumble&autocomplete_section=Products&customer_ids=bee"), builder.create())
+        self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil)
+        self.wait(for: builder.expectation)
+    }
+    
     func testTrackPurchase_WithSection() {
         let customerIDs = ["customer_id_q2ew"]
         let sectionName = "Search Suggestions"
