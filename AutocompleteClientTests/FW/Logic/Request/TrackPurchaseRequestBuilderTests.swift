@@ -15,14 +15,16 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
     fileprivate let customerIDs = ["custIDq3éû qd", "womp womp"]
     fileprivate let sectionName = "some section name@"
 
-    fileprivate var encodedCustomerIDs: String = ""
+    fileprivate var encodedCustomerID1: String = ""
+    fileprivate var encodedCustomerID2: String = ""
     fileprivate var encodedSectionName: String = ""
 
     fileprivate var builder: RequestBuilder!
 
     override func setUp() {
         super.setUp()
-        self.encodedCustomerIDs = customerIDs.joined(separator: ",").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        self.encodedCustomerID1 = "customer_ids=" + customerIDs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+        self.encodedCustomerID2 = "customer_ids=" + customerIDs[1].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
         self.encodedSectionName = self.sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.builder = RequestBuilder(apiKey: testACKey)
     }
@@ -35,7 +37,8 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
 
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?"))
-        XCTAssertTrue(url.contains("customer_ids=\(encodedCustomerIDs)"), "URL should contain the customer ID.")
+        XCTAssertTrue(url.contains(encodedCustomerID1), "URL should contain the customer ID[1].")
+        XCTAssertTrue(url.contains(encodedCustomerID2), "URL should contain the customer ID[2].")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
@@ -48,7 +51,8 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?"))
-        XCTAssertTrue(url.contains("customer_ids=\(encodedCustomerIDs)"), "URL should contain the customer ID.")
+        XCTAssertTrue(url.contains(encodedCustomerID1), "URL should contain the customer ID[1].")
+        XCTAssertTrue(url.contains(encodedCustomerID2), "URL should contain the customer ID[2].")
         XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")

@@ -42,8 +42,9 @@ extension RequestBuilder{
 
     func set(customerIDs: [String]?) {
         guard let customerIDs = customerIDs else { return }
-        let joinedIDs = customerIDs.joined(separator: ",")
-        queryItems.add(URLQueryItem(name: Constants.Track.customerIDs, value: joinedIDs))
+        for (index, customerID) in customerIDs.enumerated() {
+            queryItems.addMultiple(index: index, item: URLQueryItem(name: Constants.Track.customerIDs, value: customerID))
+        }
     }
 
     func set(autocompleteSection: String?) {
