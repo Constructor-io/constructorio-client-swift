@@ -14,19 +14,6 @@ struct QueryItemCollection{
     mutating func add(_ item: URLQueryItem){
         self[item.name] = item
     }
-<<<<<<< HEAD
-    
-    mutating func remove(key: String){
-        self[key] = nil
-    }
-    
-    private subscript(value: String) -> URLQueryItem?{
-        get{
-            return queryItems[value]
-        }
-        set{
-            queryItems[value] = newValue
-=======
 
     mutating func addMultiple(index: Int, item: URLQueryItem) {
         self[item.name + String(index)] = item
@@ -42,7 +29,6 @@ struct QueryItemCollection{
         }
         set {
             queryItems[name] = newValue
->>>>>>> 39648c9... Updated tracking event
         }
     }
     
