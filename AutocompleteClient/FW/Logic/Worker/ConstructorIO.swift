@@ -137,7 +137,20 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
-    
+
+    /// Track a purchase.
+    ///
+    /// - Parameters:
+    ///   - customerIDs: customer IDs.
+    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackPurchase(customerIDs: [String], sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackPurchaseData(customerIDs: customerIDs, sectionName: section)
+        let request = self.buildRequest(data: data)
+        execute(request, completionHandler: completionHandler)
+    }
+
     private func trackSessionStart(session: Int, completionHandler: TrackingCompletionHandler? = nil) {
         let request = self.buildSessionStartRequest(session: session)
         execute(request, completionHandler: completionHandler)
