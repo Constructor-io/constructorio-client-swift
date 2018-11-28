@@ -27,7 +27,7 @@ class SearchResponseParser: AbstractSearchResponseParser{
                 } ?? []
                 return Facet(name: name, options: options)
             } ?? []
-            
+
             let results: [SearchResult] = (response["results"] as? [JSONObject])?.flatMap{ resultObj in
                 guard let dataObj = resultObj["data"] as? JSONObject else { return nil }
                 
@@ -48,7 +48,7 @@ class SearchResponseParser: AbstractSearchResponseParser{
                     return CIOGroup(json: groupObj)
                 })
                 
-                return SearchResult(id: id, value: value, url: url, price: price, quantity: quantity, imageURL: imageURL, facets: searchFacets, groups: groups)
+                return SearchResult(id: id, value: value, url: url, price: price, quantity: quantity, imageURL: imageURL, facets: searchFacets, groups: groups, rawJSON: resultObj)
             } ?? []
             
             return CIOSearchResponse(facets: facets, results: results)

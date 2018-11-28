@@ -12,6 +12,6 @@ import Foundation
  Struct representing the search data response from the server.
  */
 public struct CIOSearchResponse {
-    let facets: [Facet]
-    let results: [SearchResult]
+    public let facets: [Facet]
+    public let results: [SearchResult]
 }

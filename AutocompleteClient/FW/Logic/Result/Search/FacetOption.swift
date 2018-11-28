@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct FacetOption{
-    let count: Int
-    let value: String
+public struct FacetOption{
+    public let count: Int
+    public let value: String
 }

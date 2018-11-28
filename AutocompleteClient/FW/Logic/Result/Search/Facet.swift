@@ -8,8 +8,8 @@
 
 import UIKit
 
-struct Facet{
-    let name: String
-    let options: [FacetOption]
+public struct Facet{
+    public let name: String
+    public let options: [FacetOption]
     
 }

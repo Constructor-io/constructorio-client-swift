@@ -22,7 +22,7 @@ public struct CIOSearchQuery: CIORequestData{
                       Constants.SearchQuery.pathString, query)
     }
     
-    init(query: String, filters: CIOSearchQueryFilters? = nil, page: Int = 1, numResultsPerPage: Int = 20) {
+    public init(query: String, filters: CIOSearchQueryFilters? = nil, page: Int = 1, numResultsPerPage: Int = 20) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page

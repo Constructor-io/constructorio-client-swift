@@ -1,4 +1,5 @@
 PODS:
+  - Kingfisher (4.10.0)
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
     - OHHTTPStubs/Core
@@ -14,15 +15,18 @@ PODS:
     - OHHTTPStubs/Default
 
 DEPENDENCIES:
+  - Kingfisher (~> 4.0)
   - OHHTTPStubs/Swift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Kingfisher
     - OHHTTPStubs
 
 SPEC CHECKSUMS:
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
 
-PODFILE CHECKSUM: 446a09fa4fd4137b661db2729790f8a5f7a70a08
+PODFILE CHECKSUM: 0d579570dcbf88df2503ddf63d5f2e689a0c5258
 
 COCOAPODS: 1.5.3

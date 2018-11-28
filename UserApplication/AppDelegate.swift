@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     var window: UIWindow?
 
+    lazy var cart: Cart = Cart()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         self.showAutocompleteViewControllerAsRoot()
@@ -45,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
-        let key = "key_OucJxxrfiTVUQx0C"
+        let key = "key_K2hlXt5aVSwoI1Uw"
         let config = ConstructorIOConfig(apiKey: key,
                                         resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]))
         let viewController = CIOAutocompleteViewController(config: config)
@@ -150,10 +152,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         print("item selected \(result)")
         
         if let navigationController = self.window?.rootViewController as? UINavigationController{
-            let detailsVC = DetailsViewController()
-            detailsVC.result = result
-            detailsVC.constructorIO = controller.constructorIO
-            navigationController.pushViewController(detailsVC, animated: true)
+            let viewModel = SearchViewModel(term: result.autocompleteResult.value, groupName: result.group?.groupID, constructor: controller.constructorIO, cart: self.cart)
+            let searchVC = SearchViewController(viewModel: viewModel)
+            navigationController.pushViewController(searchVC, animated: true)
         }
     }
 
