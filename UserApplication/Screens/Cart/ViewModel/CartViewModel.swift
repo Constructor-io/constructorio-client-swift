@@ -15,6 +15,11 @@ class CartViewModel {
 
     init(cart: Cart){
         self.cart = cart
+        self.items = []
+        self.reloadItems()
+    }
+
+    func reloadItems(){
         self.items = cart.items.map{ CartItemViewModel(item: $0)}
     }
 
@@ -27,5 +32,15 @@ class CartViewModel {
             self.items.remove(at: index)
             return nil
         }
+    }
+
+    func removeItemAtIndex(_ index: Int){
+        self.cart.items.remove(at: index)
+        self.reloadItems()
+    }
+
+    func removeAllItems(){
+        self.cart.items = []
+        self.reloadItems()
     }
 }

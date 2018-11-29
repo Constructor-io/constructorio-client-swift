@@ -37,7 +37,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
         self.collectionView.register(UINib(nibName: "SearchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: self.cellID)
 
         self.viewModel.performSearch { [weak self] in
-            self?.collectionView.reloadData()
+            guard let sself = self else { return }
+            
+            // track search results loaded
+            sself.viewModel.constructor.trackSearchResultsLoaded(searchTerm: sself.viewModel.searchTerm, resultCount: sself.viewModel.searchResults?.count ?? 0, completionHandler: nil)
+
+            // reload table view
+            sself.collectionView.reloadData()
         }
     }
 
@@ -81,6 +87,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
         guard let cell = self.collectionView.cellForItem(at: indexPath) as? SearchCollectionViewCell else {
             return
         }
+
+        self.viewModel.constructor.trackSearchResultClick(itemName: model.title, customerID: "a-customer-id", searchTerm: self.viewModel.searchTerm, sectionName: nil, completionHandler: nil)
 
         let viewModel = DetailsViewModel(title: model.title, price: model.price, image: cell.imageView.image, imageURL: model.imageURL, description: model.description, cart: self.viewModel.cart)
         let detailsVC = DetailsViewController(viewModel: viewModel)

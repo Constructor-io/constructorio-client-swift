@@ -70,17 +70,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
-        
+
+        // Listen for cart changes and react to item being add event
+        NotificationCenter.default.addObserver(forName: kNotificationDidAddItemToCart, object: nil, queue: OperationQueue.main) { notification in
+            guard let item = notification.cartItem() else { return }
+            guard let constructor = viewController.constructorIO else { return }
+            constructor.trackConversion(itemName: item.title, customerID: "a-customer-id", revenue: Double(item.price))
+        }
     }
 
-    var i = 1
-    func randomColor() -> UIColor {
-        let colors = [UIColor.red, .blue, .purple, .orange, .black]
-        let color = colors[i%colors.count]
-        i += 1
-        return color
-    }
-    
     // MARK: UI Customization
 
     func sectionHeaderView(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> UIView? {
@@ -152,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         print("item selected \(result)")
         
         if let navigationController = self.window?.rootViewController as? UINavigationController{
-            let viewModel = SearchViewModel(term: result.autocompleteResult.value, groupName: result.group?.groupID, constructor: controller.constructorIO, cart: self.cart)
+            let viewModel = SearchViewModel(term: result.autocompleteResult.value, group: result.group, constructor: controller.constructorIO, cart: self.cart)
             let searchVC = SearchViewController(viewModel: viewModel)
             navigationController.pushViewController(searchVC, animated: true)
         }

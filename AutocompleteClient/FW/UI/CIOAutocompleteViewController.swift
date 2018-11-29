@@ -427,7 +427,6 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
         
         // reschedule the timer
         self.timerQueryFire = Timer.scheduledTimer(timeInterval: Constants.UI.fireQueryDelayInSeconds, target: self, selector: #selector(timerFire), userInfo: searchTerm, repeats: false)
-
     }
 }
 

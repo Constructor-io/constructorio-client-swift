@@ -10,6 +10,9 @@ import Foundation
 
 let kNotificationCartDidChange = Notification.Name(rawValue: "kNotificationCartDidChange")
 
+let kNotificationDidAddItemToCart = Notification.Name(rawValue: "kNotificationDidAddItemToCart")
+let kKeyCartItem = "kKeyCartItem"
+
 class Cart: NSObject{
 
     var items: [CartItem] = [] {
@@ -30,6 +33,8 @@ class Cart: NSObject{
         }else{
             self.items.append(toAdd)
         }
+
+        NotificationCenter.default.post(name: kNotificationDidAddItemToCart, object: nil, userInfo: [kKeyCartItem: toAdd])
     }
 
     func updateQuantity(newValue: Int, for index: Int) -> CartItem?{
@@ -42,5 +47,11 @@ class Cart: NSObject{
             self.items[index] = item
             return item
         }
+    }
+}
+
+extension Notification{
+    func cartItem() -> CartItem?{
+        return self.userInfo?[kKeyCartItem] as? CartItem
     }
 }

@@ -15,7 +15,9 @@ class SearchViewModel{
     let title: String
 
     let searchTerm: String
+    let groupID: String?
     let groupName: String?
+
     let constructor: ConstructorIO
 
     var searchResults: [SearchResultViewModel]?
@@ -25,18 +27,23 @@ class SearchViewModel{
 
     let cart: Cart
 
-    init(term: String, groupName: String?, constructor: ConstructorIO, cart: Cart){
+    init(term: String, group: CIOGroup?, constructor: ConstructorIO, cart: Cart){
         self.searchTerm = term
-        self.groupName = groupName
+        self.groupID = group?.groupID
+        self.groupName = group?.displayName
         self.constructor = constructor
         self.cart = cart
 
-        self.title = self.searchTerm
+        if let groupName = groupName{
+            self.title = "\(self.searchTerm) in \(groupName)"
+        }else{
+            self.title = self.searchTerm
+        }
     }
 
     func performSearch(completionHandler: @escaping () -> Void){
         var filter: CIOSearchQueryFilters?
-        if let groupName = self.groupName{
+        if let groupName = self.groupID{
             filter = CIOSearchQueryFilters(groupFilter: groupName, facetFilters: nil)
         }
 
