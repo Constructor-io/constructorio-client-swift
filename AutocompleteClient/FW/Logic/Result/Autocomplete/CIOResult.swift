@@ -13,13 +13,12 @@ import Foundation
  */
 
 @objc
-public class CIOResult: NSObject{
+public class CIOResult: NSObject {
     public let autocompleteResult: CIOAutocompleteResult
     public let group: CIOGroup?
-    
-    init(autocompleteResult: CIOAutocompleteResult, group: CIOGroup? = nil){
+
+    init(autocompleteResult: CIOAutocompleteResult, group: CIOGroup? = nil) {
         self.autocompleteResult = autocompleteResult
         self.group = group
     }
 }
-

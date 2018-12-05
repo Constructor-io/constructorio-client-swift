@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct CurrentTimeDateProvider: DateProvider{
- 
-    func provideDate() -> Date{
+struct CurrentTimeDateProvider: DateProvider {
+
+    func provideDate() -> Date {
         return Date()
     }
 }

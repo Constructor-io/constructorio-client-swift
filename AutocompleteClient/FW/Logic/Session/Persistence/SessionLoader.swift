@@ -8,10 +8,10 @@
 
 import Foundation
 
-public protocol SessionLoader{
-    
+public protocol SessionLoader {
+
     func loadSession() -> Session?
     func saveSession(_ session: Session)
-    
+
     func clearSession()
 }

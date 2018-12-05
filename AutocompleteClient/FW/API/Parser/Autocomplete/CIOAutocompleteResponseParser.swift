@@ -14,10 +14,12 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
     func parse(autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
         do {
-            let json = try JSONSerialization.jsonObject(with: autocompleteResponseData) as! JSONObject
-            let isSingleSection = json.keys.contains(Constants.Response.singleSectionResultField)
-
-            return isSingleSection ? try parse(singleSectionJson: json) : try parse(multiSectionJson: json)
+            if let json = try JSONSerialization.jsonObject(with: autocompleteResponseData) as? JSONObject {
+                let isSingleSection = json.keys.contains(Constants.Response.singleSectionResultField)
+                return isSingleSection ? try parse(singleSectionJson: json) : try parse(multiSectionJson: json)
+            } else {
+                throw CIOError.invalidResponse
+            }
         } catch {
             throw CIOError.invalidResponse
         }
@@ -27,7 +29,6 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
         guard let section = json[Constants.Response.singleSectionResultField] as? [JSONObject] else {
             throw CIOError.invalidResponse
         }
-
 
         let results = self.jsonToAutocompleteItems(jsonObjects: section)
         var metadata = json
@@ -43,7 +44,7 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
         var results = [String: [CIOResult]]()
 
-        for section in sections{
+        for section in sections {
             results[section.key] = self.jsonToAutocompleteItems(jsonObjects: section.value)
         }
 
@@ -52,7 +53,7 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
         return CIOAutocompleteResponse(sections: results, metadata: metadata, json: json)
     }
 
-    fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOResult]{
+    fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOResult] {
 
         return jsonObjects.flatMap { CIOAutocompleteResult(json: $0) }
                         .enumerated()
@@ -65,7 +66,7 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
                             // If the base result is filtered out, we don't show
                             // the group search options.
-                            if let shouldParseResult = self.delegateShouldParseResult(autocompleteResult, nil), shouldParseResult == false{
+                            if let shouldParseResult = self.delegateShouldParseResult(autocompleteResult, nil), shouldParseResult == false {
                                 return []
                             }
 
@@ -77,20 +78,20 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
                                 itemsInGroups.append(itemInGroup)
                             }
 
-                            if let groups = autocompleteResult.groups{
+                            if let groups = autocompleteResult.groups {
                                 let maximumNumberOfGroupItems = self.delegateMaximumGroupsShownPerResult(result: autocompleteResult, at: index)
 
-                                groupLoop: for group in groups{
-                                    if itemsInGroups.count >= maximumNumberOfGroupItems{
+                                groupLoop: for group in groups {
+                                    if itemsInGroups.count >= maximumNumberOfGroupItems {
                                         break groupLoop
                                     }
 
-                                    if let shouldParseResultInGroup = self.delegateShouldParseResult(autocompleteResult, group){
-                                        if shouldParseResultInGroup{
+                                    if let shouldParseResultInGroup = self.delegateShouldParseResult(autocompleteResult, group) {
+                                        if shouldParseResultInGroup {
                                             // method implemented by the delegate and returns true
                                             parseItemHandler(group)
                                         }
-                                    }else{
+                                    } else {
                                         // method not implemeneted by the delegate
                                         // we parse the result by default
                                         parseItemHandler(group)
@@ -102,11 +103,11 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
                         })
     }
 
-    fileprivate func delegateMaximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int{
+    fileprivate func delegateMaximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int {
         return self.delegate?.maximumGroupsShownPerResult(result: result, at: index) ?? Int.max
     }
 
-    fileprivate func delegateShouldParseResult(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool?{
+    fileprivate func delegateShouldParseResult(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool? {
         return self.delegate?.shouldParseResult(result: result, inGroup: group)
     }
 }

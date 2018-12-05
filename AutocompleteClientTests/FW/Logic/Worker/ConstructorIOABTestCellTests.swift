@@ -12,19 +12,19 @@ import Foundation
 @testable import ConstructorAutocomplete
 
 class ConstructorIOABTestCellTests: XCTestCase {
-    
+
     var constructor: ConstructorIO!
-    
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
         OHHTTPStubs.removeAllStubs()
     }
-    
-    func testTrackInputFocus_WithTwoCells(){
+
+    func testTrackInputFocus_WithTwoCells() {
         let config = ConstructorIOConfig(apiKey: "key_OucJxxrfiTVUQx0C", testCells: [
             CIOABTestCell(key: "hi", value: "there"),
             CIOABTestCell(key: "howare", value: "you")
@@ -36,8 +36,8 @@ class ConstructorIOABTestCellTests: XCTestCase {
         constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
-    
-    func testTrackInputFocus_WithOneCell(){
+
+    func testTrackInputFocus_WithOneCell() {
         let config = ConstructorIOConfig(apiKey: "key_OucJxxrfiTVUQx0C", testCells: [
             CIOABTestCell(key: "hi", value: "there")
         ])

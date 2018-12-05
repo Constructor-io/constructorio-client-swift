@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension NSAttributedString{
-    
-    static func build(string: String, attributes: [String: Any]) -> NSAttributedString{
+extension NSAttributedString {
+
+    static func build(string: String, attributes: [String: Any]) -> NSAttributedString {
         #if swift(>=4.0)
             let stringKeyAttributes = attributes.mapKeys({ (str) -> NSAttributedStringKey in
                 return NSAttributedStringKey(str)

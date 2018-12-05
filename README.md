@@ -245,6 +245,9 @@ constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789)
 // Track when a search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth")
 
-// Track conversion
+// Track when a search result converts
 constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth")
+
+// Track when products are purchased
+constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"])
 ```
