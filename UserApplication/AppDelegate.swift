@@ -10,9 +10,15 @@ import UIKit
 import ConstructorAutocomplete
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, CIOAutocompleteUICustomization {
+class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, CIOAutocompleteUICustomization, ConstructorIOProvider {
 
     var window: UIWindow?
+
+    var constructorIO: ConstructorIO!
+
+    func provideConstructorInstance() -> ConstructorIO {
+        return self.constructorIO
+    }
 
     lazy var cart: Cart = Cart()
 
@@ -147,10 +153,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     
     func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
         print("item selected \(result)")
-        
+
+        self.constructorIO = controller.constructorIO
+
         if let navigationController = self.window?.rootViewController as? UINavigationController{
-            let viewModel = SearchViewModel(term: result.autocompleteResult.value, group: result.group, constructor: controller.constructorIO, cart: self.cart)
-            let searchVC = SearchViewController(viewModel: viewModel)
+            let viewModel = SearchViewModel(term: result.autocompleteResult.value, group: result.group, constructorProvider: self, cart: self.cart)
+            let searchVC = SearchViewController(viewModel: viewModel, constructorProvider: self)
             navigationController.pushViewController(searchVC, animated: true)
         }
     }

@@ -2,8 +2,8 @@
 //  SearchViewController.swift
 //  UserApplication
 //
-//  Created by Nikola Markovic on 11/26/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import UIKit
@@ -16,9 +16,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
     let cellID = "SearchCell"
 
     let viewModel: SearchViewModel
+    let constructorProvider: ConstructorIOProvider
 
-    init(viewModel: SearchViewModel){
+    init(viewModel: SearchViewModel, constructorProvider: ConstructorIOProvider){
         self.viewModel = viewModel
+        self.constructorProvider = constructorProvider
         super.init(nibName: "SearchViewController", bundle: nil)
     }
 
@@ -29,7 +31,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        CartBarButtonItem.addToViewController(viewController: self, cart: self.viewModel.cart)
+        CartBarButtonItem.addToViewController(viewController: self, cart: self.viewModel.cart, constructorProvider: self.constructorProvider)
 
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -91,7 +93,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
         self.viewModel.constructor.trackSearchResultClick(itemName: model.title, customerID: "a-customer-id", searchTerm: self.viewModel.searchTerm, sectionName: nil, completionHandler: nil)
 
         let viewModel = DetailsViewModel(title: model.title, price: model.price, image: cell.imageView.image, imageURL: model.imageURL, description: model.description, cart: self.viewModel.cart)
-        let detailsVC = DetailsViewController(viewModel: viewModel)
+        let detailsVC = DetailsViewController(viewModel: viewModel, constructorProvider: self.constructorProvider)
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 

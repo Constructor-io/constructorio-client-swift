@@ -2,8 +2,8 @@
 //  CartViewController.swift
 //  UserApplication
 //
-//  Created by Nikola Markovic on 11/27/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import UIKit
@@ -40,7 +40,24 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.allowsSelection = true
     }
 
-    @IBAction func didTapOnButtonCheckout(_ sender: Any) {}
+    @IBAction func didTapOnButtonCheckout(_ sender: Any) {
+        let itemCount = self.viewModel.cart.quantity
+        if itemCount == 0{
+            return
+        }
+
+        let itemCountString = "\(itemCount)"
+        let alert = UIAlertController(title: "Success", message: "You have successfully bought \(itemCountString) items.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Great!", style: .default, handler: nil))
+
+        self.viewModel.constructor.trackPurchase(customerIDs: ["customer-id-1"], sectionName: nil, completionHandler: nil)
+
+        self.present(alert, animated: true) { [weak self] in
+            guard let sself = self else { return }
+            sself.viewModel.removeAllItems()
+            sself.tableView.reloadData()
+        }
+    }
     
     @IBAction func didTapOnButtonClearCart(_ sender: Any) {
         if self.viewModel.items.count == 0{

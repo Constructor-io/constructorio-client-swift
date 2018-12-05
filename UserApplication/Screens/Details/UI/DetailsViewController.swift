@@ -2,8 +2,8 @@
 //  DetailsViewController.swift
 //  UserApplication
 //
-//  Created by Nikola Markovic on 11/27/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import UIKit
@@ -15,11 +15,12 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var buttonBuy: UIButton!
 
     let viewModel: DetailsViewModel
-
+    let constructorProvider: ConstructorIOProvider
     var cartButton: CartBarButtonItem!
 
-    init(viewModel: DetailsViewModel){
+    init(viewModel: DetailsViewModel, constructorProvider: ConstructorIOProvider){
         self.viewModel = viewModel
+        self.constructorProvider = constructorProvider
         super.init(nibName: "DetailsViewController", bundle: nil)
     }
 
@@ -33,7 +34,7 @@ class DetailsViewController: UIViewController {
     }
 
     func setupUI(){
-        self.cartButton = CartBarButtonItem.addToViewController(viewController: self, cart: self.viewModel.cart)
+        self.cartButton = CartBarButtonItem.addToViewController(viewController: self, cart: self.viewModel.cart, constructorProvider: self.constructorProvider)
 
         self.labelDescription.text = self.viewModel.description
         if let image = self.viewModel.image{

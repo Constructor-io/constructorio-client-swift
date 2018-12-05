@@ -67,6 +67,7 @@
 		F60DF22C215D639900730339 /* ConstructorIOConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DF22B215D639900730339 /* ConstructorIOConfig.swift */; };
 		F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */; };
 		F621DBA121B81EF600DAF1CE /* NoSessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29B321762BD700DCFA07 /* NoSessionLoader.swift */; };
+		F621DBA421B8347F00DAF1CE /* ConstructorIOProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621DBA321B8347F00DAF1CE /* ConstructorIOProvider.swift */; };
 		F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510C420529DD40040E3DF /* Collection+MapKeys.swift */; };
 		F62510C82052CC6B0040E3DF /* CIOSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510C72052CC6B0040E3DF /* CIOSessionManager.swift */; };
 		F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510C92052CF240040E3DF /* SessionManager.swift */; };
@@ -301,6 +302,7 @@
 		F60BEA211F5726D8008F0053 /* EmptyScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyScreenView.xib; sourceTree = "<group>"; };
 		F60DF22B215D639900730339 /* ConstructorIOConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorIOConfig.swift; sourceTree = "<group>"; };
 		F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
+		F621DBA321B8347F00DAF1CE /* ConstructorIOProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOProvider.swift; sourceTree = "<group>"; };
 		F62510C420529DD40040E3DF /* Collection+MapKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+MapKeys.swift"; sourceTree = "<group>"; };
 		F62510C72052CC6B0040E3DF /* CIOSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSessionManager.swift; sourceTree = "<group>"; };
 		F62510C92052CF240040E3DF /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -750,6 +752,14 @@
 			name = Delegate;
 			sourceTree = "<group>";
 		};
+		F621DBA221B8346700DAF1CE /* Constructor */ = {
+			isa = PBXGroup;
+			children = (
+				F621DBA321B8347F00DAF1CE /* ConstructorIOProvider.swift */,
+			);
+			path = Constructor;
+			sourceTree = "<group>";
+		};
 		F62510C320529DC70040E3DF /* Collection */ = {
 			isa = PBXGroup;
 			children = (
@@ -898,6 +908,7 @@
 		F6339A5721AD69F500EC6291 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F621DBA221B8346700DAF1CE /* Constructor */,
 				F6339A5821AD6A0D00EC6291 /* CartBarButtonItem.swift */,
 				F6339A5F21AD755C00EC6291 /* BadgeView.swift */,
 			);
@@ -1782,6 +1793,7 @@
 				F6339A6521AD7D0100EC6291 /* CartItem.swift in Sources */,
 				F6339A7421AE9A5600EC6291 /* Quantity.swift in Sources */,
 				F6339A5221AD5FED00EC6291 /* DetailsViewModel.swift in Sources */,
+				F621DBA421B8347F00DAF1CE /* ConstructorIOProvider.swift in Sources */,
 				F6339A4521AD2E4400EC6291 /* SearchResultViewModel.swift in Sources */,
 				F6339A5921AD6A0D00EC6291 /* CartBarButtonItem.swift in Sources */,
 				F6339A5D21AD6DDD00EC6291 /* CartViewController.swift in Sources */,

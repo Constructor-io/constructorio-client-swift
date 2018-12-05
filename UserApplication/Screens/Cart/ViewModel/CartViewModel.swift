@@ -2,19 +2,22 @@
 //  CartViewModel.swift
 //  UserApplication
 //
-//  Created by Nikola Markovic on 11/28/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import Foundation
+import ConstructorAutocomplete
 
 class CartViewModel {
 
     var items: [CartItemViewModel]
     let cart: Cart
+    let constructor: ConstructorIO
 
-    init(cart: Cart){
+    init(cart: Cart, constructor: ConstructorIO){
         self.cart = cart
+        self.constructor = constructor
         self.items = []
         self.reloadItems()
     }

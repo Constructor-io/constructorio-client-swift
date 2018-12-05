@@ -2,15 +2,15 @@
 //  SearchViewModel.swift
 //  UserApplication
 //
-//  Created by Nikola Markovic on 11/27/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import Foundation
 import ConstructorAutocomplete
 import CoreGraphics
 
-class SearchViewModel{
+class SearchViewModel: ConstructorIOProvider{
 
     let title: String
 
@@ -27,11 +27,11 @@ class SearchViewModel{
 
     let cart: Cart
 
-    init(term: String, group: CIOGroup?, constructor: ConstructorIO, cart: Cart){
+    init(term: String, group: CIOGroup?, constructorProvider: ConstructorIOProvider, cart: Cart){
         self.searchTerm = term
         self.groupID = group?.groupID
         self.groupName = group?.displayName
-        self.constructor = constructor
+        self.constructor = constructorProvider.provideConstructorInstance()
         self.cart = cart
 
         if let groupName = groupName{
@@ -55,5 +55,9 @@ class SearchViewModel{
                 completionHandler()
             }
         }
+    }
+
+    func provideConstructorInstance() -> ConstructorIO {
+        return self.constructor
     }
 }

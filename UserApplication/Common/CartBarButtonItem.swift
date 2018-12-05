@@ -2,8 +2,8 @@
 //  CartBarButtonItem.swift
 //  UserApplication
 //
-//  Created by Nikola Markovic on 11/27/18.
-//  Copyright © 2018 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import UIKit
@@ -14,15 +14,18 @@ class CartBarButtonItem: UIBarButtonItem {
     weak var cart: Cart?
 
     private let badgeView = BadgeView()
+    private let constructorProvider: ConstructorIOProvider
+
 
     @discardableResult
-    class func addToViewController(viewController: UIViewController, cart: Cart) -> CartBarButtonItem{
-        let cartButton = CartBarButtonItem(viewController: viewController, cart: cart)
+    class func addToViewController(viewController: UIViewController, cart: Cart, constructorProvider: ConstructorIOProvider) -> CartBarButtonItem{
+        let cartButton = CartBarButtonItem(viewController: viewController, cart: cart, constructorProvider: constructorProvider)
         viewController.navigationItem.rightBarButtonItem = cartButton
         return cartButton
     }
 
-    init(viewController: UIViewController, cart: Cart){
+    init(viewController: UIViewController, cart: Cart, constructorProvider: ConstructorIOProvider){
+        self.constructorProvider = constructorProvider
         super.init()
         self.parentController = viewController
         self.cart = cart
@@ -68,7 +71,7 @@ class CartBarButtonItem: UIBarButtonItem {
     @objc
     func didTapOnButtonCart(){
         guard let cart = self.cart else { return }
-        let viewModel = CartViewModel(cart: cart)
+        let viewModel = CartViewModel(cart: cart, constructor: self.constructorProvider.provideConstructorInstance())
         let cartVC = CartViewController(viewModel: viewModel)
         parentController?.navigationController?.pushViewController(cartVC, animated: true)
     }
