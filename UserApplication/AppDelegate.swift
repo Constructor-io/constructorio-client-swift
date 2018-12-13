@@ -46,8 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
         let key = "key_OucJxxrfiTVUQx0C"
-        let config = ConstructorIOConfig(apiKey: key,
-                                        resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]))
+        let config = ConstructorIOConfig(
+            apiKey: key,
+            resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]),
+            testCells: [
+                CIOABTestCell(key: "hi", value: "there"),
+                CIOABTestCell(key: "howare", value: "you")
+            ])
         let viewController = CIOAutocompleteViewController(config: config)
         viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.navigationBar
         viewController.searchBarShouldShowCancelButton = false
