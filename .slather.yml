@@ -3,7 +3,3 @@
 scheme: AutocompleteClient
 workspace: AutocompleteClient.xcworkspace
 xcodeproj:  AutocompleteClient.xcodeproj
-ignore: 
-  - AutocompleteClientTests/*
-  - AutocompleteClient/FW/UI/*
-  - AutocompleteClient/Utils/**/UI*
