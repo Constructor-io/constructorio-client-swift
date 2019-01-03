@@ -8,9 +8,9 @@
 
 import UIKit
 
-struct Constants {
+public struct Constants {
 
-    static var versionString: () -> String = {
+    public static var versionString: () -> String = {
         var prefix = "cioios-"
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             return "\(prefix)\(version)"
@@ -19,7 +19,7 @@ struct Constants {
         }
     }
 
-    struct UI {
+    public struct UI {
         static let CellIdentifier = "SearchItemCellID"
 
         static let defaultFontSize: CGFloat = 16

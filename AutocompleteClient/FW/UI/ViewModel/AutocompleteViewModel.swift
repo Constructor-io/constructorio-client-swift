@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AutocompleteViewModel {
+public class AutocompleteViewModel {
 
     let handleResultQueue: OperationQueue
 
@@ -20,7 +20,7 @@ class AutocompleteViewModel {
 
     weak var delegate: AutocompleteViewModelDelegate?
 
-    init() {
+    public init() {
         self.results = []
         self.searchTerm = ""
         self.screenTitle = Constants.UI.defaultScreenTitle
@@ -45,7 +45,7 @@ class AutocompleteViewModel {
                                           .sorted { (s1, s2) in self.modelSorter(s1.sectionName, s2.sectionName) }
     }
 
-    func set(searchResult: AutocompleteResult, completionHandler: @escaping () -> Void) {
+    public func set(searchResult: AutocompleteResult, completionHandler: @escaping () -> Void) {
         self.handleResultQueue.addOperation { [weak self] in
             guard let selfRef = self else {
                 return
@@ -66,11 +66,11 @@ class AutocompleteViewModel {
         }
     }
 
-    func getResult(atIndexPath indexPath: IndexPath) -> CIOResult {
+    public func getResult(atIndexPath indexPath: IndexPath) -> CIOResult {
         return results[indexPath.section].items[indexPath.row]
     }
 
-    func getSectionName(atIndex index: Int) -> String {
+    public func getSectionName(atIndex index: Int) -> String {
         return results[index].sectionName
     }
 }

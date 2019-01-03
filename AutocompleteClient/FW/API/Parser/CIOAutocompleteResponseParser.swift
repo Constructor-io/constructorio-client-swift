@@ -8,11 +8,13 @@
 
 import Foundation
 
-struct CIOAutocompleteResponseParser: AbstractResponseParser {
+public struct CIOAutocompleteResponseParser: AbstractResponseParser {
 
-    weak var delegate: ResponseParserDelegate?
+    public weak var delegate: ResponseParserDelegate?
 
-    func parse(autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
+    public init(){}
+
+    public func parse(autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
         do {
             if let json = try JSONSerialization.jsonObject(with: autocompleteResponseData) as? JSONObject {
                 let isSingleSection = json.keys.contains(Constants.Response.singleSectionResultField)

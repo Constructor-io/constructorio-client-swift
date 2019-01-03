@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AutocompleteViewModelSection {
+public struct AutocompleteViewModelSection {
     let items: [CIOResult]
     let sectionName: String
 }

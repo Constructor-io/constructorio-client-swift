@@ -18,7 +18,7 @@ public class CIOHighlighter {
      */
     public var attributesProvider: CIOHighlightingAttributesProvider
 
-    init(attributesProvider: CIOHighlightingAttributesProvider) {
+    public init(attributesProvider: CIOHighlightingAttributesProvider) {
         self.attributesProvider = attributesProvider
     }
 

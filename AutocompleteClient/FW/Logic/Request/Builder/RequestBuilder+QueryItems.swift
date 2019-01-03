@@ -10,59 +10,59 @@ import Foundation
 
 extension RequestBuilder {
 
-    func addTriggerQueryItem() {
+    public func addTriggerQueryItem() {
         queryItems.add(URLQueryItem(name: Constants.Track.trigger, value: Constants.Track.triggerType))
     }
 
-    func set(originalQuery: String) {
+    public func set(originalQuery: String) {
         queryItems.add(URLQueryItem(name: Constants.Track.originalQuery, value: originalQuery))
     }
 
-    func set(groupName: String) {
+    public func set(groupName: String) {
         queryItems.add(URLQueryItem(name: Constants.Track.groupName, value: groupName))
     }
 
-    func set(groupID: String) {
+    public func set(groupID: String) {
         queryItems.add(URLQueryItem(name: Constants.Track.groupID, value: groupID))
     }
 
-    func set(searchTerm: String) {
+    public func set(searchTerm: String) {
         queryItems.add(URLQueryItem(name: Constants.Track.searchTerm, value: searchTerm))
     }
 
-    func set(name: String?) {
+    public func set(name: String?) {
         guard let name = name else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.name, value: name))
     }
 
-    func set(customerID: String?) {
+    public func set(customerID: String?) {
         guard let customerID = customerID else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.customerID, value: customerID))
     }
 
-    func set(customerIDs: [String]?) {
+    public func set(customerIDs: [String]?) {
         guard let customerIDs = customerIDs else { return }
         for (index, customerID) in customerIDs.enumerated() {
             queryItems.addMultiple(index: index, item: URLQueryItem(name: Constants.Track.customerIDs, value: customerID))
         }
     }
 
-    func set(autocompleteSection: String?) {
+    public func set(autocompleteSection: String?) {
         guard let sectionName = autocompleteSection else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.autocompleteSection, value: sectionName))
     }
 
-    func set(revenue: Double?) {
+    public func set(revenue: Double?) {
         guard let revenue = revenue else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(format: "%.2lf", revenue)))
     }
 
-    func set(numResults: Int?) {
+    public func set(numResults: Int?) {
         guard let numResults = numResults else { return }
         queryItems.add(URLQueryItem(name: Constants.AutocompleteQuery.numResults, value: String(numResults)))
     }
 
-    func set(numResultsForSection: [String: Int]?) {
+    public func set(numResultsForSection: [String: Int]?) {
         guard let numResultsForSection = numResultsForSection else { return }
         numResultsForSection.forEach {
             let name = Constants.AutocompleteQuery.queryItemForSection($0.key.replacingOccurrences(of: " ", with: "+"))
@@ -70,7 +70,7 @@ extension RequestBuilder {
         }
     }
 
-    func set(testCellKey: String, testCellValue: String) {
+    public func set(testCellKey: String, testCellValue: String) {
         let formattedKey = String(format: Constants.ABTesting.keyFormat, testCellKey)
         queryItems.add(URLQueryItem(name: formattedKey, value: testCellValue))
     }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class MockResponseParserDelegate: NSObject, ResponseParserDelegate {
 

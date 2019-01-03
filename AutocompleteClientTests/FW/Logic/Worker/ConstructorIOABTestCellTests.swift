@@ -9,7 +9,7 @@
 import XCTest
 import OHHTTPStubs
 import Foundation
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class ConstructorIOABTestCellTests: XCTestCase {
 
