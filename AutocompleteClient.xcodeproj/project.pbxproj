@@ -103,6 +103,11 @@
 		F65BBCBC21516107007FEB22 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
 		F65BBCBD21516107007FEB22 /* ConstructorAutocomplete.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F65BBCC22151621A007FEB22 /* IDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCC12151621A007FEB22 /* IDGenerator.swift */; };
+		F66B215D21DF7DF700AAB030 /* ErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B215C21DF7DF700AAB030 /* ErrorTests.swift */; };
+		F66B216121DF80F100AAB030 /* DataToJSONConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216021DF80F100AAB030 /* DataToJSONConversionTests.swift */; };
+		F66B216321DF837700AAB030 /* AutocompleteResultCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216221DF837700AAB030 /* AutocompleteResultCountTests.swift */; };
+		F66B216521DF851F00AAB030 /* StringTrimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216421DF851F00AAB030 /* StringTrimTests.swift */; };
+		F66B216721DF87EB00AAB030 /* UIColorRGBConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */; };
 		F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */; };
 		F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674157A204D489B004F313B /* MockResponseParserDelegate.swift */; };
 		F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */; };
@@ -297,6 +302,11 @@
 		F6548833208633E20044E403 /* NSAttributedString+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Build.swift"; sourceTree = "<group>"; };
 		F65BBCB721515E46007FEB22 /* ClientIDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientIDGenerator.swift; sourceTree = "<group>"; };
 		F65BBCC12151621A007FEB22 /* IDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDGenerator.swift; sourceTree = "<group>"; };
+		F66B215C21DF7DF700AAB030 /* ErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTests.swift; sourceTree = "<group>"; };
+		F66B216021DF80F100AAB030 /* DataToJSONConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataToJSONConversionTests.swift; sourceTree = "<group>"; };
+		F66B216221DF837700AAB030 /* AutocompleteResultCountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteResultCountTests.swift; sourceTree = "<group>"; };
+		F66B216421DF851F00AAB030 /* StringTrimTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrimTests.swift; sourceTree = "<group>"; };
+		F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorRGBConversionTests.swift; sourceTree = "<group>"; };
 		F674157A204D489B004F313B /* MockResponseParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FindSubview.swift"; sourceTree = "<group>"; };
 		F67BFC9420B845D300986557 /* UISearchBar+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+TextField.swift"; sourceTree = "<group>"; };
@@ -393,6 +403,7 @@
 		0870E4E22162C5630065BA05 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				F66B215B21DF7DE600AAB030 /* Error */,
 				0870E4E32162C5680065BA05 /* Parser */,
 			);
 			path = API;
@@ -792,6 +803,7 @@
 				F64F46B41F5975070094C697 /* AutocompleteResultTests.swift */,
 				F64F46B61F59767D0094C697 /* AutocompleteViewModelTests.swift */,
 				F64F46C21F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift */,
+				F66B216221DF837700AAB030 /* AutocompleteResultCountTests.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -905,6 +917,24 @@
 			path = ClientID;
 			sourceTree = "<group>";
 		};
+		F66B215B21DF7DE600AAB030 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				F66B215C21DF7DF700AAB030 /* ErrorTests.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		F66B215F21DF80D600AAB030 /* HelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				F66B216021DF80F100AAB030 /* DataToJSONConversionTests.swift */,
+				F66B216421DF851F00AAB030 /* StringTrimTests.swift */,
+				F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */,
+			);
+			path = HelperTests;
+			sourceTree = "<group>";
+		};
 		F6852554213BCE8B00A27FAA /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -966,6 +996,7 @@
 		F688A44C1F56B4B600F169C1 /* AutocompleteClientTests */ = {
 			isa = PBXGroup;
 			children = (
+				F66B215F21DF80D600AAB030 /* HelperTests */,
 				08F771702162C277005FDF06 /* FW */,
 				F64F46AB1F5963A60094C697 /* Test Utils */,
 				F64F46A81F5960CC0094C697 /* Resources */,
@@ -1575,15 +1606,20 @@
 				F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */,
 				F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */,
 				F64F46C31F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift in Sources */,
+				F66B216121DF80F100AAB030 /* DataToJSONConversionTests.swift in Sources */,
 				F64E94E9212DC93300E50EDE /* ConstructorIOAutocompleteTests.swift in Sources */,
 				F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */,
 				F62510D120568F250040E3DF /* SessionManagerTests.swift in Sources */,
+				F66B216721DF87EB00AAB030 /* UIColorRGBConversionTests.swift in Sources */,
 				0879E93F215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift in Sources */,
 				F6EC29AB2175161300DCFA07 /* ClosureSessionManagerDelegate.swift in Sources */,
 				F63808FF1F5D6C1000C3B322 /* ConstructorIOTests.swift in Sources */,
 				0874A32E216BCE2700812CDC /* ConstructorIOABTestCellTests.swift in Sources */,
 				F64F46B71F59767D0094C697 /* AutocompleteViewModelTests.swift in Sources */,
+				F66B216321DF837700AAB030 /* AutocompleteResultCountTests.swift in Sources */,
+				F66B215D21DF7DF700AAB030 /* ErrorTests.swift in Sources */,
 				F64F46AF1F59641D0094C697 /* TestResource.swift in Sources */,
+				F66B216521DF851F00AAB030 /* StringTrimTests.swift in Sources */,
 				08465ECC2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift in Sources */,
 				F64F46BE1F59846E0094C697 /* XCTest+TimeoutFail.swift in Sources */,
 				F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */,

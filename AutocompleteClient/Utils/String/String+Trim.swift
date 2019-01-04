@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension String {
-    func trim() -> String {
+public extension String {
+    public func trim() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 }
