@@ -116,6 +116,7 @@
 		F66B217521E26ED400AAB030 /* CIOResult+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B217421E26ED400AAB030 /* CIOResult+Mock.swift */; };
 		F66B217621E271E900AAB030 /* DefaultSearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68A72FC1F56D31700FA4D1B /* DefaultSearchItemCell.xib */; };
 		F66B217821E2746900AAB030 /* CIOGroup+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B217721E2746900AAB030 /* CIOGroup+Mock.swift */; };
+		F66B217B21E275EE00AAB030 /* QueryItemCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B217A21E275EE00AAB030 /* QueryItemCollectionTests.swift */; };
 		F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */; };
 		F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674157A204D489B004F313B /* MockResponseParserDelegate.swift */; };
 		F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */; };
@@ -322,6 +323,7 @@
 		F66B217221E26E0A00AAB030 /* DefaultSearchItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchItemCellTests.swift; sourceTree = "<group>"; };
 		F66B217421E26ED400AAB030 /* CIOResult+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIOResult+Mock.swift"; sourceTree = "<group>"; };
 		F66B217721E2746900AAB030 /* CIOGroup+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIOGroup+Mock.swift"; sourceTree = "<group>"; };
+		F66B217A21E275EE00AAB030 /* QueryItemCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItemCollectionTests.swift; sourceTree = "<group>"; };
 		F674157A204D489B004F313B /* MockResponseParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FindSubview.swift"; sourceTree = "<group>"; };
 		F67BFC9420B845D300986557 /* UISearchBar+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+TextField.swift"; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 		F60FE9071F5C5B860037A0AB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F66B217921E275DC00AAB030 /* QueryItemCollection */,
 				F6852554213BCE8B00A27FAA /* Mock */,
 				F64E94E0212D835700E50EDE /* Matchers */,
 				F60FE9091F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift */,
@@ -971,6 +974,14 @@
 				F66B217221E26E0A00AAB030 /* DefaultSearchItemCellTests.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		F66B217921E275DC00AAB030 /* QueryItemCollection */ = {
+			isa = PBXGroup;
+			children = (
+				F66B217A21E275EE00AAB030 /* QueryItemCollectionTests.swift */,
+			);
+			path = QueryItemCollection;
 			sourceTree = "<group>";
 		};
 		F6852554213BCE8B00A27FAA /* Mock */ = {
@@ -1642,6 +1653,7 @@
 				F64F46B51F5975070094C697 /* AutocompleteResultTests.swift in Sources */,
 				F1C557451F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift in Sources */,
 				F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */,
+				F66B217B21E275EE00AAB030 /* QueryItemCollectionTests.swift in Sources */,
 				089399E12161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift in Sources */,
 				F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */,
 				F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */,
