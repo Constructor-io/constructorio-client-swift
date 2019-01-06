@@ -14,7 +14,7 @@ public class CIOGroup: NSObject {
     public let groupID: String
     public let path: String?
 
-    init(displayName: String, groupID: String, path: String?) {
+    public init(displayName: String, groupID: String, path: String?) {
         self.displayName = displayName
         self.groupID = groupID
         self.path = path

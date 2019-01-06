@@ -60,7 +60,7 @@ public class CIOAutocompleteViewController: UIViewController {
 
     fileprivate var errorView: CIOErrorView?
 
-    fileprivate var viewModel = AutocompleteViewModel()
+    fileprivate var viewModel: AbstractAutocompleteViewModel = AutocompleteViewModel()
 
     /**
      Default constructorIO instance.
@@ -267,12 +267,7 @@ public class CIOAutocompleteViewController: UIViewController {
         self.errorView = errorView
     }
 
-    @objc
-    fileprivate func timerFire(timer: Timer) {
-        guard let searchTerm = timer.userInfo as? String else {
-            return
-        }
-
+    public func setTimerFired(with searchTerm: String){
         var sectionConfiguration: [String: Int]
 
         if let sectionMapping = self.config.resultCount?.numResultsForSection {
@@ -309,6 +304,15 @@ public class CIOAutocompleteViewController: UIViewController {
             result.response = response
             self?.setResultsReceived(from: result)
         }
+    }
+
+    @objc
+    fileprivate func timerFire(timer: Timer) {
+        guard let searchTerm = timer.userInfo as? String else {
+            return
+        }
+
+        self.setTimerFired(with: searchTerm)
     }
 
 }

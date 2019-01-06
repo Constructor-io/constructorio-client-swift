@@ -108,6 +108,14 @@
 		F66B216321DF837700AAB030 /* AutocompleteResultCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216221DF837700AAB030 /* AutocompleteResultCountTests.swift */; };
 		F66B216521DF851F00AAB030 /* StringTrimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216421DF851F00AAB030 /* StringTrimTests.swift */; };
 		F66B216721DF87EB00AAB030 /* UIColorRGBConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */; };
+		F66B216921DF8A8C00AAB030 /* SearchBarTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216821DF8A8C00AAB030 /* SearchBarTextFieldTests.swift */; };
+		F66B216B21DF8B9900AAB030 /* UIViewAnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216A21DF8B9900AAB030 /* UIViewAnimationTests.swift */; };
+		F66B216D21DF8DBA00AAB030 /* SearchSuggestionStringConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216C21DF8DBA00AAB030 /* SearchSuggestionStringConversionTests.swift */; };
+		F66B217021DF8FC100AAB030 /* AutocompleteViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216F21DF8FC100AAB030 /* AutocompleteViewControllerTests.swift */; };
+		F66B217321E26E0A00AAB030 /* DefaultSearchItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B217221E26E0A00AAB030 /* DefaultSearchItemCellTests.swift */; };
+		F66B217521E26ED400AAB030 /* CIOResult+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B217421E26ED400AAB030 /* CIOResult+Mock.swift */; };
+		F66B217621E271E900AAB030 /* DefaultSearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68A72FC1F56D31700FA4D1B /* DefaultSearchItemCell.xib */; };
+		F66B217821E2746900AAB030 /* CIOGroup+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B217721E2746900AAB030 /* CIOGroup+Mock.swift */; };
 		F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */; };
 		F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674157A204D489B004F313B /* MockResponseParserDelegate.swift */; };
 		F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */; };
@@ -307,6 +315,13 @@
 		F66B216221DF837700AAB030 /* AutocompleteResultCountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteResultCountTests.swift; sourceTree = "<group>"; };
 		F66B216421DF851F00AAB030 /* StringTrimTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrimTests.swift; sourceTree = "<group>"; };
 		F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorRGBConversionTests.swift; sourceTree = "<group>"; };
+		F66B216821DF8A8C00AAB030 /* SearchBarTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTextFieldTests.swift; sourceTree = "<group>"; };
+		F66B216A21DF8B9900AAB030 /* UIViewAnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAnimationTests.swift; sourceTree = "<group>"; };
+		F66B216C21DF8DBA00AAB030 /* SearchSuggestionStringConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionStringConversionTests.swift; sourceTree = "<group>"; };
+		F66B216F21DF8FC100AAB030 /* AutocompleteViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteViewControllerTests.swift; sourceTree = "<group>"; };
+		F66B217221E26E0A00AAB030 /* DefaultSearchItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchItemCellTests.swift; sourceTree = "<group>"; };
+		F66B217421E26ED400AAB030 /* CIOResult+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIOResult+Mock.swift"; sourceTree = "<group>"; };
+		F66B217721E2746900AAB030 /* CIOGroup+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIOGroup+Mock.swift"; sourceTree = "<group>"; };
 		F674157A204D489B004F313B /* MockResponseParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FindSubview.swift"; sourceTree = "<group>"; };
 		F67BFC9420B845D300986557 /* UISearchBar+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+TextField.swift"; sourceTree = "<group>"; };
@@ -460,6 +475,8 @@
 				F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */,
 				F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */,
 				F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */,
+				F66B217421E26ED400AAB030 /* CIOResult+Mock.swift */,
+				F66B217721E2746900AAB030 /* CIOGroup+Mock.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -792,6 +809,8 @@
 		F64F46B21F5974BA0094C697 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F66B217121E26DF900AAB030 /* Other */,
+				F66B216E21DF8FAE00AAB030 /* ViewController */,
 				F64F46B31F5974CC0094C697 /* ViewModel */,
 			);
 			path = UI;
@@ -931,8 +950,27 @@
 				F66B216021DF80F100AAB030 /* DataToJSONConversionTests.swift */,
 				F66B216421DF851F00AAB030 /* StringTrimTests.swift */,
 				F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */,
+				F66B216821DF8A8C00AAB030 /* SearchBarTextFieldTests.swift */,
+				F66B216A21DF8B9900AAB030 /* UIViewAnimationTests.swift */,
+				F66B216C21DF8DBA00AAB030 /* SearchSuggestionStringConversionTests.swift */,
 			);
 			path = HelperTests;
+			sourceTree = "<group>";
+		};
+		F66B216E21DF8FAE00AAB030 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F66B216F21DF8FC100AAB030 /* AutocompleteViewControllerTests.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F66B217121E26DF900AAB030 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				F66B217221E26E0A00AAB030 /* DefaultSearchItemCellTests.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		F6852554213BCE8B00A27FAA /* Mock */ = {
@@ -1431,6 +1469,7 @@
 				F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */,
 				F64F46B11F5970140094C697 /* response_json_single_section.json in Resources */,
 				F6D2E9C120DBDCCA007F8761 /* response_json_single_result.json in Resources */,
+				F66B217621E271E900AAB030 /* DefaultSearchItemCell.xib in Resources */,
 				F64F46AA1F5960FB0094C697 /* response_json_multiple_sections.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1596,6 +1635,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F66B217021DF8FC100AAB030 /* AutocompleteViewControllerTests.swift in Sources */,
+				F66B216B21DF8B9900AAB030 /* UIViewAnimationTests.swift in Sources */,
 				08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */,
 				08689F0121897914000D3565 /* ConstructorIOUserIDTests.swift in Sources */,
 				F64F46B51F5975070094C697 /* AutocompleteResultTests.swift in Sources */,
@@ -1615,6 +1656,7 @@
 				F6EC29AB2175161300DCFA07 /* ClosureSessionManagerDelegate.swift in Sources */,
 				F63808FF1F5D6C1000C3B322 /* ConstructorIOTests.swift in Sources */,
 				0874A32E216BCE2700812CDC /* ConstructorIOABTestCellTests.swift in Sources */,
+				F66B216D21DF8DBA00AAB030 /* SearchSuggestionStringConversionTests.swift in Sources */,
 				F64F46B71F59767D0094C697 /* AutocompleteViewModelTests.swift in Sources */,
 				F66B216321DF837700AAB030 /* AutocompleteResultCountTests.swift in Sources */,
 				F66B215D21DF7DF700AAB030 /* ErrorTests.swift in Sources */,
@@ -1627,12 +1669,16 @@
 				F64E94DD212D7EC300E50EDE /* ConstructorIOTrackingTests.swift in Sources */,
 				F6EC29B421762BD700DCFA07 /* NoSessionLoader.swift in Sources */,
 				089399DF2161B92600BFE3D9 /* TrackInputFocusRequestBuilderTests.swift in Sources */,
+				F66B216921DF8A8C00AAB030 /* SearchBarTextFieldTests.swift in Sources */,
 				089399E32161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */,
 				F64F46AD1F5963AF0094C697 /* Bundle+Test.swift in Sources */,
 				F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */,
+				F66B217321E26E0A00AAB030 /* DefaultSearchItemCellTests.swift in Sources */,
 				08465ECA2161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift in Sources */,
+				F66B217521E26ED400AAB030 /* CIOResult+Mock.swift in Sources */,
 				F64F46C11F59850C0094C697 /* TestConstants.swift in Sources */,
 				F1C557411F5F67CA0040D6AD /* CIOHighlighterTests.swift in Sources */,
+				F66B217821E2746900AAB030 /* CIOGroup+Mock.swift in Sources */,
 				F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */,
 				F62510D3205690670040E3DF /* ClosureDateProvider.swift in Sources */,
 				F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */,
