@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = 'https://www.constructor.io'
   spec.authors      = { 'Zubin Tiku' => 'zubin@constructor.io', 'Edmund Mok' => 'edmund@constructor.io', 'Nikola Markovic' => 'nikola.markovic@toptal.com' }
   spec.summary      = 'Constructor.io iOS autosuggest client.'
-  spec.source       = { :git => 'https://github.com/Constructor-io/constructorio-client-swift.git' }
+  spec.source       = { :git => 'https://github.com/Constructor-io/constructorio-client-swift.git', :tag => 'v1.6.1' }
   spec.platform     = :ios, '8.0'
   spec.source_files = 'AutocompleteClient/**/*.swift'
   spec.framework    = 'UIKit'
