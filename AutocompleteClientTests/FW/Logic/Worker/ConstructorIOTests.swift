@@ -12,7 +12,7 @@ import XCTest
 class ConstructorIOTests: XCTestCase {
 
     var networkClient: NetworkClient!
-    
+
     override  func setUp() {
         super.setUp()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
@@ -115,17 +115,17 @@ class ConstructorIOTests: XCTestCase {
         })
         self.waitForExpectationWithDefaultHandler()
     }
-    
-    func testConstructor_sessionIDPropertyIsAccessible(){
+
+    func testConstructor_sessionIDPropertyIsAccessible() {
         let constructor = TestConstants.testConstructor()
-        
+
         XCTAssertNotNil(constructor.sessionID, "Session ID shouldn't be nil")
     }
-    
-    func testConstructor_clientIDPropertyIsAccessible(){
+
+    func testConstructor_clientIDPropertyIsAccessible() {
         let constructor = TestConstants.testConstructor()
-        
+
         XCTAssertNotNil(constructor.clientID, "Client ID shouldn't be nil")
     }
-    
+
 }

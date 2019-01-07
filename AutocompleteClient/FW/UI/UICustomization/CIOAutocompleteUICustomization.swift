@@ -35,7 +35,7 @@ public protocol CIOAutocompleteUICustomization: class {
      */
     @objc
     optional func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController)
-    
+
     /**
      Styles the cell label used in the default UI. This method will not be called if you're using a custom cell nib or class.
      
@@ -96,7 +96,7 @@ public protocol CIOAutocompleteUICustomization: class {
      */
     @objc
     optional func shouldShowSectionHeader(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> Bool
-    
+
     /**
      Provides a section header view.
      
@@ -107,7 +107,7 @@ public protocol CIOAutocompleteUICustomization: class {
      */
     @objc
     optional func sectionHeaderView(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> UIView?
-    
+
     /**
      Provides a section header view height. 44 by default
      
@@ -118,7 +118,7 @@ public protocol CIOAutocompleteUICustomization: class {
      */
     @objc
     optional func sectionHeaderViewHeight(sectionName: String, in autocompleteController: CIOAutocompleteViewController) -> CGFloat
-    
+
     /**
      Provides a search suggestion section display name. By default, this value is "Search Suggestions".
      
@@ -128,7 +128,7 @@ public protocol CIOAutocompleteUICustomization: class {
      */
     @objc
     optional func searchSuggestionsSectionName(in autocompleteController: CIOAutocompleteViewController) -> String
-    
+
     /**
      Provides the search bar placeholder.
      
@@ -158,7 +158,7 @@ public protocol CIOAutocompleteUICustomization: class {
      */
     @objc
     optional func sectionSort(in autocompleteController: CIOAutocompleteViewController) -> ((String, String) -> Bool)
-    
+
     /**
      Provides the view to be shown when an error occurs. Not implementing this method will show the default error view. The view should conform to the CIOErrorView protocol.
      

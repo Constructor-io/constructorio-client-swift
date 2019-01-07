@@ -18,7 +18,7 @@ public protocol CIOErrorView: class, NSObjectProtocol {
      - returns: UIView to be added to the view hierarchy if an error occurs.
     */
     func asView() -> UIView
-    
+
     /**
      Method called when if an error occurs.
      

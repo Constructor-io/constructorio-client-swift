@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct QueryItemCollection{
+struct QueryItemCollection {
     private var queryItems = [String: URLQueryItem]()
-    
-    mutating func add(_ item: URLQueryItem){
+
+    mutating func add(_ item: URLQueryItem) {
         self[item.name] = item
     }
 
@@ -31,8 +31,8 @@ struct QueryItemCollection{
             queryItems[name] = newValue
         }
     }
-    
-    func all() -> [URLQueryItem]{
+
+    func all() -> [URLQueryItem] {
         return Array<URLQueryItem>(self.queryItems.values)
     }
 }

@@ -54,8 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
                 CIOABTestCell(key: "howare", value: "you")
             ])
         let viewController = CIOAutocompleteViewController(config: config)
-       
-        viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.NavigationBar
+        viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.navigationBar
         viewController.searchBarShouldShowCancelButton = false
         
         // set the delegate in order to react to various events

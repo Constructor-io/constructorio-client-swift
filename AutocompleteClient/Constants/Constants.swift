@@ -12,16 +12,16 @@ struct Constants {
 
     static var versionString: () -> String = {
         var prefix = "cioios-"
-        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String{
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             return "\(prefix)\(version)"
-        }else{
+        } else {
             return prefix
         }
     }
-    
+
     struct UI {
         static let CellIdentifier = "SearchItemCellID"
-        
+
         static let defaultFontSize: CGFloat = 16
         static let defaultRowHeight: CGFloat = 50
         static let defaultSectionHeaderHeight: CGFloat = 44
@@ -35,7 +35,7 @@ struct Constants {
             static var defaultFontColorNormal: UIColor = UIColor(red: 0.61, green: 0.61, blue: 0.61, alpha: 1.0)
             static var defaultFontColorBold: UIColor = UIColor.black
         }
-        
+
         struct Font {
             static var defaultFontNormal: UIFont {
                 let fontSize: CGFloat = Constants.UI.defaultFontSize
@@ -48,7 +48,7 @@ struct Constants {
             }
         }
     }
-    
+
     struct ABTesting {
         static let keyFormat = "ef-%@"
     }
@@ -64,16 +64,16 @@ struct Constants {
     struct ClientID {
         static let key = "kClientID"
     }
-    
+
     struct AutocompleteQuery {
         static let pathString = "autocomplete"
         static let numResults = "num_results"
         static let numResultsForSectionNamePrefix = "num_results_"
         static let queryItemForSection = { (name: String) -> String in return Constants.AutocompleteQuery.numResultsForSectionNamePrefix + name }
-        
+
         static let sectionNameSearchSuggestions = "Search Suggestions"
         static let sectionNameProducts = "Products"
-        
+
         static let defaultItemCountPerSection = 10
     }
 
@@ -86,7 +86,7 @@ struct Constants {
         static let data = "data"
         static let value = "value"
         static let description = "description"
-        
+
         // groups
         static let groups = "groups"
         static let displayName = "display_name"
@@ -99,7 +99,7 @@ struct Constants {
         static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let expectedStatusCode = 204
-    
+
         static let autocompleteSection = "autocomplete_section"
         static let searchTerm = "term"
         static let trigger = "tr"
@@ -118,11 +118,11 @@ struct Constants {
     struct TrackSessionStart {
         static let format = "%@/behavior?action=session_start"
     }
-    
+
     struct TrackInputFocus {
         static let format = "%@/behavior?action=focus"
     }
-    
+
     struct TrackAutocompleteSelect {
         static let format = "%@/autocomplete/%@/select"
     }
@@ -130,15 +130,15 @@ struct Constants {
     struct TrackSearchSubmit {
         static let format = "%@/autocomplete/%@/search"
     }
-    
+
     struct TrackSearchResultsLoaded {
         static let format = "%@/behavior?action=search-results"
     }
-    
+
     struct TrackSearchResultClick {
         static let format = "%@/autocomplete/%@/click_through"
     }
-    
+
     struct TrackConversion {
         static let format = "%@/autocomplete/%@/conversion"
     }
@@ -147,13 +147,13 @@ struct Constants {
         static let format = "%@/autocomplete/TERM_UNKNOWN/purchase"
     }
 
-    struct Logging{
+    struct Logging {
         private static let prefix = "[ConstructorIO]:"
         private static let format: (_ message: String) -> String = { message in return "\(Logging.prefix) \(message)" }
         static let performURLRequest: (_ request: URLRequest) -> String = { request in return Logging.format("Performing URL Request \(request)") }
     }
-    
-    struct Session{
+
+    struct Session {
         static let key = "constructor.io/session"
         static let id = "constructor.io/session/id"
         static let createdAt = "constructor.io/session/createdAt"

@@ -12,16 +12,16 @@ import UIKit
  Class responsible for result highlighting. It uses attributesProvider to get the string styling attributes.
  */
 public class CIOHighlighter {
-    
+
     /**
      Provides higlighting attributes.
      */
     public var attributesProvider: CIOHighlightingAttributesProvider
-    
+
     init(attributesProvider: CIOHighlightingAttributesProvider) {
         self.attributesProvider = attributesProvider
     }
-    
+
     /**
      Highlights the parts of the string matched in the search term.
      
@@ -34,7 +34,7 @@ public class CIOHighlighter {
         // Tokenize search term
         let searchTokens = searchTerm.components(separatedBy: CharacterSet.alphanumerics.inverted)
         let finalString = NSMutableAttributedString()
-        
+
         // Match on tokenized results
         var iterator = itemTitle.makeIterator(characterSet: .alphanumerics)
         while let (matches, result) = iterator.next() {
@@ -43,20 +43,20 @@ public class CIOHighlighter {
                 finalString.append(NSAttributedString.build(string: result, attributes: self.attributesProvider.defaultSubstringAttributes()))
                 continue
             }
-            
+
             // An alphanumeric match
             // Check prefix match
             let (prefix, suffix) = getBestPrefixBetween(prefixers: searchTokens, prefixee: result)
-            
+
             // Add specified font for highlighted
             finalString.append(NSAttributedString.build(string: prefix, attributes: self.attributesProvider.highlightedSubstringAttributes()))
-            
+
             // Add specified font for non-highlighted
             finalString.append(NSAttributedString.build(string: suffix, attributes: self.attributesProvider.defaultSubstringAttributes()))
         }
         return finalString
     }
-    
+
     // Identify the best possible prefix match by any of the prefixers onto the given prefixee.
     private func getBestPrefixBetween(prefixers: [String], prefixee: String) -> (String, String) {
         var bestMatch = 0
@@ -68,8 +68,7 @@ public class CIOHighlighter {
             bestMatch = prefixer.count
         }
         let index = prefixee.index(prefixee.startIndex, offsetBy: bestMatch)
-        
+
         return (String(prefixee[..<index]), String(prefixee[index...]))
     }
 }
-

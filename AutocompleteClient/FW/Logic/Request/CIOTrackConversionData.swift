@@ -18,8 +18,8 @@ public struct CIOTrackConversionData: CIORequestData {
     public let customerID: String
     public var sectionName: String?
     public let revenue: Double?
-    
-    public var url: String{
+
+    public var url: String {
         return String(format: Constants.TrackConversion.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
@@ -30,7 +30,7 @@ public struct CIOTrackConversionData: CIORequestData {
         self.sectionName = sectionName
         self.revenue = revenue
     }
-    
+
     public func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(name: self.itemName)
         requestBuilder.set(customerID: self.customerID)

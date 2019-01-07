@@ -9,7 +9,7 @@
 import Foundation
 
 class URLSessionNetworkClient: NetworkClient {
-    
+
     func execute(_ request: URLRequest, completionHandler: @escaping (_ response: NetworkResponse) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             // Check for errors
@@ -39,9 +39,9 @@ class URLSessionNetworkClient: NetworkClient {
 
             completionHandler(NetworkResponse(data: data))
         }
-        
+
         task.resume()
-        
+
         ConstructorIO.logger.log(Constants.Logging.performURLRequest(request))
     }
 }
