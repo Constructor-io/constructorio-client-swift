@@ -161,11 +161,9 @@ public class CIOAutocompleteViewController: UIViewController {
             // function implemented
             if let view = backgroundViewClosure(self) {
                 backgroundView = view
-            } else {
-                // but it returns nil; it means user doesn't want a background view
             }
         } else {
-            // dataSource method not implemented; default to framework's empty screen
+            // uiCustomization method not implemented; default to framework's empty screen
             backgroundView = UINib(nibName: "EmptyScreenView", bundle: CIOAutocompleteViewController.bundle).instantiate(withOwner: nil, options: nil).first as? UIView
         }
 
@@ -235,7 +233,7 @@ public class CIOAutocompleteViewController: UIViewController {
         }
     }
 
-    fileprivate func displayError(error: Error) {
+    public func displayError(error: Error) {
         var errorView: CIOErrorView
 
         if let errorViewRef = self.errorView {
