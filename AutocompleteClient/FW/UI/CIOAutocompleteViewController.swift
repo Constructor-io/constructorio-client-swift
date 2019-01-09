@@ -215,7 +215,7 @@ public class CIOAutocompleteViewController: UIViewController {
         self.delegate?.autocompleteControllerWillAppear?(controller: self)
     }
 
-    fileprivate func setResultsReceived(from autocompleteResult: AutocompleteResult) {
+    public func setResultsReceived(from autocompleteResult: AutocompleteResult) {
         // we have data, hide error view if visible
         self.errorView?.asView().fadeOutAndRemove(duration: Constants.UI.fadeOutDuration)
 
@@ -312,7 +312,6 @@ public class CIOAutocompleteViewController: UIViewController {
 
         self.setTimerFired(with: searchTerm)
     }
-
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -358,7 +357,6 @@ extension CIOAutocompleteViewController: UITableViewDelegate, UITableViewDataSou
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
         return self.uiCustomization?.rowHeight?(in: self) ?? Constants.UI.defaultRowHeight
     }
 
@@ -396,6 +394,10 @@ extension CIOAutocompleteViewController: UITableViewDelegate, UITableViewDataSou
         }
     }
 
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let result = self.viewModel.getResult(atIndexPath: indexPath)
+        self.delegate?.autocompleteController?(controller: self, willDisplayResult: result, at: indexPath)
+    }
 }
 
 extension CIOAutocompleteViewController: UISearchBarDelegate {
@@ -428,7 +430,6 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
 
         // reschedule the timer
         self.timerQueryFire = Timer.scheduledTimer(timeInterval: Constants.UI.fireQueryDelayInSeconds, target: self, selector: #selector(timerFire), userInfo: searchTerm, repeats: false)
-
     }
 }
 

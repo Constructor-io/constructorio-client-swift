@@ -144,6 +144,36 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
     }
 
     func testAutocompleteViewController_CustomSortFunction(){
+
+    }
+
+
+    func testAutocompleteViewController_SetResultsReceived(){
+        self.expectation = XCTestExpectation(description: "Will show result should get called for the last result cell.")
+        self.initializeViewController()
+
+        let query = CIOAutocompleteQuery(query: "query")
+        let autocompleteResult = AutocompleteResult(query: query)
+        let results = (0...5).map { CIOResult.mock(withValue: "value\($0)") }
+        let sections = ["firstResponseSection": results]
+        let response = CIOAutocompleteResponse(sections: sections, metadata: [:], json: [:])
+        autocompleteResult.response = response
+
+        class MockDelegate: CIOAutocompleteDelegate{
+
+            let expectation: XCTestExpectation
+
+            init(expectation: XCTestExpectation){
+                self.expectation = expectation
+            }
+
+            func autocompleteController(controller: CIOAutocompleteViewController, willDisplayResult result: CIOResult, at indexPath: IndexPath) {
+                if indexPath.row == 4{
+                    self.expectation.fulfill()
+                }
+            }
+        }
+
         class UICustomization: CIOAutocompleteUICustomization{
             func sectionSort(in autocompleteController: CIOAutocompleteViewController) -> ((String, String) -> Bool) {
                 return { (s1: String, s2: String) -> Bool in
@@ -151,20 +181,58 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
                 }
             }
         }
-        self.initializeViewController(shouldCallViewDidLoad: false)
         let customization = UICustomization()
-        self.viewController.uiCustomization = customization
-        self.viewController.viewDidLoad()
+
+        let mockDelegate = MockDelegate(expectation: expectation)
+        self.viewController.delegate = mockDelegate
+
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+            self.viewController.setResultsReceived(from: autocompleteResult)
+
+            // attach custom sort function
+            self.viewController.uiCustomization = customization
+            self.viewController.setResultsReceived(from: autocompleteResult)
+
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+                _ = self.viewController.tableView(self.viewController.tableView, viewForHeaderInSection: 0)
+                _ = self.viewController.tableView(self.viewController.tableView, heightForHeaderInSection: 0)
+                for i in (0..<results.count){
+                    let indexPath = IndexPath(row: i, section: 0)
+                    _ = self.viewController.tableView(self.viewController.tableView, heightForRowAt: indexPath)
+                    let cell = self.viewController.tableView(self.viewController.tableView, cellForRowAt: indexPath)
+                    self.viewController.tableView(self.viewController.tableView, willDisplay: cell, forRowAt: indexPath)
+                    self.viewController.tableView(self.viewController.tableView, didSelectRowAt: indexPath)
+                    let _ = self.viewController.tableView(self.viewController.tableView, viewForHeaderInSection: 0)
+                }
+            }
+        }
+
+        self.waitForUIExpectation()
     }
 
-//
-//    func testAutocompleteViewController(){}
-//
-//    func testAutocompleteViewController(){}
-//
-//    func testAutocompleteViewController(){}
-//
+    func testAutocompleteViewController_SearchBarDelegate_ButtonClicked(){
+        self.initializeViewController()
+        self.viewController.searchBarSearchButtonClicked(self.viewController.searchController.searchBar)
+    }
 
+    func testAutocompleteViewController_SearchBarDelegate_ShouldBeginEditing(){
+        self.initializeViewController()
+        self.viewController.searchBarShouldBeginEditing(self.viewController.searchController.searchBar)
+    }
+
+    func testAutocompleteViewController_UISearchResultsUpdating_UpdateSearchResults(){
+        self.initializeViewController()
+        self.viewController.updateSearchResults(for: self.viewController.searchController)
+    }
+
+    func testAutocompleteViewController_UISearchResultsUpdating_UpdateSearchResults_WithSearchString(){
+        self.initializeViewController()
+        self.viewController.searchController.searchBar.text = "test"
+        self.viewController.updateSearchResults(for: self.viewController.searchController)
+    }
+//
+//    func testAutocompleteViewController(){}
+//
 
     func testAutocompleteViewController_TimerFired(){
         self.expectation = XCTestExpectation(description: "Timer should fire")
@@ -172,6 +240,38 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
 
         self.viewController.setTimerFired(with: "term")
         self.waitForUIExpectation()
+    }
+
+    func testAutocompleteViewControler_ShouldShowCancelButton(){
+        self.initializeViewController()
+
+        self.viewController.searchBarShouldShowCancelButton = true
+
+        XCTAssertTrue(self.viewController.searchBarShouldShowCancelButton)
+    }
+
+    func testAutocompleteViewControler_ConfigureWithoutAPIKey_CallsDelegateMethod(){
+        class MockDelegate: CIOAutocompleteDelegate{
+            let expectation: XCTestExpectation
+
+            init(expectation: XCTestExpectation){
+                self.expectation = expectation
+            }
+
+            func autocompleteController(controller: CIOAutocompleteViewController, errorDidOccur error: Error) {
+                XCTAssertEqual((error as? CIOError), CIOError.missingApiKey)
+                self.expectation.fulfill()
+            }
+        }
+
+        let config = ConstructorIOConfig(apiKey: "")
+        self.viewController = CIOAutocompleteViewController(config: config)
+
+        let expectation = XCTestExpectation(description: "delegate method errorDidOccur should get called.")
+        let del = MockDelegate(expectation: expectation)
+        self.viewController.delegate = del
+        self.viewController.viewDidLoad()
+        self.wait(for: [expectation], timeout: TestConstants.defaultExpectationTimeout)
     }
 
 //    func testAutocomplete_ResultSelected(){
@@ -200,11 +300,11 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
     }
 
     func autocompleteControllerWillAppear(controller: CIOAutocompleteViewController) {
-        self.expectation.fulfill()
+        self.expectation?.fulfill()
     }
 
     func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String) {
-        self.expectation.fulfill()
+        self.expectation?.fulfill()
     }
 
     var backgroundView: UIView = UIView(frame: .zero)

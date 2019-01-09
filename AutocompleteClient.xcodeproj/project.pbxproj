@@ -154,6 +154,7 @@
 		F6B352C01F5B498A0054D303 /* CustomTableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B352BF1F5B498A0054D303 /* CustomTableViewCellTwo.swift */; };
 		F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */ = {isa = PBXBuildFile; fileRef = F6B4627E1F6BA61C0082C20B /* response_json_multiple_groups.json */; };
 		F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B462811F6BACE80082C20B /* ResponseParserDelegate.swift */; };
+		F6D110BD21E50C7600094D71 /* AbstractAutocompleteViewModel+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D110BC21E50C7600094D71 /* AbstractAutocompleteViewModel+Mock.swift */; };
 		F6D2E9C120DBDCCA007F8761 /* response_json_single_result.json in Resources */ = {isa = PBXBuildFile; fileRef = F6D2E9C020DBDCCA007F8761 /* response_json_single_result.json */; };
 		F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */; };
 		F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */; };
@@ -363,6 +364,7 @@
 		F6B352BF1F5B498A0054D303 /* CustomTableViewCellTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellTwo.swift; sourceTree = "<group>"; };
 		F6B4627E1F6BA61C0082C20B /* response_json_multiple_groups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response_json_multiple_groups.json; sourceTree = "<group>"; };
 		F6B462811F6BACE80082C20B /* ResponseParserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParserDelegate.swift; sourceTree = "<group>"; };
+		F6D110BC21E50C7600094D71 /* AbstractAutocompleteViewModel+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AbstractAutocompleteViewModel+Mock.swift"; sourceTree = "<group>"; };
 		F6D2E9C020DBDCCA007F8761 /* response_json_single_result.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_json_single_result.json; sourceTree = "<group>"; };
 		F6D2E9C320DBDDBB007F8761 /* Data+ToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ToJSON.swift"; sourceTree = "<group>"; };
 		F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchResultsLoadedData.swift; sourceTree = "<group>"; };
@@ -474,11 +476,10 @@
 		F174C1E91F5F4C65009E354B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F6D110BB21E50C5300094D71 /* New Group */,
 				F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */,
 				F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */,
 				F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */,
-				F66B217421E26ED400AAB030 /* CIOResult+Mock.swift */,
-				F66B217721E2746900AAB030 /* CIOGroup+Mock.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -987,7 +988,10 @@
 		F6852554213BCE8B00A27FAA /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				F66B217421E26ED400AAB030 /* CIOResult+Mock.swift */,
+				F66B217721E2746900AAB030 /* CIOGroup+Mock.swift */,
 				F6852555213BCE9E00A27FAA /* MockCommons.swift */,
+				F6D110BC21E50C7600094D71 /* AbstractAutocompleteViewModel+Mock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -1253,6 +1257,13 @@
 				F6B462811F6BACE80082C20B /* ResponseParserDelegate.swift */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		F6D110BB21E50C5300094D71 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F6D2E9C220DBDDA5007F8761 /* JSON */ = {
@@ -1678,6 +1689,7 @@
 				F64F46BE1F59846E0094C697 /* XCTest+TimeoutFail.swift in Sources */,
 				F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */,
 				F64F46A61F595B980094C697 /* ResponseParserTests.swift in Sources */,
+				F6D110BD21E50C7600094D71 /* AbstractAutocompleteViewModel+Mock.swift in Sources */,
 				F64E94DD212D7EC300E50EDE /* ConstructorIOTrackingTests.swift in Sources */,
 				F6EC29B421762BD700DCFA07 /* NoSessionLoader.swift in Sources */,
 				089399DF2161B92600BFE3D9 /* TrackInputFocusRequestBuilderTests.swift in Sources */,
