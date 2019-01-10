@@ -10,15 +10,15 @@ import UIKit
 
 public class AutocompleteViewModel {
 
-    let handleResultQueue: OperationQueue
+    public let handleResultQueue: OperationQueue
 
-    private(set) var searchTerm: String
-    var results: [AutocompleteViewModelSection]
+    public private(set) var searchTerm: String
+    public var results: [AutocompleteViewModelSection]
 
-    var screenTitle: String
-    var modelSorter: (String, String) -> Bool = { return $0 < $1 }
+    public var screenTitle: String
+    public var modelSorter: (String, String) -> Bool = { return $0 < $1 }
 
-    weak var delegate: AutocompleteViewModelDelegate?
+    public weak var delegate: AutocompleteViewModelDelegate?
 
     public init() {
         self.results = []
@@ -30,7 +30,7 @@ public class AutocompleteViewModel {
         self.handleResultQueue.maxConcurrentOperationCount = 1
     }
 
-    var lastResult: AutocompleteResult?
+    public var lastResult: AutocompleteResult?
 
     internal func setupDataFromResult(result: AutocompleteResult) {
         self.searchTerm = result.query.query

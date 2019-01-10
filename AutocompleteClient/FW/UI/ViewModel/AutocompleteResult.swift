@@ -9,9 +9,9 @@
 import Foundation
 
 public class AutocompleteResult {
-    let query: CIOAutocompleteQuery
-    var response: CIOAutocompleteResponse?
-    let timestamp: TimeInterval
+    public let query: CIOAutocompleteQuery
+    public var response: CIOAutocompleteResponse?
+    public let timestamp: TimeInterval
 
     public init(query: CIOAutocompleteQuery, timestamp: TimeInterval = Date().timeIntervalSince1970) {
         self.query = query

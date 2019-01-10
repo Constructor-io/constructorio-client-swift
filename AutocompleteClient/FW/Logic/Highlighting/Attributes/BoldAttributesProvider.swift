@@ -10,11 +10,11 @@ import UIKit
 
 public class BoldAttributesProvider: CIOHighlightingAttributesProvider {
 
-    var fontNormal: UIFont
-    var fontBold: UIFont
+    public var fontNormal: UIFont
+    public var fontBold: UIFont
 
-    var colorNormal: UIColor
-    var colorBold: UIColor
+    public var colorNormal: UIColor
+    public var colorBold: UIColor
 
     public init(fontNormal: UIFont, fontBold: UIFont, colorNormal: UIColor, colorBold: UIColor) {
         self.colorNormal = colorNormal

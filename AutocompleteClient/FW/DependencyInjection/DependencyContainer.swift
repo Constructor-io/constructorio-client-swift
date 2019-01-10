@@ -10,23 +10,23 @@ import Foundation
 
 public class DependencyContainer {
 
-    static let sharedInstance = DependencyContainer()
+    public static let sharedInstance = DependencyContainer()
 
     private init() {}
 
-    var networkClient: () -> NetworkClient = {
+    public var networkClient: () -> NetworkClient = {
         return URLSessionNetworkClient()
     }
 
-    var responseParser: () -> AbstractResponseParser = {
+    public var responseParser: () -> AbstractResponseParser = {
         return CIOAutocompleteResponseParser()
     }
 
-    var sessionManager: () -> SessionManager = {
+    public var sessionManager: () -> SessionManager = {
         return CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: Constants.Query.sessionIncrementTimeoutInSeconds)
     }
 
-    var clientIDGenerator: () -> IDGenerator = {
+    public var clientIDGenerator: () -> IDGenerator = {
         return ClientIDGenerator()
     }
 }
