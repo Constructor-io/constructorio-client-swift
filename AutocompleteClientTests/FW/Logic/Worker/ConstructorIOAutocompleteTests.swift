@@ -23,7 +23,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: term)
 
         let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&_dt=\(kRegexTimestamp)"), builder.create())
 
         self.constructor.autocomplete(forQuery: query) { (_) in }
         self.wait(for: builder.expectation)
@@ -34,7 +34,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
 
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&_dt=\(kRegexTimestamp)"), noConnectivity())
 
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let error = response.error as? CIOError {
@@ -50,7 +50,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
 
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), http(400))
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&_dt=\(kRegexTimestamp)"), http(400))
 
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let error = response.error as? CIOError {
@@ -66,7 +66,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
 
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&_dt=\(kRegexTimestamp)"), http(500))
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&_dt=\(kRegexTimestamp)"), http(500))
 
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let error = response.error as? CIOError {
