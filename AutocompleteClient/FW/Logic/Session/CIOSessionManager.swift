@@ -22,7 +22,7 @@ public class CIOSessionManager: SessionManager {
     let dateProvider: DateProvider
     let sessionLoader: SessionLoader
 
-    init(dateProvider: DateProvider, timeout: TimeInterval, sessionLoader: SessionLoader = CIOSessionLoader()) {
+    public init(dateProvider: DateProvider, timeout: TimeInterval, sessionLoader: SessionLoader = CIOSessionLoader()) {
         self.dateProvider = dateProvider
         self.timeout = timeout
 
@@ -51,18 +51,18 @@ public class CIOSessionManager: SessionManager {
         return self.session.id
     }
 
-    func reloadSession() {
+    public func reloadSession() {
         if self.shouldIncrementSession() {
             self.incrementSession()
         }
     }
 
-    func shouldIncrementSession() -> Bool {
+    public func shouldIncrementSession() -> Bool {
         let diff = (self.dateProvider.provideDate().timeIntervalSince1970 - self.session.createdAt)
         return diff >= self.timeout
     }
 
-    func incrementSession() {
+    public func incrementSession() {
         self.session = Session(id: self.session.id + 1, createdAt: self.dateProvider.provideDate().timeIntervalSince1970)
     }
 

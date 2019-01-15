@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CIOStyle {
+public class CIOStyle {
 
     class func colorLightGrey() -> UIColor {
         let val = 245

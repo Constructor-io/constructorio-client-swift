@@ -9,15 +9,15 @@
 import UIKit
 import Foundation
 
-class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
+public class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
 
     @IBOutlet weak var labelText: UILabel!
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
+    public func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
         if let group = result.group {
             let groupString = NSMutableAttributedString()
 

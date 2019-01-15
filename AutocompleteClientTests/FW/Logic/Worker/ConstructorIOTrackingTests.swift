@@ -9,7 +9,7 @@
 import XCTest
 import OHHTTPStubs
 import Foundation
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class ConstructorIOTrackingTests: XCTestCase {
 
@@ -28,7 +28,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTrackInputFocus() {
         let searchTerm = "corn"
         let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=corn&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&term=corn&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
@@ -36,7 +36,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTrackInputFocus_With400() {
         let expectation = self.expectation(description: "Calling trackInputFocus with 400 should return badRequest CIOError.")
         let searchTerm = "corn"
-        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=corn&_dt=\(kRegexTimestamp)"), http(400))
+        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&term=corn&_dt=\(kRegexTimestamp)"), http(400))
         self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -49,7 +49,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTrackInputFocus_With500() {
         let expectation = self.expectation(description: "Calling trackInputFocus with 500 should return internalServerError CIOError.")
         let searchTerm = "corn"
-        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=corn&_dt=\(kRegexTimestamp)"), http(500))
+        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&term=corn&_dt=\(kRegexTimestamp)"), http(500))
         self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -62,7 +62,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTrackInputFocus_WithNoConnectivity() {
         let expectation = self.expectation(description: "Calling trackInputFocus with no connectvity should return noConnectivity CIOError.")
         let searchTerm = "corn"
-        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=corn&_dt=\(kRegexTimestamp)"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&term=corn&_dt=\(kRegexTimestamp)"), noConnectivity())
         self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
@@ -77,7 +77,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let searchOriginalQuery = "co"
         let searchSectionName = "Search Suggestions"
         let builder = CIOBuilder(expectation: "Calling trackAutocompleteSelect should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=co&c=cioios-&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=co&c=cioios-1.6.1&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName)
         self.wait(for: builder.expectation)
     }
@@ -87,7 +87,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let searchTerm = "corn"
         let searchOriginalQuery = "co"
         let searchSectionName = "Search Suggestions"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=co&c=cioios-&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), http(400))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=co&c=cioios-1.6.1&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), http(400))
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -102,7 +102,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let searchTerm = "corn"
         let searchOriginalQuery = "co"
         let searchSectionName = "Search Suggestions"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=co&c=cioios-&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), http(500))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=co&c=cioios-1.6.1&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), http(500))
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -117,7 +117,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let searchTerm = "corn"
         let searchOriginalQuery = "co"
         let searchSectionName = "Search Suggestions"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=co&c=cioios-&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?tr=click&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=co&c=cioios-1.6.1&s=1&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), noConnectivity())
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
@@ -131,7 +131,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let searchTerm = "corn"
         let searchOriginalQuery = "corn"
         let builder = CIOBuilder(expectation: "Calling trackSearchSubmit should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=corn&c=cioios-"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=corn&c=cioios-1.6.1"), builder.create())
         self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery)
         self.wait(for: builder.expectation)
     }
@@ -140,7 +140,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackSearchSubmit with 400 should return badRequest CIOError.")
         let searchTerm = "corn"
         let searchOriginalQuery = "corn"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=corn&c=cioios-"), http(400))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=corn&c=cioios-1.6.1"), http(400))
         self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -154,7 +154,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackSearchSubmit with 500 should return internalServerError CIOError.")
         let searchTerm = "corn"
         let searchOriginalQuery = "corn"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=corn&c=cioios-"), http(500))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=corn&c=cioios-1.6.1"), http(500))
         self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -168,7 +168,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackSearchSubmit with no connectvity should return noConnectivity CIOError.")
         let searchTerm = "corn"
         let searchOriginalQuery = "corn"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=corn&c=cioios-"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&s=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&original_query=corn&c=cioios-1.6.1"), noConnectivity())
         self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
@@ -182,7 +182,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let searchTerm = "term_search"
         let resultCount = 12
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=term_search&num_results=12"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&term=term_search&num_results=12"), builder.create())
         self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount)
         self.wait(for: builder.expectation)
     }
@@ -191,7 +191,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackSearchResultsLoaded with 400 should return badRequest CIOError.")
         let searchTerm = "term_search"
         let resultCount = 12
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=term_search&num_results=12"), http(400))
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&term=term_search&num_results=12"), http(400))
         self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -205,7 +205,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackSearchResultsLoaded with 500 should return internalServerError CIOError.")
         let searchTerm = "term_search"
         let resultCount = 12
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=term_search&num_results=12"), http(500))
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&term=term_search&num_results=12"), http(500))
         self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -219,7 +219,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackSearchResultsLoaded with no connectvity should return noConnectivity CIOError.")
         let searchTerm = "term_search"
         let resultCount = 12
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=term_search&num_results=12"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&term=term_search&num_results=12"), noConnectivity())
         self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
@@ -234,7 +234,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
         let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a default section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -243,7 +243,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
         let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a default section name and default term.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: nil, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -254,7 +254,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let customerID = "customerID123"
         let sectionName = "Search Suggestions"
         let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Search%20Suggestions&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Search%20Suggestions&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName)
         self.wait(for: builder.expectation)
     }
@@ -265,7 +265,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let customerID = "customerID123"
         let sectionName = "section321"
         let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=section321&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=section321&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
         let constructor = TestConstants.testConstructor(config)
         constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: nil)
@@ -277,7 +277,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(400))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(400))
         self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -292,7 +292,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(500))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(500))
         self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -307,7 +307,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), noConnectivity())
         self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
@@ -323,7 +323,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let customerID = "customerID123"
         let revenue: Double = 1
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a default section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -333,7 +333,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let customerID = "customerID123"
         let revenue: Double = 1
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a default section name and default term.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: nil, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -345,7 +345,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let revenue: Double = 1
         let sectionName = "Search Suggestions"
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Search%20Suggestions&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Search%20Suggestions&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName)
         self.wait(for: builder.expectation)
     }
@@ -357,7 +357,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let revenue: Double = 1
         let sectionName = "section321"
         let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=\(sectionName)&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=\(sectionName)&customer_id=customerID123&_dt=\(kRegexTimestamp)"), builder.create())
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
         let constructor = TestConstants.testConstructor(config)
         constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm)
@@ -370,7 +370,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
         let revenue: Double = 1
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(400))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(400))
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -386,7 +386,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
         let revenue: Double = 1
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(500))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), http(500))
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -402,7 +402,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
         let revenue: Double = 1
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/conversion?name=green-giant-corn-can-12oz&i=\(kRegexClientID)&revenue=1.00&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&autocomplete_section=Products&customer_id=customerID123&_dt=\(kRegexTimestamp)"), noConnectivity())
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
@@ -415,7 +415,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTrackPurchase() {
         let customerIDs = ["customer_id_q2ew"]
         let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a default section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -423,7 +423,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTrackPurchase_WithMultipleIDs() {
         let customerIDs = ["bumble", "bee", "autobot"]
         let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a default section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?_dt=\(kRegexTimestamp)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&customer_ids=autobot&c=cioios-&s=1&customer_ids=bumble&autocomplete_section=Products&customer_ids=bee"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?_dt=\(kRegexTimestamp)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&customer_ids=autobot&c=cioios-1.6.1&s=1&customer_ids=bumble&autocomplete_section=Products&customer_ids=bee"), builder.create())
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -432,7 +432,7 @@ class ConstructorIOTrackingTests: XCTestCase {
         let customerIDs = ["customer_id_q2ew"]
         let sectionName = "Search Suggestions"
         let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Search%20Suggestions&_dt=\(kRegexTimestamp)"), builder.create())
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: sectionName)
         self.wait(for: builder.expectation)
     }
@@ -440,7 +440,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTrackPurchase_With400() {
         let expectation = self.expectation(description: "Calling trackPurchase with 400 should return badRequest CIOError.")
         let customerIDs = ["customer_id_q2ew"]
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), http(400))
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), http(400))
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -453,7 +453,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTrackPurchase_With500() {
         let expectation = self.expectation(description: "Calling trackPurchase with 500 should return internalServerError CIOError.")
         let customerIDs = ["customer_id_q2ew"]
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), http(500))
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), http(500))
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -466,7 +466,7 @@ class ConstructorIOTrackingTests: XCTestCase {
     func testTrackPurchase_WithNoConnectivity() {
         let expectation = self.expectation(description: "Calling trackPurchase with no connectvity should return noConnectivity CIOError.")
         let customerIDs = ["customer_id_q2ew"]
-        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-1.6.1&s=1&customer_ids=customer_id_q2ew&autocomplete_section=Products&_dt=\(kRegexTimestamp)"), noConnectivity())
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")

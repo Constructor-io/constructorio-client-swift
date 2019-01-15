@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CustomSearchBar: UISearchBar {
+public class CustomSearchBar: UISearchBar {
 
     var shouldShowCancelButton: Bool = false
 
-    override func setShowsCancelButton(_ showsCancelButton: Bool, animated: Bool) {
+    override public func setShowsCancelButton(_ showsCancelButton: Bool, animated: Bool) {
         super.setShowsCancelButton(self.shouldShowCancelButton && self.isFirstResponder, animated: animated)
     }
 
