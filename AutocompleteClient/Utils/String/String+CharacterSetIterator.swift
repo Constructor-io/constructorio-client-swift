@@ -40,7 +40,7 @@ public extension NSString {
     }
 }
 
-struct StringCharacterSetIterator {
+public struct StringCharacterSetIterator {
 
     private var string: NSMutableString
     private let characterSet: CharacterSet
