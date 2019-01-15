@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 let kRegexTimestamp = "[1-9][0-9]*"
 let kRegexClientID = "([A-Z0-9-])*"

@@ -7,14 +7,14 @@
 //
 
 import UIKit
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
-class ClosureAutocompleteViewModelDelegate: AutocompleteViewModelDelegate {
+public class ClosureAutocompleteViewModelDelegate: AutocompleteViewModelDelegate {
 
-    var onIgnoreResult: ((AutocompleteResult) -> Void)?
-    var onSetResult: ((AutocompleteResult) -> Void)?
+    public var onIgnoreResult: ((AutocompleteResult) -> Void)?
+    public var onSetResult: ((AutocompleteResult) -> Void)?
 
-    init(viewModel: AutocompleteViewModel) {
+    public init(viewModel: AutocompleteViewModel) {
         viewModel.delegate = self
     }
 

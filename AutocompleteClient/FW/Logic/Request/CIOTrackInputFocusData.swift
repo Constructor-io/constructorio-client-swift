@@ -18,7 +18,7 @@ public struct CIOTrackInputFocusData: CIORequestData {
         return String(format: Constants.TrackInputFocus.format, Constants.Track.baseURLString)
     }
 
-    init(searchTerm: String?) {
+    public init(searchTerm: String?) {
         self.searchTerm = searchTerm
     }
 

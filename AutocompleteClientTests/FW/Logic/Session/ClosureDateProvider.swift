@@ -7,7 +7,7 @@
 //
 
 import UIKit
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class ClosureDateProvider: DateProvider {
 

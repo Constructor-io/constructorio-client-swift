@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class AutocompleteResultTests: XCTestCase {
 
