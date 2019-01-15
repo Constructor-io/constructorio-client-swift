@@ -6,7 +6,7 @@
 //  http://constructor.io/
 //
 
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class NoSessionLoader: SessionLoader {
     func loadSession() -> Session? {

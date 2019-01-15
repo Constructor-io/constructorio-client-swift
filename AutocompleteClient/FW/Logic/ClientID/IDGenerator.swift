@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol IDGenerator {
+public protocol IDGenerator {
     func generateID() -> String?
 }

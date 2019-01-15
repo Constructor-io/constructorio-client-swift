@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 extension CIOAutocompleteResponse {
     func getSearchSuggestions() -> [CIOResult]? {

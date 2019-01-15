@@ -8,19 +8,19 @@
 
 import UIKit
 
-class AutocompleteViewModel {
+public class AutocompleteViewModel {
 
-    let handleResultQueue: OperationQueue
+    public let handleResultQueue: OperationQueue
 
-    private(set) var searchTerm: String
-    var results: [AutocompleteViewModelSection]
+    public private(set) var searchTerm: String
+    public var results: [AutocompleteViewModelSection]
 
-    var screenTitle: String
-    var modelSorter: (String, String) -> Bool = { return $0 < $1 }
+    public var screenTitle: String
+    public var modelSorter: (String, String) -> Bool = { return $0 < $1 }
 
-    weak var delegate: AutocompleteViewModelDelegate?
+    public weak var delegate: AutocompleteViewModelDelegate?
 
-    init() {
+    public init() {
         self.results = []
         self.searchTerm = ""
         self.screenTitle = Constants.UI.defaultScreenTitle
@@ -30,7 +30,7 @@ class AutocompleteViewModel {
         self.handleResultQueue.maxConcurrentOperationCount = 1
     }
 
-    var lastResult: AutocompleteResult?
+    public var lastResult: AutocompleteResult?
 
     internal func setupDataFromResult(result: AutocompleteResult) {
         self.searchTerm = result.query.query
@@ -45,7 +45,7 @@ class AutocompleteViewModel {
                                           .sorted { (s1, s2) in self.modelSorter(s1.sectionName, s2.sectionName) }
     }
 
-    func set(searchResult: AutocompleteResult, completionHandler: @escaping () -> Void) {
+    public func set(searchResult: AutocompleteResult, completionHandler: @escaping () -> Void) {
         self.handleResultQueue.addOperation { [weak self] in
             guard let selfRef = self else {
                 return
@@ -66,11 +66,11 @@ class AutocompleteViewModel {
         }
     }
 
-    func getResult(atIndexPath indexPath: IndexPath) -> CIOResult {
+    public func getResult(atIndexPath indexPath: IndexPath) -> CIOResult {
         return results[indexPath.section].items[indexPath.row]
     }
 
-    func getSectionName(atIndex index: Int) -> String {
+    public func getSectionName(atIndex index: Int) -> String {
         return results[index].sectionName
     }
 }

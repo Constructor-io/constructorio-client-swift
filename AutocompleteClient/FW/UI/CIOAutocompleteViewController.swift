@@ -98,8 +98,8 @@ public class CIOAutocompleteViewController: UIViewController {
     public let config: ConstructorIOConfig
 
     // MARK: Fonts
-    private var fontNormal: UIFont = Constants.UI.Font.defaultFontNormal
-    private var fontBold: UIFont = Constants.UI.Font.defaultFontBold
+    public private(set) var fontNormal: UIFont = Constants.UI.Font.defaultFontNormal
+    public private(set) var fontBold: UIFont = Constants.UI.Font.defaultFontBold
 
     /**
      Default initializer for this controller. Pass in the api key you got from the constructor.io dashboard.

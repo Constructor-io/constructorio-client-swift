@@ -9,7 +9,7 @@
 import Foundation
 
 extension String {
-    func isSearchSuggestionString() -> Bool {
+    public func isSearchSuggestionString() -> Bool {
         return self.lowercased().replacingOccurrences(of: " ", with: "") == "searchsuggestions"
     }
 
