@@ -102,6 +102,7 @@ public struct Constants {
 
         public static let autocompleteSection = "autocomplete_section"
         public static let searchTerm = "term"
+        public static let searchTermRegex = ".*[A-Za-z0-9].*"
         public static let trigger = "tr"
         public static let triggerType = "click"
         public static let originalQuery = "original_query"
@@ -113,6 +114,7 @@ public struct Constants {
         public static let revenue = "revenue"
         public static let dateTime = "_dt"
         public static let defaultItemSectionName = "Products"
+        public static let unknownTerm = "TERM_UNKNOWN"
     }
 
     public struct TrackSessionStart {

@@ -154,6 +154,9 @@
 		F6EC29AF2176014C00DCFA07 /* SessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29AE2176014C00DCFA07 /* SessionLoader.swift */; };
 		F6EC29B2217601D700DCFA07 /* CIOSessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29B1217601D700DCFA07 /* CIOSessionLoader.swift */; };
 		F6EC29B421762BD700DCFA07 /* NoSessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29B321762BD700DCFA07 /* NoSessionLoader.swift */; };
+		F6FA7E1D21FA2C6900C384AE /* SearchTermValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA7E1C21FA2C6900C384AE /* SearchTermValidator.swift */; };
+		F6FA7E2021FA2E4000C384AE /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA7E1F21FA2E4000C384AE /* String+Regex.swift */; };
+		F6FA7E2521FA300800C384AE /* SearchTermValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA7E2421FA300800C384AE /* SearchTermValidatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -355,6 +358,9 @@
 		F6EC29AE2176014C00DCFA07 /* SessionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLoader.swift; sourceTree = "<group>"; };
 		F6EC29B1217601D700DCFA07 /* CIOSessionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSessionLoader.swift; sourceTree = "<group>"; };
 		F6EC29B321762BD700DCFA07 /* NoSessionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSessionLoader.swift; sourceTree = "<group>"; };
+		F6FA7E1C21FA2C6900C384AE /* SearchTermValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTermValidator.swift; sourceTree = "<group>"; };
+		F6FA7E1F21FA2E4000C384AE /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
+		F6FA7E2421FA300800C384AE /* SearchTermValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTermValidatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,6 +567,7 @@
 		F60BEA231F57288B008F0053 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F6FA7E1B21FA2C5B00C384AE /* Validation */,
 				08CCD3ED216675C700C3F234 /* ABTesting */,
 				F65BBCB621515E34007FEB22 /* ClientID */,
 				F1F68DE11F58B8AF00B42602 /* Error */,
@@ -758,6 +765,7 @@
 		F64F46A31F595B590094C697 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F6FA7E2121FA2FDC00C384AE /* Validation */,
 				F1C5573F1F5F67A60040D6AD /* Highlighting */,
 				F60FE9071F5C5B860037A0AB /* Request */,
 				F62510CF20568F170040E3DF /* Session */,
@@ -1087,6 +1095,7 @@
 				F1F68DE41F58BBA400B42602 /* String+CharacterSetIterator.swift */,
 				F6548833208633E20044E403 /* NSAttributedString+Build.swift */,
 				F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */,
+				F6FA7E1F21FA2E4000C384AE /* String+Regex.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -1221,6 +1230,22 @@
 				F6EC29B1217601D700DCFA07 /* CIOSessionLoader.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		F6FA7E1B21FA2C5B00C384AE /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA7E1C21FA2C6900C384AE /* SearchTermValidator.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		F6FA7E2121FA2FDC00C384AE /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA7E2421FA300800C384AE /* SearchTermValidatorTests.swift */,
+			);
+			path = Validation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1522,6 +1547,7 @@
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
 				F63808FD1F5D4C0C00C3B322 /* QueryResponse.swift in Sources */,
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
+				F6FA7E2021FA2E4000C384AE /* String+Regex.swift in Sources */,
 				F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */,
 				08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */,
 				F6B220ED209C692D003A5D48 /* CustomSearchController.swift in Sources */,
@@ -1562,6 +1588,7 @@
 				F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */,
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
 				F685255B21413D4D00A27FAA /* CIORequestData.swift in Sources */,
+				F6FA7E1D21FA2C6900C384AE /* SearchTermValidator.swift in Sources */,
 				08C1E6052193BE3600A2E24E /* CIOTrackPurchaseData.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,
 				F6EC29AF2176014C00DCFA07 /* SessionLoader.swift in Sources */,
@@ -1600,6 +1627,7 @@
 				08689F0121897914000D3565 /* ConstructorIOUserIDTests.swift in Sources */,
 				F64F46B51F5975070094C697 /* AutocompleteResultTests.swift in Sources */,
 				F1C557451F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift in Sources */,
+				F6FA7E2521FA300800C384AE /* SearchTermValidatorTests.swift in Sources */,
 				F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */,
 				089399E12161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift in Sources */,
 				F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */,

@@ -24,6 +24,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public var sessionManager: SessionManager
 
     public var parser: AbstractResponseParser
+    public let searchTermValidator: SearchTermValidator
 
     public let clientID: String?
 
@@ -42,6 +43,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.parser = DependencyContainer.sharedInstance.responseParser()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
+
+        self.searchTermValidator = SearchTermValidator()
 
         self.sessionManager.delegate = self
         self.sessionManager.setup()
@@ -117,7 +120,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - completionHandler: The callback to execute on completion.
     public func trackSearchResultClick(itemName: String, customerID: String, searchTerm: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackSearchResultClickData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: section)
+        let data = CIOTrackSearchResultClickData(searchTerm: self.searchTermValidator.validateSearchTerm(searchTerm) , itemName: itemName, customerID: customerID, sectionName: section)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
@@ -133,7 +136,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - completionHandler: The callback to execute on completion.
     public func trackConversion(itemName: String, customerID: String, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackConversionData(searchTerm: (searchTerm ?? "TERM_UNKNOWN"), itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue)
+        let data = CIOTrackConversionData(searchTerm: self.searchTermValidator.validateSearchTerm(searchTerm), itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
