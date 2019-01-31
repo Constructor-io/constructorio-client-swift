@@ -122,6 +122,7 @@
 		F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */; };
 		F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9420B845D300986557 /* UISearchBar+TextField.swift */; };
 		F67BFC9720B84C2600986557 /* QueryItemCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9620B84C2600986557 /* QueryItemCollection.swift */; };
+		F67D42AC220360700053B9C3 /* AbstractAutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67D42AA220360580053B9C3 /* AbstractAutocompleteViewModel.swift */; };
 		F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */; };
 		F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685253F21380CAB00A27FAA /* Matcher+Regex.swift */; };
 		F6852556213BCE9E00A27FAA /* MockCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6852555213BCE9E00A27FAA /* MockCommons.swift */; };
@@ -329,6 +330,7 @@
 		F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FindSubview.swift"; sourceTree = "<group>"; };
 		F67BFC9420B845D300986557 /* UISearchBar+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+TextField.swift"; sourceTree = "<group>"; };
 		F67BFC9620B84C2600986557 /* QueryItemCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItemCollection.swift; sourceTree = "<group>"; };
+		F67D42AA220360580053B9C3 /* AbstractAutocompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractAutocompleteViewModel.swift; sourceTree = "<group>"; };
 		F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIOResponse+SearchSuggestions.swift"; sourceTree = "<group>"; };
 		F685253F21380CAB00A27FAA /* Matcher+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Matcher+Regex.swift"; sourceTree = "<group>"; };
 		F6852555213BCE9E00A27FAA /* MockCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCommons.swift; sourceTree = "<group>"; };
@@ -473,15 +475,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F174C1E91F5F4C65009E354B /* Utils */ = {
+		F174C1E91F5F4C65009E354B /* TestUtils */ = {
 			isa = PBXGroup;
 			children = (
-				F6D110BB21E50C5300094D71 /* New Group */,
 				F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */,
 				F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */,
 				F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */,
 			);
-			path = Utils;
+			path = TestUtils;
 			sourceTree = "<group>";
 		};
 		F1C5573F1F5F67A60040D6AD /* Highlighting */ = {
@@ -813,6 +814,7 @@
 		F64F46B21F5974BA0094C697 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F67D42A722035EB70053B9C3 /* SearchBar */,
 				F66B217121E26DF900AAB030 /* Other */,
 				F66B216E21DF8FAE00AAB030 /* ViewController */,
 				F64F46B31F5974CC0094C697 /* ViewModel */,
@@ -827,6 +829,7 @@
 				F64F46B61F59767D0094C697 /* AutocompleteViewModelTests.swift */,
 				F64F46C21F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift */,
 				F66B216221DF837700AAB030 /* AutocompleteResultCountTests.swift */,
+				F67D42AA220360580053B9C3 /* AbstractAutocompleteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -948,17 +951,12 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		F66B215F21DF80D600AAB030 /* HelperTests */ = {
+		F66B215F21DF80D600AAB030 /* TestUtilsTests */ = {
 			isa = PBXGroup;
 			children = (
-				F66B216021DF80F100AAB030 /* DataToJSONConversionTests.swift */,
-				F66B216421DF851F00AAB030 /* StringTrimTests.swift */,
-				F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */,
-				F66B216821DF8A8C00AAB030 /* SearchBarTextFieldTests.swift */,
-				F66B216A21DF8B9900AAB030 /* UIViewAnimationTests.swift */,
-				F66B216C21DF8DBA00AAB030 /* SearchSuggestionStringConversionTests.swift */,
+				F67D42A922035EE90053B9C3 /* JSON */,
 			);
-			path = HelperTests;
+			path = TestUtilsTests;
 			sourceTree = "<group>";
 		};
 		F66B216E21DF8FAE00AAB030 /* ViewController */ = {
@@ -983,6 +981,57 @@
 				F66B217A21E275EE00AAB030 /* QueryItemCollectionTests.swift */,
 			);
 			path = QueryItemCollection;
+			sourceTree = "<group>";
+		};
+		F67D42A422035E830053B9C3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F67D42A822035EC70053B9C3 /* UI */,
+				F67D42A622035E990053B9C3 /* Color */,
+				F67D42A522035E880053B9C3 /* String */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F67D42A522035E880053B9C3 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				F66B216C21DF8DBA00AAB030 /* SearchSuggestionStringConversionTests.swift */,
+				F66B216421DF851F00AAB030 /* StringTrimTests.swift */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		F67D42A622035E990053B9C3 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		F67D42A722035EB70053B9C3 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				F66B216821DF8A8C00AAB030 /* SearchBarTextFieldTests.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		F67D42A822035EC70053B9C3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F66B216A21DF8B9900AAB030 /* UIViewAnimationTests.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F67D42A922035EE90053B9C3 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				F66B216021DF80F100AAB030 /* DataToJSONConversionTests.swift */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		F6852554213BCE8B00A27FAA /* Mock */ = {
@@ -1049,11 +1098,12 @@
 		F688A44C1F56B4B600F169C1 /* AutocompleteClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				F66B215F21DF80D600AAB030 /* HelperTests */,
+				F67D42A422035E830053B9C3 /* Utils */,
+				F66B215F21DF80D600AAB030 /* TestUtilsTests */,
 				08F771702162C277005FDF06 /* FW */,
 				F64F46AB1F5963A60094C697 /* Test Utils */,
 				F64F46A81F5960CC0094C697 /* Resources */,
-				F174C1E91F5F4C65009E354B /* Utils */,
+				F174C1E91F5F4C65009E354B /* TestUtils */,
 				F688A44F1F56B4B600F169C1 /* Info.plist */,
 			);
 			path = AutocompleteClientTests;
@@ -1257,13 +1307,6 @@
 				F6B462811F6BACE80082C20B /* ResponseParserDelegate.swift */,
 			);
 			path = Parser;
-			sourceTree = "<group>";
-		};
-		F6D110BB21E50C5300094D71 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F6D2E9C220DBDDA5007F8761 /* JSON */ = {
@@ -1581,6 +1624,7 @@
 				F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */,
 				F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */,
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
+				F67D42AC220360700053B9C3 /* AbstractAutocompleteViewModel.swift in Sources */,
 				F63808FD1F5D4C0C00C3B322 /* QueryResponse.swift in Sources */,
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
 				F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */,

@@ -2,8 +2,8 @@
 //  UIColorRGBConversionTests.swift
 //  AutocompleteClientTests
 //
-//  Created by Nikola Markovic on 1/4/19.
-//  Copyright © 2019 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import XCTest
