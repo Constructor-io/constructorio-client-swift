@@ -11,7 +11,7 @@ import Foundation
 
 public class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
 
-    @IBOutlet weak var labelText: UILabel!
+    @IBOutlet public weak var labelText: UILabel!
 
     override public func awakeFromNib() {
         super.awakeFromNib()

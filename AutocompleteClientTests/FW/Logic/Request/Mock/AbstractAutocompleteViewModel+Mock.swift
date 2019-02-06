@@ -1,16 +1,15 @@
 //
-//  AutocompleteViewModel.swift
-//  Constructor.io
+//  AbstractAutocompleteViewModel+Mock.swift
+//  AutocompleteClientTests
 //
 //  Copyright © Constructor.io. All rights reserved.
 //  http://constructor.io/
 //
 
-import UIKit
+import Foundation
+import ConstructorAutocomplete
 
-public class AutocompleteViewModel: AbstractAutocompleteViewModel {
-
-    public let handleResultQueue: OperationQueue
+public class MockAutocompleteViewModel: AbstractAutocompleteViewModel {
 
     public private(set) var searchTerm: String
     public var results: [AutocompleteViewModelSection]
@@ -23,11 +22,7 @@ public class AutocompleteViewModel: AbstractAutocompleteViewModel {
     public init() {
         self.results = []
         self.searchTerm = ""
-        self.screenTitle = Constants.UI.defaultScreenTitle
-
-        self.handleResultQueue = OperationQueue()
-
-        self.handleResultQueue.maxConcurrentOperationCount = 1
+        self.screenTitle = "title"
     }
 
     public var lastResult: AutocompleteResult?
@@ -42,28 +37,22 @@ public class AutocompleteViewModel: AbstractAutocompleteViewModel {
 
     internal func setResultFromDictionary(dictionary: [String: [CIOResult]]?) {
         self.results = (dictionary ?? [:]).map { (section, items) in AutocompleteViewModelSection(items: items, sectionName: section) }
-                                          .sorted { (s1, s2) in self.modelSorter(s1.sectionName, s2.sectionName) }
+            .sorted { (s1, s2) in self.modelSorter(s1.sectionName, s2.sectionName) }
     }
 
     public func set(searchResult: AutocompleteResult, completionHandler: @escaping () -> Void) {
-        self.handleResultQueue.addOperation { [weak self] in
-            guard let selfRef = self else {
-                return
-            }
-
-            if let lastResult = selfRef.lastResult {
-                if searchResult.isInitiatedAfter(result: lastResult) {
-                    selfRef.setupDataFromResult(result: searchResult)
-                } else {
-                    selfRef.delegate?.viewModel(selfRef, didIgnoreResult: searchResult)
-                }
+        if let lastResult = self.lastResult {
+            if searchResult.isInitiatedAfter(result: lastResult) {
+                self.setupDataFromResult(result: searchResult)
             } else {
-                // no previous result, this one must be valid
-                self?.setupDataFromResult(result: searchResult)
+                self.delegate?.viewModel(self, didIgnoreResult: searchResult)
             }
-
-            DispatchQueue.main.async(execute: completionHandler)
+        } else {
+            // no previous result, this one must be valid
+            self.setupDataFromResult(result: searchResult)
         }
+
+        DispatchQueue.main.async(execute: completionHandler)
     }
 
     public func getResult(atIndexPath indexPath: IndexPath) -> CIOResult {
@@ -74,3 +63,10 @@ public class AutocompleteViewModel: AbstractAutocompleteViewModel {
         return results[index].sectionName
     }
 }
+
+
+//public extension AbstractAutocompleteViewModel{
+//    public class func mock() -> AbstractAutocompleteViewModel{
+//
+//    }
+//}

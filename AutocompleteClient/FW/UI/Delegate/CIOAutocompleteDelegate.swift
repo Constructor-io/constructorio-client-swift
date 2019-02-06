@@ -33,6 +33,16 @@ public protocol CIOAutocompleteDelegate: class {
     optional func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult)
 
     /**
+     Called when a cell for search result has been shown.
+
+     - parameter controller: A CIOAutocompleteViewController in which the selection occurred.
+     - parameter result: Selected CIOResult object.
+     - parameter indexPath: UITableViewCell IndexPath.
+     */
+    @objc
+    optional func autocompleteController(controller: CIOAutocompleteViewController, willDisplayResult result: CIOResult, at indexPath: IndexPath)
+
+    /**
      Called when a search is performed.
      
      - parameter controller: A CIOAutocompleteViewController in which the search occurred.

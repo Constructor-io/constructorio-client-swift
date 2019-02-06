@@ -18,11 +18,11 @@ public class ClosureAutocompleteViewModelDelegate: AutocompleteViewModelDelegate
         viewModel.delegate = self
     }
 
-    public func viewModel(_ viewModel: AutocompleteViewModel, didSetResult result: AutocompleteResult) {
+    public func viewModel(_ viewModel: AbstractAutocompleteViewModel, didSetResult result: AutocompleteResult) {
         self.onSetResult?(result)
     }
 
-    public func viewModel(_ viewModel: AutocompleteViewModel, didIgnoreResult result: AutocompleteResult) {
+    public func viewModel(_ viewModel: AbstractAutocompleteViewModel, didIgnoreResult result: AutocompleteResult) {
         self.onIgnoreResult?(result)
     }
 
