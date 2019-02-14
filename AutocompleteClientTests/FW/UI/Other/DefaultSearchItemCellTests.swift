@@ -20,25 +20,26 @@ class DefaultSearchItemCellTests: XCTestCase {
     }
 
     func testDefaultSearchCell_InstantiationAndSetup_WithoutGroup() {
-        let cell = UINib(nibName: "DefaultSearchItemCell", bundle: Bundle.testBundle()).instantiate(withOwner: nil, options: nil).first as! DefaultSearchItemCell
+        if let cell = UINib(nibName: "DefaultSearchItemCell", bundle: Bundle.testBundle()).instantiate(withOwner: nil, options: nil).first as? DefaultSearchItemCell{
+            let result = CIOResult.mock(withValue: "test")
 
-        let result = CIOResult.mock(withValue: "test")
-
-        let font = UIFont.systemFont(ofSize: 12)
-        let color = UIColor.red
-        let highlighter = CIOHighlighter(attributesProvider: BoldAttributesProvider(fontNormal: font, fontBold: font, colorNormal: color, colorBold: color))
-        cell.setup(result: result, searchTerm: "searchTerm", highlighter: highlighter)
+            let font = UIFont.systemFont(ofSize: 12)
+            let color = UIColor.red
+            let highlighter = CIOHighlighter(attributesProvider: BoldAttributesProvider(fontNormal: font, fontBold: font, colorNormal: color, colorBold: color))
+            cell.setup(result: result, searchTerm: "searchTerm", highlighter: highlighter)
+        }
     }
 
     func testDefaultSearchCell_InstantiationAndSetup_WithGroup() {
-        let cell = UINib(nibName: "DefaultSearchItemCell", bundle: Bundle.testBundle()).instantiate(withOwner: nil, options: nil).first as! DefaultSearchItemCell
+        if let cell = UINib(nibName: "DefaultSearchItemCell", bundle: Bundle.testBundle()).instantiate(withOwner: nil, options: nil).first as? DefaultSearchItemCell{
+            let result = CIOResult.mock(withValue: "test", group: CIOGroup.mock())
 
-        let result = CIOResult.mock(withValue: "test", group: CIOGroup.mock())
+            let font = UIFont.systemFont(ofSize: 12)
+            let color = UIColor.red
+            let highlighter = CIOHighlighter(attributesProvider: BoldAttributesProvider(fontNormal: font, fontBold: font, colorNormal: color, colorBold: color))
+            cell.setup(result: result, searchTerm: "searchTerm", highlighter: highlighter)
+        }
 
-        let font = UIFont.systemFont(ofSize: 12)
-        let color = UIColor.red
-        let highlighter = CIOHighlighter(attributesProvider: BoldAttributesProvider(fontNormal: font, fontBold: font, colorNormal: color, colorBold: color))
-        cell.setup(result: result, searchTerm: "searchTerm", highlighter: highlighter)
     }
 
 }

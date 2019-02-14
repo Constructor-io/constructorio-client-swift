@@ -195,8 +195,8 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
             DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
                 _ = self.viewController.tableView(self.viewController.tableView, viewForHeaderInSection: 0)
                 _ = self.viewController.tableView(self.viewController.tableView, heightForHeaderInSection: 0)
-                for i in (0..<results.count){
-                    let indexPath = IndexPath(row: i, section: 0)
+                for idx in (0..<results.count){
+                    let indexPath = IndexPath(row: idx, section: 0)
                     _ = self.viewController.tableView(self.viewController.tableView, heightForRowAt: indexPath)
                     let cell = self.viewController.tableView(self.viewController.tableView, cellForRowAt: indexPath)
                     self.viewController.tableView(self.viewController.tableView, willDisplay: cell, forRowAt: indexPath)
