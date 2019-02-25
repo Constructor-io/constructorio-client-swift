@@ -12,9 +12,9 @@ class SearchResponseParser: AbstractSearchResponseParser{
     func parse(searchResponseData: Data) throws -> CIOSearchResponse{
         
         do {
-            let json = try JSONSerialization.jsonObject(with: searchResponseData) as! JSONObject
+            let json = try JSONSerialization.jsonObject(with: searchResponseData) as? JSONObject
             
-            guard let response = json["response"] as? JSONObject else{
+            guard let response = json?["response"] as? JSONObject else{
                 throw CIOError.invalidResponse
             }
             

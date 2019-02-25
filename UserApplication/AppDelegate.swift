@@ -46,11 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
         let key = "key_OucJxxrfiTVUQx0C"
-        let config = ConstructorIOConfig(apiKey: key,
-                                        resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]))
+        let config = ConstructorIOConfig(
+            apiKey: key,
+            resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]),
+            testCells: [
+                CIOABTestCell(key: "hi", value: "there"),
+                CIOABTestCell(key: "howare", value: "you")
+            ])
         let viewController = CIOAutocompleteViewController(config: config)
-        
-        viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.NavigationBar
+        viewController.searchBarDisplayMode = CIOSearchBarDisplayMode.navigationBar
         viewController.searchBarShouldShowCancelButton = false
         
         // set the delegate in order to react to various events
@@ -163,6 +167,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     func autocompleteControllerWillAppear(controller: CIOAutocompleteViewController) {
         print("Search controller will appear")
+        if controller.constructorIO.userID == nil{
+            controller.constructorIO.userID = "user_id$1 3"
+        }
     }
 
     func autocompleteControllerDidLoad(controller: CIOAutocompleteViewController) {

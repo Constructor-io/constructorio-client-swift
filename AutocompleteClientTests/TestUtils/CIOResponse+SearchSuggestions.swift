@@ -7,10 +7,10 @@
 //
 
 import Foundation
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
-extension CIOAutocompleteResponse{
-    func getSearchSuggestions() -> [CIOResult]?{
+extension CIOAutocompleteResponse {
+    func getSearchSuggestions() -> [CIOResult]? {
         return self.sections["Search Suggestions"]
     }
 }

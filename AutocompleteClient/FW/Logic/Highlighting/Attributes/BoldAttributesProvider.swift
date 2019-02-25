@@ -8,24 +8,24 @@
 
 import UIKit
 
-class BoldAttributesProvider: CIOHighlightingAttributesProvider {
+public class BoldAttributesProvider: CIOHighlightingAttributesProvider {
 
-    var fontNormal: UIFont
-    var fontBold: UIFont
-    
-    var colorNormal: UIColor
-    var colorBold: UIColor
+    public var fontNormal: UIFont
+    public var fontBold: UIFont
 
-    init(fontNormal: UIFont, fontBold: UIFont, colorNormal: UIColor, colorBold: UIColor) {
+    public var colorNormal: UIColor
+    public var colorBold: UIColor
+
+    public init(fontNormal: UIFont, fontBold: UIFont, colorNormal: UIColor, colorBold: UIColor) {
         self.colorNormal = colorNormal
         self.colorBold = colorBold
         self.fontNormal = fontNormal
         self.fontBold = fontBold
     }
 
-    func defaultSubstringAttributes() -> [String: Any] {
+    public func defaultSubstringAttributes() -> [String: Any] {
         #if swift(>=4.0)
-            
+
             return [NSAttributedStringKey.font.rawValue: self.fontBold,
                     NSAttributedStringKey.foregroundColor.rawValue: self.colorBold]
         #else
@@ -34,7 +34,7 @@ class BoldAttributesProvider: CIOHighlightingAttributesProvider {
         #endif
     }
 
-    func highlightedSubstringAttributes() -> [String: Any] {
+    public func highlightedSubstringAttributes() -> [String: Any] {
         #if swift(>=4.0)
             return [NSAttributedStringKey.font.rawValue: self.fontNormal,
                     NSAttributedStringKey.foregroundColor.rawValue: self.colorNormal]

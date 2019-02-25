@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias Filter = (key: String, value: String)
+public typealias Filter = (key: String, value: String)
 
-struct SearchFilters{
-    let groupFilter: String?
-    let facetFilters: [Filter]?
+public struct SearchFilters{
+    public let groupFilter: String?
+    public let facetFilters: [Filter]?
 }

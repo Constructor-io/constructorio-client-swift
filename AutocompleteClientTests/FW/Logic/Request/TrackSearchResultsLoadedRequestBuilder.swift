@@ -7,29 +7,29 @@
 //
 
 import XCTest
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
-    
+
     fileprivate let testACKey = "asdf1213123"
     fileprivate let searchTerm = "😃test ink[]"
     fileprivate let resultCount = 123
-    
+
     fileprivate var encodedSearchTerm: String = ""
     fileprivate var builder: RequestBuilder!
-    
+
     override func setUp() {
         super.setUp()
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.builder = RequestBuilder(apiKey: testACKey)
     }
-    
+
     func testTrackSearchResultsLoadedBuilder() {
         let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
-        
+
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/behavior?"))
         XCTAssertTrue(url.contains("action=search-results"), "URL should contain the search-results action")
@@ -39,4 +39,3 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
 }
-

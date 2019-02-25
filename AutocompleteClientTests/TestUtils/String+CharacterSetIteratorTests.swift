@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
-class String_CharacterSetIteratorTests: XCTestCase {
+class CharacterSetIteratorTests: XCTestCase {
 
     func testStringCharacterSetIterator_EmptyString_EmptyIterator() {
         var iterator = "".makeIterator(characterSet: .alphanumerics)

@@ -8,4 +8,4 @@
 
 import Foundation
 
-class NetworkResponse: TaskResponse<Data, Error> {}
+public class NetworkResponse: TaskResponse<Data, Error> {}

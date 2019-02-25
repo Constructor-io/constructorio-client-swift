@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class CIOHighlighterTests: XCTestCase {
 
@@ -48,7 +48,7 @@ class CIOHighlighterTests: XCTestCase {
 
     func testHighlighter_PrefixAndFullMatch() {
         let result = highlighter.highlight(searchTerm: "pref-an-fullmatch", itemTitle: "abc-prefix-and-fullmatch")
-        XCTAssertEqual(result, highlight(onEvenTokens: false, strings: ["abc-", "pref","ix-","an", "d-", "fullmatch"]))
+        XCTAssertEqual(result, highlight(onEvenTokens: false, strings: ["abc-", "pref", "ix-", "an", "d-", "fullmatch"]))
     }
 
     fileprivate func highlight(onEvenTokens: Bool, strings: [String]) -> NSAttributedString {
@@ -69,5 +69,5 @@ class CIOHighlighterTests: XCTestCase {
 
         return highlightedString
     }
-    
+
 }

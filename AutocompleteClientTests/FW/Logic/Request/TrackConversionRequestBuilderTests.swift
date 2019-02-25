@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class TrackConversionRequestBuilderTests: XCTestCase {
 
@@ -32,13 +32,13 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         self.encodedSectionName = self.sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.builder = RequestBuilder(apiKey: testACKey)
     }
-    
+
     func testTrackConversionBuilder() {
-        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName , customerID: self.customerID)
+        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName, customerID: self.customerID)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
-        
+
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
@@ -47,12 +47,12 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
 
-    func testTrackConversionBuilder_withSectionName() {
-        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName , customerID: self.customerID, sectionName: sectionName)
+    func testTrackConversionBuilder_WithSectionName() {
+        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName, customerID: self.customerID, sectionName: sectionName)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
-        
+
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
@@ -61,13 +61,13 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
-    
-    func testTrackConversionBuilder_withRevenue() {
+
+    func testTrackConversionBuilder_WithRevenue() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, revenue: 9999)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
-        
+
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
@@ -77,12 +77,12 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
 
-    func testTrackConversionBuilder_withSectionNameAndRevenue() {
+    func testTrackConversionBuilder_WithSectionNameAndRevenue() {
         let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, sectionName: sectionName, revenue: 12.345)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
-        
+
         XCTAssertEqual(request.httpMethod, "GET")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")

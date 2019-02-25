@@ -8,17 +8,17 @@
 
 import Foundation
 
-extension String {
+public extension String {
 
-    func makeIterator(characterSet: CharacterSet) -> StringCharacterSetIterator {
+    public func makeIterator(characterSet: CharacterSet) -> StringCharacterSetIterator {
         return StringCharacterSetIterator(string: self, characterSet: characterSet)
     }
 
 }
 
-extension NSString {
+public extension NSString {
 
-    func rangeOfCharacters(from characterSet: CharacterSet) -> NSRange {
+    public func rangeOfCharacters(from characterSet: CharacterSet) -> NSRange {
         var firstRange = self.rangeOfCharacter(from: characterSet)
         if firstRange.location == NSNotFound {
             return firstRange
@@ -40,22 +40,18 @@ extension NSString {
     }
 }
 
-public func ==(lhs: NSRange, rhs: NSRange) -> Bool{
-    return lhs.location == rhs.location && lhs.length == rhs.length
-}
-
-struct StringCharacterSetIterator {
+public struct StringCharacterSetIterator {
 
     private var string: NSMutableString
     private let characterSet: CharacterSet
     private var nextPassingRange: NSRange?
 
-    init(string: String, characterSet: CharacterSet) {
+    public init(string: String, characterSet: CharacterSet) {
         self.string = NSMutableString(string: string)
         self.characterSet = characterSet
     }
 
-    mutating func next() -> (Bool, String)? {
+    public mutating func next() -> (Bool, String)? {
         if string.length == 0 { return nil }
 
         // If there are previous results, use it

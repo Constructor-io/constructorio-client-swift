@@ -7,12 +7,12 @@
 //
 
 import XCTest
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class ConstructorIOTests: XCTestCase {
 
     var networkClient: NetworkClient!
-    
+
     override  func setUp() {
         super.setUp()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
@@ -37,7 +37,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
 
-        let constructor = ConstructorIO(config: TestConstants.testConfig)
+        let constructor = TestConstants.testConstructor()
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -70,7 +70,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient (error: customError) }
 
-        let constructor = ConstructorIO(config: TestConstants.testConfig)
+        let constructor = TestConstants.testConstructor()
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -99,7 +99,7 @@ class ConstructorIOTests: XCTestCase {
         // mock out the network client
         DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
 
-        let constructor = ConstructorIO(config: TestConstants.testConfig)
+        let constructor = TestConstants.testConstructor()
 
         let query = CIOAutocompleteQuery(query: "term")
         constructor.autocomplete(forQuery: query, completionHandler: { response in
@@ -115,17 +115,17 @@ class ConstructorIOTests: XCTestCase {
         })
         self.waitForExpectationWithDefaultHandler()
     }
-    
-    func testConstructor_sessionIDPropertyIsAccessible(){
-        let constructor = ConstructorIO(config: TestConstants.testConfig)
-        
+
+    func testConstructor_sessionIDPropertyIsAccessible() {
+        let constructor = TestConstants.testConstructor()
+
         XCTAssertNotNil(constructor.sessionID, "Session ID shouldn't be nil")
     }
-    
-    func testConstructor_clientIDPropertyIsAccessible(){
-        let constructor = ConstructorIO(config: TestConstants.testConfig)
-        
+
+    func testConstructor_clientIDPropertyIsAccessible() {
+        let constructor = TestConstants.testConstructor()
+
         XCTAssertNotNil(constructor.clientID, "Client ID shouldn't be nil")
     }
-    
+
 }

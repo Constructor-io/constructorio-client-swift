@@ -8,14 +8,13 @@
 
 import Foundation
 
-extension Dictionary{
-    func mapKeys<T>(_ mapping: (_ key: Key) -> T) -> [T: Value]{
+extension Dictionary {
+    public func mapKeys<T>(_ mapping: (_ key: Key) -> T) -> [T: Value] {
         var newDictionary: [T: Value] = [:]
-        for (k,v) in self{
-            newDictionary[mapping(k)] = v
+        for (key, value) in self {
+            newDictionary[mapping(key)] = value
         }
-        
+
         return newDictionary
     }
 }
-

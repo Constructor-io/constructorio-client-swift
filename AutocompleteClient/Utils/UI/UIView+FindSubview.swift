@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-extension UIView{
-    
-    func findSubview(_ filter: (UIView) -> Bool) -> UIView?{
-        for v in self.subviews{
-            if filter(v){
-                return v
-            }else if let view = v.findSubview(filter){
+extension UIView {
+
+    public func findSubview(_ filter: (UIView) -> Bool) -> UIView? {
+        for view in self.subviews {
+            if filter(view) {
                 return view
+            } else if let subview = view.findSubview(filter) {
+                return subview
             }
         }
         return nil

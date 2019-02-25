@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class AutocompleteResultTests: XCTestCase {
 
@@ -21,14 +21,14 @@ class AutocompleteResultTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_isAfterSucceeds_ifCorrectTimestampsArePassed() {
+    func testIsAfter_ifCorrectTimestampsArePassed() {
         let query = CIOAutocompleteQuery(query: "")
         let earlyResult = AutocompleteResult(query: query, timestamp: 10)
         let lateResult = AutocompleteResult(query: query, timestamp: 20)
         XCTAssertTrue(lateResult.isInitiatedAfter(result: earlyResult), "isAfter should return true if earlier initiated result is passed as a parameter")
     }
 
-    func test_isAfterFails_ifIncorrectTimestampsArePassed() {
+    func testIsAfter_ifIncorrectTimestampsArePassed() {
         let query = CIOAutocompleteQuery(query: "")
         let earlyResult = AutocompleteResult(query: query, timestamp: 20)
         let lateResult = AutocompleteResult(query: query, timestamp: 10)

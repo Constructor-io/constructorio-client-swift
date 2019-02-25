@@ -8,17 +8,17 @@
 
 import UIKit
 
-class CustomSearchController: UISearchController {
+public class CustomSearchController: UISearchController {
 
-    @objc lazy var _searchBar: CustomSearchBar = {
+    @objc lazy var searchBarPvt: CustomSearchBar = {
         [unowned self] in
         let customSearchBar = CustomSearchBar(frame: CGRect.zero)
         return customSearchBar
     }()
-    
-    override var searchBar: UISearchBar {
+
+    override public var searchBar: UISearchBar {
         get {
-            return _searchBar
+            return searchBarPvt
         }
     }
 }

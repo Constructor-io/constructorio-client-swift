@@ -8,41 +8,47 @@
 
 import Foundation
 
-struct QueryItemCollection{
+public struct QueryItemCollection {
     private var queryItems = [String: [URLQueryItem]]()
-    
-    mutating func add(key: String,items: [URLQueryItem]){
+
+    public init() {} 
+
+    mutating func add(key: String,items: [URLQueryItem]) {
         queryItems[key] = items
     }
     
-    mutating func add(_ item: URLQueryItem){
+    public mutating func add(_ item: URLQueryItem) {
         self[item.name] = [item]
     }
-    
-    mutating func remove(key: String){
-        self[key] = nil
+
+    public mutating func addMultiple(index: Int, item: URLQueryItem) {
+        self[item.name + String(index)] = [item]
     }
     
-    private subscript(value: String) -> [URLQueryItem]?{
-        get{
+    public subscript(value: String) -> [URLQueryItem]? {
+        get {
             return queryItems[value]
         }
-        set{
+        set {
             if let newValue = newValue{
                 if var existingArray = queryItems[value]{
                     existingArray.append(contentsOf: newValue)
                     queryItems[value] = existingArray
-                }else{
+                } else {
                     queryItems[value] = newValue
                 }
-            }else{
+            } else {
                 queryItems.removeValue(forKey: value)
             }
             
         }
     }
+
+    public mutating func remove(name: String) {
+        self[name] = nil
+    }
     
-    func all() -> [URLQueryItem]{
+    func all() -> [URLQueryItem] {
         let flattenedArray = self.queryItems.values.reduce([]) { (res, next) -> [URLQueryItem] in
             return res + next.reduce([], { (res, next) in return res + [next] })
             }

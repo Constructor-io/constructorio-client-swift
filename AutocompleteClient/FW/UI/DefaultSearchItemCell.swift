@@ -9,20 +9,20 @@
 import UIKit
 import Foundation
 
-class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
+public class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
 
-    @IBOutlet weak var labelText: UILabel!
+    @IBOutlet public weak var labelText: UILabel!
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
-        if let group = result.group{
+    public func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
+        if let group = result.group {
             let groupString = NSMutableAttributedString()
-            
+
             groupString.append(highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value))
-            
+
             let fontGroup = Constants.UI.Font.defaultFontNormal.withSize(11)
             #if swift(>=4.0)
                 let groupAttributes: [String: Any] = [NSAttributedStringKey.font.rawValue: fontGroup,
@@ -31,12 +31,12 @@ class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
                 let groupAttributes: [String: Any] = [NSFontAttributeName: fontGroup,
                 NSForegroundColorAttributeName: Constants.UI.Color.defaultFontColorNormal ]
             #endif
-            
+
             groupString.append(NSAttributedString.build(string: "\nin \(group.displayName)", attributes: groupAttributes))
             self.labelText.attributedText = groupString
-        }else{
+        } else {
             self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value)
         }
-        
+
     }
 }

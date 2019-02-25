@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol NetworkClient {
-    
+public protocol NetworkClient {
+
     func execute(_ request: URLRequest, completionHandler: @escaping (_ response: NetworkResponse) -> Void)
 }

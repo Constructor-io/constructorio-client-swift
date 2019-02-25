@@ -21,13 +21,16 @@ struct TestResource {
         static let numberOfFacetsOptionsInSearchResponseResult2 = 27
         static let numberOfResultsInSearchResponse = 20
         
-        
         static let multipleGroupsJSONFilename = "response_json_multiple_groups"
         static let numberOfGroupsInMultipleSectionsResponse = 7
     }
 
     static func load(name: String, type: String = "json") -> Data {
         let fileURL = Bundle.testBundle().url(forResource: name, withExtension: type)!
-        return try! Data(contentsOf: fileURL)
+        do {
+            return try Data(contentsOf: fileURL)
+        } catch {
+            return Data(count: 0)
+        }
     }
 }

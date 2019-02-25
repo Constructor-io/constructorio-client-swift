@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol CIOAutocompleteDelegate: class{
+public protocol CIOAutocompleteDelegate: class {
 
     /**
      Called when CIOAutocompleteViewController's view is loaded (viewDidLoad).
@@ -22,7 +22,7 @@ public protocol CIOAutocompleteDelegate: class{
      */
     @objc
     optional func autocompleteControllerWillAppear(controller: CIOAutocompleteViewController)
-    
+
     /**
      Called when a search result has been selected.
      
@@ -31,6 +31,16 @@ public protocol CIOAutocompleteDelegate: class{
      */
     @objc
     optional func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult)
+
+    /**
+     Called when a cell for search result has been shown.
+
+     - parameter controller: A CIOAutocompleteViewController in which the selection occurred.
+     - parameter result: Selected CIOResult object.
+     - parameter indexPath: UITableViewCell IndexPath.
+     */
+    @objc
+    optional func autocompleteController(controller: CIOAutocompleteViewController, willDisplayResult result: CIOResult, at indexPath: IndexPath)
 
     /**
      Called when a search is performed.
@@ -51,7 +61,7 @@ public protocol CIOAutocompleteDelegate: class{
      */
     @objc
     optional func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool
-    
+
     /**
       Maximum number of items in group to be displayed for an item at index. Does not get called for the base item(with nil group). By default, 2 items are shown for the first item(itemIndex=0) and 0 for every other.
      
@@ -61,7 +71,7 @@ public protocol CIOAutocompleteDelegate: class{
      */
     @objc
     optional func autocompleteController(controller: CIOAutocompleteViewController, maximumGroupsShownPerResult result: CIOAutocompleteResult, itemIndex: Int) -> Int
-    
+
     /**
      Called when a results have been loaded.
      
@@ -71,7 +81,7 @@ public protocol CIOAutocompleteDelegate: class{
      */
     @objc
     optional func autocompleteController(controller: CIOAutocompleteViewController, didLoadResults results: [CIOResult], for searchTerm: String)
-    
+
     /**
      Called if an error occurs.
      
