@@ -14,8 +14,9 @@ struct TestResource {
         static let singleSectionJSONFilename = "response_json_single_section"
         static let multipleSectionsJSONFilename = "response_json_multiple_sections"
         static let numberOfSectionsInMultipleSectionsResponse = 2
-        
+
         static let searchJSONFilename = "response_search_json"
+        static let searchJSONRedirectFile = "response_search_redirect"
         static let numberOfFacetsInSearchResponse = 2
         static let numberOfFacetsOptionsInSearchResponseResult1 = 46
         static let numberOfFacetsOptionsInSearchResponseResult2 = 27
@@ -28,7 +29,8 @@ struct TestResource {
     static func load(name: String, type: String = "json") -> Data {
         let fileURL = Bundle.testBundle().url(forResource: name, withExtension: type)!
         do {
-            return try Data(contentsOf: fileURL)
+            let data = try Data(contentsOf: fileURL)
+            return data
         } catch {
             return Data(count: 0)
         }

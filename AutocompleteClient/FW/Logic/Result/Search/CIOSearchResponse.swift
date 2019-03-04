@@ -14,4 +14,11 @@ import Foundation
 public struct CIOSearchResponse {
     let facets: [Facet]
     let results: [SearchResult]
+    let redirectInfo: SearchRedirectInfo?
+
+    var isRedirect: Bool{
+        get{
+            return self.redirectInfo != nil
+        }
+    }
 }

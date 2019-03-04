@@ -127,6 +127,8 @@
 		F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */; };
 		F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674157A204D489B004F313B /* MockResponseParserDelegate.swift */; };
 		F67868DB2224328D00C76C0D /* AutocompleteTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67868DA2224328D00C76C0D /* AutocompleteTaskResponse.swift */; };
+		F67868DD2229518900C76C0D /* SearchRedirectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67868DC2229518900C76C0D /* SearchRedirectInfo.swift */; };
+		F67868DF22295CA200C76C0D /* response_search_redirect.json in Resources */ = {isa = PBXBuildFile; fileRef = F67868DE22295CA200C76C0D /* response_search_redirect.json */; };
 		F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */; };
 		F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9420B845D300986557 /* UISearchBar+TextField.swift */; };
 		F67BFC9720B84C2600986557 /* QueryItemCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BFC9620B84C2600986557 /* QueryItemCollection.swift */; };
@@ -341,6 +343,8 @@
 		F66B217A21E275EE00AAB030 /* QueryItemCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItemCollectionTests.swift; sourceTree = "<group>"; };
 		F674157A204D489B004F313B /* MockResponseParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseParserDelegate.swift; sourceTree = "<group>"; };
 		F67868DA2224328D00C76C0D /* AutocompleteTaskResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteTaskResponse.swift; sourceTree = "<group>"; };
+		F67868DC2229518900C76C0D /* SearchRedirectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRedirectInfo.swift; sourceTree = "<group>"; };
+		F67868DE22295CA200C76C0D /* response_search_redirect.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_search_redirect.json; sourceTree = "<group>"; };
 		F67BFC9220B8457B00986557 /* UIView+FindSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FindSubview.swift"; sourceTree = "<group>"; };
 		F67BFC9420B845D300986557 /* UISearchBar+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+TextField.swift"; sourceTree = "<group>"; };
 		F67BFC9620B84C2600986557 /* QueryItemCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItemCollection.swift; sourceTree = "<group>"; };
@@ -803,6 +807,7 @@
 				F64F46AE1F59641D0094C697 /* TestResource.swift */,
 				F6D2E9C020DBDCCA007F8761 /* response_json_single_result.json */,
 				F65BBCAD214FC99E007FEB22 /* response_search_json.json */,
+				F67868DE22295CA200C76C0D /* response_search_redirect.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -979,6 +984,7 @@
 				F65B9E5D2146A4FB00101617 /* FacetOption.swift */,
 				F65B9E5F2146AB5200101617 /* SearchResult.swift */,
 				F65BBC582148223E007FEB22 /* SearchResultFacet.swift */,
+				F67868DC2229518900C76C0D /* SearchRedirectInfo.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1638,6 +1644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */,
+				F67868DF22295CA200C76C0D /* response_search_redirect.json in Resources */,
 				F65BBCAE214FC99E007FEB22 /* response_search_json.json in Resources */,
 				F64F46B11F5970140094C697 /* response_json_single_section.json in Resources */,
 				F6D2E9C120DBDCCA007F8761 /* response_json_single_result.json in Resources */,
@@ -1827,6 +1834,7 @@
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,
 				F699C34B1F57F22400FD681A /* NSError+Errors.swift in Sources */,
+				F67868DD2229518900C76C0D /* SearchRedirectInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,8 +51,9 @@ public struct QueryItemCollection {
     func all() -> [URLQueryItem] {
         let flattenedArray = self.queryItems.values.reduce([]) { (res, next) -> [URLQueryItem] in
             return res + next.reduce([], { (res, next) in return res + [next] })
-            }
-        
-        return flattenedArray
+        }
+        return flattenedArray.sorted(by: { item1, item2 -> Bool in
+            return item1.name < item2.name
+        })
     }
 }

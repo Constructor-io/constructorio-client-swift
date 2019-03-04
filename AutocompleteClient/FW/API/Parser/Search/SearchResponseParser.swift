@@ -50,8 +50,8 @@ class SearchResponseParser: AbstractSearchResponseParser{
                 
                 return SearchResult(id: id, value: value, url: url, price: price, quantity: quantity, imageURL: imageURL, facets: searchFacets, groups: groups)
             } ?? []
-            
-            return CIOSearchResponse(facets: facets, results: results)
+
+            return CIOSearchResponse(facets: facets, results: results, redirectInfo: SearchRedirectInfo(object: response["redirect"] as? JSONObject))
         } catch {
             throw CIOError.invalidResponse
         }

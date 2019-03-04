@@ -80,6 +80,55 @@ class SearchTests: XCTestCase {
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
+
+    func testRedirect_hasCorrectURL() {
+        let exp = self.expectation(description: "Redirect response should have a correct URL.")
+
+        stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=20&page=1&s=\(kRegexSession)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
+
+        self.constructor.search(forQuery: CIOSearchQuery(query: "dior")) { response in
+            guard let redirectInfo = response.data?.redirectInfo else {
+                XCTFail("Invalid response")
+                return
+            }
+            XCTAssertEqual(redirectInfo.url, "/brand/dior")
+            exp.fulfill()
+        }
+
+        self.waitForExpectationWithDefaultHandler()
+    }
+
+    func testRedirect_hasCorrectMatchID() {
+        let exp = self.expectation(description: "Redirect response should have a correct Match ID.")
+        stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=20&page=1&s=\(kRegexSession)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
+
+        self.constructor.search(forQuery: CIOSearchQuery(query: "dior")){ response in
+            guard let redirectInfo = response.data?.redirectInfo else {
+                XCTFail("Invalid response")
+                return
+            }
+            XCTAssertEqual(redirectInfo.matchID, 16257)
+            exp.fulfill()
+        }
+        self.waitForExpectationWithDefaultHandler()
+    }
+
+    func testRedirect_hasCorrectRuleID() {
+        let exp = self.expectation(description: "Redirect response should have a correct Rule ID.")
+
+        stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=20&page=1&s=\(kRegexSession)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
+
+        self.constructor.search(forQuery: CIOSearchQuery(query: "dior")) { response in
+            guard let redirectInfo = response.data?.redirectInfo else {
+                XCTFail("Invalid response")
+                return
+            }
+            XCTAssertEqual(redirectInfo.ruleID, 8860)
+            exp.fulfill()
+        }
+
+        self.waitForExpectationWithDefaultHandler()
+    }
     
     func testCallingSearch_AttachesGroupFilter(){
         let query = CIOSearchQuery(query: "potato", filters: SearchFilters(groupFilter: "151", facetFilters: nil))
