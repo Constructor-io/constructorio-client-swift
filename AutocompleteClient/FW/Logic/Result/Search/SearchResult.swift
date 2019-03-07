@@ -9,13 +9,7 @@
 import Foundation
 
 struct SearchResult {
-    let id: String
     let value: String
-    let url: String?
-    let price: String?
-    let quantity: String?
-    let imageURL: String?
-    let facets: [SearchResultFacet]?
-    let groups: [CIOGroup]?
-    
+    let data: SearchResultData
+    let matchedTerms: [String]
 }

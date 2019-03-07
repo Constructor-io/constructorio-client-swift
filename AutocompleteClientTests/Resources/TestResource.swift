@@ -18,9 +18,9 @@ struct TestResource {
         static let searchJSONFilename = "response_search_json"
         static let searchJSONRedirectFile = "response_search_redirect"
         static let numberOfFacetsInSearchResponse = 2
-        static let numberOfFacetsOptionsInSearchResponseResult1 = 46
-        static let numberOfFacetsOptionsInSearchResponseResult2 = 27
-        static let numberOfResultsInSearchResponse = 20
+        static let numberOfFacetsOptionsInSearchResponseResult1 = 43
+        static let numberOfFacetsOptionsInSearchResponseResult2 = 26
+        static let numberOfResultsInSearchResponse = 24
         
         static let multipleGroupsJSONFilename = "response_json_multiple_groups"
         static let numberOfGroupsInMultipleSectionsResponse = 7

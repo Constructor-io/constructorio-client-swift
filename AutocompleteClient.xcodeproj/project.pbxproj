@@ -54,6 +54,7 @@
 		F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510C92052CF240040E3DF /* SessionManager.swift */; };
 		F62510D120568F250040E3DF /* SessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510D020568F250040E3DF /* SessionManagerTests.swift */; };
 		F62510D3205690670040E3DF /* ClosureDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62510D2205690670040E3DF /* ClosureDateProvider.swift */; };
+		F630E6FB22317CD1008ED537 /* SearchResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630E6FA22317CD1008ED537 /* SearchResultData.swift */; };
 		F631A5D81F58629B00A49BD1 /* constructor-io-error-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */; };
 		F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F631A5D91F5867E300A49BD1 /* CIOErrorView.swift */; };
 		F63374AC1F5A941700E481E7 /* AutocompleteDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63374AB1F5A941700E481E7 /* AutocompleteDataSourceTests.swift */; };
@@ -270,6 +271,7 @@
 		F62510C92052CF240040E3DF /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		F62510D020568F250040E3DF /* SessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerTests.swift; sourceTree = "<group>"; };
 		F62510D2205690670040E3DF /* ClosureDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureDateProvider.swift; sourceTree = "<group>"; };
+		F630E6FA22317CD1008ED537 /* SearchResultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultData.swift; sourceTree = "<group>"; };
 		F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-error-icon.png"; sourceTree = "<group>"; };
 		F631A5D91F5867E300A49BD1 /* CIOErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOErrorView.swift; sourceTree = "<group>"; };
 		F63374AB1F5A941700E481E7 /* AutocompleteDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteDataSourceTests.swift; sourceTree = "<group>"; };
@@ -983,6 +985,7 @@
 				F65B9E5B2146A4DA00101617 /* Facet.swift */,
 				F65B9E5D2146A4FB00101617 /* FacetOption.swift */,
 				F65B9E5F2146AB5200101617 /* SearchResult.swift */,
+				F630E6FA22317CD1008ED537 /* SearchResultData.swift */,
 				F65BBC582148223E007FEB22 /* SearchResultFacet.swift */,
 				F67868DC2229518900C76C0D /* SearchRedirectInfo.swift */,
 			);
@@ -1755,6 +1758,7 @@
 				F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */,
 				F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */,
 				F65BBC592148223E007FEB22 /* SearchResultFacet.swift in Sources */,
+				F630E6FB22317CD1008ED537 /* SearchResultData.swift in Sources */,
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
 				F67D42AC220360700053B9C3 /* AbstractAutocompleteViewModel.swift in Sources */,
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
