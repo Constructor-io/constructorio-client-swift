@@ -11,6 +11,7 @@ import ConstructorAutocomplete
 
 class TrackPurchaseRequestBuilderTests: XCTestCase {
 
+    fileprivate let revenue: Double = 2.5
     fileprivate let testACKey = "testKey123213"
     fileprivate let customerIDs = ["custIDq3éû qd", "womp womp"]
     fileprivate let sectionName = "some section name@"
@@ -56,5 +57,16 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+    }
+
+    func testTrackPurchaseBuilder_WithRevenue(){
+        let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs, sectionName: self.sectionName, revenue: self.revenue)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+
+        XCTAssertEqual(request.httpMethod, "GET")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?"))
+        XCTAssertTrue(url.contains("\(Constants.Track.revenue)=\(self.revenue)"), "URL should contain revenue value.")
     }
 }
