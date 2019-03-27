@@ -38,28 +38,25 @@ public struct CIOSearchQuery: CIORequestData{
     let query: String
     let filters: SearchFilters?
     let page: Int
-    let numResultsPerPage: Int
-    let numResultsPerPageForSection: [String: Int]?
+    let section: String
     
     public var url: String{
         return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString,
                       Constants.SearchQuery.pathString, query)
     }
     
-    init(query: String, filters: SearchFilters? = nil, page: Int = 1, numResultsPerPage: Int = 20, numResultsPerPageForSection: [String: Int]? = nil) {
+    init(query: String, filters: SearchFilters? = nil, page: Int = 1, section: String = Constants.SearchQuery.defaultSectionName) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page
-        self.numResultsPerPage = numResultsPerPage
-        self.numResultsPerPageForSection = numResultsPerPageForSection
+        self.section = section
     }
     
     public func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(page: self.page)
-        requestBuilder.set(numResultsPerPage: self.numResultsPerPage)
-        requestBuilder.set(numResultsForSection: self.numResultsPerPageForSection)
         requestBuilder.set(groupFilter: self.filters?.groupFilter)
         requestBuilder.set(facetFilters: self.filters?.facetFilters)
+        requestBuilder.set(searchSection: self.section)
     }
 }
 

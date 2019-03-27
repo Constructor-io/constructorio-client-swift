@@ -52,6 +52,10 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.Track.autocompleteSection, value: sectionName))
     }
 
+    public func set(searchSection: String){
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.section, value: searchSection))
+    }
+
     public func set(revenue: Double?) {
         guard let revenue = revenue else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(format: "%.2lf", revenue)))
@@ -69,12 +73,7 @@ extension RequestBuilder {
             queryItems.add(URLQueryItem(name: name, value: String($0.value)))
         }
     }
-    
-    public func set(numResultsPerPage: Int?) {
-        guard let numResults = numResultsPerPage else { return }
-        queryItems.add(URLQueryItem(name: Constants.SearchQuery.numResultsPerPage, value: String(numResults)))
-    }
-    
+
     public func set(page: Int){
         let pageString = String(page)
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.page, value: pageString))

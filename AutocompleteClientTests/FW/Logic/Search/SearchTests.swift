@@ -27,7 +27,7 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato")
         
         let builder = CIOBuilder(expectation: "Calling Search should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?page=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&num_results_per_page=20&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
         
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -39,7 +39,7 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato")
         
         let dataToReturn = TestResource.load(name: TestResource.Response.searchJSONFilename)
-        stub(regex("https://ac.cnstrc.com/search/potato?page=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&num_results_per_page=20&_dt=\(kRegexTimestamp)"), http(200, data: dataToReturn))
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), http(200, data: dataToReturn))
         
         self.constructor.search(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Search with valid parameters should return a non-nil response.")
@@ -53,7 +53,7 @@ class SearchTests: XCTestCase {
         
         let query = CIOSearchQuery(query: "potato")
         
-        stub(regex("https://ac.cnstrc.com/search/potato?page=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&num_results_per_page=20&_dt=\(kRegexTimestamp)"), http(404))
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), http(404))
         
         self.constructor.search(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.error, "Calling Search returns non-nil error if API errors out.")
@@ -66,16 +66,17 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato", page: 5)
         
         let builder = CIOBuilder(expectation: "Calling Search should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?num_results_per_page=20&s=1&key=key_OucJxxrfiTVUQx0C&i=\(kRegexClientID)&c=cioios-&page=5&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=5&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
     
-    func testCallingSearch_AttachesNumResultsParameter(){
-        let query = CIOSearchQuery(query: "potato", numResultsPerPage: 11)
+    func testCallingSearch_AttachesCustomSectionParameter(){
+        let customSection = "customSection"
+        let query = CIOSearchQuery(query: "potato", section: customSection)
         
         let builder = CIOBuilder(expectation: "Calling Search should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?page=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&num_results_per_page=11&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(customSection)"), builder.create())
         
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -84,7 +85,7 @@ class SearchTests: XCTestCase {
     func testRedirect_hasCorrectURL() {
         let exp = self.expectation(description: "Redirect response should have a correct URL.")
 
-        stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=20&page=1&s=\(kRegexSession)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
+        stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
 
         self.constructor.search(forQuery: CIOSearchQuery(query: "dior")) { response in
             guard let redirectInfo = response.data?.redirectInfo else {
@@ -100,7 +101,7 @@ class SearchTests: XCTestCase {
 
     func testRedirect_hasCorrectMatchID() {
         let exp = self.expectation(description: "Redirect response should have a correct Match ID.")
-        stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=20&page=1&s=\(kRegexSession)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
+        stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
 
         self.constructor.search(forQuery: CIOSearchQuery(query: "dior")){ response in
             guard let redirectInfo = response.data?.redirectInfo else {
@@ -116,7 +117,7 @@ class SearchTests: XCTestCase {
     func testRedirect_hasCorrectRuleID() {
         let exp = self.expectation(description: "Redirect response should have a correct Rule ID.")
 
-        stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=20&page=1&s=\(kRegexSession)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
+        stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
 
         self.constructor.search(forQuery: CIOSearchQuery(query: "dior")) { response in
             guard let redirectInfo = response.data?.redirectInfo else {
@@ -134,7 +135,7 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato", filters: SearchFilters(groupFilter: "151", facetFilters: nil))
         
         let builder = CIOBuilder(expectation: "Calling Search with a group filter should have a group_id URL query item.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?page=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&filters%5Bgroup_id%5D=151&num_results_per_page=20&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bgroup_id%5D=151&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
         
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -145,8 +146,9 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato", filters: SearchFilters(groupFilter: nil, facetFilters: facetFilters))
         
         let builder = CIOBuilder(expectation: "Calling Search with a facet filter should have a facet filter URL query item.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?page=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&filters%5Bfacet1%5D=Organic&num_results_per_page=20&_dt=\(kRegexTimestamp)"), builder.create())
-        
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bfacet1%5D=Organic&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
+
+
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
@@ -158,7 +160,7 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato", filters: SearchFilters(groupFilter: nil, facetFilters: facetFilters))
         
         let builder = CIOBuilder(expectation: "Calling Search with multiple facet filters should have a multiple facet URL query items.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?page=1&i=\(kRegexClientID)&filters%5Bfacet2%5D=Natural&key=key_OucJxxrfiTVUQx0C&c=cioios-&filters%5Bfacet10%5D=Whole-grain&s=1&filters%5Bfacet1%5D=Organic&num_results_per_page=20&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bfacet10%5D=Whole-grain&filters%5Bfacet1%5D=Organic&filters%5Bfacet2%5D=Natural&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
         
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -171,7 +173,7 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato", filters: SearchFilters(groupFilter: nil, facetFilters: facetFilters))
         
         let builder = CIOBuilder(expectation: "Calling Search with multiple facet filters with the same name should have a multiple facet URL query items", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?page=1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Whole-grain&num_results_per_page=20&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
         
         self.constructor.search(forQuery: query, completionHandler: { response in })
         

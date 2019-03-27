@@ -57,6 +57,7 @@
 		F630E6FB22317CD1008ED537 /* SearchResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630E6FA22317CD1008ED537 /* SearchResultData.swift */; };
 		F631A5D81F58629B00A49BD1 /* constructor-io-error-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */; };
 		F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F631A5D91F5867E300A49BD1 /* CIOErrorView.swift */; };
+		F632C2E2224BDA0400FAD611 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F632C2E1224BDA0400FAD611 /* SortOption.swift */; };
 		F63374AC1F5A941700E481E7 /* AutocompleteDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63374AB1F5A941700E481E7 /* AutocompleteDataSourceTests.swift */; };
 		F63374AE1F5A95E800E481E7 /* AutocompleteDataSourceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63374AD1F5A95E800E481E7 /* AutocompleteDataSourceWrapper.swift */; };
 		F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63374AF1F5AA1C000E481E7 /* ExpectationHandler.swift */; };
@@ -274,6 +275,7 @@
 		F630E6FA22317CD1008ED537 /* SearchResultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultData.swift; sourceTree = "<group>"; };
 		F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-error-icon.png"; sourceTree = "<group>"; };
 		F631A5D91F5867E300A49BD1 /* CIOErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOErrorView.swift; sourceTree = "<group>"; };
+		F632C2E1224BDA0400FAD611 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		F63374AB1F5A941700E481E7 /* AutocompleteDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteDataSourceTests.swift; sourceTree = "<group>"; };
 		F63374AD1F5A95E800E481E7 /* AutocompleteDataSourceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteDataSourceWrapper.swift; sourceTree = "<group>"; };
 		F63374AF1F5AA1C000E481E7 /* ExpectationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectationHandler.swift; sourceTree = "<group>"; };
@@ -988,6 +990,7 @@
 				F630E6FA22317CD1008ED537 /* SearchResultData.swift */,
 				F65BBC582148223E007FEB22 /* SearchResultFacet.swift */,
 				F67868DC2229518900C76C0D /* SearchRedirectInfo.swift */,
+				F632C2E1224BDA0400FAD611 /* SortOption.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1764,6 +1767,7 @@
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
 				F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */,
 				F65B9E4C214698FD00101617 /* AbstractSearchResponseParser.swift in Sources */,
+				F632C2E2224BDA0400FAD611 /* SortOption.swift in Sources */,
 				08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */,
 				F6B220ED209C692D003A5D48 /* CustomSearchController.swift in Sources */,
 				F6DF7B9420849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift in Sources */,

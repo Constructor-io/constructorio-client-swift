@@ -82,8 +82,8 @@ public struct Constants {
         public static let page = "page"
         public static let groupFilter = "filters[group_id]"
         public static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
-        public static let numResultsPerPage = "num_results_per_page"
-        public static let numResultsPerPageForSectionNamePrefix = "num_results_per_page_"
+        public static let section = "section"
+        public static let defaultSectionName = "Products"
     }
 
     public struct Response {

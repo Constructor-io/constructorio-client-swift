@@ -33,7 +33,23 @@ class SearchResponseParser: AbstractSearchResponseParser{
                 return SearchResult(value: value, data: data, matchedTerms: matchedTerms)
             } ?? []
 
-            return CIOSearchResponse(facets: facets, results: results, redirectInfo: SearchRedirectInfo(object: response["redirect"] as? JSONObject))
+            let sortOptions: [SortOption] = (response["sort_options"] as? [JSONObject])?.flatMap({ obj  in
+                guard let status = obj["status"] as? String else { return nil }
+                guard let displayName = obj["display_name"] as? String else { return nil }
+                guard let sortOrderStr = obj["sort_order"] as? String else { return nil }
+                guard let sortOrder = SortOrder(rawValue: sortOrderStr) else { return nil }
+                guard let sortBy = obj["sort_by"] as? String else { return nil }
+
+                return SortOption(displayName: displayName, sortBy: sortBy, sortOrder: sortOrder, status: status)
+            }) ?? []
+
+            let groups: [CIOGroup] = (response["groups"] as? [JSONObject])?.flatMap({ obj  in
+                return CIOGroup(json: obj)
+            }) ?? []
+
+            let resultID = json?["result_id"] as? String ?? ""
+            let resultCount = response["total_num_results"] as? Int ?? 0
+            return CIOSearchResponse(facets: facets, results: results, groups: groups, redirectInfo: SearchRedirectInfo(object: response["redirect"] as? JSONObject), sortOptions: sortOptions, resultCount: resultCount, resultID: resultID )
         } catch {
             throw CIOError.invalidResponse
         }
