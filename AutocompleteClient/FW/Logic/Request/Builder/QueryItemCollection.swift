@@ -39,8 +39,7 @@ public struct QueryItemCollection {
                 }
             } else {
                 queryItems.removeValue(forKey: value)
-            }
-            
+            }   
         }
     }
 
@@ -53,6 +52,9 @@ public struct QueryItemCollection {
             return res + next.reduce([], { (res, next) in return res + [next] })
         }
         return flattenedArray.sorted(by: { item1, item2 -> Bool in
+            if item1.name == item2.name{
+                return (item1.value ?? "") < (item2.value ?? "")
+            }
             return item1.name < item2.name
         })
     }

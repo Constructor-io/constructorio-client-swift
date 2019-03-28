@@ -27,7 +27,7 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato")
         
         let builder = CIOBuilder(expectation: "Calling Search should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=cioios-1.6.1&i=DD2A2ECA-0C3A-4EFF-B0AC-1E4296EC1EE3&key=key_OucJxxrfiTVUQx0C&page=1&s=\(kRegexSession)&section=Products"), builder.create())
         
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -173,7 +173,7 @@ class SearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato", filters: SearchFilters(groupFilter: nil, facetFilters: facetFilters))
         
         let builder = CIOBuilder(expectation: "Calling Search with multiple facet filters with the same name should have a multiple facet URL query items", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
         
         self.constructor.search(forQuery: query, completionHandler: { response in })
         

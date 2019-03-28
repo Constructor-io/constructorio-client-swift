@@ -17,7 +17,7 @@ let kRegexVersion = "cioios-[\\d\\.]*"
 
 struct TestConstants {
     static let defaultUserInterfaceExpectationTimeout: TimeInterval = 50.0
-    static let defaultExpectationTimeout: TimeInterval = 1.0
+    static let defaultExpectationTimeout: TimeInterval = 1.5
     static let testApiKey = "key_OucJxxrfiTVUQx0C"
     static let testConfig = ConstructorIOConfig(apiKey: testApiKey)
 
