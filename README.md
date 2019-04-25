@@ -91,7 +91,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, didPerfor
    print("User searched for \(searchTerm)")
 }
 ```
- 
+
 ### Filtering Results
 To filter out certain results or groups, implement the `shouldParseResult` method.
 
@@ -101,7 +101,7 @@ func autocompleteController(controller: CIOAutocompleteViewController, shouldPar
    if result.value.contains("guitar") {
       return false
    }
-   
+
    return true
 }
 ```
@@ -117,7 +117,7 @@ func customizeSearchController(searchController: UISearchController, in autocomp
     // customize search bar
     searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
     searchController.searchBar.returnKeyType = .search
-        
+
     // customize search controller behaviour
     searchController.dimsBackgroundDuringPresentation = false
     searchController.hidesNavigationBarDuringPresentation = true

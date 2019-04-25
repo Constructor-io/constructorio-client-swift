@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol AbstractSearchResponseParser{
-    
+
     func parse(searchResponseData: Data) throws -> CIOSearchResponse
 }

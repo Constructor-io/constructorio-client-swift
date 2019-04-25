@@ -24,7 +24,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     private let networkClient: NetworkClient
 
     public var sessionManager: SessionManager
-    
+
     public let clientID: String?
 
     public var userID: String?
@@ -48,7 +48,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.sessionManager.delegate = self
         self.sessionManager.setup()
     }
-    
+
     /// Get autocomplete suggestions for a query.
     ///
     /// - Parameters:
@@ -58,7 +58,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: query)
         executeAutocomplete(request, completionHandler: completionHandler)
     }
-    
+
     /// Get search results for a query.
     ///
     /// - Parameters:
@@ -226,13 +226,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
                 completionHandler(response)
             }
         }
-        
+
         self.networkClient.execute(request) { response in
             if let error = response.error {
                 dispatchHandlerOnMainQueue(AutocompleteTaskResponse(error: error))
                 return
             }
-            
+
             let data = response.data!
             do {
                 let parsedResponse = try self.parseAutocomplete(data)
@@ -242,7 +242,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             }
         }
     }
-    
+
     private func executeSearch(_ request: URLRequest, completionHandler: @escaping SearchQueryCompletionHandler) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
@@ -277,15 +277,15 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             dispatchHandlerOnMainQueue(response.error)
         }
     }
-    
+
     private func parseAutocomplete(_ autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
         return try self.autocompleteParser.parse(autocompleteResponseData: autocompleteResponseData)
     }
-    
+
     private func parseSearch(_ searchResponseData: Data) throws -> CIOSearchResponse{
         return try self.searchParser.parse(searchResponseData: searchResponseData)
     }
-    
+
     // MARK: CIOSessionManagerDelegate
 
     public func sessionDidChange(from: Int, to: Int) {

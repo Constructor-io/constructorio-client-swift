@@ -15,5 +15,5 @@ public extension CIOResult{
         let json: [String: Any] = TestResource.load(name: TestResource.Response.singleResultJSONFilename).toJSONDictionary()!
         return CIOResult(autocompleteResult: CIOAutocompleteResult(json: json)!, group: group)
     }
-    
+
 }

@@ -16,7 +16,7 @@ public struct QueryItemCollection {
     mutating func add(key: String,items: [URLQueryItem]) {
         queryItems[key] = items
     }
-    
+
     public mutating func add(_ item: URLQueryItem) {
         self[item.name] = [item]
     }
@@ -24,7 +24,7 @@ public struct QueryItemCollection {
     public mutating func addMultiple(index: Int, item: URLQueryItem) {
         self[item.name + String(index)] = [item]
     }
-    
+
     public subscript(value: String) -> [URLQueryItem]? {
         get {
             return queryItems[value]
@@ -46,7 +46,7 @@ public struct QueryItemCollection {
     public mutating func remove(name: String) {
         self[name] = nil
     }
-    
+
     func all() -> [URLQueryItem] {
         let flattenedArray = self.queryItems.values.reduce([]) { (res, next) -> [URLQueryItem] in
             return res + next.reduce([], { (res, next) in return res + [next] })

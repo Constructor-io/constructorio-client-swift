@@ -113,7 +113,6 @@
 		F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCB721515E46007FEB22 /* ClientIDGenerator.swift */; };
 		F65BBCC22151621A007FEB22 /* IDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BBCC12151621A007FEB22 /* IDGenerator.swift */; };
 		F66B215D21DF7DF700AAB030 /* ErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B215C21DF7DF700AAB030 /* ErrorTests.swift */; };
-		F66B216121DF80F100AAB030 /* DataToJSONConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216021DF80F100AAB030 /* DataToJSONConversionTests.swift */; };
 		F66B216321DF837700AAB030 /* AutocompleteResultCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216221DF837700AAB030 /* AutocompleteResultCountTests.swift */; };
 		F66B216521DF851F00AAB030 /* StringTrimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216421DF851F00AAB030 /* StringTrimTests.swift */; };
 		F66B216721DF87EB00AAB030 /* UIColorRGBConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */; };
@@ -333,7 +332,6 @@
 		F65BBCB721515E46007FEB22 /* ClientIDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientIDGenerator.swift; sourceTree = "<group>"; };
 		F65BBCC12151621A007FEB22 /* IDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDGenerator.swift; sourceTree = "<group>"; };
 		F66B215C21DF7DF700AAB030 /* ErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTests.swift; sourceTree = "<group>"; };
-		F66B216021DF80F100AAB030 /* DataToJSONConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataToJSONConversionTests.swift; sourceTree = "<group>"; };
 		F66B216221DF837700AAB030 /* AutocompleteResultCountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteResultCountTests.swift; sourceTree = "<group>"; };
 		F66B216421DF851F00AAB030 /* StringTrimTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrimTests.swift; sourceTree = "<group>"; };
 		F66B216621DF87EB00AAB030 /* UIColorRGBConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorRGBConversionTests.swift; sourceTree = "<group>"; };
@@ -1020,14 +1018,6 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		F66B215F21DF80D600AAB030 /* TestUtilsTests */ = {
-			isa = PBXGroup;
-			children = (
-				F67D42A922035EE90053B9C3 /* JSON */,
-			);
-			path = TestUtilsTests;
-			sourceTree = "<group>";
-		};
 		F66B216E21DF8FAE00AAB030 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1103,14 +1093,6 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		F67D42A922035EE90053B9C3 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				F66B216021DF80F100AAB030 /* DataToJSONConversionTests.swift */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
 		F6852554213BCE8B00A27FAA /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -1184,7 +1166,6 @@
 			isa = PBXGroup;
 			children = (
 				F67D42A422035E830053B9C3 /* Utils */,
-				F66B215F21DF80D600AAB030 /* TestUtilsTests */,
 				08F771702162C277005FDF06 /* FW */,
 				F64F46AB1F5963A60094C697 /* Test Utils */,
 				F64F46A81F5960CC0094C697 /* Resources */,
@@ -1703,11 +1684,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
@@ -1863,7 +1840,6 @@
 				F67E22502074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift in Sources */,
 				F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */,
 				F64F46C31F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift in Sources */,
-				F66B216121DF80F100AAB030 /* DataToJSONConversionTests.swift in Sources */,
 				F64E94E9212DC93300E50EDE /* ConstructorIOAutocompleteTests.swift in Sources */,
 				F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */,
 				F62510D120568F250040E3DF /* SessionManagerTests.swift in Sources */,

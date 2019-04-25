@@ -10,20 +10,20 @@ import XCTest
 @testable import ConstructorAutocomplete
 
 class SearchParserTests: XCTestCase {
-    
+
     var parser: SearchResponseParser!
-    
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         self.parser = SearchResponseParser()
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testSearchParser_parsingNonJSONData_ThrowsAnException() {
         let failWithMessage = "Passing invalid JSON data should throw a CIOError.InvalidResponse"
         let invalidData = "a beautiful day".data(using: String.Encoding.utf8)!
@@ -59,7 +59,7 @@ class SearchParserTests: XCTestCase {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
     }
-    
+
     func testSearchParser_ParsingJSONString_HasCorrectFacetOptionsCount() {
         let data = TestResource.load(name: TestResource.Response.searchJSONFilename)
         do {
@@ -70,7 +70,7 @@ class SearchParserTests: XCTestCase {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
     }
-    
+
     func testSearchParser_ParsingJSONString_HasCorrectResultCount() {
         let data = TestResource.load(name: TestResource.Response.searchJSONFilename)
         do {
@@ -80,5 +80,5 @@ class SearchParserTests: XCTestCase {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
     }
-    
+
 }

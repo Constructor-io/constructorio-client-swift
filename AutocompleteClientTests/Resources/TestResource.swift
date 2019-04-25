@@ -21,7 +21,7 @@ struct TestResource {
         static let numberOfFacetsOptionsInSearchResponseResult1 = 43
         static let numberOfFacetsOptionsInSearchResponseResult2 = 26
         static let numberOfResultsInSearchResponse = 24
-        
+
         static let multipleGroupsJSONFilename = "response_json_multiple_groups"
         static let numberOfGroupsInMultipleSectionsResponse = 7
     }

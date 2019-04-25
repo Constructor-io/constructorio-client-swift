@@ -21,11 +21,11 @@ public class DependencyContainer {
     var autocompleteResponseParser: () -> AbstractAutocompleteResponseParser = {
         return CIOAutocompleteResponseParser()
     }
-    
+
     var searchResponseParser: () -> AbstractSearchResponseParser = {
         return SearchResponseParser()
     }
-    
+
     var sessionManager: () -> SessionManager = {
         return CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: Constants.Query.sessionIncrementTimeoutInSeconds)
     }
