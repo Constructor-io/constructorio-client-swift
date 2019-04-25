@@ -17,7 +17,6 @@ public struct CIOSearchResponse {
     let groups: [CIOGroup]
     let redirectInfo: SearchRedirectInfo?
     let sortOptions: [SortOption]
-
     let resultCount: Int
     let resultID: String
 

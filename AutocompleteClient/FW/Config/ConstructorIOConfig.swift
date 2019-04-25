@@ -13,7 +13,6 @@ public struct ConstructorIOConfig {
     public let apiKey: String
     public var defaultItemSectionName: String?
     public var resultCount: AutocompleteResultCount?
-
     public var testCells: [CIOABTestCell]?
 
     public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil) {

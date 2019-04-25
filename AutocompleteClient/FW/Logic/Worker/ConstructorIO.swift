@@ -59,6 +59,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeAutocomplete(request, completionHandler: completionHandler)
     }
     
+    /// Get search results for a query.
+    ///
+    /// - Parameters:
+    ///   - query: The query object, consisting of the query to autocomplete and additional options.
+    ///   - completionHandler: The callback to execute on completion.
     public func search(forQuery query: CIOSearchQuery, completionHandler: @escaping SearchQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeSearch(request, completionHandler: completionHandler)

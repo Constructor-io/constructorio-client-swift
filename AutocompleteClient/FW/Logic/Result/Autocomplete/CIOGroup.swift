@@ -31,7 +31,6 @@ public class CIOGroup: NSObject {
         
         self.displayName = name
         self.groupID = groupID
-        
         self.path = json[Constants.Result.path] as? String
     }
 }
