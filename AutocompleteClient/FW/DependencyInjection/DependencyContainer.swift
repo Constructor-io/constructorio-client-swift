@@ -18,11 +18,15 @@ public class DependencyContainer {
         return URLSessionNetworkClient()
     }
 
-    public var responseParser: () -> AbstractResponseParser = {
+    var autocompleteResponseParser: () -> AbstractAutocompleteResponseParser = {
         return CIOAutocompleteResponseParser()
     }
 
-    public var sessionManager: () -> SessionManager = {
+    var searchResponseParser: () -> AbstractSearchResponseParser = {
+        return SearchResponseParser()
+    }
+
+    var sessionManager: () -> SessionManager = {
         return CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: Constants.Query.sessionIncrementTimeoutInSeconds)
     }
 

@@ -1,0 +1,27 @@
+{
+    "request": {
+        "fmt_options": {
+            "groups_max_depth": 1,
+            "groups_start": "current"
+        },
+        "num_results_per_page": 24,
+        "page": 1,
+        "section": "Products",
+        "sort_by": "relevance",
+        "sort_order": "descending",
+        "term": "dior",
+        "us": ["COUNTRY_US"]
+    },
+    "response": {
+        "redirect": {
+            "data": {
+                "match_id": 16257,
+                "rule_id": 8860,
+                "url": "/brand/dior"
+            },
+            "matched_terms": ["dior"],
+            "matched_user_segments": null
+        }
+    },
+    "result_id": "cc5752d6-41a5-4fdf-a461-622d91306ee2"
+}

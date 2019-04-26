@@ -52,6 +52,10 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.Track.autocompleteSection, value: sectionName))
     }
 
+    public func set(searchSection: String){
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.section, value: searchSection))
+    }
+
     public func set(revenue: Double?) {
         guard let revenue = revenue else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(format: "%.2lf", revenue)))
@@ -68,6 +72,32 @@ extension RequestBuilder {
             let name = Constants.AutocompleteQuery.queryItemForSection($0.key.replacingOccurrences(of: " ", with: "+"))
             queryItems.add(URLQueryItem(name: name, value: String($0.value)))
         }
+    }
+
+    public func set(page: Int){
+        let pageString = String(page)
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.page, value: pageString))
+    }
+
+    public func set(groupFilter: String?){
+        guard let filter = groupFilter else { return }
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.groupFilter, value: filter))
+    }
+
+    public func set(facetFilters: [Filter]?){
+        guard let filters = facetFilters else { return }
+        for filter in filters{
+            self.set(facetFilter: filter)
+        }
+    }
+
+    public func set(facetFilter: Filter?){
+        guard let filter = facetFilter else { return }
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.facetFilterKey(filter.key), value: filter.value))
+    }
+
+    public func set(_ value: String, forKey key: String){
+        queryItems.add(URLQueryItem(name: key, value: value))
     }
 
     public func set(testCellKey: String, testCellValue: String) {

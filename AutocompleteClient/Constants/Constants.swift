@@ -21,7 +21,6 @@ public struct Constants {
 
     public struct UI {
         public static let CellIdentifier = "SearchItemCellID"
-
         public static let defaultFontSize: CGFloat = 16
         public static let defaultRowHeight: CGFloat = 50
         public static let defaultSectionHeaderHeight: CGFloat = 44
@@ -70,11 +69,18 @@ public struct Constants {
         public static let numResults = "num_results"
         public static let numResultsForSectionNamePrefix = "num_results_"
         public static let queryItemForSection = { (name: String) -> String in return Constants.AutocompleteQuery.numResultsForSectionNamePrefix + name }
-
         public static let sectionNameSearchSuggestions = "Search Suggestions"
         public static let sectionNameProducts = "Products"
-
         public static let defaultItemCountPerSection = 10
+    }
+
+    public struct SearchQuery {
+        public static let pathString = "search"
+        public static let page = "page"
+        public static let groupFilter = "filters[group_id]"
+        public static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
+        public static let section = "section"
+        public static let defaultSectionName = "Products"
     }
 
     public struct Response {
@@ -86,8 +92,6 @@ public struct Constants {
         public static let data = "data"
         public static let value = "value"
         public static let description = "description"
-
-        // groups
         public static let groups = "groups"
         public static let displayName = "display_name"
         public static let groupID = "group_id"
@@ -99,7 +103,6 @@ public struct Constants {
         public static let apiKey = "key"
         public static let baseURLString = "https://ac.cnstrc.com"
         public static let expectedStatusCode = 204
-
         public static let autocompleteSection = "autocomplete_section"
         public static let searchTerm = "term"
         public static let trigger = "tr"

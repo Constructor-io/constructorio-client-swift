@@ -31,7 +31,7 @@ class QueryItemCollectionTests: XCTestCase {
 
     func testQueryItemCollection_SubscriptSetter() {
         var collection = QueryItemCollection()
-        collection["key"] = URLQueryItem(name: "name", value: "value")
+        collection["key"] = [URLQueryItem(name: "name", value: "value")]
     }
 
 }

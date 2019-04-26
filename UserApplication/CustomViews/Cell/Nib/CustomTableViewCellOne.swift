@@ -37,13 +37,13 @@ class CustomTableViewCellOne: UITableViewCell, CIOAutocompleteCell {
             groupString.append(NSAttributedString(string: "  in ", attributes: highlighter.attributesProvider.defaultSubstringAttributes()))
             groupString.append(NSAttributedString(string: group.displayName, attributes: highlighter.attributesProvider.highlightedSubstringAttributes()))
             self.labelText.attributedText =  groupString
-            
+
             self.imageViewIcon.image = nil
         }else{
             self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value)
             self.imageViewIcon.image = self.randomImage
         }
-        
+
     }
 
 }

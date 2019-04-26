@@ -1,0 +1,1730 @@
+{
+    "request": {
+        "fmt_options": {
+            "groups_max_depth": 1,
+            "groups_start": "current"
+        },
+        "num_results_per_page": 24,
+        "page": 1,
+        "section": "Products",
+        "sort_by": "relevance",
+        "sort_order": "descending",
+        "term": "banana",
+        "us": ["COUNTRY_US"]
+    },
+    "response": {
+        "facets": [{
+            "display_name": "Brand",
+            "name": "Brand",
+            "options": [{
+                "count": 7,
+                "data": {},
+                "display_name": "Earth's Best",
+                "status": "",
+                "value": "Earth's Best"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Happy Family",
+                "status": "",
+                "value": "Happy Family"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Chobani",
+                "status": "",
+                "value": "Chobani"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "",
+                "status": "",
+                "value": ""
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Sprout",
+                "status": "",
+                "value": "Sprout"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Plum Organics",
+                "status": "",
+                "value": "Plum Organics"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Stonyfield",
+                "status": "",
+                "value": "Stonyfield"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Diana's Bananas",
+                "status": "",
+                "value": "Diana's Bananas"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Dannon",
+                "status": "",
+                "value": "Dannon"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Barnana",
+                "status": "",
+                "value": "Barnana"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Banana Boat",
+                "status": "",
+                "value": "Banana Boat"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "happyfamily",
+                "status": "",
+                "value": "happyfamily"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Sir Bananas",
+                "status": "",
+                "value": "Sir Bananas"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Materne",
+                "status": "",
+                "value": "Materne"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Made Good",
+                "status": "",
+                "value": "Made Good"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Little Duck Organics",
+                "status": "",
+                "value": "Little Duck Organics"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Forager",
+                "status": "",
+                "value": "Forager"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Bocce's Bakery",
+                "status": "",
+                "value": "Bocce's Bakery"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "You Love Fruit",
+                "status": "",
+                "value": "You Love Fruit"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Yoplait",
+                "status": "",
+                "value": "Yoplait"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Wellness",
+                "status": "",
+                "value": "Wellness"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Vlasic",
+                "status": "",
+                "value": "Vlasic"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "The Jam Stand",
+                "status": "",
+                "value": "The Jam Stand"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Stonyfield Organic",
+                "status": "",
+                "value": "Stonyfield Organic"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "So Delicious",
+                "status": "",
+                "value": "So Delicious"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Post",
+                "status": "",
+                "value": "Post"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "NurturMe",
+                "status": "",
+                "value": "NurturMe"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "NuGo",
+                "status": "",
+                "value": "NuGo"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Noosa",
+                "status": "",
+                "value": "Noosa"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "KIND",
+                "status": "",
+                "value": "KIND"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Justin's",
+                "status": "",
+                "value": "Justin's"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Happyfamily",
+                "status": "",
+                "value": "Happyfamily"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Happy Baby",
+                "status": "",
+                "value": "Happy Baby"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Green Mustache",
+                "status": "",
+                "value": "Green Mustache"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "GoodPop",
+                "status": "",
+                "value": "GoodPop"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "GoMacro",
+                "status": "",
+                "value": "GoMacro"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "GoGo Squeez",
+                "status": "",
+                "value": "GoGo Squeez"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Dannon Danimals",
+                "status": "",
+                "value": "Dannon Danimals"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Core Power",
+                "status": "",
+                "value": "Core Power"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Coolhaus",
+                "status": "",
+                "value": "Coolhaus"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Clif",
+                "status": "",
+                "value": "Clif"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Baby Mum-Mum",
+                "status": "",
+                "value": "Baby Mum-Mum"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "18 Rabbits",
+                "status": "",
+                "value": "18 Rabbits"
+            }],
+            "type": "multiple"
+        }, {
+            "display_name": "Claims",
+            "name": "Claims",
+            "options": [{
+                "count": 44,
+                "data": {},
+                "display_name": "Organic",
+                "status": "",
+                "value": "Organic"
+            }, {
+                "count": 35,
+                "data": {},
+                "display_name": "GMO Free",
+                "status": "",
+                "value": "GMO Free"
+            }, {
+                "count": 32,
+                "data": {},
+                "display_name": "Gluten Free",
+                "status": "",
+                "value": "Gluten Free"
+            }, {
+                "count": 14,
+                "data": {},
+                "display_name": "No Preservatives",
+                "status": "",
+                "value": "No Preservatives"
+            }, {
+                "count": 12,
+                "data": {},
+                "display_name": "No Artificial Color",
+                "status": "",
+                "value": "No Artificial Color"
+            }, {
+                "count": 12,
+                "data": {},
+                "display_name": "Dairy Free",
+                "status": "",
+                "value": "Dairy Free"
+            }, {
+                "count": 10,
+                "data": {},
+                "display_name": "Vegetarian",
+                "status": "",
+                "value": "Vegetarian"
+            }, {
+                "count": 9,
+                "data": {},
+                "display_name": "No Sugar Added",
+                "status": "",
+                "value": "No Sugar Added"
+            }, {
+                "count": 9,
+                "data": {},
+                "display_name": "Low Fat",
+                "status": "",
+                "value": "Low Fat"
+            }, {
+                "count": 8,
+                "data": {},
+                "display_name": "Vegan",
+                "status": "",
+                "value": "Vegan"
+            }, {
+                "count": 8,
+                "data": {},
+                "display_name": "All Natural",
+                "status": "",
+                "value": "All Natural"
+            }, {
+                "count": 7,
+                "data": {},
+                "display_name": "No Artificial Ingredients",
+                "status": "",
+                "value": "No Artificial Ingredients"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Trans Fat Free",
+                "status": "",
+                "value": "Trans Fat Free"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "RBST Free",
+                "status": "",
+                "value": "RBST Free"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Whole Grains",
+                "status": "",
+                "value": "Whole Grains"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Wheat Free",
+                "status": "",
+                "value": "Wheat Free"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Soy Free",
+                "status": "",
+                "value": "Soy Free"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "No Salt Added",
+                "status": "",
+                "value": "No Salt Added"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Made with Organic Ingredients",
+                "status": "",
+                "value": "Made with Organic Ingredients"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "No Pesticides",
+                "status": "",
+                "value": "No Pesticides"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Fat Free",
+                "status": "",
+                "value": "Fat Free"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "No High Fructose Corn Syrup",
+                "status": "",
+                "value": "No High Fructose Corn Syrup"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Fair Trade",
+                "status": "",
+                "value": "Fair Trade"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Raised Without Antibiotics",
+                "status": "",
+                "value": "Raised Without Antibiotics"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Low Sodium",
+                "status": "",
+                "value": "Low Sodium"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Caffeine Free",
+                "status": "",
+                "value": "Caffeine Free"
+            }],
+            "type": "multiple"
+        }],
+        "groups": [{
+            "children": [{
+                "children": [],
+                "count": 58,
+                "display_name": "Baby",
+                "group_id": "46",
+                "parents": [{
+                    "display_name": "Grocery",
+                    "group_id": "431"
+                }]
+            }, {
+                "children": [],
+                "count": 19,
+                "display_name": "Pantry",
+                "group_id": "625",
+                "parents": [{
+                    "display_name": "Grocery",
+                    "group_id": "431"
+                }]
+            }, {
+                "children": [],
+                "count": 7,
+                "display_name": "Health & Beauty",
+                "group_id": "449",
+                "parents": [{
+                    "display_name": "Grocery",
+                    "group_id": "431"
+                }]
+            }, {
+                "children": [],
+                "count": 5,
+                "display_name": "Beverages",
+                "group_id": "86",
+                "parents": [{
+                    "display_name": "Grocery",
+                    "group_id": "431"
+                }]
+            }, {
+                "children": [],
+                "count": 3,
+                "display_name": "Pet",
+                "group_id": "656",
+                "parents": [{
+                    "display_name": "Grocery",
+                    "group_id": "431"
+                }]
+            }],
+            "count": 78,
+            "display_name": "Grocery",
+            "group_id": "431",
+            "parents": []
+        }, {
+            "children": [{
+                "children": [],
+                "count": 19,
+                "display_name": "Yogurt",
+                "group_id": "993",
+                "parents": [{
+                    "display_name": "Dairy",
+                    "group_id": "281"
+                }]
+            }, {
+                "children": [],
+                "count": 2,
+                "display_name": "Plant-Based Milk",
+                "group_id": "672",
+                "parents": [{
+                    "display_name": "Dairy",
+                    "group_id": "281"
+                }]
+            }, {
+                "children": [],
+                "count": 2,
+                "display_name": "Milk",
+                "group_id": "553",
+                "parents": [{
+                    "display_name": "Dairy",
+                    "group_id": "281"
+                }]
+            }],
+            "count": 20,
+            "display_name": "Dairy",
+            "group_id": "281",
+            "parents": []
+        }, {
+            "children": [{
+                "children": [],
+                "count": 5,
+                "display_name": "Bananas",
+                "group_id": "67",
+                "parents": [{
+                    "display_name": "Fruit",
+                    "group_id": "393"
+                }]
+            }],
+            "count": 5,
+            "display_name": "Fruit",
+            "group_id": "393",
+            "parents": []
+        }, {
+            "children": [{
+                "children": [],
+                "count": 5,
+                "display_name": "Ice Cream & Treats",
+                "group_id": "466",
+                "parents": [{
+                    "display_name": "Frozen",
+                    "group_id": "391"
+                }]
+            }],
+            "count": 5,
+            "display_name": "Frozen",
+            "group_id": "391",
+            "parents": []
+        }],
+        "results": [{
+            "data": {
+                "description": "Yoplait Original is proof that classic is always a good choice. Each cup bursts with the delicious, flavorful creaminess that isn't just good, it is SO good!",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Yoplait"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Gluten Free"]
+                }],
+                "groups": [{
+                    "display_name": "Dairy",
+                    "group_id": "281",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Yogurt",
+                    "group_id": "993",
+                    "path": "/431/46/376",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }, {
+                        "display_name": "Food",
+                        "id": "376"
+                    }]
+                }, {
+                    "display_name": "Traditional",
+                    "group_id": "922",
+                    "path": "/281/993",
+                    "path_list": [{
+                        "display_name": "Dairy",
+                        "id": "281"
+                    }, {
+                        "display_name": "Yogurt",
+                        "id": "993"
+                    }]
+                }],
+                "id": "dai_yplt_ffstrban",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_yplt_ffstrban.png",
+                "price": "$0.89",
+                "quantity": "1lb",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_yplt_ffstrban.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Yoplait Original Yogurt, Strawberry Banana"
+        }, {
+            "data": {
+                "description": "Classic strawberry and strawberry with a banana twist \u2014 what kid could resist?",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Stonyfield Organic"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Gluten Free", "No Artificial Color", "No High Fructose Corn Syrup", "Organic"]
+                }],
+                "groups": [{
+                    "display_name": "Dairy",
+                    "group_id": "281",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Yogurt",
+                    "group_id": "993",
+                    "path": "/431/46/376",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }, {
+                        "display_name": "Food",
+                        "id": "376"
+                    }]
+                }, {
+                    "display_name": "Kids",
+                    "group_id": "493",
+                    "path": "/431/449/288",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }, {
+                        "display_name": "Dental Care",
+                        "id": "288"
+                    }]
+                }],
+                "id": "dai_pid_2003448",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2003448.png",
+                "price": "$5.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2003448.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Stonyfield Organic Kids Squeeze Lowfat Yogurt, Strawberry Banana"
+        }, {
+            "data": {
+                "description": "Real, scrumptious yogurt and bananas, never anything artificial. Delivered in our iconic squeezable, portable pouch, GoGo squeeZ YogurtZ can be stored at room temperature until opened! That's why we're proud to say it's \"So Cool, It Doesn't Have To Be Cold.\"",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Materne"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Gluten Free", "Low Fat", "No Preservatives"]
+                }],
+                "groups": [{
+                    "display_name": "Dairy",
+                    "group_id": "281",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Yogurt",
+                    "group_id": "993",
+                    "path": "/431/46/376",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }, {
+                        "display_name": "Food",
+                        "id": "376"
+                    }]
+                }, {
+                    "display_name": "Kids",
+                    "group_id": "493",
+                    "path": "/431/449/288",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }, {
+                        "display_name": "Dental Care",
+                        "id": "288"
+                    }]
+                }],
+                "id": "gro_pid_4011092",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/gro_pid_4011092.png",
+                "price": "$3.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/gro_pid_4011092.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Materne GoGo Squeez Yogurtz Low Fat Yogurt On The Go, Banana"
+        }, {
+            "data": {
+                "description": "Classic Strawberry and Strawberry with a Banana twist \u2012 what kid could resist?",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Stonyfield"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Gluten Free", "Low Fat", "No Artificial Ingredients", "No Preservatives", "Organic", "Raised Without Antibiotics"]
+                }],
+                "groups": [{
+                    "display_name": "Dairy",
+                    "group_id": "281",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Yogurt",
+                    "group_id": "993",
+                    "path": "/431/46/376",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }, {
+                        "display_name": "Food",
+                        "id": "376"
+                    }]
+                }, {
+                    "display_name": "Kids",
+                    "group_id": "493",
+                    "path": "/431/449/288",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }, {
+                        "display_name": "Dental Care",
+                        "id": "288"
+                    }]
+                }],
+                "id": "dai_stony_planet_pro_01",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_stony_planet_pro_01.png",
+                "price": "$4.69",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_stony_planet_pro_01.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Stonyfield Organic Kids Lowfat Yogurt, Strawberry and Strawberry Banana"
+        }, {
+            "data": {
+                "description": "Danimals brings together the portable fun of a pouch with the creamy goodness of Danimals yogurt. You can freeze them and they'll thaw by lunchtime, making them a convenient lunchtime snack. And your kids will love the flavors.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Dannon"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Gluten Free", "No Artificial Color", "No High Fructose Corn Syrup"]
+                }],
+                "groups": [{
+                    "display_name": "Dairy",
+                    "group_id": "281",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Yogurt",
+                    "group_id": "993",
+                    "path": "/431/46/376",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }, {
+                        "display_name": "Food",
+                        "id": "376"
+                    }]
+                }, {
+                    "display_name": "Kids",
+                    "group_id": "493",
+                    "path": "/431/449/288",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }, {
+                        "display_name": "Dental Care",
+                        "id": "288"
+                    }]
+                }],
+                "id": "dai_pid_2003130",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2003130.png",
+                "price": "$5.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2003130.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Dannon Danimals Smoothie, Strawberry Explosion and Banana Split"
+        }, {
+            "data": {
+                "description": "Bursting with Strawberry Banana flavor! We know a little monkey who really loves this flavor! Do you?",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Dannon Danimals"]
+                }, {
+                    "name": "Claims",
+                    "values": ["No Artificial Color"]
+                }],
+                "groups": [{
+                    "display_name": "Dairy",
+                    "group_id": "281",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Yogurt",
+                    "group_id": "993",
+                    "path": "/431/46/376",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }, {
+                        "display_name": "Food",
+                        "id": "376"
+                    }]
+                }, {
+                    "display_name": "Drinkable",
+                    "group_id": "319",
+                    "path": "/281/993",
+                    "path_list": [{
+                        "display_name": "Dairy",
+                        "id": "281"
+                    }, {
+                        "display_name": "Yogurt",
+                        "id": "993"
+                    }]
+                }],
+                "id": "dai_dnon_smth_01",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_dnon_smth_01.png",
+                "price": "$3.19",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_dnon_smth_01.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Dannon Danimals Smoothie, Swingin' Strawberry-Banana"
+        }, {
+            "data": {
+                "description": "A smooth drinkable yogurt full of flavor and 14g of protein to keep you rejuvenated on the go.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Chobani"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Gluten Free", "No Artificial Ingredients", "RBST Free"]
+                }],
+                "groups": [{
+                    "display_name": "Dairy",
+                    "group_id": "281",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Yogurt",
+                    "group_id": "993",
+                    "path": "/431/46/376",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }, {
+                        "display_name": "Food",
+                        "id": "376"
+                    }]
+                }, {
+                    "display_name": "Drinkable",
+                    "group_id": "319",
+                    "path": "/281/993",
+                    "path_list": [{
+                        "display_name": "Dairy",
+                        "id": "281"
+                    }, {
+                        "display_name": "Yogurt",
+                        "id": "993"
+                    }]
+                }],
+                "id": "dai_pid_2003515",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2003515.png",
+                "price": "$2.29",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2003515.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Chobani Low-Fat Greek Yogurt Drink, Strawberry Banana"
+        }, {
+            "data": {
+                "description": "Shake up your snack routine with YoKids sMOOthies \u2014 real yogurt, real fruit and real veggies on the go! Ever shake a strawbana? It's deliciously fun with this YoKids fruit and veggie sMOOthie.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Stonyfield"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Gluten Free", "Low Fat", "No Artificial Color", "Organic"]
+                }],
+                "groups": [{
+                    "display_name": "Dairy",
+                    "group_id": "281",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Yogurt",
+                    "group_id": "993",
+                    "path": "/431/46/376",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }, {
+                        "display_name": "Food",
+                        "id": "376"
+                    }]
+                }, {
+                    "display_name": "Drinkable",
+                    "group_id": "319",
+                    "path": "/281/993",
+                    "path_list": [{
+                        "display_name": "Dairy",
+                        "id": "281"
+                    }, {
+                        "display_name": "Yogurt",
+                        "id": "993"
+                    }]
+                }],
+                "id": "dai_pid_2002375",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2002375.png",
+                "price": "$4.69",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2002375.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Stonyfield Organic YoKids Smoothie, Strawberry Banana"
+        }, {
+            "data": {
+                "description": "Banana yoghurt with Guittard dark chocolate, banana chips, and peanuts.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Noosa"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Gluten Free"]
+                }],
+                "groups": [{
+                    "display_name": "Dairy",
+                    "group_id": "281",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Yogurt",
+                    "group_id": "993",
+                    "path": "/431/46/376",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }, {
+                        "display_name": "Food",
+                        "id": "376"
+                    }]
+                }, {
+                    "display_name": "Indulgent",
+                    "group_id": "473",
+                    "path": "/281/993",
+                    "path_list": [{
+                        "display_name": "Dairy",
+                        "id": "281"
+                    }, {
+                        "display_name": "Yogurt",
+                        "id": "993"
+                    }]
+                }],
+                "id": "dai_pid_2003736",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2003736.png",
+                "price": "$2.49",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_pid_2003736.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Noosa Mates Finest Yoghurt and Crunchies, Banana Chocolate Peanut"
+        }, {
+            "data": {
+                "description": "Take a bite! Everything that goes into making our delectable treats is top-of-the-line, just amazing. Real, frozen fruit slices paired with a mix of premium dark and milk chocolate create delicious treats that will take your taste buds to the tropics.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Diana's Bananas"]
+                }, {
+                    "name": "Claims",
+                    "values": []
+                }],
+                "groups": [{
+                    "display_name": "Frozen",
+                    "group_id": "391",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Ice Cream & Treats",
+                    "group_id": "466",
+                    "path": "/391",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }]
+                }, {
+                    "display_name": "Sandwiches, Bars, & Cones",
+                    "group_id": "771",
+                    "path": "/391/466",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }, {
+                        "display_name": "Ice Cream & Treats",
+                        "id": "466"
+                    }]
+                }],
+                "id": "fro_pid_3502607",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502607.png",
+                "price": "$4.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502607.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Diana's Bananas Banana Bites"
+        }, {
+            "data": {
+                "description": "It's getting dark in here: And that's a good thing, because we're talking about our decadently flavorful dark chocolate. Once you've experienced our frozen banana encased in rich dark chocolate, you'll realize\u2014you've just seen the light.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Diana's Bananas"]
+                }, {
+                    "name": "Claims",
+                    "values": ["All Natural", "Dairy Free", "Trans Fat Free"]
+                }],
+                "groups": [{
+                    "display_name": "Frozen",
+                    "group_id": "391",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Ice Cream & Treats",
+                    "group_id": "466",
+                    "path": "/391",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }]
+                }, {
+                    "display_name": "Sandwiches, Bars, & Cones",
+                    "group_id": "771",
+                    "path": "/391/466",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }, {
+                        "display_name": "Ice Cream & Treats",
+                        "id": "466"
+                    }]
+                }],
+                "id": "fro_pid_3502606",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502606.png",
+                "price": "$4.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502606.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Diana's Bananas Banana Babies, Dark Chocolate"
+        }, {
+            "data": {
+                "description": "The original. \"Weirdly Good\" and the one that started it all \u2014 the world's creamiest, most flavorful banana enrobed in mind-blowingly delicious milk chocolate. One bite and you'll realize: weird is good.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Diana's Bananas"]
+                }, {
+                    "name": "Claims",
+                    "values": ["All Natural", "Trans Fat Free"]
+                }],
+                "groups": [{
+                    "display_name": "Frozen",
+                    "group_id": "391",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Ice Cream & Treats",
+                    "group_id": "466",
+                    "path": "/391",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }]
+                }, {
+                    "display_name": "Sandwiches, Bars, & Cones",
+                    "group_id": "771",
+                    "path": "/391/466",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }, {
+                        "display_name": "Ice Cream & Treats",
+                        "id": "466"
+                    }]
+                }],
+                "id": "fro_pid_3502483",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502483.png",
+                "price": "$4.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502483.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Diana's Bananas Banana Babies, Milk Chocolate"
+        }, {
+            "data": {
+                "description": "Every GoodPop All-Natural Frozen Pop is made with the best all-natural, organic and locally sourced (when we can) ingredients we can find. We use lots of delicious fresh fruit, 100% organic and fair trade cane sugar (organic evaporated cane juice) and nothing artificial, ever. We always make our...",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["GoodPop"]
+                }, {
+                    "name": "Claims",
+                    "values": ["All Natural", "Gluten Free", "Made with Organic Ingredients", "RBST Free"]
+                }],
+                "groups": [{
+                    "display_name": "Frozen",
+                    "group_id": "391",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Ice Cream & Treats",
+                    "group_id": "466",
+                    "path": "/391",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }]
+                }, {
+                    "display_name": "Ice Pops & Juice Bars",
+                    "group_id": "467",
+                    "path": "/391/466",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }, {
+                        "display_name": "Ice Cream & Treats",
+                        "id": "466"
+                    }]
+                }],
+                "id": "fro_pid_3502446",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502446.png",
+                "price": "$4.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502446.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "GoodPop All Natural Frozen Pops, Banana Cinnamon"
+        }, {
+            "data": {
+                "description": "Banana ice cream with buttery rum dulce de leche reduction swirl.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Coolhaus"]
+                }, {
+                    "name": "Claims",
+                    "values": ["All Natural", "GMO Free", "Gluten Free", "RBST Free"]
+                }],
+                "groups": [{
+                    "display_name": "Frozen",
+                    "group_id": "391",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Ice Cream & Treats",
+                    "group_id": "466",
+                    "path": "/391",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }]
+                }, {
+                    "display_name": "Ice Cream",
+                    "group_id": "465",
+                    "path": "/391/466",
+                    "path_list": [{
+                        "display_name": "Frozen",
+                        "id": "391"
+                    }, {
+                        "display_name": "Ice Cream & Treats",
+                        "id": "466"
+                    }]
+                }, {
+                    "display_name": "Fruit Flavors",
+                    "group_id": "395",
+                    "path": "/431/86/831",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Beverages",
+                        "id": "86"
+                    }, {
+                        "display_name": "Soda",
+                        "id": "831"
+                    }]
+                }],
+                "id": "fro_pid_3502828",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502828.png",
+                "price": "$5.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/fro_pid_3502828.png"
+            },
+            "matched_terms": ["bananas"],
+            "value": "Coolhaus Ice Cream, Bananas Foster"
+        }, {
+            "data": {
+                "description": "The banana is an anytime, year-round snack. We like them fully yellow with just a dusting of brown freckles. But super-ripe, meltingly sweet bananas and firmer greenish ones have their fans too. Slice them onto cereal or pancakes, fold into fruit salad, blend into smoothies, and bake into muffin...",
+                "facets": [{
+                    "name": "Brand",
+                    "values": [""]
+                }, {
+                    "name": "Claims",
+                    "values": []
+                }],
+                "groups": [{
+                    "display_name": "Fruit",
+                    "group_id": "393",
+                    "path": "/431/625/153",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Pantry",
+                        "id": "625"
+                    }, {
+                        "display_name": "Canned Goods",
+                        "id": "153"
+                    }]
+                }, {
+                    "display_name": "Bananas",
+                    "group_id": "67",
+                    "path": "/393",
+                    "path_list": [{
+                        "display_name": "Fruit",
+                        "id": "393"
+                    }]
+                }],
+                "id": "ban_yllw_cs",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/ban_yllw_cs.png",
+                "price": "$26.99",
+                "quantity": "1cs",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/ban_yllw_cs.png"
+            },
+            "matched_terms": ["bananas"],
+            "value": "Yellow Bananas, Case"
+        }, {
+            "data": {
+                "description": "The banana is an anytime, year-round snack. We like them fully yellow with just a dusting of brown freckles. But super-ripe, meltingly sweet bananas and firmer greenish ones have their fans too. Slice them onto cereal or pancakes, fold into fruit salad, blend into smoothies, and bake into muffin...",
+                "facets": [{
+                    "name": "Brand",
+                    "values": [""]
+                }, {
+                    "name": "Claims",
+                    "values": ["Organic"]
+                }],
+                "groups": [{
+                    "display_name": "Fruit",
+                    "group_id": "393",
+                    "path": "/431/625/153",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Pantry",
+                        "id": "625"
+                    }, {
+                        "display_name": "Canned Goods",
+                        "id": "153"
+                    }]
+                }, {
+                    "display_name": "Bananas",
+                    "group_id": "67",
+                    "path": "/393",
+                    "path_list": [{
+                        "display_name": "Fruit",
+                        "id": "393"
+                    }]
+                }],
+                "id": "fru_pid_2210466",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/fru_pid_2210466.png",
+                "price": "$2.29",
+                "quantity": "1cs",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/fru_pid_2210466.png"
+            },
+            "matched_terms": ["bananas"],
+            "value": "Organic Bananas"
+        }, {
+            "data": {
+                "description": "The banana is an anytime, year-round snack. We like them fully yellow with just a dusting of brown freckles. But super-ripe, meltingly sweet bananas and firmer greenish ones have their fans too. Slice them onto cereal or pancakes, fold into fruit salad, blend into smoothies, and bake into muffin...",
+                "facets": [{
+                    "name": "Brand",
+                    "values": [""]
+                }, {
+                    "name": "Claims",
+                    "values": ["Organic"]
+                }],
+                "groups": [{
+                    "display_name": "Fruit",
+                    "group_id": "393",
+                    "path": "/431/625/153",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Pantry",
+                        "id": "625"
+                    }, {
+                        "display_name": "Canned Goods",
+                        "id": "153"
+                    }]
+                }, {
+                    "display_name": "Bananas",
+                    "group_id": "67",
+                    "path": "/393",
+                    "path_list": [{
+                        "display_name": "Fruit",
+                        "id": "393"
+                    }]
+                }],
+                "id": "ban_yllw_or",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/ban_yllw_or.png",
+                "price": "$2.89",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/ban_yllw_or.png"
+            },
+            "matched_terms": ["bananas"],
+            "value": "Organic Yellow Bananas"
+        }, {
+            "data": {
+                "description": "The banana is an anytime, year-round snack. We like them fully yellow with just a dusting of brown freckles. But super-ripe, meltingly sweet bananas and firmer greenish ones have their fans too. Slice them onto cereal or pancakes, fold into fruit salad, blend into smoothies, and bake into muffin...",
+                "facets": [{
+                    "name": "Brand",
+                    "values": [""]
+                }, {
+                    "name": "Claims",
+                    "values": []
+                }],
+                "groups": [{
+                    "display_name": "Fruit",
+                    "group_id": "393",
+                    "path": "/431/625/153",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Pantry",
+                        "id": "625"
+                    }, {
+                        "display_name": "Canned Goods",
+                        "id": "153"
+                    }]
+                }, {
+                    "display_name": "Bananas",
+                    "group_id": "67",
+                    "path": "/393",
+                    "path_list": [{
+                        "display_name": "Fruit",
+                        "id": "393"
+                    }]
+                }],
+                "id": "ban_yllw",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/ban_yllw.png",
+                "price": "$2.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/ban_yllw.png"
+            },
+            "matched_terms": ["bananas"],
+            "value": "Yellow Bananas"
+        }, {
+            "data": {
+                "description": "The banana is an anytime, year-round snack. We like them fully yellow with just a dusting of brown freckles. But super-ripe, meltingly sweet bananas and firmer greenish ones have their fans too. Slice them onto cereal or pancakes, fold into fruit salad, blend into smoothies, and bake into muffin...",
+                "facets": [{
+                    "name": "Brand",
+                    "values": [""]
+                }, {
+                    "name": "Claims",
+                    "values": []
+                }],
+                "groups": [{
+                    "display_name": "Fruit",
+                    "group_id": "393",
+                    "path": "/431/625/153",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Pantry",
+                        "id": "625"
+                    }, {
+                        "display_name": "Canned Goods",
+                        "id": "153"
+                    }]
+                }, {
+                    "display_name": "Bananas",
+                    "group_id": "67",
+                    "path": "/393",
+                    "path_list": [{
+                        "display_name": "Fruit",
+                        "id": "393"
+                    }]
+                }],
+                "id": "fru_banana_bnch_ea",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/fru_banana_bnch_ea.png",
+                "price": "$1.79",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/fru_banana_bnch_ea.png"
+            },
+            "matched_terms": ["bananas"],
+            "value": "Yellow Bananas"
+        }, {
+            "data": {
+                "description": "Banana Boat Sport Performance Sunscreen SPF 50 Lotion provides water-resistant protection. Our advanced technology helps prevent sunburn and skin damage while the Active Dry Protect formula delivers quick absorption and no greasy feel. So no matter what your game, this sunscreen lotion is a team...",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Banana Boat"]
+                }, {
+                    "name": "Claims",
+                    "values": []
+                }],
+                "groups": [{
+                    "display_name": "Grocery",
+                    "group_id": "431",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Health & Beauty",
+                    "group_id": "449",
+                    "path": "/431",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }]
+                }, {
+                    "display_name": "Skin Care",
+                    "group_id": "819",
+                    "path": "/431/449",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }]
+                }, {
+                    "display_name": "Sunscreen & Bug Spray",
+                    "group_id": "883",
+                    "path": "/431/449/819",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }, {
+                        "display_name": "Skin Care",
+                        "id": "819"
+                    }]
+                }],
+                "id": "hba_pid_4701670",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/hba_pid_4701670.png",
+                "price": "$10.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/hba_pid_4701670.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Banana Boat Sport Performance Sunscreen Lotion, SPF 50"
+        }, {
+            "data": {
+                "description": "Game going into overdrive? Banana Boat Sport Performance UltraMist Sunscreen SPF 30 Continuous Clear Spray stays strong in the sun as long as you do. Its advanced technology is designed to provide durable sun protection, unlike ordinary sunscreens. This any-angle spray can get to those hard-to-r...",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Banana Boat"]
+                }, {
+                    "name": "Claims",
+                    "values": []
+                }],
+                "groups": [{
+                    "display_name": "Grocery",
+                    "group_id": "431",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Health & Beauty",
+                    "group_id": "449",
+                    "path": "/431",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }]
+                }, {
+                    "display_name": "Skin Care",
+                    "group_id": "819",
+                    "path": "/431/449",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }]
+                }, {
+                    "display_name": "Sunscreen & Bug Spray",
+                    "group_id": "883",
+                    "path": "/431/449/819",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }, {
+                        "display_name": "Skin Care",
+                        "id": "819"
+                    }]
+                }],
+                "id": "hba_pid_4701663",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/hba_pid_4701663.png",
+                "price": "$11.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/hba_pid_4701663.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Banana Boat Sport Performance UltraMist Sunscreen, SPF 30, Continuous Clear Spray"
+        }, {
+            "data": {
+                "description": "Banana Boat Sport Performance Sunscreen SPF 30 lotion provides water-resistant protection. Our advanced technology helps prevent sunburn and skin damage while the Active Dry Protect formula delivers quick absorption and no greasy feel. So no matter what your game, this sunscreen lotion is a team...",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Banana Boat"]
+                }, {
+                    "name": "Claims",
+                    "values": []
+                }],
+                "groups": [{
+                    "display_name": "Grocery",
+                    "group_id": "431",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Health & Beauty",
+                    "group_id": "449",
+                    "path": "/431",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }]
+                }, {
+                    "display_name": "Skin Care",
+                    "group_id": "819",
+                    "path": "/431/449",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }]
+                }, {
+                    "display_name": "Sunscreen & Bug Spray",
+                    "group_id": "883",
+                    "path": "/431/449/819",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Health & Beauty",
+                        "id": "449"
+                    }, {
+                        "display_name": "Skin Care",
+                        "id": "819"
+                    }]
+                }],
+                "id": "hba_pid_0079403",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/hba_pid_0079403.png",
+                "price": "$10.99",
+                "quantity": "1ea",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/hba_pid_0079403.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Banana Boat Sport Performance Sunscreen Lotion, SPF 30"
+        }, {
+            "data": {
+                "description": "Rich dark chocolate, ripe bananas and sweet coconut. These granola minis taste just like dessert and contain the nutrients found in one full serving of vegetables. Sounds too good to be true? Don't take our word for it. Try them.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Made Good"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Dairy Free", "GMO Free", "Gluten Free", "Organic", "Soy Free", "Vegan", "Whole Grains"]
+                }],
+                "groups": [{
+                    "display_name": "Grocery",
+                    "group_id": "431",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Pantry",
+                    "group_id": "625",
+                    "path": "/431",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }]
+                }, {
+                    "display_name": "Cases",
+                    "group_id": "162",
+                    "path": "/431/46",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }]
+                }, {
+                    "display_name": "Bars",
+                    "group_id": "71",
+                    "path": "/431/625/830",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Pantry",
+                        "id": "625"
+                    }, {
+                        "display_name": "Snacks",
+                        "id": "830"
+                    }]
+                }],
+                "id": "gro_pid_4201195",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/gro_pid_4201195.png",
+                "price": "$18.79",
+                "quantity": "1cs",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/gro_pid_4201195.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Made Good Granola Minis, Chocolate Banana, Case"
+        }, {
+            "data": {
+                "description": "Covered in Fair Trade 54% Cacao Dark Chocolate, these bites make a pure match of two smooth flavors.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Barnana"]
+                }, {
+                    "name": "Claims",
+                    "values": ["Dairy Free", "Fair Trade", "GMO Free", "Gluten Free", "Organic", "Vegetarian"]
+                }],
+                "groups": [{
+                    "display_name": "Grocery",
+                    "group_id": "431",
+                    "path": null,
+                    "path_list": []
+                }, {
+                    "display_name": "Pantry",
+                    "group_id": "625",
+                    "path": "/431",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }]
+                }, {
+                    "display_name": "Cases",
+                    "group_id": "162",
+                    "path": "/431/46",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }]
+                }, {
+                    "display_name": "Snacks",
+                    "group_id": "830",
+                    "path": "/431/46",
+                    "path_list": [{
+                        "display_name": "Grocery",
+                        "id": "431"
+                    }, {
+                        "display_name": "Baby",
+                        "id": "46"
+                    }]
+                }],
+                "id": "gro_pid_4201223",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/gro_pid_4201223.png",
+                "price": "$53.89",
+                "quantity": "1cs",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/gro_pid_4201223.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Barnana Organic Chewy Banana Bites, Chocolate, Case"
+        }],
+        "sort_options": [],
+        "total_num_results": 84
+    },
+    "result_id": "862b15d6-2d6e-4e14-9b65-2358fcd5b0bb"
+}

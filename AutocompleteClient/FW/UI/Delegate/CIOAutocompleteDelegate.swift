@@ -25,7 +25,7 @@ public protocol CIOAutocompleteDelegate: class {
 
     /**
      Called when a search result has been selected.
-     
+
      - parameter controller: A CIOAutocompleteViewController in which the selection occurred.
      - parameter result: Selected CIOResult object.
      */
@@ -44,7 +44,7 @@ public protocol CIOAutocompleteDelegate: class {
 
     /**
      Called when a search is performed.
-     
+
      - parameter controller: A CIOAutocompleteViewController in which the search occurred.
      - parameter searchTerm: A term used in the search.
      */
@@ -54,7 +54,7 @@ public protocol CIOAutocompleteDelegate: class {
     /**
      Called during parsing to ask whether to parse a certain result. If the user returns false for an item
      with nil group (the original item), the search-in-group items won't get parsed.
-     
+
      - parameter controller: A CIOAutocompleteViewController in which the search occurred.
      - parameter result: An autocomplete result received from the server.
      - parameter group: A group in which the search should be performed.
@@ -64,7 +64,7 @@ public protocol CIOAutocompleteDelegate: class {
 
     /**
       Maximum number of items in group to be displayed for an item at index. Does not get called for the base item(with nil group). By default, 2 items are shown for the first item(itemIndex=0) and 0 for every other.
-     
+
      - parameter controller: A CIOAutocompleteViewController in which the results are shown.
      - parameter item: Item to be displayed.
      - parameter itemIndex: Index of an item being displayed.
@@ -74,7 +74,7 @@ public protocol CIOAutocompleteDelegate: class {
 
     /**
      Called when a results have been loaded.
-     
+
      - parameter controller: A CIOAutocompleteViewController in which the selection occurred.
      - parameter results: Loaded results.
      - parameter searchTerm: Requested search term.
@@ -84,7 +84,7 @@ public protocol CIOAutocompleteDelegate: class {
 
     /**
      Called if an error occurs.
-     
+
      - parameter controller: A CIOAutocompleteViewController in which the selection occurred.
      - parameter error: Error that occured.
      */
