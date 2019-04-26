@@ -393,7 +393,6 @@
 		F6D86B0A216BAACB00077388 /* SearchFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilters.swift; sourceTree = "<group>"; };
 		F6D86B13216BAD7F00077388 /* ConstructorIOSearchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorIOSearchTests.swift; sourceTree = "<group>"; };
 		F6D86B15216BAD7F00077388 /* SearchResponseParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResponseParserTests.swift; sourceTree = "<group>"; };
-		F6D86B19216BAE0400077388 /* ABTestingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestingTests.swift; sourceTree = "<group>"; };
 		F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchResultClickData.swift; sourceTree = "<group>"; };
 		F6EC29AA2175161300DCFA07 /* ClosureSessionManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureSessionManagerDelegate.swift; sourceTree = "<group>"; };
 		F6EC29AC2175EF1700DCFA07 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -489,16 +488,6 @@
 				A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		F174C1E91F5F4C65009E354B /* TestUtils */ = {
-			isa = PBXGroup;
-			children = (
-				F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */,
-				F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */,
-				F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */,
-			);
-			path = TestUtils;
 			sourceTree = "<group>";
 		};
 		F1C5573F1F5F67A60040D6AD /* Highlighting */ = {
@@ -789,7 +778,6 @@
 		F64F46A31F595B590094C697 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				F6D86B18216BAE0400077388 /* ABTesting */,
 				F1C5573F1F5F67A60040D6AD /* Highlighting */,
 				F60FE9071F5C5B860037A0AB /* Request */,
 				F62510CF20568F170040E3DF /* Session */,
@@ -815,6 +803,7 @@
 		F64F46AB1F5963A60094C697 /* Test Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F67E224F2074CED2009EBCD9 /* CIOResponse+SearchSuggestions.swift */,
 				F6D2E9C220DBDDA5007F8761 /* JSON */,
 				F64F46BF1F5985000094C697 /* Constants */,
 				F64F46BC1F5981260094C697 /* Bundle */,
@@ -1053,6 +1042,8 @@
 		F67D42A522035E880053B9C3 /* String */ = {
 			isa = PBXGroup;
 			children = (
+				F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */,
+				F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */,
 				F66B216C21DF8DBA00AAB030 /* SearchSuggestionStringConversionTests.swift */,
 				F66B216421DF851F00AAB030 /* StringTrimTests.swift */,
 			);
@@ -1159,7 +1150,6 @@
 				08F771702162C277005FDF06 /* FW */,
 				F64F46AB1F5963A60094C697 /* Test Utils */,
 				F64F46A81F5960CC0094C697 /* Resources */,
-				F174C1E91F5F4C65009E354B /* TestUtils */,
 				F688A44F1F56B4B600F169C1 /* Info.plist */,
 			);
 			path = AutocompleteClientTests;
@@ -1380,14 +1370,6 @@
 			);
 			name = Query;
 			path = Logic/Query;
-			sourceTree = "<group>";
-		};
-		F6D86B18216BAE0400077388 /* ABTesting */ = {
-			isa = PBXGroup;
-			children = (
-				F6D86B19216BAE0400077388 /* ABTestingTests.swift */,
-			);
-			path = ABTesting;
 			sourceTree = "<group>";
 		};
 		F6EC29B0217601C400DCFA07 /* Persistence */ = {
