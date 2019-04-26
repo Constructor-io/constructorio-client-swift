@@ -23,7 +23,7 @@ class ConstructorIOSearchTests: XCTestCase {
         super.tearDown()
     }
 
-    func testSearch_CreatesValidRequest(){
+    func testSearch_CreatesValidRequest() {
         let query = CIOSearchQuery(query: "potato")
 
         let builder = CIOBuilder(expectation: "Calling Search should send a valid request.", builder: http(200))
@@ -33,7 +33,7 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testSearch_WithValidRequest_ReturnsNonNilResponse(){
+    func testSearch_WithValidRequest_ReturnsNonNilResponse() {
         let expectation = self.expectation(description: "Calling Search with valid parameters should return a non-nil response.")
 
         let query = CIOSearchQuery(query: "potato")
@@ -48,7 +48,7 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    func testSearch_ReturnsErrorObject_IfAPIReturnsInvalidResponse(){
+    func testSearch_ReturnsErrorObject_IfAPIReturnsInvalidResponse() {
         let expectation = self.expectation(description: "Calling Search returns non-nil error if API errors out.")
 
         let query = CIOSearchQuery(query: "potato")
@@ -62,7 +62,7 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    func testSearch_AttachesPageParameter(){
+    func testSearch_AttachesPageParameter() {
         let query = CIOSearchQuery(query: "potato", page: 5)
 
         let builder = CIOBuilder(expectation: "Calling Search should send a valid request.", builder: http(200))
@@ -71,7 +71,7 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testSearch_AttachesCustomSectionParameter(){
+    func testSearch_AttachesCustomSectionParameter() {
         let customSection = "customSection"
         let query = CIOSearchQuery(query: "potato", section: customSection)
 
@@ -103,7 +103,7 @@ class ConstructorIOSearchTests: XCTestCase {
         let exp = self.expectation(description: "Redirect response should have a correct Match ID.")
         stub(regex("https://ac.cnstrc.com/search/dior?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), http(200, data: TestResource.load(name: TestResource.Response.searchJSONRedirectFile)))
 
-        self.constructor.search(forQuery: CIOSearchQuery(query: "dior")){ response in
+        self.constructor.search(forQuery: CIOSearchQuery(query: "dior")) { response in
             guard let redirectInfo = response.data?.redirectInfo else {
                 XCTFail("Invalid response")
                 return
@@ -131,7 +131,7 @@ class ConstructorIOSearchTests: XCTestCase {
         self.waitForExpectationWithDefaultHandler()
     }
 
-    func testSearch_AttachesGroupFilter(){
+    func testSearch_AttachesGroupFilter() {
         let query = CIOSearchQuery(query: "potato", filters: SearchFilters(groupFilter: "151", facetFilters: nil))
 
         let builder = CIOBuilder(expectation: "Calling Search with a group filter should have a group_id URL query item.", builder: http(200))
@@ -141,7 +141,7 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testSearch_AttachesFacetFilter(){
+    func testSearch_AttachesFacetFilter() {
         let facetFilters = [(key: "facet1", value: "Organic")]
         let query = CIOSearchQuery(query: "potato", filters: SearchFilters(groupFilter: nil, facetFilters: facetFilters))
 
@@ -153,7 +153,7 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testSearch_AttachesMultipleFacetFilters(){
+    func testSearch_AttachesMultipleFacetFilters() {
         let facetFilters = [(key: "facet1", value: "Organic"),
                             (key: "facet2", value: "Natural"),
                             (key: "facet10", value: "Whole-grain")]
@@ -166,7 +166,7 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testSearch_AttachesMultipleFacetFiltersWithSameNameButDifferentValues(){
+    func testSearch_AttachesMultipleFacetFiltersWithSameNameButDifferentValues() {
         let facetFilters = [(key: "facetOne", value: "Organic"),
                             (key: "facetOne", value: "Natural"),
                             (key: "facetOne", value: "Whole-grain")]

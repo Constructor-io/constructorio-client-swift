@@ -70,7 +70,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         self.constructor.autocomplete(forQuery: query) { (response) in
             if let error = response.error as? CIOError {
-                XCTAssertEqual(error, CIOError.internalServerError, "Returned error from network client should be type CIOError,internalServerError.")
+                XCTAssertEqual(error, CIOError.internalServerError, "Returned error from network client should be type CIOError, internalServerError.")
                 expectation.fulfill()
             }
         }

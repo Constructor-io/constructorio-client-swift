@@ -265,7 +265,7 @@ public class CIOAutocompleteViewController: UIViewController {
         self.errorView = errorView
     }
 
-    public func setTimerFired(with searchTerm: String){
+    public func setTimerFired(with searchTerm: String) {
         var sectionConfiguration: [String: Int]
 
         if let sectionMapping = self.config.resultCount?.numResultsForSection {

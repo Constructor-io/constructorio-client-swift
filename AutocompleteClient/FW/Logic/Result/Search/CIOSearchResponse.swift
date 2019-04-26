@@ -20,8 +20,8 @@ public struct CIOSearchResponse {
     let resultCount: Int
     let resultID: String
 
-    var isRedirect: Bool{
-        get{
+    var isRedirect: Bool {
+        get {
             return self.redirectInfo != nil
         }
     }

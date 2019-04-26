@@ -18,7 +18,7 @@ public struct CIOAutocompleteResponse {
     public let metadata: JSONObject
     public let json: JSONObject
 
-    public init(sections: [String: [CIOResult]], metadata: JSONObject, json: JSONObject){
+    public init(sections: [String: [CIOResult]], metadata: JSONObject, json: JSONObject) {
         self.sections = sections
         self.metadata = metadata
         self.json = json

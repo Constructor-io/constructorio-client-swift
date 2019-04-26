@@ -17,12 +17,12 @@ class SearchBarTextFieldTests: XCTestCase {
         XCTAssertNotNil(searchBar.searchTextField())
     }
 
-    func testCustomSearchBar_WithDefaultInitializer(){
+    func testCustomSearchBar_WithDefaultInitializer() {
         let searchBar = CustomSearchBar()
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
-    func testCustomSearchBar_WithFrameInitializer(){
+    func testCustomSearchBar_WithFrameInitializer() {
         let searchBar = CustomSearchBar(frame: .zero)
         searchBar.setShowsCancelButton(true, animated: true)
     }

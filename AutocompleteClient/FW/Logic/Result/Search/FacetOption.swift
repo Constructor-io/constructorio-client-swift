@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct FacetOption{
+struct FacetOption {
     let count: Int
     let displayName: String
     let status: String
@@ -16,8 +16,8 @@ struct FacetOption{
     let data: [String: Any]
 }
 
-extension FacetOption{
-    init?(json: JSONObject){
+extension FacetOption {
+    init?(json: JSONObject) {
         guard let count = json["count"] as? Int else { return nil }
         guard let value = json["value"] as? String else { return nil }
         guard let status = json["status"] as? String else { return nil }

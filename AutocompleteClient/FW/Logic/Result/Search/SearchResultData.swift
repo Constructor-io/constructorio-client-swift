@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SearchResultData{
+struct SearchResultData {
     let id: String
     let url: String?
     let quantity: String?
@@ -18,12 +18,12 @@ struct SearchResultData{
     let groups: [CIOGroup]?
 }
 
-extension SearchResultData{
-    init?(json: JSONObject){
+extension SearchResultData {
+    init?(json: JSONObject) {
         guard let id = json["id"] as? String else { return nil }
         self.id = id
 
-        self.facets = (json["facets"] as? [JSONObject])?.flatMap{ searchFacetObj in
+        self.facets = (json["facets"] as? [JSONObject])?.flatMap { searchFacetObj in
             return SearchResultFacet(json: searchFacetObj)
         }
 

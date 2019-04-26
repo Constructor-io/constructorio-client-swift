@@ -67,16 +67,16 @@ self.navigationController.pushViewController(viewController, animated: true)
 You should now see your autocomplete view controller.  `CIOAutocompleteDelegate` contains methods that notify you about autocomplete events and control autocomplete results. We’ll touch on a couple of them.
 
 ### Selecting Results
-To respond to a user selecting an autocomplete result, implement the `didSelectResult` method.  The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.  
+To respond to a user selecting an autocomplete result, implement the `didSelectResult` method.  The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.
 
 If the autocomplete result has both a suggested term to search for and a group to search within (as in `Apples in Juice Drinks`), the group will be a property of the result.
 
 ``` swift
-func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult){
-   if let group = result.group{
+func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
+   if let group = result.group {
       // user tapped on search-in-group result
       print("User tapped on \(result.autocompleteResult.value) in group \(group.displayName)")
-   }else{
+   }else {
       // user tapped on an autocomplete result
       print("User tapped on \(result.autocompleteResult.value)")
    }
@@ -84,10 +84,10 @@ func autocompleteController(controller: CIOAutocompleteViewController, didSelect
 ```
 
 ### Performing Searches
-To respond to a user performing a search (instead of selecting an autocomplete result), implement the `didPerformSearch` method. The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result. 
+To respond to a user performing a search (instead of selecting an autocomplete result), implement the `didPerformSearch` method. The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.
 
 ``` swift
-func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String){
+func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String) {
    print("User searched for \(searchTerm)")
 }
 ```
@@ -128,19 +128,19 @@ func customizeSearchController(searchController: UISearchController, in autocomp
 The framework provides default `UITableViewCells` in which the results will be shown. You can customize these cells by implementing the following methods:
 
 ```swift
-func styleResultLabel(label: UILabel, in autocompleteController: CIOAutocompleteViewController){
+func styleResultLabel(label: UILabel, in autocompleteController: CIOAutocompleteViewController) {
     label.backgrounColor = UIColor.clear
 }
 
-func styleResultCell(cell: UITableViewCell, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController){
+func styleResultCell(cell: UITableViewCell, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
     cell.contentView.backgroundColor = UIColor.lightGray
 }
 
-func fontNormal(in autocompleteController: CIOAutocompleteViewController) -> UIFont{
+func fontNormal(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
     return UIFont.systemFont(ofSize: 15)
 }
 
-func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFont{
+func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
     return UIFont.boldSystemFont(ofSize: 15)
 }
 ```
@@ -149,7 +149,7 @@ func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFon
 If you decide to use a fully custom cell, you can either pass the UINib using
 
 ```swift
-func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib{
+func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
     return UINib(nibName: "CustomTableViewCell", bundle: nil)
 }
 ```
@@ -157,7 +157,7 @@ func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> 
 ... or the custom cell class, if your cell is instantiated in code
 
 ```swift
-func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass{
+func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass {
     return MyCustomCell.self
 }
 ```

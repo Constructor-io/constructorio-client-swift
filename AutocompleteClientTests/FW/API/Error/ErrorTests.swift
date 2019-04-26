@@ -19,7 +19,7 @@ class ErrorTests: XCTestCase {
         XCTAssertEqual(NSError.jsonParseError().code, kConstructorJSONErrorCode)
     }
 
-    func testCIOErrorReturnsNonNilErrorDescription(){
+    func testCIOErrorReturnsNonNilErrorDescription() {
         XCTAssertNotNil(CIOError.invalidResponse.errorDescription)
     }
 }

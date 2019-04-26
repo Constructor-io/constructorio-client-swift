@@ -10,7 +10,7 @@ import Foundation
 
 public struct CIOSessionLoader: SessionLoader {
 
-    public init(){}
+    public init() {}
 
     public func loadSession() -> Session? {
         if let data = UserDefaults.standard.object(forKey: Constants.Session.key) as? Data {

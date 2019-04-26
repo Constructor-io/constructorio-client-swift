@@ -10,7 +10,7 @@ import Foundation
 
 public struct CurrentTimeDateProvider: DateProvider {
 
-    public init(){}
+    public init() {}
 
     public func provideDate() -> Date {
         return Date()

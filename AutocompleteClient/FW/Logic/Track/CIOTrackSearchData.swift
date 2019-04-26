@@ -16,7 +16,7 @@ public struct CIOTrackSearchData: CIORequestData {
         return String(format: Constants.TrackSearch.format, Constants.Track.baseURLString, self.itemName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder){
+    public func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(originalQuery: self.searchTerm)
         requestBuilder.set(itemName: self.itemName)
     }

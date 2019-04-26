@@ -9,7 +9,7 @@
 import Foundation
 import ConstructorAutocomplete
 
-public extension CIOResult{
+public extension CIOResult {
 
     public class func mock(withValue value: String, group: CIOGroup? = nil) -> CIOResult {
         let json: [String: Any] = TestResource.load(name: TestResource.Response.singleResultJSONFilename).toJSONDictionary()!

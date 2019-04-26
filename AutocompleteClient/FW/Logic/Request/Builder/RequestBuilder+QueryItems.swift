@@ -52,7 +52,7 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.Track.autocompleteSection, value: sectionName))
     }
 
-    public func set(searchSection: String){
+    public func set(searchSection: String) {
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.section, value: searchSection))
     }
 
@@ -74,29 +74,29 @@ extension RequestBuilder {
         }
     }
 
-    public func set(page: Int){
+    public func set(page: Int) {
         let pageString = String(page)
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.page, value: pageString))
     }
 
-    public func set(groupFilter: String?){
+    public func set(groupFilter: String?) {
         guard let filter = groupFilter else { return }
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.groupFilter, value: filter))
     }
 
-    public func set(facetFilters: [Filter]?){
+    public func set(facetFilters: [Filter]?) {
         guard let filters = facetFilters else { return }
-        for filter in filters{
+        for filter in filters {
             self.set(facetFilter: filter)
         }
     }
 
-    public func set(facetFilter: Filter?){
+    public func set(facetFilter: Filter?) {
         guard let filter = facetFilter else { return }
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.facetFilterKey(filter.key), value: filter.value))
     }
 
-    public func set(_ value: String, forKey key: String){
+    public func set(_ value: String, forKey key: String) {
         queryItems.add(URLQueryItem(name: key, value: value))
     }
 

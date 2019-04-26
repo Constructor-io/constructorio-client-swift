@@ -33,14 +33,14 @@ public struct CIOAutocompleteQuery: CIORequestData {
     }
 }
 
-public struct CIOSearchQuery: CIORequestData{
+public struct CIOSearchQuery: CIORequestData {
 
     let query: String
     let filters: SearchFilters?
     let page: Int
     let section: String
 
-    public var url: String{
+    public var url: String {
         return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString,
                       Constants.SearchQuery.pathString, query)
     }

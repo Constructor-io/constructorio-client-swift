@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct SearchResultFacet{
+struct SearchResultFacet {
     let name: String
     let values: [String]
 
-    init?(json: JSONObject){
+    init?(json: JSONObject) {
         guard let name = json["name"] as? String else { return nil }
 
         self.name = name

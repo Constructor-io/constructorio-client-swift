@@ -125,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
         searchController.searchBar.returnKeyType = .search
 
-        if let textField = searchController.searchBar.searchTextField(){
+        if let textField = searchController.searchBar.searchTextField() {
             let val: CGFloat = 0.94
             textField.backgroundColor = UIColor(red: val, green: val, blue: val, alpha: 1.0)
         }
@@ -153,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
         print("item selected \(result)")
 
-        if let navigationController = self.window?.rootViewController as? UINavigationController{
+        if let navigationController = self.window?.rootViewController as? UINavigationController {
             let detailsVC = DetailsViewController()
             detailsVC.result = result
             detailsVC.constructorIO = controller.constructorIO
@@ -167,7 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     func autocompleteControllerWillAppear(controller: CIOAutocompleteViewController) {
         print("Search controller will appear")
-        if controller.constructorIO.userID == nil{
+        if controller.constructorIO.userID == nil {
             controller.constructorIO.userID = "user_id$1 3"
         }
     }

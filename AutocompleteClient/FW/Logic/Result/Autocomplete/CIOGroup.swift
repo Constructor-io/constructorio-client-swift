@@ -20,12 +20,12 @@ public class CIOGroup: NSObject {
         self.path = path
     }
 
-    init?(json: JSONObject){
-        guard let name = json[Constants.Result.displayName] as? String else{
+    init?(json: JSONObject) {
+        guard let name = json[Constants.Result.displayName] as? String else {
             return nil
         }
 
-        guard let groupID = json[Constants.Result.groupID] as? String else{
+        guard let groupID = json[Constants.Result.groupID] as? String else {
             return nil
         }
 

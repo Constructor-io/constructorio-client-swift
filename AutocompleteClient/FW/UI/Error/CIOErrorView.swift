@@ -8,7 +8,7 @@
 
 import UIKit
 
-/** 
+/**
  Conform to this protocol if you want to use a custom error view.
  */
 public protocol CIOErrorView: class, NSObjectProtocol {

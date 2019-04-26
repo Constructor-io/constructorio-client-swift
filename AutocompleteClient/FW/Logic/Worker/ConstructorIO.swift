@@ -32,8 +32,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public var autocompleteParser: AbstractAutocompleteResponseParser = DependencyContainer.sharedInstance.autocompleteResponseParser()
     public var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
 
-    public var sessionID: Int{
-        get{
+    public var sessionID: Int {
+        get {
             return self.sessionManager.getSessionWithIncrement()
         }
     }
@@ -189,7 +189,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         return requestBuilder.getRequest()
     }
 
-    private func attachClientSessionAndClientID(requestBuilder: RequestBuilder){
+    private func attachClientSessionAndClientID(requestBuilder: RequestBuilder) {
         self.attachClientID(requestBuilder: requestBuilder)
         self.attachSessionIDWithIncrement(requestBuilder: requestBuilder)
     }
@@ -282,7 +282,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         return try self.autocompleteParser.parse(autocompleteResponseData: autocompleteResponseData)
     }
 
-    private func parseSearch(_ searchResponseData: Data) throws -> CIOSearchResponse{
+    private func parseSearch(_ searchResponseData: Data) throws -> CIOSearchResponse {
         return try self.searchParser.parse(searchResponseData: searchResponseData)
     }
 

@@ -12,7 +12,7 @@ import OHHTTPStubs
 public typealias Matcher = OHHTTPStubsTestBlock
 public typealias Builder = OHHTTPStubsResponseBlock
 
-public func http(_ statusCode: Int32, data: Data = "".data(using: String.Encoding.utf8)!) -> OHHTTPStubsResponseBlock{
+public func http(_ statusCode: Int32, data: Data = "".data(using: String.Encoding.utf8)!) -> OHHTTPStubsResponseBlock {
     return { _ in
         return OHHTTPStubsResponse(data: data, statusCode: statusCode, headers: nil)
     }

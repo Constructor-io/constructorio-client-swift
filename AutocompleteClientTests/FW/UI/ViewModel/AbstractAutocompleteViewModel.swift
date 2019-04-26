@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AbstractAutocompleteViewModel{
+public protocol AbstractAutocompleteViewModel {
 
     var results: [AutocompleteViewModelSection] { get set }
     var delegate: AutocompleteViewModelDelegate? { get set }

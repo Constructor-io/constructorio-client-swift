@@ -44,7 +44,7 @@ class DetailsViewController: UIViewController {
 
     }
 
-    func createButton(title: String) -> UIButton{
+    func createButton(title: String) -> UIButton {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.frame = CGRect(x: 0, y: 0, width: buttonWidth, height: buttonHeight)
@@ -70,7 +70,7 @@ class DetailsViewController: UIViewController {
         self.buttonTrackResultsLoaded.center = center
     }
 
-    func didTapOnButtonTrackConversion(_ sender: UIButton){
+    func didTapOnButtonTrackConversion(_ sender: UIButton) {
         self.constructorIO.trackConversion(itemName: self.result.autocompleteResult.value,
                                            customerID: self.result.autocompleteResult.id,
                                            revenue: 12.99,
@@ -78,7 +78,7 @@ class DetailsViewController: UIViewController {
                                            sectionName: nil)
     }
 
-    func didTapOnButtonTrackResultsLoaded(_ sender: UIButton){
+    func didTapOnButtonTrackResultsLoaded(_ sender: UIButton) {
         let resultCount = 10
         self.constructorIO.trackSearchResultsLoaded(searchTerm: "a search term", resultCount: resultCount)
     }

@@ -19,7 +19,7 @@ class StringTrimTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testStrinTrimRemovedTrailingSpaces(){
+    func testStrinTrimRemovedTrailingSpaces() {
         let original = "abc   "
         XCTAssertEqual(original.trim(), "abc")
     }

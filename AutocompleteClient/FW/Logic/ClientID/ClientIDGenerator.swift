@@ -11,7 +11,7 @@ import UIKit
 
 public class ClientIDGenerator: IDGenerator {
 
-    public init(){}
+    public init() {}
 
     public func generateID() -> String? {
         return UIDevice.current.identifierForVendor?.uuidString

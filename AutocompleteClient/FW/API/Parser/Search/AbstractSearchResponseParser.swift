@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AbstractSearchResponseParser{
+public protocol AbstractSearchResponseParser {
 
     func parse(searchResponseData: Data) throws -> CIOSearchResponse
 }

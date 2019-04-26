@@ -12,7 +12,7 @@ public struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser 
 
     public weak var delegate: ResponseParserDelegate?
 
-    public init(){}
+    public init() {}
 
     public func parse(autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
         do {

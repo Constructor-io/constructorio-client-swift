@@ -12,11 +12,11 @@ public class CustomSearchBar: UISearchBar {
 
     public var shouldShowCancelButton: Bool = false
 
-    public init(){
+    public init() {
         super.init(frame: .zero)
     }
 
-    public override init(frame: CGRect){
+    public override init(frame: CGRect) {
         super.init(frame: frame)
     }
 
