@@ -250,6 +250,15 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackSearchResultClick_EmptyTerm() {
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a default section name and default term.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/click_through?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&s=\(kRegexSession)"), builder.create())
+        self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: "", sectionName: nil)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackSearchResultClick_WithSection() {
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
@@ -339,7 +348,17 @@ class ConstructorIOTrackingTests: XCTestCase {
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: nil, sectionName: nil)
         self.wait(for: builder.expectation)
     }
-
+    
+    func testTrackConversion_EmptyTerm() {
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let revenue: Double = 1
+        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a default section name and default term.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/conversion?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&revenue=1.00&s=\(kRegexSession)"), builder.create())
+        self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: "", sectionName: nil)
+        self.wait(for: builder.expectation)
+    }
+    
     func testTrackConversion_WithSection() {
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
