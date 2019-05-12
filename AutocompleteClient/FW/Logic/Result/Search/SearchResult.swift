@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct SearchResult {
-    let value: String
-    let data: SearchResultData
-    let matchedTerms: [String]
+public struct SearchResult {
+    public let value: String
+    public let data: SearchResultData
+    public let matchedTerms: [String]
 }

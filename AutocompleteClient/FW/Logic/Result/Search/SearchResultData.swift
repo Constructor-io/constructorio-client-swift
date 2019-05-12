@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct SearchResultData {
-    let id: String
-    let url: String?
-    let quantity: String?
-    let imageURL: String?
-    let metadata: [String: Any]
-    let facets: [SearchResultFacet]?
-    let groups: [CIOGroup]?
+public struct SearchResultData {
+    public let id: String
+    public let url: String?
+    public let quantity: String?
+    public let imageURL: String?
+    public let metadata: [String: Any]
+    public let facets: [SearchResultFacet]?
+    public let groups: [CIOGroup]?
 }
 
-extension SearchResultData {
-    init?(json: JSONObject) {
+public extension SearchResultData {
+    public init?(json: JSONObject) {
         guard let id = json["id"] as? String else { return nil }
         self.id = id
 

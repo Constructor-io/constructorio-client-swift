@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 import ConstructorAutocomplete
 
 class CustomAttributesProvider: CIOHighlightingAttributesProvider {

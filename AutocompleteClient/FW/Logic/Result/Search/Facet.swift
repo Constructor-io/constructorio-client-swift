@@ -8,15 +8,15 @@
 
 import UIKit
 
-struct Facet {
-    let name: String
-    let displayName: String
-    let options: [FacetOption]
-    let type: String
+public struct Facet {
+    public let name: String
+    public let displayName: String
+    public let options: [FacetOption]
+    public let type: String
 }
 
-extension Facet {
-    init?(json: JSONObject) {
+public extension Facet {
+    public init?(json: JSONObject) {
         guard let name = json["name"] as? String else {
             return nil
         }

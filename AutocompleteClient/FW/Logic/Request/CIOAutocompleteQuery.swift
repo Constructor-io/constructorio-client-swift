@@ -35,17 +35,17 @@ public struct CIOAutocompleteQuery: CIORequestData {
 
 public struct CIOSearchQuery: CIORequestData {
 
-    let query: String
-    let filters: SearchFilters?
-    let page: Int
-    let section: String
+    public let query: String
+    public let filters: SearchFilters?
+    public let page: Int
+    public let section: String
 
     public var url: String {
         return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString,
                       Constants.SearchQuery.pathString, query)
     }
 
-    init(query: String, filters: SearchFilters? = nil, page: Int = 1, section: String = Constants.SearchQuery.defaultSectionName) {
+    public init(query: String, filters: SearchFilters? = nil, page: Int = 1, section: String = Constants.SearchQuery.defaultSectionName) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page
