@@ -17,7 +17,7 @@ class QueryItemCollectionTests: XCTestCase {
     }
 
     func testQueryItemCollection_SubscriptGetter() {
-        var collection = QueryItemCollection()
+        let collection = QueryItemCollection()
         let _ = collection["key"]
     }
 

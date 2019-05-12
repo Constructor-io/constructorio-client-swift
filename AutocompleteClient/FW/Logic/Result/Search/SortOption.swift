@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct SortOption {
-    let displayName: String
-    let sortBy: String
-    let sortOrder: SortOrder
-    let status: String
+public struct SortOption {
+    public let displayName: String
+    public let sortBy: String
+    public let sortOrder: SortOrder
+    public let status: String
 }
 
-enum SortOrder: String {
-    case ascending = "ascending"
-    case descending = "descending"
+public enum SortOrder: String {
+    case ascending
+    case descending
 }

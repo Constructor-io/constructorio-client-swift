@@ -36,10 +36,10 @@ public struct CIOAutocompleteQuery: CIORequestData {
 // TODO: Move to a separate file
 public struct CIOSearchQuery: CIORequestData {
 
-    let query: String
-    let filters: SearchFilters?
-    let page: Int
-    let section: String
+    public let query: String
+    public let filters: SearchFilters?
+    public let page: Int
+    public let section: String
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.Query.queryStringFormat, baseURL,

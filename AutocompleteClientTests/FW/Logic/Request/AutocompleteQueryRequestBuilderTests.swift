@@ -50,7 +50,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
     func testAutocompleteQueryBuilder_WithNumResultsForSection() {
         let singleSectionQuery = CIOAutocompleteQuery(query: self.query, numResultsForSection: ["section1": 1])
         builder.build(trackData: singleSectionQuery)
-        var request = builder.getRequest()
+        let request = builder.getRequest()
         let url = request.url!.absoluteString
 
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
@@ -63,7 +63,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
     func testAutocompleteQueryBuilder_WithNumResultsForMultipleSections() {
         let multiSectionQuery = CIOAutocompleteQuery(query: self.query, numResultsForSection: ["section1": 3, "section_999": 999])
         builder.build(trackData: multiSectionQuery)
-        var request = builder.getRequest()
+        let request = builder.getRequest()
         let url = request.url!.absoluteString
 
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))

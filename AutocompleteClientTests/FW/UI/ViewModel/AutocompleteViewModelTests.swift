@@ -48,7 +48,7 @@ class AutocompleteViewModelTests: XCTestCase {
         let delegate = ClosureAutocompleteViewModelDelegate(viewModel: self.viewModel)
 
         var idx = 0
-        var results = [firstResult, secondResult]
+        let results = [firstResult, secondResult]
 
         // onSet should be called two times, one for each result we pass
         delegate.onSetResult = { result in

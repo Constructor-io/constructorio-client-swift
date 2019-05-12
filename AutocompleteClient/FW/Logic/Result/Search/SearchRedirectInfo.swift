@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct SearchRedirectInfo {
-    let url: String
-    let matchID: Int
-    let ruleID: Int
+public struct SearchRedirectInfo {
+    public let url: String
+    public let matchID: Int
+    public let ruleID: Int
 }
 
-extension SearchRedirectInfo {
+public extension SearchRedirectInfo {
     init?(object: JSONObject?) {
         guard let json = object else { return nil }
         guard let data = json["data"] as? JSONObject else { return nil }
