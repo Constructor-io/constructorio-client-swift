@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import Foundation
 import ConstructorAutocomplete
 
 class CustomAttributesProvider: CIOHighlightingAttributesProvider {
 
-    func defaultSubstringAttributes() -> [String: Any] {
-        return [NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont(name: "Optima-Regular", size: 15)!]
+    func defaultSubstringAttributes() -> [NSAttributedString.Key: Any] {
+        return [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont(name: "Optima-Regular", size: 15)!]
     }
 
-    func highlightedSubstringAttributes() -> [String: Any] {
-        return [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont(name: "Optima-Bold", size: 15)!]
+    func highlightedSubstringAttributes() -> [NSAttributedString.Key: Any] {
+        return [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Optima-Bold", size: 15)!]
     }
 
 }
