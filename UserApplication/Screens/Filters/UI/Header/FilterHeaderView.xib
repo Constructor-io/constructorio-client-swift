@@ -19,13 +19,13 @@
                     <rect key="frame" x="207" y="0.0" width="207" height="76"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_sort" translatesAutoresizingMaskIntoConstraints="NO" id="caR-Vy-Ezb">
-                            <rect key="frame" x="8" y="22" width="32" height="32"/>
+                            <rect key="frame" x="8" y="30" width="16" height="16"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="32" id="vso-rg-mTD"/>
+                                <constraint firstAttribute="width" constant="16" id="vso-rg-mTD"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWP-xi-9Un">
-                            <rect key="frame" x="48" y="27.5" width="151" height="21"/>
+                            <rect key="frame" x="32" y="27.5" width="167" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -45,14 +45,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="207" height="76"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_filter" translatesAutoresizingMaskIntoConstraints="NO" id="Lb7-SG-jZf">
-                            <rect key="frame" x="8" y="20" width="32" height="32"/>
+                            <rect key="frame" x="8" y="28" width="16" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Lb7-SG-jZf" secondAttribute="height" multiplier="1:1" id="Bkg-Ra-11v"/>
-                                <constraint firstAttribute="width" constant="32" id="K5C-lO-MOx"/>
+                                <constraint firstAttribute="width" constant="16" id="K5C-lO-MOx"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7a-1n-oUi">
-                            <rect key="frame" x="48" y="25.5" width="151" height="21"/>
+                            <rect key="frame" x="32" y="25.5" width="167" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -83,6 +83,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="imageViewSort" destination="caR-Vy-Ezb" id="Id1-Dn-taI"/>
                 <outlet property="labelFilter" destination="S7a-1n-oUi" id="tSE-ZZ-V87"/>
                 <outlet property="labelSort" destination="OWP-xi-9Un" id="tGm-Co-8GW"/>
                 <outlet property="viewFilter" destination="g70-mc-eY4" id="RC4-ba-OAG"/>

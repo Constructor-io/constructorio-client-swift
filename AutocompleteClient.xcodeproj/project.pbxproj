@@ -99,6 +99,13 @@
 		F62A16622288493800276241 /* FilterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62A16612288493800276241 /* FilterHeaderView.xib */; };
 		F62A16662288528700276241 /* FilterHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A16652288528700276241 /* FilterHeaderDelegate.swift */; };
 		F62A166822886A6E00276241 /* FacetOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A166722886A6E00276241 /* FacetOptionViewModel.swift */; };
+		F62A1689228ADA7A00276241 /* SortOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A1688228ADA7A00276241 /* SortOptionViewModel.swift */; };
+		F62A168C228ADB5F00276241 /* SortViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A168B228ADB5F00276241 /* SortViewModel.swift */; };
+		F62A1690228ADBFE00276241 /* SortOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A168E228ADBFE00276241 /* SortOptionsViewController.swift */; };
+		F62A1691228ADBFE00276241 /* SortOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62A168F228ADBFE00276241 /* SortOptionsViewController.xib */; };
+		F62A1694228ADE1700276241 /* SortOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A1692228ADE1700276241 /* SortOptionTableViewCell.swift */; };
+		F62A1695228ADE1700276241 /* SortOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62A1693228ADE1700276241 /* SortOptionTableViewCell.xib */; };
+		F62A1698228AF1D000276241 /* UIImage+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62A1697228AF1D000276241 /* UIImage+Sort.swift */; };
 		F630E6FB22317CD1008ED537 /* SearchResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630E6FA22317CD1008ED537 /* SearchResultData.swift */; };
 		F631A5D81F58629B00A49BD1 /* constructor-io-error-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */; };
 		F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F631A5D91F5867E300A49BD1 /* CIOErrorView.swift */; };
@@ -354,6 +361,13 @@
 		F62A16612288493800276241 /* FilterHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterHeaderView.xib; sourceTree = "<group>"; };
 		F62A16652288528700276241 /* FilterHeaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderDelegate.swift; sourceTree = "<group>"; };
 		F62A166722886A6E00276241 /* FacetOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacetOptionViewModel.swift; sourceTree = "<group>"; };
+		F62A1688228ADA7A00276241 /* SortOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionViewModel.swift; sourceTree = "<group>"; };
+		F62A168B228ADB5F00276241 /* SortViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewModel.swift; sourceTree = "<group>"; };
+		F62A168E228ADBFE00276241 /* SortOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionsViewController.swift; sourceTree = "<group>"; };
+		F62A168F228ADBFE00276241 /* SortOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortOptionsViewController.xib; sourceTree = "<group>"; };
+		F62A1692228ADE1700276241 /* SortOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionTableViewCell.swift; sourceTree = "<group>"; };
+		F62A1693228ADE1700276241 /* SortOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortOptionTableViewCell.xib; sourceTree = "<group>"; };
+		F62A1697228AF1D000276241 /* UIImage+Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Sort.swift"; sourceTree = "<group>"; };
 		F630E6FA22317CD1008ED537 /* SearchResultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultData.swift; sourceTree = "<group>"; };
 		F631A5D71F58628900A49BD1 /* constructor-io-error-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "constructor-io-error-icon.png"; sourceTree = "<group>"; };
 		F631A5D91F5867E300A49BD1 /* CIOErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOErrorView.swift; sourceTree = "<group>"; };
@@ -791,6 +805,7 @@
 		F62A15F322881AFE00276241 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F62A1687228ADA6A00276241 /* Sort */,
 				F62A164A2288280600276241 /* Filters */,
 				F62A15F422881AFE00276241 /* Details */,
 				F62A15FA22881AFE00276241 /* Search */,
@@ -1047,6 +1062,44 @@
 				F62A16652288528700276241 /* FilterHeaderDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		F62A1687228ADA6A00276241 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				F62A168D228ADBEB00276241 /* UI */,
+				F62A168A228ADB5300276241 /* ViewModel */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
+		F62A168A228ADB5300276241 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F62A1688228ADA7A00276241 /* SortOptionViewModel.swift */,
+				F62A168B228ADB5F00276241 /* SortViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F62A168D228ADBEB00276241 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F62A1696228AF1C400276241 /* UIImage */,
+				F62A168E228ADBFE00276241 /* SortOptionsViewController.swift */,
+				F62A168F228ADBFE00276241 /* SortOptionsViewController.xib */,
+				F62A1692228ADE1700276241 /* SortOptionTableViewCell.swift */,
+				F62A1693228ADE1700276241 /* SortOptionTableViewCell.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F62A1696228AF1C400276241 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				F62A1697228AF1D000276241 /* UIImage+Sort.swift */,
+			);
+			path = UIImage;
 			sourceTree = "<group>";
 		};
 		F631A5D21F5861A200A49BD1 /* Error */ = {
@@ -1849,12 +1902,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F62A1695228ADE1700276241 /* SortOptionTableViewCell.xib in Resources */,
 				F62A162722881AFE00276241 /* Assets.xcassets in Resources */,
 				F62A162B22881AFE00276241 /* DetailsViewController.xib in Resources */,
 				F62A163422881AFE00276241 /* SearchCollectionViewCell.xib in Resources */,
 				F62A165822883C0200276241 /* FilterTableViewCell.xib in Resources */,
 				F62A163122881AFE00276241 /* SearchViewController.xib in Resources */,
 				F62A164622881AFE00276241 /* CustomErrorView.xib in Resources */,
+				F62A1691228ADBFE00276241 /* SortOptionsViewController.xib in Resources */,
 				F62A163B22881AFE00276241 /* CartItemTableViewCell.xib in Resources */,
 				F62A164422881AFE00276241 /* CustomTableViewCellOne.xib in Resources */,
 				F62A163922881AFE00276241 /* CartViewController.xib in Resources */,
@@ -2011,6 +2066,7 @@
 			files = (
 				F62A164822881AFE00276241 /* AppDelegate.swift in Sources */,
 				F62A16602288492A00276241 /* FilterHeaderView.swift in Sources */,
+				F62A1690228ADBFE00276241 /* SortOptionsViewController.swift in Sources */,
 				F62A163A22881AFE00276241 /* CartItemTableViewCell.swift in Sources */,
 				F62A164022881AFE00276241 /* CartBarButtonItem.swift in Sources */,
 				F62A163322881AFE00276241 /* SearchTableViewCell.swift in Sources */,
@@ -2024,6 +2080,9 @@
 				F62A162E22881AFE00276241 /* SearchResultViewModel.swift in Sources */,
 				F62A163F22881AFE00276241 /* BadgeView.swift in Sources */,
 				F62A162D22881AFE00276241 /* SearchViewModel.swift in Sources */,
+				F62A1694228ADE1700276241 /* SortOptionTableViewCell.swift in Sources */,
+				F62A1689228ADA7A00276241 /* SortOptionViewModel.swift in Sources */,
+				F62A1698228AF1D000276241 /* UIImage+Sort.swift in Sources */,
 				F62A164722881AFE00276241 /* CustomErrorView.swift in Sources */,
 				F62A163822881AFE00276241 /* CartViewController.swift in Sources */,
 				F62A162822881AFE00276241 /* UIView+AutoLayout.swift in Sources */,
@@ -2032,6 +2091,7 @@
 				F62A162A22881AFE00276241 /* DetailsViewModel.swift in Sources */,
 				F62A163E22881AFE00276241 /* CustomAttributesProvider.swift in Sources */,
 				F62A163222881AFE00276241 /* SearchCollectionViewCell.swift in Sources */,
+				F62A168C228ADB5F00276241 /* SortViewModel.swift in Sources */,
 				F62A163522881AFE00276241 /* Quantity.swift in Sources */,
 				F62A164F2288282100276241 /* FiltersViewController.swift in Sources */,
 				F62A162C22881AFE00276241 /* DetailsViewController.swift in Sources */,

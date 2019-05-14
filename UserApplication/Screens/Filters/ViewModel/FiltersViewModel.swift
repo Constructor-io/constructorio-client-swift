@@ -14,6 +14,13 @@ class FiltersViewModel {
     var changed: Bool = false
     weak var delegate: FiltersSelectionDelegate?
 
+    var selectedFilters: [Filter]{
+        return self.filters.reduce([Filter]()) { res, next in
+            return res + next.options.filter{ $0.selected }
+                .map({ return (key: next.title, value: $0.value) as Filter })
+        }
+    }
+
     init(filters: [FacetViewModel]){
         self.filters = filters
     }
@@ -25,14 +32,7 @@ class FiltersViewModel {
 
     func dismiss(){
         if self.changed{
-
-            let filters: [Filter] = self.filters.reduce([Filter]()) { res, next in
-                return res + next.options.filter{ $0.selected }
-                                         .map({ return (key: next.title, value: $0.value) as Filter })
-
-            }
-
-            self.delegate?.didSelectFilters(filters: filters)
+            self.delegate?.didSelect(filters: self.selectedFilters)
         }
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 class FilterHeaderView: UIView {
 
     weak var tapDelegate: FilterHeaderDelegate?
+    @IBOutlet weak var imageViewSort: UIImageView!
     @IBOutlet weak var labelSort: UILabel!
     @IBOutlet weak var labelFilter: UILabel!
     @IBOutlet weak var viewFilter: UIView!
@@ -30,6 +31,9 @@ class FilterHeaderView: UIView {
 
         self.viewFilter.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnViewFilter)))
         self.viewSort.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnViewSort)))
+
+        self.layer.borderWidth = 0.6
+        self.layer.borderColor = UIColor.darkGray.withAlphaComponent(0.5).cgColor
     }
 
     @objc

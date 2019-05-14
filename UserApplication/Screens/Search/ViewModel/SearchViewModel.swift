@@ -22,12 +22,12 @@ class SearchViewModel: ConstructorIOProvider{
 
     var searchResults: [SearchResultViewModel]?
     var filtersViewModel: FiltersViewModel?
+    var sortViewModel: SortViewModel?
+
     let margin: CGFloat = 8
     let cellAspectRatio: CGFloat = 1.44
 
     let cart: Cart
-
-    var selectedFilters: [Filter]?
 
     init(term: String, group: CIOGroup?, constructorProvider: ConstructorIOProvider, cart: Cart){
         self.searchTerm = term
@@ -44,7 +44,7 @@ class SearchViewModel: ConstructorIOProvider{
     }
 
     func performSearch(completionHandler: @escaping () -> Void){
-        let filter: SearchFilters = SearchFilters(groupFilter: self.groupID, facetFilters: self.selectedFilters)
+        let filter: SearchFilters = SearchFilters(groupFilter: self.groupID, facetFilters: self.filtersViewModel?.selectedFilters)
         let query = CIOSearchQuery(query: self.searchTerm, filters: filter)
 
         self.constructor.search(forQuery: query) { [weak self] (response) in
@@ -53,6 +53,10 @@ class SearchViewModel: ConstructorIOProvider{
                 sself.searchResults = data.results.map{ result in SearchResultViewModel(searchResult: result) }
                 if sself.filtersViewModel == nil {
                     sself.filtersViewModel = FiltersViewModel(filters: data.facets.map(FacetViewModel.init))
+                }
+
+                if sself.sortViewModel == nil{
+                    sself.sortViewModel = SortViewModel(items: data.sortOptions.map(SortOptionViewModel.init))
                 }
 
                 completionHandler()

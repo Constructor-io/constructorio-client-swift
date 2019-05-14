@@ -133,21 +133,46 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
 
 extension SearchViewController: FilterHeaderDelegate{
     func didTapOnFilterView() {
-        let vm = self.viewModel.filtersViewModel ?? FiltersViewModel(filters: [])
-        let vc = FiltersViewController(viewModel: vm)
-        vm.delegate = self
-        let navVC = UINavigationController(rootViewController: vc)
-        self.present(navVC, animated: true, completion: nil)
+        let viewModel = self.viewModel.filtersViewModel ?? FiltersViewModel(filters: [])
+        let filtersViewController = FiltersViewController(viewModel: viewModel)
+        viewModel.delegate = self
+        let navController = UINavigationController(rootViewController: filtersViewController)
+        self.present(navController, animated: true, completion: nil)
     }
 
     func didTapOnSortView() {
-
+        let viewModel = self.viewModel.sortViewModel ?? SortViewModel(items: [])
+        let sortViewController = SortOptionsViewController(viewModel: viewModel)
+        viewModel.delegate = self
+        let navController = UINavigationController(rootViewController: sortViewController)
+        self.present(navController, animated: true, completion: nil)
     }
 }
 
 extension SearchViewController: FiltersSelectionDelegate{
-    func didSelectFilters(filters: [Filter]) {
-        self.viewModel.selectedFilters = filters
+
+    func didSelect(filters: [Filter]) {
+        if filters.count == 0{
+            self.headerView.labelFilter.text = "Filters"
+        }else{
+            self.headerView.labelFilter.text = "\(filters.count) selected"
+        }
+        self.reload()
+    }
+
+    func didSelect(sortOption: SortOption?) {
+        var image: UIImage?
+        var title: String?
+        if let selectedSortOption = sortOption{
+            title = selectedSortOption.displayName
+            image = UIImage.imageForSortOrder(selectedSortOption.sortOrder)
+        }else{
+            title = "Sort"
+            image = UIImage(named: "icon_sort")
+        }
+        self.headerView.labelSort.text = title
+        self.headerView.imageViewSort.image = image
+
         self.reload()
     }
 }

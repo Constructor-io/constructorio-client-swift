@@ -1,33 +1,34 @@
 //
-//  FiltersViewController.swift
+//  SortOptionsViewController.swift
 //  UserApplication
 //
-//  Created by Nikola Markovic on 5/12/19.
+//  Created by Nikola Markovic on 5/14/19.
 //  Copyright © 2019 xd. All rights reserved.
 //
 
 import UIKit
 
-class FiltersViewController: UIViewController {
+class SortOptionsViewController: UIViewController {
 
-    let viewModel: FiltersViewModel
-    let cellFilter = "CellFilter"
+    @IBOutlet weak var tableView: UITableView!
+    let viewModel: SortViewModel
 
-    init(viewModel: FiltersViewModel){
+    let cellSortID = "cellSortID"
+
+    init(viewModel: SortViewModel){
         self.viewModel = viewModel
         self.viewModel.changed = false
-        super.init(nibName: "FiltersViewController", bundle: nil)
+        super.init(nibName: "SortOptionsViewController", bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.register(UINib(nibName: "FilterTableViewCell", bundle: nil), forCellReuseIdentifier: self.cellFilter)
+        self.tableView.register(UINib(nibName: "SortOptionTableViewCell", bundle: nil), forCellReuseIdentifier: self.cellSortID)
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapOnButtonDone))
     }
@@ -40,19 +41,14 @@ class FiltersViewController: UIViewController {
 
 }
 
-extension FiltersViewController: UITableViewDelegate, UITableViewDataSource{
+extension SortOptionsViewController: UITableViewDelegate, UITableViewDataSource{
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.viewModel.filters.count
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.filters[section].options.count
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let item = self.viewModel.filters[section]
-        return item.title
+        return self.viewModel.items.count
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -60,9 +56,10 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellFilter) as! FilterTableViewCell
-        let item = self.viewModel.filters[indexPath.section].options[indexPath.row]
-        cell.labelTitle?.text = item.title
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellSortID) as! SortOptionTableViewCell
+        let item = self.viewModel.items[indexPath.row]
+        cell.labelSort.text = item.displayName
+        cell.imageView?.image = item.image
         cell.accessoryType = item.selected ? .checkmark : .none
         return cell
     }

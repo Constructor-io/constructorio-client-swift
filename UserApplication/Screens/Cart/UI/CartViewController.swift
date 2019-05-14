@@ -38,6 +38,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.register(UINib(nibName: "CartItemTableViewCell", bundle: nil), forCellReuseIdentifier: self.cellID)
         
         self.tableView.allowsSelection = true
+
+        self.tableView.tableFooterView = UIView(frame: .zero)
     }
 
     @IBAction func didTapOnButtonCheckout(_ sender: Any) {
