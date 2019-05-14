@@ -64,9 +64,3 @@ public class MockAutocompleteViewModel: AbstractAutocompleteViewModel {
     }
 }
 
-
-//public extension AbstractAutocompleteViewModel {
-//    public class func mock() -> AbstractAutocompleteViewModel {
-//
-//    }
-//}

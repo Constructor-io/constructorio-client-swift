@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIView {
+extension UIView {
     public func fadeIn(duration: TimeInterval, completion: ((Bool) -> Void)? = nil) {
         self.alpha = 0.0
         UIView.animate(withDuration: duration, animations: { [weak self] in

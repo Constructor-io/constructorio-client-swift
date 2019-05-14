@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension String {
+extension String {
 
     public func makeIterator(characterSet: CharacterSet) -> StringCharacterSetIterator {
         return StringCharacterSetIterator(string: self, characterSet: characterSet)
@@ -16,7 +16,7 @@ public extension String {
 
 }
 
-public extension NSString {
+extension NSString {
 
     public func rangeOfCharacters(from characterSet: CharacterSet) -> NSRange {
         var firstRange = self.rangeOfCharacter(from: characterSet)

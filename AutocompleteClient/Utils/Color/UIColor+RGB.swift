@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIColor {
+extension UIColor {
     public class func RGB(_ red: Int, green: Int, blue: Int) -> UIColor {
         return self.RGBA(red, green: green, blue: blue, alpha: 255)
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension Data {
+extension Data {
     func toJSONDictionary() -> [String: Any]? {
         do {
             return try JSONSerialization.jsonObject(with: self, options: []) as? [String: Any]
