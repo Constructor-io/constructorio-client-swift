@@ -113,6 +113,7 @@ public struct Constants {
         public static let name = "name"
         public static let customerID = "customer_id"
         public static let customerIDs = "customer_ids"
+        public static let resultID = "result_id"
         public static let revenue = "revenue"
         public static let dateTime = "_dt"
         public static let defaultItemSectionName = "Products"
