@@ -41,6 +41,7 @@ public struct CIOTrackAutocompleteSelectData: CIORequestData {
             requestBuilder.set(groupName: group.displayName)
             requestBuilder.set(groupID: group.groupID)
         }
+        requestBuilder.set(resultID: self.resultID)
         requestBuilder.set(autocompleteSection: self.sectionName)
         requestBuilder.addTriggerQueryItem()
     }

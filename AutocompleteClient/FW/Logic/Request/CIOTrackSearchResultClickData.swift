@@ -34,5 +34,6 @@ public struct CIOTrackSearchResultClickData: CIORequestData {
         requestBuilder.set(name: self.itemName)
         requestBuilder.set(customerID: self.customerID)
         requestBuilder.set(autocompleteSection: self.sectionName)
+        requestBuilder.set(resultID: self.resultID)
     }
 }
