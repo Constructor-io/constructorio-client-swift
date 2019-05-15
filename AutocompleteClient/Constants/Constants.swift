@@ -116,6 +116,7 @@ public struct Constants {
         public static let revenue = "revenue"
         public static let dateTime = "_dt"
         public static let defaultItemSectionName = "Products"
+        public static let orderID = "order_id"
     }
 
     public struct TrackSessionStart {

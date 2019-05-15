@@ -16,20 +16,23 @@ public struct CIOTrackPurchaseData: CIORequestData {
     public let customerIDs: [String]
     public let revenue: Double?
     public var sectionName: String?
+    public var orderID: String?
 
     public var url: String {
         return String(format: Constants.TrackPurchase.format, Constants.Track.baseURLString)
     }
 
-    public init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil) {
+    public init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
         self.customerIDs = customerIDs
         self.sectionName = sectionName
         self.revenue = revenue
+        self.orderID = orderID
     }
 
     public func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(customerIDs: self.customerIDs)
         requestBuilder.set(autocompleteSection: self.sectionName)
         requestBuilder.set(revenue: self.revenue)
+        requestBuilder.set(orderID: self.orderID)
     }
 }
