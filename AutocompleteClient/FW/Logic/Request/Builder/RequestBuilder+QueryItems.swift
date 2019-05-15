@@ -61,6 +61,11 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(format: "%.2lf", revenue)))
     }
 
+    public func set(orderID: String?) {
+        guard let orderID = orderID else { return }
+        queryItems.add(URLQueryItem(name: Constants.Track.orderID, value: orderID))
+    }
+
     public func set(numResults: Int?) {
         guard let numResults = numResults else { return }
         queryItems.add(URLQueryItem(name: Constants.AutocompleteQuery.numResults, value: String(numResults)))
