@@ -18,7 +18,7 @@ class TrackSessionStartRequestBuilderTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        self.builder = RequestBuilder(apiKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testTrackSessionStartBuilder() {

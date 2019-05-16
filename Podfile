@@ -11,4 +11,3 @@ inhibit_all_warnings!
 target 'AutocompleteClientTests' do
     pod 'OHHTTPStubs/Swift'
 end
-

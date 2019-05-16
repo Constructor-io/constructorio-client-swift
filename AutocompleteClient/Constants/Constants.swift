@@ -101,7 +101,6 @@ public struct Constants {
     public struct Track {
         public static let httpMethod = "GET"
         public static let apiKey = "key"
-        public static let baseURLString = "https://ac.cnstrc.com"
         public static let expectedStatusCode = 204
         public static let autocompleteSection = "autocomplete_section"
         public static let searchTerm = "term"

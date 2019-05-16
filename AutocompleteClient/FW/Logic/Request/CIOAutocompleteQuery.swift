@@ -16,10 +16,11 @@ public struct CIOAutocompleteQuery: CIORequestData {
     public let numResults: Int?
     public let numResultsForSection: [String: Int]?
 
-    public var url: String {
-        return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString,
-               Constants.AutocompleteQuery.pathString, query)
+    public func url(with baseURL: String) -> String {
+        return String(format: Constants.Query.queryStringFormat, baseURL,
+                      Constants.AutocompleteQuery.pathString, query)
     }
+
 
     public init(query: String, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
@@ -33,6 +34,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
     }
 }
 
+// TODO: Move to a separate file
 public struct CIOSearchQuery: CIORequestData {
 
     let query: String
@@ -40,8 +42,8 @@ public struct CIOSearchQuery: CIORequestData {
     let page: Int
     let section: String
 
-    public var url: String {
-        return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString,
+    public func url(with baseURL: String) -> String {
+        return String(format: Constants.Query.queryStringFormat, baseURL,
                       Constants.SearchQuery.pathString, query)
     }
 

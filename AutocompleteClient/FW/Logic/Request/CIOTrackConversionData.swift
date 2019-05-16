@@ -19,8 +19,8 @@ public struct CIOTrackConversionData: CIORequestData {
     public var sectionName: String?
     public let revenue: Double?
 
-    public var url: String {
-        return String(format: Constants.TrackConversion.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+    public func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackConversion.format, baseURL,  self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
     public init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil) {

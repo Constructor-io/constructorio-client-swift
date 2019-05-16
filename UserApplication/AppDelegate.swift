@@ -153,12 +153,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
         print("item selected \(result)")
 
-        if let navigationController = self.window?.rootViewController as? UINavigationController {
-            let detailsVC = DetailsViewController()
-            detailsVC.result = result
-            detailsVC.constructorIO = controller.constructorIO
-            navigationController.pushViewController(detailsVC, animated: true)
-        }
+//        if let navigationController = self.window?.rootViewController as? UINavigationController {
+//            let detailsVC = DetailsViewController()
+//            detailsVC.result = result
+//            detailsVC.constructorIO = controller.constructorIO
+//            navigationController.pushViewController(detailsVC, animated: true)
+//        }
     }
 
     func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String) {

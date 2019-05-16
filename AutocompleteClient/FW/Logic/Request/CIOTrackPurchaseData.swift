@@ -17,10 +17,10 @@ public struct CIOTrackPurchaseData: CIORequestData {
     public let revenue: Double?
     public var sectionName: String?
 
-    public var url: String {
-        return String(format: Constants.TrackPurchase.format, Constants.Track.baseURLString)
+    public func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackPurchase.format, baseURL)
     }
-
+    
     public init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil) {
         self.customerIDs = customerIDs
         self.sectionName = sectionName

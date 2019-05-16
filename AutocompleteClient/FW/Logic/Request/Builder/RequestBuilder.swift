@@ -13,12 +13,15 @@ public class RequestBuilder {
     var queryItems = QueryItemCollection()
     var dateProvider: DateProvider
 
+    let baseURL: String
+
     internal(set) var trackData: CIORequestData!
 
     internal(set) var searchTerm = ""
 
-    public init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider()) {
+    public init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider(), baseURL: String) {
         self.dateProvider = dateProvider
+        self.baseURL = baseURL
         self.set(apiKey: apiKey)
     }
 
@@ -45,7 +48,8 @@ public class RequestBuilder {
     }
 
     public final func getRequest() -> URLRequest {
-        let urlString = self.trackData!.url
+        // TODO: Do not force unwrap trackData here;
+        let urlString = self.trackData!.url(with: self.baseURL)
 
         var urlComponents = URLComponents(string: urlString)!
 

@@ -14,6 +14,7 @@ public struct ConstructorIOConfig {
     public var defaultItemSectionName: String?
     public var resultCount: AutocompleteResultCount?
     public var testCells: [CIOABTestCell]?
+    public var baseURL: String?
 
     public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil) {
         self.apiKey = apiKey

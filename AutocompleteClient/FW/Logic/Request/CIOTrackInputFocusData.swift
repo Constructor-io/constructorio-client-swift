@@ -14,8 +14,8 @@ import Foundation
 public struct CIOTrackInputFocusData: CIORequestData {
     let searchTerm: String?
 
-    public var url: String {
-        return String(format: Constants.TrackInputFocus.format, Constants.Track.baseURLString)
+    public func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackInputFocus.format, baseURL)
     }
 
     public init(searchTerm: String?) {

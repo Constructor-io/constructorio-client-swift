@@ -14,14 +14,13 @@ import Foundation
 public struct CIOTrackSessionStartData: CIORequestData {
     let session: Int
 
-    public var url: String {
-        return String(format: Constants.TrackSessionStart.format, Constants.Track.baseURLString)
+    public func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackSessionStart.format, baseURL)
     }
 
     public init(session: Int) {
         self.session = session
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder) {
-    }
+    public func decorateRequest(requestBuilder: RequestBuilder) {}
 }
