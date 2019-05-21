@@ -57,7 +57,7 @@ public struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser 
 
     fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOResult] {
 
-        return jsonObjects.flatMap { CIOAutocompleteResult(json: $0) }
+        return jsonObjects.compactMap { CIOAutocompleteResult(json: $0) }
                         .enumerated()
                         .reduce([CIOResult](), { (arr, enumeratedAutocompleteResult) in
 

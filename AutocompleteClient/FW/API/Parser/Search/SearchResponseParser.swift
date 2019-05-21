@@ -18,11 +18,11 @@ class SearchResponseParser: AbstractSearchResponseParser {
                 throw CIOError.invalidResponse
             }
 
-            let facets: [Facet] = (response["facets"] as? [JSONObject])?.flatMap { obj in
+            let facets: [Facet] = (response["facets"] as? [JSONObject])?.compactMap { obj in
                 return Facet(json: obj)
             } ?? []
 
-            let results: [SearchResult] = (response["results"] as? [JSONObject])?.flatMap { resultObj in
+            let results: [SearchResult] = (response["results"] as? [JSONObject])?.compactMap { resultObj in
                 guard let dataObj = resultObj["data"] as? JSONObject else { return nil }
                 guard let value = resultObj["value"] as? String else { return nil }
                 guard let data = SearchResultData(json: dataObj) else {
@@ -33,7 +33,7 @@ class SearchResponseParser: AbstractSearchResponseParser {
                 return SearchResult(value: value, data: data, matchedTerms: matchedTerms)
             } ?? []
 
-            let sortOptions: [SortOption] = (response["sort_options"] as? [JSONObject])?.flatMap({ obj  in
+            let sortOptions: [SortOption] = (response["sort_options"] as? [JSONObject])?.compactMap({ obj  in
                 guard let status = obj["status"] as? String else { return nil }
                 guard let displayName = obj["display_name"] as? String else { return nil }
                 guard let sortOrderStr = obj["sort_order"] as? String else { return nil }
@@ -43,7 +43,7 @@ class SearchResponseParser: AbstractSearchResponseParser {
                 return SortOption(displayName: displayName, sortBy: sortBy, sortOrder: sortOrder, status: status)
             }) ?? []
 
-            let groups: [CIOGroup] = (response["groups"] as? [JSONObject])?.flatMap({ obj  in
+            let groups: [CIOGroup] = (response["groups"] as? [JSONObject])?.compactMap({ obj  in
                 return CIOGroup(json: obj)
             }) ?? []
 

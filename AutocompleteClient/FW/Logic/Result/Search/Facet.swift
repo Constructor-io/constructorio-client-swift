@@ -26,7 +26,7 @@ extension Facet {
         guard let type = json["type"] as? String else {
             return nil
         }
-        let options: [FacetOption] = (json["options"] as? [JSONObject])?.flatMap { option in
+        let options: [FacetOption] = (json["options"] as? [JSONObject])?.compactMap { option in
             return FacetOption(json: option)
         } ?? []
 

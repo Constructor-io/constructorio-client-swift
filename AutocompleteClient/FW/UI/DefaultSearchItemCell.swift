@@ -24,13 +24,8 @@ public class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
             groupString.append(highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value))
 
             let fontGroup = Constants.UI.Font.defaultFontNormal.withSize(11)
-            #if swift(>=4.0)
-                let groupAttributes: [String: Any] = [NSAttributedStringKey.font.rawValue: fontGroup,
-                                       NSAttributedStringKey.foregroundColor.rawValue: Constants.UI.Color.defaultFontColorNormal]
-            #else
-                let groupAttributes: [String: Any] = [NSFontAttributeName: fontGroup,
-                NSForegroundColorAttributeName: Constants.UI.Color.defaultFontColorNormal ]
-            #endif
+            let groupAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: fontGroup,
+                                       NSAttributedString.Key.foregroundColor: Constants.UI.Color.defaultFontColorNormal]
 
             groupString.append(NSAttributedString.build(string: "\nin \(group.displayName)", attributes: groupAttributes))
             self.labelText.attributedText = groupString
