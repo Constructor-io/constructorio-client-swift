@@ -201,6 +201,7 @@
 		F699C3471F57ED4200FD681A /* CIOAutocompleteUICustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C3461F57ED4200FD681A /* CIOAutocompleteUICustomization.swift */; };
 		F699C34B1F57F22400FD681A /* NSError+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34A1F57F22400FD681A /* NSError+Errors.swift */; };
 		F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */; };
+		F69BD06D22956F0800038713 /* CartPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD06C22956F0800038713 /* CartPersistence.swift */; };
 		F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */; };
 		F69C2CA2207FADAD0060B2B9 /* CIOLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */; };
 		F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */; };
@@ -465,6 +466,7 @@
 		F699C3461F57ED4200FD681A /* CIOAutocompleteUICustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteUICustomization.swift; sourceTree = "<group>"; };
 		F699C34A1F57F22400FD681A /* NSError+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Errors.swift"; sourceTree = "<group>"; };
 		F699C34F1F57F60500FD681A /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		F69BD06C22956F0800038713 /* CartPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPersistence.swift; sourceTree = "<group>"; };
 		F69C2C9C207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SearchSuggestionsSection.swift"; sourceTree = "<group>"; };
 		F69C2CA1207FADAD0060B2B9 /* CIOLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOLogger.swift; sourceTree = "<group>"; };
 		F69C2CA3207FAFC60060B2B9 /* CIOPrintLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOPrintLogger.swift; sourceTree = "<group>"; };
@@ -874,6 +876,7 @@
 		F62A160522881AFE00276241 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				F69BD06B22956EFC00038713 /* Persistence */,
 				F62A160622881AFE00276241 /* ViewModel */,
 				F62A160A22881AFE00276241 /* UI */,
 				F62A160F22881AFE00276241 /* Logic */,
@@ -1678,6 +1681,14 @@
 			path = AutoLayout;
 			sourceTree = "<group>";
 		};
+		F69BD06B22956EFC00038713 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				F69BD06C22956F0800038713 /* CartPersistence.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		F69C2CA0207FAD9B0060B2B9 /* Logging */ = {
 			isa = PBXGroup;
 			children = (
@@ -2087,6 +2098,7 @@
 				F62A163822881AFE00276241 /* CartViewController.swift in Sources */,
 				F62A162822881AFE00276241 /* UIView+AutoLayout.swift in Sources */,
 				F62A1654228838CC00276241 /* FacetViewModel.swift in Sources */,
+				F69BD06D22956F0800038713 /* CartPersistence.swift in Sources */,
 				F62A166822886A6E00276241 /* FacetOptionViewModel.swift in Sources */,
 				F62A162A22881AFE00276241 /* DetailsViewModel.swift in Sources */,
 				F62A163E22881AFE00276241 /* CustomAttributesProvider.swift in Sources */,

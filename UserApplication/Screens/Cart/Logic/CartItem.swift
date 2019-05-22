@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct CartItem{
+struct CartItem: Codable{
     let title: String
     let imageURL: String
     let price: Float
@@ -16,5 +16,5 @@ struct CartItem{
         return self.price * Float(self.quantity)
     }
     var quantity: Int
-
+    
 }
