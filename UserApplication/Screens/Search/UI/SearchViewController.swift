@@ -49,7 +49,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
     }
 
     func reload(){
-        self.viewModel.performSearch { [weak self] in
+        self.viewModel.performSearch { [weak self] newItems in
             guard let sself = self else { return }
 
             // track search results loaded
@@ -107,7 +107,25 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
         let detailsVC = DetailsViewController(viewModel: viewModel, constructorProvider: self.constructorProvider)
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if self.viewModel.isLoading { return }
+        if let items = self.viewModel.searchResults, indexPath.row < items.count-3 { return }
+        
+        let itemCountPre = self.viewModel.searchResults?.count ?? 0
+        self.viewModel.performSearch { [weak self] newItems in
+            guard let sself = self else { return }
+         
+            // track search results loaded
+            sself.viewModel.constructor.trackSearchResultsLoaded(searchTerm: sself.viewModel.searchTerm, resultCount: newItems.count, completionHandler: nil)
+           
+            let itemCountPost = self?.viewModel.searchResults?.count ?? 0
+            
+            let indices = (itemCountPre..<itemCountPost).map{ IndexPath(row: $0, section: 0) }
+            sself.collectionView.insertItems(at: indices)
+        }
+    }
+    
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         let width = (self.view.frame.size.width - 3 * self.viewModel.margin) / 2
         let height = self.viewModel.cellAspectRatio * width
@@ -128,7 +146,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
         return self.viewModel.margin
     }
-
 }
 
 extension SearchViewController: FilterHeaderDelegate{
@@ -150,7 +167,6 @@ extension SearchViewController: FilterHeaderDelegate{
 }
 
 extension SearchViewController: FiltersSelectionDelegate{
-
     func didSelect(filters: [Filter]) {
         if filters.count == 0{
             self.headerView.labelFilter.text = "Filters"
