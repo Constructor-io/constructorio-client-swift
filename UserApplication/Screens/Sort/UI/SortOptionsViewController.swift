@@ -29,7 +29,7 @@ class SortOptionsViewController: UIViewController {
         super.viewDidLoad()
 
         self.tableView.register(UINib(nibName: "SortOptionTableViewCell", bundle: nil), forCellReuseIdentifier: self.cellSortID)
-
+        self.tableView.tableFooterView = UIView(frame: .zero)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapOnButtonDone))
     }
 
@@ -51,22 +51,22 @@ extension SortOptionsViewController: UITableViewDelegate, UITableViewDataSource{
         return self.viewModel.items.count
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellSortID) as! SortOptionTableViewCell
         let item = self.viewModel.items[indexPath.row]
         cell.labelSort.text = item.displayName
-        cell.imageView?.image = item.image
+        cell.imageViewSort.image = item.image
         cell.accessoryType = item.selected ? .checkmark : .none
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.viewModel.toggle(indexPath: indexPath)
-        self.tableView.reloadRows(at: [indexPath], with: .fade)
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
 
 }

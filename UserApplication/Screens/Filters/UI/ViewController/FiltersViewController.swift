@@ -28,7 +28,8 @@ class FiltersViewController: UIViewController {
         super.viewDidLoad()
 
         self.tableView.register(UINib(nibName: "FilterTableViewCell", bundle: nil), forCellReuseIdentifier: self.cellFilter)
-
+        self.tableView.tableFooterView = UIView(frame: .zero)
+            
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapOnButtonDone))
     }
 

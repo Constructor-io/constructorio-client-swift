@@ -14,7 +14,7 @@ class SortViewModel{
     var selectedItem: SortOptionViewModel?
     var changed: Bool
 
-    weak var delegate: FiltersSelectionDelegate?
+    weak var delegate: SortSelectionDelegate?
 
     init(items: [SortOptionViewModel]){
         self.items = items

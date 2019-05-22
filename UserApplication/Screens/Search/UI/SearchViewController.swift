@@ -159,7 +159,9 @@ extension SearchViewController: FiltersSelectionDelegate{
         }
         self.reload()
     }
+}
 
+extension SearchViewController: SortSelectionDelegate{
     func didSelect(sortOption: SortOption?) {
         var image: UIImage?
         var title: String?
@@ -172,7 +174,7 @@ extension SearchViewController: FiltersSelectionDelegate{
         }
         self.headerView.labelSort.text = title
         self.headerView.imageViewSort.image = image
-
+        
         self.reload()
     }
 }

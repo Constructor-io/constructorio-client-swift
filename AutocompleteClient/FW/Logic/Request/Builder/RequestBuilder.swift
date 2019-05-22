@@ -13,9 +13,9 @@ public class RequestBuilder {
     var queryItems = QueryItemCollection()
     var dateProvider: DateProvider
 
-    internal(set) var trackData: CIORequestData!
+    var trackData: CIORequestData!
 
-    internal(set) var searchTerm = ""
+    var searchTerm = ""
 
     public init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider()) {
         self.dateProvider = dateProvider

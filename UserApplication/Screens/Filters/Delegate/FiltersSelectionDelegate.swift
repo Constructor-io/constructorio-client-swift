@@ -9,7 +9,6 @@
 import Foundation
 import ConstructorAutocomplete
 
-protocol FiltersSelectionDelegate: class{
+protocol FiltersSelectionDelegate: AnyObject{
     func didSelect(filters: [Filter])
-    func didSelect(sortOption: SortOption?)
 }
