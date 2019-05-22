@@ -106,7 +106,10 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.facetFilterKey(filter.key), value: filter.value))
     }
 
-    func set(_ value: String, forKey key: String) {
+    public func set(sortOptions: [SortOption]?) {
+    }
+
+    public func set(_ value: String, forKey key: String) {
         queryItems.add(URLQueryItem(name: key, value: value))
     }
 

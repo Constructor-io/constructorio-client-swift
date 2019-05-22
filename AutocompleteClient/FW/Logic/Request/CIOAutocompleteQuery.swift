@@ -37,20 +37,22 @@ public struct CIOAutocompleteQuery: CIORequestData {
 public struct CIOSearchQuery: CIORequestData {
 
     public let query: String
-    public let filters: SearchFilters?
     public let page: Int
     public let section: String
+    public let filters: SearchFilters?
+    public let sortOptions: [SortOption]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.Query.queryStringFormat, baseURL,
                       Constants.SearchQuery.pathString, query)
     }
 
-    public init(query: String, filters: SearchFilters? = nil, page: Int = 1, section: String? = nil) {
+    public init(query: String, filters: SearchFilters? = nil, sortOptions: [SortOption]? = nil, page: Int = 1, section: String? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page
         self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName
+        self.sortOptions = sortOptions
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -58,5 +60,6 @@ public struct CIOSearchQuery: CIORequestData {
         requestBuilder.set(groupFilter: self.filters?.groupFilter)
         requestBuilder.set(facetFilters: self.filters?.facetFilters)
         requestBuilder.set(searchSection: self.section)
+        requestBuilder.set(sortOptions: self.sortOptions)
     }
 }
