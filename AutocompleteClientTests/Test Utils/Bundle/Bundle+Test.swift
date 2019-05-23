@@ -6,7 +6,6 @@
 //  http://constructor.io/
 //
 
-import Foundation
 import XCTest
 
 extension Bundle {

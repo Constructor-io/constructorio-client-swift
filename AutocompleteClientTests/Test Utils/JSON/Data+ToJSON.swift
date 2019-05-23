@@ -6,7 +6,7 @@
 //  http://constructor.io/
 //
 
-import Foundation
+import XCTest
 
 public extension Data {
     func toJSONDictionary() -> [String: Any]? {
