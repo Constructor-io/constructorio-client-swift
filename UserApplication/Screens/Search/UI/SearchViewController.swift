@@ -44,20 +44,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
         self.collectionView.register(UINib(nibName: "SearchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: self.cellID)
 
         self.reload()
-
         self.headerViewContainer.addSubviewToFit(self.headerView)
-    }
-
-    func reload(){
-        self.viewModel.performSearch { [weak self] newItems in
-            guard let sself = self else { return }
-
-            // track search results loaded
-            sself.viewModel.constructor.trackSearchResultsLoaded(searchTerm: sself.viewModel.searchTerm, resultCount: sself.viewModel.searchResults?.count ?? 0, completionHandler: nil)
-
-            // reload table view
-            sself.collectionView.reloadData()
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -148,6 +135,26 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
     }
 }
 
+// MARK: Data
+extension SearchViewController{
+    func invalidateData(){
+        self.viewModel.invalidate()
+        self.collectionView.reloadData()
+    }
+    
+    func reload(){
+        self.viewModel.performSearch { [weak self] newItems in
+            guard let sself = self else { return }
+            
+            // track search results loaded
+            sself.viewModel.constructor.trackSearchResultsLoaded(searchTerm: sself.viewModel.searchTerm, resultCount: sself.viewModel.searchResults?.count ?? 0, completionHandler: nil)
+            
+            // reload table view
+            sself.collectionView.reloadData()
+        }
+    }
+}
+
 extension SearchViewController: FilterHeaderDelegate{
     func didTapOnFilterView() {
         let viewModel = self.viewModel.filtersViewModel ?? FiltersViewModel(filters: [])
@@ -168,6 +175,7 @@ extension SearchViewController: FilterHeaderDelegate{
 
 extension SearchViewController: FiltersSelectionDelegate{
     func didSelect(filters: [Filter]) {
+        self.invalidateData()
         if filters.count == 0{
             self.headerView.labelFilter.text = "Filters"
         }else{
@@ -179,6 +187,7 @@ extension SearchViewController: FiltersSelectionDelegate{
 
 extension SearchViewController: SortSelectionDelegate{
     func didSelect(sortOption: SortOption?) {
+        self.invalidateData()
         var image: UIImage?
         var title: String?
         if let selectedSortOption = sortOption{

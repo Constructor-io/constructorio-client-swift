@@ -39,19 +39,19 @@ public struct CIOSearchQuery: CIORequestData {
     public let page: Int
     public let section: String
     public let filters: SearchFilters?
-    public let sortOptions: [SortOption]?
+    public let sortOption: SortOption?
     
     public var url: String {
         return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString,
                       Constants.SearchQuery.pathString, query)
     }
 
-    public init(query: String, filters: SearchFilters? = nil, sortOptions: [SortOption]? = nil, page: Int = 1, section: String = Constants.SearchQuery.defaultSectionName) {
+    public init(query: String, filters: SearchFilters? = nil, sortOption: SortOption? = nil, page: Int = 1, section: String = Constants.SearchQuery.defaultSectionName) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page
         self.section = section
-        self.sortOptions = sortOptions
+        self.sortOption = sortOption
     }
 
     public func decorateRequest(requestBuilder: RequestBuilder) {
@@ -59,7 +59,7 @@ public struct CIOSearchQuery: CIORequestData {
         requestBuilder.set(groupFilter: self.filters?.groupFilter)
         requestBuilder.set(facetFilters: self.filters?.facetFilters)
         requestBuilder.set(searchSection: self.section)
-        requestBuilder.set(sortOptions: self.sortOptions)
+        requestBuilder.set(sortOption: self.sortOption)
     }
 }
 

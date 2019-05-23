@@ -11,7 +11,11 @@ import ConstructorAutocomplete
 
 class SortViewModel{
     var items: [SortOptionViewModel]
-    var selectedItem: SortOptionViewModel?
+    var selectedItem: SortOptionViewModel?{
+        get{
+            return self.items.first(where: { $0.selected })
+        }
+    }
     var changed: Bool
 
     weak var delegate: SortSelectionDelegate?
@@ -19,7 +23,6 @@ class SortViewModel{
     init(items: [SortOptionViewModel]){
         self.items = items
         self.changed = false
-        self.selectedItem = nil
     }
 
     func toggle(indexPath: IndexPath){
@@ -31,8 +34,7 @@ class SortViewModel{
 
     func dismiss(){
         if self.changed{
-            let selectedSortOption: SortOption? = self.items.filter({ $0.selected }).first?.model
-            self.delegate?.didSelect(sortOption: selectedSortOption)
+            self.delegate?.didSelect(sortOption: self.selectedItem?.model)
         }
     }
 }

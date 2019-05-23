@@ -53,7 +53,10 @@ class SearchViewModel: ConstructorIOProvider{
 
     func performSearch(completionHandler: @escaping (_ items: [SearchResultViewModel]) -> Void){
         let filter: SearchFilters = SearchFilters(groupFilter: self.groupID, facetFilters: self.filtersViewModel?.selectedFilters)
-        let query = CIOSearchQuery(query: self.searchTerm, filters: filter, page: self.currentPage)
+        let query = CIOSearchQuery(query: self.searchTerm,
+                                 filters: filter,
+                              sortOption: self.sortViewModel?.selectedItem?.model,
+                                    page: self.currentPage)
         self.isLoading = true
         self.constructor.search(forQuery: query) { [weak self] (response) in
             if let data = response.data{
@@ -91,5 +94,11 @@ class SearchViewModel: ConstructorIOProvider{
 
     func provideConstructorInstance() -> ConstructorIO {
         return self.constructor
+    }
+    
+    func invalidate(){
+        self.currentPage = 1
+        self.hasMoreDataToLoad = true
+        self.searchResults = nil
     }
 }

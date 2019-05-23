@@ -80,6 +80,8 @@ public struct Constants {
         public static let groupFilter = "filters[group_id]"
         public static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
         public static let section = "section"
+        public static let sortBy = "sort_by"
+        public static let sortOrder = "sort_order"
         public static let defaultSectionName = "Products"
     }
 
