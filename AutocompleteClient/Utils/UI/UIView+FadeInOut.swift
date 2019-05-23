@@ -8,15 +8,15 @@
 
 import UIKit
 
-public extension UIView {
-    public func fadeIn(duration: TimeInterval, completion: ((Bool) -> Void)? = nil) {
+extension UIView {
+    func fadeIn(duration: TimeInterval, completion: ((Bool) -> Void)? = nil) {
         self.alpha = 0.0
         UIView.animate(withDuration: duration, animations: { [weak self] in
             self?.alpha = 1.0
         }, completion: completion)
     }
 
-    public func fadeOutAndRemove(duration: TimeInterval, completion: ((Bool) -> Void)? = nil) {
+    func fadeOutAndRemove(duration: TimeInterval, completion: ((Bool) -> Void)? = nil) {
         UIView.animate(withDuration: duration, animations: { [weak self] in
             self?.alpha = 0.0
         }, completion: { [weak self] completed in

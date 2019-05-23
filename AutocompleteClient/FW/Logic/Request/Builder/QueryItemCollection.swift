@@ -8,24 +8,24 @@
 
 import Foundation
 
-public struct QueryItemCollection {
+struct QueryItemCollection {
     private var queryItems = [String: [URLQueryItem]]()
 
-    public init() {}
+    init() {}
 
     mutating func add(key: String,items: [URLQueryItem]) {
         queryItems[key] = items
     }
 
-    public mutating func add(_ item: URLQueryItem) {
+    mutating func add(_ item: URLQueryItem) {
         self[item.name] = [item]
     }
 
-    public mutating func addMultiple(index: Int, item: URLQueryItem) {
+    mutating func addMultiple(index: Int, item: URLQueryItem) {
         self[item.name + String(index)] = [item]
     }
 
-    public subscript(value: String) -> [URLQueryItem]? {
+    subscript(value: String) -> [URLQueryItem]? {
         get {
             return queryItems[value]
         }
@@ -43,7 +43,7 @@ public struct QueryItemCollection {
         }
     }
 
-    public mutating func remove(name: String) {
+    mutating func remove(name: String) {
         self[name] = nil
     }
 

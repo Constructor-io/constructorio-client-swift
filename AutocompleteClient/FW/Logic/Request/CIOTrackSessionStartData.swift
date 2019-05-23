@@ -11,17 +11,17 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set set in order to track session start
  */
-public struct CIOTrackSessionStartData: CIORequestData {
+struct CIOTrackSessionStartData: CIORequestData {
     let session: Int
 
-    public var url: String {
+    var url: String {
         return String(format: Constants.TrackSessionStart.format, Constants.Track.baseURLString)
     }
 
-    public init(session: Int) {
+    init(session: Int) {
         self.session = session
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder) {
+    func decorateRequest(requestBuilder: RequestBuilder) {
     }
 }
