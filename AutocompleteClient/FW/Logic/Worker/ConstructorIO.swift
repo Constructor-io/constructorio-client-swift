@@ -29,8 +29,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     public var userID: String?
 
-    public var autocompleteParser: AbstractAutocompleteResponseParser = DependencyContainer.sharedInstance.autocompleteResponseParser()
-    public var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
+    var autocompleteParser: AbstractAutocompleteResponseParser = DependencyContainer.sharedInstance.autocompleteResponseParser()
+    var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
 
     public var sessionID: Int {
         get {

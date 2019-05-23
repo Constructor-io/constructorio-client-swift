@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating the necessary and additional parameters required to execute an autocomplete query.
  */
-struct CIOAutocompleteQuery: CIORequestData {
+public struct CIOAutocompleteQuery: CIORequestData {
     let query: String
     let numResults: Int?
     let numResultsForSection: [String: Int]?
@@ -21,7 +21,7 @@ struct CIOAutocompleteQuery: CIORequestData {
                Constants.AutocompleteQuery.pathString, query)
     }
 
-    init(query: String, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil) {
+    public init(query: String, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.numResults = numResults
         self.numResultsForSection = numResultsForSection
@@ -33,7 +33,7 @@ struct CIOAutocompleteQuery: CIORequestData {
     }
 }
 
-struct CIOSearchQuery: CIORequestData {
+public struct CIOSearchQuery: CIORequestData {
 
     let query: String
     let filters: SearchFilters?
@@ -45,11 +45,11 @@ struct CIOSearchQuery: CIORequestData {
                       Constants.SearchQuery.pathString, query)
     }
 
-    init(query: String, filters: SearchFilters? = nil, page: Int = 1, section: String = Constants.SearchQuery.defaultSectionName) {
+    public init(query: String, filters: SearchFilters? = nil, page: Int = 1, section: String? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page
-        self.section = section
+        self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName;
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {

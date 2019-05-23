@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol CIOLogger {
+public protocol CIOLogger {
     func log(_ message: String)
 }
