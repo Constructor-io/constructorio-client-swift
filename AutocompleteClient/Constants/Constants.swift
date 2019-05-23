@@ -12,7 +12,7 @@ public struct Constants {
 
     public static var versionString: () -> String = {
         var prefix = "cioios-"
-        if let version = Bundle(for: ConstructorIO.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             return "\(prefix)\(version)"
         } else {
             return prefix
