@@ -50,6 +50,15 @@ class ConstructorIOTrackPurchaseTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackPurchase_WithOrderID() {
+        let customerIDs = ["customer_id_q2ew"]
+        let orderID = "ABCDEFGHI"
+        let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_ids=customer_id_q2ew&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&order_id=ABCDEFGHI&s=\(kRegexSession)"), builder.create())
+        self.constructor.trackPurchase(customerIDs: customerIDs, orderID: orderID)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackPurchase_With400() {
         let expectation = self.expectation(description: "Calling trackPurchase with 400 should return badRequest CIOError.")
         let customerIDs = ["customer_id_q2ew"]
