@@ -70,6 +70,7 @@ class DetailsViewController: UIViewController {
         self.buttonTrackResultsLoaded.center = center
     }
 
+    @objc
     func didTapOnButtonTrackConversion(_ sender: UIButton) {
         self.constructorIO.trackConversion(itemName: self.result.autocompleteResult.value,
                                            customerID: self.result.autocompleteResult.id,
@@ -78,6 +79,7 @@ class DetailsViewController: UIViewController {
                                            sectionName: nil)
     }
 
+    @objc
     func didTapOnButtonTrackResultsLoaded(_ sender: UIButton) {
         let resultCount = 10
         self.constructorIO.trackSearchResultsLoaded(searchTerm: "a search term", resultCount: resultCount)

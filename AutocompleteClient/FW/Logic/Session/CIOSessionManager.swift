@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class CIOSessionManager: SessionManager {
 
@@ -28,8 +29,8 @@ public class CIOSessionManager: SessionManager {
 
         self.sessionLoader = sessionLoader
         self.session = self.sessionLoader.loadSession() ?? Session(id: 1, createdAt: dateProvider.provideDate().timeIntervalSince1970)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground(_:)), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     public func setup() {

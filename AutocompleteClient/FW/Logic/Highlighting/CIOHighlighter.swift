@@ -43,7 +43,7 @@ public class CIOHighlighter {
                 finalString.append(NSAttributedString.build(string: result, attributes: self.attributesProvider.defaultSubstringAttributes()))
                 continue
             }
-
+            
             // An alphanumeric match
             // Check prefix match
             let (prefix, suffix) = getBestPrefixBetween(prefixers: searchTokens, prefixee: result)
