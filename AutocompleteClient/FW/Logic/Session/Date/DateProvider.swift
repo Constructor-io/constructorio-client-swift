@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol DateProvider {
+protocol DateProvider {
     func provideDate() -> Date
 }

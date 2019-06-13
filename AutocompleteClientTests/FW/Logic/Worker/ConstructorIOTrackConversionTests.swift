@@ -8,7 +8,6 @@
 
 import XCTest
 import OHHTTPStubs
-import Foundation
 import ConstructorAutocomplete
 
 class ConstructorIOTrackConversionTests: XCTestCase {

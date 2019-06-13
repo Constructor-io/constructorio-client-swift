@@ -6,7 +6,7 @@
 //  http://constructor.io/
 //
 
-import Foundation
+import XCTest
 
 // Returns a MockingJay Matcher if the URL string matches a regex
 public func regex(_ pattern: String, prepare: Bool = true) -> Matcher {

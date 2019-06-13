@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class URLSessionNetworkClient: NetworkClient {
+class URLSessionNetworkClient: NetworkClient {
 
-    public func execute(_ request: URLRequest, completionHandler: @escaping (_ response: NetworkResponse) -> Void) {
+    func execute(_ request: URLRequest, completionHandler: @escaping (_ response: NetworkResponse) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             // Check for errors
             if let error = error {

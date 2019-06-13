@@ -8,13 +8,13 @@
 
 import Foundation
 
-public class DependencyContainer {
+class DependencyContainer {
 
-    public static let sharedInstance = DependencyContainer()
+    static let sharedInstance = DependencyContainer()
 
     private init() {}
 
-    public var networkClient: () -> NetworkClient = {
+    var networkClient: () -> NetworkClient = {
         return URLSessionNetworkClient()
     }
 
@@ -30,7 +30,7 @@ public class DependencyContainer {
         return CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: Constants.Query.sessionIncrementTimeoutInSeconds)
     }
 
-    public var clientIDGenerator: () -> IDGenerator = {
+    var clientIDGenerator: () -> IDGenerator = {
         return ClientIDGenerator()
     }
 }

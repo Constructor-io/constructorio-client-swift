@@ -11,18 +11,18 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set set in order to track search bar focus
  */
-public struct CIOTrackInputFocusData: CIORequestData {
+struct CIOTrackInputFocusData: CIORequestData {
     let searchTerm: String?
 
-    public var url: String {
+    var url: String {
         return String(format: Constants.TrackInputFocus.format, Constants.Track.baseURLString)
     }
 
-    public init(searchTerm: String?) {
+    init(searchTerm: String?) {
         self.searchTerm = searchTerm
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder) {
+    func decorateRequest(requestBuilder: RequestBuilder) {
         if let term = self.searchTerm {
             requestBuilder.set(searchTerm: term)
         }
