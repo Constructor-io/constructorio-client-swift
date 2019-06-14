@@ -8,15 +8,15 @@
 
 import Foundation
 
-public let kConstructorUnknownErrorCode = 0xf
-public let kConstructorJSONErrorCode = 0xf0
+let kConstructorUnknownErrorCode = 0xf
+let kConstructorJSONErrorCode = 0xf0
 
-public extension NSError {
-    public class func unknownError() -> NSError {
+extension NSError {
+    class func unknownError() -> NSError {
         return NSError(domain: "unknownError", code: kConstructorUnknownErrorCode, userInfo: nil)
     }
 
-    public class func jsonParseError() -> NSError {
+    class func jsonParseError() -> NSError {
         return NSError(domain: "jsonParseError", code: kConstructorJSONErrorCode, userInfo: nil)
     }
 }

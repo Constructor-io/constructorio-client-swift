@@ -12,11 +12,11 @@ import Foundation
  Struct encapsulating the necessary and additional parameters required to execute an autocomplete query.
  */
 public struct CIOAutocompleteQuery: CIORequestData {
-    public let query: String
-    public let numResults: Int?
-    public let numResultsForSection: [String: Int]?
+    let query: String
+    let numResults: Int?
+    let numResultsForSection: [String: Int]?
 
-    public func url(with baseURL: String) -> String {
+    func url(with baseURL: String) -> String {
         return String(format: Constants.Query.queryStringFormat, baseURL,
                       Constants.AutocompleteQuery.pathString, query)
     }
@@ -28,7 +28,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
         self.numResultsForSection = numResultsForSection
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder) {
+    func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(numResults: self.numResults)
         requestBuilder.set(numResultsForSection: self.numResultsForSection)
     }
@@ -42,19 +42,19 @@ public struct CIOSearchQuery: CIORequestData {
     let page: Int
     let section: String
 
-    public func url(with baseURL: String) -> String {
+    func url(with baseURL: String) -> String {
         return String(format: Constants.Query.queryStringFormat, baseURL,
                       Constants.SearchQuery.pathString, query)
     }
 
-    init(query: String, filters: SearchFilters? = nil, page: Int = 1, section: String = Constants.SearchQuery.defaultSectionName) {
+    public init(query: String, filters: SearchFilters? = nil, page: Int = 1, section: String? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page
-        self.section = section
+        self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName;
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder) {
+    func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(page: self.page)
         requestBuilder.set(groupFilter: self.filters?.groupFilter)
         requestBuilder.set(facetFilters: self.filters?.facetFilters)

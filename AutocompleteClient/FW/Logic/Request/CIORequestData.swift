@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol CIORequestData {
+protocol CIORequestData {
 
     func decorateRequest(requestBuilder: RequestBuilder)
 
@@ -17,7 +17,7 @@ public protocol CIORequestData {
     func httpMethod() -> String
 }
 
-public extension CIORequestData {
+extension CIORequestData {
     // default httpMethod is GET
     func httpMethod() -> String {
         return "GET"

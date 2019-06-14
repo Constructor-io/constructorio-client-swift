@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import ConstructorAutocomplete
+@testable import ConstructorAutocomplete
 
 class SessionManagerTests: XCTestCase {
 
@@ -83,7 +83,7 @@ class SessionManagerTests: XCTestCase {
         // delay posting the notification so the session can time out
         sleep(1)
 
-        NotificationCenter.default.post(Notification(name: Notification.Name.UIApplicationWillEnterForeground))
+        NotificationCenter.default.post(Notification(name: UIApplication.willEnterForegroundNotification))
 
         self.wait(for: [expectation], timeout: 5.0)
     }

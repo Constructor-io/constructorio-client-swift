@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import Foundation
-import ConstructorAutocomplete
+import XCTest
+@testable import ConstructorAutocomplete
 
 public class MockAutocompleteViewModel: AbstractAutocompleteViewModel {
 

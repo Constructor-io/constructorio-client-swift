@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import ConstructorAutocomplete
+@testable import ConstructorAutocomplete
 
 class SearchSuggestionStringConversionTests: XCTestCase {
 

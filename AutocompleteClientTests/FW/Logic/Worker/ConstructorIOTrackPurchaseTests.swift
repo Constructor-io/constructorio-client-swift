@@ -8,7 +8,6 @@
 
 import XCTest
 import OHHTTPStubs
-import Foundation
 import ConstructorAutocomplete
 
 class ConstructorIOTrackPurchaseTests: XCTestCase {
@@ -47,6 +46,15 @@ class ConstructorIOTrackPurchaseTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a section name.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?_dt=\(kRegexTimestamp)&autocomplete_section=Search%20Suggestions&c=\(kRegexVersion)&customer_ids=customer_id_q2ew&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: sectionName)
+        self.wait(for: builder.expectation)
+    }
+
+    func testTrackPurchase_WithOrderID() {
+        let customerIDs = ["customer_id_q2ew"]
+        let orderID = "ABCDEFGHI"
+        let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_ids=customer_id_q2ew&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&order_id=ABCDEFGHI&s=\(kRegexSession)"), builder.create())
+        self.constructor.trackPurchase(customerIDs: customerIDs, orderID: orderID)
         self.wait(for: builder.expectation)
     }
 

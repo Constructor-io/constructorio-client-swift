@@ -8,7 +8,6 @@
 
 import XCTest
 import OHHTTPStubs
-import Foundation
 import ConstructorAutocomplete
 
 class ConstructorIOTrackTests: XCTestCase {
@@ -80,6 +79,18 @@ class ConstructorIOTrackTests: XCTestCase {
 
         stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?_dt=\(kRegexTimestamp)&autocomplete_section=Search%20Suggestions&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&original_query=co&s=\(kRegexSession)&tr=click"), builder.create())
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName)
+        self.wait(for: builder.expectation)
+    }
+
+    func testTrackAutocompleteSelect_WithResultID() {
+        let searchTerm = "corn"
+        let searchOriginalQuery = "co"
+        let searchSectionName = "Search Suggestions"
+        let resultID = "0123456789"
+        let builder = CIOBuilder(expectation: "Calling trackAutocompleteSelect should send a valid request.", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?_dt=\(kRegexTimestamp)&autocomplete_section=Search%20Suggestions&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&original_query=co&result_id=0123456789&s=\(kRegexSession)&tr=click"), builder.create())
+        self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName, resultID: resultID)
         self.wait(for: builder.expectation)
     }
 

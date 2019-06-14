@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UISearchBar {
-    public func searchTextField() -> UITextField? {
+    func searchTextField() -> UITextField? {
         return self.findSubview({ (view) -> Bool in view is UITextField }) as? UITextField
     }
 }

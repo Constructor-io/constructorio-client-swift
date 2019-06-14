@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SessionLoader {
+protocol SessionLoader {
 
     func loadSession() -> Session?
     func saveSession(_ session: Session)

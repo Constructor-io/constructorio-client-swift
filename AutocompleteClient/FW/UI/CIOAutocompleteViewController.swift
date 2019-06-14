@@ -173,7 +173,7 @@ public class CIOAutocompleteViewController: UIViewController {
             self.view.addViewToFit(backgroundView)
         }
 
-        self.view.bringSubview(toFront: self.tableView)
+        self.view.bringSubviewToFront(self.tableView)
 
         if let fontNormal = self.uiCustomization?.fontNormal?(in: self) {
             self.fontNormal = fontNormal

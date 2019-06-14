@@ -11,19 +11,19 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set set in order to track a conversion for an item.
  */
-public struct CIOTrackConversionData: CIORequestData {
+struct CIOTrackConversionData: CIORequestData {
 
-    public let searchTerm: String
-    public let itemName: String
-    public let customerID: String
-    public var sectionName: String?
-    public let revenue: Double?
+    let searchTerm: String
+    let itemName: String
+    let customerID: String
+    var sectionName: String?
+    let revenue: Double?
 
-    public func url(with baseURL: String) -> String {
+    func url(with baseURL: String) -> String {
         return String(format: Constants.TrackConversion.format, baseURL,  self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
-    public init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil) {
+    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil) {
         self.searchTerm = searchTerm
         self.itemName = itemName
         self.customerID = customerID
@@ -31,7 +31,7 @@ public struct CIOTrackConversionData: CIORequestData {
         self.revenue = revenue
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder) {
+    func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(name: self.itemName)
         requestBuilder.set(customerID: self.customerID)
         requestBuilder.set(autocompleteSection: self.sectionName)
