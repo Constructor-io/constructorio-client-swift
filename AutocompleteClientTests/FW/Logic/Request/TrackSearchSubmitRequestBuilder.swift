@@ -24,7 +24,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         super.setUp()
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.encodedOriginalQuery = originalQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        self.builder = RequestBuilder(apiKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testTrackSearchSubmitBuilder() {

@@ -30,7 +30,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         self.encodedItemName = self.itemName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedCustomerID = customerID.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedSectionName = self.sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        self.builder = RequestBuilder(apiKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testTrackConversionBuilder() {

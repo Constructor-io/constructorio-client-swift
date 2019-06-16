@@ -14,8 +14,8 @@ import Foundation
 struct CIOTrackSessionStartData: CIORequestData {
     let session: Int
 
-    var url: String {
-        return String(format: Constants.TrackSessionStart.format, Constants.Track.baseURLString)
+    func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackSessionStart.format, baseURL)
     }
 
     init(session: Int) {

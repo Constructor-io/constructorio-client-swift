@@ -10,9 +10,9 @@ import Foundation
 
 protocol CIORequestData {
 
-    var url: String { get }
-
     func decorateRequest(requestBuilder: RequestBuilder)
+
+    func url(with baseURL: String) -> String
 
     func httpMethod() -> String
 }

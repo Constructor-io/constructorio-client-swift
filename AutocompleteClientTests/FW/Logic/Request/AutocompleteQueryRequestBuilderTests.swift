@@ -19,7 +19,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.endodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        self.builder = RequestBuilder(apiKey: self.testACKey)
+        self.builder = RequestBuilder(apiKey: self.testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testAutocompleteQueryBuilder() {
