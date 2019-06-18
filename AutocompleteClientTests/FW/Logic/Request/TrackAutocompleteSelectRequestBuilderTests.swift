@@ -43,6 +43,17 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
+    
+    func testTrackAutocompleteSelectBuilder_WithCustomBaseURL() {
+        let customBaseURL = "https://custom-base-url.com"
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: customBaseURL)
+        let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+
+        XCTAssertTrue(url.hasPrefix(customBaseURL))
+    }
 
     func testTrackAutocompleteSelectBuilder_WithGroup() {
         let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group)

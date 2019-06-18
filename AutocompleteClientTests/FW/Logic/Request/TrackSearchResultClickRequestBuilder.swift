@@ -46,6 +46,17 @@ class TrackSearchResultClickRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
+    
+    func testTrackSearchResultClickBuilder_WithCustomBaseURL() {
+        let tracker = CIOTrackSearchResultClickData(searchTerm: searchTerm, itemName: itemName, customerID: customerID)
+        let customBaseURL = "https://custom-base-url.com"
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: customBaseURL)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        
+        XCTAssertTrue(url.hasPrefix(customBaseURL))
+    }
 
     func testTrackSearchResultClickBuilder_WithSectionName() {
         let tracker = CIOTrackSearchResultClickData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, sectionName: sectionName)
