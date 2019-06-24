@@ -15,8 +15,8 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
     let searchTerm: String
     let resultCount: Int
 
-    var url: String {
-        return String(format: Constants.TrackSearchResultsLoaded.format, Constants.Track.baseURLString)
+    func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackSearchResultsLoaded.format, baseURL)
     }
 
     init(searchTerm: String, resultCount: Int) {

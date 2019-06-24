@@ -27,7 +27,7 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         self.encodedCustomerID1 = "customer_ids=" + customerIDs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedCustomerID2 = "customer_ids=" + customerIDs[1].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedSectionName = self.sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        self.builder = RequestBuilder(apiKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testTrackPurchaseBuilder() {
@@ -42,6 +42,17 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains(encodedCustomerID2), "URL should contain the customer ID[2].")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+    }
+    
+    func testTrackPurchaseBuilder_WithCustomBaseURL() {
+        let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs)
+        let customBaseURL = "https://custom-base-url.com"
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: customBaseURL)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        
+        XCTAssertTrue(url.hasPrefix(customBaseURL))
     }
 
     func testTrackPurchaseBuilder_WithSectionName() {

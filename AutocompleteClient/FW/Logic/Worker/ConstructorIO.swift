@@ -171,7 +171,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     private func buildRequest(data: CIORequestData) -> URLRequest {
-        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
+        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey, baseURL: self.config.baseURL ?? Constants.Query.baseURLString)
         self.attachClientID(requestBuilder: requestBuilder)
         self.attachUserID(requestBuilder: requestBuilder)
         self.attachSessionIDWithIncrement(requestBuilder: requestBuilder)
@@ -182,7 +182,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     private func buildSessionStartRequest(session: Int) -> URLRequest {
         let data = CIOTrackSessionStartData(session: session)
-        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey)
+        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey, baseURL: self.config.baseURL ?? Constants.Query.baseURLString)
         self.attachClientID(requestBuilder: requestBuilder)
         self.attachUserID(requestBuilder: requestBuilder)
         self.attachSessionIDWithoutIncrement(requestBuilder: requestBuilder)

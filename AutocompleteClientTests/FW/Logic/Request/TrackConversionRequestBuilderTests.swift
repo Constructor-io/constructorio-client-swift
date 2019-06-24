@@ -30,7 +30,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         self.encodedItemName = self.itemName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedCustomerID = customerID.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedSectionName = self.sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        self.builder = RequestBuilder(apiKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testTrackConversionBuilder() {
@@ -45,6 +45,17 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+    }
+    
+    func testTrackConversionBuilder_WithCustomBaseURL() {
+        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName, customerID: self.customerID)
+        let customBaseURL = "https://custom-base-url.com"
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: customBaseURL)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        
+        XCTAssertTrue(url.hasPrefix(customBaseURL))
     }
 
     func testTrackConversionBuilder_WithSectionName() {

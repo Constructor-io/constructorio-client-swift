@@ -18,8 +18,8 @@ struct CIOTrackSearchResultClickData: CIORequestData {
     var sectionName: String?
     let resultID: String?
 
-    var url: String {
-        return String(format: Constants.TrackSearchResultClick.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+    func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackSearchResultClick.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
     init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, resultID: String? = nil) {

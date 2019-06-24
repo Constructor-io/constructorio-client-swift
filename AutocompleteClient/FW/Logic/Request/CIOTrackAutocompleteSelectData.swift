@@ -23,8 +23,8 @@ struct CIOTrackAutocompleteSelectData: CIORequestData {
     let sectionName: String
     let resultID: String?
 
-    var url: String {
-        return String(format: Constants.TrackAutocompleteSelect.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+    func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackAutocompleteSelect.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
     init(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, resultID: String? = nil) {

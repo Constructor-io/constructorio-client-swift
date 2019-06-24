@@ -18,8 +18,8 @@ struct CIOTrackPurchaseData: CIORequestData {
     var sectionName: String?
     var orderID: String?
 
-    var url: String {
-        return String(format: Constants.TrackPurchase.format, Constants.Track.baseURLString)
+    func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackPurchase.format, baseURL)
     }
 
     init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {

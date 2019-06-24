@@ -17,8 +17,8 @@ struct CIOTrackSearchSubmitData: CIORequestData {
     let originalQuery: String
     let group: CIOGroup?
 
-    var url: String {
-        return String(format: Constants.TrackSearchSubmit.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+    func url(with baseURL: String) -> String{
+        return String(format: Constants.TrackSearchSubmit.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
     init(searchTerm: String, originalQuery: String, group: CIOGroup? = nil) {

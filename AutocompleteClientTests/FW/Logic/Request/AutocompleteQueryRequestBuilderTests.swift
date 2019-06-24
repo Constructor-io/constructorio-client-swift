@@ -19,7 +19,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.endodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        self.builder = RequestBuilder(apiKey: self.testACKey)
+        self.builder = RequestBuilder(apiKey: self.testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testAutocompleteQueryBuilder() {
@@ -88,4 +88,14 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
+    func testAutocompleteQueryBuilder_WithCustomBaseURL() {
+        let customBaseURL = "https://custom-base-url.com"
+        self.builder = RequestBuilder(apiKey: self.testACKey, baseURL: customBaseURL)
+
+        let query = CIOAutocompleteQuery(query: self.query)
+        builder.build(trackData: query)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        XCTAssertTrue(url.hasPrefix("\(customBaseURL)/autocomplete/\(endodedQuery)?"))
+    }
 }
