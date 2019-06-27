@@ -1994,7 +1994,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-UserApplication/Pods-UserApplication-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2005,7 +2005,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UserApplication/Pods-UserApplication-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		62096C2BA49ADEE5658A497C /* [CP] Embed Pods Frameworks */ = {
@@ -2014,7 +2014,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2023,7 +2023,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		71495F0420931F654BD60DEF /* [CP] Check Pods Manifest.lock */ = {
