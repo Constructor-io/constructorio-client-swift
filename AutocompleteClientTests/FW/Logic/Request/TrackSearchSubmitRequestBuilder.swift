@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import ConstructorAutocomplete
+@testable import ConstructorAutocomplete
 
 class TrackSearchSubmitRequestBuilderTests: XCTestCase {
 
@@ -24,7 +24,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         super.setUp()
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.encodedOriginalQuery = originalQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        self.builder = RequestBuilder(apiKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testTrackSearchSubmitBuilder() {
@@ -39,7 +39,18 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
-
+    
+    func testTrackSearchSubmitBuilder_WithCustomBaseURL() {
+        let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery)
+        let customBaseURL = "https://custom-base-url.com"
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: customBaseURL)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        
+        XCTAssertTrue(url.hasPrefix(customBaseURL))
+    }
+    
     func testTrackSearchSubmitBuilder_WithGroup() {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
         builder.build(trackData: tracker)

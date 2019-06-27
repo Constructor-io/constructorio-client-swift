@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AbstractAutocompleteResponseParser {
+protocol AbstractAutocompleteResponseParser {
 
     var delegate: ResponseParserDelegate? { get set }
 

@@ -11,25 +11,28 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set set in order to track a purchase for an item.
  */
-public struct CIOTrackPurchaseData: CIORequestData {
+struct CIOTrackPurchaseData: CIORequestData {
 
-    public let customerIDs: [String]
-    public let revenue: Double?
-    public var sectionName: String?
+    let customerIDs: [String]
+    let revenue: Double?
+    var sectionName: String?
+    var orderID: String?
 
-    public var url: String {
-        return String(format: Constants.TrackPurchase.format, Constants.Track.baseURLString)
+    func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackPurchase.format, baseURL)
     }
 
-    public init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil) {
+    init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
         self.customerIDs = customerIDs
         self.sectionName = sectionName
         self.revenue = revenue
+        self.orderID = orderID
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder) {
+    func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(customerIDs: self.customerIDs)
         requestBuilder.set(autocompleteSection: self.sectionName)
         requestBuilder.set(revenue: self.revenue)
+        requestBuilder.set(orderID: self.orderID)
     }
 }

@@ -26,8 +26,8 @@ class CIOHighlighterTests: XCTestCase {
 
     func testHighlighter_NoMatches_NoHighlights() {
         let result = highlighter.highlight(searchTerm: "this is a test", itemTitle: "no matches in item!")
-        XCTAssertEqual(result, NSAttributedString(string: "no matches in item!", attributes: [NSAttributedStringKey.font: provider.fontBold,
-                                                                                              NSAttributedStringKey.foregroundColor: provider.colorBold]))
+        XCTAssertEqual(result, NSAttributedString(string: "no matches in item!", attributes: [NSAttributedString.Key.font: provider.fontBold,
+                                                                                              NSAttributedString.Key.foregroundColor: provider.colorBold]))
     }
 
     func testHighlighter_AllMatch_AllHighlighted() {
@@ -56,14 +56,14 @@ class CIOHighlighterTests: XCTestCase {
         var shouldHighlight = onEvenTokens
         for string in strings {
             guard shouldHighlight else {
-                highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedStringKey.font: provider.fontBold,
-                                                                                        NSAttributedStringKey.foregroundColor: provider.colorBold]))
+                highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedString.Key.font: provider.fontBold,
+                                                                                        NSAttributedString.Key.foregroundColor: provider.colorBold]))
                 shouldHighlight = !shouldHighlight
                 continue
             }
 
-            highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedStringKey.font: provider.fontNormal,
-                                                                                     NSAttributedStringKey.foregroundColor: provider.colorNormal]))
+            highlightedString.append(NSAttributedString(string: string, attributes: [NSAttributedString.Key.font: provider.fontNormal,
+                                                                                     NSAttributedString.Key.foregroundColor: provider.colorNormal]))
             shouldHighlight = !shouldHighlight
         }
 

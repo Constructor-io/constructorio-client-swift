@@ -22,15 +22,13 @@ public class BoldAttributesProvider: CIOHighlightingAttributesProvider {
         self.fontNormal = fontNormal
         self.fontBold = fontBold
     }
-
-
-    public func defaultSubstringAttributes() -> [NSAttributedStringKey: Any]{
-        return [NSAttributedStringKey.font: self.fontBold,
-                NSAttributedStringKey.foregroundColor: self.colorBold]
+    public func defaultSubstringAttributes() -> [NSAttributedString.Key: Any] {
+        return [NSAttributedString.Key.font: self.fontBold,
+                    NSAttributedString.Key.foregroundColor: self.colorBold]
     }
 
-    public func highlightedSubstringAttributes() -> [NSAttributedStringKey: Any] {
-        return [NSAttributedStringKey.font: self.fontNormal,
-                    NSAttributedStringKey.foregroundColor: self.colorNormal]
+    public func highlightedSubstringAttributes() -> [NSAttributedString.Key: Any] {
+        return [NSAttributedString.Key.font: self.fontNormal,
+                    NSAttributedString.Key.foregroundColor: self.colorNormal]
     }
 }

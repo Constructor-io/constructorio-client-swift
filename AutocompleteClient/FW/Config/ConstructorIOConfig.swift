@@ -14,12 +14,14 @@ public struct ConstructorIOConfig {
     public var defaultItemSectionName: String?
     public var resultCount: AutocompleteResultCount?
     public var testCells: [CIOABTestCell]?
+    public var baseURL: String?
 
-    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil) {
+    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, baseURL: String? = nil) {
         self.apiKey = apiKey
         self.resultCount = resultCount
         self.defaultItemSectionName = defaultItemSectionName
         self.testCells = testCells
+        self.baseURL = baseURL
     }
 
 }

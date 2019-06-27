@@ -8,11 +8,11 @@
 
 import Foundation
 
-public struct CIOSessionLoader: SessionLoader {
+struct CIOSessionLoader: SessionLoader {
 
-    public init() {}
+    init() {}
 
-    public func loadSession() -> Session? {
+    func loadSession() -> Session? {
         if let data = UserDefaults.standard.object(forKey: Constants.Session.key) as? Data {
             return NSKeyedUnarchiver.unarchiveObject(with: data) as? Session
         } else {
@@ -20,12 +20,12 @@ public struct CIOSessionLoader: SessionLoader {
         }
     }
 
-    public func saveSession(_ session: Session) {
+    func saveSession(_ session: Session) {
         let data = NSKeyedArchiver.archivedData(withRootObject: session)
         UserDefaults.standard.set(data, forKey: Constants.Session.key)
     }
 
-    public func clearSession() {
+    func clearSession() {
         UserDefaults.standard.removeObject(forKey: Constants.Session.key)
     }
 

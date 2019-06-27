@@ -17,12 +17,12 @@ public protocol CIOHighlightingAttributesProvider {
 
      - returns: NSAttributeString attributes for unmatched parts of the search term.
      */
-    func defaultSubstringAttributes() -> [NSAttributedStringKey: Any]
+    func defaultSubstringAttributes() -> [NSAttributedString.Key: Any]
 
     /**
      Method called by the CIOHiglighter to get highlighting attributes for parts of the string that are matched in the search term.
 
      - returns: NSAttributeString attributes for matched parts of the search term.
      */
-    func highlightedSubstringAttributes() -> [NSAttributedStringKey: Any]
+    func highlightedSubstringAttributes() -> [NSAttributedString.Key: Any]
 }

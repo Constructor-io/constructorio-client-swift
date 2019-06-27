@@ -9,8 +9,7 @@
 import UIKit
 
 extension NSAttributedString {
-
-    static func build(string: String, attributes: [NSAttributedStringKey: Any]) -> NSAttributedString {
+    static func build(string: String, attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
         return NSAttributedString(string: string, attributes: attributes)
     }
 }

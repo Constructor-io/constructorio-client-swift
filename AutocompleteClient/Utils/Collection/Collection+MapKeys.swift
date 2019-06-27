@@ -9,7 +9,7 @@
 import Foundation
 
 extension Dictionary {
-    public func mapKeys<T>(_ mapping: (_ key: Key) -> T) -> [T: Value] {
+    func mapKeys<T>(_ mapping: (_ key: Key) -> T) -> [T: Value] {
         var newDictionary: [T: Value] = [:]
         for (key, value) in self {
             newDictionary[mapping(key)] = value

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import ConstructorAutocomplete
+@testable import ConstructorAutocomplete
 
 class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
 
@@ -27,7 +27,7 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.encodedOriginalQuery = originalQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.encodedSectionName = sectionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        self.builder = RequestBuilder(apiKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testTrackAutocompleteSelectBuilder() {
@@ -42,6 +42,17 @@ class TrackAutocompleteSelectRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section")
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
+    }
+    
+    func testTrackAutocompleteSelectBuilder_WithCustomBaseURL() {
+        let customBaseURL = "https://custom-base-url.com"
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: customBaseURL)
+        let tracker = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+
+        XCTAssertTrue(url.hasPrefix(customBaseURL))
     }
 
     func testTrackAutocompleteSelectBuilder_WithGroup() {

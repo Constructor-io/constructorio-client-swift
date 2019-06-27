@@ -23,11 +23,11 @@ public extension SearchResultData {
         guard let id = json["id"] as? String else { return nil }
         self.id = id
 
-        self.facets = (json["facets"] as? [JSONObject])?.flatMap { searchFacetObj in
+        self.facets = (json["facets"] as? [JSONObject])?.compactMap { searchFacetObj in
             return SearchResultFacet(json: searchFacetObj)
         }
 
-        self.groups = (json["groups"] as? [JSONObject])?.flatMap({ groupObj in
+        self.groups = (json["groups"] as? [JSONObject])?.compactMap({ groupObj in
             return CIOGroup(json: groupObj)
         })
 

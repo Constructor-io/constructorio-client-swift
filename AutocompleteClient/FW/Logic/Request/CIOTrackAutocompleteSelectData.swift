@@ -15,30 +15,33 @@ import Foundation
  - If specified, it will report the autocomplete click as a *select* type and should be used for all types of item clicks, which simply tracks a user selection on an autocomplete item.
  - Otherwise, it will report the autocomplete click as a *search* type, typically used when the clicked item is a search suggestion for tracking what users search (in addition to the *select* type).
  */
-public struct CIOTrackAutocompleteSelectData: CIORequestData {
+struct CIOTrackAutocompleteSelectData: CIORequestData {
 
-    public let searchTerm: String
-    public let originalQuery: String
-    public let group: CIOGroup?
-    public let sectionName: String
+    let searchTerm: String
+    let originalQuery: String
+    let group: CIOGroup?
+    let sectionName: String
+    let resultID: String?
 
-    public var url: String {
-        return String(format: Constants.TrackAutocompleteSelect.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+    func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackAutocompleteSelect.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
-    public init(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil) {
+    init(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, resultID: String? = nil) {
         self.searchTerm = searchTerm
         self.originalQuery = originalQuery
         self.group = group
         self.sectionName = sectionName
+        self.resultID = resultID
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder) {
+    func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(originalQuery: self.originalQuery)
         if let group = self.group {
             requestBuilder.set(groupName: group.displayName)
             requestBuilder.set(groupID: group.groupID)
         }
+        requestBuilder.set(resultID: self.resultID)
         requestBuilder.set(autocompleteSection: self.sectionName)
         requestBuilder.addTriggerQueryItem()
     }

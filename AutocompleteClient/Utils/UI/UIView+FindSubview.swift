@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-
-    public func findSubview(_ filter: (UIView) -> Bool) -> UIView? {
+    func findSubview(_ filter: (UIView) -> Bool) -> UIView? {
         for view in self.subviews {
             if filter(view) {
                 return view

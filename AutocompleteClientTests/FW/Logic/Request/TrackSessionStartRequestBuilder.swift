@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import ConstructorAutocomplete
+@testable import ConstructorAutocomplete
 
 class TrackSessionStartRequestBuilderTests: XCTestCase {
 
@@ -18,7 +18,7 @@ class TrackSessionStartRequestBuilderTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        self.builder = RequestBuilder(apiKey: testACKey)
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
     }
 
     func testTrackSessionStartBuilder() {
@@ -33,4 +33,21 @@ class TrackSessionStartRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
+    
+    func testTrackSessionStartBuilder_WithCustomBaseURL() {
+        let tracker = CIOTrackSessionStartData(session: session)
+        let customBaseURL = "https://custom-base-url.com"
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: customBaseURL)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        
+        XCTAssertEqual(request.httpMethod, "GET")
+        XCTAssertTrue(url.hasPrefix(customBaseURL))
+        XCTAssertTrue(url.contains("action=session_start"), "URL should contain the session start action")
+        XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
+    }
+    
+    
 }
