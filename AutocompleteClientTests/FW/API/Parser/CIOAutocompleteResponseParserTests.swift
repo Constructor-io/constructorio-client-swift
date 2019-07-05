@@ -70,7 +70,7 @@ class CIOAutocompleteResponseParserTests: XCTestCase {
             let response = try responseParser.parse(autocompleteResponseData: data)
 
             if let results = response.sections[Constants.Response.singleSectionResultField] {
-                XCTAssertEqual(results.count, TestResource.Response.numberOfGroupsInMultipleSectionsResponse+1, "Number of parsed items with multiple groups should match the number of groups plus one.")
+                XCTAssertEqual(results.count, TestResource.Response.numberOfGroupsInMultipleSectionsResponse + 1, "Number of parsed items with multiple groups should match the number of groups plus one.")
             } else {
                 XCTFail("Results incorrectly parsed, no results array for key \(Constants.Response.singleSectionResultField) when server returns a single section")
             }

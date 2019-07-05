@@ -63,10 +63,3 @@ public class MockAutocompleteViewModel: AbstractAutocompleteViewModel {
         return results[index].sectionName
     }
 }
-
-
-//public extension AbstractAutocompleteViewModel {
-//    public class func mock() -> AbstractAutocompleteViewModel {
-//
-//    }
-//}

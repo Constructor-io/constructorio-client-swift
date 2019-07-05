@@ -50,7 +50,7 @@ public struct CIOSearchQuery: CIORequestData {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page
-        self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName;
+        self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -60,4 +60,3 @@ public struct CIOSearchQuery: CIORequestData {
         requestBuilder.set(searchSection: self.section)
     }
 }
-

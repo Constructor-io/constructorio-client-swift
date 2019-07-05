@@ -16,11 +16,6 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
     var expectationSelectResult: XCTestExpectation?
     var expectation: XCTestExpectation!
 
-    override func setUp() {
-        self.expectation = nil
-        self.viewDidLoadExpectation = nil
-    }
-
     func initializeViewController(shouldCallViewDidLoad: Bool = true) {
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey)
         self.viewController = CIOAutocompleteViewController(config: config)
@@ -142,11 +137,6 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
         self.viewController.viewDidLoad()
     }
 
-    func testAutocompleteViewController_CustomSortFunction() {
-
-    }
-
-
     func testAutocompleteViewController_SetResultsReceived() {
         self.expectation = XCTestExpectation(description: "Will show result should get called for the last result cell.")
         self.initializeViewController()
@@ -185,14 +175,14 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
         let mockDelegate = MockDelegate(expectation: expectation)
         self.viewController.delegate = mockDelegate
 
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.viewController.setResultsReceived(from: autocompleteResult)
 
             // attach custom sort function
             self.viewController.uiCustomization = customization
             self.viewController.setResultsReceived(from: autocompleteResult)
 
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 _ = self.viewController.tableView(self.viewController.tableView, viewForHeaderInSection: 0)
                 _ = self.viewController.tableView(self.viewController.tableView, heightForHeaderInSection: 0)
                 for idx in (0..<results.count) {

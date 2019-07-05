@@ -29,7 +29,7 @@ class CIOSessionManager: SessionManager {
 
         self.sessionLoader = sessionLoader
         self.session = self.sessionLoader.loadSession() ?? Session(id: 1, createdAt: dateProvider.provideDate().timeIntervalSince1970)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 

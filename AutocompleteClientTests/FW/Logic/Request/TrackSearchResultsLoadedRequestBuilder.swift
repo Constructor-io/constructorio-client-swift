@@ -38,7 +38,7 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
-    
+
     func testTrackSearchResultsLoadedBuilder_WithCustomBaseURL() {
         let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount)
         let customBaseURL = "https://custom-base-url.com"
@@ -46,7 +46,7 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
-        
+
         XCTAssertTrue(url.hasPrefix(customBaseURL))
-    }   
+    }
 }

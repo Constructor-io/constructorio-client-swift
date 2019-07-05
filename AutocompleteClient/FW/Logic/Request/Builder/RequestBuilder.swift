@@ -15,9 +15,9 @@ class RequestBuilder {
 
     let baseURL: String
 
-    internal(set) var trackData: CIORequestData!
+    var trackData: CIORequestData!
 
-    internal(set) var searchTerm = ""
+    var searchTerm = ""
 
     init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider(), baseURL: String) {
         self.dateProvider = dateProvider

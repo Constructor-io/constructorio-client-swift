@@ -839,7 +839,6 @@
 				F64F46B61F59767D0094C697 /* AutocompleteViewModelTests.swift */,
 				F64F46C21F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift */,
 				F66B216221DF837700AAB030 /* AutocompleteResultCountTests.swift */,
-				F67D42AA220360580053B9C3 /* AbstractAutocompleteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1201,6 +1200,7 @@
 			children = (
 				F61A6B0E1F699E4D007826CA /* Delegate */,
 				F1B17CB11F58E5830015FF62 /* AutocompleteResult.swift */,
+				F67D42AA220360580053B9C3 /* AbstractAutocompleteViewModel.swift */,
 				F68A72F91F56D22B00FA4D1B /* AutocompleteViewModel.swift */,
 				F64F46C41F59A6890094C697 /* AutocompleteViewModelDelegate.swift */,
 				F63808EE1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift */,
@@ -1884,7 +1884,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cio.UserApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1903,7 +1903,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cio.UserApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1920,7 +1920,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cio.UserApplicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UserApplication.app/UserApplication";
 			};
@@ -1938,7 +1938,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cio.UserApplicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UserApplication.app/UserApplication";
 			};
@@ -2031,7 +2031,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2084,7 +2084,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

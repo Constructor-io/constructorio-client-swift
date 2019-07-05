@@ -20,7 +20,7 @@ struct CIOTrackConversionData: CIORequestData {
     let revenue: Double?
 
     func url(with baseURL: String) -> String {
-        return String(format: Constants.TrackConversion.format, baseURL,  self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+        return String(format: Constants.TrackConversion.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
     init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil) {

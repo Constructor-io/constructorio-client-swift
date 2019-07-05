@@ -1,6 +1,6 @@
 //
 //  AbstractAutocompleteViewModel.swift
-//  AutocompleteClientTests
+//  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
 //  http://constructor.io/

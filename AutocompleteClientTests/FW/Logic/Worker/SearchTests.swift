@@ -27,7 +27,7 @@ class ConstructorIOSearchTests: XCTestCase {
         let query = CIOSearchQuery(query: "potato")
 
         let builder = CIOBuilder(expectation: "Calling Search should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=cioios-1.6.1&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&page=1&s=\(kRegexSession)&section=Products"), builder.create())
 
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -147,7 +147,6 @@ class ConstructorIOSearchTests: XCTestCase {
 
         let builder = CIOBuilder(expectation: "Calling Search with a facet filter should have a facet filter URL query item.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bfacet1%5D=Organic&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=\(Constants.SearchQuery.defaultSectionName)"), builder.create())
-
 
         self.constructor.search(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)

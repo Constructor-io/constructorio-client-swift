@@ -43,7 +43,7 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
-    
+
     func testTrackPurchaseBuilder_WithCustomBaseURL() {
         let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs)
         let customBaseURL = "https://custom-base-url.com"
@@ -51,7 +51,7 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
-        
+
         XCTAssertTrue(url.hasPrefix(customBaseURL))
     }
 
@@ -70,7 +70,7 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
 
-    func testTrackPurchaseBuilder_WithRevenue(){
+    func testTrackPurchaseBuilder_WithRevenue() {
         let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs, sectionName: self.sectionName, revenue: self.revenue)
         builder.build(trackData: tracker)
         let request = builder.getRequest()

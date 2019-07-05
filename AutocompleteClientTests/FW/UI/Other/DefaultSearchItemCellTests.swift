@@ -11,14 +11,6 @@ import ConstructorAutocomplete
 
 class DefaultSearchItemCellTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testDefaultSearchCell_InstantiationAndSetup_WithoutGroup() {
         if let cell = UINib(nibName: "DefaultSearchItemCell", bundle: Bundle.testBundle()).instantiate(withOwner: nil, options: nil).first as? DefaultSearchItemCell {
             let result = CIOResult.mock(withValue: "test")

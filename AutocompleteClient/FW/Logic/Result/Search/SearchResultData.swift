@@ -36,7 +36,7 @@ extension SearchResultData {
         self.url = json["url"] as? String
 
         var metadata = json
-        for key in [ "id", "facets", "groups", "image_url", "quantity", "url" ]{
+        for key in [ "id", "facets", "groups", "image_url", "quantity", "url" ] {
             metadata.removeValue(forKey: key)
         }
         self.metadata = metadata

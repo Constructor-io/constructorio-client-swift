@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 public class DefaultSearchItemCell: UITableViewCell, CIOAutocompleteCell {
 

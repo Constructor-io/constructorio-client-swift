@@ -38,7 +38,7 @@ class SessionManagerTests: XCTestCase {
 
         let nextSession = manager.getSessionWithIncrement()
 
-        XCTAssertEqual(nextSession, initialSession+1, "After reaching timeout, getSessionWithIncrement() should return incremented value.")
+        XCTAssertEqual(nextSession, initialSession + 1, "After reaching timeout, getSessionWithIncrement() should return incremented value.")
     }
 
     func testSession_Increments_IfTimeoutIsZero() {

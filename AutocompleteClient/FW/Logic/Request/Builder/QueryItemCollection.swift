@@ -13,7 +13,7 @@ struct QueryItemCollection {
 
     init() {}
 
-    mutating func add(key: String,items: [URLQueryItem]) {
+    mutating func add(key: String, items: [URLQueryItem]) {
         queryItems[key] = items
     }
 
@@ -31,7 +31,7 @@ struct QueryItemCollection {
         }
         set {
             if let newValue = newValue {
-                if var existingArray = queryItems[value]{
+                if var existingArray = queryItems[value] {
                     existingArray.append(contentsOf: newValue)
                     queryItems[value] = existingArray
                 } else {
@@ -39,7 +39,7 @@ struct QueryItemCollection {
                 }
             } else {
                 queryItems.removeValue(forKey: value)
-            }   
+            }
         }
     }
 
