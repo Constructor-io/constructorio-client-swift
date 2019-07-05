@@ -10,6 +10,8 @@ import Foundation
 
 struct CurrentTimeDateProvider: DateProvider {
 
+    init() {}
+
     func provideDate() -> Date {
         return Date()
     }

@@ -60,7 +60,7 @@ public class CIOAutocompleteViewController: UIViewController {
 
     fileprivate var errorView: CIOErrorView?
 
-    fileprivate var viewModel = AutocompleteViewModel()
+    fileprivate var viewModel: AbstractAutocompleteViewModel = AutocompleteViewModel()
 
     /**
      Default constructorIO instance.
@@ -98,8 +98,8 @@ public class CIOAutocompleteViewController: UIViewController {
     public let config: ConstructorIOConfig
 
     // MARK: Fonts
-    private var fontNormal: UIFont = Constants.UI.Font.defaultFontNormal
-    private var fontBold: UIFont = Constants.UI.Font.defaultFontBold
+    public private(set) var fontNormal: UIFont = Constants.UI.Font.defaultFontNormal
+    public private(set) var fontBold: UIFont = Constants.UI.Font.defaultFontBold
 
     /**
      Default initializer for this controller. Pass in the api key you got from the constructor.io dashboard.
@@ -161,11 +161,9 @@ public class CIOAutocompleteViewController: UIViewController {
             // function implemented
             if let view = backgroundViewClosure(self) {
                 backgroundView = view
-            } else {
-                // but it returns nil; it means user doesn't want a background view
             }
         } else {
-            // dataSource method not implemented; default to framework's empty screen
+            // uiCustomization method not implemented; default to framework's empty screen
             backgroundView = UINib(nibName: "EmptyScreenView", bundle: CIOAutocompleteViewController.bundle).instantiate(withOwner: nil, options: nil).first as? UIView
         }
 
@@ -175,7 +173,7 @@ public class CIOAutocompleteViewController: UIViewController {
             self.view.addViewToFit(backgroundView)
         }
 
-        self.view.bringSubview(toFront: self.tableView)
+        self.view.bringSubviewToFront(self.tableView)
 
         if let fontNormal = self.uiCustomization?.fontNormal?(in: self) {
             self.fontNormal = fontNormal
@@ -209,7 +207,7 @@ public class CIOAutocompleteViewController: UIViewController {
         }
 
         self.constructorIO = ConstructorIO(config: self.config)
-        self.constructorIO.parser.delegate = self
+        self.constructorIO.autocompleteParser.delegate = self
     }
 
     public override func viewWillAppear(_ animated: Bool) {
@@ -217,7 +215,7 @@ public class CIOAutocompleteViewController: UIViewController {
         self.delegate?.autocompleteControllerWillAppear?(controller: self)
     }
 
-    fileprivate func setResultsReceived(from autocompleteResult: AutocompleteResult) {
+    public func setResultsReceived(from autocompleteResult: AutocompleteResult) {
         // we have data, hide error view if visible
         self.errorView?.asView().fadeOutAndRemove(duration: Constants.UI.fadeOutDuration)
 
@@ -235,7 +233,7 @@ public class CIOAutocompleteViewController: UIViewController {
         }
     }
 
-    fileprivate func displayError(error: Error) {
+    public func displayError(error: Error) {
         var errorView: CIOErrorView
 
         if let errorViewRef = self.errorView {
@@ -267,12 +265,7 @@ public class CIOAutocompleteViewController: UIViewController {
         self.errorView = errorView
     }
 
-    @objc
-    fileprivate func timerFire(timer: Timer) {
-        guard let searchTerm = timer.userInfo as? String else {
-            return
-        }
-
+    public func setTimerFired(with searchTerm: String) {
         var sectionConfiguration: [String: Int]
 
         if let sectionMapping = self.config.resultCount?.numResultsForSection {
@@ -311,6 +304,14 @@ public class CIOAutocompleteViewController: UIViewController {
         }
     }
 
+    @objc
+    fileprivate func timerFire(timer: Timer) {
+        guard let searchTerm = timer.userInfo as? String else {
+            return
+        }
+
+        self.setTimerFired(with: searchTerm)
+    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -356,7 +357,6 @@ extension CIOAutocompleteViewController: UITableViewDelegate, UITableViewDataSou
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
         return self.uiCustomization?.rowHeight?(in: self) ?? Constants.UI.defaultRowHeight
     }
 
@@ -394,6 +394,10 @@ extension CIOAutocompleteViewController: UITableViewDelegate, UITableViewDataSou
         }
     }
 
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let result = self.viewModel.getResult(atIndexPath: indexPath)
+        self.delegate?.autocompleteController?(controller: self, willDisplayResult: result, at: indexPath)
+    }
 }
 
 extension CIOAutocompleteViewController: UISearchBarDelegate {
@@ -426,7 +430,6 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
 
         // reschedule the timer
         self.timerQueryFire = Timer.scheduledTimer(timeInterval: Constants.UI.fireQueryDelayInSeconds, target: self, selector: #selector(timerFire), userInfo: searchTerm, repeats: false)
-
     }
 }
 

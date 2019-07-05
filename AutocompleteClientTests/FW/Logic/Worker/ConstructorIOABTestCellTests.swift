@@ -8,8 +8,7 @@
 
 import XCTest
 import OHHTTPStubs
-import Foundation
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 
 class ConstructorIOABTestCellTests: XCTestCase {
 
@@ -32,7 +31,7 @@ class ConstructorIOABTestCellTests: XCTestCase {
         let constructor = TestConstants.testConstructor(config)
         let searchTerm = "corn"
         let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&ef-hi=there&key=key_OucJxxrfiTVUQx0C&ef-howare=you&c=cioios-&s=1&term=corn&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&ef-hi=there&ef-howare=you&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn"), builder.create())
         constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
@@ -44,7 +43,7 @@ class ConstructorIOABTestCellTests: XCTestCase {
         let constructor = TestConstants.testConstructor(config)
         let searchTerm = "corn"
         let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?action=focus&i=\(kRegexClientID)&ef-hi=there&key=key_OucJxxrfiTVUQx0C&c=cioios-&s=1&term=corn&_dt=\(kRegexTimestamp)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&ef-hi=there&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&term=corn"), builder.create())
         constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }

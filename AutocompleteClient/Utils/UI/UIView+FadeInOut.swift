@@ -16,11 +16,12 @@ extension UIView {
         }, completion: completion)
     }
 
-    func fadeOutAndRemove(duration: TimeInterval) {
+    func fadeOutAndRemove(duration: TimeInterval, completion: ((Bool) -> Void)? = nil) {
         UIView.animate(withDuration: duration, animations: { [weak self] in
             self?.alpha = 0.0
-        }, completion: { [weak self] _ in
+        }, completion: { [weak self] completed in
             self?.removeFromSuperview()
+            completion?(completed)
         })
     }
 }

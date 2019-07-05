@@ -1,5 +1,5 @@
 //
-//  ResponseParserTests.swift
+//  CIOAutocompleteResponseParserTests.swift
 //  AutocompleteClientTests
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import ConstructorAutocomplete
 
-class ResponseParserTests: XCTestCase {
+class CIOAutocompleteResponseParserTests: XCTestCase {
 
     var responseParser: CIOAutocompleteResponseParser!
 

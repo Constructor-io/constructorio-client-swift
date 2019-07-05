@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import Foundation
-@testable import ConstructorAutocomplete
+import XCTest
+import ConstructorAutocomplete
 
 extension CIOAutocompleteResponse {
     func getSearchSuggestions() -> [CIOResult]? {

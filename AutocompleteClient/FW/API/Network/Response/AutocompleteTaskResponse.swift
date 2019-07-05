@@ -1,5 +1,5 @@
 //
-//  QueryResponse.swift
+//  AutocompleteTaskResponse.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-public class QueryResponse: TaskResponse<CIOAutocompleteResponse, Error> {}
+public class AutocompleteTaskResponse: TaskResponse<CIOAutocompleteResponse, Error> {}

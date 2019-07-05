@@ -1,5 +1,5 @@
 //
-//  AbstractResponseParser.swift
+//  AbstractAutocompleteResponseParser.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AbstractResponseParser {
+protocol AbstractAutocompleteResponseParser {
 
     var delegate: ResponseParserDelegate? { get set }
 

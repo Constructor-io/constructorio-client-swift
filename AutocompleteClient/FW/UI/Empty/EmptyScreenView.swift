@@ -8,9 +8,9 @@
 
 import UIKit
 
-class EmptyScreenView: UIView {
+public class EmptyScreenView: UIView {
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = CIOStyle.colorLightGrey()
     }

@@ -23,6 +23,6 @@ extension XCTestCase {
     }
 
     func wait(for expectation: XCTestExpectation) {
-        self.wait(for: [expectation], timeout: TestConstants.defaultExpectationTimeout)
+        self.wait(for: [expectation], timeout: 1.0)
     }
 }

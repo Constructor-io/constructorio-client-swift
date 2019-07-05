@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
-public class CIOSessionManager: SessionManager {
+class CIOSessionManager: SessionManager {
 
-    public weak var delegate: CIOSessionManagerDelegate?
+    weak var delegate: CIOSessionManagerDelegate?
 
-    private(set) public var session: Session {
+    private(set) var session: Session {
         didSet {
             self.sessionLoader.saveSession(self.session)
             self.delegate?.sessionDidChange(from: oldValue.id, to: self.session.id)
@@ -28,26 +29,26 @@ public class CIOSessionManager: SessionManager {
 
         self.sessionLoader = sessionLoader
         self.session = self.sessionLoader.loadSession() ?? Session(id: 1, createdAt: dateProvider.provideDate().timeIntervalSince1970)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground(_:)), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
-    public func setup() {
+    func setup() {
         self.reloadSession()
         self.sessionLoader.saveSession(self.session)
     }
 
     @objc
-    public func applicationDidEnterForeground(_ notification: Notification) {
+    func applicationDidEnterForeground(_ notification: Notification) {
         self.reloadSession()
     }
 
-    public func getSessionWithIncrement() -> Int {
+    func getSessionWithIncrement() -> Int {
         self.reloadSession()
         return self.session.id
     }
 
-    public func getSessionWithoutIncrement() -> Int {
+    func getSessionWithoutIncrement() -> Int {
         return self.session.id
     }
 

@@ -6,9 +6,9 @@
 //  http://constructor.io/
 //
 
-import Foundation
+import XCTest
 
-extension Data {
+public extension Data {
     func toJSONDictionary() -> [String: Any]? {
         do {
             return try JSONSerialization.jsonObject(with: self, options: []) as? [String: Any]

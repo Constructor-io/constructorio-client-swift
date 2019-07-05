@@ -16,12 +16,12 @@ public class TaskResponse<T, E> {
     public let data: T?
     public let error: E?
 
-    init(data: T) {
+    public init(data: T) {
         self.data = data
         self.error = nil
     }
 
-    init(error: E) {
+    public init(error: E) {
         self.data = nil
         self.error = error
     }

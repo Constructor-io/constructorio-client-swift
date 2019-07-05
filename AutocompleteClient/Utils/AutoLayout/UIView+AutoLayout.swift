@@ -43,27 +43,6 @@ extension UIView {
         self.setNeedsLayout()
     }
 
-    func pinEqualFrame(view1: UIView, toView view2: UIView) {
-        self.addConstraint(NSLayoutConstraint(item: view1, attribute: .width, relatedBy: .equal, toItem: view2, attribute: .width, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: view1, attribute: .height, relatedBy: .equal, toItem: view2, attribute: .height, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: view1, attribute: .leading, relatedBy: .equal, toItem: view2, attribute: .leading, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: view1, attribute: .top, relatedBy: .equal, toItem: view2, attribute: .top, multiplier: 1.0, constant: 0.0))
-    }
-
-    func setFixedWidth(_ width: CGFloat) {
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: width))
-        self.setNeedsDisplay()
-        self.setNeedsUpdateConstraints()
-        self.setNeedsLayout()
-    }
-
-    func setFixedHeight(_ height: CGFloat) {
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
-        self.setNeedsDisplay()
-        self.setNeedsUpdateConstraints()
-        self.setNeedsLayout()
-    }
-
     func pinViewToLeft(_ view: UIView) {
         self.addConstraint(NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0.0))
 
@@ -79,102 +58,6 @@ extension UIView {
         self.setNeedsDisplay()
         self.setNeedsUpdateConstraints()
         self.setNeedsLayout()
-    }
-
-    func pinViewToTop(_ view: UIView) {
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0))
-
-        self.setNeedsDisplay()
-        self.setNeedsUpdateConstraints()
-        self.setNeedsLayout()
-    }
-
-    func pinViewToTop(_ view: UIView, withHeight height: CGFloat) {
-        if view.superview == nil || view.superview != self {
-            view.removeFromSuperview()
-            self.addSubview(view)
-        }
-
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
-
-        self.setNeedsDisplay()
-        self.setNeedsUpdateConstraints()
-        self.setNeedsLayout()
-    }
-
-    func pinViewToBottom(_ view: UIView, withBottomDistance bottom: CGFloat, withHeight height: CGFloat?) {
-        if view.superview == nil || view.superview != self {
-            view.removeFromSuperview()
-            self.addSubview(view)
-        }
-
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: bottom))
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0.0))
-        if let height = height {
-            self.addConstraint(NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
-        }
-
-        self.setNeedsDisplay()
-        self.setNeedsUpdateConstraints()
-        self.setNeedsLayout()
-
-    }
-
-    func pinViewToBottom(_ view: UIView, withHeight height: CGFloat?) {
-        self.pinViewToBottom(view, withBottomDistance: 0, withHeight: height)
-    }
-
-    func pinViewToBottom(_ view: UIView) {
-        self.pinViewToBottom(view, withBottomDistance: 0, withHeight: nil)
-    }
-
-    func pin(_ view1: UIView, attr: NSLayoutAttribute, view2: UIView, attr2: NSLayoutAttribute, spacing: CGFloat = 0.0, multiplier: CGFloat = 1.0) {
-        self.addConstraint(NSLayoutConstraint(item: view1, attribute: attr, relatedBy: .equal, toItem: view2, attribute: attr2, multiplier: multiplier, constant: spacing))
-    }
-
-    func pinHorizontal(_ left: UIView, right: UIView, withSpacing spacing: CGFloat = 0) {
-        self.addConstraint(NSLayoutConstraint(item: left, attribute: .trailing, relatedBy: .equal, toItem: right, attribute: .leading, multiplier: 1.0, constant: -spacing))
-    }
-
-    @discardableResult
-    func pinVertical(_ bottomView: UIView, topView: UIView, withSpacing spacing: CGFloat = 0) -> NSLayoutConstraint {
-        let constraint = NSLayoutConstraint(item: bottomView, attribute: .top, relatedBy: .equal, toItem: topView, attribute: .bottom, multiplier: 1.0, constant: spacing)
-        self.addConstraint(constraint)
-        return constraint
-    }
-
-    // MARK: Unsafe (doesn't check whether the view has a parent)
-
-    @discardableResult
-    func pinAspectRatio(ratio: CGFloat) -> NSLayoutConstraint {
-        let constraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: self, attribute: .height, multiplier: ratio, constant: 0)
-        self.addConstraint(constraint)
-        return constraint
-    }
-
-    @discardableResult
-    func pinSubviewsTrailing(_ view1: UIView, view2: UIView, distance: CGFloat = 0) -> NSLayoutConstraint {
-        let constraint = NSLayoutConstraint(item: view2, attribute: .trailing, relatedBy: .equal, toItem: view1, attribute: .trailing, multiplier: 1.0, constant: distance)
-        self.addConstraint(constraint)
-        return constraint
-    }
-
-    @discardableResult
-    func centerVertical(_ view1: UIView, view2: UIView) -> NSLayoutConstraint {
-        let constraint = NSLayoutConstraint(item: view1, attribute: .centerY, relatedBy: .equal, toItem: view2, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-        self.addConstraint(constraint)
-        return constraint
-    }
-
-    @discardableResult
-    func pinTop(_ toView: UIView, distance: CGFloat = 0) -> NSLayoutConstraint {
-        let constraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: toView, attribute: .top, multiplier: 1.0, constant: -distance)
-        self.superview!.addConstraint(constraint)
-        return constraint
     }
 
     @discardableResult
@@ -201,34 +84,6 @@ extension UIView {
     @discardableResult
     func pinToSuperviewTop(_ distance: CGFloat = 0) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: self.superview!, attribute: .top, multiplier: 1.0, constant: distance)
-        self.superview!.addConstraint(constraint)
-        return constraint
-    }
-
-    @discardableResult
-    func pinCenterXToSuperview() -> NSLayoutConstraint {
-        let constraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: self.superview, attribute: .centerX, multiplier: 1.0, constant: 0)
-        self.superview!.addConstraint(constraint)
-        return constraint
-    }
-
-    @discardableResult
-    func pinWidth(_ width: CGFloat) -> NSLayoutConstraint {
-        let constraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: width)
-        self.addConstraint(constraint)
-        return constraint
-    }
-
-    @discardableResult
-    func pinHeight(_ height: CGFloat) -> NSLayoutConstraint {
-        let constraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height)
-        self.addConstraint(constraint)
-        return constraint
-    }
-
-    @discardableResult
-    func centerInSuperviewHorizontal() -> NSLayoutConstraint {
-        let constraint = NSLayoutConstraint(item: self.superview!, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0)
         self.superview!.addConstraint(constraint)
         return constraint
     }

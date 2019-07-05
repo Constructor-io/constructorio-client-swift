@@ -47,14 +47,28 @@ extension RequestBuilder {
         }
     }
 
+    func set(resultID: String?) {
+        guard let resultID = resultID else { return }
+        queryItems.add(URLQueryItem(name: Constants.Track.resultID, value: resultID))
+    }
+
     func set(autocompleteSection: String?) {
         guard let sectionName = autocompleteSection else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.autocompleteSection, value: sectionName))
     }
 
+    func set(searchSection: String) {
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.section, value: searchSection))
+    }
+
     func set(revenue: Double?) {
         guard let revenue = revenue else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.revenue, value: String(format: "%.2lf", revenue)))
+    }
+
+    func set(orderID: String?) {
+        guard let orderID = orderID else { return }
+        queryItems.add(URLQueryItem(name: Constants.Track.orderID, value: orderID))
     }
 
     func set(numResults: Int?) {
@@ -68,6 +82,32 @@ extension RequestBuilder {
             let name = Constants.AutocompleteQuery.queryItemForSection($0.key.replacingOccurrences(of: " ", with: "+"))
             queryItems.add(URLQueryItem(name: name, value: String($0.value)))
         }
+    }
+
+    func set(page: Int) {
+        let pageString = String(page)
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.page, value: pageString))
+    }
+
+    func set(groupFilter: String?) {
+        guard let filter = groupFilter else { return }
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.groupFilter, value: filter))
+    }
+
+    func set(facetFilters: [Filter]?) {
+        guard let filters = facetFilters else { return }
+        for filter in filters {
+            self.set(facetFilter: filter)
+        }
+    }
+
+    func set(facetFilter: Filter?) {
+        guard let filter = facetFilter else { return }
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.facetFilterKey(filter.key), value: filter.value))
+    }
+
+    func set(_ value: String, forKey key: String) {
+        queryItems.add(URLQueryItem(name: key, value: value))
     }
 
     func set(testCellKey: String, testCellValue: String) {

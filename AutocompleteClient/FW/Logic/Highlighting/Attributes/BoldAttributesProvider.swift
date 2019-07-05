@@ -8,39 +8,28 @@
 
 import UIKit
 
-class BoldAttributesProvider: CIOHighlightingAttributesProvider {
+public class BoldAttributesProvider: CIOHighlightingAttributesProvider {
 
-    var fontNormal: UIFont
-    var fontBold: UIFont
+    public var fontNormal: UIFont
+    public var fontBold: UIFont
 
-    var colorNormal: UIColor
-    var colorBold: UIColor
+    public var colorNormal: UIColor
+    public var colorBold: UIColor
 
-    init(fontNormal: UIFont, fontBold: UIFont, colorNormal: UIColor, colorBold: UIColor) {
+    public init(fontNormal: UIFont, fontBold: UIFont, colorNormal: UIColor, colorBold: UIColor) {
         self.colorNormal = colorNormal
         self.colorBold = colorBold
         self.fontNormal = fontNormal
         self.fontBold = fontBold
     }
 
-    func defaultSubstringAttributes() -> [String: Any] {
-        #if swift(>=4.0)
-
-            return [NSAttributedStringKey.font.rawValue: self.fontBold,
-                    NSAttributedStringKey.foregroundColor.rawValue: self.colorBold]
-        #else
-            return [NSFontAttributeName: self.fontBold,
-                    NSForegroundColorAttributeName: self.colorBold]
-        #endif
+    public func defaultSubstringAttributes() -> [NSAttributedString.Key: Any] {
+        return [NSAttributedString.Key.font: self.fontBold,
+                    NSAttributedString.Key.foregroundColor: self.colorBold]
     }
 
-    func highlightedSubstringAttributes() -> [String: Any] {
-        #if swift(>=4.0)
-            return [NSAttributedStringKey.font.rawValue: self.fontNormal,
-                    NSAttributedStringKey.foregroundColor.rawValue: self.colorNormal]
-        #else
-            return [NSFontAttributeName: self.fontNormal,
-                    NSForegroundColorAttributeName: self.colorBold]
-        #endif
+    public func highlightedSubstringAttributes() -> [NSAttributedString.Key: Any] {
+        return [NSAttributedString.Key.font: self.fontNormal,
+                    NSAttributedString.Key.foregroundColor: self.colorNormal]
     }
 }

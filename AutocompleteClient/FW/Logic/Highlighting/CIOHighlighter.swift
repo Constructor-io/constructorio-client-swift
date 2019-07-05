@@ -18,16 +18,16 @@ public class CIOHighlighter {
      */
     public var attributesProvider: CIOHighlightingAttributesProvider
 
-    init(attributesProvider: CIOHighlightingAttributesProvider) {
+    public init(attributesProvider: CIOHighlightingAttributesProvider) {
         self.attributesProvider = attributesProvider
     }
 
     /**
      Highlights the parts of the string matched in the search term.
-     
+
      - parameter searchTerm: Search term used to query for results.
      - parameter itemTitle: Result item title which contains the search term, or parts of it.
-     
+
      - returns: NSAttributeString with highlighted parts of the string. Styling is provided by the attributesProvider.
      */
     public func highlight(searchTerm: String, itemTitle: String) -> NSAttributedString {

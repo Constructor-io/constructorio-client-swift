@@ -21,7 +21,6 @@ struct Constants {
 
     struct UI {
         static let CellIdentifier = "SearchItemCellID"
-
         static let defaultFontSize: CGFloat = 16
         static let defaultRowHeight: CGFloat = 50
         static let defaultSectionHeaderHeight: CGFloat = 44
@@ -70,11 +69,18 @@ struct Constants {
         static let numResults = "num_results"
         static let numResultsForSectionNamePrefix = "num_results_"
         static let queryItemForSection = { (name: String) -> String in return Constants.AutocompleteQuery.numResultsForSectionNamePrefix + name }
-
         static let sectionNameSearchSuggestions = "Search Suggestions"
         static let sectionNameProducts = "Products"
-
         static let defaultItemCountPerSection = 10
+    }
+
+    struct SearchQuery {
+        static let pathString = "search"
+        static let page = "page"
+        static let groupFilter = "filters[group_id]"
+        static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
+        static let section = "section"
+        static let defaultSectionName = "Products"
     }
 
     struct Response {
@@ -86,8 +92,6 @@ struct Constants {
         static let data = "data"
         static let value = "value"
         static let description = "description"
-
-        // groups
         static let groups = "groups"
         static let displayName = "display_name"
         static let groupID = "group_id"
@@ -99,7 +103,6 @@ struct Constants {
         static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let expectedStatusCode = 204
-
         static let autocompleteSection = "autocomplete_section"
         static let searchTerm = "term"
         static let trigger = "tr"
@@ -110,9 +113,11 @@ struct Constants {
         static let name = "name"
         static let customerID = "customer_id"
         static let customerIDs = "customer_ids"
+        static let resultID = "result_id"
         static let revenue = "revenue"
         static let dateTime = "_dt"
         static let defaultItemSectionName = "Products"
+        static let orderID = "order_id"
     }
 
     struct TrackSessionStart {

@@ -12,5 +12,4 @@ extension String {
     func isSearchSuggestionString() -> Bool {
         return self.lowercased().replacingOccurrences(of: " ", with: "") == "searchsuggestions"
     }
-
 }

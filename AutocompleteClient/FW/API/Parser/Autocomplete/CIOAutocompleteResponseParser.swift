@@ -8,9 +8,11 @@
 
 import Foundation
 
-struct CIOAutocompleteResponseParser: AbstractResponseParser {
+struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
     weak var delegate: ResponseParserDelegate?
+
+    init() {}
 
     func parse(autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
         do {
@@ -55,7 +57,7 @@ struct CIOAutocompleteResponseParser: AbstractResponseParser {
 
     fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOResult] {
 
-        return jsonObjects.flatMap { CIOAutocompleteResult(json: $0) }
+        return jsonObjects.compactMap { CIOAutocompleteResult(json: $0) }
                         .enumerated()
                         .reduce([CIOResult](), { (arr, enumeratedAutocompleteResult) in
 

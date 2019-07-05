@@ -6,15 +6,14 @@
 //  http://constructor.io/
 //
 
-import Foundation
+import XCTest
 import OHHTTPStubs
 
 public typealias Matcher = OHHTTPStubsTestBlock
 public typealias Builder = OHHTTPStubsResponseBlock
 
-public func http(_ statusCode: Int32) -> OHHTTPStubsResponseBlock {
+public func http(_ statusCode: Int32, data: Data = "".data(using: String.Encoding.utf8)!) -> OHHTTPStubsResponseBlock {
     return { _ in
-        let data = "".data(using: String.Encoding.utf8)!
         return OHHTTPStubsResponse(data: data, statusCode: statusCode, headers: nil)
     }
 }

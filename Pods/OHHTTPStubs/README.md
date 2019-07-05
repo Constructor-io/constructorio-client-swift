@@ -45,7 +45,7 @@ It works with `NSURLConnection`, `NSURLSession`, `AFNetworking`, `Alamofire` or 
 <summary>In Swift</summary>
 
 This example is using the Swift helpers found in `OHHTTPStubsSwift.swift` provided by the `OHHTTPStubs/Swift` subspec.
- 
+
 ```swift
 stub(isHost("mywebservice.com")) { _ in
   // Stub it with our "wsresponse.json" stub file (which is in same bundle as self)
@@ -58,7 +58,7 @@ stub(isHost("mywebservice.com")) { _ in
 </details>
 
 ## More examples & Help Topics
-    
+
 * For a lot more examples, see the dedicated "[Usage Examples](https://github.com/AliSoftware/OHHTTPStubs/wiki/Usage-Examples)" wiki page.
 * The wiki also contain [some articles that can help you get started](https://github.com/AliSoftware/OHHTTPStubs/wiki) with (and troubleshoot if needed) `OHHTTPStubs`.
 

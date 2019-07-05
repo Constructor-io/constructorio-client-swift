@@ -40,10 +40,6 @@ extension NSString {
     }
 }
 
-public func ==(lhs: NSRange, rhs: NSRange) -> Bool {
-    return lhs.location == rhs.location && lhs.length == rhs.length
-}
-
 struct StringCharacterSetIterator {
 
     private var string: NSMutableString

@@ -13,7 +13,7 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Returns a custom cell nib to be used in the CIOAutocompleteViewController.
-     
+
      - parameter autocompleteController: The sender CIOAutocompleteViewController
      */
     @objc
@@ -21,7 +21,7 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Returns a custom cell class to be used in the CIOAutocompleteViewController.
-     
+
      - parameter autocompleteController: The sender CIOAutocompleteViewController
      */
     @objc
@@ -29,7 +29,7 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Customizes the search controller.
-     
+
      - parameter searchController: UISearchController controlling the search bar shown in the CIOAutocompleteViewController
      - parameter autocompleteController: The sender CIOAutocompleteViewController
      */
@@ -38,7 +38,7 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Styles the cell label used in the default UI. This method will not be called if you're using a custom cell nib or class.
-     
+
      - parameter label: The UILabel to be customized
      - parameter indexPath: IndexPath of the customized cell
      - parameter autocompleteController: The sender CIOAutocompleteViewController
@@ -48,7 +48,7 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Styles the cell used in the default UI. This method will not be called if you're using a custom cell nib or class.
-     
+
      - parameter cell: The UITableViewCell to be customized
      - parameter indexPath: IndexPath of the customized cell
      - parameter autocompleteController: The sender CIOAutocompleteViewController
@@ -60,7 +60,7 @@ public protocol CIOAutocompleteUICustomization: class {
      Provides the default font.
 
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: The default CIOAutocompleteViewController font
      */
     @objc
@@ -68,9 +68,9 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Provides the default bold font used to highlight the search results.
-     
+
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: The default CIOAutocompleteViewController bold font
      */
     @objc
@@ -78,9 +78,9 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Provides the search results' row height.
-     
+
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: The CIOAutocompleteViewController row height.
      */
     @objc
@@ -88,10 +88,10 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Determines whether the section header is shown. True by default.
-     
+
      - parameter sectionName: Section name
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: Whether the section header should be displayed.
      */
     @objc
@@ -99,10 +99,10 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Provides a section header view.
-     
+
      - parameter sectionName: Section name
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: Section header view.
      */
     @objc
@@ -110,10 +110,10 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Provides a section header view height. 44 by default
-     
+
      - parameter sectionName: Section name
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: Section header height.
      */
     @objc
@@ -121,9 +121,9 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Provides a search suggestion section display name. By default, this value is "Search Suggestions".
-     
+
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: Section name to be displayed in the section view
      */
     @objc
@@ -131,9 +131,9 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Provides the search bar placeholder.
-     
+
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: The UISearchBar placeholder value.
      */
     @objc
@@ -141,9 +141,9 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Provides the view to be shown behind the UITableView. Not implementing this method will show the default background view.
-     
+
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: The background view to be shown behind the UITableView.
      */
     @objc
@@ -151,9 +151,9 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Provides a sort sections function.
-     
+
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: Sort section function. The two parameters of type strings represent section names.
      */
     @objc
@@ -161,9 +161,9 @@ public protocol CIOAutocompleteUICustomization: class {
 
     /**
      Provides the view to be shown when an error occurs. Not implementing this method will show the default error view. The view should conform to the CIOErrorView protocol.
-     
+
      - parameter autocompleteController: The sender CIOAutocompleteViewController
-     
+
      - returns: The error view to be shown if an error occurs.
      */
     @objc

@@ -9,8 +9,8 @@
 import Foundation
 
 public class Session: NSObject, NSCoding {
-    let id: Int
-    let createdAt: TimeInterval
+    public let id: Int
+    public let createdAt: TimeInterval
 
     public init(id: Int, createdAt: TimeInterval) {
         self.id = id

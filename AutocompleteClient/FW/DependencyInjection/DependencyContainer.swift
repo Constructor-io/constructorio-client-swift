@@ -18,8 +18,12 @@ class DependencyContainer {
         return URLSessionNetworkClient()
     }
 
-    var responseParser: () -> AbstractResponseParser = {
+    var autocompleteResponseParser: () -> AbstractAutocompleteResponseParser = {
         return CIOAutocompleteResponseParser()
+    }
+
+    var searchResponseParser: () -> AbstractSearchResponseParser = {
+        return SearchResponseParser()
     }
 
     var sessionManager: () -> SessionManager = {

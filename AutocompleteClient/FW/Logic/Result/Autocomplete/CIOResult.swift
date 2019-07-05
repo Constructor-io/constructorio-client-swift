@@ -17,7 +17,7 @@ public class CIOResult: NSObject {
     public let autocompleteResult: CIOAutocompleteResult
     public let group: CIOGroup?
 
-    init(autocompleteResult: CIOAutocompleteResult, group: CIOGroup? = nil) {
+    public init(autocompleteResult: CIOAutocompleteResult, group: CIOGroup? = nil) {
         self.autocompleteResult = autocompleteResult
         self.group = group
     }

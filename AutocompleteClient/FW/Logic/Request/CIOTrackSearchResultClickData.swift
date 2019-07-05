@@ -11,26 +11,29 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set set in order to track search result click
  */
-public struct CIOTrackSearchResultClickData: CIORequestData {
-    public let searchTerm: String
-    public let itemName: String
-    public let customerID: String
-    public var sectionName: String?
+struct CIOTrackSearchResultClickData: CIORequestData {
+    let searchTerm: String
+    let itemName: String
+    let customerID: String
+    var sectionName: String?
+    let resultID: String?
 
-    public var url: String {
-        return String(format: Constants.TrackSearchResultClick.format, Constants.Track.baseURLString, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+    func url(with baseURL: String) -> String {
+        return String(format: Constants.TrackSearchResultClick.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
-    public init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil) {
+    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, resultID: String? = nil) {
         self.searchTerm = searchTerm
         self.itemName = itemName
         self.customerID = customerID
         self.sectionName = sectionName
+        self.resultID = resultID
     }
 
-    public func decorateRequest(requestBuilder: RequestBuilder) {
+    func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(name: self.itemName)
         requestBuilder.set(customerID: self.customerID)
         requestBuilder.set(autocompleteSection: self.sectionName)
+        requestBuilder.set(resultID: self.resultID)
     }
 }
