@@ -36,8 +36,6 @@ carthage update
 
 Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project and link it with your application target. Also, make sure to copy the framework by adding a new Copy Files phase.
 
-<img src="https://constructor.io/images/ios_screenshots/ss_copy_frameworks.png" width="60%">
-
 ## 2. Retrieve an API key
 You can find this in your [Constructor.io dashboard](https://constructor.io/dashboard).  Contact sales if you'd like to sign up, or support if you believe your company already has an account.
 
@@ -180,10 +178,6 @@ class MyCustomCell: UITableViewCell, CIOAutocompleteCell {
     }
 }
 ```
-
-The framework will call this method on your cell and pass the necessary data.
-
-<img src="https://constructor.io/images/ios_screenshots/ss_custom_cell.png" width="60%">
 
 ### Customizing the Background View
 The background view appears behind your autocomplete results. You can replace the default  view by implementing the `backgroundView` method.
