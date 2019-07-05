@@ -21,7 +21,6 @@ public struct CIOAutocompleteQuery: CIORequestData {
                       Constants.AutocompleteQuery.pathString, query)
     }
 
-
     public init(query: String, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.numResults = numResults
