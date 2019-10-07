@@ -12,4 +12,5 @@ struct SearchResult {
     let value: String
     let data: SearchResultData
     let matchedTerms: [String]
+    let variations: [SearchVariation]
 }

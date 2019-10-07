@@ -1,0 +1,63 @@
+{
+    "request": {
+        "fmt_options": {
+            "groups_max_depth": 1,
+            "groups_start": "current"
+        },
+        "num_results_per_page": 24,
+        "page": 1,
+        "section": "Products",
+        "sort_by": "relevance",
+        "sort_order": "descending",
+        "term": "banana",
+        "us": ["COUNTRY_US"]
+    },
+    "response": {
+        "facets": [],
+        "groups": [],
+        "results": [{
+            "variations": [
+                {
+                    "data": {
+                        "url": "https://constructor.io/",
+                        "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_yplt_ffstrban.png",
+                        "variation_id": "abc"
+                    },
+                    "value": "a valid variation"
+                },
+                {
+                    "data": {
+                        "url": "https://constructor.io/",
+                        "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_yplt_ffstrban.png",
+                        "variation_id": "bcd"
+                    },
+                    "value": "a valid variation2"
+                },
+                {
+                    "data": {
+                        "url": "https://constructor.io/",
+                        "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_yplt_ffstrban.png",
+                        "variation_id": "cde"
+                    },
+                    "value": "a valid variation3"
+                },
+            ],
+            "data": {
+                "description": "Yoplait Original is proof that classic is always a good choice. Each cup bursts with the delicious, flavorful creaminess that isn't just good, it is SO good!",
+                "facets": [],
+                "groups": [],
+                "id": "dai_yplt_ffstrban",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_yplt_ffstrban.png",
+                "price": "$0.89",
+                "quantity": "1lb",
+                "url": "https://d17bbgoo3npfov.cloudfront.net/images/dai_yplt_ffstrban.png"
+            },
+            "matched_terms": ["banana"],
+            "value": "Yoplait Original Yogurt, Strawberry Banana"
+            
+        }],
+        "sort_options": [],
+        "total_num_results": 1
+    },
+    "result_id": "862b15d6-2d6e-4e14-9b65-2358fcd5b0bb"
+}

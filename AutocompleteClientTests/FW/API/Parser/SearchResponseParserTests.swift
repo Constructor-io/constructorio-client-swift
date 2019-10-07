@@ -81,4 +81,76 @@ class SearchResponseParserTests: XCTestCase {
         }
     }
 
+    func testSearchParser_ParsingJSONString_HasCorrectVariationCount() {
+        let data = TestResource.load(name: TestResource.Response.multipleVariationsJSONFilename)
+        do {
+            let response = try self.parser.parse(searchResponseData: data)
+            let result = response.results.first!
+
+            XCTAssertEqual(result.variations.count, TestResource.Response.multipleVariationsCount, "Number of parsed variations should match the JSON response")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
+    func testSearchParser_ParsingJSONString_CorrectlyDiscardsInvalidVariations() {
+        let data = TestResource.load(name: TestResource.Response.multipleInvalidVariationsJSONFilename)
+        do {
+            let response = try self.parser.parse(searchResponseData: data)
+            let result = response.results.first!
+
+            XCTAssertEqual(result.variations.count, TestResource.Response.multipleInvalidVariationsValidVariationCount, "Number of parsed variations should match the JSON response")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
+    func testSearchParser_ParsingJSONString_parsesVariationCustomData() {
+        let data = TestResource.load(name: TestResource.Response.multipleVariationsWithCustomDataJSONFilename)
+        do {
+            let response = try self.parser.parse(searchResponseData: data)
+
+            let customDataKeys: [[String]] = [
+                [],
+                ["custom_bool"],
+                ["custom_int", "custom_object"]
+            ]
+
+            let result = response.results.first!
+            for (idx, variation) in result.variations.enumerated() {
+                if idx >= customDataKeys.count { break }
+
+                for key in customDataKeys[idx] {
+                    XCTAssertNotNil(variation.data[key], "Parameter \(key) should be present in the parsed dictionary.")
+                }
+            }
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
+    func testSearchParser_ParsingJSONString_parsesValidVariationURL() {
+        let data = TestResource.load(name: TestResource.Response.multipleVariationsJSONFilename)
+        do {
+            let response = try self.parser.parse(searchResponseData: data)
+            let variation = response.results.first!.variations.first!
+
+            XCTAssertNotNil(variation.url, "Valid URL should be correctly parsed.")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
+    func testSearchParser_ParsingJSONString_parsesValidVariationImageURL() {
+        let data = TestResource.load(name: TestResource.Response.multipleVariationsJSONFilename)
+        do {
+            let response = try self.parser.parse(searchResponseData: data)
+            let variation = response.results.first!.variations.first!
+
+            XCTAssertNotNil(variation.imageURL, "Valid Image URL should be correctly parsed.")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
 }
