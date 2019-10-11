@@ -121,7 +121,7 @@ class SearchResponseParserTests: XCTestCase {
                 if idx >= customDataKeys.count { break }
 
                 for key in customDataKeys[idx] {
-                    XCTAssertNotNil(variation.data[key], "Parameter \(key) should be present in the parsed dictionary.")
+                    XCTAssertNotNil(variation.data.metadata[key], "Parameter \(key) should be present in the parsed dictionary.")
                 }
             }
         } catch {
@@ -135,7 +135,7 @@ class SearchResponseParserTests: XCTestCase {
             let response = try self.parser.parse(searchResponseData: data)
             let variation = response.results.first!.variations.first!
 
-            XCTAssertNotNil(variation.url, "Valid URL should be correctly parsed.")
+            XCTAssertNotNil(variation.data.url, "Valid URL should be correctly parsed.")
         } catch {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
@@ -147,7 +147,7 @@ class SearchResponseParserTests: XCTestCase {
             let response = try self.parser.parse(searchResponseData: data)
             let variation = response.results.first!.variations.first!
 
-            XCTAssertNotNil(variation.imageURL, "Valid Image URL should be correctly parsed.")
+            XCTAssertNotNil(variation.data.imageURL, "Valid Image URL should be correctly parsed.")
         } catch {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }

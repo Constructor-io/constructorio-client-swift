@@ -6,7 +6,7 @@
 //  http://constructor.io/
 //
 
-import UIKit
+import Foundation
 
 struct FacetOption {
     let count: Int
