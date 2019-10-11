@@ -24,6 +24,14 @@ struct TestResource {
 
         static let multipleGroupsJSONFilename = "response_json_multiple_groups"
         static let numberOfGroupsInMultipleSectionsResponse = 7
+
+        static let multipleVariationsJSONFilename = "response_search_json_variations"
+        static let multipleVariationsCount = 3
+
+        static let multipleInvalidVariationsJSONFilename = "response_search_json_invalid_variations"
+        static let multipleInvalidVariationsValidVariationCount = 1
+
+        static let multipleVariationsWithCustomDataJSONFilename = "response_search_json_variation_custom_data"
     }
 
     static func load(name: String, type: String = "json") -> Data {

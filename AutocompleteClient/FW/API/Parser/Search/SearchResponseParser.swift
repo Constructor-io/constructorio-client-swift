@@ -30,7 +30,16 @@ class SearchResponseParser: AbstractSearchResponseParser {
                 }
 
                 let matchedTerms = (resultObj["matched_terms"] as? [String]) ?? [String]()
-                return SearchResult(value: value, data: data, matchedTerms: matchedTerms)
+
+                let variationsJSONArray = (resultObj["variations"] as? [[String: Any]]) ?? [[String: Any]]()
+                var variations = [SearchVariation]()
+                for variationObj in variationsJSONArray {
+                    if let variation = SearchVariation(json: variationObj) {
+                        variations.append(variation)
+                    }
+                }
+
+                return SearchResult(value: value, data: data, matchedTerms: matchedTerms, variations: variations)
             } ?? []
 
             let sortOptions: [SortOption] = (response["sort_options"] as? [JSONObject])?.compactMap({ obj  in
