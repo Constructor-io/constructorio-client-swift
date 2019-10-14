@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct FacetOption {
-    let count: Int
-    let displayName: String
-    let status: String
-    let value: String
-    let data: [String: Any]
+public struct FacetOption {
+    public let count: Int
+    public let displayName: String
+    public let status: String
+    public let value: String
+    public let data: [String: Any]
 }
 
-extension FacetOption {
+public extension FacetOption {
     init?(json: JSONObject) {
         guard let count = json["count"] as? Int else { return nil }
         guard let value = json["value"] as? String else { return nil }

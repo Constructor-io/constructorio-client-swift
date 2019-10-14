@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct SearchVariationData {
-    let variationId: String
-    let url: String?
-    let imageURL: String?
-    let metadata: [String: Any]
+public struct SearchVariationData {
+    public let variationId: String
+    public let url: String?
+    public let imageURL: String?
+    public let metadata: [String: Any]
 }
 
-extension SearchVariationData {
+public extension SearchVariationData {
     init?(json: JSONObject) {
         guard let variationId = json["variation_id"] as? String else { return nil }
         let url = json["url"] as? String

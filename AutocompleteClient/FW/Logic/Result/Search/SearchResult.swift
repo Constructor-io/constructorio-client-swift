@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct SearchResult {
-    let value: String
-    let data: SearchResultData
-    let matchedTerms: [String]
-    let variations: [SearchVariation]
+public struct SearchResult {
+    public let value: String
+    public let data: SearchResultData
+    public let matchedTerms: [String]
+    public let variations: [SearchVariation]
 }
