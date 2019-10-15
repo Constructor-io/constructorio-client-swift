@@ -8,6 +8,10 @@ platform :ios, '8.0'
 
 inhibit_all_warnings!
 
+target 'UserApplication' do
+    pod 'Kingfisher'
+end
+
 target 'AutocompleteClientTests' do
     pod 'OHHTTPStubs/Swift'
 end
