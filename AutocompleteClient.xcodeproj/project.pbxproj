@@ -103,7 +103,6 @@
 		F618216623577318005457C5 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618212923577318005457C5 /* Cart.swift */; };
 		F618216723577318005457C5 /* CartPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618212B23577318005457C5 /* CartPersistence.swift */; };
 		F618216823577318005457C5 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618212E23577318005457C5 /* UIView+AutoLayout.swift */; };
-		F618216923577318005457C5 /* String+Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618213023577318005457C5 /* String+Price.swift */; };
 		F618216A23577318005457C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F618213223577318005457C5 /* Assets.xcassets */; };
 		F61A6B091F698877007826CA /* CIOGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B081F698877007826CA /* CIOGroup.swift */; };
 		F61A6B0B1F698D03007826CA /* CIOAutocompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A6B0A1F698D03007826CA /* CIOAutocompleteResult.swift */; };
@@ -376,7 +375,6 @@
 		F618212923577318005457C5 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		F618212B23577318005457C5 /* CartPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartPersistence.swift; sourceTree = "<group>"; };
 		F618212E23577318005457C5 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
-		F618213023577318005457C5 /* String+Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Price.swift"; sourceTree = "<group>"; };
 		F618213223577318005457C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F61A6B081F698877007826CA /* CIOGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOGroup.swift; sourceTree = "<group>"; };
 		F61A6B0A1F698D03007826CA /* CIOAutocompleteResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteResult.swift; sourceTree = "<group>"; };
@@ -1068,7 +1066,6 @@
 			isa = PBXGroup;
 			children = (
 				F618212D23577318005457C5 /* UI */,
-				F618212F23577318005457C5 /* String */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1079,14 +1076,6 @@
 				F618212E23577318005457C5 /* UIView+AutoLayout.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		F618212F23577318005457C5 /* String */ = {
-			isa = PBXGroup;
-			children = (
-				F618213023577318005457C5 /* String+Price.swift */,
-			);
-			path = String;
 			sourceTree = "<group>";
 		};
 		F61A6B0E1F699E4D007826CA /* Delegate */ = {
@@ -1308,12 +1297,12 @@
 		F64F46CE1F59CE750094C697 /* UserApplication */ = {
 			isa = PBXGroup;
 			children = (
+				F61820DE23577317005457C5 /* Info.plist */,
 				F61820DC23577317005457C5 /* AppDelegate.swift */,
 				F618213223577318005457C5 /* Assets.xcassets */,
 				F61820D723577317005457C5 /* Common */,
 				F61820D523577317005457C5 /* CustomHighlighting */,
 				F61820DF23577317005457C5 /* CustomViews */,
-				F61820DE23577317005457C5 /* Info.plist */,
 				F61820EB23577318005457C5 /* Screens */,
 				F618212C23577318005457C5 /* Utils */,
 			);
@@ -2112,7 +2101,6 @@
 			files = (
 				F618213523577318005457C5 /* CartBarButtonItem.swift in Sources */,
 				F618214723577318005457C5 /* FilterHeaderView.swift in Sources */,
-				F618216923577318005457C5 /* String+Price.swift in Sources */,
 				F618215023577318005457C5 /* SortOptionTableViewCell.swift in Sources */,
 				F618213423577318005457C5 /* BadgeView.swift in Sources */,
 				F618215F23577318005457C5 /* CartViewModel.swift in Sources */,

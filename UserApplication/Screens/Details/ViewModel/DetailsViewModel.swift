@@ -11,7 +11,7 @@ import UIKit
 
 struct DetailsViewModel{
     let title: String
-    let price: String
+    let price: Double
     let image: UIImage?
     let imageURL: String
     let description: String

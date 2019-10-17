@@ -27,7 +27,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
 
     func setup(viewModel: SearchResultViewModel){
         self.labelProductName.text = viewModel.title
-        self.labelPrice.text = viewModel.price
+        self.labelPrice.text = viewModel.price.description
 
         self.imageView.kf.setImage(with: URL(string: viewModel.imageURL), placeholder: viewModel.fallbackImage())
     }
