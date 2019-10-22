@@ -14,14 +14,14 @@ class RequestBuilder {
     var dateProvider: DateProvider
 
     let baseURL: String
-
     var trackData: CIORequestData!
-
     var searchTerm = ""
+    let shouldAttachTimestampToRequest: Bool
 
-    init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider(), baseURL: String) {
+    init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider(), baseURL: String, shouldAttachTimestampToRequest: Bool = true) {
         self.dateProvider = dateProvider
         self.baseURL = baseURL
+        self.shouldAttachTimestampToRequest = shouldAttachTimestampToRequest
         self.set(apiKey: apiKey)
     }
 
@@ -61,8 +61,9 @@ class RequestBuilder {
         allQueryItems.add(URLQueryItem(name: "c", value: versionString))
 
         // attach date
-        self.addDateQueryItem(queryItems: &allQueryItems)
-
+        if self.shouldAttachTimestampToRequest {
+            self.addDateQueryItem(queryItems: &allQueryItems)
+        }
         // attach `action` if necessary from base url
         if (urlComponents.queryItems != nil) {
             allQueryItems.add((urlComponents.queryItems?.first)!)

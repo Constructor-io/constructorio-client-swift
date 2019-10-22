@@ -1,0 +1,163 @@
+{
+  "request": {
+    "num_results": 5
+  },
+  "response": {
+    "results": [
+      {
+        "data": {
+          "description": "Washington. USA.",
+          "facets": {
+            "Brand": "Produce",
+            "Price": [
+              0.5
+            ]
+          },
+          "groups": [
+            {
+              "display_name": "Fruits & Vegetables",
+              "group_id": "Fruits%20%26%20Vegetables",
+              "path": null,
+              "path_list": []
+            }
+          ],
+          "id": "184020066",
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-184020066.png",
+          "keywords": [
+            "apples"
+          ],
+          "price": 0.5,
+          "url": "/",
+          "weighted_keywords": {
+            "large": 2
+          }
+        },
+        "id": "184020066",
+        "is_slotted": false,
+        "value": "Apples Fuji Large"
+      },
+      {
+        "data": {
+          "description": "Only the finest berries. Scan to join the panel. www.driscolls.com. Product of USA.",
+          "facets": {
+            "Price": [
+              1.11
+            ]
+          },
+          "groups": [
+            {
+              "display_name": "Fruits & Vegetables",
+              "group_id": "Fruits%20%26%20Vegetables",
+              "path": null,
+              "path_list": []
+            }
+          ],
+          "id": "184070124",
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-184070124.png",
+          "keywords": [
+            "berries"
+          ],
+          "price": 1.11,
+          "url": "/"
+        },
+        "id": "184070124",
+        "is_slotted": false,
+        "value": "Strawberries Prepacked - 16 Oz"
+      },
+      {
+        "data": {
+          "facets": {
+            "Brand": "Produce",
+            "Price": [
+              1.27
+            ]
+          },
+          "groups": [
+            {
+              "display_name": "Fruits & Vegetables",
+              "group_id": "Fruits%20%26%20Vegetables",
+              "path": null,
+              "path_list": []
+            }
+          ],
+          "id": "184080188",
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-184080188.png",
+          "keywords": [
+            "citrus"
+          ],
+          "price": 1.27,
+          "url": "/",
+          "weighted_keywords": {
+            "large": 2
+          }
+        },
+        "id": "184080188",
+        "is_slotted": false,
+        "value": "Oranges Navel Large"
+      },
+      {
+        "data": {
+          "description": "New York. Apple Sales, Inc. USA.",
+          "facets": {
+            "Brand": "Produce",
+            "Price": [
+              2.39
+            ]
+          },
+          "groups": [
+            {
+              "display_name": "Fruits & Vegetables",
+              "group_id": "Fruits%20%26%20Vegetables",
+              "path": null,
+              "path_list": []
+            }
+          ],
+          "id": "184020020",
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-184020020.png",
+          "keywords": [
+            "apples"
+          ],
+          "price": 2.39,
+          "url": "/",
+          "weighted_keywords": {
+            "honeycrisp": 2
+          }
+        },
+        "id": "184020020",
+        "is_slotted": false,
+        "value": "Apples Honeycrisp"
+      },
+      {
+        "data": {
+          "description": "Ocean Spray. Family farmer owned since 1930. Treated with imazalil and/or thiabendazole. Product of Chile.",
+          "facets": {
+            "Brand": "Oppenheimer",
+            "Price": [
+              3.99
+            ]
+          },
+          "groups": [
+            {
+              "display_name": "Fruits & Vegetables",
+              "group_id": "Fruits%20%26%20Vegetables",
+              "path": null,
+              "path_list": []
+            }
+          ],
+          "id": "960021862",
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-960021862.png",
+          "keywords": [
+            "citrus"
+          ],
+          "price": 3.99,
+          "url": "/"
+        },
+        "id": "960021862",
+        "is_slotted": false,
+        "value": "Clementines Prepacked - 3 Lb"
+      }
+    ],
+    "total_num_results": 5
+  },
+  "result_id": "cd3bead4-9501-4399-8d00-9a116c80a706"
+}

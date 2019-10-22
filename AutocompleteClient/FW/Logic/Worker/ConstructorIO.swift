@@ -69,6 +69,48 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeSearch(request, completionHandler: completionHandler)
     }
 
+    /// Get featured items.
+    ///
+    /// - Parameters:
+    ///   - maximumNumberOfResults: Maximum number of results to be returned.
+    ///   - completionHandler: The callback to execute on completion.
+    public func getUserFeaturedItems(maximumNumberOfResults: Int = 5, completionHandler: @escaping SearchQueryCompletionHandler) {
+        let request = self.buildRequest(data: CIORecommendationsQuery(type: .userFeatured, maximumNumberOfResult: maximumNumberOfResults), shouldAttachTimestampToRequest: false)
+        executeSearch(request, completionHandler: completionHandler)
+    }
+
+    /// Get recently viewed items.
+    ///
+    /// - Parameters:
+    ///   - maximumNumberOfResults: Maximum number of results to be returned.
+    ///   - completionHandler: The callback to execute on completion.
+    public func getRecentlyViewedItems(maximumNumberOfResults: Int = 5, completionHandler: @escaping SearchQueryCompletionHandler) {
+        let request = self.buildRequest(data: CIORecommendationsQuery(type: .recentlyViewed, maximumNumberOfResult: maximumNumberOfResults), shouldAttachTimestampToRequest: false)
+        executeSearch(request, completionHandler: completionHandler)
+    }
+
+    /// Get alternative items for a particular item.
+    ///
+    /// - Parameters:
+    ///   - itemID: ID of an item for which the alternative items should be returned.
+    ///   - maximumNumberOfResults: Maximum number of results to be returned.
+    ///   - completionHandler: The callback to execute on completion.
+    public func getAlternativeItems(itemID: String, maximumNumberOfResults: Int = 5, completionHandler: @escaping SearchQueryCompletionHandler) {
+        let request = self.buildRequest(data: CIORecommendationsQuery(type: .alternative(itemID: itemID), maximumNumberOfResult: maximumNumberOfResults), shouldAttachTimestampToRequest: false)
+        executeSearch(request, completionHandler: completionHandler)
+    }
+
+    /// Get complementary items for a particular item.
+    ///
+    /// - Parameters:
+    ///   - itemID: ID of an item for which the complementary items should be returned.
+    ///   - maximumNumberOfResults: Maximum number of results to be returned.
+    ///   - completionHandler: The callback to execute on completion.
+    public func getComplementaryItems(itemID: String, maximumNumberOfResults: Int = 5, completionHandler: @escaping SearchQueryCompletionHandler) {
+        let request = self.buildRequest(data: CIORecommendationsQuery(type: .complementary(itemID: itemID), maximumNumberOfResult: maximumNumberOfResults), shouldAttachTimestampToRequest: false)
+        executeSearch(request, completionHandler: completionHandler)
+    }
+
     /// Track input focus.
     ///
     /// - Parameters:
@@ -170,8 +212,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         execute(request, completionHandler: completionHandler)
     }
 
-    private func buildRequest(data: CIORequestData) -> URLRequest {
-        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey, baseURL: self.config.baseURL ?? Constants.Query.baseURLString)
+    private func buildRequest(data: CIORequestData, shouldAttachTimestampToRequest: Bool = true) -> URLRequest {
+        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey, baseURL: self.config.baseURL ?? Constants.Query.baseURLString, shouldAttachTimestampToRequest: shouldAttachTimestampToRequest)
         self.attachClientID(requestBuilder: requestBuilder)
         self.attachUserID(requestBuilder: requestBuilder)
         self.attachSessionIDWithIncrement(requestBuilder: requestBuilder)

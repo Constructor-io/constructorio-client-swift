@@ -32,6 +32,11 @@ struct TestResource {
         static let multipleInvalidVariationsValidVariationCount = 1
 
         static let multipleVariationsWithCustomDataJSONFilename = "response_search_json_variation_custom_data"
+        
+        static let recommendationsUserFeaturedItemsJSONFilename = "response_recommendations_user_featured"
+        static let recommendationsRecentlyViewedItemsJSONFilename = "response_recommendations_recently_viewed"
+        static let recommendationsAlternativeItemsJSONFilename = "response_recommendations_alternative_items"
+        static let recommendationsComplementaryItemsJSONFilename = "response_recommendations_complementary_items"
     }
 
     static func load(name: String, type: String = "json") -> Data {

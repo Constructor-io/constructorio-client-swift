@@ -14,8 +14,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     var window: UIWindow?
 
+    let c = ConstructorIO(config: ConstructorIOConfig(apiKey: "key_aXLmVpkVp4BX21Sw"))
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        self.c.getUserFeaturedItems { _ in
+            
+        }
+        
+//        self.c.getRecentlyViewedItems { _ in
+//
+//        }
+        
+//        self.c.getAlternativeItems(itemID: "138350084",completionHandler: { (result) in
+//            let _ = true
+//        })
+//
+//        self.c.getComplementaryItems(itemID: "138350084") { (result) in
+//            let _ = true
+//        }
+        
         self.showAutocompleteViewControllerAsRoot()
 
         return true
@@ -45,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
 
     func showAutocompleteViewControllerAsRoot() {
         // Instantiate the autocomplete controller
+        
         let key = "key_OucJxxrfiTVUQx0C"
         let config = ConstructorIOConfig(
             apiKey: key,

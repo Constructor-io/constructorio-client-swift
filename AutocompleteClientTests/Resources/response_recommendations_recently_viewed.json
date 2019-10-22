@@ -1,0 +1,113 @@
+{
+    "request": {
+        "num_results": 5
+    },
+    "response": {
+        "results": [{
+            "data": {
+                "facets": {
+                    "Brand": "Produce",
+                    "Price": [1]
+                },
+                "groups": [{
+                    "display_name": "Fruits & Vegetables",
+                    "group_id": "Fruits%20%26%20Vegetables",
+                    "path": null,
+                    "path_list": []
+                }],
+                "id": "184360021",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-184360021.png",
+                "keywords": ["cucumbers"],
+                "price": 1,
+                "url": "/",
+                "weighted_keywords": {
+                    "cucumber": 2
+                }
+            },
+            "id": "184360021",
+            "is_slotted": false,
+            "value": "Cucumbers"
+        }, {
+            "data": {
+                "description": "100% money back guaranteed. Quality & satisfaction. Carton made from 100% reclaimed paper. Fresh grade AA eggs. One dozen eggs.",
+                "facets": {
+                    "Brand": "Lucerne",
+                    "Price": [1.11]
+                },
+                "groups": [{
+                    "display_name": "Dairy, Eggs & Cheese",
+                    "group_id": "Dairy%2C%20Eggs%20%26%20Cheese",
+                    "path": null,
+                    "path_list": []
+                }],
+                "id": "138350084",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-138350084.png",
+                "keywords": ["eggs"],
+                "price": 1.11,
+                "url": "/",
+                "weighted_keywords": {
+                    "count": -10,
+                    "eggs": 2,
+                    "farms": 2
+                }
+            },
+            "id": "138350084",
+            "is_slotted": false,
+            "value": "Lucerne Farms Eggs Large Grade A - 12 Count"
+        }, {
+            "data": {
+                "description": "Never from concentrate. Hydrate naturally. Like sticking a straw in a coconut. Picked, cracked, and packed at the source. Jam-packed with naturally occurring electrolytes. More potassium than a banana (dont tell the monkeys) - potassium helps keep your body properly hydrated. No fat and no cholesterol (means big hearts & small butts). Hydrate and feel great! Recyclable only where facilities exist. Visit recyclecartons.com to see if recyclable in your area. TetraPak: Protects what is good. 100% juice. Gluten free. Contains only natural ingredients; taste and color may vary. Born in Brazil. Produced in the Philippines.",
+                "facets": {
+                    "Brand": "All Market",
+                    "Nutrition": ["Kosher", "Fat Free", "Gluten Free"],
+                    "Price": [3.39]
+                },
+                "groups": [{
+                    "display_name": "Beverages",
+                    "group_id": "Beverages",
+                    "path": null,
+                    "path_list": []
+                }],
+                "id": "960057265",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-960057265.png",
+                "keywords": ["water", "enhanced", "coco", "coco", "coco"],
+                "price": 3.39,
+                "url": "/",
+                "weighted_keywords": {
+                    "coco": 4,
+                    "water": 4
+                }
+            },
+            "id": "960057265",
+            "is_slotted": false,
+            "value": "Vita Coco Coconut Water Pure - 16.9 Fl. Oz."
+        }, {
+            "data": {
+                "description": "Lightly sweetened whole grain cereal. Frosted just right & crunch in every bite. Made from 100% whole grain. Excellent source of fiber. Per 21 Biscuit Serving: 190 calories; 0 g sat fat (0% DV); 0 mg sodium (0% DV); 11 g sugars. See nutrition facts for as prepared information. Kellogg's Family Rewards. Learn more at KFR.com. 100% Whole Grain: 43 g or more per serving. 100% of the grain is whole grain. WholeGrainsCouncil.org. Loving that sweet? Join the party. Facebook. Good to Know: Made from 100% whole grain. 90% of your daily iron. 9 g of protein with 1/2 cup of milk (4 g). Visit FrostedMiniWheats.com between bites. Hi! I'm mini. Let's hang! Feed your inner kid. Fun Fact: We use only North American wheat. (Isn't that neat?). Add some sweet crunch to your snack game. Frosted just right & crunch in every bite. Kellogg's Open for Breakfast. What can we do to make your mornings better! OpenForBreakfast.com. Kellogg's Family Rewards. Collect points. Earn rewards. Learn more at KFR.com. Th",
+                "facets": {
+                    "Brand": "Kelloggs",
+                    "Price": [5.69]
+                },
+                "groups": [{
+                    "display_name": "Breakfast & Cereal",
+                    "group_id": "Breakfast%20%26%20Cereal",
+                    "path": null,
+                    "path_list": []
+                }],
+                "id": "111010939",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-111010939.png",
+                "keywords": ["all", "family", "cereal"],
+                "price": 5.69,
+                "url": "/",
+                "weighted_keywords": {
+                    "cereal": 2
+                }
+            },
+            "id": "111010939",
+            "is_slotted": false,
+            "value": "Mini Wheats Cereal Frosted Original - 18 Oz"
+        }],
+        "total_num_results": 4
+    },
+    "result_id": "8ff84c53-e447-4015-ba04-a82642e398af"
+}

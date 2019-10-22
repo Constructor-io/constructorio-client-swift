@@ -64,6 +64,15 @@ struct Constants {
         static let key = "kClientID"
     }
 
+    struct Recommendations {
+        static let recommendationsPathComponent = "recommendations"
+        static let userFeaturedPathComponent = "user_featured_items"
+        static let recentlyViewedPathComponent = "recently_viewed_items"
+        static let alternativePathComponent = "alternative_items"
+        static let complementaryPathComponent = "complementary_items"
+        static let itemID = "item_id"
+    }
+
     struct AutocompleteQuery {
         static let pathString = "autocomplete"
         static let numResults = "num_results"
