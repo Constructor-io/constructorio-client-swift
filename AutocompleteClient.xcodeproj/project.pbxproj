@@ -1485,9 +1485,9 @@
 			productReference = F64F46EB1F59CE750094C697 /* UserApplicationUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		F688A43E1F56B4B600F169C1 /* AutocompleteClient */ = {
+		F688A43E1F56B4B600F169C1 /* ConstructorAutocomplete */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "AutocompleteClient" */;
+			buildConfigurationList = F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "ConstructorAutocomplete" */;
 			buildPhases = (
 				F688A43C1F56B4B600F169C1 /* Headers */,
 				F688A43A1F56B4B600F169C1 /* Sources */,
@@ -1499,7 +1499,7 @@
 			);
 			dependencies = (
 			);
-			name = AutocompleteClient;
+			name = ConstructorAutocomplete;
 			productName = SearchFW;
 			productReference = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1571,7 +1571,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F688A43E1F56B4B600F169C1 /* AutocompleteClient */,
+				F688A43E1F56B4B600F169C1 /* ConstructorAutocomplete */,
 				F688A4471F56B4B600F169C1 /* AutocompleteClientTests */,
 				F64F46CC1F59CE750094C697 /* UserApplication */,
 				F64F46DF1F59CE750094C697 /* UserApplicationTests */,
@@ -1936,7 +1936,7 @@
 		};
 		F688A44B1F56B4B600F169C1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F688A43E1F56B4B600F169C1 /* AutocompleteClient */;
+			target = F688A43E1F56B4B600F169C1 /* ConstructorAutocomplete */;
 			targetProxy = F688A44A1F56B4B600F169C1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2285,7 +2285,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "AutocompleteClient" */ = {
+		F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "ConstructorAutocomplete" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F688A4541F56B4B600F169C1 /* Debug */,
