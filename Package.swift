@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "ConstructorIO",
-    path: "AutocompleteClient/"
+    path: "AutocompleteClient/",
     products: [
         .library(name: "ConstructorAutocomplete", targets: ["AutocompleteClient"])
     ],
