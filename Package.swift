@@ -8,10 +8,10 @@ let package = Package(
         .iOS(.v8)
     ],
     products: [
-        .library(name: "ConstructorAutocomplete", targets: ["AutocompleteClient"])
+        .library(name: "ConstructorAutocomplete", targets: ["ConstructorAutocomplete"])
     ],
     targets: [
-        .target(name: "AutocompleteClient",
+        .target(name: "ConstructorAutocomplete",
                 path: "AutocompleteClient/")
     ]
 )
