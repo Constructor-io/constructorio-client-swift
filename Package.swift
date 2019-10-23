@@ -3,11 +3,12 @@ import PackageDescription
 
 let package = Package(
     name: "ConstructorIO",
-    path: "AutocompleteClient/",
+    
     products: [
         .library(name: "ConstructorAutocomplete", targets: ["AutocompleteClient"])
     ],
     targets: [
-        .target(name: "AutocompleteClient")
+        .target(name: "AutocompleteClient",
+                path: "AutocompleteClient/")
     ]
 )
