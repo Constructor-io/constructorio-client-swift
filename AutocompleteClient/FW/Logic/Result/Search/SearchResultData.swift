@@ -42,3 +42,5 @@ public extension SearchResultData {
         self.metadata = metadata
     }
 }
+
+extension SearchResultData: Identifiable {}
