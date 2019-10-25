@@ -10,6 +10,7 @@
 		08465ECA2161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */; };
 		08465ECC2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08465ECB2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift */; };
 		08689F0121897914000D3565 /* ConstructorIOUserIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08689F0021897914000D3565 /* ConstructorIOUserIDTests.swift */; };
+		086D611923636E6600347771 /* CIOABTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D611823636E6600347771 /* CIOABTestCell.swift */; };
 		0874A32E216BCE2700812CDC /* ConstructorIOABTestCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0874A32D216BCE2700812CDC /* ConstructorIOABTestCellTests.swift */; };
 		0879E93F215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */; };
 		087F4BDE228B100E0058B467 /* ConstructorIOTrackSearchResultClickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087F4BDB228B100D0058B467 /* ConstructorIOTrackSearchResultClickTests.swift */; };
@@ -24,7 +25,6 @@
 		089399E32161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089399E22161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift */; };
 		08C1E6052193BE3600A2E24E /* CIOTrackPurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1E6042193BE3600A2E24E /* CIOTrackPurchaseData.swift */; };
 		08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */; };
-		08CCD3EF216675DD00C3F234 /* CIOABTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CCD3EE216675DD00C3F234 /* CIOABTestCell.swift */; };
 		08E798DA235131280053B93F /* SearchVariationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E798D9235131280053B93F /* SearchVariationData.swift */; };
 		08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */; };
 		08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */; };
@@ -232,6 +232,7 @@
 		08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchResultClickRequestBuilder.swift; sourceTree = "<group>"; };
 		08465ECB2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSessionStartRequestBuilder.swift; sourceTree = "<group>"; };
 		08689F0021897914000D3565 /* ConstructorIOUserIDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOUserIDTests.swift; sourceTree = "<group>"; };
+		086D611823636E6600347771 /* CIOABTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOABTestCell.swift; sourceTree = "<group>"; };
 		0874A32D216BCE2700812CDC /* ConstructorIOABTestCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOABTestCellTests.swift; sourceTree = "<group>"; };
 		0879E93E215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackAutocompleteSelectRequestBuilderTests.swift; sourceTree = "<group>"; };
 		087F4BDB228B100D0058B467 /* ConstructorIOTrackSearchResultClickTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackSearchResultClickTests.swift; sourceTree = "<group>"; };
@@ -246,7 +247,6 @@
 		089399E22161C67D00BFE3D9 /* TrackSearchResultsLoadedRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchResultsLoadedRequestBuilder.swift; sourceTree = "<group>"; };
 		08C1E6042193BE3600A2E24E /* CIOTrackPurchaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackPurchaseData.swift; sourceTree = "<group>"; };
 		08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPurchaseRequestBuilderTests.swift; sourceTree = "<group>"; };
-		08CCD3EE216675DD00C3F234 /* CIOABTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CIOABTestCell.swift; path = AutocompleteClient/FW/Logic/ABTesting/CIOABTestCell.swift; sourceTree = SOURCE_ROOT; };
 		08E798D9235131280053B93F /* SearchVariationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVariationData.swift; sourceTree = "<group>"; };
 		08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackAutocompleteSelectData.swift; sourceTree = "<group>"; };
 		08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchSubmitData.swift; sourceTree = "<group>"; };
@@ -282,6 +282,7 @@
 		F61A6B041F66AFD4007826CA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F61A6B081F698877007826CA /* CIOGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOGroup.swift; sourceTree = "<group>"; };
 		F61A6B0A1F698D03007826CA /* CIOAutocompleteResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteResult.swift; sourceTree = "<group>"; };
+		F62426AD2360DC9000D173FA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F62510C420529DD40040E3DF /* Collection+MapKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+MapKeys.swift"; sourceTree = "<group>"; };
 		F62510C72052CC6B0040E3DF /* CIOSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSessionManager.swift; sourceTree = "<group>"; };
 		F62510C92052CF240040E3DF /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -373,7 +374,6 @@
 		F685255A21413D4D00A27FAA /* CIORequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORequestData.swift; sourceTree = "<group>"; };
 		F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackSessionStartData.swift; sourceTree = "<group>"; };
 		F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestBuilder+QueryItems.swift"; sourceTree = "<group>"; };
-		F68525622141708C00A27FAA /* CIOABTestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOABTestCell.swift; sourceTree = "<group>"; };
 		F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConstructorAutocomplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConstructorAutocomplete-Swift.h"; sourceTree = "<group>"; };
 		F688A4431F56B4B600F169C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1052,14 +1052,6 @@
 			path = QueryItemCollection;
 			sourceTree = "<group>";
 		};
-		F67868D9222411D200C76C0D /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				08CCD3EE216675DD00C3F234 /* CIOABTestCell.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		F67D42A422035E830053B9C3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1128,7 +1120,7 @@
 		F68525612141707400A27FAA /* ABTesting */ = {
 			isa = PBXGroup;
 			children = (
-				F68525622141708C00A27FAA /* CIOABTestCell.swift */,
+				086D611823636E6600347771 /* CIOABTestCell.swift */,
 			);
 			path = ABTesting;
 			sourceTree = "<group>";
@@ -1136,6 +1128,7 @@
 		F688A4351F56B4B600F169C1 = {
 			isa = PBXGroup;
 			children = (
+				F62426AD2360DC9000D173FA /* Package.swift */,
 				F64E94DE212D7FBB00E50EDE /* Podfile */,
 				F699C34C1F57F44800FD681A /* Resources */,
 				F688A4411F56B4B600F169C1 /* AutocompleteClient */,
@@ -1146,7 +1139,6 @@
 				F688A4401F56B4B600F169C1 /* Products */,
 				F63374A81F5A8FBF00E481E7 /* Frameworks */,
 				D59696D4D091DDFF2013A436 /* Pods */,
-				F67868D9222411D200C76C0D /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1483,9 +1475,9 @@
 			productReference = F64F46EB1F59CE750094C697 /* UserApplicationUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		F688A43E1F56B4B600F169C1 /* AutocompleteClient */ = {
+		F688A43E1F56B4B600F169C1 /* ConstructorAutocomplete */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "AutocompleteClient" */;
+			buildConfigurationList = F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "ConstructorAutocomplete" */;
 			buildPhases = (
 				F688A43C1F56B4B600F169C1 /* Headers */,
 				F688A43A1F56B4B600F169C1 /* Sources */,
@@ -1497,7 +1489,7 @@
 			);
 			dependencies = (
 			);
-			name = AutocompleteClient;
+			name = ConstructorAutocomplete;
 			productName = SearchFW;
 			productReference = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1569,7 +1561,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F688A43E1F56B4B600F169C1 /* AutocompleteClient */,
+				F688A43E1F56B4B600F169C1 /* ConstructorAutocomplete */,
 				F688A4471F56B4B600F169C1 /* AutocompleteClientTests */,
 				F64F46CC1F59CE750094C697 /* UserApplication */,
 				F64F46DF1F59CE750094C697 /* UserApplicationTests */,
@@ -1819,6 +1811,7 @@
 				F63808F41F5D47BB00C3B322 /* NetworkClient.swift in Sources */,
 				F63809091F5E854B00C3B322 /* CIOHighlightingAttributesProvider.swift in Sources */,
 				F69C2CA4207FAFC60060B2B9 /* CIOPrintLogger.swift in Sources */,
+				086D611923636E6600347771 /* CIOABTestCell.swift in Sources */,
 				F69C2C9D207D1C9C0060B2B9 /* String+SearchSuggestionsSection.swift in Sources */,
 				F6F1D705234B62560092341D /* SearchVariation.swift in Sources */,
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
@@ -1835,7 +1828,6 @@
 				F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */,
 				F65B9E5E2146A4FB00101617 /* FacetOption.swift in Sources */,
 				F638090D1F5E880900C3B322 /* CIOHighlighter.swift in Sources */,
-				08CCD3EF216675DD00C3F234 /* CIOABTestCell.swift in Sources */,
 				F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */,
 				F1F68DD81F58B69000B42602 /* CIOResult.swift in Sources */,
 				088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */,
@@ -1934,7 +1926,7 @@
 		};
 		F688A44B1F56B4B600F169C1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F688A43E1F56B4B600F169C1 /* AutocompleteClient */;
+			target = F688A43E1F56B4B600F169C1 /* ConstructorAutocomplete */;
 			targetProxy = F688A44A1F56B4B600F169C1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2283,7 +2275,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "AutocompleteClient" */ = {
+		F688A4531F56B4B600F169C1 /* Build configuration list for PBXNativeTarget "ConstructorAutocomplete" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F688A4541F56B4B600F169C1 /* Debug */,
