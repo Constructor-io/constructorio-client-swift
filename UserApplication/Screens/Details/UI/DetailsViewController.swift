@@ -10,6 +10,7 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
+    @IBOutlet weak var labelTitlePrice: UILabel!
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var imageViewProduct: UIImageView!
     @IBOutlet weak var buttonBuy: UIButton!
@@ -38,22 +39,26 @@ class DetailsViewController: UIViewController {
         self.cartButton = CartBarButtonItem.addToViewController(viewController: self, cart: self.viewModel.cart, constructorProvider: self.constructorProvider)
 
         self.labelDescription.text = self.viewModel.description
+        self.labelDescription.textColor = UIColor.darkGray
         if let image = self.viewModel.image{
             self.imageViewProduct.image = image
         }else{
             self.imageViewProduct.kf.setImage(with: URL(string: self.viewModel.imageURL))
         }
+        
+        self.labelTitlePrice.text = self.viewModel.titlePrice
 
-        self.buttonBuy.layer.cornerRadius = 6
-        self.buttonBuy.layer.borderWidth = 0.8
-        self.buttonBuy.layer.borderColor = UIColor.lightGray.cgColor
-
+        self.labelTitlePrice.font = UIFont.systemFont(ofSize: self.labelDescription.font.pointSize+6, weight: .bold)
+        
+        let colorBrown = UIColor.RGB(183, green: 173, blue: 142)
+        self.buttonBuy.setTitleColor(colorBrown, for: .normal)
+        self.buttonBuy.layer.borderColor = colorBrown.cgColor
+        self.buttonBuy.layer.borderWidth = 1.2
         self.buttonBuy.addTarget(self, action: #selector(didTapOnButtonBuy), for: .touchUpInside)
     }
 
     @objc
     func didTapOnButtonBuy(){
-
         let cartItem = CartItem(title: self.viewModel.title, imageURL: self.viewModel.imageURL, price: self.viewModel.price.price(), quantity: 1)
         self.viewModel.cart.addItem(cartItem)
         self.cartButton.update()

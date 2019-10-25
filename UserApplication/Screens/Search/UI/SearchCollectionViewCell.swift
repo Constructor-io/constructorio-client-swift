@@ -18,7 +18,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.contentView.layer.cornerRadius = 6
         self.contentView.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
         self.contentView.layer.borderWidth = 1
         self.contentView.layer.masksToBounds = true

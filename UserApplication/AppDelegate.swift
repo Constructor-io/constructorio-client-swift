@@ -151,6 +151,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         }
     }
     
+    func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
+        let backgroundView = UIView(frame: .zero)
+        backgroundView.backgroundColor = UIColor.hex(rgb: 0x333333)
+        
+        if let image = UIImage(named: "img_logo"){
+            let logoImageView = UIImageView(image: image)
+            logoImageView.translatesAutoresizingMaskIntoConstraints = false
+            logoImageView.clipsToBounds = true
+            logoImageView.contentMode = .scaleAspectFit
+            backgroundView.addSubview(logoImageView)
+            logoImageView.centerInSuperviewVertical()
+            logoImageView.centerInSuperviewHorizontal()
+            logoImageView.pinToSuperviewLeft(16)
+            logoImageView.pinAspectRatio(ratio: 0.319)
+        }
+        return backgroundView
+    }
+    
     func autocompleteController(controller: CIOAutocompleteViewController, didLoadResults results: [CIOResult], for searchTerm: String) {}
     
     func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {

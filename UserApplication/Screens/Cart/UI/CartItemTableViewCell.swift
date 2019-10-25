@@ -12,44 +12,18 @@ class CartItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelQuantity: UILabel!
-    @IBOutlet weak var stepperQuantity: UIStepper!
     @IBOutlet weak var labelTotalPrice: UILabel!
     @IBOutlet weak var imageViewProduct: UIImageView!
 
-    var index: Int?
-
-    var onStepperValueChanged: ((_ sender: CartItemTableViewCell, _ newValue: Int, _ index: Int) -> Void)?
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.stepperQuantity.stepValue = 1
-        self.stepperQuantity.maximumValue = 999
-        self.stepperQuantity.minimumValue = 1
-
-        self.stepperQuantity.addTarget(self, action: #selector(didTapOnStepper), for: .valueChanged)
-    }
-
-    func setup(_ model: CartItemViewModel, index: Int){
+    func setup(_ model: CartItemViewModel){
         self.labelTitle.text = model.title
         self.labelQuantity.text = model.quantity.string
-        self.stepperQuantity.value = Double(model.quantity.value)
         self.labelTotalPrice.text = model.totalPrice
         self.imageViewProduct.kf.setImage(with: URL(string: model.imageURL))
 
-
-        self.index = index
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-
-        self.index = nil
-    }
-
-    @objc
-    func didTapOnStepper(){
-        guard let index = self.index else { return }
-
-        self.onStepperValueChanged?(self, Int(self.stepperQuantity.value), index)
+        self.labelTitle.font = UIFont.appFontSemiBold(18)
+        self.labelTotalPrice.font = UIFont.appFont(17)
+        self.labelTotalPrice.adjustsFontSizeToFitWidth = true
+        self.labelQuantity.font = UIFont.appFont(11)
     }
 }

@@ -18,7 +18,7 @@ struct CartItemViewModel {
         self.title = item.title
         self.quantity = Quantity(value: item.quantity)
         self.imageURL = item.imageURL
-        self.totalPrice = String(format: "%.2f$",item.totalPrice)
+        self.totalPrice = String(format: "$%.2f",item.totalPrice)
     }
 
 }

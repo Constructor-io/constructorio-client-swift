@@ -11,7 +11,7 @@ import Foundation
 struct Quantity{
     var value: Int
     var string: String{
-        return "\(self.value)"
+        return "QTY. \(self.value)"
     }
 
 }

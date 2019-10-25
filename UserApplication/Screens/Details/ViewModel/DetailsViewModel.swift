@@ -15,6 +15,10 @@ struct DetailsViewModel{
     let image: UIImage?
     let imageURL: String
     let description: String
+    
+    var titlePrice: String{
+        return "\(self.title)\n\n\(self.price)"
+    }
 
     let cart: Cart
 

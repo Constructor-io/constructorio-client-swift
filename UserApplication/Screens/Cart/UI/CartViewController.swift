@@ -93,12 +93,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.selectionStyle = .none
 
         let model = self.viewModel.items[indexPath.row]
-        cell.setup(model, index: indexPath.row)
-        cell.onStepperValueChanged = { [weak self] sender, newValue, index in
-            guard let newModel = self?.didUpdateQuantityValue(newValue: newValue, for: index) else { return }
-            sender.setup(newModel, index: index)
-        }
-
+        cell.setup(model)
         return cell
     }
 
