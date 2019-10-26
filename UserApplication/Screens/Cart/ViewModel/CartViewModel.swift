@@ -15,6 +15,10 @@ class CartViewModel {
     let cart: Cart
     let constructor: ConstructorIO
 
+    var totalPrice: String{
+        return String(format: "$%.02f", cart.items.map({ $0.totalPrice }).reduce(0, +))
+    }
+    
     init(cart: Cart, constructor: ConstructorIO){
         self.cart = cart
         self.constructor = constructor

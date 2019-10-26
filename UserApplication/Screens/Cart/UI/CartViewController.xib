@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartViewController" customModule="UserApplication" customModuleProvider="target">
             <connections>
+                <outlet property="buttonCheckout" destination="x7y-Kj-Ag6" id="RKW-DV-IID"/>
+                <outlet property="buttonClearCart" destination="sSd-cc-IBB" id="HSS-Ud-fw0"/>
+                <outlet property="labelTotalPrice" destination="6SL-Pw-lof" id="8fJ-rI-1wz"/>
                 <outlet property="tableView" destination="8Cd-ZS-cHT" id="Sx5-8D-RfT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,9 +23,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Cd-ZS-cHT">
-                    <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSd-cc-IBB">
+                    <rect key="frame" x="185.5" y="617" width="189.5" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.1619451405" blue="0.13774972090000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="rRK-Ar-dmP"/>
+                    </constraints>
+                    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Clear Cart"/>
+                    <connections>
+                        <action selector="didTapOnButtonClearCart:" destination="-1" eventType="touchUpInside" id="EM0-BD-R9k"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7y-Kj-Ag6">
                     <rect key="frame" x="0.0" y="617" width="187.5" height="50"/>
                     <color key="backgroundColor" red="0.2666666667" green="0.85882352939999995" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,30 +50,56 @@
                         <action selector="didTapOnButtonCheckout:" destination="-1" eventType="touchUpInside" id="ru1-Rw-sR6"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSd-cc-IBB">
-                    <rect key="frame" x="187.5" y="617" width="187.5" height="50"/>
-                    <color key="backgroundColor" red="1" green="0.1619451405" blue="0.13774972090000001" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gm1-0X-aGu">
+                    <rect key="frame" x="0.0" y="563" width="375" height="54"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAq-Jf-AjL">
+                            <rect key="frame" x="164" y="16.5" width="73" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$34.95" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SL-Pw-lof">
+                            <rect key="frame" x="281" y="15.5" width="62" height="23"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttm-lj-JoP" userLabel="viewSeparator">
+                            <rect key="frame" x="16" y="0.0" width="343" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="mBZ-0o-jAw"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="rRK-Ar-dmP"/>
+                        <constraint firstAttribute="trailing" secondItem="6SL-Pw-lof" secondAttribute="trailing" constant="32" id="ATv-tb-5bs"/>
+                        <constraint firstItem="6SL-Pw-lof" firstAttribute="centerY" secondItem="gm1-0X-aGu" secondAttribute="centerY" id="IGb-F3-xuV"/>
+                        <constraint firstAttribute="height" constant="54" id="LzK-tf-bbX"/>
+                        <constraint firstItem="ttm-lj-JoP" firstAttribute="top" secondItem="gm1-0X-aGu" secondAttribute="top" id="Pu8-xC-WOF"/>
+                        <constraint firstItem="6SL-Pw-lof" firstAttribute="leading" secondItem="sAq-Jf-AjL" secondAttribute="trailing" constant="44" id="Us8-Sc-VIw"/>
+                        <constraint firstItem="ttm-lj-JoP" firstAttribute="leading" secondItem="gm1-0X-aGu" secondAttribute="leading" constant="16" id="kCe-f8-EGl"/>
+                        <constraint firstItem="sAq-Jf-AjL" firstAttribute="centerY" secondItem="6SL-Pw-lof" secondAttribute="centerY" id="mnT-Ps-t8u"/>
+                        <constraint firstItem="ttm-lj-JoP" firstAttribute="centerX" secondItem="gm1-0X-aGu" secondAttribute="centerX" id="sfn-tu-g3k"/>
                     </constraints>
-                    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="Clear Cart"/>
-                    <connections>
-                        <action selector="didTapOnButtonClearCart:" destination="-1" eventType="touchUpInside" id="EM0-BD-R9k"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sSd-cc-IBB" secondAttribute="bottom" id="4rn-2e-Esw"/>
                 <constraint firstItem="sSd-cc-IBB" firstAttribute="height" secondItem="x7y-Kj-Ag6" secondAttribute="height" id="Be0-cb-6YL"/>
-                <constraint firstItem="x7y-Kj-Ag6" firstAttribute="top" secondItem="8Cd-ZS-cHT" secondAttribute="bottom" id="G0T-nS-vw7"/>
+                <constraint firstItem="x7y-Kj-Ag6" firstAttribute="top" secondItem="gm1-0X-aGu" secondAttribute="bottom" id="CUz-yM-R18"/>
+                <constraint firstItem="gm1-0X-aGu" firstAttribute="top" secondItem="8Cd-ZS-cHT" secondAttribute="bottom" id="ClE-9Z-qaF"/>
                 <constraint firstItem="x7y-Kj-Ag6" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="Rks-jO-q2w"/>
-                <constraint firstItem="sSd-cc-IBB" firstAttribute="leading" secondItem="x7y-Kj-Ag6" secondAttribute="trailing" id="So1-7l-3wo"/>
+                <constraint firstItem="sSd-cc-IBB" firstAttribute="leading" secondItem="x7y-Kj-Ag6" secondAttribute="trailing" constant="-2" id="So1-7l-3wo"/>
+                <constraint firstItem="gm1-0X-aGu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Xdv-1G-tF6"/>
                 <constraint firstItem="8Cd-ZS-cHT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aIG-c8-NOO"/>
                 <constraint firstItem="x7y-Kj-Ag6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iUo-ei-Sdw"/>
                 <constraint firstItem="8Cd-ZS-cHT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="pmw-jm-NnC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sSd-cc-IBB" secondAttribute="trailing" id="qYk-cp-QEn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gm1-0X-aGu" secondAttribute="trailing" id="qpz-cX-ROS"/>
                 <constraint firstItem="8Cd-ZS-cHT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qr4-zk-BJ4"/>
                 <constraint firstItem="x7y-Kj-Ag6" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="qx2-S5-p2U"/>
             </constraints>

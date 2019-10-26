@@ -54,7 +54,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.title = nil
+        self.title = " "    
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {

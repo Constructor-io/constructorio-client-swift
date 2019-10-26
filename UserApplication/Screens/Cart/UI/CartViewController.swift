@@ -10,6 +10,9 @@ import UIKit
 
 class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var buttonCheckout: UIButton!
+    @IBOutlet weak var buttonClearCart: UIButton!
+    @IBOutlet weak var labelTotalPrice: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
     var viewModel: CartViewModel
@@ -38,8 +41,23 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.register(UINib(nibName: "CartItemTableViewCell", bundle: nil), forCellReuseIdentifier: self.cellID)
         
         self.tableView.allowsSelection = true
-
         self.tableView.tableFooterView = UIView(frame: .zero)
+        
+        let colorBrown = UIColor.RGB(183, green: 173, blue: 142)
+        self.buttonCheckout.setTitleColor(colorBrown, for: .normal)
+        self.buttonCheckout.layer.borderColor = colorBrown.cgColor
+        self.buttonCheckout.layer.borderWidth = 1.2
+        self.buttonCheckout.backgroundColor = .white
+        self.buttonCheckout.titleLabel?.font = UIFont.appFontSemiBold(self.buttonCheckout.titleLabel?.font.pointSize ?? 14)
+        
+        self.buttonClearCart.setTitleColor(colorBrown, for: .normal)
+        self.buttonClearCart.layer.borderColor = colorBrown.cgColor
+        self.buttonClearCart.layer.borderWidth = 1.2
+        self.buttonClearCart.backgroundColor = .white
+        
+        self.labelTotalPrice.font = UIFont.appFontSemiBold(self.labelTotalPrice.font.pointSize)
+        
+        self.updateTotalPrice()
     }
 
     @IBAction func didTapOnButtonCheckout(_ sender: Any) {
@@ -75,6 +93,14 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(alert, animated: true, completion: nil)
     }
 
+    func cartDidChange(){
+        self.updateTotalPrice()
+    }
+    
+    func updateTotalPrice(){
+        self.labelTotalPrice.text = self.viewModel.totalPrice   
+    }
+    
     func removeAllItems(){
         self.viewModel.removeAllItems()
         self.tableView.reloadData()
@@ -103,16 +129,14 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.viewModel.removeItemAtIndex(indexPath.row)
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
         self.tableView.endUpdates()
+        
+        self.cartDidChange()
     }
 
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
-
-    func didUpdateQuantityValue(newValue: Int, for index: Int) -> CartItemViewModel?{
-        return self.viewModel.updateQuantity(newValue: newValue, for: index)
-    }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
