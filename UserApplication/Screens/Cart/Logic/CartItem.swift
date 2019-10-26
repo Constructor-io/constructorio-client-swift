@@ -11,9 +11,9 @@ import UIKit
 struct CartItem: Codable{
     let title: String
     let imageURL: String
-    let price: Float
-    var totalPrice: Float{
-        return self.price * Float(self.quantity)
+    let price: Double
+    var totalPrice: Double {
+        return self.price * Double(self.quantity)
     }
     var quantity: Int
     

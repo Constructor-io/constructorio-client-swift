@@ -18,7 +18,7 @@ class CartItemTableViewCell: UITableViewCell {
     func setup(_ model: CartItemViewModel){
         self.labelTitle.text = model.title
         self.labelQuantity.text = model.quantity.string
-        self.labelTotalPrice.text = model.totalPrice
+        self.labelTotalPrice.text = model.singleItemPrice
         self.imageViewProduct.kf.setImage(with: URL(string: model.imageURL))
 
         self.labelTitle.font = UIFont.appFontSemiBold(18)

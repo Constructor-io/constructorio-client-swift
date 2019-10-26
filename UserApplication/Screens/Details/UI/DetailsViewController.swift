@@ -59,7 +59,7 @@ class DetailsViewController: UIViewController {
 
     @objc
     func didTapOnButtonBuy(){
-        let cartItem = CartItem(title: self.viewModel.title, imageURL: self.viewModel.imageURL, price: self.viewModel.price.price(), quantity: 1)
+        let cartItem = CartItem(title: self.viewModel.title, imageURL: self.viewModel.imageURL, price: self.viewModel.price, quantity: 1)
         self.viewModel.cart.addItem(cartItem)
         self.cartButton.update()
         self.animateBuyProduct()
