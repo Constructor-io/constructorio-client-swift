@@ -41,7 +41,7 @@
                         <constraint firstAttribute="height" constant="44" id="pZZ-9T-ayx"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Buy now">
+                    <state key="normal" title="Add to Cart">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
