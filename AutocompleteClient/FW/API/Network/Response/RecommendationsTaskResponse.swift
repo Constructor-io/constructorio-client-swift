@@ -1,5 +1,5 @@
 //
-//  SearchTaskResponse.swift
+//  RecommendationsTaskResponse.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-public class SearchTaskResponse: TaskResponse<CIOSearchResponse, Error> {}
+public class RecommendationsTaskResponse: TaskResponse<CIORecommendationsResponse, Error> {}

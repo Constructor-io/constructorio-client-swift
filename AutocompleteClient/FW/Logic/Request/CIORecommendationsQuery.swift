@@ -8,49 +8,24 @@
 
 import Foundation
 
-public enum RecommendationsQueryType{
-    case userFeatured
-    case recentlyViewed
-    case alternative(itemID: String)
-    case complementary(itemID: String)
-}
-
 public struct CIORecommendationsQuery: CIORequestData {
-    public let type: RecommendationsQueryType
     public let maximumNumberOfResult: Int
+    public let pod: String
+    public let itemID: String
     
     func url(with baseURL: String) -> String {
-        var recommendationsPathComponent: String
-        
-        switch self.type {
-        case .userFeatured:
-            recommendationsPathComponent = Constants.Recommendations.userFeaturedPathComponent
-        case .recentlyViewed:
-            recommendationsPathComponent = Constants.Recommendations.recentlyViewedPathComponent
-        case .alternative:
-            recommendationsPathComponent = Constants.Recommendations.alternativePathComponent
-        case .complementary:
-            recommendationsPathComponent = Constants.Recommendations.complementaryPathComponent
-        }
-
         return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString, Constants.Recommendations.recommendationsPathComponent,
-                      recommendationsPathComponent)
+                      self.pod)
     }
 
-    public init(type: RecommendationsQueryType, maximumNumberOfResult: Int) {
-        self.type = type
+    public init(pod: String, itemID: String, maximumNumberOfResult: Int) {
+        self.pod = pod
+        self.itemID = itemID
         self.maximumNumberOfResult = maximumNumberOfResult
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(numResults: self.maximumNumberOfResult)
-        switch self.type {
-        case .alternative(let itemID):
-            requestBuilder.set(itemID: itemID)
-        case .complementary(let itemID):
-            requestBuilder.set(itemID: itemID)
-        default:
-            break
-        }
+        requestBuilder.set(itemID: self.itemID)
     }
 }

@@ -10,7 +10,6 @@ import Foundation
 
 class SearchResponseParser: AbstractSearchResponseParser {
     func parse(searchResponseData: Data) throws -> CIOSearchResponse {
-
         do {
             let json = try JSONSerialization.jsonObject(with: searchResponseData) as? JSONObject
 

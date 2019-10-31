@@ -65,11 +65,7 @@ struct Constants {
     }
 
     struct Recommendations {
-        static let recommendationsPathComponent = "recommendations"
-        static let userFeaturedPathComponent = "user_featured_items"
-        static let recentlyViewedPathComponent = "recently_viewed_items"
-        static let alternativePathComponent = "alternative_items"
-        static let complementaryPathComponent = "complementary_items"
+        static let recommendationsPathComponent = "recommendations/v1/pods"
         static let itemID = "item_id"
     }
 

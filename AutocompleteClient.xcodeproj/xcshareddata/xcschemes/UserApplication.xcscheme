@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "1110"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F688A43E1F56B4B600F169C1"
-               BuildableName = "ConstructorAutocomplete.framework"
-               BlueprintName = "AutocompleteClient"
+               BlueprintIdentifier = "F64F46CC1F59CE750094C697"
+               BuildableName = "UserApplication.app"
+               BlueprintName = "UserApplication"
                ReferencedContainer = "container:AutocompleteClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,25 +26,25 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F688A43E1F56B4B600F169C1"
-            BuildableName = "ConstructorAutocomplete.framework"
-            BlueprintName = "AutocompleteClient"
-            ReferencedContainer = "container:AutocompleteClient.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F688A4471F56B4B600F169C1"
-               BuildableName = "AutocompleteClientTests.xctest"
-               BlueprintName = "AutocompleteClientTests"
+               BlueprintIdentifier = "F64F46DF1F59CE750094C697"
+               BuildableName = "UserApplicationTests.xctest"
+               BlueprintName = "UserApplicationTests"
+               ReferencedContainer = "container:AutocompleteClient.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F64F46EA1F59CE750094C697"
+               BuildableName = "UserApplicationUITests.xctest"
+               BlueprintName = "UserApplicationUITests"
                ReferencedContainer = "container:AutocompleteClient.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -60,15 +60,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F688A43E1F56B4B600F169C1"
-            BuildableName = "ConstructorAutocomplete.framework"
-            BlueprintName = "AutocompleteClient"
+            BlueprintIdentifier = "F64F46CC1F59CE750094C697"
+            BuildableName = "UserApplication.app"
+            BlueprintName = "UserApplication"
             ReferencedContainer = "container:AutocompleteClient.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -76,15 +77,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F688A43E1F56B4B600F169C1"
-            BuildableName = "ConstructorAutocomplete.framework"
-            BlueprintName = "AutocompleteClient"
+            BlueprintIdentifier = "F64F46CC1F59CE750094C697"
+            BuildableName = "UserApplication.app"
+            BlueprintName = "UserApplication"
             ReferencedContainer = "container:AutocompleteClient.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
