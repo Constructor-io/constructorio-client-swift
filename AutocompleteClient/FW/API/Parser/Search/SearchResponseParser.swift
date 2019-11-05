@@ -38,7 +38,7 @@ class SearchResponseParser: AbstractSearchResponseParser {
                     }
                 }
 
-                return SearchResult(value: value, data: data, matchedTerms: matchedTerms, variations: variations)
+                return SearchResult(id: data.id, value: value, data: data, matchedTerms: matchedTerms, variations: variations)
             } ?? []
 
             let sortOptions: [SortOption] = (response["sort_options"] as? [JSONObject])?.compactMap({ obj  in
