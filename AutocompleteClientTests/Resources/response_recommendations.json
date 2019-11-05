@@ -1,0 +1,150 @@
+{
+    "request": {
+        "num_results": 5,
+        "pod_id": "home_page_1"
+    },
+    "response": {
+        "pod": {
+            "display_name": "testPod",
+            "id": "test_pod_id"
+        },
+        "results": [{
+            "data": {
+                "description": "Only the finest berries. www.driscolls.com. Product of Mexico.",
+                "facets": {
+                    "Price": [4.59]
+                },
+                "groups": [{
+                    "display_name": "Fruits & Vegetables",
+                    "group_id": "Fruits%20%26%20Vegetables",
+                    "path": null,
+                    "path_list": []
+                }],
+                "id": "184070159",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-184070159.png",
+                "keywords": ["berries"],
+                "price": 4.59,
+                "url": "/",
+                "weighted_keywords": {
+                    "prepacked": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "strategy": {
+                "id": "user_featured_items"
+            },
+            "value": "Raspberries Prepacked - 6 Oz"
+        }, {
+            "data": {
+                "description": "Washington. USA.",
+                "facets": {
+                    "Brand": "Produce",
+                    "Price": [0.5]
+                },
+                "groups": [{
+                    "display_name": "Fruits & Vegetables",
+                    "group_id": "Fruits%20%26%20Vegetables",
+                    "path": null,
+                    "path_list": []
+                }],
+                "id": "184020066",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-184020066.png",
+                "keywords": ["apples"],
+                "price": 0.5,
+                "url": "/",
+                "weighted_keywords": {
+                    "large": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "strategy": {
+                "id": "user_featured_items"
+            },
+            "value": "Apples Fuji Large"
+        }, {
+            "data": {
+                "facets": {
+                    "Brand": "Produce",
+                    "Price": [1.27]
+                },
+                "groups": [{
+                    "display_name": "Fruits & Vegetables",
+                    "group_id": "Fruits%20%26%20Vegetables",
+                    "path": null,
+                    "path_list": []
+                }],
+                "id": "184080188",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-184080188.png",
+                "keywords": ["citrus"],
+                "price": 1.27,
+                "url": "/",
+                "weighted_keywords": {
+                    "large": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "strategy": {
+                "id": "user_featured_items"
+            },
+            "value": "Oranges Navel Large"
+        }, {
+            "data": {
+                "description": "Product of Mexico.",
+                "facets": {
+                    "Brand": "Driscolls",
+                    "Price": [5.69]
+                },
+                "groups": [{
+                    "display_name": "Fruits & Vegetables",
+                    "group_id": "Fruits%20%26%20Vegetables",
+                    "path": null,
+                    "path_list": []
+                }],
+                "id": "184070083",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-184070083.png",
+                "keywords": ["berries"],
+                "price": 5.69,
+                "url": "/",
+                "weighted_keywords": {
+                    "prepacked": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "strategy": {
+                "id": "user_featured_items"
+            },
+            "value": "Blueberries Prepacked - 6 Oz"
+        }, {
+            "data": {
+                "description": "Ocean Spray. Family farmer owned since 1930. Treated with imazalil and/or thiabendazole. Product of Chile.",
+                "facets": {
+                    "Brand": "Oppenheimer",
+                    "Price": [3.99]
+                },
+                "groups": [{
+                    "display_name": "Fruits & Vegetables",
+                    "group_id": "Fruits%20%26%20Vegetables",
+                    "path": null,
+                    "path_list": []
+                }],
+                "id": "960021862",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-960021862.png",
+                "keywords": ["citrus"],
+                "price": 3.99,
+                "url": "/"
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "strategy": {
+                "id": "user_featured_items"
+            },
+            "value": "Clementines Prepacked - 3 Lb"
+        }],
+        "total_num_results": 5
+    },
+    "result_id": "f25ca997-dd75-4962-aa79-e9ff48a74bdd"
+}
