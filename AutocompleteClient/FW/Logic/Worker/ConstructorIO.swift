@@ -11,6 +11,7 @@ import Foundation
 public typealias AutocompleteQueryCompletionHandler = (AutocompleteTaskResponse) -> Void
 public typealias SearchQueryCompletionHandler = (SearchTaskResponse) -> Void
 public typealias TrackingCompletionHandler = (Error?) -> Void
+public typealias BrowseQueryCompletionHandler = (SearchTaskResponse) -> Void
 
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
@@ -69,6 +70,16 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeSearch(request, completionHandler: completionHandler)
     }
 
+    /// Get browse results for a query.
+    ///
+    /// - Parameters:
+    ///   - query: The query object, consisting of the query to browse and additional options.
+    ///   - completionHandler: The callback to execute on completion.
+    public func browse(forQuery query: CIOBrowseQuery, completionHandler: @escaping BrowseQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeSearch(request, completionHandler: completionHandler)
+    }
+    
     /// Track input focus.
     ///
     /// - Parameters:

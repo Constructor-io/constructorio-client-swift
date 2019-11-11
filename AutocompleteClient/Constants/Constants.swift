@@ -84,6 +84,10 @@ struct Constants {
         static let sortOrder = "sort_order"
         static let defaultSectionName = "Products"
     }
+    
+    struct BrowseQuery {
+        static let pathString = "browse"
+    }
 
     struct Response {
         static let singleSectionResultField = "suggestions"

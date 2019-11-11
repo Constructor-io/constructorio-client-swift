@@ -1,0 +1,1712 @@
+{
+    "request": {
+        "features": {
+            "auto_generated_refined_query_rules": true,
+            "manual_searchandizing": true,
+            "personalization": true,
+            "query_items": true
+        },
+        "fmt_options": {
+            "groups_max_depth": 1,
+            "groups_start": "current"
+        },
+        "num_results_per_page": 24,
+        "page": 1,
+        "searchandized_items": {},
+        "searchandizing_filter": {
+            "group_id": "Frozen%20Foods"
+        },
+        "section": "Products",
+        "sort_by": "relevance",
+        "sort_order": "descending",
+        "term": ""
+    },
+    "response": {
+        "facets": [{
+            "display_name": "Price",
+            "max": 15.89,
+            "min": 0.4,
+            "name": "Price",
+            "status": {},
+            "type": "range"
+        }, {
+            "display_name": "Brand",
+            "name": "Brand",
+            "options": [{
+                "count": 93,
+                "data": {},
+                "display_name": "Signature Kitchens",
+                "status": "",
+                "value": "Signature Kitchens"
+            }, {
+                "count": 10,
+                "data": {},
+                "display_name": "Ore-Ida",
+                "status": "",
+                "value": "Ore-Ida"
+            }, {
+                "count": 46,
+                "data": {},
+                "display_name": "Marie Callenders",
+                "status": "",
+                "value": "Marie Callenders"
+            }, {
+                "count": 35,
+                "data": {},
+                "display_name": "O Organics",
+                "status": "",
+                "value": "O Organics"
+            }, {
+                "count": 40,
+                "data": {},
+                "display_name": "Stouffers",
+                "status": "",
+                "value": "Stouffers"
+            }, {
+                "count": 12,
+                "data": {},
+                "display_name": "Red Baron",
+                "status": "",
+                "value": "Red Baron"
+            }, {
+                "count": 21,
+                "data": {},
+                "display_name": "Eggo",
+                "status": "",
+                "value": "Eggo"
+            }, {
+                "count": 51,
+                "data": {},
+                "display_name": "Lean Cuisine",
+                "status": "",
+                "value": "Lean Cuisine"
+            }, {
+                "count": 29,
+                "data": {},
+                "display_name": "Jimmy Dean",
+                "status": "",
+                "value": "Jimmy Dean"
+            }, {
+                "count": 30,
+                "data": {},
+                "display_name": "Banquet",
+                "status": "",
+                "value": "Banquet"
+            }, {
+                "count": 28,
+                "data": {},
+                "display_name": "Birds Eye",
+                "status": "",
+                "value": "Birds Eye"
+            }, {
+                "count": 10,
+                "data": {},
+                "display_name": "Boston Market",
+                "status": "",
+                "value": "Boston Market"
+            }, {
+                "count": 31,
+                "data": {},
+                "display_name": "Ben & Jerrys",
+                "status": "",
+                "value": "Ben & Jerrys"
+            }, {
+                "count": 31,
+                "data": {},
+                "display_name": "Lucerne",
+                "status": "",
+                "value": "Lucerne"
+            }, {
+                "count": 122,
+                "data": {},
+                "display_name": "Signature Select",
+                "status": "",
+                "value": "Signature Select"
+            }, {
+                "count": 16,
+                "data": {},
+                "display_name": "El Monterey",
+                "status": "",
+                "value": "El Monterey"
+            }, {
+                "count": 29,
+                "data": {},
+                "display_name": "Breyers",
+                "status": "",
+                "value": "Breyers"
+            }, {
+                "count": 6,
+                "data": {},
+                "display_name": "Freschetta",
+                "status": "",
+                "value": "Freschetta"
+            }, {
+                "count": 25,
+                "data": {},
+                "display_name": "Amys",
+                "status": "",
+                "value": "Amys"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Birds Eye Foods",
+                "status": "",
+                "value": "Birds Eye Foods"
+            }, {
+                "count": 7,
+                "data": {},
+                "display_name": "Hungry-Man",
+                "status": "",
+                "value": "Hungry-Man"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Foster Farms",
+                "status": "",
+                "value": "Foster Farms"
+            }, {
+                "count": 9,
+                "data": {},
+                "display_name": "Digiorno",
+                "status": "",
+                "value": "Digiorno"
+            }, {
+                "count": 9,
+                "data": {},
+                "display_name": "Lamb Weston",
+                "status": "",
+                "value": "Lamb Weston"
+            }, {
+                "count": 28,
+                "data": {},
+                "display_name": "Healthy Choice",
+                "status": "",
+                "value": "Healthy Choice"
+            }, {
+                "count": 14,
+                "data": {},
+                "display_name": "Nestle",
+                "status": "",
+                "value": "Nestle"
+            }, {
+                "count": 8,
+                "data": {},
+                "display_name": "Klondike",
+                "status": "",
+                "value": "Klondike"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "T Marzetti",
+                "status": "",
+                "value": "T Marzetti"
+            }, {
+                "count": 20,
+                "data": {},
+                "display_name": "Kraft Foods",
+                "status": "",
+                "value": "Kraft Foods"
+            }, {
+                "count": 22,
+                "data": {},
+                "display_name": "B & G Foods",
+                "status": "",
+                "value": "B & G Foods"
+            }, {
+                "count": 11,
+                "data": {},
+                "display_name": "Magnum",
+                "status": "",
+                "value": "Magnum"
+            }, {
+                "count": 11,
+                "data": {},
+                "display_name": "Baskin Robbins",
+                "status": "",
+                "value": "Baskin Robbins"
+            }, {
+                "count": 8,
+                "data": {},
+                "display_name": "Devour",
+                "status": "",
+                "value": "Devour"
+            }, {
+                "count": 16,
+                "data": {},
+                "display_name": "Totinos",
+                "status": "",
+                "value": "Totinos"
+            }, {
+                "count": 13,
+                "data": {},
+                "display_name": "Eating Right",
+                "status": "",
+                "value": "Eating Right"
+            }, {
+                "count": 7,
+                "data": {},
+                "display_name": "Smuckers",
+                "status": "",
+                "value": "Smuckers"
+            }, {
+                "count": 48,
+                "data": {},
+                "display_name": "Dreyers",
+                "status": "",
+                "value": "Dreyers"
+            }, {
+                "count": 38,
+                "data": {},
+                "display_name": "Haagen-Dazs",
+                "status": "",
+                "value": "Haagen-Dazs"
+            }, {
+                "count": 12,
+                "data": {},
+                "display_name": "Unilever",
+                "status": "",
+                "value": "Unilever"
+            }, {
+                "count": 16,
+                "data": {},
+                "display_name": "Kelloggs",
+                "status": "",
+                "value": "Kelloggs"
+            }, {
+                "count": 11,
+                "data": {},
+                "display_name": "General Mills",
+                "status": "",
+                "value": "General Mills"
+            }, {
+                "count": 8,
+                "data": {},
+                "display_name": "Bertolli",
+                "status": "",
+                "value": "Bertolli"
+            }, {
+                "count": 12,
+                "data": {},
+                "display_name": "Pillsbury",
+                "status": "",
+                "value": "Pillsbury"
+            }, {
+                "count": 10,
+                "data": {},
+                "display_name": "Hot Pockets",
+                "status": "",
+                "value": "Hot Pockets"
+            }, {
+                "count": 13,
+                "data": {},
+                "display_name": "Jose Ole",
+                "status": "",
+                "value": "Jose Ole"
+            }, {
+                "count": 9,
+                "data": {},
+                "display_name": "Ajinomoto",
+                "status": "",
+                "value": "Ajinomoto"
+            }, {
+                "count": 10,
+                "data": {},
+                "display_name": "Heinz North America",
+                "status": "",
+                "value": "Heinz North America"
+            }, {
+                "count": 10,
+                "data": {},
+                "display_name": "Tinas",
+                "status": "",
+                "value": "Tinas"
+            }, {
+                "count": 8,
+                "data": {},
+                "display_name": "J & J Snack Foods",
+                "status": "",
+                "value": "J & J Snack Foods"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Arctic Glacier",
+                "status": "",
+                "value": "Arctic Glacier"
+            }, {
+                "count": 7,
+                "data": {},
+                "display_name": "White Castle",
+                "status": "",
+                "value": "White Castle"
+            }, {
+                "count": 9,
+                "data": {},
+                "display_name": "Udis",
+                "status": "",
+                "value": "Udis"
+            }, {
+                "count": 12,
+                "data": {},
+                "display_name": "PEPPERIDGE FARM",
+                "status": "",
+                "value": "PEPPERIDGE FARM"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Ateeco",
+                "status": "",
+                "value": "Ateeco"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Weight Watchers",
+                "status": "",
+                "value": "Weight Watchers"
+            }, {
+                "count": 11,
+                "data": {},
+                "display_name": "Outshine",
+                "status": "",
+                "value": "Outshine"
+            }, {
+                "count": 19,
+                "data": {},
+                "display_name": "Talenti",
+                "status": "",
+                "value": "Talenti"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Jel Sert",
+                "status": "",
+                "value": "Jel Sert"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Home Market Foods",
+                "status": "",
+                "value": "Home Market Foods"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Lindys Homemade",
+                "status": "",
+                "value": "Lindys Homemade"
+            }, {
+                "count": 8,
+                "data": {},
+                "display_name": "P.F. Changs",
+                "status": "",
+                "value": "P.F. Changs"
+            }, {
+                "count": 20,
+                "data": {},
+                "display_name": "Michelinas",
+                "status": "",
+                "value": "Michelinas"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Mars North America",
+                "status": "",
+                "value": "Mars North America"
+            }, {
+                "count": 24,
+                "data": {},
+                "display_name": "Tillamook",
+                "status": "",
+                "value": "Tillamook"
+            }, {
+                "count": 10,
+                "data": {},
+                "display_name": "Edwards Pie",
+                "status": "",
+                "value": "Edwards Pie"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Discovery Foods",
+                "status": "",
+                "value": "Discovery Foods"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Norpac Foods",
+                "status": "",
+                "value": "Norpac Foods"
+            }, {
+                "count": 6,
+                "data": {},
+                "display_name": "Resers",
+                "status": "",
+                "value": "Resers"
+            }, {
+                "count": 32,
+                "data": {},
+                "display_name": "PIC",
+                "status": "",
+                "value": "PIC"
+            }, {
+                "count": 23,
+                "data": {},
+                "display_name": "Open Nature",
+                "status": "",
+                "value": "Open Nature"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Hillshire Brands",
+                "status": "",
+                "value": "Hillshire Brands"
+            }, {
+                "count": 8,
+                "data": {},
+                "display_name": "Ling Ling",
+                "status": "",
+                "value": "Ling Ling"
+            }, {
+                "count": 10,
+                "data": {},
+                "display_name": "Sara Lee",
+                "status": "",
+                "value": "Sara Lee"
+            }, {
+                "count": 7,
+                "data": {},
+                "display_name": "Pinnacle Foods",
+                "status": "",
+                "value": "Pinnacle Foods"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Jasper Wyman & Son",
+                "status": "",
+                "value": "Jasper Wyman & Son"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Ruiz Foods",
+                "status": "",
+                "value": "Ruiz Foods"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Hawaiis Own",
+                "status": "",
+                "value": "Hawaiis Own"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Quorn",
+                "status": "",
+                "value": "Quorn"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Newmans Own",
+                "status": "",
+                "value": "Newmans Own"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Caspers Ice Cream",
+                "status": "",
+                "value": "Caspers Ice Cream"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Heinz",
+                "status": "",
+                "value": "Heinz"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Bellisio Foods",
+                "status": "",
+                "value": "Bellisio Foods"
+            }, {
+                "count": 67,
+                "data": {},
+                "display_name": "Blue Bunny",
+                "status": "",
+                "value": "Blue Bunny"
+            }, {
+                "count": 15,
+                "data": {},
+                "display_name": "Wells Dairy",
+                "status": "",
+                "value": "Wells Dairy"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Rhodes Bake N Serv",
+                "status": "",
+                "value": "Rhodes Bake N Serv"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Seapoint Farms",
+                "status": "",
+                "value": "Seapoint Farms"
+            }, {
+                "count": 7,
+                "data": {},
+                "display_name": "InnovAsian Cuisine",
+                "status": "",
+                "value": "InnovAsian Cuisine"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Glutino",
+                "status": "",
+                "value": "Glutino"
+            }, {
+                "count": 19,
+                "data": {},
+                "display_name": "Eden Creamery",
+                "status": "",
+                "value": "Eden Creamery"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Tonys",
+                "status": "",
+                "value": "Tonys"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Daiya Foods",
+                "status": "",
+                "value": "Daiya Foods"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Crystal Farms",
+                "status": "",
+                "value": "Crystal Farms"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Delizza",
+                "status": "",
+                "value": "Delizza"
+            }, {
+                "count": 6,
+                "data": {},
+                "display_name": "Beyond Better Foods",
+                "status": "",
+                "value": "Beyond Better Foods"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Gardein",
+                "status": "",
+                "value": "Gardein"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Minute Maid",
+                "status": "",
+                "value": "Minute Maid"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Lactaid",
+                "status": "",
+                "value": "Lactaid"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "American Halal",
+                "status": "",
+                "value": "American Halal"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Pictsweet",
+                "status": "",
+                "value": "Pictsweet"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Michael Angelos",
+                "status": "",
+                "value": "Michael Angelos"
+            }, {
+                "count": 7,
+                "data": {},
+                "display_name": "So Delicious",
+                "status": "",
+                "value": "So Delicious"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Kraft",
+                "status": "",
+                "value": "Kraft"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Signature Farms",
+                "status": "",
+                "value": "Signature Farms"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Rich Products",
+                "status": "",
+                "value": "Rich Products"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "CJ Foods",
+                "status": "",
+                "value": "CJ Foods"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Kodiak Cakes",
+                "status": "",
+                "value": "Kodiak Cakes"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Dr Praegers",
+                "status": "",
+                "value": "Dr Praegers"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Kashi",
+                "status": "",
+                "value": "Kashi"
+            }, {
+                "count": 7,
+                "data": {},
+                "display_name": "Alexia Foods",
+                "status": "",
+                "value": "Alexia Foods"
+            }, {
+                "count": 6,
+                "data": {},
+                "display_name": "Welchs",
+                "status": "",
+                "value": "Welchs"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Arctic Glacier Inc.",
+                "status": "",
+                "value": "Arctic Glacier Inc."
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Small Planet Foods",
+                "status": "",
+                "value": "Small Planet Foods"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Yasso",
+                "status": "",
+                "value": "Yasso"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "ConAgra Foods",
+                "status": "",
+                "value": "ConAgra Foods"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Oregon Ice Cream",
+                "status": "",
+                "value": "Oregon Ice Cream"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Canyon Bakehouse",
+                "status": "",
+                "value": "Canyon Bakehouse"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Dianas Bananas",
+                "status": "",
+                "value": "Dianas Bananas"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Dr Oetker USA",
+                "status": "",
+                "value": "Dr Oetker USA"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Reds All Natural",
+                "status": "",
+                "value": "Reds All Natural"
+            }, {
+                "count": 4,
+                "data": {},
+                "display_name": "Tropicale Foods",
+                "status": "",
+                "value": "Tropicale Foods"
+            }, {
+                "count": 5,
+                "data": {},
+                "display_name": "Bubbies Ice Cream",
+                "status": "",
+                "value": "Bubbies Ice Cream"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Bacardi",
+                "status": "",
+                "value": "Bacardi"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Wells Blue Bunny",
+                "status": "",
+                "value": "Wells Blue Bunny"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Luvo",
+                "status": "",
+                "value": "Luvo"
+            }, {
+                "count": 7,
+                "data": {},
+                "display_name": "American Flatbread",
+                "status": "",
+                "value": "American Flatbread"
+            }, {
+                "count": 8,
+                "data": {},
+                "display_name": "Anderson",
+                "status": "",
+                "value": "Anderson"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "El Encanto",
+                "status": "",
+                "value": "El Encanto"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Palermo Villa",
+                "status": "",
+                "value": "Palermo Villa"
+            }, {
+                "count": 3,
+                "data": {},
+                "display_name": "Mealtime Stories",
+                "status": "",
+                "value": "Mealtime Stories"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Smithfield",
+                "status": "",
+                "value": "Smithfield"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Schar",
+                "status": "",
+                "value": "Schar"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Real Good Food",
+                "status": "",
+                "value": "Real Good Food"
+            }, {
+                "count": 2,
+                "data": {},
+                "display_name": "Foundry Foods",
+                "status": "",
+                "value": "Foundry Foods"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Oscar Mayer",
+                "status": "",
+                "value": "Oscar Mayer"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Janes Dough Foods",
+                "status": "",
+                "value": "Janes Dough Foods"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Food City USA",
+                "status": "",
+                "value": "Food City USA"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Elevation Brands",
+                "status": "",
+                "value": "Elevation Brands"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "El Encanto, Inc.",
+                "status": "",
+                "value": "El Encanto, Inc."
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Donatos",
+                "status": "",
+                "value": "Donatos"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Day Lee Foods",
+                "status": "",
+                "value": "Day Lee Foods"
+            }, {
+                "count": 1,
+                "data": {},
+                "display_name": "Bliss Unlimited",
+                "status": "",
+                "value": "Bliss Unlimited"
+            }],
+            "type": "multiple"
+        }, {
+            "display_name": "Nutrition",
+            "name": "Nutrition",
+            "options": [{
+                "count": 723,
+                "data": {},
+                "display_name": "Kosher",
+                "status": "",
+                "value": "Kosher"
+            }, {
+                "count": 203,
+                "data": {},
+                "display_name": "Gluten Free",
+                "status": "",
+                "value": "Gluten Free"
+            }, {
+                "count": 79,
+                "data": {},
+                "display_name": "Organic",
+                "status": "",
+                "value": "Organic"
+            }, {
+                "count": 47,
+                "data": {},
+                "display_name": "Low Fat",
+                "status": "",
+                "value": "Low Fat"
+            }, {
+                "count": 47,
+                "data": {},
+                "display_name": "Fat Free",
+                "status": "",
+                "value": "Fat Free"
+            }, {
+                "count": 10,
+                "data": {},
+                "display_name": "Sugar Free",
+                "status": "",
+                "value": "Sugar Free"
+            }],
+            "type": "multiple"
+        }],
+        "features": [{
+            "display_name": "Affinity Engine",
+            "enabled": true,
+            "feature_name": "auto_generated_refined_query_rules"
+        }, {
+            "display_name": "Searchandizing",
+            "enabled": true,
+            "feature_name": "manual_searchandizing"
+        }, {
+            "display_name": "Personalization",
+            "enabled": true,
+            "feature_name": "personalization"
+        }, {
+            "display_name": "Learn To Rank",
+            "enabled": true,
+            "feature_name": "query_items"
+        }],
+        "groups": [{
+            "children": [],
+            "count": 1688,
+            "display_name": "Frozen Foods",
+            "group_id": "Frozen%20Foods",
+            "parents": [{
+                "display_name": "All",
+                "group_id": "all"
+            }]
+        }],
+        "results": [{
+            "data": {
+                "description": "Lightly seasoned shredded potatoes. Naturally a cholesterol free food. Per 1 Patty: 140 calories; 2 g sat fat (10% DV); 270 mg sodium (11% DV); less than 1 g sugars. Developed by cookbook author Marlene Sorosky Gray. www.betterlivingbrandsLLC.com. Our Promise: Quality & satisfaction 100% guaranteed or your money back.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Signature Kitchens"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Kosher"]
+                }, {
+                    "name": "Price",
+                    "values": [3]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "147150052",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-147150052.png",
+                "keywords": ["frozen", "potatoes", "onions"],
+                "price": 3,
+                "url": "/",
+                "weighted_keywords": {
+                    "season": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Signature Kitchens Potatoes Hash Browns Patties Lightly Seasoned Shredded 10 Count - 22.5 Oz"
+        }, {
+            "data": {
+                "description": "French fried potatoes. 90 calories; 1 g sat fat (5% DV); 310 mg sodium (13% DV); less than 1 g total sugars. Gluten free. Potatoes done perfect. Since 1952. Oregon & Idaho. During any mealtime, Ore-Ida potatoes are the right side to have on your side. Ore-Ida believes in potatoes done perfect and it has since 1952. We believe that taste and quality matter, so that's why we work tirelessly to bring you and your family the best and fresh tasting potatoes, all grown locally in the USA. With our perfect Golden Crinkles, you get the crispy outer texture and fluffy inside you need to turn any family meal into a success. So next time you're thinking about what to make, remember that Ore-Ida potatoes are the perfect companion to winning at mealtime. US grown potatoes. The Ore-Ida Brand is committed to providing the highest quality products. We welcome your comments. Please have the package with you when you call. Phone Us: 1-800-892-2401 Monday - Friday. Visit Us Online: www.oreida.com for del",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Ore-Ida"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Gluten Free", "Kosher"]
+                }, {
+                    "name": "Price",
+                    "values": [3]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "147150041",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-147150041.png",
+                "keywords": ["frozen", "potatoes", "onions"],
+                "price": 3,
+                "url": "/",
+                "weighted_keywords": {
+                    "fries": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Ore-Ida Golden Crinkle Cut French Fries - 32 Oz"
+        }, {
+            "data": {
+                "description": "Tender white meat chicken. Golden flaky crust made from scratch. From my kitchen to yours since 1948. Inspected for wholesomeness by US Department of Agriculture. No. 1 selling premium pot pie brand. Marie's Promise: No preservatives; no artificial flavors. how2recycle.info. Questions or comments, visit us at www.mariecallendersmeals.com or call Mon-Fri, 1-800-595-7010 (except national holidays). Please have entire package available when you call so we may gather information off the label.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Marie Callenders"]
+                }, {
+                    "name": "Price",
+                    "values": [2.67]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "960048283",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-960048283.png",
+                "keywords": ["frozen", "meals"],
+                "price": 2.67,
+                "url": "/",
+                "weighted_keywords": {
+                    "chicken": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Marie Callenders Entree Pot Pie Chicken - 10 Oz"
+        }, {
+            "data": {
+                "description": "Seasoned, shredded potatoes. Oregon & Idaho. Quality since 1952. 0 g trans fat per serving. 160 calories per serving. Gluten free. Made from 100% real potatoes. Grade A. Pick. Prep. Cook. Share the Great American Potato with Your Family: Proudly nestled on the Oregon-Idaho border, Ore-Ida potato experts have been serving locally grown taters from the heartland of potato country since 1952. All our crispy, golden, grade A fries are made from 100% real, fresh peeled, American grown potatoes. We take great care to cut, season, and freeze them in under an hour to lock in all the delicious, freshly cooked flavor. Your family deserves the highest quality because, if it's not grade A; it's not Ore-Ida! The Ore-Ida brand is committed to providing the highest quality products. We welcome your comments. Please have the package with you when you call. Phone Us: 1-800-892-2401 Monday - Friday. Visit Us Online: www.oreida.com for delicious recipes. Write Us: Heinz North America, Consumer Affairs, P",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Ore-Ida"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Gluten Free", "Kosher"]
+                }, {
+                    "name": "Price",
+                    "values": [3]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "147150039",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-147150039.png",
+                "keywords": ["frozen", "potatoes", "onions"],
+                "price": 3,
+                "url": "/",
+                "weighted_keywords": {
+                    "potatoes": 2,
+                    "seasoned": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Ore-Ida Potatoes Shredded Seasoned Tater Tots - 32 Oz"
+        }, {
+            "data": {
+                "description": "USDA organic. Meets Highest Standards for: No GMOs. Per 1 Cup: 25 calories; 0 g sat fat (0% DV); 20 mg sodium (1% DV); 1 sugars. Organic from the Source: Doesn't it feel good to know where your food comes from? At O Organics, we carefully select producers who meet the highest organic farming standards and share our commitment to sustainable agriculture. Delicious food, purely grown. That's our promise. Quality & satisfaction 100% guaranteed or you money back. Certified Organic: Quality Assurance International. Certified organic by Quality Assurance International. Product of Mexico.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["O Organics"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Kosher", "Organic"]
+                }, {
+                    "name": "Price",
+                    "values": [2.5]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "147010038",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-147010038.png",
+                "keywords": ["frozen", "vegetables"],
+                "price": 2.5,
+                "url": "/"
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "O Organics Organic Petite Broccoli Florets - 16 Oz"
+        }, {
+            "data": {
+                "description": "Freshly made pasta layered between a rich meat sauce and topped with real mozzarella cheese. Freshly made, simply frozen. No preservatives. Topped with freshly grated mozzarella. Per Package: 350 calories; 6 g sat fat (30% DV); 820 mg sodium (34% DV); 6 g sugars; 20 g protein (37% DV); calcium (20% DV). See nutrition information for sat fat & sodium content. US inspected and passed by Department of Agriculture. Nutritional Compass: Nestle - Good food, good life. Questions for Our Kitchen: Who are the experts behind Stouffer's Lasagna? Answers from Our Cooks: It's a team effort. Farmers grow the tomatoes and our cooks make the pasta from scratch and hand-layer each and every noodle. We figure it's just a little something we can do for you so you can enjoy more time with your own team. More Food for Thought: Our food is freshly made by our cooks, then flash frozen. That means the freshness, great taste and nutrients are protected and there's absolutely no need for preservatives. Talk Fo",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Stouffers"]
+                }, {
+                    "name": "Price",
+                    "values": [3.33]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010064",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010064.png",
+                "keywords": ["frozen", "meals"],
+                "price": 3.33,
+                "url": "/",
+                "weighted_keywords": {
+                    "lasagna": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "STOUFFERS Classics Meal Lasagna with Meat & Sauce - 10.5 Oz"
+        }, {
+            "data": {
+                "description": "Freshly made pasta in a real cheddar cheese sauce. No preservatives. 100% real cheese. Per 1 Cup Serving: 320 calories; 6 g sat fat (30% DV); 810 sodium (34% DV); 4 g sugars; 14 g protein (22% DV); calcium (25% DV). See nutrition information for total fat, sat fat & sodium content. Freshly made, simply frozen. No: high fructose corn syrup; artificial flavors. Nutritional Compass: Nestle - Good food, good life. Questions for Our Kitchen: What's the secret behind the deliciousness of Stouffer's Macaroni & Cheese? Answers from Our Cooks: It's not secret that we use real cheddar and pasta that we freshly make, from scratch. It's our way of helping you put the mmmm in mac & cheese. More Food for Thought: Add our own twist to our mac & cheese with toppings like chicken, bacon, broccoli, fresh diced tomatoes, hot sauce, bread crumbs - we could go on, but you get the idea. Talk Food with Us: Hungry for more info? Text or call us, we'd love to chat. 1-800-225-1180. Visit us at Nestleusa.com. Fa",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Stouffers"]
+                }, {
+                    "name": "Price",
+                    "values": [2.5]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010125",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010125.png",
+                "keywords": ["frozen", "meals"],
+                "price": 2.5,
+                "url": "/",
+                "weighted_keywords": {
+                    "macaroni": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "STOUFFERS Simple Dishes Meal Macaroni & Cheese - 12 Oz"
+        }, {
+            "data": {
+                "description": "Pepperoni made with pork, chicken and beef. Premium quality. Crispy, airy, flaky layers. Made with real 100% cheese. Real. US inspected and passed by Department of Agriculture. It all starts with the perfect crust. Not too thick, not too thin, with just the right amount of crunch. Recyclable. Recycling programs for this package may not exist in your area. For information or questions call 1-800-769-7980. RedBaron.com. Facebook.com/redbaronpizza. Made in USA.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Red Baron"]
+                }, {
+                    "name": "Price",
+                    "values": [3.33]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148050066",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148050066.png",
+                "keywords": ["frozen", "multi", "serve", "pizza"],
+                "price": 3.33,
+                "url": "/",
+                "weighted_keywords": {
+                    "pizza": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Red Baron Frozen Pizza Classic Crust Pepperoni Pizza - 20.60 Oz"
+        }, {
+            "data": {
+                "description": "Goodness! That's tasty. Colors & flavors from natural sources. 10 vitamins & minerals. Per 2 Waffles: 180 calories; 1.5 g sat fat (8% DV); 360 mg sodium (15% DV); 2 g sugars. Goodness from our kitchens. Made with delicious ingredients for the taste you love. Kellogg's Family Rewards: Collect points. Earn rewards. Two easy ways to collect points! Go to KFR.com to learn more. Certified 100% recycled paperboard. how2recycle.info. Questions or comments? Visit kelloggs.com. Call 1-800-962-1413. Provide production code on package. Facebook: Facebook.com/eggo. Proud sponsor.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Eggo"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Kosher"]
+                }, {
+                    "name": "Price",
+                    "values": [2.5]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "145010101",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-145010101.png",
+                "keywords": ["pancakes", "waffles"],
+                "price": 2.5,
+                "url": "/"
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Eggo Waffles Homestyle - 12.3 Oz"
+        }, {
+            "data": {
+                "description": "French fried potatoes. Oregon & Idaho (Share the great American potato with your family). Quality since 1952. 0 g trans fat per serving. Gluten free. A cholesterol free food. Made from 100% real potatoes. Grade A. Pick. Prep. Cook. Share the great American potato with your family. Proudly nestled on the Oregon-Idaho border, Ore-Ida potato experts have been serving locally grown taters from the heartland of potato country since 1952. All our crispy, golden, Grade A fries are made from 100% real, fresh peeled, American grown potatoes. We take great care to cut, season, and freeze them in under an hour to lock in all the delicious, freshly cooked flavor. Your family deserves the highest quality because, if it's not Grade A, it's not Ore-Ida! The Ore-Ida Brand is committed to providing the highest quality products. We welcome your comments. Please have the package with you when you call. Phone Us: 1-800-892-2401 Monday-Friday. Visit Us Online: www.oreida.com for delicious recipes. Write Us",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Ore-Ida"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Gluten Free", "Kosher"]
+                }, {
+                    "name": "Price",
+                    "values": [3]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "147150021",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-147150021.png",
+                "keywords": ["frozen", "potatoes", "onions"],
+                "price": 3,
+                "url": "/",
+                "weighted_keywords": {
+                    "fries": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Ore-Ida Potatoes French Fried Fast Food Fries Extra Crispy - 26 Oz"
+        }, {
+            "data": {
+                "description": "Savory meatloaf with gravy & creamy red skin mashed potatoes. 20 g protein. No preservatives. US inspected and passed by Department of Agriculture. Per Package: 240 calories; 3.5 g sat fat (18% DV); 540 mg sodium (23% DV); 4 g sugars; 20 g protein (23% DV). Our Promise: Made from scratch. No preservatives. Freshly made, simply frozen. Good food, good life. What's Cooking? How does Lean Cuisine make delicious so nutritious? Get the Dish: Oh, hello protein. This powerful punch of flavor provides 20 grams of protein. Who knew! On Your Plate: Forget diamonds. Protein is a girl's best friend. Enjoying protein in your diet helps keep you satisfied to stay on track. Lean On Us: leancuisine.com or nestleusa.com; 1-800-993-8625; Facebook. Nutritional Compass. Please recycle this carton. PointPlus: 6. This PointPlus value for this product was calculated by Nestle USA, Inc. and is provided for informational purposes only. This is not an endorsement, sponsorship or approval of this product or its",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Lean Cuisine"]
+                }, {
+                    "name": "Price",
+                    "values": [3.33]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010404",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010404.png",
+                "keywords": ["frozen", "wellness", "meals"],
+                "price": 3.33,
+                "url": "/",
+                "weighted_keywords": {
+                    "meatloaf": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Lean Cuisine Comfort Entree Meatloaf with Mashed Potatoes - 9.375 Oz"
+        }, {
+            "data": {
+                "description": "Seasoned, shredded potatoes. Oregon & Idaho. Quality since 1952. 0 g trans fat per serving. Gluten free. A cholesterol free food. Made from 100% real potatoes. Grade A. Pick. Prep. Cook. Share the great American potato with your family. Proudly nestled on the Oregon-Idaho border, Ore-Ida potato experts have been serving locally grown taters from the heartland of potato country since 1952. All our crispy, golden, Grade A fries are made from 100% real, fresh peeled, American grown potatoes. We take great care to cut, season, and freeze them in under an hour to lock in all the delicious, freshly cooked flavor. Your family deserves the highest quality because, if it's not Grade A, it's not Ore-Ida! The Ore-Ida Brand is committed to providing the highest quality products. We welcome your comments. Please have the package with you when you call. Phone Us: 1-800-892-2401 Monday-Friday. Visit Us Online: www.oreida.com for delicious recipes. Write us: Heinz North America, Consumer Affairs PO Bo",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Ore-Ida"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Gluten Free", "Kosher"]
+                }, {
+                    "name": "Price",
+                    "values": [3]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "147150122",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-147150122.png",
+                "keywords": ["frozen", "potatoes", "onions"],
+                "price": 3,
+                "url": "/",
+                "weighted_keywords": {
+                    "potatoes": 2,
+                    "tots": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Ore-Ida Potatoes Shredded Seasoned Tater Tots Extra Crispy - 28 Oz"
+        }, {
+            "data": {
+                "description": "Ketchup-glazed meatloaf in gravy with mashed potatoes. No preservatives. Made with Russet potatoes & real sour cream. US inspected and passed by Department of Agriculture. Good food, good Life. Nutritional compass. Good Question? Can frozen mashed potatoes taste like homemade? Good to Know: Stouffer's mashed potatoes are made with real ingredients such as russet potatoes and sour cream. Good to Remember: Stouffer's is supported by the Nestle Research Center, one of the world's leading centers for nutrition, health and wellness. Good to Talk: stouffers.com, nestleusa.com. Please recycle this carton. This carton meets the standards of Sustainable forestry initiative. Certified fiber sourcing. www.sfiprogram.org. See what's cooking online.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Stouffers"]
+                }, {
+                    "name": "Price",
+                    "values": [3.33]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010333",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010333.png",
+                "keywords": ["frozen", "meals"],
+                "price": 3.33,
+                "url": "/"
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "STOUFFERS Classics Meal Meatloaf - 9.875 Oz"
+        }, {
+            "data": {
+                "description": "Tender spaghetti, tossed with a hearty tomato & meat sauce, highlighted with Italian style seasonings. No preservatives. US inspected and passed by Department of Agriculture. Good food, good life. Nutritional compass. Good Question? Does the type of tomatoes impact a red sauce? Good to Know: Stouffer's uses vine ripened tomatoes that are picked green and ripened off the vine. Good to Remember: Stouffer's is supported by the Nestle Research Center, one of the world's leading centers for nutrition, health and wellness. Good to Talk: stouffers.com, nestleusa.com. Please recycle this carton. This carton meets the standards of Sustainable forestry initiative. Certified fiber sourcing. www.sfiprogram.org. See what's cooking online.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Stouffers"]
+                }, {
+                    "name": "Price",
+                    "values": [3.33]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010997",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010997.png",
+                "keywords": ["frozen", "meals"],
+                "price": 3.33,
+                "url": "/",
+                "weighted_keywords": {
+                    "spaghetti": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "STOUFFERS Classics Meal Spaghetti With Meat Sauce - 12 Oz"
+        }, {
+            "data": {
+                "description": "White meat chicken and broccoli tossed in a creamy alfredo sauce on freshly made pasta. From my kitchen to yours since 1948. Made with real cream. No preservatives. Inspected for wholesomeness by US Department of Agriculture. Per Meal: 480 calories; 9 g sat fat (45% DV); 930 mg sodium (39% DV); 3 g sugars. Marie's Story: For Marie, cooking was always about sharing her love and care through delicious, wholesome homemade meals. That's why for over 60 years Marie Callender's has made no compromises and filled her Fettuccini with Chicken & Broccoli recipe with special touches and quality ingredients like premium white meat chicken, freshly made pasta and real cream. So every meal is truly a time to savor. Visit our website MarieCallendersMeals.com. Facebook: Connect with us on Facebook. Marie's Promise: No preservatives. No artificial flavors. For more information, go to www.conagrafoods.com/mwcooking or call 1-800-595-7010. how2recycle.info. Food you love. Questions or comments, visit us",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Marie Callenders"]
+                }, {
+                    "name": "Price",
+                    "values": [2.67]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010131",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010131.png",
+                "keywords": ["frozen", "meals"],
+                "price": 2.67,
+                "url": "/",
+                "weighted_keywords": {
+                    "fettuccini": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Marie Callenders Entree Fettuccini With Chicken & Broccoli - 13 Oz"
+        }, {
+            "data": {
+                "description": "With savory herb dressing & cinnamon apples. No artificial flavors. Per Package: 260 calories; 1 g sat fat (5% DV); 590 mg sodium (25% DV); 24 g sugars; 13 g protein (18% DV). Inspected for wholesomeness by US Department of Agriculture. Our Promise: Made with tender white meat turkey; cinnamon apples. Freshly made. Simply frozen. Nutritional Compass: Nestle - Good food, good life. What's Cooking? Where can I find delicious and nutritious dishes? Get the Dish: Look no further. Make each day more fantastic with these feel good classics from our Comforts line. On Your Plate: What better way to enjoy your Lean Cuisine dish than to pair it with a piece of fruit or salad. Get your balance on! Lean on Us: If you have questions about our ingredients, call us at 1-800-993-8625. leancuisine.com or nestleusa.com. Facebook. Please recycle this carton.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Lean Cuisine"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Low Fat"]
+                }, {
+                    "name": "Price",
+                    "values": [3.33]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010850",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010850.png",
+                "keywords": ["frozen", "wellness", "meals"],
+                "price": 3.33,
+                "url": "/"
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Lean Cuisine Comfort Entree Roasted Turkey Breast - 9.75 Oz"
+        }, {
+            "data": {
+                "description": "family pack 8 sandwiches. Fully cooked. Quality guaranteed-since 1969. Real breakfast, real fast. Made from authentic ingredients like real eggs, real cheese and premium quality pork. Please recycle. Sustainable Forestry Initiative: certified sourcing. www.sfiprogram.org. Quality guarantee - since 1969: At Jimmy Dean, we are committed to providing you with the best-tasting breakfast products, made with the highest quality ingredients. Jimmy Dean - quality you can trust. Your satisfaction is important to us. If you have any questions, call our consumer hotline. Visit us at www.jimmydean.com. Find great recipes, information about our products and food tips, too!",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Jimmy Dean"]
+                }, {
+                    "name": "Price",
+                    "values": [11.29]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "960041783",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-960041783.png",
+                "keywords": ["frozen", "breakfast", "entrees"],
+                "price": 11.29,
+                "url": "/",
+                "weighted_keywords": {
+                    "egg": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Jimmy Dean Sandwiches Croissant Sausage Egg & Cheese - 36 Oz"
+        }, {
+            "data": {
+                "description": "Microwaveable. Must be cooked thoroughly. See back for directions. Inspected for wholesomeness by US Department of Agriculture. For more information, go to www.Conagrafoods.com/mwcooking or call 1-800-257-5191. Questions or comments, visit us at www.banquet.com or call Mon-Fri., 9:00 am - 7:00 pm (CST), 1-800-257-5191 (except national holidays). Please have entire package available when you call so we may gather information off the label. ConAgra Foods - food you love.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Banquet"]
+                }, {
+                    "name": "Price",
+                    "values": [1.25]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010212",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010212.png",
+                "keywords": ["frozen", "meals"],
+                "price": 1.25,
+                "url": "/"
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Banquet Pot Pie Chicken - 7 Oz"
+        }, {
+            "data": {
+                "description": "Fresh frozen vegetables. Perfectly cooks in the bag! Mixtures. No preservatives. No artificial ingredients. Per 1 Cup Serving: 30 calories; 0 g sat fat (0% DV); 35 mg sodium (1% DV); 2 g sugars. Questions or comments? 888-327-9060 M-F 9:00 AM - 5:00 PM EST. www.BirdsEye.com. Mexico; USA.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Birds Eye"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Kosher"]
+                }, {
+                    "name": "Price",
+                    "values": [2.5]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "960229452",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-960229452.png",
+                "keywords": ["frozen", "vegetables"],
+                "price": 2.5,
+                "url": "/",
+                "weighted_keywords": {
+                    "cauliflower": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Birds Eye Steamfresh Mixtures Broccoli Cauliflower & Carrots Bag - 10.8 Oz"
+        }, {
+            "data": {
+                "description": "Fresh frozen vegetables. Perfectly cooks in the bag! No preservatives. No artificial ingredients. Per 1-1/3 Cups Serving: 30 calories; 0 g sat fat (0% DV); 20 mg sodium (1% DV); 2 g sugars. Questions or comments? 888-327-9060 M-F 9:00AM - 5:00PM EST. www.BirdsEye.com. Mexico.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Birds Eye"]
+                }, {
+                    "name": "Nutrition",
+                    "values": ["Kosher"]
+                }, {
+                    "name": "Price",
+                    "values": [2.5]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "960238361",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-960238361.png",
+                "keywords": ["frozen", "vegetables"],
+                "price": 2.5,
+                "url": "/"
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Birds Eye Steamfresh Premium Broccoli Florets Bag - 10.8 Oz"
+        }, {
+            "data": {
+                "description": "With a sour cream sauce & Mexican-style rice. No preservatives. Inspected for wholesomeness by US Department of Agriculture. Per Package: 280 calories; 2 g sat fat (10% DV); 520 mg sodium (22% DV); 7 g sugars. Freshly made, simply frozen. Good food, good life. What's Cooking? Where can I find delicious and nutritious dishes? Get the Dish: Looking for soulful comfort food or something with a bit of spice? Make each day more fantastic with these feel good classics from our Favorites line. On Your Plate: What better way to enjoy your Lean Cuisine dish than to pair it with a piece of fruit or salad. Get your balance on! Lean On Us: If you have questions about our ingredients, call us at 1-800-993-8625. leancuisine.com or nestleusa.com. Facebook. Nutritional Compass. Please recycle this carton. PointPlus: 7. This PointPlus value for this product was calculated by Nestle USA, Inc. and is provided for informational purposes only. This is not an endorsement, sponsorship or approval of this pro",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Lean Cuisine"]
+                }, {
+                    "name": "Price",
+                    "values": [2.5]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010710",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010710.png",
+                "keywords": ["frozen", "wellness", "meals"],
+                "price": 2.5,
+                "url": "/",
+                "weighted_keywords": {
+                    "suiza": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Lean Cuisine Favorites Enchilada Chicken Suiza - 9 Oz"
+        }, {
+            "data": {
+                "description": "Breaded white meat chicken & spaghetti with marinara sauce. Inspected for wholesomeness by US Department of Agriculture. 20 g of protein. The beautiful foods company. We'd love to hear from you! Call us at 1-855-871-9977 (M-F) or visit www.BostonMarketatHome.com.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Boston Market"]
+                }, {
+                    "name": "Price",
+                    "values": [3.33]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148010398",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148010398.png",
+                "keywords": ["frozen", "meals"],
+                "price": 3.33,
+                "url": "/"
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Boston Market Home Style Meals Chicken Parmesan - 13.1 Oz"
+        }, {
+            "data": {
+                "description": "Ready in 6 minutes. Microwave in bag. Per 1 Cup: 25 calories; 0 g sat fat (0% DV); 20 mg sodium (1% DV); 1 g sugars. Quality guaranteed. www.betterlivingbrandsLLC.com. Our Promise: Quality & satisfaction 100% guaranteed or your money back.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Signature Kitchens"]
+                }, {
+                    "name": "Price",
+                    "values": [2.29]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "147010216",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-147010216.png",
+                "keywords": ["frozen", "vegetables"],
+                "price": 2.29,
+                "url": "/",
+                "weighted_keywords": {
+                    "steam": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Signature Kitchens Broccoli Florets Petite Steam In Bag - 12 Oz"
+        }, {
+            "data": {
+                "description": "18 g of protein. US inspected and passed by Department of Agriculture. The beautiful foods company. We'd love to hear from you! Call us at 1-855-871-9977 (M-F) or visit www.BostonMarketatHome.com.",
+                "facets": [{
+                    "name": "Brand",
+                    "values": ["Boston Market"]
+                }, {
+                    "name": "Price",
+                    "values": [3.33]
+                }],
+                "groups": [{
+                    "display_name": "Frozen Foods",
+                    "group_id": "Frozen%20Foods",
+                    "path": "/all",
+                    "path_list": [{
+                        "display_name": "All",
+                        "id": "all"
+                    }]
+                }],
+                "id": "148011403",
+                "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-148011403.png",
+                "keywords": ["frozen", "meals"],
+                "price": 3.33,
+                "url": "/",
+                "weighted_keywords": {
+                    "meatloaf": 2
+                }
+            },
+            "is_slotted": false,
+            "matched_terms": [],
+            "value": "Boston Market Home Style Meals Meatloaf with Mashed Potatoes & Traditional Brown Gravy - 14 Oz"
+        }],
+        "sort_options": [],
+        "total_num_results": 999
+    },
+    "result_id": "67d621ae-721c-48eb-88e4-12d415bd390c"
+}
