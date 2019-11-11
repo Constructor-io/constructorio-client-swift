@@ -2,8 +2,8 @@
 //  UIFont+AppFonts.swift
 //  UserApplication
 //
-//  Created by Nikola Markovic on 10/25/19.
-//  Copyright © 2019 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import UIKit
