@@ -124,4 +124,8 @@ extension RequestBuilder {
     func set(itemID: String) {
         queryItems.add(URLQueryItem(name: Constants.Recommendations.itemID, value: itemID))
     }
+    
+    func set(itemIDs: [String]) {
+        queryItems.add(key: Constants.Recommendations.itemID, items: itemIDs.map { URLQueryItem(name: Constants.Recommendations.itemID, value: $0) })
+    }
 }

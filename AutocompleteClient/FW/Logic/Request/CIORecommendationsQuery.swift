@@ -9,23 +9,23 @@
 import Foundation
 
 public struct CIORecommendationsQuery: CIORequestData {
-    public let maximumNumberOfResult: Int
     public let pod: String
-    public let itemID: String
+    public let itemIDs: [String]
+    public let maximumNumberOfResult: Int
     
     func url(with baseURL: String) -> String {
         return String(format: Constants.Query.queryStringFormat, Constants.Query.baseURLString, Constants.Recommendations.recommendationsPathComponent,
                       self.pod)
     }
 
-    public init(pod: String, itemID: String, maximumNumberOfResult: Int) {
+    public init(pod: String, itemIDs: [String], maximumNumberOfResult: Int) {
         self.pod = pod
-        self.itemID = itemID
+        self.itemIDs = itemIDs
         self.maximumNumberOfResult = maximumNumberOfResult
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(numResults: self.maximumNumberOfResult)
-        requestBuilder.set(itemID: self.itemID)
+        requestBuilder.set(itemIDs: self.itemIDs)
     }
 }
