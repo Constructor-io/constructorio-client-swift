@@ -10,5 +10,8 @@ import Foundation
 
 public struct CIORecommendationsResponse{
     public let pod: Pod
-    public let searchResponse: CIOSearchResponse
+    public let results: [RecommendationResult]
+    public let sortOptions: [SortOption]
+    public let resultCount: Int
+    public let resultID: String
 }

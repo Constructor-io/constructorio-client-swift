@@ -1,6 +1,6 @@
 //
 //  Pod.swift
-//  AutocompleteClient
+//  ConstructorAutocomplete
 //
 //  Copyright © Constructor.io. All rights reserved.
 //  http://constructor.io/

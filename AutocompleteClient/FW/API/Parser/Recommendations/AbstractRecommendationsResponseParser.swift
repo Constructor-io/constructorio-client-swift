@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AbstractRecommendationsResponseParser {
-    func parse(searchResponseParser: AbstractSearchResponseParser, recommendationsResponseData: Data) throws -> CIORecommendationsResponse
+    func parse(recommendationsResponseData: Data) throws -> CIORecommendationsResponse 
 }

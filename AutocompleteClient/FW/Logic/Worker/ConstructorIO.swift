@@ -325,7 +325,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     private func parseRecommendations(_ recommendationsResponseData: Data) throws -> CIORecommendationsResponse {
-        return try self.recommendationsParser.parse(searchResponseParser: self.searchParser, recommendationsResponseData: recommendationsResponseData)
+        return try self.recommendationsParser.parse(recommendationsResponseData: recommendationsResponseData)
     }
 
     // MARK: CIOSessionManagerDelegate

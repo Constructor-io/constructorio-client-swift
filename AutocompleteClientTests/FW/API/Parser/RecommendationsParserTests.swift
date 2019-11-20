@@ -1,0 +1,57 @@
+//
+//  RecommendationsParserTests.swift
+//  AutocompleteClientTests
+//
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
+//
+
+import XCTest
+@testable import ConstructorAutocomplete
+
+class RecommendationsParserTests: XCTestCase {
+
+    var parser: RecommendationsResponseParser!
+
+    override func setUp() {
+        self.parser = RecommendationsResponseParser()
+    }
+
+
+    func testRecommendationsParser_parsingNonJSONData_ThrowsAnException() {
+        let failWithMessage = "Passing invalid JSON data should throw a CIOError.InvalidResponse"
+        let invalidData = "a beautiful day".data(using: String.Encoding.utf8)!
+        do {
+            _ = try self.parser.parse(recommendationsResponseData: invalidData)
+            XCTFail(failWithMessage)
+        } catch CIOError.invalidResponse {
+            XCTAssertTrue(true)
+        } catch {
+            XCTFail(failWithMessage)
+        }
+    }
+
+    func testRecommendationsParser_ParsingJSONString_WithInvalidStructure_ThrowsAnException() {
+      let failWithMessage = "Passing valid JSON with invalid structure should throw a CIOError.InvalidResponse"
+      let validJSONData = "{ \"key\": \"value\" }".data(using: String.Encoding.utf8)!
+      do {
+          _ = try self.parser.parse(recommendationsResponseData: validJSONData)
+          XCTFail(failWithMessage)
+      } catch CIOError.invalidResponse {
+          XCTAssertTrue(true)
+      } catch {
+          XCTFail(failWithMessage)
+      }
+    }
+
+    func testRecommendationsParser_ParsingJSONString_HasCorrectResultCount() {
+      let data = TestResource.load(name: TestResource.Response.recommendationsJSONFilename)
+      do {
+          let response = try self.parser.parse(recommendationsResponseData: data)
+          XCTAssertEqual(response.results.count, TestResource.Response.numberOfResultsInRecommendationsResponse, "Number of parsed results should match the JSON response")
+      } catch {
+          XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+      }
+    }
+
+}
