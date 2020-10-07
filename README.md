@@ -52,7 +52,7 @@ Make sure to import the `ConstructorAutocomplete` module at the top of your sour
 // Create the client config
 let config = ConstructorIOConfig(
    apiKey: "YOUR API KEY",
-   resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]),
+   resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0])
 )
 
 // Create the client instance
@@ -90,6 +90,7 @@ constructor.search(forQuery: query) { (response) in
 ```
 
 ## 6. Request Browse Events
+
 ```swift
 // Coming end of October
 ```
@@ -118,6 +119,7 @@ constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth"
 ```
 
 ### Search Events
+
 ```swift
 sxc// Track when search results are loaded into view
 constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789)
