@@ -7,6 +7,7 @@ An iOS Client for [Constructor.io](http://constructor.io/).  [Constructor.io](ht
 ## 1. Import
 
 ### 1.a Import using CocoaPods
+
 First make sure you have [CocoaPods installed](https://guides.cocoapods.org/using/getting-started.html).  Then create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:
 
 ```use_frameworks!
@@ -22,6 +23,7 @@ pod install
 ```
 
 ### 1.b Import using Carthage
+
 First, make sure you have [Carthage installed](https://github.com/Carthage/Carthage#installing-carthage). Then create an empty text file called ‘Cartfile’ in your project root directory. Now, add the following lines:
 
 ```
@@ -39,171 +41,60 @@ Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project
 <img src="https://constructor.io/images/ios_screenshots/ss_copy_frameworks.png" width="60%">
 
 ## 2. Retrieve an API key
+
 You can find this in your [Constructor.io dashboard](https://constructor.io/dashboard).  Contact sales if you'd like to sign up, or support if you believe your company already has an account.
 
-## 3. Implement the Autocomplete UI
+## 3. Create a Client Instance
+
 Make sure to import the `ConstructorAutocomplete` module at the top of your source file and then write the following
 
 ```swift
-// Create the config
+// Create the client config
 let config = ConstructorIOConfig(
    apiKey: "YOUR API KEY",
-   resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0])
+   resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]),
 )
 
-// Instantiate the autocomplete controller
-let viewController = CIOAutocompleteViewController(config: config)
+// Create the client instance
+let constructor = ConstructorIO(config: config)
 
-// set the delegate to react to user events... must conform to `CIOAutocompleteDelegate`
-viewController.delegate = self
-
-// set the delegate to customize the ui ... must conform to `CIOAutocompleteUICustomization`
-viewController.uiCustomization = self
-
-// push the view controller to the stack
-self.navigationController.pushViewController(viewController, animated: true)
+// Set the user ID (if a logged in and known user) for cross device personalization
+constructor.userID = "abcdefghijk-123"
 ```
 
-You should now see your autocomplete view controller.  `CIOAutocompleteDelegate` contains methods that notify you about autocomplete events and control autocomplete results. We’ll touch on a couple of them.
-
-### Selecting Results
-To respond to a user selecting an autocomplete result, implement the `didSelectResult` method.  The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.
-
-If the autocomplete result has both a suggested term to search for and a group to search within (as in `Apples in Juice Drinks`), the group will be a property of the result.
-
-``` swift
-func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
-   if let group = result.group {
-      // user tapped on search-in-group result
-      print("User tapped on \(result.autocompleteResult.value) in group \(group.displayName)")
-   }else {
-      // user tapped on an autocomplete result
-      print("User tapped on \(result.autocompleteResult.value)")
-   }
-}
-```
-
-### Performing Searches
-To respond to a user performing a search (instead of selecting an autocomplete result), implement the `didPerformSearch` method. The view controller will not dismiss automatically. It’s entirely up to you whether you’d like to push another controller to the stack or dismiss the existing one and do something with the result.
-
-``` swift
-func autocompleteController(controller: CIOAutocompleteViewController, didPerformSearch searchTerm: String) {
-   print("User searched for \(searchTerm)")
-}
-```
-
-### Filtering Results
-To filter out certain results or groups, implement the `shouldParseResult` method.
+## 4. Request Autocomplete Results
 
 ```swift
-func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool {
-   // ignore all results that contain the word "guitar"
-   if result.value.contains("guitar") {
-      return false
-   }
-
-   return true
+let query = CIOAutocompleteQuery(query: "Dav")
+constructor.autocomplete(forQuery: query) { (response) in
+  let data = response.data!
+  let error = response.error!
+  // ...
 }
 ```
 
-## 4. Customize the Autocomplete UI
-The `CIOAutocompleteUICustomization` protocol contains methods to customize the look and feel of the autocomplete interface.
-
-### Customizing the Search Bar
-You can customize how UISearchController behaves in the autocomplete controller by implementing the `customizeSearchController` method.
+## 5. Request Search Results
 
 ```swift
-func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController) {
-    // customize search bar
-    searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
-    searchController.searchBar.returnKeyType = .search
-
-    // customize search controller behaviour
-    searchController.dimsBackgroundDuringPresentation = false
-    searchController.hidesNavigationBarDuringPresentation = true
+let filters = SearchFilters(groupFilter: "Bread", facetFilters: [
+  (key: "Nutrition", value: "Organic"),
+  (key: "Nutrition", value: "Natural"),
+  (key: "Nutrition", value: "Whole-grain")
+])
+let query = CIOSearchQuery(query: "Dave's Bread", page: 5, filters: filters)
+constructor.search(forQuery: query) { (response) in
+  let data = response.data!
+  let error = response.error!
+  // ...
 }
 ```
 
-### Customizing Results With Methods
-The framework provides default `UITableViewCells` in which the results will be shown. You can customize these cells by implementing the following methods:
-
+## 6. Request Browse Events
 ```swift
-func styleResultLabel(label: UILabel, in autocompleteController: CIOAutocompleteViewController) {
-    label.backgrounColor = UIColor.clear
-}
-
-func styleResultCell(cell: UITableViewCell, indexPath: IndexPath, in autocompleteController: CIOAutocompleteViewController) {
-    cell.contentView.backgroundColor = UIColor.lightGray
-}
-
-func fontNormal(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
-    return UIFont.systemFont(ofSize: 15)
-}
-
-func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
-    return UIFont.boldSystemFont(ofSize: 15)
-}
+// Coming end of October
 ```
 
-### Customizing Results With Cells
-If you decide to use a fully custom cell, you can either pass the UINib using
-
-```swift
-func customCellNib(in autocompleteController: CIOAutocompleteViewController) -> UINib {
-    return UINib(nibName: "CustomTableViewCell", bundle: nil)
-}
-```
-
-... or the custom cell class, if your cell is instantiated in code
-
-```swift
-func customCellClass(in autocompleteController: CIOAutocompleteViewController) -> AnyClass {
-    return MyCustomCell.self
-}
-```
-
-Your custom cells must conform to the `CIOAutocompleteCell` protocol.
-
-```swift
-class MyCustomCell: UITableViewCell, CIOAutocompleteCell {
-    @IBOutlet weak var imageViewIcon: UIImageView!
-    @IBOutlet weak var labelText: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
-        self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.value)
-        self.imageViewIcon.image = UIImage(named: "icon-autocomplete")
-    }
-}
-```
-
-The framework will call this method on your cell and pass the necessary data.
-
-<img src="https://constructor.io/images/ios_screenshots/ss_custom_cell.png" width="60%">
-
-### Customizing the Background View
-The background view appears behind your autocomplete results. You can replace the default  view by implementing the `backgroundView` method.
-
-```swift
-func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView?{
-    return MyCustomBackgroundView()
-}
-```
-
-### Customizing the Error View
-The error view appears if an error occurs when requesting autocomplete results.  No default error view exists but you can add one by implementing the `errorView` method. Your custom error view must conform to the `CIOErrorView` protocol.
-
-```swift
-func errorView(in autocompleteController: CIOAutocompleteViewController) -> UIView?{
-    return MyCustomErrorView()
-}
-```
-
-## 5. Instrument Behavioral Events
+## 7. Instrument Behavioral Events
 
 The iOS Client sends behavioral events to [Constructor.io](http://constructor.io/) in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.
 
@@ -215,12 +106,7 @@ Three types of these events exist:
 
 ### Autocomplete Events
 
-If you decide to use the `CIOAutocompleteViewController`, these events are sent automatically.
-
 ```swift
-// Create an instance of the worker
-let constructorIO = ConstructorIO(config: config)
-
 // Track when the user focuses into the search bar
 constructorIO.trackInputFocus(searchTerm: "")
 
@@ -232,20 +118,14 @@ constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth"
 ```
 
 ### Search Events
-
-These events should be sent manually by the consuming app.
-
 ```swift
-// Access the worker from view controller
-let constructorIO = viewController.constructorIO
-
-// Track when search results are loaded into view
+sxc// Track when search results are loaded into view
 constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789)
 
 // Track when a search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth")
 
-// Track when a search result converts
+// Track when a search result converts (a.k.a. is added to cart)
 constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth")
 
 // Track when products are purchased
