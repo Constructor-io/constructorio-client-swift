@@ -119,7 +119,7 @@ constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth"
 ### Search Events
 
 ```swift
-sxc// Track when search results are loaded into view
+// Track when search results are loaded into view
 constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789)
 
 // Track when a search result is clicked
