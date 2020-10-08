@@ -100,8 +100,8 @@ The iOS Client sends behavioral events to [Constructor.io](http://constructor.io
 Three types of these events exist:
 
 1. **General Events** are sent as needed when an instance of the Client is created or initialized
-1. **Autocomplete Events** measure user interaction with autocomplete results and the `CIOAutocompleteViewController` sends them automatically.
-1. **Search Events** measure user interaction with search results and the consuming app has to explicitly instrument them itself
+1. **Autocomplete Events** measure user interaction with autocomplete results
+1. **Search Events** measure user interaction with search results
 
 ### Autocomplete Events
 
