@@ -1,5 +1,5 @@
 //
-//  SearchResultFacet.swift
+//  CIOResultFacet.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SearchResultFacet {
+public struct CIOResultFacet {
     public let name: String
     public let values: [String]
 

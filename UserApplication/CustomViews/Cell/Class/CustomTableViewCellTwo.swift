@@ -12,7 +12,7 @@ import ConstructorAutocomplete
 class CustomTableViewCellTwo: UITableViewCell, CIOAutocompleteCell {
 
     func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
-        if let group = result.group{
+        if let group = result.group {
             let groupString = NSMutableAttributedString()
             groupString.append(NSAttributedString(string: "  in ", attributes: highlighter.attributesProvider.defaultSubstringAttributes()))
             groupString.append(NSAttributedString(string: group.displayName, attributes: highlighter.attributesProvider.highlightedSubstringAttributes()))

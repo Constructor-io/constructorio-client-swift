@@ -60,7 +60,7 @@ public protocol CIOAutocompleteDelegate: class {
      - parameter group: A group in which the search should be performed.
      */
     @objc
-    optional func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool
+    optional func autocompleteController(controller: CIOAutocompleteViewController, shouldParseResult result: CIOResult, inGroup group: CIOGroup?) -> Bool
 
     /**
       Maximum number of items in group to be displayed for an item at index. Does not get called for the base item(with nil group). By default, 2 items are shown for the first item(itemIndex=0) and 0 for every other.
@@ -70,7 +70,7 @@ public protocol CIOAutocompleteDelegate: class {
      - parameter itemIndex: Index of an item being displayed.
      */
     @objc
-    optional func autocompleteController(controller: CIOAutocompleteViewController, maximumGroupsShownPerResult result: CIOAutocompleteResult, itemIndex: Int) -> Int
+    optional func autocompleteController(controller: CIOAutocompleteViewController, maximumGroupsShownPerResult result: CIOResult, itemIndex: Int) -> Int
 
     /**
      Called when a results have been loaded.

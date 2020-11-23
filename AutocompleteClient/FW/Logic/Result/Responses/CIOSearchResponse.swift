@@ -12,12 +12,12 @@ import Foundation
  Struct representing the search data response from the server.
  */
 public struct CIOSearchResponse {
-    public let facets: [Facet]
-    public let results: [SearchResult]
+    public let facets: [CIOFilterFacet]
     public let groups: [CIOGroup]
-    public let redirectInfo: SearchRedirectInfo?
-    public let sortOptions: [SortOption]
-    public let resultCount: Int
+    public let results: [CIOResult]
+    public let redirectInfo: CIOSearchRedirectInfo?
+    public let sortOptions: [CIOSortOption]
+    public let totalNumResults: Int
     public let resultID: String
 
     public var isRedirect: Bool {

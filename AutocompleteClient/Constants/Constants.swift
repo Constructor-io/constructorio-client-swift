@@ -90,16 +90,6 @@ struct Constants {
         static let multiSectionResultField = "sections"
     }
 
-    struct Result {
-        static let data = "data"
-        static let value = "value"
-        static let description = "description"
-        static let groups = "groups"
-        static let displayName = "display_name"
-        static let groupID = "group_id"
-        static let path = "path"
-    }
-
     struct Track {
         static let httpMethod = "GET"
         static let apiKey = "key"

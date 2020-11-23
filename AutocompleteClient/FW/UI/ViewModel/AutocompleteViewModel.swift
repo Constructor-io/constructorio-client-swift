@@ -24,13 +24,11 @@ public class AutocompleteViewModel: AbstractAutocompleteViewModel {
         self.results = []
         self.searchTerm = ""
         self.screenTitle = Constants.UI.defaultScreenTitle
-
         self.handleResultQueue = OperationQueue()
-
         self.handleResultQueue.maxConcurrentOperationCount = 1
     }
 
-    public var lastResult: AutocompleteResult?
+    public var lastResult: CIOAutocompleteResult?
 
     internal func setupDataFromResult(result: AutocompleteResult) {
         self.searchTerm = result.query.query
@@ -40,9 +38,12 @@ public class AutocompleteViewModel: AbstractAutocompleteViewModel {
         self.delegate?.viewModel(self, didSetResult: result)
     }
 
-    internal func setResultFromDictionary(dictionary: [String: [CIOResult]]?) {
-        self.results = (dictionary ?? [:]).map { (section, items) in AutocompleteViewModelSection(items: items, sectionName: section) }
-                                          .sorted { (s1, s2) in self.modelSorter(s1.sectionName, s2.sectionName) }
+    internal func setResultFromDictionary(dictionary: [String: [AutocompleteResult]]?) {
+        self.results = (dictionary ?? [:]).map {
+            (section, items) in AutocompleteViewModelSection(items: items, sectionName: section)
+        }.sorted {
+            (s1, s2) in self.modelSorter(s1.sectionName, s2.sectionName)
+        }
     }
 
     public func set(searchResult: AutocompleteResult, completionHandler: @escaping () -> Void) {
