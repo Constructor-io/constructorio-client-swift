@@ -1,5 +1,5 @@
 //
-//  CIOResult+Mock.swift
+//  CIOAutocompleteResult+Mock.swift
 //  AutocompleteClientTests
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,11 +9,11 @@
 import XCTest
 import ConstructorAutocomplete
 
-public extension CIOResult {
+public extension CIOAutocompleteResult {
 
-    class func mock(withValue value: String, group: CIOGroup? = nil) -> CIOResult {
+    class func mock(withValue value: String, group: CIOGroup? = nil) -> CIOAutocompleteResult {
         let json: [String: Any] = TestResource.load(name: TestResource.Response.singleResultJSONFilename).toJSONDictionary()!
-        return CIOResult(autocompleteResult: CIOAutocompleteResult(json: json)!, group: group)
+        return CIOAutocompleteResult(autocompleteResult: CIOResult(json: json)!, group: group)
     }
 
 }

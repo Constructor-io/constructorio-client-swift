@@ -18,7 +18,7 @@ public protocol AbstractAutocompleteViewModel {
 
     func set(searchResult: AutocompleteResult, completionHandler: @escaping () -> Void)
 
-    func getResult(atIndexPath indexPath: IndexPath) -> CIOResult
+    func getResult(atIndexPath indexPath: IndexPath) -> CIOAutocompleteResult
     func getSectionName(atIndex index: Int) -> String
 
 }

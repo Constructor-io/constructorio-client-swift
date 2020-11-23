@@ -9,6 +9,6 @@
 import Foundation
 
 protocol ResponseParserDelegate: class {
-    func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool?
-    func maximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int
+    func shouldParseResult(result: CIOResult, inGroup group: CIOGroup?) -> Bool?
+    func maximumGroupsShownPerResult(result: CIOResult, at index: Int) -> Int
 }

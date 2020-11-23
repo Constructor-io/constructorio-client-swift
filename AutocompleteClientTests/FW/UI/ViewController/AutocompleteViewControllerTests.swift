@@ -143,7 +143,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
 
         let query = CIOAutocompleteQuery(query: "query")
         let autocompleteResult = AutocompleteResult(query: query)
-        let results = (0...5).map { CIOResult.mock(withValue: "value\($0)") }
+        let results = (0...5).map { CIOAutocompleteResult.mock(withValue: "value\($0)") }
         let sections = ["firstResponseSection": results]
         let response = CIOAutocompleteResponse(sections: sections, metadata: [:], json: [:])
         autocompleteResult.response = response
@@ -156,7 +156,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
                 self.expectation = expectation
             }
 
-            func autocompleteController(controller: CIOAutocompleteViewController, willDisplayResult result: CIOResult, at indexPath: IndexPath) {
+            func autocompleteController(controller: CIOAutocompleteViewController, willDisplayResult result: CIOAutocompleteResult, at indexPath: IndexPath) {
                 if indexPath.row == 4 {
                     self.expectation.fulfill()
                 }
@@ -301,7 +301,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
         return self.backgroundView
     }
 
-    func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
+    func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOAutocompleteResult) {
         self.expectationSelectResult?.fulfill()
     }
 

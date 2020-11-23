@@ -169,15 +169,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         return backgroundView
     }
     
-    func autocompleteController(controller: CIOAutocompleteViewController, didLoadResults results: [CIOResult], for searchTerm: String) {}
+    func autocompleteController(controller: CIOAutocompleteViewController, didLoadResults results: [CIOAutocompleteResult], for searchTerm: String) {}
     
-    func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
+    func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOAutocompleteResult) {
         print("item selected \(result)")
         
         self.constructorIO = controller.constructorIO
         
         if let navigationController = self.window?.rootViewController as? UINavigationController{
-            let viewModel = SearchViewModel(term: result.autocompleteResult.value, group: result.group, constructorProvider: self, cart: self.cart)
+            let viewModel = SearchViewModel(term: result.result.value, group: result.group, constructorProvider: self, cart: self.cart)
             let searchVC = SearchViewController(viewModel: viewModel, constructorProvider: self)
             navigationController.pushViewController(searchVC, animated: true)
         }

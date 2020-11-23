@@ -13,7 +13,7 @@ class DefaultSearchItemCellTests: XCTestCase {
 
     func testDefaultSearchCell_InstantiationAndSetup_WithoutGroup() {
         if let cell = UINib(nibName: "DefaultSearchItemCell", bundle: Bundle.testBundle()).instantiate(withOwner: nil, options: nil).first as? DefaultSearchItemCell {
-            let result = CIOResult.mock(withValue: "test")
+            let result = CIOAutocompleteResult.mock(withValue: "test")
 
             let font = UIFont.systemFont(ofSize: 12)
             let color = UIColor.red
@@ -24,7 +24,7 @@ class DefaultSearchItemCellTests: XCTestCase {
 
     func testDefaultSearchCell_InstantiationAndSetup_WithGroup() {
         if let cell = UINib(nibName: "DefaultSearchItemCell", bundle: Bundle.testBundle()).instantiate(withOwner: nil, options: nil).first as? DefaultSearchItemCell {
-            let result = CIOResult.mock(withValue: "test", group: CIOGroup.mock())
+            let result = CIOAutocompleteResult.mock(withValue: "test", group: CIOGroup.mock())
 
             let font = UIFont.systemFont(ofSize: 12)
             let color = UIColor.red

@@ -10,7 +10,7 @@ import XCTest
 import ConstructorAutocomplete
 
 extension CIOAutocompleteResponse {
-    func getSearchSuggestions() -> [CIOResult]? {
+    func getSearchSuggestions() -> [CIOAutocompleteResult]? {
         return self.sections["Search Suggestions"]
     }
 }

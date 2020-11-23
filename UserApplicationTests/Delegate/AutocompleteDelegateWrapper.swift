@@ -11,12 +11,12 @@ import ConstructorAutocomplete
 
 class AutocompleteDelegateWrapper: CIOAutocompleteDelegate {
 
-    var onSelect: ((_ result: CIOResult) -> Void)?
+    var onSelect: ((_ result: CIOAutocompleteResult) -> Void)?
     var onSearchPerformed: ((_ searchTerm: String) -> Void)?
     var onLoad: (() -> Void)?
     var onWillAppear: (() -> Void)?
 
-    func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOResult) {
+    func autocompleteController(controller: CIOAutocompleteViewController, didSelectResult result: CIOAutocompleteResult) {
         self.onSelect?(result)
     }
 
