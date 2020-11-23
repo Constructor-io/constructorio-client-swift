@@ -14,10 +14,10 @@ public typealias JSONObject = [String: Any]
  Struct representing the autocomplete data response from the server.
  */
 public struct CIOAutocompleteResponse {
-    public let sections: [String: [CIOAutocompleteResult]]
+    public let sections: [String: [CIOResult]]
     public let json: JSONObject
 
-    public init(sections: [String: [CIOAutocompleteResult]], json: JSONObject) {
+    public init(sections: [String: [CIOResult]], json: JSONObject) {
         self.sections = sections
         self.json = json
     }
