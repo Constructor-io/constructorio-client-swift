@@ -8,5 +8,6 @@ analyzer_rules:
 - unused_private_declaration
 disabled_rules:
 - line_length
+- identifier_name
 opt_in_rules:
 - control_statement

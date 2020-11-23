@@ -91,7 +91,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
         XCTAssertEqual(attributesProvider!.fontNormal, self.fontNormal)
     }
 
-    var fontNormal: UIFont = UIFont.systemFont(ofSize: 1)
+    var fontNormal = UIFont.systemFont(ofSize: 1)
     func fontNormal(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
         return self.fontNormal
     }
@@ -107,7 +107,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
         XCTAssertEqual(attributesProvider!.fontBold, self.fontBold)
     }
 
-    var fontBold: UIFont = UIFont.systemFont(ofSize: 1)
+    var fontBold = UIFont.systemFont(ofSize: 1)
     func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
         return self.fontBold
     }
@@ -296,7 +296,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
         self.expectation?.fulfill()
     }
 
-    var backgroundView: UIView = UIView(frame: .zero)
+    var backgroundView = UIView(frame: .zero)
     func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
         return self.backgroundView
     }

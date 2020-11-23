@@ -8,6 +8,8 @@ analyzer_rules:
 - unused_private_declaration
 disabled_rules:
 - line_length
+- identifier_name
+- number_separator
 opt_in_rules:
 - anyobject_protocol
 - array_init

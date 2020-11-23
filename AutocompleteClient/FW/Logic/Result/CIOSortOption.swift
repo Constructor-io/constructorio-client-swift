@@ -22,14 +22,13 @@ public extension CIOSortOption {
         guard let sortOrder = CIOSortOrder(rawValue: sortOrderStr) else { return nil }
         guard let sortBy = json["sort_by"] as? String else { return nil }
         guard let status = json["status"] as? String else { return nil }
-        
+
         self.displayName = displayName
         self.sortBy = sortBy
         self.sortOrder = sortOrder
         self.status = status
     }
 }
-
 
 public enum CIOSortOrder: String {
     case ascending

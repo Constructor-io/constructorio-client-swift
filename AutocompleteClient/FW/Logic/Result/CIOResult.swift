@@ -8,7 +8,8 @@
 
 import Foundation
 
-@objc public class CIOResult: NSObject {
+@objc
+public class CIOResult: NSObject {
     public let value: String
     public let data: CIOResultData
     public let matchedTerms: [String]

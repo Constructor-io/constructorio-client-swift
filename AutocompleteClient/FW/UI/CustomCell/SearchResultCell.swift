@@ -1,5 +1,5 @@
 //
-//  SearchResultCell.swift
+//  CIOAutocompleteCell.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.

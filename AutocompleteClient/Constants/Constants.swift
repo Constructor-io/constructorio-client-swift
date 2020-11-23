@@ -31,8 +31,8 @@ struct Constants {
         static let fireQueryDelayInSeconds: TimeInterval = 0.5
 
         struct Color {
-            static var defaultFontColorNormal: UIColor = UIColor(red: 0.61, green: 0.61, blue: 0.61, alpha: 1.0)
-            static var defaultFontColorBold: UIColor = UIColor.black
+            static var defaultFontColorNormal = UIColor(red: 0.61, green: 0.61, blue: 0.61, alpha: 1.0)
+            static var defaultFontColorBold = UIColor.black
         }
 
         struct Font {
