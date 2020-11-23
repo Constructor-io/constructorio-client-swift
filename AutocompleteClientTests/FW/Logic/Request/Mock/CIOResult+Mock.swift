@@ -13,7 +13,7 @@ public extension CIOAutocompleteResult {
 
     class func mock(withValue value: String, group: CIOGroup? = nil) -> CIOAutocompleteResult {
         let json: [String: Any] = TestResource.load(name: TestResource.Response.singleResultJSONFilename).toJSONDictionary()!
-        return CIOAutocompleteResult(autocompleteResult: CIOResult(json: json)!, group: group)
+        return CIOAutocompleteResult(result: CIOResult(json: json)!, group: group)
     }
 
 }

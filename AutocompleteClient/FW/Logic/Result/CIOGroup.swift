@@ -21,16 +21,11 @@ public class CIOGroup: NSObject {
     }
 
     init?(json: JSONObject) {
-        guard let name = json[Constants.Result.displayName] as? String else {
-            return nil
-        }
-
-        guard let groupID = json[Constants.Result.groupID] as? String else {
-            return nil
-        }
+        guard let name = json["display_name"] as? String else { return nil }
+        guard let groupID = json["group_id"] as? String else { return nil }
 
         self.displayName = name
         self.groupID = groupID
-        self.path = json[Constants.Result.path] as? String
+        self.path = json["path"] as? String
     }
 }

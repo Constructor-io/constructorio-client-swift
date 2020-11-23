@@ -40,14 +40,14 @@ public struct CIOSearchQuery: CIORequestData {
     public let page: Int
     public let section: String
     public let filters: SearchFilters?
-    public let sortOption: SortOption?
+    public let sortOption: CIOSortOption?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.Query.queryStringFormat, baseURL,
                       Constants.SearchQuery.pathString, query)
     }
 
-    public init(query: String, filters: SearchFilters? = nil, sortOption: SortOption? = nil, page: Int = 1, section: String? = nil) {
+    public init(query: String, filters: SearchFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, section: String? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page

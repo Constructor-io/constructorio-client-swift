@@ -145,7 +145,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
         let autocompleteResult = AutocompleteResult(query: query)
         let results = (0...5).map { CIOAutocompleteResult.mock(withValue: "value\($0)") }
         let sections = ["firstResponseSection": results]
-        let response = CIOAutocompleteResponse(sections: sections, metadata: [:], json: [:])
+        let response = CIOAutocompleteResponse(sections: sections, json: [:])
         autocompleteResult.response = response
 
         class MockDelegate: CIOAutocompleteDelegate {

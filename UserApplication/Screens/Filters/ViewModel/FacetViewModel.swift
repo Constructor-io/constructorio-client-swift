@@ -13,7 +13,7 @@ class FacetViewModel {
     let title: String
     var options: [FacetOptionViewModel]
 
-    convenience init(facet: Facet){
+    convenience init(facet: CIOFilterFacet){
         self.init(filterName: facet.displayName, options: facet.options.map(FacetOptionViewModel.init))
     }
 

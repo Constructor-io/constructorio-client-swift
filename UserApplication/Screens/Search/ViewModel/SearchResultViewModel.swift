@@ -19,7 +19,7 @@ public struct SearchResultViewModel{
     public let description: String
     public let fallbackImage: () -> UIImage
 
-    public init(searchResult: SearchResult){
+    public init(searchResult: CIOResult){
         self.title = searchResult.value
         self.price = searchResult.data.metadata["price"] as? Double ?? 0.00
         self.imageURL = searchResult.data.imageURL ?? ""

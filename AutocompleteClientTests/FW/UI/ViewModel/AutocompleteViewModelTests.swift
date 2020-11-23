@@ -36,12 +36,12 @@ class AutocompleteViewModelTests: XCTestCase {
 
         // mock out responses;
         let sections1 = ["firstResponseSection": [CIOAutocompleteResult.mock(withValue: "value1")]]
-        let firstResponse = CIOAutocompleteResponse(sections: sections1, metadata: [:], json: [:])
+        let firstResponse = CIOAutocompleteResponse(sections: sections1, json: [:])
         firstResult.response = firstResponse
 
         let secondResult = AutocompleteResult(query: query, timestamp: 20)
         let sections2 = ["secondResponseSection": [CIOAutocompleteResult.mock(withValue: "value2")]]
-        let secondResponse = CIOAutocompleteResponse(sections: sections2, metadata: [:], json: [:])
+        let secondResponse = CIOAutocompleteResponse(sections: sections2, json: [:])
         secondResult.response = secondResponse
 
         // set the delegate in order to list to viewModel events
@@ -80,12 +80,12 @@ class AutocompleteViewModelTests: XCTestCase {
         // TODO: Move eventually to extensions
         let firstResult = AutocompleteResult(query: query, timestamp: 20)
         let sections1 = ["firstResponseSection": [CIOAutocompleteResult.mock(withValue: "value1")]]
-        let firstResponse = CIOAutocompleteResponse(sections: sections1, metadata: [:], json: [:])
+        let firstResponse = CIOAutocompleteResponse(sections: sections1, json: [:])
         firstResult.response = firstResponse
 
         let secondResult = AutocompleteResult(query: query, timestamp: 10)
         let sections2 = ["secondResponseSection": [CIOAutocompleteResult.mock(withValue: "value2")]]
-        let secondResponse = CIOAutocompleteResponse(sections: sections2, metadata: [:], json: [:])
+        let secondResponse = CIOAutocompleteResponse(sections: sections2, json: [:])
         secondResult.response = secondResponse
 
         // set the delegate in order to list to viewModel events

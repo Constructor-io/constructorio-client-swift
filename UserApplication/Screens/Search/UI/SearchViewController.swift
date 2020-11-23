@@ -186,7 +186,7 @@ extension SearchViewController: FiltersSelectionDelegate{
 }
 
 extension SearchViewController: SortSelectionDelegate{
-    func didSelect(sortOption: SortOption?) {
+    func didSelect(sortOption: CIOSortOption?) {
         self.invalidateData()
         var image: UIImage?
         var title: String?
