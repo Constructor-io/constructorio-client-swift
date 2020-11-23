@@ -1,5 +1,5 @@
 //
-//  SearchResultCell.swift
+//  CIOAutocompleteCell.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol CIOAutocompleteCell {
-    func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter)
+    func setup(result: CIOAutocompleteResult, searchTerm: String, highlighter: CIOHighlighter)
 }

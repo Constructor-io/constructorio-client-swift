@@ -16,7 +16,7 @@ struct FacetOptionViewModel{
 }
 
 extension FacetOptionViewModel{
-    init(option: FacetOption){
+    init(option: CIOFilterFacetOption){
         self.init(value: option.value, title: option.displayName, selected: false)
     }
 }

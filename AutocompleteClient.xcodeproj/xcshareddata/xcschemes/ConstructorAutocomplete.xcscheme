@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F688A43E1F56B4B600F169C1"
                BuildableName = "ConstructorAutocomplete.framework"
-               BlueprintName = "AutocompleteClient"
+               BlueprintName = "ConstructorAutocomplete"
                ReferencedContainer = "container:AutocompleteClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,7 +33,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F688A43E1F56B4B600F169C1"
             BuildableName = "ConstructorAutocomplete.framework"
-            BlueprintName = "AutocompleteClient"
+            BlueprintName = "ConstructorAutocomplete"
             ReferencedContainer = "container:AutocompleteClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F688A43E1F56B4B600F169C1"
             BuildableName = "ConstructorAutocomplete.framework"
-            BlueprintName = "AutocompleteClient"
+            BlueprintName = "ConstructorAutocomplete"
             ReferencedContainer = "container:AutocompleteClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F688A43E1F56B4B600F169C1"
             BuildableName = "ConstructorAutocomplete.framework"
-            BlueprintName = "AutocompleteClient"
+            BlueprintName = "ConstructorAutocomplete"
             ReferencedContainer = "container:AutocompleteClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

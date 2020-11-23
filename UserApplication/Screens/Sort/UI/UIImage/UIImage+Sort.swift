@@ -19,7 +19,7 @@ extension UIImage{
         return UIImage(named: "sort_descending")!
     }
 
-    class func imageForSortOrder(_ sortOrder: SortOrder) -> UIImage{
+    class func imageForSortOrder(_ sortOrder: CIOSortOrder) -> UIImage{
         switch sortOrder {
         case .ascending:
             return self.imageSortAscending()

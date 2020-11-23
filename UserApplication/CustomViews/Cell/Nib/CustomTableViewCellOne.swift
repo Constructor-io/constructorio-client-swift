@@ -31,7 +31,7 @@ class CustomTableViewCellOne: UITableViewCell, CIOAutocompleteCell {
         // Configure the view for the selected state
     }
 
-    func setup(result: CIOResult, searchTerm: String, highlighter: CIOHighlighter) {
+    func setup(result: CIOAutocompleteResult, searchTerm: String, highlighter: CIOHighlighter) {
         if let group = result.group{
             let groupString = NSMutableAttributedString()
             groupString.append(NSAttributedString(string: "  in ", attributes: highlighter.attributesProvider.defaultSubstringAttributes()))
@@ -40,7 +40,7 @@ class CustomTableViewCellOne: UITableViewCell, CIOAutocompleteCell {
             
             self.imageViewIcon.image = nil
         }else{
-            self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.autocompleteResult.value)
+            self.labelText.attributedText = highlighter.highlight(searchTerm: searchTerm, itemTitle: result.result.value)
             self.imageViewIcon.image = self.randomImage
         }
         

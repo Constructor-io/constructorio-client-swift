@@ -202,7 +202,7 @@ public class CIOAutocompleteViewController: UIViewController {
 
         self.delegate?.autocompleteControllerDidLoad?(controller: self)
 
-        if self.config.apiKey == "" {
+        if self.config.apiKey.isEmpty {
             self.delegate?.autocompleteController?(controller: self, errorDidOccur: CIOError.missingApiKey)
         }
 
@@ -348,10 +348,10 @@ extension CIOAutocompleteViewController: UITableViewDelegate, UITableViewDataSou
         let sectionName = viewModel.getSectionName(atIndex: indexPath.section)
 
         // Run behavioural tracking 'select' on autocomplete result select
-        constructorIO.trackAutocompleteSelect(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, sectionName: sectionName, group: result.group)
+        constructorIO.trackAutocompleteSelect(searchTerm: result.result.value, originalQuery: viewModel.searchTerm, sectionName: sectionName, group: result.group)
 
         // Track search
-        constructorIO.trackSearchSubmit(searchTerm: result.autocompleteResult.value, originalQuery: viewModel.searchTerm, group: result.group)
+        constructorIO.trackSearchSubmit(searchTerm: result.result.value, originalQuery: viewModel.searchTerm, group: result.group)
 
         self.delegate?.autocompleteController?(controller: self, didSelectResult: result)
     }
@@ -435,11 +435,11 @@ extension CIOAutocompleteViewController: UISearchResultsUpdating {
 
 extension CIOAutocompleteViewController: ResponseParserDelegate {
 
-    public func shouldParseResult(result: CIOAutocompleteResult, inGroup group: CIOGroup?) -> Bool? {
+    public func shouldParseResult(result: CIOResult, inGroup group: CIOGroup?) -> Bool? {
         return self.delegate?.autocompleteController?(controller: self, shouldParseResult: result, inGroup: group)
     }
 
-    public func maximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int {
+    public func maximumGroupsShownPerResult(result: CIOResult, at index: Int) -> Int {
         return self.delegate?.autocompleteController?(controller: self, maximumGroupsShownPerResult: result, itemIndex: index) ?? (index == 0 ? 2 : 0)
     }
 }

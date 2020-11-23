@@ -1,5 +1,5 @@
 //
-//  SearchRedirectInfo.swift
+//  CIOSearchRedirectInfo.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct SearchRedirectInfo {
+public struct CIOSearchRedirectInfo {
     public let url: String
     public let matchID: Int
     public let ruleID: Int
 }
 
-public extension SearchRedirectInfo {
+public extension CIOSearchRedirectInfo {
     init?(object: JSONObject?) {
         guard let json = object else { return nil }
         guard let data = json["data"] as? JSONObject else { return nil }

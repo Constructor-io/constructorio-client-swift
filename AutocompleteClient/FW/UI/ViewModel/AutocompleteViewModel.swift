@@ -40,7 +40,7 @@ public class AutocompleteViewModel: AbstractAutocompleteViewModel {
         self.delegate?.viewModel(self, didSetResult: result)
     }
 
-    internal func setResultFromDictionary(dictionary: [String: [CIOResult]]?) {
+    internal func setResultFromDictionary(dictionary: [String: [CIOAutocompleteResult]]?) {
         self.results = (dictionary ?? [:]).map { (section, items) in AutocompleteViewModelSection(items: items, sectionName: section) }
                                           .sorted { (s1, s2) in self.modelSorter(s1.sectionName, s2.sectionName) }
     }
@@ -66,7 +66,7 @@ public class AutocompleteViewModel: AbstractAutocompleteViewModel {
         }
     }
 
-    public func getResult(atIndexPath indexPath: IndexPath) -> CIOResult {
+    public func getResult(atIndexPath indexPath: IndexPath) -> CIOAutocompleteResult {
         return results[indexPath.section].items[indexPath.row]
     }
 

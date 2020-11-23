@@ -10,5 +10,5 @@ import Foundation
 import ConstructorAutocomplete
 
 protocol SortSelectionDelegate: AnyObject{
-    func didSelect(sortOption: SortOption?)
+    func didSelect(sortOption: CIOSortOption?)
 }

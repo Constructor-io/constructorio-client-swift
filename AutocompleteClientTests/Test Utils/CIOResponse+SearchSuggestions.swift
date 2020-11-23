@@ -6,11 +6,11 @@
 //  http://constructor.io/
 //
 
-import XCTest
 import ConstructorAutocomplete
+import XCTest
 
 extension CIOAutocompleteResponse {
-    func getSearchSuggestions() -> [CIOResult]? {
+    func getSearchSuggestions() -> [CIOAutocompleteResult]? {
         return self.sections["Search Suggestions"]
     }
 }

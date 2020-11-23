@@ -83,7 +83,7 @@ class ViewController: UIViewController, CIOAutocompleteDelegate, CIOAutocomplete
 
     // MARK: Delegate
 
-    func userDidSelect(result: CIOResult) {
+    func userDidSelect(result: CIOAutocompleteResult) {
         print("item selected \(result)")
     }
 

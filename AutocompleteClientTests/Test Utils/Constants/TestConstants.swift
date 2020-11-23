@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 @testable import ConstructorAutocomplete
+import XCTest
 
 let kRegexTimestamp = "[1-9][0-9]*"
 let kRegexClientID = "([A-Z0-9-])*"

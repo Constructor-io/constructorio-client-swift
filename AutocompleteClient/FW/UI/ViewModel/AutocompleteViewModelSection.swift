@@ -9,10 +9,10 @@
 import Foundation
 
 public struct AutocompleteViewModelSection {
-    public let items: [CIOResult]
+    public let items: [CIOAutocompleteResult]
     public let sectionName: String
 
-    public init(items: [CIOResult], sectionName: String) {
+    public init(items: [CIOAutocompleteResult], sectionName: String) {
         self.items = items
         self.sectionName = sectionName
     }

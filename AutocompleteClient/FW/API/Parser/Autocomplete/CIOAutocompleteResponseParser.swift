@@ -35,8 +35,7 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
         let results = self.jsonToAutocompleteItems(jsonObjects: section)
         var metadata = json
         metadata[Constants.Response.singleSectionResultField] = nil
-        return CIOAutocompleteResponse(sections: [Constants.Response.singleSectionResultField: results],
-                                     metadata: metadata, json: json)
+        return CIOAutocompleteResponse(sections: [Constants.Response.singleSectionResultField: results], json: json)
     }
 
     private func parse(multiSectionJson json: JSONObject) throws -> CIOAutocompleteResponse {
@@ -44,7 +43,7 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
             throw CIOError.invalidResponse
         }
 
-        var results = [String: [CIOResult]]()
+        var results = [String: [CIOAutocompleteResult]]()
 
         for section in sections {
             results[section.key] = self.jsonToAutocompleteItems(jsonObjects: section.value)
@@ -52,19 +51,19 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
         var metadata = json
         metadata[Constants.Response.multiSectionResultField] = nil
-        return CIOAutocompleteResponse(sections: results, metadata: metadata, json: json)
+        return CIOAutocompleteResponse(sections: results, json: json)
     }
 
-    fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOResult] {
+    fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOAutocompleteResult] {
 
-        return jsonObjects.compactMap { CIOAutocompleteResult(json: $0) }
+        return jsonObjects.compactMap { CIOResult(json: $0) }
                         .enumerated()
-                        .reduce([CIOResult](), { (arr, enumeratedAutocompleteResult) in
+                        .reduce([CIOAutocompleteResult](), { (arr, enumeratedAutocompleteResult) in
 
                             let autocompleteResult = enumeratedAutocompleteResult.element
                             let index = enumeratedAutocompleteResult.offset
 
-                            let first = CIOResult(autocompleteResult: autocompleteResult, group: nil)
+                            let first = CIOAutocompleteResult(result: autocompleteResult, group: nil)
 
                             // If the base result is filtered out, we don't show
                             // the group search options.
@@ -72,15 +71,15 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
                                 return []
                             }
 
-                            var itemsInGroups: [CIOResult] = []
+                            var itemsInGroups: [CIOAutocompleteResult] = []
 
                             // create a parse handler to avoid code duplication down below
                             let parseItemHandler = { (group: CIOGroup) in
-                                let itemInGroup = CIOResult(autocompleteResult: autocompleteResult, group: group)
+                                let itemInGroup = CIOAutocompleteResult(result: autocompleteResult, group: group)
                                 itemsInGroups.append(itemInGroup)
                             }
 
-                            if let groups = autocompleteResult.groups {
+                            if let groups = autocompleteResult.data.groups {
                                 let maximumNumberOfGroupItems = self.delegateMaximumGroupsShownPerResult(result: autocompleteResult, at: index)
 
                                 groupLoop: for group in groups {
@@ -105,11 +104,11 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
                         })
     }
 
-    fileprivate func delegateMaximumGroupsShownPerResult(result: CIOAutocompleteResult, at index: Int) -> Int {
+    fileprivate func delegateMaximumGroupsShownPerResult(result: CIOResult, at index: Int) -> Int {
         return self.delegate?.maximumGroupsShownPerResult(result: result, at: index) ?? Int.max
     }
 
-    fileprivate func delegateShouldParseResult(_ result: CIOAutocompleteResult, _ group: CIOGroup?) -> Bool? {
+    fileprivate func delegateShouldParseResult(_ result: CIOResult, _ group: CIOGroup?) -> Bool? {
         return self.delegate?.shouldParseResult(result: result, inGroup: group)
     }
 }
