@@ -93,6 +93,18 @@ class SearchResponseParserTests: XCTestCase {
         }
     }
 
+    func testSearchParser_ParsingJSONString_HasCorrectGroupsCount() {
+        let data = TestResource.load(name: TestResource.Response.searchJSONFilename)
+        do {
+            let response = try self.parser.parse(searchResponseData: data)
+            let result = response.groups.first!
+
+            XCTAssertEqual(result.children.count, TestResource.Response.multipleVariationsCount, "Number of parsed variations should match the JSON response")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
     func testSearchParser_ParsingJSONString_parsesVariationCustomData() {
         let data = TestResource.load(name: TestResource.Response.multipleVariationsWithCustomDataJSONFilename)
         do {

@@ -26,13 +26,11 @@ public extension CIOResultData {
             metadata.removeValue(forKey: key)
         }
 
-        let groups: [CIOGroup] = (json["groups"] as? [JSONObject])?.compactMap { obj in
-            return CIOGroup(json: obj)
-        } ?? []
-
-        let facets: [CIOResultFacet] = (json["facets"] as? [JSONObject])?.compactMap { obj in
-            return CIOResultFacet(json: obj)
-        } ?? []
+        let groupsObj = json["groups"] as? [JSONObject]
+        let facetsObj = json["facets"] as? [JSONObject]
+        
+        let groups: [CIOGroup] = groupsObj?.compactMap { obj in return CIOGroup(json: obj) } ?? []
+        let facets: [CIOResultFacet] = facetsObj?.compactMap { obj in return CIOResultFacet(json: obj) } ?? []
 
         self.description = json["description"] as? String
         self.id = json["id"] as? String

@@ -21,12 +21,11 @@ public class CIOFilterGroup: NSObject {
         guard let groupID = json["group_id"] as? String else { return nil }
         guard let count = json["group_id"] as? Int else { return nil }
 
-        let children: [CIOFilterGroup] = (json["children"] as? [JSONObject])?.compactMap { obj in
-            return CIOFilterGroup(json: obj)
-        } ?? []
-        let parents: [CIOFilterGroup] = (json["parents"] as? [JSONObject])?.compactMap { obj in
-            return CIOFilterGroup(json: obj)
-        } ?? []
+        let childrenObj = json["children"] as? [JSONObject]
+        let parentObj = json["parents"] as? [JSONObject]
+
+        let children: [CIOFilterGroup] = childrenObj?.compactMap { obj in return CIOFilterGroup(json: obj) } ?? []
+        let parents: [CIOFilterGroup] = parentObj?.compactMap { obj in return CIOFilterGroup(json: obj) } ?? []
 
         self.displayName = name
         self.groupID = groupID
