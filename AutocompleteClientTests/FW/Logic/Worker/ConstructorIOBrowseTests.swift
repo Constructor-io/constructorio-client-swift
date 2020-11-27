@@ -82,7 +82,7 @@ class ConstructorIOBrowseTests: XCTestCase {
     }
 
     func testBrowse_AttachesGroupFilter() {
-        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", filters: SearchFilters(groupFilter: "151", facetFilters: nil))
+        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", filters: CIOQueryFilters(groupFilter: "151", facetFilters: nil))
 
         let builder = CIOBuilder(expectation: "Calling Browse with a group filter should have a group_id URL query item.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bgroup_id%5D=151&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=Products"), builder.create())
@@ -93,7 +93,7 @@ class ConstructorIOBrowseTests: XCTestCase {
 
     func testBrowse_AttachesFacetFilter() {
         let facetFilters = [(key: "facet1", value: "Organic")]
-        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", filters: SearchFilters(groupFilter: nil, facetFilters: facetFilters))
+        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
 
         let builder = CIOBuilder(expectation: "Calling Browse with a facet filter should have a facet filter URL query item.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bfacet1%5D=Organic&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=Products"), builder.create())
@@ -106,7 +106,7 @@ class ConstructorIOBrowseTests: XCTestCase {
         let facetFilters = [(key: "facet1", value: "Organic"),
                             (key: "facet2", value: "Natural"),
                             (key: "facet10", value: "Whole-grain")]
-        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", filters: SearchFilters(groupFilter: nil, facetFilters: facetFilters))
+        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
 
         let builder = CIOBuilder(expectation: "Calling Browse with multiple facet filters should have a multiple facet URL query items.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bfacet10%5D=Whole-grain&filters%5Bfacet1%5D=Organic&filters%5Bfacet2%5D=Natural&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=Products"), builder.create())
@@ -119,7 +119,7 @@ class ConstructorIOBrowseTests: XCTestCase {
         let facetFilters = [(key: "facetOne", value: "Organic"),
                             (key: "facetOne", value: "Natural"),
                             (key: "facetOne", value: "Whole-grain")]
-        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", filters: SearchFilters(groupFilter: nil, facetFilters: facetFilters))
+        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
 
         let builder = CIOBuilder(expectation: "Calling Browse with multiple facet filters with the same name should have a multiple facet URL query items", builder: http(200))
         stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&page=1&s=\(kRegexSession)&section=Products"), builder.create())

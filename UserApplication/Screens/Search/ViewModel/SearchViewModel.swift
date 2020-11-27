@@ -52,7 +52,7 @@ class SearchViewModel: ConstructorIOProvider{
     }
 
     func performSearch(completionHandler: @escaping (_ items: [SearchResultViewModel]) -> Void){
-        let filter: SearchFilters = SearchFilters(groupFilter: self.groupID, facetFilters: self.filtersViewModel?.selectedFilters)
+        let filter: CIOQueryFilters = CIOQueryFilters(groupFilter: self.groupID, facetFilters: self.filtersViewModel?.selectedFilters)
         let query = CIOSearchQuery(query: self.searchTerm,
                                  filters: filter,
                               sortOption: self.sortViewModel?.selectedItem?.model,
