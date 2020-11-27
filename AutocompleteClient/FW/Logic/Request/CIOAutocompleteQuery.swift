@@ -17,7 +17,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
     let numResultsForSection: [String: Int]?
 
     func url(with baseURL: String) -> String {
-        return String(format: "%@/autocomplete/%@", baseURL, query)
+        return String(format: Constants.AutocompleteQuery.format, baseURL, query)
     }
 
     public init(query: String, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil) {

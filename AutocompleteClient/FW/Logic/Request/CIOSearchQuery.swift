@@ -20,7 +20,7 @@ public struct CIOSearchQuery: CIORequestData {
     public let sortOption: CIOSortOption?
 
     func url(with baseURL: String) -> String {
-        return String(format: "%@/search/%@", baseURL, query)
+        return String(format: Constants.SearchQuery.format, baseURL, query)
     }
 
     public init(query: String, filters: SearchFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, section: String? = nil) {

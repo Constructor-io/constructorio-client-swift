@@ -21,7 +21,7 @@ public struct CIOBrowseQuery: CIORequestData {
     public let sortOption: CIOSortOption?
 
     func url(with baseURL: String) -> String {
-        return String(format: "%@/browse/%@/%@", baseURL, filterName, filterValue)
+        return String(format: Constants.BrowseQuery.format, baseURL, filterName, filterValue)
     }
 
     public init(filterName: String, filterValue:String, filters: SearchFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, section: String? = nil) {
