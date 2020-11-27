@@ -65,7 +65,6 @@ struct Constants {
     }
 
     struct AutocompleteQuery {
-        static let pathString = "autocomplete"
         static let numResults = "num_results"
         static let numResultsForSectionNamePrefix = "num_results_"
         static let queryItemForSection = { (name: String) -> String in return Constants.AutocompleteQuery.numResultsForSectionNamePrefix + name }
@@ -75,7 +74,6 @@ struct Constants {
     }
 
     struct SearchQuery {
-        static let pathString = "search"
         static let page = "page"
         static let groupFilter = "filters[group_id]"
         static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }

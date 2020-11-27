@@ -28,6 +28,12 @@
 		087F4BDF228B100E0058B467 /* ConstructorIOTrackPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087F4BDC228B100E0058B467 /* ConstructorIOTrackPurchaseTests.swift */; };
 		087F4BE0228B100E0058B467 /* ConstructorIOTrackConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087F4BDD228B100E0058B467 /* ConstructorIOTrackConversionTests.swift */; };
 		0885D837257163080038AE96 /* CIOFilterGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885D836257163080038AE96 /* CIOFilterGroup.swift */; };
+		0885D83925717EFF0038AE96 /* CIOBrowseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885D83825717EFF0038AE96 /* CIOBrowseResponse.swift */; };
+		0885D83C25717F460038AE96 /* AbstractBrowseResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885D83B25717F460038AE96 /* AbstractBrowseResponseParser.swift */; };
+		0885D83E2571870B0038AE96 /* BrowseResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885D83D2571870B0038AE96 /* BrowseResponseParser.swift */; };
+		0885D840257189B70038AE96 /* BrowseTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885D83F257189B70038AE96 /* BrowseTaskResponse.swift */; };
+		0885D84225718A7C0038AE96 /* CIOSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885D84125718A7C0038AE96 /* CIOSearchQuery.swift */; };
+		0885D84425718AD10038AE96 /* CIOBrowseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885D84325718AD10038AE96 /* CIOBrowseQuery.swift */; };
 		088F7D1C210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */; };
 		088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */; };
 		088F7D26210FA43C005B9FB4 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F7D24210FA43C005B9FB4 /* DateProvider.swift */; };
@@ -287,6 +293,12 @@
 		087F4BDC228B100E0058B467 /* ConstructorIOTrackPurchaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackPurchaseTests.swift; sourceTree = "<group>"; };
 		087F4BDD228B100E0058B467 /* ConstructorIOTrackConversionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackConversionTests.swift; sourceTree = "<group>"; };
 		0885D836257163080038AE96 /* CIOFilterGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOFilterGroup.swift; sourceTree = "<group>"; };
+		0885D83825717EFF0038AE96 /* CIOBrowseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseResponse.swift; sourceTree = "<group>"; };
+		0885D83B25717F460038AE96 /* AbstractBrowseResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractBrowseResponseParser.swift; sourceTree = "<group>"; };
+		0885D83D2571870B0038AE96 /* BrowseResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseResponseParser.swift; sourceTree = "<group>"; };
+		0885D83F257189B70038AE96 /* BrowseTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTaskResponse.swift; sourceTree = "<group>"; };
+		0885D84125718A7C0038AE96 /* CIOSearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchQuery.swift; sourceTree = "<group>"; };
+		0885D84325718AD10038AE96 /* CIOBrowseQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseQuery.swift; sourceTree = "<group>"; };
 		088F7D1B210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOSessionManagerDelegate.swift; sourceTree = "<group>"; };
 		088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackInputFocusData.swift; sourceTree = "<group>"; };
 		088F7D24210FA43C005B9FB4 /* DateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateProvider.swift; path = AutocompleteClient/FW/Logic/Session/Date/DateProvider.swift; sourceTree = SOURCE_ROOT; };
@@ -540,6 +552,7 @@
 			children = (
 				08289541256C5A85009A00BC /* CIOSearchResponse.swift */,
 				08289542256C5A85009A00BC /* CIOAutocompleteResponse.swift */,
+				0885D83825717EFF0038AE96 /* CIOBrowseResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -561,6 +574,15 @@
 				F674157A204D489B004F313B /* MockResponseParserDelegate.swift */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		0885D83A25717F2C0038AE96 /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				0885D83B25717F460038AE96 /* AbstractBrowseResponseParser.swift */,
+				0885D83D2571870B0038AE96 /* BrowseResponseParser.swift */,
+			);
+			path = Browse;
 			sourceTree = "<group>";
 		};
 		088F7D23210FA429005B9FB4 /* Date */ = {
@@ -614,6 +636,8 @@
 			children = (
 				F60FE9021F5C5B120037A0AB /* Builder */,
 				F1F68DD31F58B59F00B42602 /* CIOAutocompleteQuery.swift */,
+				0885D84125718A7C0038AE96 /* CIOSearchQuery.swift */,
+				0885D84325718AD10038AE96 /* CIOBrowseQuery.swift */,
 				F685255A21413D4D00A27FAA /* CIORequestData.swift */,
 				08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */,
 				F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */,
@@ -1172,6 +1196,7 @@
 				F67868DA2224328D00C76C0D /* AutocompleteTaskResponse.swift */,
 				F63808F71F5D497200C3B322 /* NetworkResponse.swift */,
 				F65B9E5721469CA200101617 /* SearchTaskResponse.swift */,
+				0885D83F257189B70038AE96 /* BrowseTaskResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1693,6 +1718,7 @@
 		F6B462801F6BAC8F0082C20B /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				0885D83A25717F2C0038AE96 /* Browse */,
 				F65B9E4A214698EE00101617 /* Search */,
 				F65B9E49214698E400101617 /* Autocomplete */,
 			);
@@ -2091,6 +2117,7 @@
 				F6EC29AD2175EF1700DCFA07 /* Session.swift in Sources */,
 				F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */,
 				F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */,
+				0885D83C25717F460038AE96 /* AbstractBrowseResponseParser.swift in Sources */,
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
 				F67D42AC220360700053B9C3 /* AbstractAutocompleteViewModel.swift in Sources */,
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
@@ -2110,6 +2137,7 @@
 				F650154B1F587213008E50C0 /* CIOStyle.swift in Sources */,
 				F65B9E5821469CA200101617 /* SearchTaskResponse.swift in Sources */,
 				F60DF22C215D639900730339 /* ConstructorIOConfig.swift in Sources */,
+				0885D840257189B70038AE96 /* BrowseTaskResponse.swift in Sources */,
 				F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift in Sources */,
 				F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */,
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,
@@ -2145,8 +2173,11 @@
 				F63808FB1F5D49AF00C3B322 /* TaskResponse.swift in Sources */,
 				F685255B21413D4D00A27FAA /* CIORequestData.swift in Sources */,
 				08C1E6052193BE3600A2E24E /* CIOTrackPurchaseData.swift in Sources */,
+				0885D84225718A7C0038AE96 /* CIOSearchQuery.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,
 				F6EC29AF2176014C00DCFA07 /* SessionLoader.swift in Sources */,
+				0885D84425718AD10038AE96 /* CIOBrowseQuery.swift in Sources */,
+				0885D83E2571870B0038AE96 /* BrowseResponseParser.swift in Sources */,
 				F67868DB2224328D00C76C0D /* AutocompleteTaskResponse.swift in Sources */,
 				0828954A256C5A85009A00BC /* CIOResultFacet.swift in Sources */,
 				088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */,
@@ -2157,6 +2188,7 @@
 				F631A5DA1F5867E300A49BD1 /* CIOErrorView.swift in Sources */,
 				F638090D1F5E880900C3B322 /* CIOHighlighter.swift in Sources */,
 				F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */,
+				0885D83925717EFF0038AE96 /* CIOBrowseResponse.swift in Sources */,
 				088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */,
 				F65BBCC22151621A007FEB22 /* IDGenerator.swift in Sources */,
 				F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */,
