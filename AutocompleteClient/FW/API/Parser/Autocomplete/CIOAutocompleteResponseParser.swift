@@ -57,50 +57,50 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
     fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOAutocompleteResult] {
 
         return jsonObjects.compactMap { CIOResult(json: $0) }
-                        .enumerated()
-                        .reduce([CIOAutocompleteResult](), { (arr, enumeratedAutocompleteResult) in
+            .enumerated()
+            .reduce([CIOAutocompleteResult](), { (arr, enumeratedAutocompleteResult) in
 
-                            let autocompleteResult = enumeratedAutocompleteResult.element
-                            let index = enumeratedAutocompleteResult.offset
+                let autocompleteResult = enumeratedAutocompleteResult.element
+                let index = enumeratedAutocompleteResult.offset
 
-                            let first = CIOAutocompleteResult(result: autocompleteResult, group: nil)
+                let first = CIOAutocompleteResult(result: autocompleteResult, group: nil)
 
-                            // If the base result is filtered out, we don't show
-                            // the group search options.
-                            if let shouldParseResult = self.delegateShouldParseResult(autocompleteResult, nil), shouldParseResult == false {
-                                return []
-                            }
+                // If the base result is filtered out, we don't show
+                // the group search options.
+                if let shouldParseResult = self.delegateShouldParseResult(autocompleteResult, nil), shouldParseResult == false {
+                    return []
+                }
 
-                            var itemsInGroups: [CIOAutocompleteResult] = []
+                var itemsInGroups: [CIOAutocompleteResult] = []
 
-                            // create a parse handler to avoid code duplication down below
-                            let parseItemHandler = { (group: CIOGroup) in
-                                let itemInGroup = CIOAutocompleteResult(result: autocompleteResult, group: group)
-                                itemsInGroups.append(itemInGroup)
-                            }
+                // create a parse handler to avoid code duplication down below
+                let parseItemHandler = { (group: CIOGroup) in
+                    let itemInGroup = CIOAutocompleteResult(result: autocompleteResult, group: group)
+                    itemsInGroups.append(itemInGroup)
+                }
 
-                            let groups = autocompleteResult.data.groups
-                            let maximumNumberOfGroupItems = self.delegateMaximumGroupsShownPerResult(result: autocompleteResult, at: index)
+                let groups = autocompleteResult.data.groups
+                let maximumNumberOfGroupItems = self.delegateMaximumGroupsShownPerResult(result: autocompleteResult, at: index)
 
-                            groupLoop: for group in groups {
-                                if itemsInGroups.count >= maximumNumberOfGroupItems {
-                                    break groupLoop
-                                }
+                groupLoop: for group in groups {
+                    if itemsInGroups.count >= maximumNumberOfGroupItems {
+                        break groupLoop
+                    }
 
-                                if let shouldParseResultInGroup = self.delegateShouldParseResult(autocompleteResult, group) {
-                                    if shouldParseResultInGroup {
-                                        // method implemented by the delegate and returns true
-                                        parseItemHandler(group)
-                                    }
-                                } else {
-                                    // method not implemeneted by the delegate
-                                    // we parse the result by default
-                                    parseItemHandler(group)
-                                }
-                            }
+                    if let shouldParseResultInGroup = self.delegateShouldParseResult(autocompleteResult, group) {
+                        if shouldParseResultInGroup {
+                            // method implemented by the delegate and returns true
+                            parseItemHandler(group)
+                        }
+                    } else {
+                        // method not implemeneted by the delegate
+                        // we parse the result by default
+                        parseItemHandler(group)
+                    }
+                }
 
-                            return arr + [first] + itemsInGroups
-                        })
+                return arr + [first] + itemsInGroups
+            })
     }
 
     fileprivate func delegateMaximumGroupsShownPerResult(result: CIOResult, at index: Int) -> Int {
