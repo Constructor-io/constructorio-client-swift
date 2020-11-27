@@ -22,14 +22,9 @@ public class CIOResult: NSObject {
         guard let data = CIOResultData(json: dataObj) else { return nil }
 
         let matchedTerms = (json["matched_terms"] as? [String]) ?? [String]()
+        let variationsObj = json["variations"] as? [JSONObject]
 
-        let variationsJSONArray = (json["variations"] as? [[String: Any]]) ?? [[String: Any]]()
-        var variations = [CIOResult]()
-        for variationObj in variationsJSONArray {
-            if let variation = CIOResult(json: variationObj) {
-                variations.append(variation)
-            }
-        }
+        let variations: [CIOResult] = variationsObj?.compactMap { obj in return CIOResult(json: obj)} ?? []
 
         self.value = value
         self.data = data

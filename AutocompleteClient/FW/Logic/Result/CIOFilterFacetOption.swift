@@ -22,6 +22,7 @@ public extension CIOFilterFacetOption {
         guard let displayName = json["display_name"] as? String else { return nil }
         guard let status = json["status"] as? String else { return nil }
         guard let value = json["value"] as? String else { return nil }
+
         let data = json["data"] as? [String: Any] ?? [:]
 
         self.count = count

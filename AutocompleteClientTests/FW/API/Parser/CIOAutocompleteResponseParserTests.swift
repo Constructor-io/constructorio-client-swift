@@ -84,7 +84,7 @@ class CIOAutocompleteResponseParserTests: XCTestCase {
 
         // create mock delegate
         let del = MockResponseParserDelegate()
-        del.shouldParseResultInGroup = { _, _ in return true}
+        del.shouldParseResultInGroup = { _, _ in return true }
         responseParser.delegate = del
 
         do {

@@ -21,14 +21,13 @@ public extension CIOFilterFacet {
     init?(json: JSONObject) {
         guard let displayName = json["display_name"] as? String else { return nil }
         guard let name = json["name"] as? String else { return nil }
+        guard let type = json["type"] as? String else { return nil }
+
         let min = json["min"] as? Int
         let max = json["max"] as? Int
+        let optionsObj = json["options"] as? [JSONObject]
 
-        let options: [CIOFilterFacetOption] = (json["options"] as? [JSONObject])?.compactMap { option in
-            return CIOFilterFacetOption(json: option)
-        } ?? []
-
-        guard let type = json["type"] as? String else { return nil }
+        let options: [CIOFilterFacetOption] = optionsObj?.compactMap { obj in return CIOFilterFacetOption(json: obj)} ?? []
 
         self.displayName = displayName
         self.name = name
