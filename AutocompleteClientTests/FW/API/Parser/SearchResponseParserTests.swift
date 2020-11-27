@@ -99,7 +99,7 @@ class SearchResponseParserTests: XCTestCase {
             let response = try self.parser.parse(searchResponseData: data)
             let result = response.groups.first!
 
-            XCTAssertEqual(result.children.count, TestResource.Response.multipleVariationsCount, "Number of parsed variations should match the JSON response")
+            XCTAssertEqual(result.children.count, 5, "Number of parsed variations should match the JSON response")
         } catch {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }

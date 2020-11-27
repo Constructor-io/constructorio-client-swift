@@ -19,7 +19,7 @@ public class CIOFilterGroup: NSObject {
     init?(json: JSONObject) {
         guard let name = json["display_name"] as? String else { return nil }
         guard let groupID = json["group_id"] as? String else { return nil }
-        guard let count = json["group_id"] as? Int else { return nil }
+        guard let count = json["count"] as? Int else { return nil }
 
         let childrenObj = json["children"] as? [JSONObject]
         let parentObj = json["parents"] as? [JSONObject]

@@ -28,7 +28,7 @@ public extension CIOResultData {
 
         let groupsObj = json["groups"] as? [JSONObject]
         let facetsObj = json["facets"] as? [JSONObject]
-        
+
         let groups: [CIOGroup] = groupsObj?.compactMap { obj in return CIOGroup(json: obj) } ?? []
         let facets: [CIOResultFacet] = facetsObj?.compactMap { obj in return CIOResultFacet(json: obj) } ?? []
 
