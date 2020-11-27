@@ -10,11 +10,11 @@ import Foundation
 
 public typealias Filter = (key: String, value: String)
 
-public struct SearchFilters {
+public struct CIOQueryFilters {
     public let groupFilter: String?
     public let facetFilters: [Filter]?
 
-    public init(groupFilter: String?, facetFilters: [Filter]?){
+    public init(groupFilter: String?, facetFilters: [Filter]?) {
         self.groupFilter = groupFilter
         self.facetFilters = facetFilters
     }

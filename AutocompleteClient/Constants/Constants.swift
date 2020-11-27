@@ -56,7 +56,6 @@ struct Constants {
         static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let httpMethod = "GET"
-        static let queryStringFormat = "%@/%@/%@"
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
     }
 
@@ -65,7 +64,7 @@ struct Constants {
     }
 
     struct AutocompleteQuery {
-        static let pathString = "autocomplete"
+        static let format = "%@/autocomplete/%@"
         static let numResults = "num_results"
         static let numResultsForSectionNamePrefix = "num_results_"
         static let queryItemForSection = { (name: String) -> String in return Constants.AutocompleteQuery.numResultsForSectionNamePrefix + name }
@@ -75,7 +74,18 @@ struct Constants {
     }
 
     struct SearchQuery {
-        static let pathString = "search"
+        static let format = "%@/search/%@"
+        static let page = "page"
+        static let groupFilter = "filters[group_id]"
+        static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
+        static let section = "section"
+        static let sortBy = "sort_by"
+        static let sortOrder = "sort_order"
+        static let defaultSectionName = "Products"
+    }
+
+    struct BrowseQuery {
+        static let format = "%@/browse/%@/%@"
         static let page = "page"
         static let groupFilter = "filters[group_id]"
         static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }

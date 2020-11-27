@@ -17,8 +17,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
     let numResultsForSection: [String: Int]?
 
     func url(with baseURL: String) -> String {
-        return String(format: Constants.Query.queryStringFormat, baseURL,
-                      Constants.AutocompleteQuery.pathString, query)
+        return String(format: Constants.AutocompleteQuery.format, baseURL, query)
     }
 
     public init(query: String, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil) {
@@ -30,36 +29,5 @@ public struct CIOAutocompleteQuery: CIORequestData {
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(numResults: self.numResults)
         requestBuilder.set(numResultsForSection: self.numResultsForSection)
-    }
-}
-
-// TODO: Move to a separate file
-public struct CIOSearchQuery: CIORequestData {
-
-    public let query: String
-    public let page: Int
-    public let section: String
-    public let filters: SearchFilters?
-    public let sortOption: CIOSortOption?
-
-    func url(with baseURL: String) -> String {
-        return String(format: Constants.Query.queryStringFormat, baseURL,
-                      Constants.SearchQuery.pathString, query)
-    }
-
-    public init(query: String, filters: SearchFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, section: String? = nil) {
-        self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        self.filters = filters
-        self.page = page
-        self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName
-        self.sortOption = sortOption
-    }
-
-    func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(page: self.page)
-        requestBuilder.set(groupFilter: self.filters?.groupFilter)
-        requestBuilder.set(facetFilters: self.filters?.facetFilters)
-        requestBuilder.set(searchSection: self.section)
-        requestBuilder.set(sortOption: self.sortOption)
     }
 }

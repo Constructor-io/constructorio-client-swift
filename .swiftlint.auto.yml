@@ -9,5 +9,7 @@ analyzer_rules:
 disabled_rules:
 - line_length
 - identifier_name
+- number_separator
+- unused_closure_parameter
 opt_in_rules:
 - control_statement
