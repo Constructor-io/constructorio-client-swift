@@ -27,7 +27,7 @@ public extension CIOFilterFacet {
         let max = json["max"] as? Int
         let optionsObj = json["options"] as? [JSONObject]
 
-        let options: [CIOFilterFacetOption] = optionsObj?.compactMap { obj in return CIOFilterFacetOption(json: obj)} ?? []
+        let options: [CIOFilterFacetOption] = optionsObj?.compactMap { obj in return CIOFilterFacetOption(json: obj) } ?? []
 
         self.displayName = displayName
         self.name = name

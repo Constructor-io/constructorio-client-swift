@@ -14,7 +14,7 @@ public struct SearchFilters {
     public let groupFilter: String?
     public let facetFilters: [Filter]?
 
-    public init(groupFilter: String?, facetFilters: [Filter]?){
+    public init(groupFilter: String?, facetFilters: [Filter]?) {
         self.groupFilter = groupFilter
         self.facetFilters = facetFilters
     }

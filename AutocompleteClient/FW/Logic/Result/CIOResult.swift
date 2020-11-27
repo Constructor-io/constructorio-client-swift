@@ -24,7 +24,7 @@ public class CIOResult: NSObject {
         let matchedTerms = (json["matched_terms"] as? [String]) ?? [String]()
         let variationsObj = json["variations"] as? [JSONObject]
 
-        let variations: [CIOResult] = variationsObj?.compactMap { obj in return CIOResult(json: obj)} ?? []
+        let variations: [CIOResult] = variationsObj?.compactMap { obj in return CIOResult(json: obj) } ?? []
 
         self.value = value
         self.data = data

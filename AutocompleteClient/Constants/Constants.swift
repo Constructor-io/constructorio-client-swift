@@ -83,9 +83,9 @@ struct Constants {
         static let sortOrder = "sort_order"
         static let defaultSectionName = "Products"
     }
-    
+
     struct BrowseQuery {
-        static let format = "%@/search/%@/%@"
+        static let format = "%@/browse/%@/%@"
         static let page = "page"
         static let groupFilter = "filters[group_id]"
         static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
