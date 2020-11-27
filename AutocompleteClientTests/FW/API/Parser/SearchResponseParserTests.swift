@@ -93,18 +93,6 @@ class SearchResponseParserTests: XCTestCase {
         }
     }
 
-    func testSearchParser_ParsingJSONString_CorrectlyDiscardsInvalidVariations() {
-        let data = TestResource.load(name: TestResource.Response.multipleInvalidVariationsJSONFilename)
-        do {
-            let response = try self.parser.parse(searchResponseData: data)
-            let result = response.results.first!
-
-            XCTAssertEqual(result.variations.count, TestResource.Response.multipleInvalidVariationsValidVariationCount, "Number of parsed variations should match the JSON response")
-        } catch {
-            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
-        }
-    }
-
     func testSearchParser_ParsingJSONString_parsesVariationCustomData() {
         let data = TestResource.load(name: TestResource.Response.multipleVariationsWithCustomDataJSONFilename)
         do {

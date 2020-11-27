@@ -30,8 +30,8 @@ class SearchResponseParser: AbstractSearchResponseParser {
                 return CIOSortOption(json: obj)
             }) ?? []
 
-            let groups: [CIOGroup] = (response["groups"] as? [JSONObject])?.compactMap({ obj  in
-                return CIOGroup(json: obj)
+            let groups: [CIOFilterGroup] = (response["groups"] as? [JSONObject])?.compactMap({ obj  in
+                return CIOFilterGroup(json: obj)
             }) ?? []
 
             let resultID = json?["result_id"] as? String ?? ""

@@ -13,8 +13,8 @@ public struct CIOResultData {
     public let id: String?
     public let url: String?
     public let imageURL: String?
-    public let groups: [CIOGroup]?
-    public let facets: [CIOResultFacet]?
+    public let groups: [CIOGroup]
+    public let facets: [CIOResultFacet]
     public let metadata: [String: Any]
     public let variationId: String?
 }
@@ -26,12 +26,20 @@ public extension CIOResultData {
             metadata.removeValue(forKey: key)
         }
 
+        let groups: [CIOGroup] = (json["groups"] as? [JSONObject])?.compactMap { obj in
+            return CIOGroup(json: obj)
+        } ?? []
+
+        let facets: [CIOResultFacet] = (json["facets"] as? [JSONObject])?.compactMap { obj in
+            return CIOResultFacet(json: obj)
+        } ?? []
+
         self.description = json["description"] as? String
-        self.id  = json["id"] as? String
+        self.id = json["id"] as? String
         self.url = json["url"] as? String
         self.imageURL = json["image_url"] as? String
-        self.groups = (json["groups"] as? [JSONObject])?.compactMap({ groupObj in return CIOGroup(json: groupObj) })
-        self.facets = (json["facets"] as? [JSONObject])?.compactMap({ searchFacetObj in return CIOResultFacet(json: searchFacetObj) })
+        self.groups = groups
+        self.facets = facets
         self.variationId = json["variation_id"] as? String
         self.metadata = metadata
     }

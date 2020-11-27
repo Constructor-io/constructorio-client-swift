@@ -13,7 +13,7 @@ import Foundation
  */
 public struct CIOSearchResponse {
     public let facets: [CIOFilterFacet]
-    public let groups: [CIOGroup]
+    public let groups: [CIOFilterGroup]
     public let results: [CIOResult]
     public let redirectInfo: CIOSearchRedirectInfo?
     public let sortOptions: [CIOSortOption]

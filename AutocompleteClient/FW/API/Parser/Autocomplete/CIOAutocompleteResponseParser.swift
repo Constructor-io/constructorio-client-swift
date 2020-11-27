@@ -79,24 +79,23 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
                                 itemsInGroups.append(itemInGroup)
                             }
 
-                            if let groups = autocompleteResult.data.groups {
-                                let maximumNumberOfGroupItems = self.delegateMaximumGroupsShownPerResult(result: autocompleteResult, at: index)
+                            let groups = autocompleteResult.data.groups
+                            let maximumNumberOfGroupItems = self.delegateMaximumGroupsShownPerResult(result: autocompleteResult, at: index)
 
-                                groupLoop: for group in groups {
-                                    if itemsInGroups.count >= maximumNumberOfGroupItems {
-                                        break groupLoop
-                                    }
+                            groupLoop: for group in groups {
+                                if itemsInGroups.count >= maximumNumberOfGroupItems {
+                                    break groupLoop
+                                }
 
-                                    if let shouldParseResultInGroup = self.delegateShouldParseResult(autocompleteResult, group) {
-                                        if shouldParseResultInGroup {
-                                            // method implemented by the delegate and returns true
-                                            parseItemHandler(group)
-                                        }
-                                    } else {
-                                        // method not implemeneted by the delegate
-                                        // we parse the result by default
+                                if let shouldParseResultInGroup = self.delegateShouldParseResult(autocompleteResult, group) {
+                                    if shouldParseResultInGroup {
+                                        // method implemented by the delegate and returns true
                                         parseItemHandler(group)
                                     }
+                                } else {
+                                    // method not implemeneted by the delegate
+                                    // we parse the result by default
+                                    parseItemHandler(group)
                                 }
                             }
 
