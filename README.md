@@ -90,7 +90,12 @@ constructor.search(forQuery: query) { (response) in
 ## 6. Request Browse Events
 
 ```swift
-// Coming end of October
+let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet")
+constructor.browse(forQuery: query) { (response) in
+  let data = response.data!
+  let error = response.error!
+  // ...
+}
 ```
 
 ## 7. Instrument Behavioral Events
