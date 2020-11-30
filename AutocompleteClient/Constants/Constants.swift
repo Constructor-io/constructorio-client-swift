@@ -76,6 +76,7 @@ struct Constants {
     struct SearchQuery {
         static let format = "%@/search/%@"
         static let page = "page"
+        static let perPage = "num_results_per_page"
         static let groupFilter = "filters[group_id]"
         static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
         static let section = "section"
@@ -87,6 +88,7 @@ struct Constants {
     struct BrowseQuery {
         static let format = "%@/browse/%@/%@"
         static let page = "page"
+        static let perPage = "num_results_per_page"
         static let groupFilter = "filters[group_id]"
         static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
         static let section = "section"

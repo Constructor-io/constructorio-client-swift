@@ -89,6 +89,11 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.page, value: pageString))
     }
 
+    func set(perPage: Int) {
+        let perPageString = String(perPage)
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.perPage, value: perPageString))
+    }
+
     func set(groupFilter: String?) {
         guard let filter = groupFilter else { return }
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.groupFilter, value: filter))
