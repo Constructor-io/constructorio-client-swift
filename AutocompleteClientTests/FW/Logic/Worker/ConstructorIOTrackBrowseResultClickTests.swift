@@ -30,8 +30,7 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
         let builder = CIOBuilder(expectation: "Calling trackBrowseResultClick should send a valid request with a default section name.", builder: http(200))
-
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
         self.constructor.trackBrowseResultClick(itemName: itemName, customerID: customerID, filterName: filterName, filterValue: filterValue, sectionName: nil)
         self.wait(for: builder.expectation)
     }
@@ -43,7 +42,7 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         let customerID = "customerID123"
         let sectionName = "Search Suggestions"
         let builder = CIOBuilder(expectation: "Calling trackBrowseResultClick should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?_dt=\(kRegexTimestamp)&autocomplete_section=Search%20Suggestions&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
         self.constructor.trackBrowseResultClick(itemName: itemName, customerID: customerID, filterName: filterName, filterValue: filterValue, sectionName: sectionName)
         self.wait(for: builder.expectation)
     }
@@ -55,7 +54,7 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         let customerID = "customerID123"
         let resultID = "0123456789"
         let builder = CIOBuilder(expectation: "Calling trackBrowseResultClick should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&result_id=0123456789&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
         self.constructor.trackBrowseResultClick(itemName: itemName, customerID: customerID, filterName: filterName, filterValue: filterValue, sectionName: nil, resultID: resultID)
         self.wait(for: builder.expectation)
     }
@@ -67,7 +66,7 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         let customerID = "customerID123"
         let sectionName = "section321"
         let builder = CIOBuilder(expectation: "Calling trackBrowseResultClick should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?_dt=\(kRegexTimestamp)&autocomplete_section=section321&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
         let constructor = TestConstants.testConstructor(config)
         constructor.trackBrowseResultClick(itemName: itemName, customerID: customerID, filterName: filterName, filterValue: filterValue, sectionName: nil)
@@ -80,7 +79,7 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         let filterValue = "russet"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&s=\(kRegexSession)"), http(400))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
         self.constructor.trackBrowseResultClick(itemName: itemName, customerID: customerID, filterName: filterName, filterValue: filterValue, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -96,7 +95,7 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         let filterValue = "russet"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&s=\(kRegexSession)"), http(500))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(500))
         self.constructor.trackBrowseResultClick(itemName: itemName, customerID: customerID, filterName: filterName, filterValue: filterValue, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -112,7 +111,7 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         let filterValue = "russet"
         let itemName = "green-giant-corn-can-12oz"
         let customerID = "customerID123"
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&s=\(kRegexSession)"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), noConnectivity())
         self.constructor.trackBrowseResultClick(itemName: itemName, customerID: customerID, filterName: filterName, filterValue: filterValue, sectionName: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
