@@ -35,6 +35,10 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
 
+    func httpMethod() -> String {
+        return "POST"
+    }
+
     func httpBody(baseParams: [String: String]) -> Data? {
         var dict = [
             "filterName": self.filterName,
