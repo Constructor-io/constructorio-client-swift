@@ -157,6 +157,14 @@ struct Constants {
     struct TrackSearchResultClick {
         static let format = "%@/autocomplete/%@/click_through"
     }
+    
+    struct TrackBrowseResultsLoaded {
+        static let format = "%@/v2/behavioral_action/browse_result_load"
+    }
+
+    struct TrackBrowseResultClick {
+        static let format = "%@/v2/behavioral_action/browse_result_click"
+    }
 
     struct TrackConversion {
         static let format = "%@/autocomplete/%@/conversion"
