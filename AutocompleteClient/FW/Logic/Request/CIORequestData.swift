@@ -15,11 +15,18 @@ protocol CIORequestData {
     func url(with baseURL: String) -> String
 
     func httpMethod() -> String
+
+    func httpBody(baseParams: [String: String]) -> Data?
 }
 
 extension CIORequestData {
     // default httpMethod is GET
     func httpMethod() -> String {
         return "GET"
+    }
+
+    // default body is null
+    func httpBody(baseParams: [String: String]) -> Data? {
+        return nil
     }
 }

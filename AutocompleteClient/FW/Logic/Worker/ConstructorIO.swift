@@ -147,6 +147,36 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         execute(request, completionHandler: completionHandler)
     }
 
+    /// Track search results loaded.
+    ///
+    /// - Parameters:
+    ///   - filterName: Primary filter name that the user browsed for
+    ///   - filterValue: Primary filter value that the user browsed for
+    ///   - resultCount: Number of results loaded
+    ///   - resultID: Identifier of result set
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID)
+        let request = self.buildRequest(data: data)
+        execute(request, completionHandler: completionHandler)
+    }
+
+    /// Track search result clicked on.
+    ///
+    /// - Parameters:
+    ///   - customerID: customer ID.
+    ///   - filterName: Primary filter name that the user browsed for
+    ///   - filterValue: Primary filter value that the user browsed for
+    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - resultID: Identifier of result set
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackBrowseResultClick(customerID: String, filterName: String, filterValue: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID)
+        let request = self.buildRequest(data: data)
+        execute(request, completionHandler: completionHandler)
+    }
+
     /// Track a conversion.
     ///
     /// - Parameters:
@@ -326,7 +356,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     private func parseBrowse(_ browseResponseData: Data) throws -> CIOBrowseResponse {
         return try self.browseParser.parse(browseResponseData: browseResponseData)
     }
-    
+
     // MARK: CIOSessionManagerDelegate
 
     public func sessionDidChange(from: Int, to: Int) {

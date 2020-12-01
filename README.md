@@ -136,3 +136,13 @@ constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1
 // Track when products are purchased
 constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"])
 ```
+
+### Browse Events
+
+```swift
+// Track when browse results are loaded into view
+constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674)
+
+// Track when a browse result is clicked
+constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", resultPositionOnPage: 4)
+```
