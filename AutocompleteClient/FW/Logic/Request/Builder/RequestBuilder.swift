@@ -64,7 +64,7 @@ class RequestBuilder {
         self.addDateQueryItem(queryItems: &allQueryItems)
 
         // attach `action` if necessary from base url
-        if (urlComponents.queryItems != nil) {
+        if urlComponents.queryItems != nil {
             allQueryItems.add((urlComponents.queryItems?.first)!)
         }
 
@@ -72,7 +72,7 @@ class RequestBuilder {
 
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpBody = self.trackData!.httpBody()
+        request.httpBody = self.trackData!.httpBody(baseParams: allQueryItems.all())
         request.httpMethod = self.trackData!.httpMethod()
 
         return request

@@ -30,7 +30,7 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
 
-    func httpBody() -> Data? {
+    func httpBody(baseParams: [String: String]) -> Data? {
         var dict = [
             "filterName": self.filterName,
             "filterValue": self.filterValue,
@@ -40,6 +40,7 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
             dict["resultID"] = self.resultID
         }
 
+        dict.merge(baseParams) { current, _ in current }
         return try? JSONEncoder().encode(dict)
     }
 }

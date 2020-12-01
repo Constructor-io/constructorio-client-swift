@@ -48,8 +48,8 @@ struct QueryItemCollection {
     }
 
     func all() -> [URLQueryItem] {
-        let flattenedArray = self.queryItems.values.reduce([]) { (res, next) -> [URLQueryItem] in
-            return res + next.reduce([], { (res, next) in return res + [next] })
+        let flattenedArray = self.queryItems.values.reduce([]) { res, next -> [URLQueryItem] in
+            return res + next.reduce([], { res, next in return res + [next] })
         }
         return flattenedArray.sorted(by: { item1, item2 -> Bool in
             if item1.name == item2.name {
@@ -57,5 +57,18 @@ struct QueryItemCollection {
             }
             return item1.name < item2.name
         })
+    }
+
+    func all() -> [String: String] {
+        let flattenedArray = self.queryItems.values.reduce([]) { res, next -> [URLQueryItem] in
+            return res + next.reduce([], { res, next in return res + [next] })
+        }
+        var dict: [String: String] = [:]
+        flattenedArray.forEach { item in
+            if item.value != nil {
+                dict[item.name] = String(item.value!)
+            }
+        }
+        return dict
     }
 }
