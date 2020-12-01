@@ -14,6 +14,7 @@ class TrackBrowseResultClickRequestBuilderTests: XCTestCase {
     fileprivate let testACKey = "asdf1213123"
     fileprivate let filterName = "potato"
     fileprivate let filterValue = "russet"
+    fileprivate let resultPositionOnPage = 3
     fileprivate let customerID = "custIDq3 qd"
     fileprivate let sectionName = "some section name@"
 
@@ -25,7 +26,7 @@ class TrackBrowseResultClickRequestBuilderTests: XCTestCase {
     }
 
     func testTrackBrowseResultClickBuilder() {
-        let tracker = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID)
+        let tracker = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: String]
@@ -34,6 +35,7 @@ class TrackBrowseResultClickRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["filter_name"], filterName)
         XCTAssertEqual(payload?["filter_value"], filterValue)
         XCTAssertEqual(payload?["item_id"], customerID)
+        XCTAssertEqual(payload?["result_position_on_page"], String(resultPositionOnPage))
         XCTAssertEqual(payload?["key"], testACKey)
         XCTAssertEqual(payload?["c"], "cioios-")
     }

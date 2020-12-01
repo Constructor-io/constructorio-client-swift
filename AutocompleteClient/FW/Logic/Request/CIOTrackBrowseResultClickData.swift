@@ -16,6 +16,7 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
     let filterName: String
     let filterValue: String
     let customerID: String
+    let resultPositionOnPage: Int?
     var sectionName: String?
     let resultID: String?
 
@@ -23,10 +24,11 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
         return String(format: Constants.TrackBrowseResultClick.format, baseURL)
     }
 
-    init(filterName: String, filterValue: String, customerID: String, sectionName: String? = nil, resultID: String? = nil) {
+    init(filterName: String, filterValue: String, customerID: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil) {
         self.filterName = filterName
         self.filterValue = filterValue
         self.customerID = customerID
+        self.resultPositionOnPage = resultPositionOnPage
         self.sectionName = sectionName
         self.resultID = resultID
     }
@@ -43,6 +45,9 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
             "filter_value": self.filterValue,
             "item_id": self.customerID
         ]
+        if self.resultPositionOnPage != nil {
+            dict["result_position_on_page"] = String(self.resultPositionOnPage!)
+        }
         if self.sectionName != nil {
             dict["section"] = self.sectionName
         }

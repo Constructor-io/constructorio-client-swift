@@ -170,9 +170,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - resultID: Identifier of result set
     ///   - completionHandler: The callback to execute on completion.
-    public func trackBrowseResultClick(customerID: String, filterName: String, filterValue: String, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackBrowseResultClick(customerID: String, filterName: String, filterValue: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, sectionName: section, resultID: resultID)
+        let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
     }
