@@ -36,9 +36,9 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
 
     func httpBody(baseParams: [String: String]) -> Data? {
         var dict = [
-            "filterName": self.filterName,
-            "filterValue": self.filterValue,
-            "resultCount": String(self.resultCount)
+            "filter_name": self.filterName,
+            "filter_value": self.filterValue,
+            "result_count": String(self.resultCount)
         ]
         if self.resultID != nil {
             dict["resultID"] = self.resultID
