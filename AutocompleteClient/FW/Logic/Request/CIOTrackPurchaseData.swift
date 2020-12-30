@@ -30,9 +30,37 @@ struct CIOTrackPurchaseData: CIORequestData {
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(customerIDs: self.customerIDs)
+//        requestBuilder.set(customerIDs: self.customerIDs)
         requestBuilder.set(autocompleteSection: self.sectionName)
-        requestBuilder.set(revenue: self.revenue)
-        requestBuilder.set(orderID: self.orderID)
+//        requestBuilder.set(revenue: self.revenue)
+//        requestBuilder.set(orderID: self.orderID)
+    }
+    
+    func httpMethod() -> String {
+        return "POST"
+    }
+    
+    func httpBody(baseParams: [String: String]) -> Data? {
+        let items = self.customerIDs.map { ["item_id": $0] }
+        var dict = ["items": items] as [String : Any]
+        
+        if self.orderID != nil {
+            dict["order_id"] = self.orderID
+        }
+        
+        if self.revenue != nil {
+            dict["revenue"] = self.revenue
+        }
+        
+        if self.sectionName != nil {
+            dict["section"] = self.sectionName
+        }
+
+        dict.merge(baseParams) { current, _ in current }
+        
+        return try? JSONSerialization.data(
+            withJSONObject: dict,
+            options: []
+        )
     }
 }

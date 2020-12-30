@@ -36,10 +36,8 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?"))
-        XCTAssertTrue(url.contains(encodedCustomerID1), "URL should contain the customer ID[1].")
-        XCTAssertTrue(url.contains(encodedCustomerID2), "URL should contain the customer ID[2].")
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
@@ -61,10 +59,8 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?"))
-        XCTAssertTrue(url.contains(encodedCustomerID1), "URL should contain the customer ID[1].")
-        XCTAssertTrue(url.contains(encodedCustomerID2), "URL should contain the customer ID[2].")
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
         XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
@@ -76,8 +72,7 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?"))
-        XCTAssertTrue(url.contains("\(Constants.Track.revenue)=\(self.revenue)"), "URL should contain revenue value.")
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
     }
 }
