@@ -30,10 +30,7 @@ struct CIOTrackPurchaseData: CIORequestData {
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
-//        requestBuilder.set(customerIDs: self.customerIDs)
         requestBuilder.set(autocompleteSection: self.sectionName)
-//        requestBuilder.set(revenue: self.revenue)
-//        requestBuilder.set(orderID: self.orderID)
     }
     
     func httpMethod() -> String {
