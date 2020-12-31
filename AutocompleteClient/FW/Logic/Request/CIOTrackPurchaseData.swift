@@ -57,7 +57,6 @@ struct CIOTrackPurchaseData: CIORequestData {
         }
 
         dict.merge(baseParams) { current, _ in current }
-        
         return try? JSONSerialization.data(
             withJSONObject: dict,
             options: []
