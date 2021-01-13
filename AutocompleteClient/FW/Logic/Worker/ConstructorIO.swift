@@ -139,14 +139,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearchResultClick(itemName: String, customerID: String, searchTerm: String? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) -> URLRequest {
+    public func trackSearchResultClick(itemName: String, customerID: String, searchTerm: String? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let term = searchTerm == nil ? "TERM_UNKNOWN" : (searchTerm!.isEmpty) ? "TERM_UNKNOWN" : searchTerm
         let data = CIOTrackSearchResultClickData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, resultID: resultID)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
-        
-        return request
     }
 
     /// Track search results loaded.
@@ -157,12 +155,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - resultCount: Number of results loaded
     ///   - resultID: Identifier of result set
     ///   - completionHandler: The callback to execute on completion.
-    public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) -> URLRequest {
+    public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID)
         let request = self.buildRequest(data: data)
         execute(request, completionHandler: completionHandler)
-    
-        return request
     }
 
     /// Track search result clicked on.

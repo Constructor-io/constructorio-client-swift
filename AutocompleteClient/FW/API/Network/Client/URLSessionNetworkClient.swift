@@ -12,6 +12,7 @@ class URLSessionNetworkClient: NetworkClient {
 
     func execute(_ request: URLRequest, completionHandler: @escaping (_ response: NetworkResponse) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            print(data)
             // Check for errors
             if let error = error {
                 let err: Error = CIOError(rawValue: (error as NSError).code) ?? error

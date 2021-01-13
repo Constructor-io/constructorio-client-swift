@@ -115,21 +115,6 @@ class ConstructorIOIntegrationTests: XCTestCase {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
             }
         })
-
-        // let (data, response, _) = URLSession.shared.synchronousDataTask(urlrequest: request)
-        // swiftlint:disable force_cast
-        // let httpResponse = response as! HTTPURLResponse
-        // swiftlint:enable force_cast
-
-        print("here")
-//        print(request.url)
-//        print(request.httpMethod)
-//        print(try? JSONSerialization.jsonObject(with: data!))
-//        print("there")
-        print(request.allHTTPHeaderFields)
-//        print(try? JSONSerialization.jsonObject(with: request.httpBody!))
-
-        XCTAssertEqual(httpResponse.statusCode, 204)
     }
 
     func testBrowseResultClick() {
