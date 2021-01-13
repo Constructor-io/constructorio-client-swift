@@ -115,7 +115,7 @@ Three types of these events exist:
 constructorIO.trackInputFocus(searchTerm: "")
 
 // Track when the user selects an autocomplete suggestion
-constructorIO.trackAutocompleteSelect(searchTerm: "toothpicks", originalQuery: "tooth", sectionName: "Search Suggestions", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+constructorIO.trackAutocompleteSelect(searchTerm: "toothpicks", originalQuery: "tooth", sectionName: "Search Suggestions", group: CIOGroup(displayName: "Dental Health", groupID: "dental-92dk2", path: "health-2911e/dental-92dk2"), resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 
 // Track when the user submits a search (either by selecting a suggestion or not selecting a suggestion)
 constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth")
