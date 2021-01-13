@@ -9,29 +9,6 @@
 import XCTest
 import ConstructorAutocomplete
 
-extension URLSession {
-    func synchronousDataTask(urlrequest: URLRequest) -> (data: Data?, response: URLResponse?, error: Error?) {
-        var data: Data?
-        var response: URLResponse?
-        var error: Error?
-
-        let semaphore = DispatchSemaphore(value: 0)
-
-        let dataTask = self.dataTask(with: urlrequest) {
-            data = $0
-            response = $1
-            error = $2
-
-            semaphore.signal()
-        }
-        dataTask.resume()
-
-        _ = semaphore.wait(timeout: .distantFuture)
-
-        return (data, response, error)
-    }
-}
-
 class ConstructorIOIntegrationTests: XCTestCase {
 
     fileprivate let testACKey = "key_K2hlXt5aVSwoI1Uw"
@@ -100,13 +77,6 @@ class ConstructorIOIntegrationTests: XCTestCase {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
             }
         })
-
-        let (_, response, _) = URLSession.shared.synchronousDataTask(urlrequest: request)
-        // swiftlint:disable force_cast
-        let httpResponse = response as! HTTPURLResponse
-        // swiftlint:enable force_cast
-
-        XCTAssertEqual(httpResponse.statusCode, 204)
     }
 
     func testBrowseResultsLoaded() {

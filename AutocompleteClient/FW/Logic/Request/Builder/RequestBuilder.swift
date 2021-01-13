@@ -72,7 +72,7 @@ class RequestBuilder {
 
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpBody = self.trackData!.httpBody(baseParams: allQueryItems.all())
+        request.httpBody = self.trackData!.httpBody(baseParams: allQueryItems.allAsDictionary())
         request.httpMethod = self.trackData!.httpMethod()
 
         return request

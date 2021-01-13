@@ -59,7 +59,7 @@ struct QueryItemCollection {
         })
     }
 
-    func all() -> [String: Any] {
+    func allAsDictionary() -> [String: Any] {
         let flattenedArray = self.queryItems.values.reduce([]) { res, next -> [URLQueryItem] in
             return res + next.reduce([], { res, next in return res + [next] })
         }

@@ -36,7 +36,7 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
         return "POST"
     }
 
-    func httpBody(baseParams: [String: String]) -> Data? {
+    func httpBody(baseParams: [String: Any]) -> Data? {
         var dict = [
             "filter_name": self.filterName,
             "filter_value": self.filterValue,
