@@ -16,7 +16,7 @@ protocol CIORequestData {
 
     func httpMethod() -> String
 
-    func httpBody(baseParams: [String: String]) -> Data?
+    func httpBody(baseParams: [String: Any]) -> Data?
 }
 
 extension CIORequestData {
@@ -26,7 +26,7 @@ extension CIORequestData {
     }
 
     // default body is null
-    func httpBody(baseParams: [String: String]) -> Data? {
+    func httpBody(baseParams: [String: Any]) -> Data? {
         return nil
     }
 }

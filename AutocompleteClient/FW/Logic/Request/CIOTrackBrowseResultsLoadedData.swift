@@ -49,13 +49,6 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
         }
 
         dict.merge(baseParams) { current, _ in current }
-        
-        if dict["s"] != nil {
-            dict["s"] = Int(dict["s"] as! String)
-        }
-        if dict["_dt"] != nil {
-            dict["_dt"] = Int64(dict["_dt"] as! String)
-        }
 
         return try? JSONSerialization.data(withJSONObject: dict)
     }
