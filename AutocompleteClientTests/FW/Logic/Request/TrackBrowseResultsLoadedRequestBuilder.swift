@@ -35,6 +35,6 @@ class TrackBrowseResultsLoadedRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["result_count"], String(resultCount))
         XCTAssertEqual(payload?["key"], testACKey)
         XCTAssertEqual(payload?["c"], "cioios-")
-
+        XCTAssertEqual(payload?["url"], "Not Available")
     }
 }
