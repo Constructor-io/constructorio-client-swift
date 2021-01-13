@@ -43,10 +43,11 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
         var dict = [
             "filter_name": self.filterName,
             "filter_value": self.filterValue,
-            "item_id": self.customerID
-        ]
+            "item_id": self.customerID,
+        ] as [String : Any]
+
         if self.resultPositionOnPage != nil {
-            dict["result_position_on_page"] = String(self.resultPositionOnPage!)
+            dict["result_position_on_page"] = Int(self.resultPositionOnPage!)
         }
         if self.sectionName != nil {
             dict["section"] = self.sectionName
@@ -56,6 +57,14 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
         }
 
         dict.merge(baseParams) { current, _ in current }
-        return try? JSONEncoder().encode(dict)
+
+        if dict["s"] != nil {
+            dict["s"] = Int(dict["s"] as! String)
+        }
+        if dict["_dt"] != nil {
+            dict["_dt"] = Int64(dict["_dt"] as! String)
+        }
+
+        return try? JSONSerialization.data(withJSONObject: dict)
     }
 }

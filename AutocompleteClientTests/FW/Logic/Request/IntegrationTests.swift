@@ -9,6 +9,29 @@
 import XCTest
 import ConstructorAutocomplete
 
+extension URLSession {
+    func synchronousDataTask(urlrequest: URLRequest) -> (data: Data?, response: URLResponse?, error: Error?) {
+        var data: Data?
+        var response: URLResponse?
+        var error: Error?
+
+        let semaphore = DispatchSemaphore(value: 0)
+
+        let dataTask = self.dataTask(with: urlrequest) {
+            data = $0
+            response = $1
+            error = $2
+
+            semaphore.signal()
+        }
+        dataTask.resume()
+
+        _ = semaphore.wait(timeout: .distantFuture)
+
+        return (data, response, error)
+    }
+}
+
 class ConstructorIOIntegrationTests: XCTestCase {
     
     fileprivate let testACKey = "key_K2hlXt5aVSwoI1Uw"
@@ -72,19 +95,37 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
     
     func testSearchResultClick() {
-        self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName, resultID: nil, completionHandler: { error in
+        let request = self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName, resultID: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
             }
         })
+        
+        let (_, response, _) = URLSession.shared.synchronousDataTask(urlrequest: request)
+        let httpResponse = response as! HTTPURLResponse
+        
+        XCTAssertEqual(httpResponse.statusCode, 204)
     }
     
     func testBrowseResultsLoaded() {
-        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { error in
+        var request = self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { error in
             if let cioError = error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
             }
         })
+        
+        let (data, response, _) = URLSession.shared.synchronousDataTask(urlrequest: request)
+        let httpResponse = response as! HTTPURLResponse
+        
+        print("here")
+//        print(request.url)
+//        print(request.httpMethod)
+//        print(try? JSONSerialization.jsonObject(with: data!))
+//        print("there")
+        print(request.allHTTPHeaderFields)
+//        print(try? JSONSerialization.jsonObject(with: request.httpBody!))
+        
+        XCTAssertEqual(httpResponse.statusCode, 204)
     }
     
     func testBrowseResultClick() {
