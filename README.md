@@ -128,7 +128,7 @@ constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth"
 constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789)
 
 // Track when a search result is clicked
-constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 
 // Track when a search result converts (a.k.a. is added to cart)
 constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth")
@@ -144,5 +144,5 @@ constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"])
 constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674)
 
 // Track when a browse result is clicked
-constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", resultPositionOnPage: 4, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 ```
