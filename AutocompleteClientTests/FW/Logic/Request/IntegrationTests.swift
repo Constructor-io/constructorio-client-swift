@@ -40,65 +40,92 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testTrackInputFocus() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: {  error in
             let cioError = error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 
     func testTrackAutocompleteSelect() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: nil, completionHandler: { error in
             let cioError = error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 
     func testTrackSearchSubmit() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: originalQuery, group: group, completionHandler: { error in
             let cioError = error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 
     func testTrackSearchResultsLoaded() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, completionHandler: { error in
             let cioError = error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 
     func testSearchResultClick() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
         let request = self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName, resultID: nil, completionHandler: { error in
             let cioError = error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 
     func testBrowseResultsLoaded() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
         var request = self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { error in
             let cioError = error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 
     func testBrowseResultClick() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: nil, completionHandler: { error in
             let cioError = error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 
     func testConversion() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName, completionHandler: { error in
             let cioError = error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 
     func testPurchase() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: sectionName, revenue: revenue, orderID: orderID, completionHandler: { error in
             let cioError = error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 }

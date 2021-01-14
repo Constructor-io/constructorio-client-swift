@@ -11,7 +11,7 @@ import Foundation
 public typealias AutocompleteQueryCompletionHandler = (AutocompleteTaskResponse) -> Void
 public typealias SearchQueryCompletionHandler = (SearchTaskResponse) -> Void
 public typealias BrowseQueryCompletionHandler = (BrowseTaskResponse) -> Void
-public typealias TrackingCompletionHandler = (Error?) -> Void
+public typealias TrackingCompletionHandler = (TrackingTaskResponse) -> Void
 
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
@@ -89,7 +89,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackInputFocus(searchTerm: String, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackInputFocusData(searchTerm: searchTerm)
         let request = self.buildRequest(data: data)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     /// Track a user select on any autocomplete result item.
@@ -103,7 +103,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: resultID)
         let request = self.buildRequest(data: data)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     /// Track a search event when the user taps on Search button on keyboard or when an item in the list is tapped on.
@@ -116,7 +116,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
         let request = self.buildRequest(data: data)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     /// Track search results loaded.
@@ -128,7 +128,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount )
         let request = self.buildRequest(data: data)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     /// Track search result clicked on.
@@ -144,7 +144,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let term = searchTerm == nil ? "TERM_UNKNOWN" : (searchTerm!.isEmpty) ? "TERM_UNKNOWN" : searchTerm
         let data = CIOTrackSearchResultClickData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, resultID: resultID)
         let request = self.buildRequest(data: data)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     /// Track search results loaded.
@@ -158,7 +158,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID)
         let request = self.buildRequest(data: data)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     /// Track search result clicked on.
@@ -174,7 +174,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID)
         let request = self.buildRequest(data: data)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     /// Track a conversion.
@@ -191,7 +191,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let term = searchTerm == nil ? "TERM_UNKNOWN" : (searchTerm!.isEmpty) ? "TERM_UNKNOWN" : searchTerm
         let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue)
         let request = self.buildRequest(data: data)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     /// Track a purchase.
@@ -204,12 +204,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackPurchaseData(customerIDs: customerIDs, sectionName: section, revenue: revenue, orderID: orderID)
         let request = self.buildRequest(data: data)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     private func trackSessionStart(session: Int, completionHandler: TrackingCompletionHandler? = nil) {
         let request = self.buildSessionStartRequest(session: session)
-        execute(request, completionHandler: completionHandler)
+        executeTracking(request, completionHandler: completionHandler)
     }
 
     private func buildRequest(data: CIORequestData) -> URLRequest {
@@ -333,7 +333,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
-    private func execute(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
+    private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
         let dispatchHandlerOnMainQueue = { error in
             DispatchQueue.main.async {
                 completionHandler?(error)
@@ -341,7 +341,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
 
         self.networkClient.execute(request) { response in
-            dispatchHandlerOnMainQueue(response.error)
+            if let error = response.error {
+                dispatchHandlerOnMainQueue(TrackingTaskResponse(error: error))
+                return
+            }
+            
+            let data = response.data!
+            dispatchHandlerOnMainQueue(TrackingTaskResponse(data: data))
         }
     }
 

@@ -20,6 +20,7 @@
 		0828954E256C5A85009A00BC /* CIOAutocompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08289543256C5A85009A00BC /* CIOAutocompleteResult.swift */; };
 		08465ECA2161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */; };
 		08465ECC2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08465ECB2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift */; };
+		0855BA4A25B00D5F00CC35F9 /* TrackingTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855BA4925B00D5F00CC35F9 /* TrackingTaskResponse.swift */; };
 		08689F0121897914000D3565 /* ConstructorIOUserIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08689F0021897914000D3565 /* ConstructorIOUserIDTests.swift */; };
 		086D611923636E6600347771 /* CIOABTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D611823636E6600347771 /* CIOABTestCell.swift */; };
 		0874A32E216BCE2700812CDC /* ConstructorIOABTestCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0874A32D216BCE2700812CDC /* ConstructorIOABTestCellTests.swift */; };
@@ -296,6 +297,7 @@
 		08289543256C5A85009A00BC /* CIOAutocompleteResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteResult.swift; sourceTree = "<group>"; };
 		08465EC92161C96900AEBD76 /* TrackSearchResultClickRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSearchResultClickRequestBuilder.swift; sourceTree = "<group>"; };
 		08465ECB2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSessionStartRequestBuilder.swift; sourceTree = "<group>"; };
+		0855BA4925B00D5F00CC35F9 /* TrackingTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTaskResponse.swift; sourceTree = "<group>"; };
 		08689F0021897914000D3565 /* ConstructorIOUserIDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOUserIDTests.swift; sourceTree = "<group>"; };
 		086D611823636E6600347771 /* CIOABTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOABTestCell.swift; sourceTree = "<group>"; };
 		0874A32D216BCE2700812CDC /* ConstructorIOABTestCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOABTestCellTests.swift; sourceTree = "<group>"; };
@@ -1230,6 +1232,7 @@
 				F63808F71F5D497200C3B322 /* NetworkResponse.swift */,
 				F65B9E5721469CA200101617 /* SearchTaskResponse.swift */,
 				0885D83F257189B70038AE96 /* BrowseTaskResponse.swift */,
+				0855BA4925B00D5F00CC35F9 /* TrackingTaskResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2224,6 +2227,7 @@
 				F638090D1F5E880900C3B322 /* CIOHighlighter.swift in Sources */,
 				F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */,
 				0885D83925717EFF0038AE96 /* CIOBrowseResponse.swift in Sources */,
+				0855BA4A25B00D5F00CC35F9 /* TrackingTaskResponse.swift in Sources */,
 				088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */,
 				F65BBCC22151621A007FEB22 /* IDGenerator.swift in Sources */,
 				F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */,
