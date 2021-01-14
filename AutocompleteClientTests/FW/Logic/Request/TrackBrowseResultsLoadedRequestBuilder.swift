@@ -14,6 +14,7 @@ class TrackBrowseResultsLoadedRequestBuilderTests: XCTestCase {
     fileprivate let testACKey = "asdf1213123"
     fileprivate let filterName = "potato"
     fileprivate let filterValue = "russet"
+    fileprivate let url = "Not Available"
     fileprivate let resultCount = 123
 
     fileprivate var builder: RequestBuilder!
@@ -35,6 +36,6 @@ class TrackBrowseResultsLoadedRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["result_count"] as? Int, resultCount)
         XCTAssertEqual(payload?["key"] as? String, testACKey)
         XCTAssertEqual(payload?["c"] as? String, "cioios-")
-        XCTAssertEqual(payload?["url"] as? String, "Not Available")
+        XCTAssertEqual(payload?["url"] as? String, url)
     }
 }
