@@ -14,9 +14,11 @@ protocol CIORequestData {
 
     func url(with baseURL: String) -> String
 
+    func queryItems(baseItems: [URLQueryItem]) -> [URLQueryItem]
+
     func httpMethod() -> String
 
-    func httpBody(baseParams: [String: String]) -> Data?
+    func httpBody(baseParams: [String: Any]) -> Data?
 }
 
 extension CIORequestData {
@@ -26,7 +28,12 @@ extension CIORequestData {
     }
 
     // default body is null
-    func httpBody(baseParams: [String: String]) -> Data? {
+    func httpBody(baseParams: [String: Any]) -> Data? {
         return nil
+    }
+
+    // default query items is all of them
+    func queryItems(baseItems: [URLQueryItem]) -> [URLQueryItem] {
+        return baseItems
     }
 }

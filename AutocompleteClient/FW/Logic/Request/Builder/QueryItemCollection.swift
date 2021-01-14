@@ -59,16 +59,24 @@ struct QueryItemCollection {
         })
     }
 
-    func all() -> [String: String] {
+    func allAsDictionary() -> [String: Any] {
         let flattenedArray = self.queryItems.values.reduce([]) { res, next -> [URLQueryItem] in
             return res + next.reduce([], { res, next in return res + [next] })
         }
-        var dict: [String: String] = [:]
+        var dict: [String: Any] = [:]
         flattenedArray.forEach { item in
             if item.value != nil {
-                dict[item.name] = String(item.value!)
+                dict[item.name] = item.value
             }
         }
+        // swiftlint:disable force_cast
+        if dict["s"] != nil {
+            dict["s"] = Int64(dict["s"] as! String)
+        }
+        if dict["_dt"] != nil {
+            dict["_dt"] = Int64(dict["_dt"] as! String)
+        }
+        // swiftlint:enable force_cast
         return dict
     }
 }

@@ -40,8 +40,8 @@ class ConstructorIOTrackBrowseResultsLoadedTests: XCTestCase {
         let filterValue = "russet"
         let resultCount = 12
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
-        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, completionHandler: { error in
-            if let cioError = error as? CIOError {
+        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
@@ -55,8 +55,8 @@ class ConstructorIOTrackBrowseResultsLoadedTests: XCTestCase {
         let filterValue = "russet"
         let resultCount = 12
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(500))
-        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, completionHandler: { error in
-            if let cioError = error as? CIOError {
+        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
@@ -70,8 +70,8 @@ class ConstructorIOTrackBrowseResultsLoadedTests: XCTestCase {
         let filterValue = "russet"
         let resultCount = 12
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), noConnectivity())
-        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, completionHandler: { error in
-            if let cioError = error as? CIOError {
+        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
