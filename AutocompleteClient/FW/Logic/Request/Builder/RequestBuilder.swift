@@ -68,7 +68,7 @@ class RequestBuilder {
             allQueryItems.add((urlComponents.queryItems?.first)!)
         }
 
-        urlComponents.queryItems = allQueryItems.all()
+        urlComponents.queryItems = self.trackData!.queryItems(baseItems: allQueryItems.all())
 
         let url = urlComponents.url!
         let httpBody = self.trackData!.httpBody(baseParams: allQueryItems.allAsDictionary())

@@ -117,7 +117,7 @@ struct Constants {
         static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let expectedStatusCode = 204
-        static let autocompleteSection = "autocomplete_section"
+        static let autocompleteSection = "section"
         static let searchTerm = "term"
         static let trigger = "tr"
         static let triggerType = "click"
@@ -171,7 +171,7 @@ struct Constants {
     }
 
     struct TrackPurchase {
-        static let format = "%@/autocomplete/TERM_UNKNOWN/purchase"
+        static let format = "%@/v2/behavioral_action/purchase"
     }
 
     struct Logging {

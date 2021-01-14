@@ -69,7 +69,7 @@ class TrackSearchResultClickRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/click_through?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item name.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
-        XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
+        XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }

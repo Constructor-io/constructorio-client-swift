@@ -11,6 +11,7 @@ disabled_rules:
 - identifier_name
 - number_separator
 - unused_closure_parameter
+- type_name
 opt_in_rules:
 - anyobject_protocol
 - array_init

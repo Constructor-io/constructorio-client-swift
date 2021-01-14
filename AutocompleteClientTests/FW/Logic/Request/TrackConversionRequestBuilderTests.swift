@@ -68,7 +68,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
-        XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
+        XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
@@ -98,7 +98,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
-        XCTAssertTrue(url.contains("autocomplete_section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
+        XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
         XCTAssertTrue(url.contains("revenue=12.35"), "URL should contain the revenue parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")

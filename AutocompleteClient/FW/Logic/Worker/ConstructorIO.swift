@@ -345,7 +345,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
                 dispatchHandlerOnMainQueue(TrackingTaskResponse(error: error))
                 return
             }
-            
+
             let data = response.data!
             dispatchHandlerOnMainQueue(TrackingTaskResponse(data: data))
         }
