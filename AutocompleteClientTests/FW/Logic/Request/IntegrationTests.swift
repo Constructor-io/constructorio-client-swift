@@ -40,74 +40,65 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testTrackInputFocus() {
-        self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: { error in
-            if let cioError = error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-            }
+        self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: {  error in
+            let cioError = error as? CIOError
+            XCTAssertNil(cioError)
         })
     }
 
     func testTrackAutocompleteSelect() {
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: nil, completionHandler: { error in
-            if let cioError = error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-            }
+            let cioError = error as? CIOError
+            XCTAssertNil(cioError)
         })
     }
 
     func testTrackSearchSubmit() {
         self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: originalQuery, group: group, completionHandler: { error in
-            if let cioError = error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-            }
+            let cioError = error as? CIOError
+            XCTAssertNil(cioError)
         })
     }
 
     func testTrackSearchResultsLoaded() {
         self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, completionHandler: { error in
-            if let cioError = error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-            }
+            let cioError = error as? CIOError
+            XCTAssertNil(cioError)
         })
     }
 
     func testSearchResultClick() {
         let request = self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName, resultID: nil, completionHandler: { error in
-            if let cioError = error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-            }
+            let cioError = error as? CIOError
+            XCTAssertNil(cioError)
         })
     }
 
     func testBrowseResultsLoaded() {
         var request = self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { error in
-            if let cioError = error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-            }
+            let cioError = error as? CIOError
+            XCTAssertNil(cioError)
         })
     }
 
     func testBrowseResultClick() {
         self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: nil, completionHandler: { error in
-            if let cioError = error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-            }
+            let cioError = error as? CIOError
+            XCTAssertNil(cioError)
         })
     }
 
     func testConversion() {
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName, completionHandler: { error in
-            if let cioError = error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-            }
+            let cioError = error as? CIOError
+            XCTAssertNil(cioError)
         })
     }
 
     func testPurchase() {
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: sectionName, revenue: revenue, orderID: orderID, completionHandler: { error in
-            if let cioError = error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-            }
+            let cioError = error as? CIOError
+            XCTAssertNil(cioError)
         })
     }
 }
