@@ -13,7 +13,7 @@ protocol CIORequestData {
     func decorateRequest(requestBuilder: RequestBuilder)
 
     func url(with baseURL: String) -> String
-    
+
     func queryItems(baseItems: [URLQueryItem]) -> [URLQueryItem]
 
     func httpMethod() -> String
@@ -31,7 +31,7 @@ extension CIORequestData {
     func httpBody(baseParams: [String: Any]) -> Data? {
         return nil
     }
-    
+
     // default query items is all of them
     func queryItems(baseItems: [URLQueryItem]) -> [URLQueryItem] {
         return baseItems
