@@ -41,8 +41,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackInputFocus() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: {  error in
-            let cioError = error as? CIOError
+        self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: { response in
+            let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
@@ -51,8 +51,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackAutocompleteSelect() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: nil, completionHandler: { error in
-            let cioError = error as? CIOError
+        self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: nil, completionHandler: { response in
+            let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
@@ -61,8 +61,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackSearchSubmit() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: originalQuery, group: group, completionHandler: { error in
-            let cioError = error as? CIOError
+        self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: originalQuery, group: group, completionHandler: { response in
+            let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
@@ -71,8 +71,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackSearchResultsLoaded() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, completionHandler: { error in
-            let cioError = error as? CIOError
+        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, completionHandler: { response in
+            let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
@@ -81,8 +81,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testSearchResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        let request = self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName, resultID: nil, completionHandler: { error in
-            let cioError = error as? CIOError
+        let request = self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName, resultID: nil, completionHandler: { response in
+            let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
@@ -91,8 +91,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowseResultsLoaded() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        var request = self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { error in
-            let cioError = error as? CIOError
+        var request = self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { response in
+            let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
@@ -101,8 +101,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowseResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: nil, completionHandler: { error in
-            let cioError = error as? CIOError
+        self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: nil, completionHandler: { response in
+            let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
@@ -111,8 +111,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testConversion() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName, completionHandler: { error in
-            let cioError = error as? CIOError
+        self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName, completionHandler: { response in
+            let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
@@ -121,8 +121,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testPurchase() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: sectionName, revenue: revenue, orderID: orderID, completionHandler: { error in
-            let cioError = error as? CIOError
+        self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: sectionName, revenue: revenue, orderID: orderID, completionHandler: { response in
+            let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })

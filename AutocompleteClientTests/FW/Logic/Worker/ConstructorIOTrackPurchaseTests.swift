@@ -62,8 +62,8 @@ class ConstructorIOTrackPurchaseTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackPurchase with 400 should return badRequest CIOError.")
         let customerIDs = ["customer_id_q2ew"]
         stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_ids=customer_id_q2ew&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
-        self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil, completionHandler: { error in
-            if let cioError = error as? CIOError {
+        self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
@@ -75,8 +75,8 @@ class ConstructorIOTrackPurchaseTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackPurchase with 500 should return internalServerError CIOError.")
         let customerIDs = ["customer_id_q2ew"]
         stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_ids=customer_id_q2ew&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(500))
-        self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil, completionHandler: { error in
-            if let cioError = error as? CIOError {
+        self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
@@ -88,8 +88,8 @@ class ConstructorIOTrackPurchaseTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackPurchase with no connectvity should return noConnectivity CIOError.")
         let customerIDs = ["customer_id_q2ew"]
         stub(regex("https://ac.cnstrc.com/autocomplete/TERM_UNKNOWN/purchase?_dt=\(kRegexTimestamp)&autocomplete_section=Products&c=\(kRegexVersion)&customer_ids=customer_id_q2ew&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), noConnectivity())
-        self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil, completionHandler: { error in
-            if let cioError = error as? CIOError {
+        self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: nil, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, CIOError.noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }

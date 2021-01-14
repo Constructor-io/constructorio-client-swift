@@ -334,9 +334,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
-        let dispatchHandlerOnMainQueue = { error in
+        let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
-                completionHandler?(error)
+                completionHandler?(response)
             }
         }
 
