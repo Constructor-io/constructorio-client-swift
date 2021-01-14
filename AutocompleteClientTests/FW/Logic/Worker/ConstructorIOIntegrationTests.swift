@@ -1,5 +1,5 @@
 //
-//  ConstructorIOSearchTests.swift
+//  ConstructorIOIntegrationTests.swift
 //  AutocompleteClientTests
 //
 //  Copyright © Constructor.io. All rights reserved.

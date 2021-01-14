@@ -2,8 +2,8 @@
 //  TrackingTaskResponse.swift
 //  ConstructorAutocomplete
 //
-//  Created by Zubin Tiku on 1/14/21.
-//  Copyright © 2021 xd. All rights reserved.
+//  Copyright © Constructor.io. All rights reserved.
+//  http://constructor.io/
 //
 
 import UIKit
