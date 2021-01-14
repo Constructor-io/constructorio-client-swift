@@ -178,7 +178,7 @@ struct Constants {
         private static let prefix = "[ConstructorIO]:"
         private static let format: (_ message: String) -> String = { message in return "\(Logging.prefix) \(message)" }
         static let performURLRequest: (_ request: URLRequest) -> String = { request in return Logging.format("Performing URL Request \(request)") }
-        static let recieveURLResponse: (_ request: HTTPURLResponse) -> String = { response in return Logging.format("Recieved URL Response \(response.statusCode)") }
+        static let recieveURLResponse: (_ response: HTTPURLResponse) -> String = { response in return Logging.format("Recieved URL Response \(response.statusCode)") }
     }
 
     struct Session {

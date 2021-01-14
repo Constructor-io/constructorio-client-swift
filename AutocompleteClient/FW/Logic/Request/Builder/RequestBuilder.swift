@@ -74,7 +74,7 @@ class RequestBuilder {
         let httpBody = self.trackData!.httpBody(baseParams: allQueryItems.allAsDictionary())
 
         var request = URLRequest(url: url)
-        if (httpBody != nil ) {
+        if httpBody != nil {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.httpBody = httpBody

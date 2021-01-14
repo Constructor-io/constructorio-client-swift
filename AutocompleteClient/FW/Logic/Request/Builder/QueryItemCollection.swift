@@ -69,6 +69,14 @@ struct QueryItemCollection {
                 dict[item.name] = item.value
             }
         }
+        // swiftlint:disable force_cast
+        if dict["s"] != nil {
+            dict["s"] = Int64(dict["s"] as! String)
+        }
+        if dict["_dt"] != nil {
+            dict["_dt"] = Int64(dict["_dt"] as! String)
+        }
+        // swiftlint:enable force_cast
         return dict
     }
 }
