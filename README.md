@@ -124,8 +124,8 @@ constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth"
 ### Search Events
 
 ```swift
-// Track when search results are loaded into view
-constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789)
+// Track when search results are loaded into view (customer ID's are the ID's of shown items)
+constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
 
 // Track when a search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2")

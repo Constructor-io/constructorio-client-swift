@@ -125,8 +125,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - searchTerm: Search term that the user searched for
     ///   - resultCount: Number of results loaded
     ///   - completionHandler: The callback to execute on completion.
-    public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount )
+    public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, customerIDs: [String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, customerIDs: customerIDs )
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }

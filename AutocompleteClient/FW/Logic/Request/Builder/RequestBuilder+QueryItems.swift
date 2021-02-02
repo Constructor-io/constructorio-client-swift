@@ -42,9 +42,7 @@ extension RequestBuilder {
 
     func set(customerIDs: [String]?) {
         guard let customerIDs = customerIDs else { return }
-        for (index, customerID) in customerIDs.enumerated() {
-            queryItems.addMultiple(index: index, item: URLQueryItem(name: Constants.Track.customerIDs, value: customerID))
-        }
+        queryItems.add(URLQueryItem(name: Constants.Track.customerIDs, value: customerIDs.prefix(60).joined(separator: ",")))
     }
 
     func set(resultID: String?) {

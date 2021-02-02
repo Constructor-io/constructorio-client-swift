@@ -14,19 +14,22 @@ import Foundation
 struct CIOTrackSearchResultsLoadedData: CIORequestData {
     let searchTerm: String
     let resultCount: Int
+    let customerIDs: [String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackSearchResultsLoaded.format, baseURL)
     }
 
-    init(searchTerm: String, resultCount: Int) {
+    init(searchTerm: String, resultCount: Int, customerIDs: [String]?) {
         self.searchTerm = searchTerm
         self.resultCount = resultCount
+        self.customerIDs = customerIDs
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(searchTerm: self.searchTerm)
         requestBuilder.set(numResults: self.resultCount)
+        requestBuilder.set(customerIDs: self.customerIDs)
     }
 
 }
