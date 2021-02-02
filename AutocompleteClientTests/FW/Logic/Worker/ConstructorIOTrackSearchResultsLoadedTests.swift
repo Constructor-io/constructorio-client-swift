@@ -33,6 +33,16 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackSearchResultsLoadedWithCustomerIDs() {
+        let searchTerm = "term_search"
+        let resultCount = 12
+        let customerIDs = ["abc", "123"]
+        let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded should send a valid request.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=search-results&c=\(kRegexVersion)&customer_ids=abc,123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=12&s=\(kRegexSession)&term=term_search"), builder.create())
+        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, customerIDs: customerIDs)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackSearchResultsLoaded_With400() {
         let expectation = self.expectation(description: "Calling trackSearchResultsLoaded with 400 should return badRequest CIOError.")
         let searchTerm = "term_search"
