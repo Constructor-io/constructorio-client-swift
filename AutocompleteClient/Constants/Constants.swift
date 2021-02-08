@@ -96,6 +96,17 @@ struct Constants {
         static let sortOrder = "sort_order"
         static let defaultSectionName = "Products"
     }
+    
+    struct RecommendationsQuery {
+        static let format = "%@/recommendations/v1/pods/%@"
+        static let section = "section"
+        static let numResults = "num_results"
+        static let itemId = "item_id"
+        static let term = "term"
+        static let groupFilter = "filters[group_id]"
+        static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
+        static let defaultSectionName = "Products"
+    }
 
     struct Response {
         static let singleSectionResultField = "suggestions"

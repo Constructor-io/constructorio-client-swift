@@ -59,6 +59,9 @@
 		08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */; };
 		651F5B9E3E0C5CC7A2090EC8 /* Pods_AutocompleteClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */; };
 		99D6877853DE657CAF7E876C /* Pods_UserApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D938EAC4478309F3008F3B0D /* Pods_UserApplication.framework */; };
+		BF12196825D1F06200496189 /* CIORecommendationsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196725D1F06200496189 /* CIORecommendationsQuery.swift */; };
+		BF12196A25D1FD5700496189 /* CIORecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196925D1FD5700496189 /* CIORecommendationsResponse.swift */; };
+		BF12196C25D1FDB300496189 /* CIOPod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196B25D1FDB300496189 /* CIOPod.swift */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
 		F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDED1F5F123400114C8C /* RequestBuilder.swift */; };
@@ -337,6 +340,9 @@
 		453FBD0FBF9C8817B960B758 /* Pods-UserApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication.release.xcconfig"; sourceTree = "<group>"; };
 		5362DE84EA35B4B9FE26EE1F /* Pods_AutocompleteClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.release.xcconfig"; sourceTree = "<group>"; };
+		BF12196725D1F06200496189 /* CIORecommendationsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsQuery.swift; sourceTree = "<group>"; };
+		BF12196925D1FD5700496189 /* CIORecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsResponse.swift; sourceTree = "<group>"; };
+		BF12196B25D1FDB300496189 /* CIOPod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOPod.swift; sourceTree = "<group>"; };
 		BFC17B2DD098BEA7AF8F0E7E /* Pods-UserApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -577,6 +583,7 @@
 				08289541256C5A85009A00BC /* CIOSearchResponse.swift */,
 				08289542256C5A85009A00BC /* CIOAutocompleteResponse.swift */,
 				0885D83825717EFF0038AE96 /* CIOBrowseResponse.swift */,
+				BF12196925D1FD5700496189 /* CIORecommendationsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -662,6 +669,7 @@
 				F1F68DD31F58B59F00B42602 /* CIOAutocompleteQuery.swift */,
 				0885D84125718A7C0038AE96 /* CIOSearchQuery.swift */,
 				0885D84325718AD10038AE96 /* CIOBrowseQuery.swift */,
+				BF12196725D1F06200496189 /* CIORecommendationsQuery.swift */,
 				F685255A21413D4D00A27FAA /* CIORequestData.swift */,
 				08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */,
 				08A7E40C2575E37A000FA02F /* CIOTrackBrowseResultClickData.swift */,
@@ -690,6 +698,7 @@
 				0828953E256C5A85009A00BC /* CIOResultFacet.swift */,
 				0828953F256C5A85009A00BC /* CIOSearchRedirectInfo.swift */,
 				08289538256C5A84009A00BC /* CIOSortOption.swift */,
+				BF12196B25D1FDB300496189 /* CIOPod.swift */,
 				08289540256C5A85009A00BC /* Responses */,
 			);
 			path = Result;
@@ -2157,6 +2166,7 @@
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
 				F67D42AC220360700053B9C3 /* AbstractAutocompleteViewModel.swift in Sources */,
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
+				BF12196C25D1FDB300496189 /* CIOPod.swift in Sources */,
 				0828954C256C5A85009A00BC /* CIOSearchResponse.swift in Sources */,
 				F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */,
 				F65B9E4C214698FD00101617 /* AbstractSearchResponseParser.swift in Sources */,
@@ -2198,7 +2208,9 @@
 				F63808F21F5D47AF00C3B322 /* URLSessionNetworkClient.swift in Sources */,
 				F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */,
 				F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */,
+				BF12196A25D1FD5700496189 /* CIORecommendationsResponse.swift in Sources */,
 				F685255F2141543C00A27FAA /* RequestBuilder+QueryItems.swift in Sources */,
+				BF12196825D1F06200496189 /* CIORecommendationsQuery.swift in Sources */,
 				088F7D1C210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift in Sources */,
 				08289545256C5A85009A00BC /* CIOFilterFacetOption.swift in Sources */,
 				F63808F41F5D47BB00C3B322 /* NetworkClient.swift in Sources */,

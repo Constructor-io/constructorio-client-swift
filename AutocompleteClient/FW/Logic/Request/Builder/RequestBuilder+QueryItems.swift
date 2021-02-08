@@ -123,4 +123,14 @@ extension RequestBuilder {
         let formattedKey = String(format: Constants.ABTesting.keyFormat, testCellKey)
         queryItems.add(URLQueryItem(name: formattedKey, value: testCellValue))
     }
+    
+    func set(itemId: String) {
+        let itemIdString = String(itemId)
+        queryItems.add(URLQueryItem(name: Constants.RecommendationsQuery.itemId, value: itemIdString))
+    }
+    
+    func set(term: String) {
+        let termString = String(term)
+        queryItems.add(URLQueryItem(name: Constants.RecommendationsQuery.term, value: termString))
+    }
 }
