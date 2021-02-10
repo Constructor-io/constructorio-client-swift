@@ -134,7 +134,7 @@ constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", custome
 constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth")
 
 // Track when products are purchased
-constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"])
+constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")
 ```
 
 ### Browse Events
