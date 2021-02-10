@@ -1,5 +1,5 @@
 //
-//  CIOBrowseQuery.swift
+//  CIORecommendationsQuery.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -14,10 +14,10 @@ import Foundation
 public struct CIORecommendationsQuery: CIORequestData {
 
     public let podId: String
-    public let numResults: Int
-    public let itemId: String
     public let section: String
-    public let term: String
+    public let numResults: Int?
+    public let itemId: String?
+    public let term: String?
     public let filters: CIOQueryFilters?
 
     func url(with baseURL: String) -> String {
@@ -29,8 +29,8 @@ public struct CIORecommendationsQuery: CIORequestData {
         self.filters = filters
         self.numResults = numResults
         self.section = section != nil ? section! : Constants.RecommendationsQuery.defaultSectionName
-        self.itemId = itemId!
-        self.term = term!
+        self.itemId = itemId
+        self.term = term
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
