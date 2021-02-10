@@ -62,6 +62,7 @@
 		BF12196825D1F06200496189 /* CIORecommendationsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196725D1F06200496189 /* CIORecommendationsQuery.swift */; };
 		BF12196A25D1FD5700496189 /* CIORecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196925D1FD5700496189 /* CIORecommendationsResponse.swift */; };
 		BF12196C25D1FDB300496189 /* CIOPod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196B25D1FDB300496189 /* CIOPod.swift */; };
+		BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
 		F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDED1F5F123400114C8C /* RequestBuilder.swift */; };
@@ -344,6 +345,7 @@
 		BF12196925D1FD5700496189 /* CIORecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsResponse.swift; sourceTree = "<group>"; };
 		BF12196B25D1FDB300496189 /* CIOPod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOPod.swift; sourceTree = "<group>"; };
 		BFC17B2DD098BEA7AF8F0E7E /* Pods-UserApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication.debug.xcconfig"; sourceTree = "<group>"; };
+		BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
 		C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D938EAC4478309F3008F3B0D /* Pods_UserApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -810,6 +812,7 @@
 				08A7E41B257601CF000FA02F /* TrackBrowseResultsLoadedRequestBuilder.swift */,
 				089399E02161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift */,
 				08465ECB2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift */,
+				BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2273,6 +2276,7 @@
 				F1C557451F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift in Sources */,
 				F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */,
 				087F4BDF228B100E0058B467 /* ConstructorIOTrackPurchaseTests.swift in Sources */,
+				BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */,
 				F66B217B21E275EE00AAB030 /* QueryItemCollectionTests.swift in Sources */,
 				089399E12161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift in Sources */,
 				08A7E4192575FDA0000FA02F /* ConstructorIOTrackBrowseResultsLoadedTests.swift in Sources */,
