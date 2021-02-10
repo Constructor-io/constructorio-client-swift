@@ -13,6 +13,7 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
 
     fileprivate let revenue: Double = 2.5
     fileprivate let testACKey = "testKey123213"
+    fileprivate let orderID = "234-4532"
     fileprivate let customerIDs = ["custIDq3éû qd", "womp womp"]
     fileprivate let sectionName = "some section name@"
 
@@ -71,8 +72,22 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
+        XCTAssertEqual(payload?["revenue"] as? Double, revenue)
+    }
+    
+    func testTrackPurchaseBuilder_WithOrderID() {
+        let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs, sectionName: self.sectionName, orderID: self.orderID)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
+        XCTAssertEqual(payload?["order_id"] as? String, orderID)
     }
 }
