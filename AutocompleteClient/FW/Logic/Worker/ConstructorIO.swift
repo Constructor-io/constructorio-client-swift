@@ -11,6 +11,7 @@ import Foundation
 public typealias AutocompleteQueryCompletionHandler = (AutocompleteTaskResponse) -> Void
 public typealias SearchQueryCompletionHandler = (SearchTaskResponse) -> Void
 public typealias BrowseQueryCompletionHandler = (BrowseTaskResponse) -> Void
+public typealias RecommendationsQueryCompletionHandler = (RecommendationsTaskResponse) -> Void
 public typealias TrackingCompletionHandler = (TrackingTaskResponse) -> Void
 
 /**
@@ -33,6 +34,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     var autocompleteParser: AbstractAutocompleteResponseParser = DependencyContainer.sharedInstance.autocompleteResponseParser()
     var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
     var browseParser: AbstractBrowseResponseParser = DependencyContainer.sharedInstance.browseResponseParser()
+    var recommendationsParser: AbstractRecommendationsResponseParser = DependencyContainer.sharedInstance.recommendationsResponseParser()
 
     public var sessionID: Int {
         get {
@@ -79,6 +81,16 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func browse(forQuery query: CIOBrowseQuery, completionHandler: @escaping BrowseQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeBrowse(request, completionHandler: completionHandler)
+    }
+    
+    /// Get recommendation results for a query.
+    ///
+    /// - Parameters:
+    ///   - query: The query object, consisting of the query to autocomplete and additional options.
+    ///   - completionHandler: The callback to execute on completion.
+    public func recommendations(forQuery query: CIORecommendationsQuery, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeRecommendations(request, completionHandler: completionHandler)
     }
 
     /// Track input focus.
@@ -332,6 +344,29 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             }
         }
     }
+    
+    private func executeRecommendations(_ request: URLRequest, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
+        let dispatchHandlerOnMainQueue = { response in
+            DispatchQueue.main.async {
+                completionHandler(response)
+            }
+        }
+
+        self.networkClient.execute(request) { response in
+            if let error = response.error {
+                dispatchHandlerOnMainQueue(RecommendationsTaskResponse(error: error))
+                return
+            }
+
+            let data = response.data!
+            do {
+                let parsedResponse = try self.parseRecommendations(data)
+                dispatchHandlerOnMainQueue(RecommendationsTaskResponse(data: parsedResponse))
+            } catch {
+                dispatchHandlerOnMainQueue(RecommendationsTaskResponse(error: error))
+            }
+        }
+    }
 
     private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
         let dispatchHandlerOnMainQueue = { response in
@@ -361,6 +396,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     private func parseBrowse(_ browseResponseData: Data) throws -> CIOBrowseResponse {
         return try self.browseParser.parse(browseResponseData: browseResponseData)
+    }
+    
+    private func parseRecommendations(_ recommendationsResponseData: Data) throws -> CIORecommendationsResponse {
+        return try self.recommendationsParser.parse(recommendationsResponseData: recommendationsResponseData)
     }
 
     // MARK: CIOSessionManagerDelegate

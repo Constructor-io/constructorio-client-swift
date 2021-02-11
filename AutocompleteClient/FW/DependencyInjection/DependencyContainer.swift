@@ -29,6 +29,10 @@ class DependencyContainer {
     var browseResponseParser: () -> AbstractBrowseResponseParser = {
         return BrowseResponseParser()
     }
+    
+    var recommendationsResponseParser: () -> AbstractRecommendationsResponseParser = {
+        return RecommendationsResponseParser()
+    }
 
     var sessionManager: () -> SessionManager = {
         return CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: Constants.Query.sessionIncrementTimeoutInSeconds)
