@@ -65,9 +65,10 @@
 		BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */; };
 		BFC9502C25D48CE400118D4C /* AbstractRecommendationsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502B25D48CE400118D4C /* AbstractRecommendationsResponseParser.swift */; };
 		BFC9502E25D48CFD00118D4C /* RecommendationsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502D25D48CFD00118D4C /* RecommendationsResponseParser.swift */; };
-		BFC9503025D499B600118D4C /* ConstructorIORecommendationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502F25D499B600118D4C /* ConstructorIORecommendationsTests.swift */; };
+		BFC9503025D499B600118D4C /* RecommendationsResponseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502F25D499B600118D4C /* RecommendationsResponseParserTests.swift */; };
 		BFC9503225D49EC600118D4C /* RecommendationsTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503125D49EC600118D4C /* RecommendationsTaskResponse.swift */; };
 		BFC9503425D4B57300118D4C /* response_recommendations.json in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503325D4B57300118D4C /* response_recommendations.json */; };
+		BFC9503625D5ED7300118D4C /* ConstructorIORecommendationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503525D5ED7300118D4C /* ConstructorIORecommendationsTests.swift */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
 		F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDED1F5F123400114C8C /* RequestBuilder.swift */; };
@@ -353,9 +354,10 @@
 		BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
 		BFC9502B25D48CE400118D4C /* AbstractRecommendationsResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractRecommendationsResponseParser.swift; sourceTree = "<group>"; };
 		BFC9502D25D48CFD00118D4C /* RecommendationsResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponseParser.swift; sourceTree = "<group>"; };
-		BFC9502F25D499B600118D4C /* ConstructorIORecommendationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIORecommendationsTests.swift; sourceTree = "<group>"; };
+		BFC9502F25D499B600118D4C /* RecommendationsResponseParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponseParserTests.swift; sourceTree = "<group>"; };
 		BFC9503125D49EC600118D4C /* RecommendationsTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsTaskResponse.swift; sourceTree = "<group>"; };
 		BFC9503325D4B57300118D4C /* response_recommendations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_recommendations.json; sourceTree = "<group>"; };
+		BFC9503525D5ED7300118D4C /* ConstructorIORecommendationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIORecommendationsTests.swift; sourceTree = "<group>"; };
 		C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D938EAC4478309F3008F3B0D /* Pods_UserApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -614,6 +616,7 @@
 			children = (
 				F6D86B15216BAD7F00077388 /* SearchResponseParserTests.swift */,
 				F64F46A51F595B980094C697 /* CIOAutocompleteResponseParserTests.swift */,
+				BFC9502F25D499B600118D4C /* RecommendationsResponseParserTests.swift */,
 				F674157A204D489B004F313B /* MockResponseParserDelegate.swift */,
 			);
 			path = Parser;
@@ -800,7 +803,7 @@
 				F63808FE1F5D6C1000C3B322 /* ConstructorIOTests.swift */,
 				0874A32D216BCE2700812CDC /* ConstructorIOABTestCellTests.swift */,
 				08689F0021897914000D3565 /* ConstructorIOUserIDTests.swift */,
-				BFC9502F25D499B600118D4C /* ConstructorIORecommendationsTests.swift */,
+				BFC9503525D5ED7300118D4C /* ConstructorIORecommendationsTests.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -2295,8 +2298,9 @@
 			files = (
 				F66B217021DF8FC100AAB030 /* AutocompleteViewControllerTests.swift in Sources */,
 				F66B216B21DF8B9900AAB030 /* UIViewAnimationTests.swift in Sources */,
-				BFC9503025D499B600118D4C /* ConstructorIORecommendationsTests.swift in Sources */,
+				BFC9503025D499B600118D4C /* RecommendationsResponseParserTests.swift in Sources */,
 				08A7E41C257601CF000FA02F /* TrackBrowseResultClickRequestBuilder.swift in Sources */,
+				BFC9503625D5ED7300118D4C /* ConstructorIORecommendationsTests.swift in Sources */,
 				08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */,
 				08689F0121897914000D3565 /* ConstructorIOUserIDTests.swift in Sources */,
 				F64F46B51F5975070094C697 /* AutocompleteResultTests.swift in Sources */,

@@ -25,7 +25,7 @@ class RecommendationsResponseParser: AbstractRecommendationsResponseParser {
             let resultID = json?["result_id"] as? String ?? ""
 
             return CIORecommendationsResponse(
-                pod: CIOPod(object: response["pod"] as? JSONObject)!, // TODO:: Figure out why it needs to be forced using ! at the end
+                pod: CIOPod(json: response["pod"] as! JSONObject)!,
                 results: results,
                 totalNumResults: totalNumResults,
                 resultID: resultID
