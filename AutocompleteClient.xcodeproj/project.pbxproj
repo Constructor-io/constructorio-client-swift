@@ -69,6 +69,7 @@
 		BFC9503225D49EC600118D4C /* RecommendationsTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503125D49EC600118D4C /* RecommendationsTaskResponse.swift */; };
 		BFC9503425D4B57300118D4C /* response_recommendations.json in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503325D4B57300118D4C /* response_recommendations.json */; };
 		BFC9503625D5ED7300118D4C /* ConstructorIORecommendationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503525D5ED7300118D4C /* ConstructorIORecommendationsTests.swift */; };
+		BFC9503725D6619000118D4C /* response_recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = BFC9503325D4B57300118D4C /* response_recommendations.json */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
 		F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDED1F5F123400114C8C /* RequestBuilder.swift */; };
@@ -2014,6 +2015,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC9503725D6619000118D4C /* response_recommendations.json in Resources */,
 				F6F1D707234B693D0092341D /* response_search_json_variations.json in Resources */,
 				F6F1D70B234B6FD50092341D /* response_search_json_variation_custom_data.json in Resources */,
 				F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */,

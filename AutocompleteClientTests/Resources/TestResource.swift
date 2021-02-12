@@ -34,10 +34,11 @@ struct TestResource {
         static let multipleVariationsWithCustomDataJSONFilename = "response_search_json_variation_custom_data"
         
         static let recommendationsJSONFilename = "response_recommendations"
-        static let numberOfResultsInRecommendationsResponse = 5
+        static let numberOfResultsInRecommendationsResponse = 10
     }
 
     static func load(name: String, type: String = "json") -> Data {
+        print(name, type)
         let fileURL = Bundle.testBundle().url(forResource: name, withExtension: type)!
         do {
             let data = try Data(contentsOf: fileURL)
