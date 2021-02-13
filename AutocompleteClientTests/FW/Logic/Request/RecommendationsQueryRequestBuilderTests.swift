@@ -11,7 +11,7 @@ import XCTest
 
 class RecommendationsQueryRequestBuilderTests: XCTestCase {
 
-    fileprivate let podId: String = "test_pod"
+    fileprivate let podID: String = "test_pod"
     fileprivate let testACKey: String = "abcdefgh123"
     fileprivate var builder: RequestBuilder!
 
@@ -21,24 +21,24 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
     }
 
     func testRecommendationsQueryBuilder() {
-        let query = CIORecommendationsQuery(podId: self.podId)
+        let query = CIORecommendationsQuery(podID: self.podID)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podId)?"))
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
     func testRecommendationsQueryBuilder_WithNumResults() {
-        let query = CIORecommendationsQuery(podId: self.podId, numResults: 10)
+        let query = CIORecommendationsQuery(podID: self.podID, numResults: 10)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podId)?"))
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
         XCTAssertTrue(url.contains("num_results=10"), "URL should contain the num_results URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
@@ -46,12 +46,12 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
     }
 
     func testRecommendationsQueryBuilder_WithTerm() {
-        let query = CIORecommendationsQuery(podId: self.podId, term: "squeeze")
+        let query = CIORecommendationsQuery(podID: self.podID, term: "squeeze")
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podId)?"))
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
         XCTAssertTrue(url.contains("term=squeeze"), "URL should contain the term URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
@@ -59,12 +59,12 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
     }
 
     func testRecommendationsQueryBuilder_WithItemId() {
-        let query = CIORecommendationsQuery(podId: self.podId, itemId: "lemon_chicken")
+        let query = CIORecommendationsQuery(podID: self.podID, itemID: "lemon_chicken")
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podId)?"))
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
         XCTAssertTrue(url.contains("item_id=lemon_chicken"), "URL should contain the item_id URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
@@ -78,12 +78,12 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
             (key: "Brand", value: "Kroger")
         ]
         let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
-        let query = CIORecommendationsQuery(podId: self.podId, filters: queryFilters)
+        let query = CIORecommendationsQuery(podID: self.podID, filters: queryFilters)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podId)?"))
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
         XCTAssertTrue(url.contains("filters%5BNutrition%5D=Organic"), "URL should contain the Nutrition facet filter Organic in the URL parameter.")
         XCTAssertTrue(url.contains("filters%5BNutrition%5D=Natural"), "URL should contain the Nutrition facet filter Natural in the URL parameter.")
         XCTAssertTrue(url.contains("filters%5BBrand%5D=Kroger"), "URL should contain the Brand facet filter Kroger in the URL parameter.")
@@ -94,12 +94,12 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
 
     func testRecommendationsQueryBuilder_WithGroupFilters() {
         let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: nil)
-        let query = CIORecommendationsQuery(podId: self.podId, filters: queryFilters)
+        let query = CIORecommendationsQuery(podID: self.podID, filters: queryFilters)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podId)?"))
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
         XCTAssertTrue(url.contains("filters%5Bgroup_id%5D=101"), "URL should contain the group filter in the URL paramater.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
@@ -113,12 +113,12 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
             (key: "Brand", value: "Kroger")
         ]
         let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: facetFilters)
-        let query = CIORecommendationsQuery(podId: self.podId, filters: queryFilters)
+        let query = CIORecommendationsQuery(podID: self.podID, filters: queryFilters)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podId)?"))
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
         XCTAssertTrue(url.contains("filters%5BNutrition%5D=Organic"), "URL should contain the Nutrition facet filter Organic in the URL parameter.")
         XCTAssertTrue(url.contains("filters%5BNutrition%5D=Natural"), "URL should contain the Nutrition facet filter Natural in the URL parameter.")
         XCTAssertTrue(url.contains("filters%5BBrand%5D=Kroger"), "URL should contain the Brand facet filter Kroger in the URL parameter.")
@@ -132,11 +132,11 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
         let customBaseURL = "https://custom-base-url.com"
         self.builder = RequestBuilder(apiKey: self.testACKey, baseURL: customBaseURL)
 
-        let query = CIORecommendationsQuery(podId: self.podId)
+        let query = CIORecommendationsQuery(podID: self.podID)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix("\(customBaseURL)/recommendations/v1/pods/\(podId)?"))
+        XCTAssertTrue(url.hasPrefix("\(customBaseURL)/recommendations/v1/pods/\(podID)?"))
     }
 }

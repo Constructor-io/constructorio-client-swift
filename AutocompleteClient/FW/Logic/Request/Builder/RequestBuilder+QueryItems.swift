@@ -124,10 +124,10 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: formattedKey, value: testCellValue))
     }
     
-    func set(itemId: String?) {
-        guard let itemId = itemId else { return }
-        let itemIdString = String(itemId)
-        queryItems.add(URLQueryItem(name: Constants.RecommendationsQuery.itemId, value: itemIdString))
+    func set(itemID: String?) {
+        guard let itemID = itemID else { return }
+        let itemIDString = String(itemID)
+        queryItems.add(URLQueryItem(name: Constants.RecommendationsQuery.itemID, value: itemIDString))
     }
     
     func set(term: String?) {
