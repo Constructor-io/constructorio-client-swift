@@ -13,33 +13,29 @@ import Foundation
  */
 struct CIOTrackRecommendationResultClickData: CIORequestData {
 
-    let filterName: String
-    let filterValue: String
+    let podID: String
+    let strategyID: String?
     let customerID: String
+    let variationID: String?
+    let numResultsPerPage: Int?
+    let resultPage: Int?
+    let resultCount: Int?
     let resultPositionOnPage: Int?
-    var sectionName: String?
+    let sectionName: String?
     let resultID: String?
-    
-
-//    let podID: String?,
-//    let strategyID: String?,
-//    let itemID: String,
-//    let variationID: String,
-//    let numResultsPerPage: Int?,
-//    let resultID: String?,
-//    let resultCount: Int?,
-//    let resultPage: Int?,
-//    let resultPositionOnPage: Int?,
-//    let section: String,
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackBrowseResultClick.format, baseURL)
     }
 
-    init(podID: String, strategyID: String, itemID: String, variationID: String?, sectionName: String? = nil, resultID: String? = nil) {
-        self.filterName = filterName
-        self.filterValue = filterValue
+    init(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil) {
+        self.podID = podID
+        self.strategyID = strategyID
         self.customerID = customerID
+        self.variationID = variationID
+        self.numResultsPerPage = numResultsPerPage
+        self.resultPage = resultPage
+        self.resultCount = resultCount
         self.resultPositionOnPage = resultPositionOnPage
         self.sectionName = sectionName
         self.resultID = resultID
@@ -53,13 +49,27 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
 
     func httpBody(baseParams: [String: Any]) -> Data? {
         var dict = [
-            "filter_name": self.filterName,
-            "filter_value": self.filterValue,
+            "pod_id": self.podID,
             "item_id": self.customerID
         ] as [String : Any]
-
+        
+        if self.strategyID != nil {
+            dict["strategy_id"] = self.strategyID
+        }
+        if self.variationID != nil {
+            dict["variation_id"] = self.variationID
+        }
+        if self.numResultsPerPage != nil {
+            dict["num_results_per_page"] = self.numResultsPerPage
+        }
+        if self.resultPage != nil {
+            dict["result_page"] = self.resultPage
+        }
+        if self.resultCount != nil {
+            dict["result_count"] = self.resultCount
+        }
         if self.resultPositionOnPage != nil {
-            dict["result_position_on_page"] = Int(self.resultPositionOnPage!)
+            dict["result_position_on_page"] = self.resultPositionOnPage
         }
         if self.sectionName != nil {
             dict["section"] = self.sectionName

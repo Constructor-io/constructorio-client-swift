@@ -177,7 +177,7 @@ struct Constants {
         static let format = "%@/v2/behavioral_action/browse_result_click"
     }
     
-    struct TrackRecommendationResultsViewed {
+    struct TrackRecommendationResultsView {
         static let format = "%@/v2/behavioral_action/recommendation_result_view"
     }
     

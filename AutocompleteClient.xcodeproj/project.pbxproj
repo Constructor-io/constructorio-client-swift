@@ -70,7 +70,10 @@
 		BFC9503425D4B57300118D4C /* response_recommendations.json in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503325D4B57300118D4C /* response_recommendations.json */; };
 		BFC9503625D5ED7300118D4C /* ConstructorIORecommendationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503525D5ED7300118D4C /* ConstructorIORecommendationsTests.swift */; };
 		BFC9503725D6619000118D4C /* response_recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = BFC9503325D4B57300118D4C /* response_recommendations.json */; };
-		BFC9503925D742F600118D4C /* CIOTrackRecommendationResultClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503825D742F600118D4C /* CIOTrackRecommendationResultClick.swift */; };
+		BFC9503925D742F600118D4C /* CIOTrackRecommendationResultClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503825D742F600118D4C /* CIOTrackRecommendationResultClickData.swift */; };
+		BFC9503B25D74D3F00118D4C /* CIOTrackRecommendationResultsViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503A25D74D3F00118D4C /* CIOTrackRecommendationResultsViewData.swift */; };
+		BFC9503D25D7509600118D4C /* TrackRecommendationResultClickRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503C25D7509600118D4C /* TrackRecommendationResultClickRequestBuilder.swift */; };
+		BFC9503F25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503E25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
 		F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDED1F5F123400114C8C /* RequestBuilder.swift */; };
@@ -360,7 +363,10 @@
 		BFC9503125D49EC600118D4C /* RecommendationsTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsTaskResponse.swift; sourceTree = "<group>"; };
 		BFC9503325D4B57300118D4C /* response_recommendations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_recommendations.json; sourceTree = "<group>"; };
 		BFC9503525D5ED7300118D4C /* ConstructorIORecommendationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIORecommendationsTests.swift; sourceTree = "<group>"; };
-		BFC9503825D742F600118D4C /* CIOTrackRecommendationResultClick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackRecommendationResultClick.swift; sourceTree = "<group>"; };
+		BFC9503825D742F600118D4C /* CIOTrackRecommendationResultClickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackRecommendationResultClickData.swift; sourceTree = "<group>"; };
+		BFC9503A25D74D3F00118D4C /* CIOTrackRecommendationResultsViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackRecommendationResultsViewData.swift; sourceTree = "<group>"; };
+		BFC9503C25D7509600118D4C /* TrackRecommendationResultClickRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRecommendationResultClickRequestBuilder.swift; sourceTree = "<group>"; };
+		BFC9503E25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRecommendationViewRequestBuilder.swift; sourceTree = "<group>"; };
 		C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D938EAC4478309F3008F3B0D /* Pods_UserApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -704,7 +710,8 @@
 				F19E28A61F5F44C30022C814 /* CIOTrackConversionData.swift */,
 				08C1E6042193BE3600A2E24E /* CIOTrackPurchaseData.swift */,
 				088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */,
-				BFC9503825D742F600118D4C /* CIOTrackRecommendationResultClick.swift */,
+				BFC9503825D742F600118D4C /* CIOTrackRecommendationResultClickData.swift */,
+				BFC9503A25D74D3F00118D4C /* CIOTrackRecommendationResultsViewData.swift */,
 				F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */,
 				F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */,
 				08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */,
@@ -840,6 +847,8 @@
 				089399E02161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift */,
 				08465ECB2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift */,
 				BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */,
+				BFC9503C25D7509600118D4C /* TrackRecommendationResultClickRequestBuilder.swift */,
+				BFC9503E25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2263,6 +2272,7 @@
 				0885D84225718A7C0038AE96 /* CIOSearchQuery.swift in Sources */,
 				F1F68DE31F58B8BB00B42602 /* CIOError.swift in Sources */,
 				F6EC29AF2176014C00DCFA07 /* SessionLoader.swift in Sources */,
+				BFC9503B25D74D3F00118D4C /* CIOTrackRecommendationResultsViewData.swift in Sources */,
 				0885D84425718AD10038AE96 /* CIOBrowseQuery.swift in Sources */,
 				0885D83E2571870B0038AE96 /* BrowseResponseParser.swift in Sources */,
 				F67868DB2224328D00C76C0D /* AutocompleteTaskResponse.swift in Sources */,
@@ -2291,7 +2301,7 @@
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,
-				BFC9503925D742F600118D4C /* CIOTrackRecommendationResultClick.swift in Sources */,
+				BFC9503925D742F600118D4C /* CIOTrackRecommendationResultClickData.swift in Sources */,
 				F699C34B1F57F22400FD681A /* NSError+Errors.swift in Sources */,
 				08289546256C5A85009A00BC /* CIOFilterFacet.swift in Sources */,
 				08289548256C5A85009A00BC /* CIOResult.swift in Sources */,
@@ -2310,6 +2320,7 @@
 				08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */,
 				08689F0121897914000D3565 /* ConstructorIOUserIDTests.swift in Sources */,
 				F64F46B51F5975070094C697 /* AutocompleteResultTests.swift in Sources */,
+				BFC9503D25D7509600118D4C /* TrackRecommendationResultClickRequestBuilder.swift in Sources */,
 				F1C557451F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift in Sources */,
 				F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */,
 				087F4BDF228B100E0058B467 /* ConstructorIOTrackPurchaseTests.swift in Sources */,
@@ -2337,6 +2348,7 @@
 				BFC9503425D4B57300118D4C /* response_recommendations.json in Sources */,
 				F64F46B71F59767D0094C697 /* AutocompleteViewModelTests.swift in Sources */,
 				F66B216321DF837700AAB030 /* AutocompleteResultCountTests.swift in Sources */,
+				BFC9503F25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift in Sources */,
 				F66B215D21DF7DF700AAB030 /* ErrorTests.swift in Sources */,
 				F64F46AF1F59641D0094C697 /* TestResource.swift in Sources */,
 				F66B216521DF851F00AAB030 /* StringTrimTests.swift in Sources */,
