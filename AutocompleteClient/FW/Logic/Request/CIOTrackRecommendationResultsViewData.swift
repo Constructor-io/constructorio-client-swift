@@ -22,7 +22,7 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
     let resultID: String?
 
     func url(with baseURL: String) -> String {
-        return String(format: Constants.TrackBrowseResultClick.format, baseURL)
+        return String(format: Constants.TrackRecommendationResultsView.format, baseURL)
     }
 
     init(podID: String, url: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil) {

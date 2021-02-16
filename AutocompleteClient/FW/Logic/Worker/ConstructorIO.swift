@@ -159,7 +159,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track search results loaded.
+    /// Track browse results loaded.
     ///
     /// - Parameters:
     ///   - filterName: Primary filter name that the user browsed for
@@ -173,7 +173,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track search result clicked on.
+    /// Track browse result clicked on
     ///
     /// - Parameters:
     ///   - customerID: customer ID.
@@ -185,6 +185,45 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackBrowseResultClick(customerID: String, filterName: String, filterValue: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /// Track recommendation view
+    ///
+    /// - Parameters:
+    ///   - podID: Pod ID
+    ///   - url: The current page URL the user viewed the recommendations on
+    ///   - numResultsViewed: The count of results that is visible to the user
+    ///   - resultPage: The current page that recommedantion result is on
+    ///   - resultCount: The total number of recommendation results
+    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - resultID: Identifier of result set
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackRecommendationResultsView(podID: String, url: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackRecommendationResultsViewData(podID: podID, url: url, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /// Track recommendation result clicked on
+    ///
+    /// - Parameters:
+    ///   - podID: Pod ID
+    ///   - customerID: Customer ID
+    ///   - strategyID: Strategy ID
+    ///   - variationID: Variation ID
+    ///   - numResultsPerPage: Count of recommendation results on each page
+    ///   - resultPage: The current page that recommedantion result is on
+    ///   - resultCount: The total number of recommendation results
+    ///   - resultPositionOnPage: The position of the recommendation result that was clicked on
+    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - resultID: Identifier of result set
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackRecommendationResultClick(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
