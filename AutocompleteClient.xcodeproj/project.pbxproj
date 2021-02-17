@@ -67,7 +67,6 @@
 		BFC9502E25D48CFD00118D4C /* RecommendationsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502D25D48CFD00118D4C /* RecommendationsResponseParser.swift */; };
 		BFC9503025D499B600118D4C /* RecommendationsResponseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502F25D499B600118D4C /* RecommendationsResponseParserTests.swift */; };
 		BFC9503225D49EC600118D4C /* RecommendationsTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503125D49EC600118D4C /* RecommendationsTaskResponse.swift */; };
-		BFC9503425D4B57300118D4C /* response_recommendations.json in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503325D4B57300118D4C /* response_recommendations.json */; };
 		BFC9503625D5ED7300118D4C /* ConstructorIORecommendationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503525D5ED7300118D4C /* ConstructorIORecommendationsTests.swift */; };
 		BFC9503725D6619000118D4C /* response_recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = BFC9503325D4B57300118D4C /* response_recommendations.json */; };
 		BFC9503925D742F600118D4C /* CIOTrackRecommendationResultClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503825D742F600118D4C /* CIOTrackRecommendationResultClickData.swift */; };
@@ -2352,7 +2351,6 @@
 				08A7E4182575FDA0000FA02F /* ConstructorIOTrackBrowseResultClickTests.swift in Sources */,
 				08A7E4122575FA15000FA02F /* ConstructorIOTrackInputFocusTests.swift in Sources */,
 				F66B216D21DF8DBA00AAB030 /* SearchSuggestionStringConversionTests.swift in Sources */,
-				BFC9503425D4B57300118D4C /* response_recommendations.json in Sources */,
 				F64F46B71F59767D0094C697 /* AutocompleteViewModelTests.swift in Sources */,
 				F66B216321DF837700AAB030 /* AutocompleteResultCountTests.swift in Sources */,
 				BFC9503F25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift in Sources */,
