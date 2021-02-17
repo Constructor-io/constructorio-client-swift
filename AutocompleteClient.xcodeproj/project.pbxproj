@@ -75,6 +75,7 @@
 		BFC9503D25D7509600118D4C /* TrackRecommendationResultClickRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503C25D7509600118D4C /* TrackRecommendationResultClickRequestBuilder.swift */; };
 		BFC9503F25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503E25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift */; };
 		BFC9504125DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9504025DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift */; };
+		BFC9504325DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9504225DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
 		F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDED1F5F123400114C8C /* RequestBuilder.swift */; };
@@ -369,6 +370,7 @@
 		BFC9503C25D7509600118D4C /* TrackRecommendationResultClickRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRecommendationResultClickRequestBuilder.swift; sourceTree = "<group>"; };
 		BFC9503E25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRecommendationViewRequestBuilder.swift; sourceTree = "<group>"; };
 		BFC9504025DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackRecommendationResultClickTests.swift; sourceTree = "<group>"; };
+		BFC9504225DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackRecommendationResultsViewTests.swift; sourceTree = "<group>"; };
 		C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D938EAC4478309F3008F3B0D /* Pods_UserApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -818,6 +820,7 @@
 				08689F0021897914000D3565 /* ConstructorIOUserIDTests.swift */,
 				BFC9503525D5ED7300118D4C /* ConstructorIORecommendationsTests.swift */,
 				BFC9504025DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift */,
+				BFC9504225DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -2328,6 +2331,7 @@
 				F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */,
 				087F4BDF228B100E0058B467 /* ConstructorIOTrackPurchaseTests.swift in Sources */,
 				BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */,
+				BFC9504325DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift in Sources */,
 				F66B217B21E275EE00AAB030 /* QueryItemCollectionTests.swift in Sources */,
 				089399E12161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift in Sources */,
 				08A7E4192575FDA0000FA02F /* ConstructorIOTrackBrowseResultsLoadedTests.swift in Sources */,
