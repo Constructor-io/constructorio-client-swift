@@ -25,7 +25,7 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
         return String(format: Constants.TrackRecommendationResultsView.format, baseURL)
     }
 
-    init(podID: String, url: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil) {
+    init(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, url: String = "Not Available") {
         self.podID = podID
         self.url = url
         self.numResultsViewed = numResultsViewed

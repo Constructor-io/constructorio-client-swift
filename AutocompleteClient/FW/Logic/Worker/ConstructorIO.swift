@@ -193,16 +193,15 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///
     /// - Parameters:
     ///   - podID: Pod ID
-    ///   - url: The current page URL the user viewed the recommendations on
     ///   - numResultsViewed: The count of results that is visible to the user
     ///   - resultPage: The current page that recommedantion result is on
     ///   - resultCount: The total number of recommendation results
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - resultID: Identifier of result set
     ///   - completionHandler: The callback to execute on completion.
-    public func trackRecommendationResultsView(podID: String, url: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackRecommendationResultsViewData(podID: podID, url: url, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID)
+        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }

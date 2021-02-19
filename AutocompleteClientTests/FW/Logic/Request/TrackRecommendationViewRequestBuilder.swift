@@ -27,25 +27,25 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
     }
 
     func testTrackRecommendationResultsViewBuilder() {
-        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, url: url)
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID)
         builder.build(trackData: recommendationViewData)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(payload?["pod_id"] as? String, podID)
-        XCTAssertEqual(payload?["url"] as? String, url)
+        XCTAssertEqual(payload?["url"] as? String, "Not Available")
     }
     
     func testTrackRecommendationResultClickBuilder_WithOptionalParams() {
-        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, url: url, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
         builder.build(trackData: recommendationViewData)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(payload?["pod_id"] as? String, podID)
-        XCTAssertEqual(payload?["url"] as? String, url)
+        XCTAssertEqual(payload?["url"] as? String, "Not Available")
         XCTAssertEqual(payload?["num_results_viewed"] as? Int, numResultsViewed)
         XCTAssertEqual(payload?["result_page"] as? Int, resultPage)
         XCTAssertEqual(payload?["result_count"] as? Int, resultCount)

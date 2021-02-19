@@ -26,18 +26,16 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
 
     func testTrackRecommendationResultsView() {
         let podID = "item_page_1"
-        let url = "https://constructor.io"
 
         let builder = CIOBuilder(expectation: "Calling trackRecommendationResultsView should send a valid request with a default section name.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
 
-        self.constructor.trackRecommendationResultsView(podID: podID, url: url)
+        self.constructor.trackRecommendationResultsView(podID: podID)
         self.wait(for: builder.expectation)
     }
     
     func testTrackRecommendationResultsView_WithOptionalParams() {
         let podID = "item_page_1"
-        let url = "https://constructor.io"
         let numResultsViewed = 5
         let resultPage = 1
         let resultCount = 10
@@ -47,13 +45,12 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling trackRecommendationResultsView should send a valid request with optional params.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
 
-        self.constructor.trackRecommendationResultsView(podID: podID, url: url, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
+        self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
         self.wait(for: builder.expectation)
     }
 
     func testTrackRecommendationResultsView_WithSectionFromConfig() {
         let podID = "item_page_1"
-        let url = "https://constructor.io"
         let sectionName = "Content"
 
         let builder = CIOBuilder(expectation: "Calling trackRecommendationResultsView should send a valid request with the section from the client config.", builder: http(200))
@@ -62,18 +59,17 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
         let constructor = TestConstants.testConstructor(config)
 
-        constructor.trackRecommendationResultsView(podID: podID, url: url)
+        constructor.trackRecommendationResultsView(podID: podID)
         self.wait(for: builder.expectation)
     }
 
     func testTrackRecommendationResultsView_With400() {
         let expectation = self.expectation(description: "Calling trackRecommendationResultsView with 400 should return badRequest CIOError.")
         let podID = "item_page_1"
-        let url = "https://constructor.io"
 
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
 
-        self.constructor.trackRecommendationResultsView(podID: podID, url: url, completionHandler: {
+        self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: {
             response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -86,11 +82,10 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
     func testTrackRecommendationResultsView_With500() {
         let expectation = self.expectation(description: "Calling trackRecommendationResultsView with 500 should return internalServerError CIOError.")
         let podID = "item_page_1"
-        let url = "https://constructor.io"
 
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(500))
 
-        self.constructor.trackRecommendationResultsView(podID: podID, url: url, completionHandler: {
+        self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: {
             response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -103,11 +98,10 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
     func testTrackRecommendationResultsView_WithNoConnectivity() {
         let expectation = self.expectation(description: "Calling trackRecommendationResultsView with no connectivity should return noConnectivity CIOError.")
         let podID = "item_page_1"
-        let url = "https://constructor.io"
 
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), noConnectivity())
 
-        self.constructor.trackRecommendationResultsView(podID: podID, url: url, completionHandler: {
+        self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: {
             response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
