@@ -1,5 +1,5 @@
 //
-//  CIOPod.swift
+//  CIORecommendationsPod.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-public struct CIOPod {
+public struct CIORecommendationsPod {
     public let displayName: String
     public let id: String
 }
 
-public extension CIOPod {
+public extension CIORecommendationsPod {
     init?(json: JSONObject) {
         guard let displayName = json["display_name"] as? String else { return nil }
         guard let id = json["id"] as? String else { return nil }

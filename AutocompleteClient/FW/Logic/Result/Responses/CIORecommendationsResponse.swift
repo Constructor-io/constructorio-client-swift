@@ -12,7 +12,7 @@ import Foundation
  Struct representing the search data response from the server.
  */
 public struct CIORecommendationsResponse {
-    public let pod: CIOPod
+    public let pod: CIORecommendationsPod
     public let results: [CIOResult]
     public let totalNumResults: Int
     public let resultID: String
