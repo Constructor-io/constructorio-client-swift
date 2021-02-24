@@ -70,4 +70,18 @@ class RecommendationsResponseParserTests: XCTestCase {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
     }
+    
+    func testRecommendationsParser_PrasingJSONString_HasValidResultData() {
+        let data = TestResource.load(name: TestResource.Response.recommendationsJSONFilename)
+        do {
+            let response = try self.parser.parse(recommendationsResponseData: data)
+            let result = response.results.first!;
+
+            XCTAssertEqual(result.data.id, "117100030", "Item ID should match the JSON response")
+            XCTAssertEqual(result.value, "Gold Medal Flour All-Purpose - 5 Lb", "Item Value (Name) should match the JSON response")
+            XCTAssertEqual(result.data.groups.count, 1, "Groups count should match the JSON response")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
 }

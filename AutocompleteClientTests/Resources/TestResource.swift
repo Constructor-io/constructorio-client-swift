@@ -38,7 +38,6 @@ struct TestResource {
     }
 
     static func load(name: String, type: String = "json") -> Data {
-        print(name, type)
         let fileURL = Bundle.testBundle().url(forResource: name, withExtension: type)!
         do {
             let data = try Data(contentsOf: fileURL)

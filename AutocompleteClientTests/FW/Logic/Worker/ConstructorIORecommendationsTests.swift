@@ -27,7 +27,6 @@ class ConstructorIORecommendationsTests: XCTestCase {
         let query = CIORecommendationsQuery(podID: "item_page_1")
 
         let builder = CIOBuilder(expectation: "Calling Recommendations should send a valid request.", builder: http(200))
-        print(kRegexVersion)
         stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products"), builder.create())
 
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
