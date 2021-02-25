@@ -26,6 +26,11 @@ class ConstructorIOIntegrationTests: XCTestCase {
     fileprivate let customerIDs = ["prrst_shldr_bls", "prrst_crwn"]
     fileprivate let originalQuery = "pork#@#??!!asd"
     fileprivate let group = CIOGroup(displayName: "groupName1", groupID: "groupID2", path: "path/to/group")
+    fileprivate let podID = "item_page_1"
+    fileprivate let strategyID = "alternative_items"
+    fileprivate let numResultsPerPage = 5
+    fileprivate let numResultsViewed = 5
+    fileprivate let resultPage = 1
 
     var constructor: ConstructorIO!
 
@@ -102,6 +107,26 @@ class ConstructorIOIntegrationTests: XCTestCase {
     func testBrowseResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: nil, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testRecommendationsResultsView() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: nil, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testRecommendationsResultClick() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackRecommendationResultClick(podID: podID, strategyID: strategyID, customerID: customerID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: nil, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
