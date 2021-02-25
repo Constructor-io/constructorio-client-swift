@@ -15,7 +15,7 @@ public class CIOResult: NSObject {
     public let matchedTerms: [String]
     public let variations: [CIOResult]
     public let json: JSONObject
-//    public let strategy: CIORecommendationsStrategy?
+    public let strategy: CIORecommendationsStrategy
 
     public init?(json: JSONObject) {
         guard let dataObj = json["data"] as? JSONObject else { return nil }
@@ -27,16 +27,16 @@ public class CIOResult: NSObject {
 
         let variations: [CIOResult] = variationsObj?.compactMap { obj in return CIOResult(json: obj) } ?? []
         
-//        let strategyData = json["strategy"] as? JSONObject
-//
-//        let strategy: CIORecommendationsStrategy = strategyData != nil ? CIORecommendationsStrategy(json: strategyData)! : CIORecommendationsStrategy(json: [String: Any]())!
+        let strategyData = json["strategy"] as? JSONObject ?? [String:Any]()
+
+        let strategy: CIORecommendationsStrategy = CIORecommendationsStrategy(json: strategyData)!
 
         self.value = value
         self.data = data
         self.matchedTerms = matchedTerms
         self.variations = variations
         self.json = json
-//        self.strategy = strategy
+        self.strategy = strategy
     }
 }
 

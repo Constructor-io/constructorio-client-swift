@@ -14,7 +14,7 @@ public struct CIORecommendationsStrategy {
 
 public extension CIORecommendationsStrategy {
     init?(json: JSONObject) {
-        guard let id = json["id"] as? String else { return nil }
+        let id = json["id"] as? String ?? ""
 
         self.id = id
     }

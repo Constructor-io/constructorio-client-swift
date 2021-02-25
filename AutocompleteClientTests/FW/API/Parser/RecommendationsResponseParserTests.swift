@@ -80,6 +80,7 @@ class RecommendationsResponseParserTests: XCTestCase {
             XCTAssertEqual(result.data.id, "117100030", "Item ID should match the JSON response")
             XCTAssertEqual(result.value, "Gold Medal Flour All-Purpose - 5 Lb", "Item Value (Name) should match the JSON response")
             XCTAssertEqual(result.data.groups.count, 1, "Groups count should match the JSON response")
+            XCTAssertEqual(result.strategy.id, "alternative_items", "Strategy ID should match the JSON response")
         } catch {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
