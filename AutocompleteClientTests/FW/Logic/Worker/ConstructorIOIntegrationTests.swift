@@ -153,4 +153,20 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+
+    func testRecommendations() {
+        let expectation = XCTestExpectation(description: "Request 200")
+        let query = CIORecommendationsQuery(podID: podID, itemID: customerID, section: sectionName)
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+
+            let responseData = response.data!
+            XCTAssertEqual(responseData.pod.id, self.podID, "Pod ID should match the JSON response")
+            XCTAssertEqual(responseData.totalNumResults, 5, "Recommendations count should match the JSON response")
+
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 }
