@@ -45,8 +45,8 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
         var dict = [
             "pod_id": self.podID,
             "url": self.url
-        ] as [String : Any]
-        
+        ] as [String: Any]
+    
         if self.numResultsViewed != nil {
             dict["num_results_viewed"] = self.numResultsViewed
         }

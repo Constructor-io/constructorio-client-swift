@@ -51,8 +51,8 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
         var dict = [
             "pod_id": self.podID,
             "item_id": self.customerID
-        ] as [String : Any]
-        
+        ] as [String: Any]
+
         if self.strategyID != nil {
             dict["strategy_id"] = self.strategyID
         }

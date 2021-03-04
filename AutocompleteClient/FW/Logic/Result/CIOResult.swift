@@ -26,8 +26,8 @@ public class CIOResult: NSObject {
         let variationsObj = json["variations"] as? [JSONObject]
 
         let variations: [CIOResult] = variationsObj?.compactMap { obj in return CIOResult(json: obj) } ?? []
-        
-        let strategyData = json["strategy"] as? JSONObject ?? [String:Any]()
+    
+        let strategyData = json["strategy"] as? JSONObject ?? [String: Any]()
 
         let strategy: CIORecommendationsStrategy = CIORecommendationsStrategy(json: strategyData)!
 

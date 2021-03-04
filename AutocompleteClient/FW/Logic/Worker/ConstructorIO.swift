@@ -82,7 +82,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: query)
         executeBrowse(request, completionHandler: completionHandler)
     }
-    
+
     /// Get recommendation results for a query.
     ///
     /// - Parameters:
@@ -382,7 +382,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             }
         }
     }
-    
+
     private func executeRecommendations(_ request: URLRequest, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
@@ -435,7 +435,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     private func parseBrowse(_ browseResponseData: Data) throws -> CIOBrowseResponse {
         return try self.browseParser.parse(browseResponseData: browseResponseData)
     }
-    
+
     private func parseRecommendations(_ recommendationsResponseData: Data) throws -> CIORecommendationsResponse {
         return try self.recommendationsParser.parse(recommendationsResponseData: recommendationsResponseData)
     }

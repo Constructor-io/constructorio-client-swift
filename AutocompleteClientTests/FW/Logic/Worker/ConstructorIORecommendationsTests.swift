@@ -32,7 +32,7 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
-    
+
     func testRecommendations_WithValidRequest_ReturnsNonNilResponse() {
         let expectation = self.expectation(description: "Calling Recommendations with valid parameters should return a non-nil response.")
 
@@ -47,7 +47,7 @@ class ConstructorIORecommendationsTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testRecommendations_ReturnsErrorObject_IfAPIReturnsInvalidResponse() {
         let expectation = self.expectation(description: "Calling Recommendations returns non-nil error if API errors out.")
 
@@ -72,7 +72,7 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
-    
+
     func testRecommendations_AttachesItemIdParameter() {
         let term = "pizza"
         let query = CIORecommendationsQuery(podID: "item_page_1", term: term)

@@ -123,13 +123,13 @@ extension RequestBuilder {
         let formattedKey = String(format: Constants.ABTesting.keyFormat, testCellKey)
         queryItems.add(URLQueryItem(name: formattedKey, value: testCellValue))
     }
-    
+
     func set(itemID: String?) {
         guard let itemID = itemID else { return }
         let itemIDString = String(itemID)
         queryItems.add(URLQueryItem(name: Constants.RecommendationsQuery.itemID, value: itemIDString))
     }
-    
+
     func set(term: String?) {
         guard let term = term else { return }
         let termString = String(term)

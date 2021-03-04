@@ -96,7 +96,7 @@ struct Constants {
         static let sortOrder = "sort_order"
         static let defaultSectionName = "Products"
     }
-    
+
     struct RecommendationsQuery {
         static let format = "%@/recommendations/v1/pods/%@"
         static let section = "section"
@@ -176,11 +176,11 @@ struct Constants {
     struct TrackBrowseResultClick {
         static let format = "%@/v2/behavioral_action/browse_result_click"
     }
-    
+
     struct TrackRecommendationResultsView {
         static let format = "%@/v2/behavioral_action/recommendation_result_view"
     }
-    
+
     struct TrackRecommendationResultClick {
         static let format = "%@/v2/behavioral_action/recommendation_result_click"
     }

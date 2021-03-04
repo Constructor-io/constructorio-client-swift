@@ -39,7 +39,7 @@ class TrackRecommendationResultClickRequestBuilder: XCTestCase {
         XCTAssertEqual(payload?["pod_id"] as? String, podID)
         XCTAssertEqual(payload?["item_id"] as? String, customerID)
     }
-    
+
     func testTrackRecommendationResultClickBuilder_WithOptionalParams() {
         let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: resultID)
         builder.build(trackData: recommendationClickData)

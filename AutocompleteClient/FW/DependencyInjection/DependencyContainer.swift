@@ -29,7 +29,7 @@ class DependencyContainer {
     var browseResponseParser: () -> AbstractBrowseResponseParser = {
         return BrowseResponseParser()
     }
-    
+
     var recommendationsResponseParser: () -> AbstractRecommendationsResponseParser = {
         return RecommendationsResponseParser()
     }

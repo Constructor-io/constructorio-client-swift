@@ -12,7 +12,7 @@ import XCTest
 class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
 
     fileprivate let podID = "item_page_1"
-    fileprivate let url = "https://constructor.io";
+    fileprivate let url = "https://constructor.io"
     fileprivate let numResultsViewed = 2
     fileprivate let resultPage = 1
     fileprivate let resultCount = 5
@@ -36,7 +36,7 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         XCTAssertEqual(payload?["pod_id"] as? String, podID)
         XCTAssertEqual(payload?["url"] as? String, "Not Available")
     }
-    
+
     func testTrackRecommendationResultClickBuilder_WithOptionalParams() {
         let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
         builder.build(trackData: recommendationViewData)

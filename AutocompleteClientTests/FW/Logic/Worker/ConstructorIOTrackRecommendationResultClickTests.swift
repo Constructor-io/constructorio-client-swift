@@ -34,7 +34,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
         self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID)
         self.wait(for: builder.expectation)
     }
-    
+
     func testTrackRecommendationResultClick_WithOptionalParams() {
         let podID = "item_page_1"
         let strategyID = "alternative_items"
@@ -53,7 +53,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
         self.constructor.trackRecommendationResultClick(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: resultID)
         self.wait(for: builder.expectation)
     }
-    
+
     func testTrackRecommendationResultClick_WithSectionFromConfig() {
         let podID = "item_page_1"
         let customerID = "customerID123"
@@ -64,7 +64,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
 
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
         let constructor = TestConstants.testConstructor(config)
-        
+
         constructor.trackRecommendationResultClick(podID: podID, customerID: customerID)
         self.wait(for: builder.expectation)
     }
@@ -76,8 +76,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
 
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
 
-        self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, completionHandler: {
-            response in
+        self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
                 expectation.fulfill()
@@ -85,7 +84,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testTrackRecommendationResultClick_With500() {
         let expectation = self.expectation(description: "Calling trackRecommendationResultClick with 500 should return internalServerError CIOError.")
         let podID = "item_page_1"
@@ -93,8 +92,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
 
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(500))
 
-        self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, completionHandler: {
-            response in
+        self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
                 expectation.fulfill()
@@ -110,8 +108,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
 
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), noConnectivity())
 
-        self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, completionHandler: {
-            response in
+        self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError, .noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
                 expectation.fulfill()

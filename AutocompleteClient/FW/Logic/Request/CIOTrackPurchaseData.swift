@@ -39,7 +39,7 @@ struct CIOTrackPurchaseData: CIORequestData {
 
     func httpBody(baseParams: [String: Any]) -> Data? {
         let items = self.customerIDs.map { ["item_id": $0] }
-        var dict = ["items": items] as [String : Any]
+        var dict = ["items": items] as [String: Any]
 
         if self.orderID != nil {
             dict["order_id"] = self.orderID
