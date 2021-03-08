@@ -97,6 +97,17 @@ struct Constants {
         static let defaultSectionName = "Products"
     }
 
+    struct RecommendationsQuery {
+        static let format = "%@/recommendations/v1/pods/%@"
+        static let section = "section"
+        static let numResults = "num_results"
+        static let itemID = "item_id"
+        static let term = "term"
+        static let groupFilter = "filters[group_id]"
+        static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
+        static let defaultSectionName = "Products"
+    }
+
     struct Response {
         static let singleSectionResultField = "suggestions"
         static let multiSectionResultField = "sections"
@@ -164,6 +175,14 @@ struct Constants {
 
     struct TrackBrowseResultClick {
         static let format = "%@/v2/behavioral_action/browse_result_click"
+    }
+
+    struct TrackRecommendationResultsView {
+        static let format = "%@/v2/behavioral_action/recommendation_result_view"
+    }
+
+    struct TrackRecommendationResultClick {
+        static let format = "%@/v2/behavioral_action/recommendation_result_click"
     }
 
     struct TrackConversion {

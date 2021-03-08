@@ -64,6 +64,7 @@ constructor.userID = "abcdefghijk-123"
 
 ```swift
 let query = CIOAutocompleteQuery(query: "Dav")
+
 constructor.autocomplete(forQuery: query) { (response) in
   let data = response.data!
   let error = response.error!
@@ -74,12 +75,13 @@ constructor.autocomplete(forQuery: query) { (response) in
 ## 5. Request Search Results
 
 ```swift
-let filters = SearchFilters(groupFilter: "Bread", facetFilters: [
+let filters = CIOQueryFilters(groupFilter: "Bread", facetFilters: [
   (key: "Nutrition", value: "Organic"),
   (key: "Nutrition", value: "Natural"),
   (key: "Nutrition", value: "Whole-grain")
 ])
 let query = CIOSearchQuery(query: "Dave's Bread", page: 5, filters: filters)
+
 constructor.search(forQuery: query) { (response) in
   let data = response.data!
   let error = response.error!
@@ -87,10 +89,11 @@ constructor.search(forQuery: query) { (response) in
 }
 ```
 
-## 6. Request Browse Events
+## 6. Request Browse Results
 
 ```swift
 let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet")
+
 constructor.browse(forQuery: query) { (response) in
   let data = response.data!
   let error = response.error!
@@ -98,7 +101,48 @@ constructor.browse(forQuery: query) { (response) in
 }
 ```
 
-## 7. Instrument Behavioral Events
+## 7. Request Recommendation Results
+
+```swift
+let query = CIORecommendationsQuery(podId: "pdp_best_sellers", filters: filters)
+
+constructor.recommendations(forQuery: query) { (response) in
+  let data = response.data!
+  let error = response.error!
+  // ...
+}
+```
+
+### With an item id for the alternative/complementary items recommendations strategy
+```swift
+let itemId = "P18232"
+let query = CIORecommendationsQuery(podId: "pdp_complementary_items", itemId: itemId)
+
+constructor.recommendations(forQuery: query) { (response) in
+  let data = response.data!
+  let error = response.error!
+  // ...
+}
+```
+
+### With filters for the filtered item recommendations strategy
+```swift
+let filters = CIOQueryFilters(groupFilter: "cat_1234", facetFilters: [
+  (key: "Nutrition", value: "Organic"),
+  (key: "Nutrition", value: "Natural"),
+  (key: "Brand", value: "Kroger")
+])
+let query = CIORecommendationsQuery(podId: "pdp_filtered_items", filters: filters)
+
+constructor.recommendations(forQuery: query) { (response) in
+  let data = response.data!
+  let error = response.error!
+  // ...
+}
+```
+
+
+## 8. Instrument Behavioral Events
 
 The iOS Client sends behavioral events to [Constructor.io](http://constructor.io/) in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.
 
@@ -145,4 +189,13 @@ constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Sna
 
 // Track when a browse result is clicked
 constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+```
+
+### Recommendations Events
+```swift
+// Track when recommendation results are viewed
+constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+
+// Track when a recomendation result is clicked
+constructorIO.trackRecommendationResultClick(podID: "pdp_best_sellers", strategyID: "best_sellers", customerID: "P183021", variationID: "7281930", numResultsPerPage: 30, resultPage: 1, resultCount: 15, resultPositionOnPage: 1, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 ```

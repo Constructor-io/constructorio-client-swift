@@ -42,7 +42,7 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
             "filter_value": self.filterValue,
             "result_count": Int(self.resultCount),
             "url": self.url
-        ] as [String : Any]
+        ] as [String: Any]
 
         if self.resultID != nil {
             dict["resultID"] = self.resultID

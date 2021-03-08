@@ -11,6 +11,7 @@ import Foundation
 public typealias AutocompleteQueryCompletionHandler = (AutocompleteTaskResponse) -> Void
 public typealias SearchQueryCompletionHandler = (SearchTaskResponse) -> Void
 public typealias BrowseQueryCompletionHandler = (BrowseTaskResponse) -> Void
+public typealias RecommendationsQueryCompletionHandler = (RecommendationsTaskResponse) -> Void
 public typealias TrackingCompletionHandler = (TrackingTaskResponse) -> Void
 
 /**
@@ -33,6 +34,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     var autocompleteParser: AbstractAutocompleteResponseParser = DependencyContainer.sharedInstance.autocompleteResponseParser()
     var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
     var browseParser: AbstractBrowseResponseParser = DependencyContainer.sharedInstance.browseResponseParser()
+    var recommendationsParser: AbstractRecommendationsResponseParser = DependencyContainer.sharedInstance.recommendationsResponseParser()
 
     public var sessionID: Int {
         get {
@@ -79,6 +81,16 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func browse(forQuery query: CIOBrowseQuery, completionHandler: @escaping BrowseQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeBrowse(request, completionHandler: completionHandler)
+    }
+
+    /// Get recommendation results for a query.
+    ///
+    /// - Parameters:
+    ///   - query: The query object, consisting of the query to autocomplete and additional options.
+    ///   - completionHandler: The callback to execute on completion.
+    public func recommendations(forQuery query: CIORecommendationsQuery, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeRecommendations(request, completionHandler: completionHandler)
     }
 
     /// Track input focus.
@@ -147,7 +159,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track search results loaded.
+    /// Track browse results loaded.
     ///
     /// - Parameters:
     ///   - filterName: Primary filter name that the user browsed for
@@ -161,7 +173,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track search result clicked on.
+    /// Track browse result clicked on
     ///
     /// - Parameters:
     ///   - customerID: customer ID.
@@ -173,6 +185,44 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackBrowseResultClick(customerID: String, filterName: String, filterValue: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /// Track recommendation view
+    ///
+    /// - Parameters:
+    ///   - podID: Pod ID
+    ///   - numResultsViewed: The count of results that is visible to the user
+    ///   - resultPage: The current page that recommedantion result is on
+    ///   - resultCount: The total number of recommendation results
+    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - resultID: Identifier of result set
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /// Track recommendation result clicked on
+    ///
+    /// - Parameters:
+    ///   - podID: Pod ID
+    ///   - customerID: Customer ID
+    ///   - strategyID: Strategy ID
+    ///   - variationID: Variation ID
+    ///   - numResultsPerPage: Count of recommendation results on each page
+    ///   - resultPage: The current page that recommedantion result is on
+    ///   - resultCount: The total number of recommendation results
+    ///   - resultPositionOnPage: The position of the recommendation result that was clicked on
+    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - resultID: Identifier of result set
+    ///   - completionHandler: The callback to execute on completion.
+    public func trackRecommendationResultClick(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -333,6 +383,29 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
+    private func executeRecommendations(_ request: URLRequest, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
+        let dispatchHandlerOnMainQueue = { response in
+            DispatchQueue.main.async {
+                completionHandler(response)
+            }
+        }
+
+        self.networkClient.execute(request) { response in
+            if let error = response.error {
+                dispatchHandlerOnMainQueue(RecommendationsTaskResponse(error: error))
+                return
+            }
+
+            let data = response.data!
+            do {
+                let parsedResponse = try self.parseRecommendations(data)
+                dispatchHandlerOnMainQueue(RecommendationsTaskResponse(data: parsedResponse))
+            } catch {
+                dispatchHandlerOnMainQueue(RecommendationsTaskResponse(error: error))
+            }
+        }
+    }
+
     private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
@@ -361,6 +434,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     private func parseBrowse(_ browseResponseData: Data) throws -> CIOBrowseResponse {
         return try self.browseParser.parse(browseResponseData: browseResponseData)
+    }
+
+    private func parseRecommendations(_ recommendationsResponseData: Data) throws -> CIORecommendationsResponse {
+        return try self.recommendationsParser.parse(recommendationsResponseData: recommendationsResponseData)
     }
 
     // MARK: CIOSessionManagerDelegate

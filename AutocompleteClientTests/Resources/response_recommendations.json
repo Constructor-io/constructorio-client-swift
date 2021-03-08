@@ -1,0 +1,614 @@
+{
+  "request": {
+    "item_id": "138250149",
+    "num_results": 10,
+    "pod_id": "item_page_1"
+  },
+  "response": {
+    "results": [{
+        "matched_terms": [],
+        "data": {
+          "id": "117100030",
+          "url": "/",
+          "price": 2.5,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "General Mills"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                601
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.06
+              ]
+            },
+            {
+              "name": "Nutrition",
+              "values": [
+                "Kosher"
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                2.5
+              ]
+            }
+          ],
+          "keywords": [
+            "flour"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-117100030.png",
+          "description": "Enriched. Bleached. Presifted. Per 1/4 Cup Serving as Packaged: 100 calories; 0 g sat fat (0% DV); 0 mg sodium (0% DV); less than 1 g sugars. Over 125 years of baking success. Gold medal. Premium quality. Since 1880. The Gold Medal Standard: When our founding mill master C.C. Washburn braved the first Miller's International Exhibition on Cincinnati, Ohio, he took home more than the gold medal grand prize - he won a shiny new name. So over 125 years ago, we earned the right to be called Gold Medal. And, we've gone on to become America's No. 1 selling flour brand (based on Nielsen Sales Data ending April 1, 2015). Every day we work to live up to our legacy. The standards of the mill that made Mill City live on. We blend the heartland's pure hard and soft wheat to make great, consistent flour that bakers count on. More great recipes at www.goldmedalflour.com. The Red Spoon Promise: The Red Spoon is my promise of great taste, quality and convenience. This is a great product you and your fa",
+          "weighted_keywords": {
+            "flour": 2
+          },
+          "groups": [{
+            "group_id": "Condiments%2C%20Spice%20%26%20Bake",
+            "display_name": "Condiments, Spice & Bake",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Gold Medal Flour All-Purpose - 5 Lb",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      },
+      {
+        "matched_terms": [],
+        "data": {
+          "id": "117100059",
+          "url": "/",
+          "price": 3.39,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "Signature Kitchens"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                814
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.45
+              ]
+            },
+            {
+              "name": "Nutrition",
+              "values": [
+                "Kosher"
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                3.39
+              ]
+            }
+          ],
+          "keywords": [
+            "flour"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-117100059.png",
+          "description": "Enriched bleached wheat flour. Quality guaranteed. Per 1/4 Cup: 110 calories; 0 g sat fat (0% DV); 0 g sodium (0% DV); 0 g total sugars. Our Signature is Our Promise: Signature Select is your assurance of great quality products at the best value everydayfrom delicious frozen entrees and freshly baked French bread to home essentials. We wouldn't put our Signature on anything else. Quality and satisfaction guaranteed, or your money back. SmartLabel. Scan for more information. www.betterlivingbrandsllc.com. Our promise, quality & satisfaction guaranteed or your money back.",
+          "weighted_keywords": {
+            "flour": 2
+          },
+          "groups": [{
+            "group_id": "Condiments%2C%20Spice%20%26%20Bake",
+            "display_name": "Condiments, Spice & Bake",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Signature Kitchens Flour All Purpose Pre-Sifted Enriched Bleached - 5 Lb",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      },
+      {
+        "matched_terms": [],
+        "data": {
+          "id": "960057045",
+          "url": "/",
+          "price": 3,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "Signature Select"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                136
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.2
+              ]
+            },
+            {
+              "name": "Nutrition",
+              "values": [
+                "Kosher"
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                3
+              ]
+            }
+          ],
+          "keywords": [
+            "ice",
+            "cream"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-960057045.png",
+          "description": "Made with milk & cream (This claim does not apply to milk or milk products used in other ingredients) from cows not treated with rbST (No significant difference has been shown between milk derived from rbST-treated and non-rbST-treated cows). Per 2/3 Cup Serving: 180 calories; 6 g sat fat (30% DV); 45 mg sodium (2% DV); 17 g total sugars. SmartLabel. Scan for more food information. Our Promise: Quality & satisfaction 100% guaranteed or your money back. www.betterlivingbrandsLLC.com.",
+          "weighted_keywords": {
+            "bean": 2
+          },
+          "groups": [{
+            "group_id": "Frozen%20Foods",
+            "display_name": "Frozen Foods",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Signature SELECT Ice Cream Vanilla Bean - 1.5 Quart",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      },
+      {
+        "matched_terms": [],
+        "data": {
+          "id": "106010122",
+          "url": "/",
+          "price": 3.99,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "Unilever"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                443
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.1
+              ]
+            },
+            {
+              "name": "Nutrition",
+              "values": [
+                "Gluten Free",
+                "Kosher"
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                3.99
+              ]
+            }
+          ],
+          "keywords": [
+            "mayonnaise"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-106010122.png",
+          "description": "Bring out the best. See nutrition information for fat and saturated fat content. Made with cage free eggs (Contains at least 50% cage free eggs). Per 1 Tbsp Serving: 90 calories; 1.5 g sat fat (8% DV); 90 mg sodium (4% DV); 0 g sugars. For exciting recipes, visit Yummly.com/BestFoods. Like us on Facebook. Food made with Best Foods is simply about the best taste, the taste that can only come from real ingredients. Even after 100 years, we're still committed to using premium ingredients to craft the highest quality mayonnaise. That's why we're on a mission to use 100% cage-free eggs and responsibly sourced oil from American farms. To learn more, visit BestFoods.com/BlueRibbionQuality. Rich in omega 3 ALA. Contains 650 mg ALA per serving; 40% of the 1.6 g daily value of ALA. Gluten-free. Quality of this product is guaranteed. Questions, comments, please call 1-800-418-3275. Known as Hellmann's east of the Rockies. Product of USA.",
+          "weighted_keywords": {
+            "mayonnaise": 2
+          },
+          "groups": [{
+            "group_id": "Condiments%2C%20Spice%20%26%20Bake",
+            "display_name": "Condiments, Spice & Bake",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Best Foods Real Mayonnaise - 30 Fl. Oz.",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      },
+      {
+        "matched_terms": [],
+        "data": {
+          "id": "960077776",
+          "url": "/",
+          "price": 3.39,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "Signature Farms"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                440
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.39
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                3.39
+              ]
+            }
+          ],
+          "keywords": [
+            "potatoes",
+            "yams"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-960077776.png",
+          "description": "US No. 1. Quality guaranteed. Delicious quality from farm to table. Welcome to the extraordinary flavors, textures, and colors of Signature Farms. You can find all the produce and vegetables you want under the sun - crispy greens, perfectly ripened fruit, and all the colors of the vegetable rainbow. SmartLabel. Scan for more food information. Our Promise: Quality & satisfaction 100% guaranteed or your money back. www.betterlivingbrandsLLC.com. Grown in Idaho. Product of USA. Packed in Idaho.",
+          "weighted_keywords": {
+            "farm": 2
+          },
+          "groups": [{
+            "group_id": "Fruits%20%26%20Vegetables",
+            "display_name": "Fruits & Vegetables",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Signature Farms Potatoes Russet Idaho - 5 Lb",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      },
+      {
+        "matched_terms": [],
+        "data": {
+          "id": "188560212",
+          "url": "/",
+          "price": 16.99,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "Signature Farms"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                195
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.44
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                16.99
+              ]
+            }
+          ],
+          "keywords": [
+            "bacon"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-188560212.png",
+          "description": "US inspected and passed by Department of Agriculture. Quality guaranteed. Per 1 Cooked Slice (14 g): 70 calories; 1.5 g sat fat (8% DV); 250 mg sodium (10% DV); 1 g sugars. Vacuum packed for freshness. www.betterlivingbrandsLLC.com. SmartLabel. Scan here for more food information.",
+          "weighted_keywords": {
+            "hickory": 2
+          },
+          "groups": [{
+            "group_id": "Meat%20%26%20Seafood",
+            "display_name": "Meat & Seafood",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Signature Farms Bacon Hickory Smoked Thick Sliced Value Pack - 48 Oz",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      },
+      {
+        "matched_terms": [],
+        "data": {
+          "id": "296050875",
+          "url": "/",
+          "price": 2.9,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "Signature Select"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                959
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.39
+              ]
+            },
+            {
+              "name": "Nutrition",
+              "values": [
+                "Kosher"
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                2.9
+              ]
+            }
+          ],
+          "keywords": [
+            "sandwich",
+            "bread"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-296050875.png",
+          "description": "Quality guaranteed. No high fructose corn syrup. Per 1 Slice: 100 calories; 0 g sat (0% DV); 170 mg sodium (7% DV); 0 g total sugars. Just-Baked Quality Delivered Every Day: At Signature Select our bakers mix and knead generations of baking experience into every great tasting bread we make. Only high quality, wholesome ingredients are used in our recipes - baked to perfection in the warmth of our ovens. From the warmth of our kitchen to yours. Enjoy! www.betterlivingbrandsLLC.com. Our Promise: Quality & satisfaction 100% guaranteed or your money back. Smartlabel.",
+          "groups": [{
+            "group_id": "Bread%20%26%20Bakery",
+            "display_name": "Bread & Bakery",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Signature SELECT Sourdough Bread - 24 Oz",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      },
+      {
+        "matched_terms": [],
+        "data": {
+          "id": "138250170",
+          "url": "/",
+          "price": 4.59,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "Lucerne"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                2
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.05
+              ]
+            },
+            {
+              "name": "Nutrition",
+              "values": [
+                "Kosher"
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                4.59
+              ]
+            }
+          ],
+          "keywords": [
+            "butter"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-138250170.png",
+          "description": "Natural flavors added. 100 calories per tbsp. See nutrition information for fat, saturated fat and cholesterol content. USDA officially graded. US Grade AA when graded. Packed under inspection of US Dept of Agriculture. Since 1904. Pasteurized. SmartLabel. Scan for more information. Butter meets specifications for grade declared. 100% money back guaranteed. Quality & satisfaction.",
+          "weighted_keywords": {
+            "quarters": 2
+          },
+          "groups": [{
+            "group_id": "Dairy%2C%20Eggs%20%26%20Cheese",
+            "display_name": "Dairy, Eggs & Cheese",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Lucerne Unsalted Sweet Cream Butter Quarters - 16 Oz",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      },
+      {
+        "matched_terms": [],
+        "data": {
+          "id": "136200030",
+          "url": "/",
+          "price": 2.09,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "Lucerne"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                954
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.13
+              ]
+            },
+            {
+              "name": "Nutrition",
+              "values": [
+                "Kosher"
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                2.09
+              ]
+            }
+          ],
+          "keywords": [
+            "sour",
+            "cream"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-136200030.png",
+          "description": "Grade A. Pasteurized. Made with milk from cows not treated with rBST (No significant difference has been shown between milk derived from rBST-treated and non-rBST-treated cows). Since 1904. Per 2 Tbsp: 60 calories; 3.5 g sat fat (18% DV); 15 mg sodium (1% DV); 1 g total sugars. SmartLabel. Scan for more food information. Our promise, quality & satisfaction 100% guaranteed or your money back.",
+          "groups": [{
+            "group_id": "Dairy%2C%20Eggs%20%26%20Cheese",
+            "display_name": "Dairy, Eggs & Cheese",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Lucerne Sour Cream - 16 Oz",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      },
+      {
+        "matched_terms": [],
+        "data": {
+          "id": "136200019",
+          "url": "/",
+          "price": 1.99,
+          "facets": [{
+              "name": "Brand",
+              "values": [
+                "Daisy"
+              ]
+            },
+            {
+              "name": "Inventory",
+              "values": [
+                266
+              ]
+            },
+            {
+              "name": "Margin",
+              "values": [
+                0.1
+              ]
+            },
+            {
+              "name": "Nutrition",
+              "values": [
+                "Kosher"
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                1.99
+              ]
+            }
+          ],
+          "keywords": [
+            "sour",
+            "cream"
+          ],
+          "image_url": "https://d17bbgoo3npfov.cloudfront.net/images/farmstand-136200019.png",
+          "description": "Pure & natural. Grade A. Pasteurized. daisybrand.com.",
+          "weighted_keywords": {
+            "pure": 2
+          },
+          "groups": [{
+            "group_id": "Dairy%2C%20Eggs%20%26%20Cheese",
+            "display_name": "Dairy, Eggs & Cheese",
+            "path": "/all",
+            "path_list": [{
+              "id": "all",
+              "display_name": "All"
+            }]
+          }]
+        },
+        "value": "Daisy Sour Cream Pure & Natural - 16 Oz",
+        "is_slotted": false,
+        "strategy": {
+          "id": "alternative_items"
+        }
+      }
+    ],
+    "total_num_results": 10,
+    "pod": {
+      "id": "item_page_1",
+      "display_name": "You may also like"
+    }
+  },
+  "result_id": "427199b0-3437-42d8-801b-8e77d6405a7f"
+}

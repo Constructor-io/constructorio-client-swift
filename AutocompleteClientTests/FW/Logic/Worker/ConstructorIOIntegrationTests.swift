@@ -26,6 +26,11 @@ class ConstructorIOIntegrationTests: XCTestCase {
     fileprivate let customerIDs = ["prrst_shldr_bls", "prrst_crwn"]
     fileprivate let originalQuery = "pork#@#??!!asd"
     fileprivate let group = CIOGroup(displayName: "groupName1", groupID: "groupID2", path: "path/to/group")
+    fileprivate let podID = "item_page_1"
+    fileprivate let strategyID = "alternative_items"
+    fileprivate let numResultsPerPage = 5
+    fileprivate let numResultsViewed = 5
+    fileprivate let resultPage = 1
 
     var constructor: ConstructorIO!
 
@@ -109,6 +114,26 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testRecommendationsResultsView() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: nil, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testRecommendationsResultClick() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackRecommendationResultClick(podID: podID, strategyID: strategyID, customerID: customerID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: nil, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testConversion() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName, completionHandler: { response in
@@ -124,6 +149,22 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.trackPurchase(customerIDs: customerIDs, sectionName: sectionName, revenue: revenue, orderID: orderID, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testRecommendations() {
+        let expectation = XCTestExpectation(description: "Request 200")
+        let query = CIORecommendationsQuery(podID: podID, itemID: customerID, section: sectionName)
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+
+            let responseData = response.data!
+            XCTAssertEqual(responseData.pod.id, self.podID, "Pod ID should match the JSON response")
+            XCTAssertEqual(responseData.totalNumResults, 5, "Recommendations count should match the JSON response")
+
             expectation.fulfill()
         })
         self.wait(for: expectation)

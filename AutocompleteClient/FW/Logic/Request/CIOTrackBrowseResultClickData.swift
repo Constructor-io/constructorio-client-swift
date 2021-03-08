@@ -44,7 +44,7 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
             "filter_name": self.filterName,
             "filter_value": self.filterValue,
             "item_id": self.customerID
-        ] as [String : Any]
+        ] as [String: Any]
 
         if self.resultPositionOnPage != nil {
             dict["result_position_on_page"] = Int(self.resultPositionOnPage!)
