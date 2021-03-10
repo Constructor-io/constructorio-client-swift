@@ -151,6 +151,9 @@ Three types of these events exist:
 1. **General Events** are sent as needed when an instance of the Client is created or initialized
 1. **Autocomplete Events** measure user interaction with autocomplete results
 1. **Search Events** measure user interaction with search results
+1. **Browse Events** measure user interaction with browse results
+1. **Recommendation Events** measure user interaction with recommendations
+1. **Conversion Events** measure user events like `add to cart` or `purchase`
 
 ### Autocomplete Events
 
@@ -173,12 +176,6 @@ constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, cu
 
 // Track when a search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
-
-// Track when a search result converts (a.k.a. is added to cart)
-constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth")
-
-// Track when products are purchased
-constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")
 ```
 
 ### Browse Events
@@ -192,10 +189,21 @@ constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snack
 ```
 
 ### Recommendations Events
+
 ```swift
 // Track when recommendation results are viewed
 constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 
 // Track when a recomendation result is clicked
 constructorIO.trackRecommendationResultClick(podID: "pdp_best_sellers", strategyID: "best_sellers", customerID: "P183021", variationID: "7281930", numResultsPerPage: 30, resultPage: 1, resultCount: 15, resultPositionOnPage: 1, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+```
+
+### Conversion Events
+
+```swift
+// Track when an item converts (a.k.a. is added to cart) regardless of the user journey that led to adding to cart
+constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth")
+
+// Track when items are purchased
+constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")
 ```
