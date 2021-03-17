@@ -268,6 +268,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.attachUserID(requestBuilder: requestBuilder)
         self.attachSessionIDWithIncrement(requestBuilder: requestBuilder)
         self.attachABTestCells(requestBuilder: requestBuilder)
+        self.attachSegments(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         return requestBuilder.getRequest()
     }
@@ -279,6 +280,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.attachUserID(requestBuilder: requestBuilder)
         self.attachSessionIDWithoutIncrement(requestBuilder: requestBuilder)
         self.attachABTestCells(requestBuilder: requestBuilder)
+        self.attachSegments(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         return requestBuilder.getRequest()
     }
@@ -292,6 +294,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
             requestBuilder.set(testCellKey: cell.key, testCellValue: cell.value)
         })
+    }
+
+    private func attachSegments(requestBuilder: RequestBuilder) {
+        if let us = self.config.segments {
+            requestBuilder.set(segments: us)
+        }
     }
 
     private func attachUserID(requestBuilder: RequestBuilder) {
