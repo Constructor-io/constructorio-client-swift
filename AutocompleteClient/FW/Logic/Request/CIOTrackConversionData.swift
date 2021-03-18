@@ -43,6 +43,7 @@ struct CIOTrackConversionData: CIORequestData {
         requestBuilder.set(autocompleteSection: self.sectionName)
         requestBuilder.set(revenue: self.revenue)
         requestBuilder.set(type: self.conversionType)
+        requestBuilder.set(searchTerm: self.searchTerm)
     }
     
     func httpBody(baseParams: [String: Any]) -> Data? {
@@ -65,9 +66,10 @@ struct CIOTrackConversionData: CIORequestData {
 
         dict.merge(baseParams) { current, _ in current }
         
-        // Remove name and customer from dict as having them in the POST body throws an error
+        // Remove name, term, and customer from dict as having them in the POST body throws an error
         dict.removeValue(forKey: "name")
         dict.removeValue(forKey: "customer_id")
+        dict.removeValue(forKey: "term")
 
         return try? JSONSerialization.data(withJSONObject: dict)
     }
