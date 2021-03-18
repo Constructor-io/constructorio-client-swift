@@ -143,6 +143,7 @@ struct Constants {
         static let dateTime = "_dt"
         static let defaultItemSectionName = "Products"
         static let orderID = "order_id"
+        static let defaultConversionType = "add_to_cart"
     }
 
     struct TrackSessionStart {
@@ -186,7 +187,7 @@ struct Constants {
     }
 
     struct TrackConversion {
-        static let format = "%@/autocomplete/%@/conversion"
+        static let format = "%@/v2/behavioral_action/conversion"
     }
 
     struct TrackPurchase {
