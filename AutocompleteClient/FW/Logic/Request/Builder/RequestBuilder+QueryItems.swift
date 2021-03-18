@@ -54,6 +54,11 @@ extension RequestBuilder {
         guard let sectionName = autocompleteSection else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.autocompleteSection, value: sectionName))
     }
+    
+    func set(type: String?) {
+        guard let conversionType = type else { return }
+        queryItems.add(URLQueryItem(name: Constants.Track.conversionType, value: conversionType))
+    }
 
     func set(searchSection: String) {
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.section, value: searchSection))

@@ -39,8 +39,8 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
@@ -64,8 +64,8 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
@@ -79,8 +79,8 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("revenue=9999.00"), "URL should contain the revenue parameter.")
@@ -94,8 +94,8 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/conversion?"))
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")

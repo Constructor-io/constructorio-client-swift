@@ -144,6 +144,7 @@ struct Constants {
         static let defaultItemSectionName = "Products"
         static let orderID = "order_id"
         static let defaultConversionType = "add_to_cart"
+        static let conversionType = "type"
     }
 
     struct TrackSessionStart {

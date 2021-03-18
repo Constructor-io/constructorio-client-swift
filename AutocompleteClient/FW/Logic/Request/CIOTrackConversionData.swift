@@ -42,24 +42,32 @@ struct CIOTrackConversionData: CIORequestData {
         requestBuilder.set(customerID: self.customerID)
         requestBuilder.set(autocompleteSection: self.sectionName)
         requestBuilder.set(revenue: self.revenue)
+        requestBuilder.set(type: self.conversionType)
     }
     
     func httpBody(baseParams: [String: Any]) -> Data? {
         var dict = [
-            "type": self.conversionType!,
             "search_term": self.searchTerm,
-            "item_id": self.itemName,
+            "item_id": self.customerID,
         ] as [String: Any]
 
         if self.revenue != nil {
-            dict["revenue"] = self.revenue
+            dict["revenue"] = NSString(format: "%.2f", self.revenue!)
         }
         
         if self.sectionName != nil {
             dict["section"] = self.sectionName
         }
+        
+        if self.sectionName != nil {
+            dict["type"] = self.conversionType
+        }
 
         dict.merge(baseParams) { current, _ in current }
+        
+        // Remove name and customer from dict as having them in the POST body throws an error
+        dict.removeValue(forKey: "name")
+        dict.removeValue(forKey: "customer_id")
 
         return try? JSONSerialization.data(withJSONObject: dict)
     }
