@@ -30,7 +30,7 @@ class ConstructorIOUserSegmentsTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: searchTerm)
         let builder = CIOBuilder(expectation: "Calling Autocomplete with a single segment should send a valid request.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/boba?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&us=Europe"), builder.create())
-        constructor.autocomplete(forQuery: query) { (_) in }
+        constructor.autocomplete(forQuery: query) { _ in }
         self.wait(for: builder.expectation)
     }
 
@@ -41,7 +41,7 @@ class ConstructorIOUserSegmentsTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: searchTerm)
         let builder = CIOBuilder(expectation: "Calling Autocomplete with multiple segments should send a valid request.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/boba?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&us=Europe&us=Mobile"), builder.create())
-        constructor.autocomplete(forQuery: query) { (_) in }
+        constructor.autocomplete(forQuery: query) { _ in }
         self.wait(for: builder.expectation)
     }
 
