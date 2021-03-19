@@ -16,6 +16,8 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     fileprivate let itemName = "some item name"
     fileprivate let customerID = "custIDq3éû qd"
     fileprivate let sectionName = "some section name@"
+    fileprivate let conversionType = "like"
+    fileprivate let revenue = 12.45
 
     fileprivate var encodedSearchTerm: String = ""
     fileprivate var encodedItemName: String = ""
@@ -63,44 +65,64 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
-        XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+        XCTAssertEqual(payload?["section"] as? String, sectionName)
+    }
+
+    func testTrackConversionBuilder_WithConversionType() {
+        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName, customerID: self.customerID, conversionType: self.conversionType)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
+        XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
+        XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+        XCTAssertEqual(payload?["type"] as? String, conversionType)
     }
 
     func testTrackConversionBuilder_WithRevenue() {
-        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, revenue: 9999)
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, revenue: revenue)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
-        XCTAssertTrue(url.contains("revenue=9999.00"), "URL should contain the revenue parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+        XCTAssertEqual(payload?["revenue"] as? String, String(revenue))
     }
 
-    func testTrackConversionBuilder_WithSectionNameAndRevenue() {
-        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, sectionName: sectionName, revenue: 12.345)
+    func testTrackConversionBuilder_WithSectionNameRevenueAndType() {
+        let tracker = CIOTrackConversionData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, sectionName: sectionName, revenue: revenue, conversionType: conversionType)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
         XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
         XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
-        XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the autocomplete section name.")
-        XCTAssertTrue(url.contains("revenue=12.35"), "URL should contain the revenue parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+        XCTAssertEqual(payload?["revenue"] as? String, String(revenue))
+        XCTAssertEqual(payload?["type"] as? String, conversionType)
+        XCTAssertEqual(payload?["section"] as? String, sectionName)
     }
 }

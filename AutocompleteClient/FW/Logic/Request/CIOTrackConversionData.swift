@@ -19,7 +19,7 @@ struct CIOTrackConversionData: CIORequestData {
     var sectionName: String?
     let revenue: Double?
     let conversionType: String?
-    
+
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackConversion.format, baseURL)
     }
@@ -32,7 +32,7 @@ struct CIOTrackConversionData: CIORequestData {
         self.revenue = revenue
         self.conversionType = conversionType
     }
-    
+
     func httpMethod() -> String {
         return "POST"
     }
@@ -40,12 +40,8 @@ struct CIOTrackConversionData: CIORequestData {
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(name: self.itemName)
         requestBuilder.set(customerID: self.customerID)
-        requestBuilder.set(autocompleteSection: self.sectionName)
-        requestBuilder.set(revenue: self.revenue)
-        requestBuilder.set(type: self.conversionType)
-        requestBuilder.set(searchTerm: self.searchTerm)
     }
-    
+
     func httpBody(baseParams: [String: Any]) -> Data? {
         var dict = [
             "search_term": self.searchTerm,
@@ -55,21 +51,20 @@ struct CIOTrackConversionData: CIORequestData {
         if self.revenue != nil {
             dict["revenue"] = NSString(format: "%.2f", self.revenue!)
         }
-        
+
         if self.sectionName != nil {
             dict["section"] = self.sectionName
         }
-        
-        if self.sectionName != nil {
+
+        if self.conversionType != nil {
             dict["type"] = self.conversionType
         }
 
         dict.merge(baseParams) { current, _ in current }
-        
+
         // Remove name, term, and customer from dict as having them in the POST body throws an error
         dict.removeValue(forKey: "name")
         dict.removeValue(forKey: "customer_id")
-        dict.removeValue(forKey: "term")
 
         return try? JSONSerialization.data(withJSONObject: dict)
     }
