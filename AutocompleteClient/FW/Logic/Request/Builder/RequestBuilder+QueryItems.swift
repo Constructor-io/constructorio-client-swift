@@ -119,23 +119,6 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: key, value: value))
     }
 
-    func set(testCellKey: String, testCellValue: String) {
-        let formattedKey = String(format: Constants.ABTesting.keyFormat, testCellKey)
-        queryItems.add(URLQueryItem(name: formattedKey, value: testCellValue))
-    }
-
-    func set(segments: [String]?) {
-        guard let segments = segments else { return }
-        for segment in segments {
-            self.set(segment: segment)
-        }
-    }
-
-    func set(segment: String?) {
-        guard let segment = segment else { return }
-        queryItems.add(URLQueryItem(name: Constants.Query.segments, value: segment))
-    }
-
     func set(itemID: String?) {
         guard let itemID = itemID else { return }
         let itemIDString = String(itemID)
