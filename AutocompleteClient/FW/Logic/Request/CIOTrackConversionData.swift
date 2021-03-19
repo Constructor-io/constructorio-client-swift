@@ -62,7 +62,7 @@ struct CIOTrackConversionData: CIORequestData {
 
         dict.merge(baseParams) { current, _ in current }
 
-        // Remove name, term, and customer from dict as having them in the POST body throws an error
+        // Remove name and customer id from dict as having them in the POST body throws an error
         dict.removeValue(forKey: "name")
         dict.removeValue(forKey: "customer_id")
 
