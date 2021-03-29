@@ -76,6 +76,7 @@
 		BFC9503F25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9503E25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift */; };
 		BFC9504125DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9504025DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift */; };
 		BFC9504325DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9504225DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift */; };
+		BFE1C72D2602CF0E0017B4A0 /* ConstructorIOUserSegmentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE1C72C2602CF0E0017B4A0 /* ConstructorIOUserSegmentsTests.swift */; };
 		F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EA1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift */; };
 		F174C1ED1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174C1EC1F5F5AC1009E354B /* NSString+RangeOfCharactersTest.swift */; };
 		F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192DDED1F5F123400114C8C /* RequestBuilder.swift */; };
@@ -99,7 +100,6 @@
 		F618213523577318005457C5 /* CartBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61820D923577317005457C5 /* CartBarButtonItem.swift */; };
 		F618213623577318005457C5 /* ConstructorIOProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61820DB23577317005457C5 /* ConstructorIOProvider.swift */; };
 		F618213723577318005457C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61820DC23577317005457C5 /* AppDelegate.swift */; };
-		F618213923577318005457C5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F61820DE23577317005457C5 /* Info.plist */; };
 		F618213A23577318005457C5 /* CustomBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F61820E123577317005457C5 /* CustomBackgroundView.xib */; };
 		F618213B23577318005457C5 /* CustomTableViewCellOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61820E423577317005457C5 /* CustomTableViewCellOne.swift */; };
 		F618213C23577318005457C5 /* CustomTableViewCellOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = F61820E523577317005457C5 /* CustomTableViewCellOne.xib */; };
@@ -372,6 +372,7 @@
 		BFC9503E25D77B3600118D4C /* TrackRecommendationViewRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRecommendationViewRequestBuilder.swift; sourceTree = "<group>"; };
 		BFC9504025DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackRecommendationResultClickTests.swift; sourceTree = "<group>"; };
 		BFC9504225DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackRecommendationResultsViewTests.swift; sourceTree = "<group>"; };
+		BFE1C72C2602CF0E0017B4A0 /* ConstructorIOUserSegmentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOUserSegmentsTests.swift; sourceTree = "<group>"; };
 		C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D938EAC4478309F3008F3B0D /* Pods_UserApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -823,6 +824,7 @@
 				BFC9503525D5ED7300118D4C /* ConstructorIORecommendationsTests.swift */,
 				BFC9504025DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift */,
 				BFC9504225DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift */,
+				BFE1C72C2602CF0E0017B4A0 /* ConstructorIOUserSegmentsTests.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -1944,7 +1946,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = xd;
 				TargetAttributes = {
 					F64F46CC1F59CE750094C697 = {
@@ -1996,7 +1998,6 @@
 				F618214E23577318005457C5 /* SortOptionTableViewCell.xib in Resources */,
 				F618213E23577318005457C5 /* CustomErrorView.xib in Resources */,
 				F618215A23577318005457C5 /* SearchViewController.xib in Resources */,
-				F618213923577318005457C5 /* Info.plist in Resources */,
 				F618215123577318005457C5 /* SortOptionsViewController.xib in Resources */,
 				F618214923577318005457C5 /* FilterHeaderView.xib in Resources */,
 				F618215923577318005457C5 /* SearchTableViewCell.xib in Resources */,
@@ -2333,6 +2334,7 @@
 				F1C557451F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift in Sources */,
 				F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */,
 				087F4BDF228B100E0058B467 /* ConstructorIOTrackPurchaseTests.swift in Sources */,
+				BFE1C72D2602CF0E0017B4A0 /* ConstructorIOUserSegmentsTests.swift in Sources */,
 				BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */,
 				BFC9504325DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift in Sources */,
 				F66B217B21E275EE00AAB030 /* QueryItemCollectionTests.swift in Sources */,
@@ -2503,6 +2505,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2510,6 +2513,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -2564,6 +2568,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2571,6 +2576,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
