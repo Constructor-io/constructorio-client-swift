@@ -16,6 +16,7 @@ struct CIOTrackConversionData: CIORequestData {
     let searchTerm: String
     let itemName: String
     let customerID: String
+    let variationID: String?
     var sectionName: String?
     let revenue: Double?
     let conversionType: String?
@@ -24,10 +25,11 @@ struct CIOTrackConversionData: CIORequestData {
         return String(format: Constants.TrackConversion.format, baseURL)
     }
 
-    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil, conversionType: String? = nil) {
+    init(searchTerm: String, itemName: String, customerID: String, variationID: String? = nil, sectionName: String? = nil, revenue: Double? = nil, conversionType: String? = nil) {
         self.searchTerm = searchTerm
         self.itemName = itemName
         self.customerID = customerID
+        self.variationID = variationID
         self.sectionName = sectionName
         self.revenue = revenue
         self.conversionType = conversionType
@@ -38,16 +40,16 @@ struct CIOTrackConversionData: CIORequestData {
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(name: self.itemName)
-        requestBuilder.set(customerID: self.customerID)
+        requestBuilder.set(autocompleteSection: self.sectionName)
     }
 
     func httpBody(baseParams: [String: Any]) -> Data? {
         var dict = [
             "search_term": self.searchTerm,
             "item_id": self.customerID,
+            "item_name": self.itemName,
         ] as [String: Any]
-
+        
         if self.revenue != nil {
             dict["revenue"] = NSString(format: "%.2f", self.revenue!)
         }
@@ -61,10 +63,6 @@ struct CIOTrackConversionData: CIORequestData {
         }
 
         dict.merge(baseParams) { current, _ in current }
-
-        // Remove name and customer id from dict as having them in the POST body throws an error
-        dict.removeValue(forKey: "name")
-        dict.removeValue(forKey: "customer_id")
 
         return try? JSONSerialization.data(withJSONObject: dict)
     }

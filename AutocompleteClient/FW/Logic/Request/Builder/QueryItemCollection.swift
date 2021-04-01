@@ -63,7 +63,7 @@ struct QueryItemCollection {
         let flattenedArray = self.queryItems.values.reduce([]) { res, next -> [URLQueryItem] in
             return res + next.reduce([], { res, next in return res + [next] })
         }
-        var dict: [String: Any] = [:]
+        var dict: [String: Any] = ["beacon": true]
         flattenedArray.forEach { item in
             if item.value != nil {
                 dict[item.name] = item.value

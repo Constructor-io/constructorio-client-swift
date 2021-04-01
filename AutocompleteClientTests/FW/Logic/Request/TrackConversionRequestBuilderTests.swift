@@ -40,13 +40,15 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
-        XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
-        XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
     }
 
     func testTrackConversionBuilder_WithCustomBaseURL() {
@@ -56,8 +58,12 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertTrue(url.hasPrefix(customBaseURL))
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
     }
 
     func testTrackConversionBuilder_WithSectionName() {
@@ -69,11 +75,13 @@ class TrackConversionRequestBuilderTests: XCTestCase {
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
-        XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
-        XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the section.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
         XCTAssertEqual(payload?["section"] as? String, sectionName)
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
     }
 
     func testTrackConversionBuilder_WithConversionType() {
@@ -85,11 +93,12 @@ class TrackConversionRequestBuilderTests: XCTestCase {
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
-        XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
-        XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
         XCTAssertEqual(payload?["type"] as? String, conversionType)
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
     }
 
     func testTrackConversionBuilder_WithRevenue() {
@@ -101,11 +110,12 @@ class TrackConversionRequestBuilderTests: XCTestCase {
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
-        XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
-        XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
         XCTAssertEqual(payload?["revenue"] as? String, String(revenue))
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
     }
 
     func testTrackConversionBuilder_WithSectionNameRevenueAndType() {
@@ -114,15 +124,16 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
-
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
-        XCTAssertTrue(url.contains("name=\(encodedItemName)"), "URL should contain the item id.")
-        XCTAssertTrue(url.contains("customer_id=\(encodedCustomerID)"), "URL should contain the customer ID.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the section.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
         XCTAssertEqual(payload?["revenue"] as? String, String(revenue))
         XCTAssertEqual(payload?["type"] as? String, conversionType)
         XCTAssertEqual(payload?["section"] as? String, sectionName)
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
     }
 }
