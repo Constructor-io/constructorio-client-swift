@@ -16,7 +16,6 @@ struct CIOTrackConversionData: CIORequestData {
     let searchTerm: String
     let itemName: String
     let customerID: String
-    let variationID: String?
     var sectionName: String?
     let revenue: Double?
     let conversionType: String?
@@ -25,11 +24,10 @@ struct CIOTrackConversionData: CIORequestData {
         return String(format: Constants.TrackConversion.format, baseURL)
     }
 
-    init(searchTerm: String, itemName: String, customerID: String, variationID: String? = nil, sectionName: String? = nil, revenue: Double? = nil, conversionType: String? = nil) {
+    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil, conversionType: String? = nil) {
         self.searchTerm = searchTerm
         self.itemName = itemName
         self.customerID = customerID
-        self.variationID = variationID
         self.sectionName = sectionName
         self.revenue = revenue
         self.conversionType = conversionType
