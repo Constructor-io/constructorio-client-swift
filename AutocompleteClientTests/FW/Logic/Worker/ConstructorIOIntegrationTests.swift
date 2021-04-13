@@ -31,6 +31,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     fileprivate let numResultsPerPage = 5
     fileprivate let numResultsViewed = 5
     fileprivate let resultPage = 1
+    fileprivate let conversionType = "add_to_cart"
 
     var constructor: ConstructorIO!
 
@@ -136,7 +137,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testConversion() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName, completionHandler: { response in
+        self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName, conversionType: conversionType, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()

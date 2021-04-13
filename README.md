@@ -202,7 +202,7 @@ constructorIO.trackRecommendationResultClick(podID: "pdp_best_sellers", strategy
 
 ```swift
 // Track when an item converts (a.k.a. is added to cart) regardless of the user journey that led to adding to cart
-constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth")
+constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth", conversionType: "add_to_cart")
 
 // Track when items are purchased
 constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")

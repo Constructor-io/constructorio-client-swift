@@ -78,7 +78,7 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
         XCTAssertEqual(payload?["revenue"] as? Double, revenue)
     }
-    
+
     func testTrackPurchaseBuilder_WithOrderID() {
         let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs, sectionName: self.sectionName, orderID: self.orderID)
         builder.build(trackData: tracker)

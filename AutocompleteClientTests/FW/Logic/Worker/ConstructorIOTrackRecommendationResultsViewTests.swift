@@ -33,7 +33,7 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         self.constructor.trackRecommendationResultsView(podID: podID)
         self.wait(for: builder.expectation)
     }
-    
+
     func testTrackRecommendationResultsView_WithOptionalParams() {
         let podID = "item_page_1"
         let numResultsViewed = 5
