@@ -45,9 +45,9 @@ struct CIOTrackConversionData: CIORequestData {
         var dict = [
             "search_term": self.searchTerm,
             "item_id": self.customerID,
-            "item_name": self.itemName,
+            "item_name": self.itemName
         ] as [String: Any]
-        
+
         if self.revenue != nil {
             dict["revenue"] = NSString(format: "%.2f", self.revenue!)
         }

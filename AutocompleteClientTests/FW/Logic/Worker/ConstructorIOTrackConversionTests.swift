@@ -66,7 +66,7 @@ class ConstructorIOTrackConversionTests: XCTestCase {
         self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName)
         self.wait(for: builder.expectation)
     }
-    
+
     func testTrackConversion_WithType() {
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"
