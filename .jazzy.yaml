@@ -1,0 +1,38 @@
+skip_undocumented: true
+
+include:
+  - "/**/Worker/ConstructorIO.swift"
+  - "/**/Request/*Query.swift"
+  - "/**/Result/Responses/*.swift"
+  - "/**/Result/*.swift"
+
+custom_categories:
+  - name: Client
+    children:
+      - ConstructorIO
+  - name: Result Request Structures
+    children:
+      - CIOAutocompleteQuery
+      - CIOBrowseQuery
+      - CIORecommendationsQuery
+      - CIOSearchQuery
+  - name: Response Structures
+    children:
+      - CIOAutocompleteResponse
+      - CIOBrowseResponse
+      - CIORecommendationsResponse
+      - CIOSearchResponse
+  - name: Result Structures & Classes
+    children:
+      - CIOAutocompleteResult
+      - CIOFilterFacet
+      - CIOFilterFacetOption
+      - CIOFilterGroup
+      - CIOGroup
+      - CIORecommendationsPod
+      - CIORecommendationsStrategy
+      - CIOResult
+      - CIOResultData
+      - CIOResultFacet
+      - CIOSearchRedirectInfo
+      - CIOSortOption

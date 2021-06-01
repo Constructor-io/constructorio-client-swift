@@ -10,21 +10,68 @@ import Foundation
 
 /**
  Struct encapsulating the necessary and additional parameters required to execute a search query.
-*/
+ */
 public struct CIOBrowseQuery: CIORequestData {
-
+    /**
+     Primary filter name that the user browsed for
+     */
     public let filterName: String
+    
+    /**
+     Primary filter value that the user browsed for
+     */
     public let filterValue: String
-    public let page: Int
-    public let perPage: Int
-    public let section: String
+    
+    /**
+     The filters used to refine results
+     */
     public let filters: CIOQueryFilters?
+
+    /**
+     The page number of the results
+     */
+    public let page: Int
+    
+    /**
+     The number of results per page to return
+     */
+    public let perPage: Int
+    
+    /**
+     The sort method/order for results
+     */
     public let sortOption: CIOSortOption?
+
+    /**
+     The section to return results from
+     */
+    public let section: String
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.BrowseQuery.format, baseURL, filterName, filterValue)
     }
 
+    /**
+     Create a Browse request query object
+
+     - Parameters:
+        - filterName: Primary filter name that the user browsed for
+        - filterValue: Primary filter value that the user browsed for
+        - filters: The filters used to refine results
+        - page: The page number of the results
+        - perPage: The number of results per page to return
+        - sortOption: The sort method/order for results
+        - section: The section to return results from
+
+     ### Usage Example: ###
+     ```
+     let facetFilters = [(key: "Nutrition", value: "Organic"),
+                         (key: "Nutrition", value: "Natural"),
+                         (key: "Brand", value: "Kraft Foods")]
+
+     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products")
+     ```
+     */
     public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, perPage: Int = 30, section: String? = nil) {
         self.filterName = filterName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filterValue = filterValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!

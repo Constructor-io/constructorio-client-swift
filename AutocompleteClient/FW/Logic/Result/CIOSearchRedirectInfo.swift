@@ -8,13 +8,33 @@
 
 import Foundation
 
+/**
+ Struct encapsulating the Search redirect info
+ */
 public struct CIOSearchRedirectInfo {
+    /**
+     The redirect URL
+     */
     public let url: String
+    
+    /**
+     Match ID
+     */
     public let matchID: Int
+    
+    /**
+     Rule ID
+     */
     public let ruleID: Int
 }
 
 public extension CIOSearchRedirectInfo {
+    /**
+     Create a Search redirect info object
+     
+     -  Parameters:
+        - object: JSON Object
+     */
     init?(object: JSONObject?) {
         guard let json = object else { return nil }
         guard let data = json["data"] as? JSONObject else { return nil }

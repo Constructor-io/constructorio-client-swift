@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ConstructorAutocomplete  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a title="ConstructorAutocomplete  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">ConstructorAutocomplete 1.17.0 Docs</a> (89% documented)</p>
+        <p class="header-right">
+          <form role="search" action="search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">ConstructorAutocomplete Reference</a>
+        <img id="carat" src="img/carat.png" />
+        ConstructorAutocomplete  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Client.html">Client</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ConstructorIO.html">ConstructorIO</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Result%20Request%20Structures.html">Result Request Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/CIOAutocompleteQuery.html">CIOAutocompleteQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOBrowseQuery.html">CIOBrowseQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIORecommendationsQuery.html">CIORecommendationsQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOSearchQuery.html">CIOSearchQuery</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Response%20Structures.html">Response Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/CIOAutocompleteResponse.html">CIOAutocompleteResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOBrowseResponse.html">CIOBrowseResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIORecommendationsResponse.html">CIORecommendationsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOSearchResponse.html">CIOSearchResponse</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Result%20Structures%20%26%20Classes.html">Result Structures &amp; Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/CIOAutocompleteResult.html">CIOAutocompleteResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOFilterFacet.html">CIOFilterFacet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOFilterFacetOption.html">CIOFilterFacetOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CIOFilterGroup.html">CIOFilterGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CIOGroup.html">CIOGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIORecommendationsPod.html">CIORecommendationsPod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIORecommendationsStrategy.html">CIORecommendationsStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CIOResult.html">CIOResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOResultData.html">CIOResultData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOResultFacet.html">CIOResultFacet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOSearchRedirectInfo.html">CIOSearchRedirectInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOSortOption.html">CIOSortOption</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p><img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" /> <img src="https://img.shields.io/badge/Swift-3.0+-blue.svg" alt="Swift 3+ compatible" /> <img src="https://img.shields.io/badge/Objective--C-compatible-blue.svg" alt="Objective-C compatible" /> <img  src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></p>
+<h1 id='constructor-io-swift-client' class='heading'>Constructor.io Swift Client</h1>
+
+<p>An iOS Client for <a href="http://constructor.io/">Constructor.io</a>.  <a href="http://constructor.io/">Constructor.io</a> provides search as a service that optimizes results using artificial intelligence (including natural language processing, re-ranking to optimize for conversions, and user personalization).</p>
+<h2 id='1-import' class='heading'>1. Import</h2>
+<h3 id='1-a-import-using-cocoapods' class='heading'>1.a Import using CocoaPods</h3>
+
+<p>First make sure you have <a href="https://guides.cocoapods.org/using/getting-started.html">CocoaPods installed</a>.  Then create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:</p>
+<pre class="highlight plaintext"><code>target ‘YOUR_TARGET_NAME’ do
+   pod ‘ConstructorAutocomplete'
+end
+</code></pre>
+
+<p>Open the terminal (make sure you’re located in the project root) and type</p>
+<pre class="highlight shell"><code>pod <span class="nb">install</span>
+</code></pre>
+<h3 id='1-b-import-using-carthage' class='heading'>1.b Import using Carthage</h3>
+
+<p>First, make sure you have <a href="https://github.com/Carthage/Carthage#installing-carthage">Carthage installed</a>. Then create an empty text file called ‘Cartfile’ in your project root directory. Now, add the following lines:</p>
+<pre class="highlight plaintext"><code>github "Constructor-io/constructorio-client-swift"
+</code></pre>
+
+<p>Open the terminal (make sure you’re located in the project root) and type</p>
+<pre class="highlight shell"><code>carthage update
+</code></pre>
+
+<p>Drag the <code>ConstructorIO.framework</code> from Carthage/Build/iOS into your project and link it with your application target. Also, make sure to copy the framework by adding a new Copy Files phase.</p>
+<h2 id='2-retrieve-an-api-key' class='heading'>2. Retrieve an API key</h2>
+
+<p>You can find this in your <a href="https://constructor.io/dashboard">Constructor.io dashboard</a>.  Contact sales if you&rsquo;d like to sign up, or support if you believe your company already has an account.</p>
+<h2 id='3-create-a-client-instance' class='heading'>3. Create a Client Instance</h2>
+
+<p>Make sure to import the <code>ConstructorAutocomplete</code> module at the top of your source file and then write the following</p>
+<pre class="highlight swift"><code><span class="c1">// Create the client config</span>
+<span class="k">let</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">ConstructorIOConfig</span><span class="p">(</span>
+   <span class="nv">apiKey</span><span class="p">:</span> <span class="s">"YOUR API KEY"</span><span class="p">,</span>
+   <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">AutocompleteResultCount</span><span class="p">(</span><span class="nv">numResultsForSection</span><span class="p">:</span> <span class="p">[</span><span class="s">"Search Suggestions"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"Products"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="c1">// Create the client instance</span>
+<span class="k">let</span> <span class="nv">constructor</span> <span class="o">=</span> <span class="kt">ConstructorIO</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="n">config</span><span class="p">)</span>
+
+<span class="c1">// Set the user ID (if a logged in and known user) for cross device personalization</span>
+<span class="n">constructor</span><span class="o">.</span><span class="n">userID</span> <span class="o">=</span> <span class="s">"abcdefghijk-123"</span>
+</code></pre>
+<h2 id='4-request-autocomplete-results' class='heading'>4. Request Autocomplete Results</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOAutocompleteQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"Dav"</span><span class="p">)</span>
+
+<span class="n">constructor</span><span class="o">.</span><span class="nf">autocomplete</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+  <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='5-request-search-results' class='heading'>5. Request Search Results</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">filters</span> <span class="o">=</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="s">"Bread"</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Organic"</span><span class="p">),</span>
+  <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
+  <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Whole-grain"</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOSearchQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"Dave's Bread"</span><span class="p">,</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
+
+<span class="n">constructor</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+  <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='6-request-browse-results' class='heading'>6. Request Browse Results</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOBrowseQuery</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"potato"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"russet"</span><span class="p">)</span>
+
+<span class="n">constructor</span><span class="o">.</span><span class="nf">browse</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+  <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='7-request-recommendation-results' class='heading'>7. Request Recommendation Results</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podId</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
+
+<span class="n">constructor</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+  <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='with-an-item-id-for-the-alternative-complementary-items-recommendations-strategy' class='heading'>With an item id for the alternative/complementary items recommendations strategy</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">itemId</span> <span class="o">=</span> <span class="s">"P18232"</span>
+<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podId</span><span class="p">:</span> <span class="s">"pdp_complementary_items"</span><span class="p">,</span> <span class="nv">itemId</span><span class="p">:</span> <span class="n">itemId</span><span class="p">)</span>
+
+<span class="n">constructor</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+  <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='with-filters-for-the-filtered-item-recommendations-strategy' class='heading'>With filters for the filtered item recommendations strategy</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">filters</span> <span class="o">=</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="s">"cat_1234"</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Organic"</span><span class="p">),</span>
+  <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
+  <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kroger"</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podId</span><span class="p">:</span> <span class="s">"pdp_filtered_items"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
+
+<span class="n">constructor</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+  <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='8-instrument-behavioral-events' class='heading'>8. Instrument Behavioral Events</h2>
+
+<p>The iOS Client sends behavioral events to <a href="http://constructor.io/">Constructor.io</a> in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.</p>
+
+<p>Three types of these events exist:</p>
+
+<ol>
+<li><strong>General Events</strong> are sent as needed when an instance of the Client is created or initialized</li>
+<li><strong>Autocomplete Events</strong> measure user interaction with autocomplete results</li>
+<li><strong>Search Events</strong> measure user interaction with search results</li>
+<li><strong>Browse Events</strong> measure user interaction with browse results</li>
+<li><strong>Recommendation Events</strong> measure user interaction with recommendations</li>
+<li><strong>Conversion Events</strong> measure user events like <code>add to cart</code> or <code>purchase</code></li>
+</ol>
+<h3 id='autocomplete-events' class='heading'>Autocomplete Events</h3>
+<pre class="highlight swift"><code><span class="c1">// Track when the user focuses into the search bar</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackInputFocus</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+
+<span class="c1">// Track when the user selects an autocomplete suggestion</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAutocompleteSelect</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"toothpicks"</span><span class="p">,</span> <span class="nv">originalQuery</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Search Suggestions"</span><span class="p">,</span> <span class="nv">group</span><span class="p">:</span> <span class="kt">CIOGroup</span><span class="p">(</span><span class="nv">displayName</span><span class="p">:</span> <span class="s">"Dental Health"</span><span class="p">,</span> <span class="nv">groupID</span><span class="p">:</span> <span class="s">"dental-92dk2"</span><span class="p">,</span> <span class="nv">path</span><span class="p">:</span> <span class="s">"health-2911e/dental-92dk2"</span><span class="p">),</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+
+<span class="c1">// Track when the user submits a search (either by selecting a suggestion or not selecting a suggestion)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchSubmit</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"toothpicks"</span><span class="p">,</span> <span class="nv">originalQuery</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">)</span>
+</code></pre>
+<h3 id='search-events' class='heading'>Search Events</h3>
+<pre class="highlight swift"><code><span class="c1">// Track when search results are loaded into view (customer ID's are the ID's of shown items)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">789</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
+
+<span class="c1">// Track when a search result is clicked</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultClick</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="s">"Fashionable Toothpicks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span>  <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
+<h3 id='browse-events' class='heading'>Browse Events</h3>
+<pre class="highlight swift"><code><span class="c1">// Track when browse results are loaded into view</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">)</span>
+
+<span class="c1">// Track when a browse result is clicked</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
+<h3 id='recommendations-events' class='heading'>Recommendations Events</h3>
+<pre class="highlight swift"><code><span class="c1">// Track when recommendation results are viewed</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+
+<span class="c1">// Track when a recomendation result is clicked</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultClick</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">strategyID</span><span class="p">:</span> <span class="s">"best_sellers"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"P183021"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7281930"</span><span class="p">,</span> <span class="nv">numResultsPerPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
+<h3 id='conversion-events' class='heading'>Conversion Events</h3>
+<pre class="highlight swift"><code><span class="c1">// Track when an item converts (a.k.a. is added to cart) regardless of the user journey that led to adding to cart</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackConversion</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="s">"Fashionable Toothpicks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">12.99</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">conversionType</span><span class="p">:</span> <span class="s">"add_to_cart"</span><span class="p">)</span>
+
+<span class="c1">// Track when items are purchased</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackPurchase</span><span class="p">(</span><span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"123-AB"</span><span class="p">,</span> <span class="s">"456-CD"</span><span class="p">],</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">34.49</span><span class="p">,</span> <span class="nv">orderID</span><span class="p">:</span> <span class="s">"343-315"</span><span class="p">)</span>
+</code></pre>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://www.constructor.io" target="_blank" rel="external">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2021-06-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

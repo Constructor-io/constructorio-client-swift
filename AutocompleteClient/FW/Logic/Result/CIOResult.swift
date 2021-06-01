@@ -8,15 +8,47 @@
 
 import Foundation
 
+/**
+ Struct encapsulating a result with associated metadata and variations
+ */
 @objc
 public class CIOResult: NSObject {
+    /**
+     The value (or name) of the result
+     */
     public let value: String
+    
+    /**
+     Additional data about the result
+     */
     public let data: CIOResultData
+    
+    /**
+     Terms associated with the result that was matched on
+     */
     public let matchedTerms: [String]
+    
+    /**
+     Variations for the result
+     */
     public let variations: [CIOResult]
+    
+    /**
+     Additional metadata
+     */
     public let json: JSONObject
+    
+    /**
+     The underlying recommendations strategy for the result (only applies to recommendations)
+     */
     public let strategy: CIORecommendationsStrategy
 
+    /**
+     Create a result object
+     
+     - Parameters:
+        - json: JSON data from the server response
+     */
     public init?(json: JSONObject) {
         guard let dataObj = json["data"] as? JSONObject else { return nil }
         guard let value = json["value"] as? String else { return nil }
