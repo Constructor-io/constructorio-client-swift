@@ -5,10 +5,12 @@ include:
   - "/**/Request/*Query.swift"
   - "/**/Result/Responses/*.swift"
   - "/**/Result/*.swift"
+  - "/**/Config/ConstructorIOConfig.swift"
 
 custom_categories:
   - name: Client
     children:
+      - ConstructorIOConfig
       - ConstructorIO
   - name: Result Request Structures
     children:
