@@ -18,7 +18,7 @@ public struct CIOAutocompleteResponse {
      List of results broken down by sections
      */
     public let sections: [String: [CIOAutocompleteResult]]
-    
+
     /**
      Additional information about the request and result ID
      */

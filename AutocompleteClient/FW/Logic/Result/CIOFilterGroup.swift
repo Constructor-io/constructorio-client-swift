@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /**
  Struct encapsulating a filter group
  */
@@ -18,22 +17,22 @@ public class CIOFilterGroup: NSObject {
      Display name of the group (or category)
      */
     public let displayName: String
-    
+
     /**
      Group ID
      */
     public let groupID: String
-    
+
     /**
      The number of results that would be returned when selected
      */
     public let count: Int
-    
+
     /**
      List of child groups
      */
     public let children: [CIOFilterGroup]
-    
+
     /**
      List of parent groups that it belongs to
      */

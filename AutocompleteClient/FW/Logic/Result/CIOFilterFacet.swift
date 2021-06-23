@@ -16,27 +16,27 @@ public struct CIOFilterFacet {
      Display name of the facet
      */
     public let displayName: String
-    
+
     /**
      The name (or value) of the facet
      */
     public let name: String
-    
+
     /**
      The max possible value for the facet (if it's of type range)
      */
     public let max: Int
-    
+
     /**
      The minimum possible value for the facet (if it's of type range)
      */
     public let min: Int
-    
+
     /**
      List of facet options
      */
     public let options: [CIOFilterFacetOption]
-    
+
     /**
      The type of the facet (i.e. range or multiple)
      */

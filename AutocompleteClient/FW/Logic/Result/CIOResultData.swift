@@ -31,22 +31,22 @@ public struct CIOResultData {
      Image URL of the result item
      */
     public let imageURL: String?
-    
+
     /**
      Groups associated with the result item
      */
     public let groups: [CIOGroup]
-    
+
     /**
      Facets associated with the result item
      */
     public let facets: [CIOResultFacet]
-    
+
     /**
      Additioanl metadata associated with the result item
      */
     public let metadata: [String: Any]
-    
+
     /**
      Variation ID of the result item (if available)
      */

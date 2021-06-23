@@ -17,27 +17,27 @@ public class CIOResult: NSObject {
      The value (or name) of the result
      */
     public let value: String
-    
+
     /**
      Additional data about the result
      */
     public let data: CIOResultData
-    
+
     /**
      Terms associated with the result that was matched on
      */
     public let matchedTerms: [String]
-    
+
     /**
      Variations for the result
      */
     public let variations: [CIOResult]
-    
+
     /**
      Additional metadata
      */
     public let json: JSONObject
-    
+
     /**
      The underlying recommendations strategy for the result (only applies to recommendations)
      */

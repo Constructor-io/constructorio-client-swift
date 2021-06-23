@@ -31,12 +31,12 @@ public struct CIOBrowseQuery: CIORequestData {
      The page number of the results
      */
     public let page: Int
-    
+
     /**
      The number of results per page to return
      */
     public let perPage: Int
-    
+
     /**
      The sort method/order for results
      */

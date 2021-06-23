@@ -41,7 +41,7 @@ class RequestBuilder {
     func set(session: Int) {
         queryItems.add(URLQueryItem(name: "s", value: String(session)))
     }
-    
+
     func set(testCellKey: String, testCellValue: String) {
         let formattedKey = String(format: Constants.ABTesting.keyFormat, testCellKey)
         queryItems.add(URLQueryItem(name: formattedKey, value: testCellValue))

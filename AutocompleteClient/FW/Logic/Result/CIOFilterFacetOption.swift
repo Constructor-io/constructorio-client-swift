@@ -21,17 +21,17 @@ public struct CIOFilterFacetOption {
      Display name of the facet option
      */
     public let displayName: String
-    
+
     /**
      Status of the facet option (i.e. "selected" or "")
      */
     public let status: String
-    
+
     /**
      The facet value
      */
     public let value: String
-    
+
     /**
      Additional metadata for the facet option
      */
@@ -39,7 +39,7 @@ public struct CIOFilterFacetOption {
 }
 
 public extension CIOFilterFacetOption {
-    
+
     /**
      Create a filter facet option
      

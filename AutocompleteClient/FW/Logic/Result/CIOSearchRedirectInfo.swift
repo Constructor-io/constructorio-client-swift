@@ -16,12 +16,12 @@ public struct CIOSearchRedirectInfo {
      The redirect URL
      */
     public let url: String
-    
+
     /**
      Match ID
      */
     public let matchID: Int
-    
+
     /**
      Rule ID
      */

@@ -18,17 +18,17 @@ public class CIOGroup: NSObject {
      Display name of the group (or category)
      */
     public let displayName: String
-    
+
     /**
      Group ID
      */
     public let groupID: String
-    
+
     /**
      The full path of the group hierarchy
      */
     public let path: String?
-    
+
     /**
      Create a group
      

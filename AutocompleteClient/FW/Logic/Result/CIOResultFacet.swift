@@ -16,7 +16,7 @@ public struct CIOResultFacet {
      The name of the facet
      */
     public let name: String
-    
+
     /**
      List of facet option values
      */

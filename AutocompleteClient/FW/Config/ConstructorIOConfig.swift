@@ -16,27 +16,27 @@ public struct ConstructorIOConfig {
      The API key
      */
     public let apiKey: String
-    
+
     /**
      The default number of results to request for
      */
     public var resultCount: AutocompleteResultCount?
-    
+
     /**
      The default section to request items from
      */
     public var defaultItemSectionName: String?
-    
+
     /**
      List of test cell information to associate with requests
      */
     public var testCells: [CIOABTestCell]?
-    
+
     /**
      List of segments to associate with requests
      */
     public var segments: [String]?
-    
+
     /**
      The base URL to make requests to
      */

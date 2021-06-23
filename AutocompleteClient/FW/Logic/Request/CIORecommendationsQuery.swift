@@ -36,7 +36,7 @@ public struct CIORecommendationsQuery: CIORequestData {
      The number of results to return
      */
     public let numResults: Int?
-    
+
     /**
      The section to return results from
      */

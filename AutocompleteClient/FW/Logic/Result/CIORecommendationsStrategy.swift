@@ -19,7 +19,7 @@ public struct CIORecommendationsStrategy {
 }
 
 public extension CIORecommendationsStrategy {
-    
+
     /**
      Create a recommendations strategy object
      

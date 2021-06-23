@@ -26,17 +26,17 @@ public struct CIOBrowseResponse {
      List of results returned for the browse query
      */
     public let results: [CIOResult]
-    
+
     /**
      List of sorting options
      */
     public let sortOptions: [CIOSortOption]
-    
+
     /**
      Total number of results for the query
      */
     public let totalNumResults: Int
-    
+
     /**
      Result ID of the result set returned
      */

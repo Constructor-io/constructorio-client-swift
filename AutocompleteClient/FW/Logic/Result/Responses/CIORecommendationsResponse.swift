@@ -26,7 +26,7 @@ public struct CIORecommendationsResponse {
      Total number of results for the query
      */
     public let totalNumResults: Int
-    
+
     /**
      Result ID of the result set returned
      */

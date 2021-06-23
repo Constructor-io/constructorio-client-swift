@@ -18,7 +18,7 @@ public class CIOAutocompleteResult: NSObject {
      Result returned for the query
      */
     public let result: CIOResult
-    
+
     /**
      Group (or category) the result belongs to
      */

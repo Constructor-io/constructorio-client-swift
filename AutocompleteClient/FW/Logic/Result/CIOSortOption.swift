@@ -21,12 +21,12 @@ public struct CIOSortOption {
      The field to sort by
      */
     public let sortBy: String
-    
+
     /**
      The sort order (i.e. "ascending" or "descending")
      */
     public let sortOrder: CIOSortOrder
-    
+
     /**
      The status of the sort option (i.e. "selected")
      */
