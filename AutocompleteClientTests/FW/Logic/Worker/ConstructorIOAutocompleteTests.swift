@@ -19,19 +19,13 @@ class ConstructorIOAutocompleteTests: XCTestCase {
     }
 
     func testAutocomplete_With200() {
-        let term = "heart"
+        let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
 
         let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20autocompleteterm?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
 
-        self.constructor.autocomplete(forQuery: query) { (res) in
-            let data = res.data! as CIOAutocompleteResponse
-            let sections = data.sections as [String: [CIOAutocompleteResult]]
-            let json = data.json as JSONObject
-            print(sections)
-            print(json)
-        }
+        self.constructor.autocomplete(forQuery: query) { (_) in }
         self.wait(for: builder.expectation)
     }
 
