@@ -16,17 +16,17 @@ public struct CIOResultData {
      Description associated with the result item
      */
     public let description: String?
-    
+
     /**
      Result Item ID
      */
     public let id: String?
-    
+
     /**
      URL of the result item
      */
     public let url: String?
-    
+
     /**
      Image URL of the result item
      */

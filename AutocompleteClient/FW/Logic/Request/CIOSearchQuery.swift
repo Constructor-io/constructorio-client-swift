@@ -16,7 +16,7 @@ public struct CIOSearchQuery: CIORequestData {
      User typed query to return results for
      */
     public let query: String
-    
+
     /**
      The filters used to refine results
      */
@@ -26,12 +26,12 @@ public struct CIOSearchQuery: CIORequestData {
      The page number of the results
      */
     public let page: Int
-    
+
     /**
      The number of results per page to return
      */
     public let perPage: Int
-    
+
     /**
      The sort method/order for results
      */

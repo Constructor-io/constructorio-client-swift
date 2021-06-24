@@ -16,7 +16,7 @@ public struct CIOSortOption {
      Display name of the sort option
      */
     public let displayName: String
-    
+
     /**
      The field to sort by
      */

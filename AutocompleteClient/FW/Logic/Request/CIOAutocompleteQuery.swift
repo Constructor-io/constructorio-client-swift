@@ -16,12 +16,12 @@ public struct CIOAutocompleteQuery: CIORequestData {
      User typed query to return results for
      */
     let query: String
-    
+
     /**
      The number of results to return
      */
     let numResults: Int?
-    
+
     /**
      The section to return results from
      */

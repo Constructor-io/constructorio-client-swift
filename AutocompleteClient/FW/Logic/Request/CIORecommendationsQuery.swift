@@ -16,22 +16,22 @@ public struct CIORecommendationsQuery: CIORequestData {
      Pod ID
      */
     public let podID: String
-    
+
     /**
      Item id to retrieve recommendations for (strategy specific)
      */
     public let itemID: String?
-    
+
     /**
      The term to use to refine results (strategy specific)
      */
     public let term: String?
-    
+
     /**
      The filters used to refine results (strategy specific)
      */
     public let filters: CIOQueryFilters?
-    
+
     /**
      The number of results to return
      */

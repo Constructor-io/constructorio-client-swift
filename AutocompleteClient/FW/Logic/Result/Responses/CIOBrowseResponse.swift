@@ -16,12 +16,12 @@ public struct CIOBrowseResponse {
      List of facets returned for the result set
      */
     public let facets: [CIOFilterFacet]
-    
+
     /**
      List of groups (categories) returned for the result set
      */
     public let groups: [CIOFilterGroup]
-    
+
     /**
      List of results returned for the browse query
      */

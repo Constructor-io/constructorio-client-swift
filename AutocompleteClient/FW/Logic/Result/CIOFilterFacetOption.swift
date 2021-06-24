@@ -16,7 +16,7 @@ public struct CIOFilterFacetOption {
      The number of results that will be returned when selected
      */
     public let count: Int
-    
+
     /**
      Display name of the facet option
      */

@@ -16,12 +16,12 @@ public struct CIORecommendationsResponse {
      Pod information
      */
     public let pod: CIORecommendationsPod
-    
+
     /**
      List of results returned for the recommendations query
      */
     public let results: [CIOResult]
-    
+
     /**
      Total number of results for the query
      */
