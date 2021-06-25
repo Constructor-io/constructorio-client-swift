@@ -14,9 +14,23 @@ import Foundation
 
 @objc
 public class CIOAutocompleteResult: NSObject {
+    /**
+     Result returned for the query
+     */
     public let result: CIOResult
+
+    /**
+     Group (or category) the result belongs to
+     */
     public let group: CIOGroup?
 
+    /**
+     Create a autocomplete result
+     
+     - Parameters:
+        - result: Result info
+        - group: Group info
+     */
     public init(result: CIOResult, group: CIOGroup? = nil) {
         self.result = result
         self.group = group

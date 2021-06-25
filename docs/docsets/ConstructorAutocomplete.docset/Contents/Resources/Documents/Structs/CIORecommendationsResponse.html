@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CIORecommendationsResponse Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/CIORecommendationsResponse" class="dashAnchor"></a>
+    <a title="CIORecommendationsResponse Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ConstructorAutocomplete 1.17.0 Docs</a> (90% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ConstructorAutocomplete Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CIORecommendationsResponse Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Client.html">Client</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ConstructorIOConfig.html">ConstructorIOConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ConstructorIO.html">ConstructorIO</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Result%20Request%20Structures.html">Result Request Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CIOAutocompleteQuery.html">CIOAutocompleteQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseQuery.html">CIOBrowseQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIORecommendationsQuery.html">CIORecommendationsQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOSearchQuery.html">CIOSearchQuery</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Response%20Structures.html">Response Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CIOAutocompleteResponse.html">CIOAutocompleteResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseResponse.html">CIOBrowseResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIORecommendationsResponse.html">CIORecommendationsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOSearchResponse.html">CIOSearchResponse</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Result%20Structures%20%26%20Classes.html">Result Structures &amp; Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CIOAutocompleteResult.html">CIOAutocompleteResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOFilterFacet.html">CIOFilterFacet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOFilterFacetOption.html">CIOFilterFacetOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOFilterGroup.html">CIOFilterGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOGroup.html">CIOGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIORecommendationsPod.html">CIORecommendationsPod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIORecommendationsStrategy.html">CIORecommendationsStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOResult.html">CIOResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOResultData.html">CIOResultData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOResultFacet.html">CIOResultFacet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOSearchRedirectInfo.html">CIOSearchRedirectInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOSortOption.html">CIOSortOption</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CIORecommendationsResponse</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CIORecommendationsResponse</span></code></pre>
+
+                </div>
+              </div>
+            <p>Struct representing the search data response from the server.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIORecommendationsResponseV3podAA0C3PodVvp"></a>
+                    <a name="//apple_ref/swift/Property/pod" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIORecommendationsResponseV3podAA0C3PodVvp">pod</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pod information</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">pod</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIORecommendationsPod.html">CIORecommendationsPod</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIORecommendationsResponseV7resultsSayAA9CIOResultCGvp"></a>
+                    <a name="//apple_ref/swift/Property/results" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIORecommendationsResponseV7resultsSayAA9CIOResultCGvp">results</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>List of results returned for the recommendations query</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">results</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/CIOResult.html">CIOResult</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIORecommendationsResponseV15totalNumResultsSivp"></a>
+                    <a name="//apple_ref/swift/Property/totalNumResults" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIORecommendationsResponseV15totalNumResultsSivp">totalNumResults</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Total number of results for the query</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">totalNumResults</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIORecommendationsResponseV8resultIDSSvp"></a>
+                    <a name="//apple_ref/swift/Property/resultID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIORecommendationsResponseV8resultIDSSvp">resultID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Result ID of the result set returned</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://www.constructor.io" target="_blank" rel="external">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2021-06-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

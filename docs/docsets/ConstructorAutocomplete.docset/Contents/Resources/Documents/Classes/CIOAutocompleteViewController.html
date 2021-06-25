@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CIOAutocompleteViewController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/CIOAutocompleteViewController" class="dashAnchor"></a>
+    <a title="CIOAutocompleteViewController Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ConstructorAutocomplete 1.17.0 Docs</a> (33% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ConstructorAutocomplete Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CIOAutocompleteViewController Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Client.html">Client</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ConstructorIO.html">ConstructorIO</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Result%20Request%20Structures.html">Result Request Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Result%20Request%20Structures.html#/s:23ConstructorAutocomplete20CIOAutocompleteQueryV">CIOAutocompleteQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Result%20Request%20Structures.html#/s:23ConstructorAutocomplete14CIOBrowseQueryV">CIOBrowseQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Result%20Request%20Structures.html#/s:23ConstructorAutocomplete23CIORecommendationsQueryV">CIORecommendationsQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Result%20Request%20Structures.html#/s:23ConstructorAutocomplete14CIOSearchQueryV">CIOSearchQuery</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CIOAutocompleteViewController.html">CIOAutocompleteViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOHighlighter.html">CIOHighlighter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other%20Classes.html#/s:23ConstructorAutocomplete12TaskResponseC">TaskResponse</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CIOError.html">CIOError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CIOErrorView.html">CIOErrorView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CIOHighlightingAttributesProvider.html">CIOHighlightingAttributesProvider</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CIOAutocompleteViewController</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CIOAutocompleteViewController</span> <span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CIOAutocompleteViewController</span><span class="p">:</span> <span class="kt">UITableViewDelegate</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CIOAutocompleteViewController</span><span class="p">:</span> <span class="kt">UISearchBarDelegate</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CIOAutocompleteViewController</span><span class="p">:</span> <span class="kt">UISearchResultsUpdating</span></code></pre>
+
+                </div>
+              </div>
+            <p>Default view controller for displaying Autocomplete results.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC31searchBarShouldShowCancelButtonSbvp"></a>
+                    <a name="//apple_ref/swift/Property/searchBarShouldShowCancelButton" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC31searchBarShouldShowCancelButtonSbvp">searchBarShouldShowCancelButton</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A flag that determines whether the cancel button should show when search bar gains focus.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">searchBarShouldShowCancelButton</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC20searchBarDisplayModeAA09CIOSearchghI0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/searchBarDisplayMode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC20searchBarDisplayModeAA09CIOSearchghI0Ovp">searchBarDisplayMode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines how search bar should be displayed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">searchBarDisplayMode</span><span class="p">:</span> <span class="kt">CIOSearchBarDisplayMode</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC05tableD0So07UITableD0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/tableView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC05tableD0So07UITableD0CSgvp">tableView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Results table view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC20customStatusBarStyleSo08UIStatushI0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/customStatusBarStyle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC20customStatusBarStyleSo08UIStatushI0Vvp">customStatusBarStyle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Custom status bar style</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">customStatusBarStyle</span><span class="p">:</span> <span class="kt">UIStatusBarStyle</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC06searchE0So08UISearchE0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/searchController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC06searchE0So08UISearchE0CSgvp">searchController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Results search controller.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">searchController</span><span class="p">:</span> <span class="kt">UISearchController</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC13constructorIOAA0aG0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/constructorIO" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC13constructorIOAA0aG0CSgvp">constructorIO</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default constructorIO instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">constructorIO</span><span class="p">:</span> <span class="kt"><a href="../Classes/ConstructorIO.html">ConstructorIO</a></span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC11highlighterAA14CIOHighlighterCvp"></a>
+                    <a name="//apple_ref/swift/Property/highlighter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC11highlighterAA14CIOHighlighterCvp">highlighter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default highlighter used for displaying result items.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">highlighter</span><span class="p">:</span> <span class="kt"><a href="../Classes/CIOHighlighter.html">CIOHighlighter</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Query%20Firing"></a>
+                <a name="//apple_ref/swift/Section/Query Firing" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Query%20Firing"></a>
+                  <h3 class="section-name"><p>Query Firing</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC15uiCustomizationAA0C15UICustomization_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/uiCustomization" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC15uiCustomizationAA0C15UICustomization_pSgvp">uiCustomization</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The object that customizes the UI of the autocomplete view controller.
+The object must adopt the CIOAutocompleteUICustomization protocol. The uiCustomization is not retained.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">uiCustomization</span><span class="p">:</span> <span class="kt">CIOAutocompleteUICustomization</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC8delegateAA0C8Delegate_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC8delegateAA0C8Delegate_pSgvp">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The object that acts as the delegate of the autocomplete view controller.
+The object must adopt the CIOAutocompleteDelegate protocol. The delegate is not retained.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">CIOAutocompleteDelegate</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC6configAA0A8IOConfigVvp"></a>
+                    <a name="//apple_ref/swift/Property/config" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC6configAA0A8IOConfigVvp">config</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The object to configure options for the autocomplete results.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">config</span><span class="p">:</span> <span class="kt">ConstructorIOConfig</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Fonts"></a>
+                <a name="//apple_ref/swift/Section/Fonts" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Fonts"></a>
+                  <h3 class="section-name"><p>Fonts</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC6configAcA0A8IOConfigV_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(config:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete29CIOAutocompleteViewControllerC6configAcA0A8IOConfigV_tcfc">init(config:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default initializer for this controller. Pass in the api key you got from the constructor.io dashboard.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">ConstructorIOConfig</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://www.constructor.io" target="_blank" rel="external">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2021-05-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

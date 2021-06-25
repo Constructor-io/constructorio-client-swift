@@ -92,6 +92,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
     }
 
     var fontNormal = UIFont.systemFont(ofSize: 1)
+
     func fontNormal(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
         return self.fontNormal
     }
@@ -108,6 +109,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
     }
 
     var fontBold = UIFont.systemFont(ofSize: 1)
+
     func fontBold(in autocompleteController: CIOAutocompleteViewController) -> UIFont {
         return self.fontBold
     }
@@ -297,6 +299,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
     }
 
     var backgroundView = UIView(frame: .zero)
+
     func backgroundView(in autocompleteController: CIOAutocompleteViewController) -> UIView? {
         return self.backgroundView
     }

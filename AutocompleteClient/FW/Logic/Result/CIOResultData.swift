@@ -8,18 +8,57 @@
 
 import Foundation
 
+/**
+ Struct encapsulating a result data object with additional information about the result
+ */
 public struct CIOResultData {
+    /**
+     Description associated with the result item
+     */
     public let description: String?
+
+    /**
+     Result Item ID
+     */
     public let id: String?
+
+    /**
+     URL of the result item
+     */
     public let url: String?
+
+    /**
+     Image URL of the result item
+     */
     public let imageURL: String?
+
+    /**
+     Groups associated with the result item
+     */
     public let groups: [CIOGroup]
+
+    /**
+     Facets associated with the result item
+     */
     public let facets: [CIOResultFacet]
+
+    /**
+     Additioanl metadata associated with the result item
+     */
     public let metadata: [String: Any]
+
+    /**
+     Variation ID of the result item (if available)
+     */
     public let variationId: String?
 }
 
 public extension CIOResultData {
+    /**
+     Create a result data object
+     - Parameters:
+        - json: JSON data from the server response
+     */
     init?(json: JSONObject) {
         var metadata = json
         for key in ["description", "id", "url", "image_url", "groups", "facets", "variation_id" ] {

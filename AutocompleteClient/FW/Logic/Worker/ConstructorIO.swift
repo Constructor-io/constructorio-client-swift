@@ -42,6 +42,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
+    /// Initializes a ConstructorIO Client
+    ///
+    /// - Parameters:
+    ///   - config: A configuration object containing the API Key, Test Cell Information, Segments, etc.
     public init(config: ConstructorIOConfig) {
         self.config = config
 
