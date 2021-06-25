@@ -26,7 +26,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
      The section to return results from
      */
     let numResultsForSection: [String: Int]?
-    
+
     /**
      The filters used to refine results
      */

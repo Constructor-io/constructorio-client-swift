@@ -25,7 +25,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
 
-        self.constructor.autocomplete(forQuery: query) { (_) in }
+        self.constructor.autocomplete(forQuery: query) { _ in }
         self.wait(for: builder.expectation)
     }
 
@@ -36,7 +36,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), noConnectivity())
 
-        self.constructor.autocomplete(forQuery: query) { (response) in
+        self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
                 XCTAssertEqual(error, CIOError.noConnection, "Returned error from network client should be type CIOError.noConnection.")
                 expectation.fulfill()
@@ -52,7 +52,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
 
-        self.constructor.autocomplete(forQuery: query) { (response) in
+        self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
                 XCTAssertEqual(error, CIOError.badRequest, "Returned error from network client should be type CIOError.badRequest.")
                 expectation.fulfill()
@@ -68,7 +68,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(500))
 
-        self.constructor.autocomplete(forQuery: query) { (response) in
+        self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
                 XCTAssertEqual(error, CIOError.internalServerError, "Returned error from network client should be type CIOError, internalServerError.")
                 expectation.fulfill()
