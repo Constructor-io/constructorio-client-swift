@@ -70,7 +70,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Get search results for a query.
     ///
     /// - Parameters:
-    ///   - query: The query object, consisting of the query to searh for and additional options.
+    ///   - query: The query object, consisting of the query to search for and additional options.
     ///   - completionHandler: The callback to execute on completion.
     public func search(forQuery query: CIOSearchQuery, completionHandler: @escaping SearchQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
