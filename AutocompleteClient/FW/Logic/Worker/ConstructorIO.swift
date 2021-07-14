@@ -136,7 +136,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track when a user loads a search product listing page
+    /// Track when a user views a search product listing page
     ///
     /// - Parameters:
     ///   - searchTerm: The term that the user searched for
@@ -166,7 +166,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track when a user loads a browse product listing page
+    /// Track when a user views a browse product listing page
     ///
     /// - Parameters:
     ///   - filterName: The name of the primary filter that the user browsed for (i.e "color")
