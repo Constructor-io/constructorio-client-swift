@@ -87,7 +87,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testSearchResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        let request = self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName, resultID: nil, completionHandler: { response in
+        self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName, resultID: nil, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -97,7 +97,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowseResultsLoaded() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        var request = self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { response in
+        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -156,7 +156,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testRecommendations() {
-        let expectation = XCTestExpectation(description: "Request 200")
+        let expectation = XCTestExpectation(description: "Request 204")
         let query = CIORecommendationsQuery(podID: podID, itemID: customerID, section: sectionName)
         self.constructor.recommendations(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -166,6 +166,84 @@ class ConstructorIOIntegrationTests: XCTestCase {
             XCTAssertEqual(responseData.pod.id, self.podID, "Pod ID should match the JSON response")
             XCTAssertEqual(responseData.totalNumResults, 5, "Recommendations count should match the JSON response")
 
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testAutocomplete() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOAutocompleteQuery(query: "a", filters: nil, numResults: 20)
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testAutocomplete_WithFilters() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let facetFilters = [
+            (key: "Brand", value: "A&W")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
+        let query = CIOAutocompleteQuery(query: "a", filters: queryFilters, numResults: 20)
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testSearch() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOSearchQuery(query: "a", filters: nil)
+        self.constructor.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testSearch_WithFilters() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let facetFilters = [
+            (key: "Brand", value: "A&W")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: facetFilters)
+        let query = CIOSearchQuery(query: "a", filters: queryFilters)
+        self.constructor.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowse() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431")
+        self.constructor.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowse_WithFilters() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let facetFilters = [
+            (key: "Brand", value: "A&W")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: facetFilters)
+        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", filters: queryFilters)
+        self.constructor.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
             expectation.fulfill()
         })
         self.wait(for: expectation)

@@ -98,4 +98,36 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         let url = request.url!.absoluteString
         XCTAssertTrue(url.hasPrefix("\(customBaseURL)/autocomplete/\(endodedQuery)?"))
     }
+
+    func testAutocompleteQueryBuilder_WithAGroupFilter() {
+        let facetFilters = [
+            (key: "Nutrition", value: "Organic")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
+        let query = CIOAutocompleteQuery(query: self.query, filters: queryFilters, numResults: 20)
+        builder.build(trackData: query)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
+        print(url)
+        XCTAssertTrue(url.contains("filters%5BNutrition%5D=Organic"), "URL should contain the Nutrition facet filter.")
+        XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
+        XCTAssertEqual(request.httpMethod, "GET")
+    }
+
+    func testAutocompleteQueryBuilder_WithAFacetFilter() {
+        let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: nil)
+        let query = CIOAutocompleteQuery(query: self.query, filters: queryFilters, numResults: 20)
+        builder.build(trackData: query)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
+        XCTAssertTrue(url.contains("filters%5Bgroup_id%5D=101"), "URL should contain the group filter.")
+        XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
+        XCTAssertEqual(request.httpMethod, "GET")
+    }
 }

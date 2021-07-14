@@ -27,6 +27,11 @@ public struct CIOAutocompleteQuery: CIORequestData {
      */
     let numResultsForSection: [String: Int]?
 
+    /**
+     The filters used to refine results
+     */
+    let filters: CIOQueryFilters?
+
     func url(with baseURL: String) -> String {
         return String(format: Constants.AutocompleteQuery.format, baseURL, query)
     }
@@ -38,20 +43,24 @@ public struct CIOAutocompleteQuery: CIORequestData {
         - query: User typed query to return results for
         - numResults: The number of results to return
         - numresultsForSection: The section to return results from
+        - filters: The filters used to refine results
      
      ### Usage Example: ###
      ```
      let autocompleteQuery = CIOAutocompleteQuery(query: "apple", numResults: 5, numResultsForSection: ["Products": 6, "Search Suggestions": 8])
      ```
      */
-    public init(query: String, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.numResults = numResults
         self.numResultsForSection = numResultsForSection
+        self.filters = filters
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(numResults: self.numResults)
         requestBuilder.set(numResultsForSection: self.numResultsForSection)
+        requestBuilder.set(groupFilter: self.filters?.groupFilter)
+        requestBuilder.set(facetFilters: self.filters?.facetFilters)
     }
 }
