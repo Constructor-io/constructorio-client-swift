@@ -139,7 +139,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Track when a user loads a search product listing page
     ///
     /// - Parameters:
-    ///   - searchTerm: The search term that the user searched for
+    ///   - searchTerm: The term that the user searched for
     ///   - resultCount: The number of search results returned in total
     ///   - customerIDs: The list of item id's returned in the search
     ///   - completionHandler: The callback to execute on completion.
