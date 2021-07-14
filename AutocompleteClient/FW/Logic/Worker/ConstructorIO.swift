@@ -97,10 +97,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeRecommendations(request, completionHandler: completionHandler)
     }
 
-    /// Track input focus.
+    /// Track when a user focuses on a search input element
     ///
     /// - Parameters:
-    ///   - searchTerm: Search term that the user selected
+    ///   - searchTerm: The pre-existing text in the search input element (if not present)
     ///   - completionHandler: The callback to execute on completion.
     public func trackInputFocus(searchTerm: String, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackInputFocusData(searchTerm: searchTerm)
@@ -108,13 +108,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track a user select on any autocomplete result item.
+    /// Track when a user selects (clicks, or navigates to via keyboard) a result that appeared within autocomplete
     ///
     /// - Parameters:
-    ///   - searchTerm: Search term that the user selected
-    ///   - originalQuery: The original query that the user searched for
+    ///   - searchTerm: The term that the user selected
+    ///   - originalQuery: The current text in the input field
     ///   - sectionName The name of the autocomplete section the term came from
-    ///   - group: Item group
+    ///   - group: Item group (if present)
     ///   - completionHandler: The callback to execute on completion.
     public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: resultID)
@@ -122,12 +122,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track a search event when the user taps on Search button on keyboard or when an item in the list is tapped on.
+    /// Track when a user submits a search (pressing enter within input element, or clicking submit element)
     ///
     /// - Parameters:
-    ///   - searchTerm: Search term that the user searched for
-    ///   - originalQuery: The original query that the user search for
-    ///   - group: Item group
+    ///   - searchTerm: The term that the user searched for
+    ///   - originalQuery: The current text in the input field
+    ///   - group: Item group (if present)
     ///   - completionHandler: The callback to execute on completion.
     public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
@@ -135,11 +135,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track search results loaded.
+    /// Track when a user loads a search product listing page
     ///
     /// - Parameters:
-    ///   - searchTerm: Search term that the user searched for
-    ///   - resultCount: Number of results loaded
+    ///   - searchTerm: The search term that the user searched for
+    ///   - resultCount: The number of search results returned in total
+    ///   - resultIds: The list of item id's returned in the search
     ///   - completionHandler: The callback to execute on completion.
     public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, customerIDs: [String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, customerIDs: customerIDs )
@@ -147,13 +148,14 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track search result clicked on.
+    /// Track when a user clicks a result that appeared within a search product listing page
     ///
     /// - Parameters:
-    ///   - name: item name.
-    ///   - customerID: customer ID.
-    ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
-    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - name: The item name.
+    ///   - customerID: The item ID.
+    ///   - searchTerm: The term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
+    ///   - sectionName: The name of the autocomplete section the term came from (optional, defaults to "products")
+    ///   - resultID: Identifier of result set
     ///   - completionHandler: The callback to execute on completion.
     public func trackSearchResultClick(itemName: String, customerID: String, searchTerm: String? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
@@ -163,12 +165,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track browse results loaded.
+    /// Track when a user loads a browse product listing page
     ///
     /// - Parameters:
-    ///   - filterName: Primary filter name that the user browsed for
-    ///   - filterValue: Primary filter value that the user browsed for
-    ///   - resultCount: Number of results loaded
+    ///   - filterName: The name of the primary filter that the user browsed for (i.e "color")
+    ///   - filterValue: The value of the primary filter that the user browsed for (i.e "blue")
+    ///   - resultCount: The number of results returned in total
     ///   - resultID: Identifier of result set
     ///   - completionHandler: The callback to execute on completion.
     public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -177,13 +179,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track browse result clicked on
+    /// Track when a user clicks a result that appeared within a browse product listing page
     ///
     /// - Parameters:
-    ///   - customerID: customer ID.
-    ///   - filterName: Primary filter name that the user browsed for
-    ///   - filterValue: Primary filter value that the user browsed for
-    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - customerID: The item ID.
+    ///   - filterName: The name of the primary filter that the user browsed for (i.e "color")
+    ///   - filterValue: The value of the primary filter that the user browsed for (i.e "blue")
+    ///   - sectionName The name of the autocomplete section the term came from  (optional)
     ///   - resultID: Identifier of result set
     ///   - completionHandler: The callback to execute on completion.
     public func trackBrowseResultClick(customerID: String, filterName: String, filterValue: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -193,14 +195,14 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track recommendation view
+    /// Track when a user views a pod of recommendation results
     ///
     /// - Parameters:
-    ///   - podID: Pod ID
-    ///   - numResultsViewed: The count of results that is visible to the user
-    ///   - resultPage: The current page that recommedantion result is on
-    ///   - resultCount: The total number of recommendation results
-    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - podID: The pod ID
+    ///   - numResultsViewed: The count of results that is visible to the user  (optional)
+    ///   - resultPage: The current page that recommedantion result is on  (optional)
+    ///   - resultCount: The total number of recommendation results  (optional)
+    ///   - sectionName: The name of the autocomplete section the term came from  (optional)
     ///   - resultID: Identifier of result set
     ///   - completionHandler: The callback to execute on completion.
     public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -210,18 +212,18 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track recommendation result clicked on
+    /// Track when a user clicks an item that appeared within a list of recommended results
     ///
     /// - Parameters:
-    ///   - podID: Pod ID
-    ///   - customerID: Customer ID
-    ///   - strategyID: Strategy ID
-    ///   - variationID: Variation ID
-    ///   - numResultsPerPage: Count of recommendation results on each page
-    ///   - resultPage: The current page that recommedantion result is on
-    ///   - resultCount: The total number of recommendation results
-    ///   - resultPositionOnPage: The position of the recommendation result that was clicked on
-    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - podID: The pod ID
+    ///   - customerID: The item ID
+    ///   - strategyID: The strategy ID that fulfilled the pod (optional)
+    ///   - variationID: The item variation ID (optional)
+    ///   - numResultsPerPage: The count of recommendation results on each page (optional)
+    ///   - resultPage: The current page that recommedantion result is on  (optional)
+    ///   - resultCount: The total number of recommendation results  (optional)
+    ///   - resultPositionOnPage: The position of the recommendation result that was clicked on (optional)
+    ///   - sectionName The name of the autocomplete section the term came from  (optional)
     ///   - resultID: Identifier of result set
     ///   - completionHandler: The callback to execute on completion.
     public func trackRecommendationResultClick(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -231,14 +233,15 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track a conversion.
+    /// Track when a user performed an action indicating interest in an item (add to cart, add to wishlist, etc.)
     ///
     /// - Parameters:
-    ///   - name: item name.
-    ///   - customerID: customer ID.
-    ///   - revenue: Revenue of an item.
-    ///   - searchTerm: Search term that the user searched for. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
-    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - name: The item name.
+    ///   - customerID: The item ID.
+    ///   - revenue: The  revenue of the item.
+    ///   - conversionType: The type of conversion (optional, defaults to "add_to_cart")
+    ///   - searchTerm: The term that the user searched for if searching. If nil is passed, 'TERM_UNKNOWN' will be sent to the server.
+    ///   - sectionName The name of the autocomplete section the term came from (optional, defaults to "products")
     ///   - completionHandler: The callback to execute on completion.
     public func trackConversion(itemName: String, customerID: String, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, conversionType: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
@@ -249,11 +252,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track a purchase.
+    /// Track when a user completes an order (usually fired on order confirmation page)
     ///
     /// - Parameters:
-    ///   - customerIDs: customer IDs.
-    ///   - sectionName The name of the autocomplete section the term came from
+    ///   - customerIDs: The item IDs purchased
+    ///   - revenue: The revenue of the purchase
+    ///   - orderID: The order identifier
+    ///   - sectionName The name of the autocomplete section the term came from (optional, defaults to "products")
     ///   - completionHandler: The callback to execute on completion.
     public func trackPurchase(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
