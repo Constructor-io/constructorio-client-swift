@@ -13,7 +13,7 @@ import Foundation
  */
 public struct CIOAutocompleteQuery: CIORequestData {
     /**
-     User typed query to return results for
+     The user typed query to return results for
      */
     let query: String
 
@@ -40,7 +40,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
      Create an Autocomplete request query object
         
      - Parameters:
-        - query: User typed query to return results for
+        - query: The user typed query to return results for
         - numResults: The number of results to return
         - numresultsForSection: The section to return results from
         - filters: The filters used to refine results

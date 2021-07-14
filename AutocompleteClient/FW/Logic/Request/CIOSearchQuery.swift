@@ -13,7 +13,7 @@ import Foundation
  */
 public struct CIOSearchQuery: CIORequestData {
     /**
-     User typed query to return results for
+     The user typed query to return results for
      */
     public let query: String
 
@@ -50,7 +50,7 @@ public struct CIOSearchQuery: CIORequestData {
      Create a Search request query object
      
      - Parameters:
-        - query: User typed query to return results for
+        - query: The user typed query to return results for
         - filters: The filters used to refine results
         - page: The page number of the results
         - perPage: The number of results per page to return

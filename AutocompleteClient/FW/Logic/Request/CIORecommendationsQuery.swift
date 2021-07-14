@@ -13,12 +13,12 @@ import Foundation
 */
 public struct CIORecommendationsQuery: CIORequestData {
     /**
-     Pod ID
+     The pod ID
      */
     public let podID: String
 
     /**
-     Item id to retrieve recommendations for (strategy specific)
+     The item id to retrieve recommendations for (strategy specific)
      */
     public let itemID: String?
 
@@ -50,8 +50,8 @@ public struct CIORecommendationsQuery: CIORequestData {
      Create a Recommendations request query object
      
      - Parameters:
-        - podID: Pod ID
-        - itemID: Item id to retrieve recommendations for (strategy specific)
+        - podID: The pod ID
+        - itemID: The item id to retrieve recommendations for (strategy specific)
         - term: The term to use to refine results (strategy specific)
         - filters: The filters used to refine results (strategy specific)
         - numResults: The number of results to return
