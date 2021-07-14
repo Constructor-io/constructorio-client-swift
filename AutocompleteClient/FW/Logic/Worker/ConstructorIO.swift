@@ -108,7 +108,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track when a user selects (clicks, or navigates to via keyboard) a result that appeared within autocomplete
+    /// Track when a user selects (clicks, or navigates to via keyboard) a result that appears within autocomplete
     ///
     /// - Parameters:
     ///   - searchTerm: The term that the user selected
@@ -149,7 +149,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track when a user clicks a result that appeared within a search product listing page
+    /// Track when a user clicks a result that appears within a search product listing page
     ///
     /// - Parameters:
     ///   - itemName: The item name.
@@ -180,7 +180,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track when a user clicks a result that appeared within a browse product listing page
+    /// Track when a user clicks a result that appears within a browse product listing page
     ///
     /// - Parameters:
     ///   - customerID: The item ID.
@@ -214,7 +214,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track when a user clicks an item that appeared within a list of recommended results
+    /// Track when a user clicks an item that appears within a list of recommendation results
     ///
     /// - Parameters:
     ///   - podID: The pod ID
@@ -235,7 +235,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
-    /// Track when a user performed an action indicating interest in an item (add to cart, add to wishlist, etc.)
+    /// Track when a user performs an action indicating interest in an item (add to cart, add to wishlist, etc.)
     ///
     /// - Parameters:
     ///   - itemName: The item name.
