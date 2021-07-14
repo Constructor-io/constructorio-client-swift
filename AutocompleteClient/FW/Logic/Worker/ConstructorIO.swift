@@ -218,13 +218,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///
     /// - Parameters:
     ///   - podID: The pod ID
-    ///   - strategyID: The strategy ID that fulfilled the po
+    ///   - strategyID: The strategy ID that fulfilled the pod
     ///   - customerID: The item ID
-    ///   - variationID: The item variation I
-    ///   - numResultsPerPage: The count of recommendation results on each pag
+    ///   - variationID: The item variation ID
+    ///   - numResultsPerPage: The count of recommendation results on each page
     ///   - resultPage: The current page that recommedantion result is on
     ///   - resultCount: The total number of recommendation results
-    ///   - resultPositionOnPage: The position of the recommendation result that was clicked o
+    ///   - resultPositionOnPage: The position of the recommendation result that was clicked on
     ///   - sectionName The name of the autocomplete section the term came from
     ///   - resultID: Identifier of result set
     ///   - completionHandler: The callback to execute on completion.
