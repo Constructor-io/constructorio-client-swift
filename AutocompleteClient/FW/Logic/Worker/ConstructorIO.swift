@@ -116,7 +116,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - sectionName: The name of the autocomplete section the term came from (usually "Search Suggestions")
     ///   - group: Item group (if present)
     ///   - resultID: Identifier of result set
-    ///   - completionHandler: The callback to execute on completion. (not required)
+    ///   - completionHandler: The callback to execute on completion.
     public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: resultID)
         let request = self.buildRequest(data: data)
