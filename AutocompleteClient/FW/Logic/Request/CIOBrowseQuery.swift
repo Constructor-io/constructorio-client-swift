@@ -13,12 +13,12 @@ import Foundation
  */
 public struct CIOBrowseQuery: CIORequestData {
     /**
-     Primary filter name that the user browsed for
+     The primary filter name that the user browsed for
      */
     public let filterName: String
 
     /**
-     Primary filter value that the user browsed for
+     The primary filter value that the user browsed for
      */
     public let filterValue: String
 
