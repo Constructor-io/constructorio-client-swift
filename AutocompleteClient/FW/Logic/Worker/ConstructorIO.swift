@@ -60,7 +60,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Get autocomplete suggestions for a query.
     ///
     /// - Parameters:
-    ///   - query: The query object, consisting of the query to autocomplete and additional options.
+    ///   - query: The query object, consisting of the query to autocomplete on and additional options.
     ///   - completionHandler: The callback to execute on completion.
     public func autocomplete(forQuery query: CIOAutocompleteQuery, completionHandler: @escaping AutocompleteQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
@@ -70,7 +70,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Get search results for a query.
     ///
     /// - Parameters:
-    ///   - query: The query object, consisting of the query to autocomplete and additional options.
+    ///   - query: The query object, consisting of the query to searh for and additional options.
     ///   - completionHandler: The callback to execute on completion.
     public func search(forQuery query: CIOSearchQuery, completionHandler: @escaping SearchQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
@@ -80,7 +80,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Get browse results for a query.
     ///
     /// - Parameters:
-    ///   - query: The query object, consisting of the query to autocomplete and additional options.
+    ///   - query: The query object, consisting of the query to browse for and additional options.
     ///   - completionHandler: The callback to execute on completion.
     public func browse(forQuery query: CIOBrowseQuery, completionHandler: @escaping BrowseQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
@@ -90,7 +90,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /// Get recommendation results for a query.
     ///
     /// - Parameters:
-    ///   - query: The query object, consisting of the query to autocomplete and additional options.
+    ///   - query: The query object, consisting of the query to get recommendations for and additional options.
     ///   - completionHandler: The callback to execute on completion.
     public func recommendations(forQuery query: CIORecommendationsQuery, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
@@ -116,7 +116,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     ///   - sectionName: The name of the autocomplete section the term came from (usually "Search Suggestions")
     ///   - group: Item group (if present)
     ///   - resultID: Identifier of result set
-    ///   - completionHandler: The callback to execute on completion.
+    ///   - completionHandler: The callback to execute on completion. (not required)
     public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: resultID)
         let request = self.buildRequest(data: data)
