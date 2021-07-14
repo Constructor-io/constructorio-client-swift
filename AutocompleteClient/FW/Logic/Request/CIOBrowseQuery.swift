@@ -55,8 +55,8 @@ public struct CIOBrowseQuery: CIORequestData {
      Create a Browse request query object
 
      - Parameters:
-        - filterName: Primary filter name that the user browsed for
-        - filterValue: Primary filter value that the user browsed for
+        - filterName: The primary filter name that the user browsed for
+        - filterValue: The primary filter value that the user browsed for
         - filters: The filters used to refine results
         - page: The page number of the results
         - perPage: The number of results per page to return
