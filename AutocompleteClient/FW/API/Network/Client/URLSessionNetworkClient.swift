@@ -13,7 +13,7 @@ class URLSessionNetworkClient: NetworkClient {
     func execute(_ request: URLRequest, completionHandler: @escaping (_ response: NetworkResponse) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
 
-            // Check for errors
+            // Check for transport errors
             if let error = error {
                 let err: Error = CIOError(rawValue: (error as NSError).code) ?? error
                 completionHandler(NetworkResponse(error: err))
@@ -28,11 +28,24 @@ class URLSessionNetworkClient: NetworkClient {
 
             ConstructorIO.logger.log(Constants.Logging.recieveURLResponse(httpResponse))
 
-            // Check if response code corresponds to a ConstructorIOError
-            if let constructorError = CIOError(rawValue: httpResponse.statusCode) {
-                completionHandler(NetworkResponse(error: constructorError))
-                return
+            if !(200...299).contains(httpResponse.statusCode) {
+
+                // Check for response string
+                if let responseString = String(bytes: data!, encoding: .utf8) {
+
+                    // Check if response code corresponds to a ConstructorIOError
+                    if let constructorError = CIOError(rawValue: httpResponse.statusCode) {
+                        completionHandler(NetworkResponse(error: constructorError))
+                        return
+                    }
+                }
             }
+
+            // Check if response code corresponds to a ConstructorIOError
+//            if let constructorError = CIOError(rawValue: httpResponse.statusCode) {
+//                completionHandler(NetworkResponse(error: constructorError))
+//                return
+//            }
 
             // No errors
             guard let data = data else {

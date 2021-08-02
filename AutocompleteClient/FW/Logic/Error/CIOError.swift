@@ -50,18 +50,18 @@ extension CIOError: CustomStringConvertible {
     public var description: String {
         let errorMessage: String
         switch self {
-        case .noConnection: errorMessage = "The Internet connection appears to be offline."
-        case .badRequest: errorMessage = "Your request is invalid."
-        case .unauthorized: errorMessage = "Your api key is wrong."
-        case .forbidden: errorMessage = "You are not authorized to access the requested resource."
-        case .notFound: errorMessage = "The specified resource could not be found."
-        case .methodNotAllowed: errorMessage = "You tried to access a resource with an invalid method."
-        case .tooManyRequests: errorMessage = "You’re making too many requests."
-        case .internalServerError: errorMessage = "We had a problem with our server. Try again later."
-        case .serviceUnavailable: errorMessage = "We’re temporarially offline for maintanance. Please try again later."
-        case .invalidResponse: errorMessage = "We had a problem with our server. Try again later."
-        case .missingApiKey: errorMessage = "Missing api key"
-        case .unknownError: errorMessage = "Error occurred. Try again later."
+            case .noConnection: errorMessage = "The Internet connection appears to be offline."
+            case .badRequest: errorMessage = "Your request is invalid."
+            case .unauthorized: errorMessage = "Your api key is wrong."
+            case .forbidden: errorMessage = "You are not authorized to access the requested resource."
+            case .notFound: errorMessage = "The specified resource could not be found."
+            case .methodNotAllowed: errorMessage = "You tried to access a resource with an invalid method."
+            case .tooManyRequests: errorMessage = "You’re making too many requests."
+            case .internalServerError: errorMessage = "We had a problem with our server. Try again later."
+            case .serviceUnavailable: errorMessage = "We’re temporarially offline for maintanance. Please try again later."
+            case .invalidResponse: errorMessage = "We had a problem with our server. Try again later."
+            case .missingApiKey: errorMessage = "Missing api key"
+            case .unknownError: errorMessage = "Error occurred. Try again later."
         }
 
         return "Error Code \(self.rawValue): \(self.string) - \(errorMessage)"

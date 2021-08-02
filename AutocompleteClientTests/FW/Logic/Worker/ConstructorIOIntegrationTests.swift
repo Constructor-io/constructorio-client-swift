@@ -185,7 +185,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
     func testAutocomplete_WithFilters() {
         let expectation = XCTestExpectation(description: "Request 204")
         let facetFilters = [
-            (key: "Brand", value: "A&W")
+            (key: "Brand", value: "A&W"),
+            (key: "Brand", value: "Pepsi")
         ]
         let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
         let query = CIOAutocompleteQuery(query: "a", filters: queryFilters, numResults: 20)
