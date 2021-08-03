@@ -53,7 +53,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      /// Create the client config
      let config = ConstructorIOConfig(
         apiKey: "YOUR API KEY",
-        resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0])
+        resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0]),
      )
      
      /// Create the client instance
