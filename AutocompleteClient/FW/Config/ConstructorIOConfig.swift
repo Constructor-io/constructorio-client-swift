@@ -54,7 +54,7 @@ public struct ConstructorIOConfig {
         - baseURL: The base URL to make requests to
 
      ### Usage Example: ###
-     ```
+     ```swift
      /// Create the client config
      let config = ConstructorIOConfig(
         apiKey: "YOUR API KEY",
@@ -65,7 +65,7 @@ public struct ConstructorIOConfig {
             CIOABTestCell(key: "search", value: "constructor"),
             CIOABTestCell(key: "autosuggest", value: "control")
         ],
-        baseURL: "constructor.io"
+        baseURL: "ac.cnstrc.com"
      )
      ```
      */
