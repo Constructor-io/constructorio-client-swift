@@ -154,6 +154,16 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Initializes a ConstructorIO Client</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="c1">/// Create the client config</span>
+<span class="k">let</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">ConstructorIOConfig</span><span class="p">(</span>
+   <span class="nv">apiKey</span><span class="p">:</span> <span class="s">"YOUR API KEY"</span><span class="p">,</span>
+   <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">AutocompleteResultCount</span><span class="p">(</span><span class="nv">numResultsForSection</span><span class="p">:</span> <span class="p">[</span><span class="s">"Search Suggestions"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"Products"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">]),</span>
+<span class="p">)</span>
+
+<span class="c1">/// Create the client instance</span>
+<span class="k">let</span> <span class="nv">constructorIO</span> <span class="o">=</span> <span class="kt">ConstructorIO</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="n">config</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -200,6 +210,14 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Get autocomplete suggestions for a query.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">autocompleteQuery</span> <span class="o">=</span> <span class="kt">CIOAutocompleteQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"apple"</span><span class="p">,</span> <span class="nv">numResults</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">numResultsForSection</span><span class="p">:</span> <span class="p">[</span><span class="s">"Products"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"Search Suggestions"</span><span class="p">:</span> <span class="mi">8</span><span class="p">])</span>
+
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">autocomplete</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">autocompleteQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -258,6 +276,18 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Get search results for a query.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">facetFilters</span> <span class="o">=</span> <span class="p">[(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Organic"</span><span class="p">),</span>
+                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
+                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kraft Foods"</span><span class="p">)]</span>
+
+<span class="k">let</span> <span class="nv">searchQuery</span> <span class="o">=</span> <span class="kt">CIOSearchQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"red"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">),</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">)</span>
+
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">searchQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -316,6 +346,18 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Get browse results for a query.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">facetFilters</span> <span class="o">=</span> <span class="p">[(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Organic"</span><span class="p">),</span>
+                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
+                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kraft Foods"</span><span class="p">)]</span>
+
+<span class="k">let</span> <span class="nv">browseQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseQuery</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Pantry"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">),</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">)</span>
+
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">browse</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">browseQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -374,6 +416,14 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Get recommendation results for a query.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">recommendationsQuery</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pod_name"</span><span class="p">,</span> <span class="nv">itemID</span><span class="p">:</span> <span class="s">"item_id"</span><span class="p">,</span> <span class="nv">numResults</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">)</span>
+
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">recommendationsQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -432,6 +482,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user focuses on a search input element</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackInputFocus</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"apple"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -490,6 +543,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user selects (clicks, or navigates to via keyboard) a result that appears within autocomplete</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAutocompleteSelect</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"toothpicks"</span><span class="p">,</span> <span class="nv">originalQuery</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Search Suggestions"</span><span class="p">,</span> <span class="nv">group</span><span class="p">:</span> <span class="kt">CIOGroup</span><span class="p">(</span><span class="nv">displayName</span><span class="p">:</span> <span class="s">"Dental Health"</span><span class="p">,</span> <span class="nv">groupID</span><span class="p">:</span> <span class="s">"dental-92dk2"</span><span class="p">,</span> <span class="nv">path</span><span class="p">:</span> <span class="s">"health-2911e/dental-92dk2"</span><span class="p">),</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -596,6 +652,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user submits a search (pressing enter within input element, or clicking submit element)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchSubmit</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"apple"</span><span class="p">,</span> <span class="nv">originalQuery</span><span class="p">:</span> <span class="s">"app"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -678,6 +737,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user views a search product listing page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">789</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -760,6 +822,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user clicks a result that appears within a search product listing page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultClick</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="s">"Fashionable Toothpicks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span>  <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -866,6 +931,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user views a browse product listing page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -960,6 +1028,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user clicks a result that appears within a browse product listing page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -1066,6 +1137,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user views a pod of recommendation results</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -1184,6 +1258,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user clicks an item that appears within a list of recommendation results</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultClick</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">strategyID</span><span class="p">:</span> <span class="s">"best_sellers"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"P183021"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7281930"</span><span class="p">,</span> <span class="nv">numResultsPerPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -1338,6 +1415,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user performs an action indicating interest in an item (add to cart, add to wishlist, etc.)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackConversion</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="s">"Fashionable Toothpicks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">12.99</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">conversionType</span><span class="p">:</span> <span class="s">"add_to_cart"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -1444,6 +1524,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Track when a user completes an order (usually fired on order confirmation page)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackPurchase</span><span class="p">(</span><span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"123-AB"</span><span class="p">,</span> <span class="s">"456-CD"</span><span class="p">],</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">34.49</span><span class="p">,</span> <span class="nv">orderID</span><span class="p">:</span> <span class="s">"343-315"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -1517,7 +1600,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://www.constructor.io" target="_blank" rel="external">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2021-07-14)</p>
+          <p>&copy; 2021 <a class="link" href="https://www.constructor.io" target="_blank" rel="external">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2021-08-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

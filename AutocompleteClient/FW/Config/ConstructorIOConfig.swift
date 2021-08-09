@@ -52,6 +52,21 @@ public struct ConstructorIOConfig {
         - testCells: List of test cell information to associate with requests
         - segments: List of segments to associate with requets
         - baseURL: The base URL to make requests to
+
+     ### Usage Example: ###
+     ```
+     let config = ConstructorIOConfig(
+        apiKey: "YOUR API KEY",
+        resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions": 3, "Products": 0]),
+        defaultItemSectionName: "Products",
+        segments: ["Android", "US"],
+        testCells: [
+            CIOABTestCell(key: "search", value: "constructor"),
+            CIOABTestCell(key: "autosuggest", value: "control")
+        ],
+        baseURL: "ac.cnstrc.com"
+     )
+     ```
      */
     public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil) {
         self.apiKey = apiKey
