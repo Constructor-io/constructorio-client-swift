@@ -30,17 +30,19 @@ class URLSessionNetworkClient: NetworkClient {
 
             ConstructorIO.logger.log(Constants.Logging.recieveURLResponse(httpResponse))
 
-            if !(200...299).contains(httpResponse.statusCode) {
+            // if !(200...299).contains(httpResponse.statusCode) {
 
-                // Check for response string
-                if let responseString = String(bytes: data!, encoding: .utf8) {
+            //     // Check for response string
+            //     if let responseString = String(bytes: data!, encoding: .utf8) {
 
-                    // Check if response code corresponds to a ConstructorIOError
-                    if let constructorError = CIOError(rawValue: httpResponse.statusCode) {
-                        completionHandler(NetworkResponse(error: constructorError))
-                        return
-                    }
-                }
+            //         // Check if response code corresponds to a ConstructorIOError
+            //         if let constructorError = CIOError(rawValue: httpResponse.statusCode) {
+            //             completionHandler(NetworkResponse(error: constructorError))
+            //             return
+            //         }
+            //     }
+            // }
+
             // Check if response code corresponds to a ConstructorIOError
 //            if let constructorError = CIOError(rawValue: httpResponse.statusCode) {
 //                completionHandler(NetworkResponse(error: constructorError))
@@ -53,12 +55,6 @@ class URLSessionNetworkClient: NetworkClient {
                 completionHandler(NetworkResponse(error: constructorError))
                 return
             }
-
-            // Check if response code corresponds to a ConstructorIOError
-//            if let constructorError = CIOError(rawValue: httpResponse.statusCode) {
-//                completionHandler(NetworkResponse(error: constructorError))
-//                return
-//            }
 
             // No errors
             guard let data = data else {
