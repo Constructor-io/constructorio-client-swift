@@ -78,7 +78,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
 
         self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, completionHandler: { response in
             if let cioError = response.error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
+                XCTAssertEqual(cioError.errorType, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
         })
@@ -94,7 +94,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
 
         self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, completionHandler: { response in
             if let cioError = response.error as? CIOError {
-                XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
+                XCTAssertEqual(cioError.errorType, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
         })
@@ -110,7 +110,7 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
 
         self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, completionHandler: { response in
             if let cioError = response.error as? CIOError {
-                XCTAssertEqual(cioError, .noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
+                XCTAssertEqual(cioError.errorType, .noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
         })

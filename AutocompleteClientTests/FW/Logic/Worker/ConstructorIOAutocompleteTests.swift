@@ -38,7 +38,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
-                XCTAssertEqual(error, CIOError.noConnection, "Returned error from network client should be type CIOError.noConnection.")
+                XCTAssertEqual(error, CIOError(errorType: .noConnection), "Returned error from network client should be type CIOError.noConnection.")
                 expectation.fulfill()
             }
         }
@@ -54,7 +54,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
-                XCTAssertEqual(error, CIOError.badRequest, "Returned error from network client should be type CIOError.badRequest.")
+                XCTAssertEqual(error, CIOError(errorType: .badRequest), "Returned error from network client should be type CIOError.badRequest.")
                 expectation.fulfill()
             }
         }
@@ -70,7 +70,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
-                XCTAssertEqual(error, CIOError.internalServerError, "Returned error from network client should be type CIOError, internalServerError.")
+                XCTAssertEqual(error, CIOError(errorType: .internalServerError), "Returned error from network client should be type CIOError, internalServerError.")
                 expectation.fulfill()
             }
         }

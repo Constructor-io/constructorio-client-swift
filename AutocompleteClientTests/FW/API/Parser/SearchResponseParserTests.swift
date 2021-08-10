@@ -30,7 +30,7 @@ class SearchResponseParserTests: XCTestCase {
         do {
             _ = try self.parser.parse(searchResponseData: invalidData)
             XCTFail(failWithMessage)
-        } catch CIOError.invalidResponse {
+        } catch _ as CIOError {
             XCTAssertTrue(true)
         } catch {
             XCTFail(failWithMessage)
@@ -43,7 +43,7 @@ class SearchResponseParserTests: XCTestCase {
         do {
             _ = try self.parser.parse(searchResponseData: validJSONData)
             XCTFail(failWithMessage)
-        } catch CIOError.invalidResponse {
+        } catch _ as CIOError {
             XCTAssertTrue(true)
         } catch {
             XCTFail(failWithMessage)

@@ -20,7 +20,6 @@ class ErrorTests: XCTestCase {
     }
 
     func testCIOErrorReturnsNonNilErrorDescription() {
-        print(CIOError.invalidResponse)
-        XCTAssertNotNil(CIOError.invalidResponse.errorDescription)
+        XCTAssertNotNil(CIOError(errorType: .invalidResponse).errorDescription)
     }
 }

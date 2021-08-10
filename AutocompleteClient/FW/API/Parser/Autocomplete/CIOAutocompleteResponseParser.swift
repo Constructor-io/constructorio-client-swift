@@ -20,16 +20,16 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
                 let isSingleSection = json.keys.contains(Constants.Response.singleSectionResultField)
                 return isSingleSection ? try parse(singleSectionJson: json) : try parse(multiSectionJson: json)
             } else {
-                throw CIOError.invalidResponse
+                throw CIOError(errorType: .invalidResponse)
             }
         } catch {
-            throw CIOError.invalidResponse
+            throw CIOError(errorType: .invalidResponse)
         }
     }
 
     private func parse(singleSectionJson json: JSONObject) throws -> CIOAutocompleteResponse {
         guard let section = json[Constants.Response.singleSectionResultField] as? [JSONObject] else {
-            throw CIOError.invalidResponse
+            throw CIOError(errorType: .invalidResponse)
         }
 
         let results = self.jsonToAutocompleteItems(jsonObjects: section)
@@ -40,7 +40,7 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
     private func parse(multiSectionJson json: JSONObject) throws -> CIOAutocompleteResponse {
         guard let sections = json[Constants.Response.multiSectionResultField] as? [String: [JSONObject]] else {
-            throw CIOError.invalidResponse
+            throw CIOError(errorType: .invalidResponse)
         }
 
         var results = [String: [CIOAutocompleteResult]]()

@@ -15,7 +15,7 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
             let json = try JSONSerialization.jsonObject(with: browseResponseData) as? JSONObject
 
             guard let response = json?["response"] as? JSONObject else {
-                throw CIOError.invalidResponse
+                throw CIOError(errorType: .invalidResponse)
             }
 
             let facetsObj: [JSONObject]? = response["facets"] as? [JSONObject]
@@ -39,7 +39,7 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
                 resultID: resultID
             )
         } catch {
-            throw CIOError.invalidResponse
+            throw CIOError(errorType: .invalidResponse)
         }
 
     }
