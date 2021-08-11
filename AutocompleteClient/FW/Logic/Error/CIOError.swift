@@ -54,8 +54,8 @@ public struct CIOError: Error, Equatable {
 
     func description() -> String {
         let message: String
-        
-        if (self.errorMessage != nil) {
+
+        if self.errorMessage != nil {
             message = self.errorMessage!
         } else {
             switch self.errorType {

@@ -28,30 +28,19 @@ class URLSessionNetworkClient: NetworkClient {
 
             ConstructorIO.logger.log(Constants.Logging.recieveURLResponse(httpResponse))
 
-             if !(200...299).contains(httpResponse.statusCode) {
-
-                 // Check for response string
-                 if let responseString = String(bytes: data!, encoding: .utf8) {
-
-                    // Check if response code corresponds to a ConstructorIOError
-                    if let constructorErrorType = CIOErrorType(rawValue: httpResponse.statusCode) {
-                        let constructorError = CIOError(errorType: constructorErrorType, errorMessage: responseString)
-                        completionHandler(NetworkResponse(error: constructorError))
-                        return
-                    }
-                 }
-             }
+            // Check for response string
+            let responseString = String(bytes: data!, encoding: .utf8)
 
             // Check if response code corresponds to a ConstructorIOError
-//            if let constructorErrorType = CIOErrorType(rawValue: httpResponse.statusCode) {
-//                let constructorError = CIOError(errorType: constructorErrorType)
-//                completionHandler(NetworkResponse(error: constructorError))
-//                return
-//            }
+            if let constructorErrorType = CIOErrorType(rawValue: httpResponse.statusCode) {
+                let constructorError = CIOError(errorType: constructorErrorType, errorMessage: responseString)
+                completionHandler(NetworkResponse(error: constructorError))
+                return
+            }
 
             // No errors
             guard let data = data else {
-                completionHandler(NetworkResponse(error: CIOError(errorType: .unknownError)))
+                completionHandler(NetworkResponse(error: CIOError(errorType: .unknownError, errorMessage: responseString)))
                 return
             }
 

@@ -22,4 +22,8 @@ class ErrorTests: XCTestCase {
     func testCIOErrorReturnsNonNilErrorDescription() {
         XCTAssertNotNil(CIOError(errorType: .invalidResponse).errorDescription)
     }
+
+    func testCIOErrorWithReturnsNonNilErrorMessage() {
+        XCTAssertNotNil(CIOError(errorType: .badRequest, errorMessage: "Invalid parameter supplied with the request.").errorMessage)
+    }
 }
