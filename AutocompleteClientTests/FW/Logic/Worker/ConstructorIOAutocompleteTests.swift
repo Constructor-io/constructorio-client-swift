@@ -65,14 +65,13 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let expectation = self.expectation(description: "Calling autocomplete with 500 should return internalServerError CIOError.")
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
-        let errorMessage = "Unknown parameter has been supplied in the request"
-        let errorData = errorMessage.data(using: .utf8)!
+        let errorData = "{\"message\":\"Unknown parameter has been supplied in the request\"}".data(using: .utf8)!
 
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400, data: errorData))
 
         self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
-                XCTAssertEqual(error, CIOError(errorType: .badRequest, errorMessage: errorMessage), "Returned error from network client should be type CIOError, badRequest, and contain an error message.")
+                XCTAssertEqual(error, CIOError(errorType: .badRequest, errorMessage: "Unknown parameter has been supplied in the request"), "Returned error from network client should be type CIOError, badRequest, and contain an error message.")
                 expectation.fulfill()
             }
         }

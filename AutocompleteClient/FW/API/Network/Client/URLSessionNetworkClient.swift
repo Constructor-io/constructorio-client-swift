@@ -12,6 +12,7 @@ class URLSessionNetworkClient: NetworkClient {
 
     func execute(_ request: URLRequest, completionHandler: @escaping (_ response: NetworkResponse) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            var errorMessage: String?
 
             // Check for transport errors
             if let error = error {
@@ -28,19 +29,21 @@ class URLSessionNetworkClient: NetworkClient {
 
             ConstructorIO.logger.log(Constants.Logging.recieveURLResponse(httpResponse))
 
-            // Check for response string
-            let responseString = String(bytes: data!, encoding: .utf8)
+            // Check the response for an error message
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                errorMessage = jsonObj["message"] as? String
+            }
 
             // Check if response code corresponds to a ConstructorIOError
             if let constructorErrorType = CIOErrorType(rawValue: httpResponse.statusCode) {
-                let constructorError = CIOError(errorType: constructorErrorType, errorMessage: responseString)
+                let constructorError = CIOError(errorType: constructorErrorType, errorMessage: errorMessage)
                 completionHandler(NetworkResponse(error: constructorError))
                 return
             }
 
             // No errors
             guard let data = data else {
-                completionHandler(NetworkResponse(error: CIOError(errorType: .unknownError, errorMessage: responseString)))
+                completionHandler(NetworkResponse(error: CIOError(errorType: .unknownError, errorMessage: errorMessage)))
                 return
             }
 
