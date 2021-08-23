@@ -37,7 +37,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        self.constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: "key_K2hlXt5aVSwoI1Uw"))
+        self.constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
     }
 
     override func tearDown() {
@@ -192,6 +192,27 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testAutocomplete_WithHiddenFields() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let hiddenFields = ["hiddenField1", "hiddenField2"]
+        let query = CIOAutocompleteQuery(query: "a", numResults: 20, hiddenFields: hiddenFields)
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let data = response.data!
+            let products = data.sections["Products"]!
+            let autocompleteResult = products[0].result
+            let resultData = autocompleteResult.data
+            let hiddenField1Value = resultData.metadata["hiddenField1"] as? String
+            let hiddenField2Value = resultData.metadata["hiddenField2"] as? String
+
+            XCTAssertNil(cioError)
+            XCTAssertEqual(hiddenField1Value, "hidden value 1")
+            XCTAssertEqual(hiddenField2Value, "hidden value 2")
             expectation.fulfill()
         })
         self.wait(for: expectation)

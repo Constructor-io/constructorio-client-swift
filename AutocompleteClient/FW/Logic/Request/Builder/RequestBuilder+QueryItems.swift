@@ -135,4 +135,16 @@ extension RequestBuilder {
         let termString = String(term)
         queryItems.add(URLQueryItem(name: Constants.RecommendationsQuery.term, value: termString))
     }
+
+    func set(hiddenFields: [String]?) {
+        guard let hiddenFields = hiddenFields else { return }
+        for hiddenField in hiddenFields {
+            self.set(hiddenField: hiddenField)
+        }
+    }
+
+    func set(hiddenField: String?) {
+        guard let hiddenField = hiddenField else { return }
+        queryItems.add(URLQueryItem(name: "hidden_fields", value: hiddenField))
+    }
 }

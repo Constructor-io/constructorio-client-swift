@@ -32,6 +32,11 @@ public struct CIOAutocompleteQuery: CIORequestData {
      */
     let filters: CIOQueryFilters?
 
+    /**
+     The list of hidden metadata fields to return
+     */
+    let hiddenFields: [String]?
+
     func url(with baseURL: String) -> String {
         return String(format: Constants.AutocompleteQuery.format, baseURL, query)
     }
@@ -44,17 +49,19 @@ public struct CIOAutocompleteQuery: CIORequestData {
         - numResults: The number of results to return
         - numresultsForSection: The section to return results from
         - filters: The filters used to refine results
+        - hiddenFields: The list of hidden metadata fields to return
      
      ### Usage Example: ###
      ```
      let autocompleteQuery = CIOAutocompleteQuery(query: "apple", numResults: 5, numResultsForSection: ["Products": 6, "Search Suggestions": 8])
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil, hiddenFields: [String]? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.numResults = numResults
         self.numResultsForSection = numResultsForSection
         self.filters = filters
+        self.hiddenFields = hiddenFields
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -62,5 +69,6 @@ public struct CIOAutocompleteQuery: CIORequestData {
         requestBuilder.set(numResultsForSection: self.numResultsForSection)
         requestBuilder.set(groupFilter: self.filters?.groupFilter)
         requestBuilder.set(facetFilters: self.filters?.facetFilters)
+        requestBuilder.set(hiddenFields: self.hiddenFields)
     }
 }
