@@ -276,6 +276,21 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowse_WithFilters() {
         let expectation = XCTestExpectation(description: "Request 204")
+        let facetFilters = [
+            (key: "Brand", value: "A&W")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: facetFilters)
+        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", filters: queryFilters)
+        self.constructor.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowse_WithHiddenFields() {
+        let expectation = XCTestExpectation(description: "Request 204")
         let hiddenFields = ["hiddenField1", "hiddenField2"]
         let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", hiddenFields: hiddenFields)
         self.constructor.browse(forQuery: query, completionHandler: { response in
