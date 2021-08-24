@@ -261,7 +261,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertNotNil(cioError!.errorMessage)
+            XCTAssertEqual(cioError?.errorMessage, "We have no record of this key. You can find your key at app.constructor.io/dashboard.")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -273,7 +273,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.recommendations(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertNotNil(cioError!.errorMessage)
+            XCTAssertEqual(cioError?.errorMessage, "Recommendations pod not found with id: bad_pod_id")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -285,7 +285,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertNotNil(cioError!.errorMessage)
+            XCTAssertEqual(cioError?.errorMessage, "Unknown section: bad_section")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -297,7 +297,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertNotNil(cioError!.errorMessage)
+            XCTAssertEqual(cioError?.errorMessage, "You\'re trying to access an invalid endpoint. Please check documentation for allowed endpoints.")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -309,7 +309,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertNotNil(cioError!.errorMessage)
+            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page must be at most 100")
             expectation.fulfill()
         })
         self.wait(for: expectation)

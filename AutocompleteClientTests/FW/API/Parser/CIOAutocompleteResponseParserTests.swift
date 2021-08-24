@@ -24,8 +24,8 @@ class CIOAutocompleteResponseParserTests: XCTestCase {
         do {
             _ = try responseParser.parse(autocompleteResponseData: invalidData)
             XCTFail(failWithMessage)
-        } catch _ as CIOError {
-            XCTAssertTrue(true)
+        } catch let error as CIOError {
+            XCTAssertEqual(error.errorType, .invalidResponse)
         } catch {
             XCTFail(failWithMessage)
         }
@@ -37,8 +37,8 @@ class CIOAutocompleteResponseParserTests: XCTestCase {
         do {
             _ = try responseParser.parse(autocompleteResponseData: validJSONData)
             XCTFail(failWithMessage)
-        } catch _ as CIOError {
-            XCTAssertTrue(true)
+        } catch let error as CIOError {
+            XCTAssertEqual(error.errorType, .invalidResponse)
         } catch {
             XCTFail(failWithMessage)
         }
