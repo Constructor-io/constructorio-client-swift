@@ -199,7 +199,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testAutocomplete_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFields = ["hiddenField1", "hiddenField2"]
+        let hiddenFields = ["price_US", "price_CA"]
         let query = CIOAutocompleteQuery(query: "a", numResults: 20, hiddenFields: hiddenFields)
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -207,12 +207,11 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let products = responseData.sections["Products"]!
             let autocompleteResult = products[0].result
             let resultData = autocompleteResult.data
-            let hiddenField1Value = resultData.metadata["hiddenField1"] as? String
-            let hiddenField2Value = resultData.metadata["hiddenField2"] as? String
+            let price = resultData.metadata["price"] as? String
+            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
 
             XCTAssertNil(cioError)
-            XCTAssertEqual(hiddenField1Value, "hidden value 1", "Hidden field values should match expected value")
-            XCTAssertEqual(hiddenField2Value, "hidden value 2", "Hidden field values should match expected value")
+            XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -246,19 +245,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testSearch_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFields = ["hiddenField1", "hiddenField2"]
+        let hiddenFields = ["price_US", "price_CA"]
         let query = CIOSearchQuery(query: "a", hiddenFields: hiddenFields)
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let searchResult = responseData.results[0]
             let resultData = searchResult.data
-            let hiddenField1Value = resultData.metadata["hiddenField1"] as? String
-            let hiddenField2Value = resultData.metadata["hiddenField2"] as? String
+            let price = resultData.metadata["price"] as? String
+            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
 
             XCTAssertNil(cioError)
-            XCTAssertEqual(hiddenField1Value, "hidden value 1", "Hidden field values should match expected value")
-            XCTAssertEqual(hiddenField2Value, "hidden value 2", "Hidden field values should match expected value")
+            XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -291,19 +289,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowse_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFields = ["hiddenField1", "hiddenField2"]
+        let hiddenFields = ["price_US", "price_CA"]
         let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", hiddenFields: hiddenFields)
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let browseResult = responseData.results[0]
             let resultData = browseResult.data
-            let hiddenField1Value = resultData.metadata["hiddenField1"] as? String
-            let hiddenField2Value = resultData.metadata["hiddenField2"] as? String
+            let price = resultData.metadata["price"] as? String
+            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
 
             XCTAssertNil(cioError)
-            XCTAssertEqual(hiddenField1Value, "hidden value 1", "Hidden field values should match expected value")
-            XCTAssertEqual(hiddenField2Value, "hidden value 2", "Hidden field values should match expected value")
+            XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
             expectation.fulfill()
         })
         self.wait(for: expectation)

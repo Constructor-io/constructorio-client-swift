@@ -53,7 +53,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
      
      ### Usage Example: ###
      ```
-     let autocompleteQuery = CIOAutocompleteQuery(query: "apple", numResults: 5, numResultsForSection: ["Products": 6, "Search Suggestions": 8], hiddenFields: ["hiddenField1", "hiddenField2"])
+     let autocompleteQuery = CIOAutocompleteQuery(query: "apple", numResults: 5, numResultsForSection: ["Products": 6, "Search Suggestions": 8], hiddenFields: ["price_CA", "currency_CA"])
      ```
      */
     public init(query: String, filters: CIOQueryFilters? = nil, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil, hiddenFields: [String]? = nil) {
