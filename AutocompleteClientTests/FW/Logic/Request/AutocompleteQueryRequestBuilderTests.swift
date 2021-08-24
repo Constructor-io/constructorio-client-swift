@@ -138,7 +138,7 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
-        XCTAssertTrue(url.contains("hidden_field=hiddenField1&hidden_field=hiddenField2"), "URL should contain hidden field parameters.")
+        XCTAssertTrue(url.contains("hidden_fields=hiddenField1&hidden_fields=hiddenField2"), "URL should contain hidden field parameters.")
         XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")

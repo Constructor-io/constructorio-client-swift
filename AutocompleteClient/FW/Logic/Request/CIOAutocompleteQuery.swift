@@ -35,7 +35,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
     /**
      The list of hidden metadata fields to return
      */
-    let hiddenFields: [String]?
+    public let hiddenFields: [String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.AutocompleteQuery.format, baseURL, query)
@@ -53,7 +53,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
      
      ### Usage Example: ###
      ```
-     let autocompleteQuery = CIOAutocompleteQuery(query: "apple", numResults: 5, numResultsForSection: ["Products": 6, "Search Suggestions": 8])
+     let autocompleteQuery = CIOAutocompleteQuery(query: "apple", numResults: 5, numResultsForSection: ["Products": 6, "Search Suggestions": 8], hiddenFields: ["hiddenField1", "hiddenField2"])
      ```
      */
     public init(query: String, filters: CIOQueryFilters? = nil, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil, hiddenFields: [String]? = nil) {
