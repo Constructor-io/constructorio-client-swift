@@ -209,8 +209,10 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let resultData = autocompleteResult.data
             let price = resultData.metadata["price"] as? String
             let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
+            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
 
             XCTAssertNil(cioError)
+            XCTAssertNotNil(hiddenPriceCAValue)
             XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
             expectation.fulfill()
         })
@@ -254,8 +256,10 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let resultData = searchResult.data
             let price = resultData.metadata["price"] as? String
             let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
+            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
 
             XCTAssertNil(cioError)
+            XCTAssertNotNil(hiddenPriceCAValue)
             XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
             expectation.fulfill()
         })
@@ -298,8 +302,10 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let resultData = browseResult.data
             let price = resultData.metadata["price"] as? String
             let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
+            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
 
             XCTAssertNil(cioError)
+            XCTAssertNotNil(hiddenPriceCAValue)
             XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
             expectation.fulfill()
         })
