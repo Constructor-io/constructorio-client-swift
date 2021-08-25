@@ -28,8 +28,8 @@ class RecommendationsResponseParserTests: XCTestCase {
         do {
             _ = try self.parser.parse(recommendationsResponseData: invalidData)
             XCTFail(failWithMessage)
-        } catch CIOError.invalidResponse {
-            XCTAssertTrue(true)
+        } catch let error as CIOError {
+            XCTAssertEqual(error.errorType, .invalidResponse)
         } catch {
             XCTFail(failWithMessage)
         }
@@ -41,8 +41,8 @@ class RecommendationsResponseParserTests: XCTestCase {
         do {
             _ = try self.parser.parse(recommendationsResponseData: validJSONData)
             XCTFail(failWithMessage)
-        } catch CIOError.invalidResponse {
-            XCTAssertTrue(true)
+        } catch let error as CIOError {
+            XCTAssertEqual(error.errorType, .invalidResponse)
         } catch {
             XCTFail(failWithMessage)
         }

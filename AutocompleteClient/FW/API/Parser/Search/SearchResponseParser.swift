@@ -15,7 +15,7 @@ class SearchResponseParser: AbstractSearchResponseParser {
             let json = try JSONSerialization.jsonObject(with: searchResponseData) as? JSONObject
 
             guard let response = json?["response"] as? JSONObject else {
-                throw CIOError.invalidResponse
+                throw CIOError(errorType: .invalidResponse)
             }
 
             let facetsObj: [JSONObject]? = response["facets"] as? [JSONObject]
@@ -40,7 +40,7 @@ class SearchResponseParser: AbstractSearchResponseParser {
                 resultID: resultID
             )
         } catch {
-            throw CIOError.invalidResponse
+            throw CIOError(errorType: .invalidResponse)
         }
 
     }

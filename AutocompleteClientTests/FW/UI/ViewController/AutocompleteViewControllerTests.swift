@@ -250,7 +250,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
             }
 
             func autocompleteController(controller: CIOAutocompleteViewController, errorDidOccur error: Error) {
-                XCTAssertEqual((error as? CIOError), CIOError.missingApiKey)
+                XCTAssertEqual((error as? CIOError), CIOError(errorType: .missingApiKey))
                 self.expectation.fulfill()
             }
         }

@@ -9,6 +9,7 @@
 import XCTest
 import ConstructorAutocomplete
 
+// swiftlint:disable type_body_length
 class ConstructorIOIntegrationTests: XCTestCase {
 
     fileprivate let testACKey = "key_K2hlXt5aVSwoI1Uw"
@@ -244,6 +245,71 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testAutocomplete_WithInvalidKey() {
+        let expectation = XCTestExpectation(description: "Request 400")
+        let facetFilters = [
+            (key: "Brand", value: "A&W")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
+        let query = CIOAutocompleteQuery(query: "a", filters: queryFilters, numResults: 20)
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: "bad_api_key"))
+        constructor.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "We have no record of this key. You can find your key at app.constructor.io/dashboard.")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testRecommendations_WithInvalidPodId() {
+        let expectation = XCTestExpectation(description: "Request 400")
+        let query = CIORecommendationsQuery(podID: "bad_pod_id", itemID: customerID, section: sectionName)
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "Recommendations pod not found with id: bad_pod_id")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowse_WithUnknownSection() {
+        let expectation = XCTestExpectation(description: "Request 400")
+        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", section: "bad_section")
+        self.constructor.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "Unknown section: bad_section")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowse_WithEmptyFilterValue() {
+        let expectation = XCTestExpectation(description: "Request 400")
+        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "")
+        self.constructor.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "You\'re trying to access an invalid endpoint. Please check documentation for allowed endpoints.")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testSearch_WithInvalidParameterValue() {
+        let expectation = XCTestExpectation(description: "Request 400")
+        let query = CIOSearchQuery(query: "a", filters: nil, perPage: 500)
+        self.constructor.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page must be at most 100")
             expectation.fulfill()
         })
         self.wait(for: expectation)

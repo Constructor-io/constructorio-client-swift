@@ -105,7 +105,7 @@ class ConstructorIOTests: XCTestCase {
         constructor.autocomplete(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.error, description)
             if let err = response.error as? CIOError {
-                XCTAssertEqual(err, .invalidResponse, description)
+                XCTAssertEqual(err.errorType, .invalidResponse, description)
 
                 exp.fulfill()
             } else {
