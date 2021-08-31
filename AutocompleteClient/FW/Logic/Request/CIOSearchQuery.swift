@@ -41,6 +41,11 @@ public struct CIOSearchQuery: CIORequestData {
      The section to return results from
      */
     public let section: String
+    
+    /**
+     The list of hidden metadata fields to return
+     */
+    public let hiddenFields: [String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.SearchQuery.format, baseURL, query)
@@ -56,6 +61,7 @@ public struct CIOSearchQuery: CIORequestData {
         - perPage: The number of results per page to return
         - sortOption: The sort method/order for results
         - section: The section to return results from
+        - hiddenFields: The list of hidden metadata fields to return
      
      ### Usge Example: ###
      ```
@@ -63,16 +69,17 @@ public struct CIOSearchQuery: CIORequestData {
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
 
-     let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products")
+     let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"])
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, perPage: Int = 30, section: String? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, perPage: Int = 30, section: String? = nil, hiddenFields: [String]? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page
         self.perPage = perPage
         self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName
         self.sortOption = sortOption
+        self.hiddenFields = hiddenFields
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -82,5 +89,6 @@ public struct CIOSearchQuery: CIORequestData {
         requestBuilder.set(facetFilters: self.filters?.facetFilters)
         requestBuilder.set(searchSection: self.section)
         requestBuilder.set(sortOption: self.sortOption)
+        requestBuilder.set(hiddenFields: self.hiddenFields)
     }
 }

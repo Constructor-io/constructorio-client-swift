@@ -38,7 +38,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        self.constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: "key_K2hlXt5aVSwoI1Uw"))
+        self.constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
     }
 
     override func tearDown() {
@@ -172,6 +172,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testRecommendations_WithInvalidPodId() {
+        let expectation = XCTestExpectation(description: "Request 400")
+        let query = CIORecommendationsQuery(podID: "bad_pod_id", itemID: customerID, section: sectionName)
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "Recommendations pod not found with id: bad_pod_id")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testAutocomplete() {
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIOAutocompleteQuery(query: "a", filters: nil, numResults: 20)
@@ -193,6 +205,45 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testAutocomplete_WithHiddenFields() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let hiddenFields = ["price_US", "price_CA"]
+        let query = CIOAutocompleteQuery(query: "a", numResults: 20, hiddenFields: hiddenFields)
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let products = responseData.sections["Products"]!
+            let autocompleteResult = products[0].result
+            let resultData = autocompleteResult.data
+            let price = resultData.metadata["price"] as? String
+            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
+            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(hiddenPriceCAValue)
+            XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testAutocomplete_WithInvalidKey() {
+        let expectation = XCTestExpectation(description: "Request 400")
+        let facetFilters = [
+            (key: "Brand", value: "A&W")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
+        let query = CIOAutocompleteQuery(query: "a", filters: queryFilters, numResults: 20)
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: "bad_api_key"))
+        constructor.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "We have no record of this key. You can find your key at app.constructor.io/dashboard.")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -224,6 +275,39 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testSearch_WithHiddenFields() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let hiddenFields = ["price_US", "price_CA"]
+        let query = CIOSearchQuery(query: "a", hiddenFields: hiddenFields)
+        self.constructor.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let searchResult = responseData.results[0]
+            let resultData = searchResult.data
+            let price = resultData.metadata["price"] as? String
+            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
+            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(hiddenPriceCAValue)
+            XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testSearch_WithInvalidParameterValue() {
+        let expectation = XCTestExpectation(description: "Request 400")
+        let query = CIOSearchQuery(query: "a", filters: nil, perPage: 500)
+        self.constructor.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page must be at most 100")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testBrowse() {
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431")
@@ -250,30 +334,22 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    func testAutocomplete_WithInvalidKey() {
-        let expectation = XCTestExpectation(description: "Request 400")
-        let facetFilters = [
-            (key: "Brand", value: "A&W")
-        ]
-        let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
-        let query = CIOAutocompleteQuery(query: "a", filters: queryFilters, numResults: 20)
-        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: "bad_api_key"))
-        constructor.autocomplete(forQuery: query, completionHandler: { response in
+    func testBrowse_WithHiddenFields() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let hiddenFields = ["price_US", "price_CA"]
+        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", hiddenFields: hiddenFields)
+        self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
-            XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "We have no record of this key. You can find your key at app.constructor.io/dashboard.")
-            expectation.fulfill()
-        })
-        self.wait(for: expectation)
-    }
+            let responseData = response.data!
+            let browseResult = responseData.results[0]
+            let resultData = browseResult.data
+            let price = resultData.metadata["price"] as? String
+            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
+            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
 
-    func testRecommendations_WithInvalidPodId() {
-        let expectation = XCTestExpectation(description: "Request 400")
-        let query = CIORecommendationsQuery(podID: "bad_pod_id", itemID: customerID, section: sectionName)
-        self.constructor.recommendations(forQuery: query, completionHandler: { response in
-            let cioError = response.error as? CIOError
-            XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "Recommendations pod not found with id: bad_pod_id")
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(hiddenPriceCAValue)
+            XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -298,18 +374,6 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
             XCTAssertEqual(cioError?.errorMessage, "You\'re trying to access an invalid endpoint. Please check documentation for allowed endpoints.")
-            expectation.fulfill()
-        })
-        self.wait(for: expectation)
-    }
-
-    func testSearch_WithInvalidParameterValue() {
-        let expectation = XCTestExpectation(description: "Request 400")
-        let query = CIOSearchQuery(query: "a", filters: nil, perPage: 500)
-        self.constructor.search(forQuery: query, completionHandler: { response in
-            let cioError = response.error as? CIOError
-            XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page must be at most 100")
             expectation.fulfill()
         })
         self.wait(for: expectation)
