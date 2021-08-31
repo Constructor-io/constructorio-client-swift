@@ -8,10 +8,7 @@
 
 import Foundation
 
-/**
- Represents any error that may occur in using ConstructorIO services.
- */
-public enum CIOError: Int, Error {
+public enum CIOErrorType: Int {
     case noConnection = -1009
     case badRequest = 400
     case unauthorized = 401
@@ -26,11 +23,20 @@ public enum CIOError: Int, Error {
     case unknownError = 1002
 }
 
-extension CIOError: CustomStringConvertible {
+public struct CIOError: Error, Equatable {
+    public let errorType: CIOErrorType
+    public var errorMessage: String?
 
-    /// The string representation of this CIOError.
-    public var string: String {
-        switch self {
+    public init(errorType: CIOErrorType, errorMessage: String? = nil) {
+        self.errorType = errorType
+
+        if errorMessage != nil {
+            self.errorMessage = errorMessage
+        }
+    }
+
+    func string() -> String {
+        switch self.errorType {
         case .noConnection: return "No Connection"
         case .badRequest: return "Bad Request"
         case .unauthorized: return "Unauthorized"
@@ -46,32 +52,36 @@ extension CIOError: CustomStringConvertible {
         }
     }
 
-    /// Get a description of this CIOError.
-    public var description: String {
-        let errorMessage: String
-        switch self {
-        case .noConnection: errorMessage = "The Internet connection appears to be offline."
-        case .badRequest: errorMessage = "Your request is invalid."
-        case .unauthorized: errorMessage = "Your api key is wrong."
-        case .forbidden: errorMessage = "You are not authorized to access the requested resource."
-        case .notFound: errorMessage = "The specified resource could not be found."
-        case .methodNotAllowed: errorMessage = "You tried to access a resource with an invalid method."
-        case .tooManyRequests: errorMessage = "You’re making too many requests."
-        case .internalServerError: errorMessage = "We had a problem with our server. Try again later."
-        case .serviceUnavailable: errorMessage = "We’re temporarially offline for maintanance. Please try again later."
-        case .invalidResponse: errorMessage = "We had a problem with our server. Try again later."
-        case .missingApiKey: errorMessage = "Missing api key"
-        case .unknownError: errorMessage = "Error occurred. Try again later."
+    func description() -> String {
+        let message: String
+
+        if self.errorMessage != nil {
+            message = self.errorMessage!
+        } else {
+            switch self.errorType {
+            case .noConnection: message = "The Internet connection appears to be offline."
+            case .badRequest: message = "Your request is invalid."
+            case .unauthorized: message = "Your api key is wrong."
+            case .forbidden: message = "You are not authorized to access the requested resource."
+            case .notFound: message = "The specified resource could not be found."
+            case .methodNotAllowed: message = "You tried to access a resource with an invalid method."
+            case .tooManyRequests: message = "You’re making too many requests."
+            case .internalServerError: message = "We had a problem with our server. Try again later."
+            case .serviceUnavailable: message = "We’re temporarially offline for maintanance. Please try again later."
+            case .invalidResponse: message = "We had a problem with our server. Try again later."
+            case .missingApiKey: message = "Missing api key"
+            case .unknownError: message = "Error occurred. Try again later."
+            }
         }
 
-        return "Error Code \(self.rawValue): \(self.string) - \(errorMessage)"
+        return "Error Code \(self.errorType.rawValue): \(self.string()) - \(message)"
     }
 }
 
 extension CIOError: LocalizedError {
 
     public var errorDescription: String? {
-        return self.string
+        return self.string()
     }
 
 }

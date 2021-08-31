@@ -69,13 +69,13 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
 
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
 
-        self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: {
-            response in
-            if let cioError = response.error as? CIOError {
-                XCTAssertEqual(cioError, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
-                expectation.fulfill()
+        self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: { response in
+                if let cioError = response.error as? CIOError {
+                    XCTAssertEqual(cioError.errorType, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
+                    expectation.fulfill()
+                }
             }
-        })
+        )
         self.wait(for: expectation)
     }
 
@@ -88,7 +88,7 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: {
             response in
             if let cioError = response.error as? CIOError {
-                XCTAssertEqual(cioError, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
+                XCTAssertEqual(cioError.errorType, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
         })
@@ -104,7 +104,7 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: {
             response in
             if let cioError = response.error as? CIOError {
-                XCTAssertEqual(cioError, .noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
+                XCTAssertEqual(cioError.errorType, .noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
                 expectation.fulfill()
             }
         })

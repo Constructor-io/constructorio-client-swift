@@ -15,7 +15,7 @@ class RecommendationsResponseParser: AbstractRecommendationsResponseParser {
             let json = try JSONSerialization.jsonObject(with: recommendationsResponseData) as? JSONObject
 
             guard let response = json?["response"] as? JSONObject else {
-                throw CIOError.invalidResponse
+                throw CIOError(errorType: .invalidResponse)
             }
 
             let resultsObj: [JSONObject]? = response["results"] as? [JSONObject]
@@ -33,7 +33,7 @@ class RecommendationsResponseParser: AbstractRecommendationsResponseParser {
             )
             // swiftlint:enable force_cast
         } catch {
-            throw CIOError.invalidResponse
+            throw CIOError(errorType: .invalidResponse)
         }
 
     }
