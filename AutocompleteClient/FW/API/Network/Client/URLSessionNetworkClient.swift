@@ -30,13 +30,15 @@ class URLSessionNetworkClient: NetworkClient {
             ConstructorIO.logger.log(Constants.Logging.recieveURLResponse(httpResponse))
 
             // Check the response for an error message
-            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-                errorMessage = jsonObj["message"] as? String
+            let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any]
+            if jsonObj != nil {
+                errorMessage = jsonObj?["message"] as? String
             }
 
             // Check if response code corresponds to a ConstructorIOError
-            if let constructorErrorType = CIOErrorType(rawValue: httpResponse.statusCode) {
-                let constructorError = CIOError(errorType: constructorErrorType, errorMessage: errorMessage)
+            let constructorErrorType = CIOErrorType(rawValue: httpResponse.statusCode)
+            if constructorErrorType != nil {
+                let constructorError = CIOError(errorType: constructorErrorType!, errorMessage: errorMessage)
                 completionHandler(NetworkResponse(error: constructorError))
                 return
             }
