@@ -9,6 +9,6 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, '8.0'
   spec.source_files = 'AutocompleteClient/**/*.swift'
   spec.framework    = 'UIKit'
-  spec.swift_versions = ['4.0', '4.1', '4.2']
+  spec.swift_versions = ['4.0', '4.1', '4.2', '5']
   spec.ios.resource_bundle 	  = { 'ConstructorAutocomplete' => ['AutocompleteClient/Resources/*.png', 'AutocompleteClient/**/*.xib'] }
 end

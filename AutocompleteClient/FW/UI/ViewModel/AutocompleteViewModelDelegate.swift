@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AutocompleteViewModelDelegate: class {
+public protocol AutocompleteViewModelDelegate: AnyObject {
     func viewModel(_ viewModel: AbstractAutocompleteViewModel, didIgnoreResult result: AutocompleteResult)
     func viewModel(_ viewModel: AbstractAutocompleteViewModel, didSetResult result: AutocompleteResult)
 }

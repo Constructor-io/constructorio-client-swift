@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol CIOSessionManagerDelegate: class {
+public protocol CIOSessionManagerDelegate: AnyObject {
     func sessionDidChange(from: Int, to: Int)
 }

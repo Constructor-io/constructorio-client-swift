@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SessionManager: class {
+public protocol SessionManager: AnyObject {
     var delegate: CIOSessionManagerDelegate? { get set }
 
     func getSessionWithIncrement() -> Int

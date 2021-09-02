@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ResponseParserDelegate: class {
+protocol ResponseParserDelegate: AnyObject {
     func shouldParseResult(result: CIOResult, inGroup group: CIOGroup?) -> Bool?
     func maximumGroupsShownPerResult(result: CIOResult, at index: Int) -> Int
 }
