@@ -62,6 +62,7 @@
 		BF12196825D1F06200496189 /* CIORecommendationsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196725D1F06200496189 /* CIORecommendationsQuery.swift */; };
 		BF12196A25D1FD5700496189 /* CIORecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196925D1FD5700496189 /* CIORecommendationsResponse.swift */; };
 		BF12196C25D1FDB300496189 /* CIORecommendationsPod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196B25D1FDB300496189 /* CIORecommendationsPod.swift */; };
+		BF45F3E626E187640069F13E /* NoSessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29B321762BD700DCFA07 /* NoSessionLoader.swift */; };
 		BF67BD3025E71F6E0039D479 /* CIORecommendationsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67BD2F25E71F6E0039D479 /* CIORecommendationsStrategy.swift */; };
 		BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */; };
 		BFC9502C25D48CE400118D4C /* AbstractRecommendationsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502B25D48CE400118D4C /* AbstractRecommendationsResponseParser.swift */; };
@@ -2196,6 +2197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF45F3E626E187640069F13E /* NoSessionLoader.swift in Sources */,
 				F64F46FD1F59D72C0094C697 /* XCTest+TimeoutFail.swift in Sources */,
 				F63374B11F5AA20500E481E7 /* ExpectationHandler.swift in Sources */,
 				F64F46FE1F59D7330094C697 /* TestConstants.swift in Sources */,

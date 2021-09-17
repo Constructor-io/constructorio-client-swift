@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol CIOAutocompleteDelegate: class {
+public protocol CIOAutocompleteDelegate: AnyObject {
 
     /**
      Called when CIOAutocompleteViewController's view is loaded (viewDidLoad).

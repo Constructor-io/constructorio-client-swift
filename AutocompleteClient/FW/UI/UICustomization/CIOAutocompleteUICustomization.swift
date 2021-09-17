@@ -9,7 +9,7 @@
 import UIKit
 
 @objc
-public protocol CIOAutocompleteUICustomization: class {
+public protocol CIOAutocompleteUICustomization: AnyObject {
 
     /**
      Returns a custom cell nib to be used in the CIOAutocompleteViewController.

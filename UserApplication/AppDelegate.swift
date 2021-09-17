@@ -142,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     func autocompleteController(controller: CIOAutocompleteViewController, errorDidOccur error: Error) {
         
         if let err = error as? CIOError {
-            switch(err) {
+            switch(err.errorType) {
             case .missingApiKey:
                 print("Missing api key error")
             default:

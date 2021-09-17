@@ -11,7 +11,7 @@ import UIKit
 /**
  Conform to this protocol if you want to use a custom error view.
  */
-public protocol CIOErrorView: class, NSObjectProtocol {
+public protocol CIOErrorView: NSObjectProtocol {
     /**
      Returns a UIView instance. If your UIView implements this protocol, simply return self.
 
