@@ -13,7 +13,7 @@ import Foundation
  */
 struct CIOTrackPurchaseData: CIORequestData {
 
-    let customerIDs: [String]
+    var customerIDs: [String]
     let revenue: Double?
     var sectionName: String?
     var orderID: String?
@@ -23,7 +23,12 @@ struct CIOTrackPurchaseData: CIORequestData {
     }
 
     init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
-        self.customerIDs = customerIDs
+        
+        if (customerIDs.count > 100) {
+            self.customerIDs = Array(customerIDs[0 ..< 100])
+        } else {
+            self.customerIDs = customerIDs
+        }
         self.sectionName = sectionName
         self.revenue = revenue
         self.orderID = orderID
