@@ -13,7 +13,7 @@ import Foundation
  */
 struct CIOTrackPurchaseData: CIORequestData {
 
-    var customerIDs: [String]
+    let customerIDs: [String]
     let revenue: Double?
     var sectionName: String?
     var orderID: String?
