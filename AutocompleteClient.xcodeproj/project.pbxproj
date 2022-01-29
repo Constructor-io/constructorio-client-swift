@@ -234,7 +234,7 @@
 		F685255D21414E1D00A27FAA /* CIOTrackSessionStartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */; };
 		F685255F2141543C00A27FAA /* RequestBuilder+QueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */; };
 		F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
-		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; };
 		F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */; };
 		F68A72FA1F56D22B00FA4D1B /* AutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A72F91F56D22B00FA4D1B /* AutocompleteViewModel.swift */; };
 		F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A72FB1F56D31700FA4D1B /* DefaultSearchItemCell.swift */; };
@@ -2625,7 +2625,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AutocompleteClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xd.SearchFW;
 				PRODUCT_MODULE_NAME = ConstructorAutocomplete;
@@ -2650,7 +2650,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AutocompleteClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xd.SearchFW;
 				PRODUCT_MODULE_NAME = ConstructorAutocomplete;
@@ -2668,7 +2668,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AutocompleteClientTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xd.SearchFWTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2684,7 +2684,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AutocompleteClientTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xd.SearchFWTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
