@@ -234,7 +234,7 @@
 		F685255D21414E1D00A27FAA /* CIOTrackSessionStartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */; };
 		F685255F2141543C00A27FAA /* RequestBuilder+QueryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */; };
 		F688A4491F56B4B600F169C1 /* ConstructorAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688A43F1F56B4B600F169C1 /* ConstructorAutocomplete.framework */; };
-		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F688A4501F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = F688A4421F56B4B600F169C1 /* ConstructorAutocomplete-Swift.h */; };
 		F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688A4911F56B57E00F169C1 /* CIOAutocompleteViewController.swift */; };
 		F68A72FA1F56D22B00FA4D1B /* AutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A72F91F56D22B00FA4D1B /* AutocompleteViewModel.swift */; };
 		F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A72FB1F56D31700FA4D1B /* DefaultSearchItemCell.swift */; };
