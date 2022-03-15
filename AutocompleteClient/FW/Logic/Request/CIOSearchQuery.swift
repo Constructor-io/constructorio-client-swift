@@ -38,11 +38,6 @@ public struct CIOSearchQuery: CIORequestData {
     public let sortOption: CIOSortOption?
     
     /**
-     The format options to apply
-     */
-    public let fmtOptions: CIOQueryFmtOptions?
-
-    /**
      The section to return results from
      */
     public let section: String
@@ -73,7 +68,6 @@ public struct CIOSearchQuery: CIORequestData {
         - section: The section to return results from
         - hiddenFields: The list of hidden metadata fields to return
         - hiddenFacets: The list of hidden facest to return
-        - fmtOptions: The format options used to refine result groups
      
      ### Usge Example: ###
      ```
@@ -84,7 +78,7 @@ public struct CIOSearchQuery: CIORequestData {
      let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"])
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, perPage: Int = 30, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, fmtOptions: CIOQueryFmtOptions? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, perPage: Int = 30, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page
@@ -93,7 +87,6 @@ public struct CIOSearchQuery: CIORequestData {
         self.sortOption = sortOption
         self.hiddenFields = hiddenFields
         self.hiddenFacets = hiddenFacets
-        self.fmtOptions = fmtOptions
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -105,6 +98,5 @@ public struct CIOSearchQuery: CIORequestData {
         requestBuilder.set(sortOption: self.sortOption)
         requestBuilder.set(hiddenFields: self.hiddenFields)
         requestBuilder.set(hiddenFacets: self.hiddenFacets)
-        requestBuilder.set(fmtOptions: self.fmtOptions?.fmtOptions)
     }
 }
