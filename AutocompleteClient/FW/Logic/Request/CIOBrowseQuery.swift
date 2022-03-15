@@ -42,7 +42,6 @@ public struct CIOBrowseQuery: CIORequestData {
      */
     public let sortOption: CIOSortOption?
 
-
     /**
      The section to return results from
      */
