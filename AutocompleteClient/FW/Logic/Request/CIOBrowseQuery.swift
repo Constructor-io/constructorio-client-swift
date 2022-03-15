@@ -43,6 +43,11 @@ public struct CIOBrowseQuery: CIORequestData {
     public let sortOption: CIOSortOption?
 
     /**
+     The format options to apply
+     */
+    public let fmtOptions: CIOQueryFmtOptions?
+    
+    /**
      The section to return results from
      */
     public let section: String
@@ -51,6 +56,11 @@ public struct CIOBrowseQuery: CIORequestData {
      The list of hidden metadata fields to return
      */
     public let hiddenFields: [String]?
+
+    /**
+     The list of hidden facet fields to return
+     */
+    public let hiddenFacets: [String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.BrowseQuery.format, baseURL, filterName, filterValue)
@@ -68,6 +78,8 @@ public struct CIOBrowseQuery: CIORequestData {
         - sortOption: The sort method/order for results
         - section: The section to return results from
         - hiddenFields: The list of hidden metadata fields to return
+        - hiddenFacets: The list of hidden facest to return
+        - fmtOptions: The format options used to refine result groups
 
      ### Usage Example: ###
      ```
@@ -78,7 +90,7 @@ public struct CIOBrowseQuery: CIORequestData {
      let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"])
      ```
      */
-    public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, perPage: Int = 30, section: String? = nil, hiddenFields: [String]? = nil) {
+    public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, perPage: Int = 30, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, fmtOptions: CIOQueryFmtOptions? = nil) {
         self.filterName = filterName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filterValue = filterValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
@@ -87,6 +99,8 @@ public struct CIOBrowseQuery: CIORequestData {
         self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName
         self.sortOption = sortOption
         self.hiddenFields = hiddenFields
+        self.hiddenFacets = hiddenFacets
+        self.fmtOptions = fmtOptions
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -97,5 +111,7 @@ public struct CIOBrowseQuery: CIORequestData {
         requestBuilder.set(searchSection: self.section)
         requestBuilder.set(sortOption: self.sortOption)
         requestBuilder.set(hiddenFields: self.hiddenFields)
+        requestBuilder.set(hiddenFacets: self.hiddenFacets)
+        requestBuilder.set(fmtOptions: self.fmtOptions?.fmtOptions)
     }
 }

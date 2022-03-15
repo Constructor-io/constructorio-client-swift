@@ -145,6 +145,30 @@ extension RequestBuilder {
 
     func set(hiddenField: String?) {
         guard let hiddenField = hiddenField else { return }
-        queryItems.add(URLQueryItem(name: "hidden_fields", value: hiddenField))
+        self.set(fmtOption: (key: "hidden_fields", value: hiddenField))
+    }
+    
+    func set(hiddenFacets: [String]?) {
+        guard let hiddenFacets = hiddenFacets else { return }
+        for hiddenFacet in hiddenFacets {
+            self.set(hiddenFacet: hiddenFacet)
+        }
+    }
+
+    func set(hiddenFacet: String?) {
+        guard let hiddenFacet = hiddenFacet else { return }
+        self.set(fmtOption: (key: "hidden_facets", value: hiddenFacet))
+    }
+    
+    func set(fmtOptions: [FmtOptions]?) {
+        guard let options = fmtOptions else { return }
+        for option in options {
+            self.set(fmtOption: option)
+        }
+    }
+
+    func set(fmtOption: FmtOptions?) {
+        guard let option = fmtOption else { return }
+        queryItems.add(URLQueryItem(name: Constants.SearchQuery.fmtOptionsKey(option.key), value: option.value))
     }
 }

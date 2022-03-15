@@ -79,6 +79,7 @@ struct Constants {
         static let perPage = "num_results_per_page"
         static let groupFilter = "filters[group_id]"
         static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
+        static let fmtOptionsKey = { (key: String) -> String in "fmt_options[\(key)]" }
         static let section = "section"
         static let sortBy = "sort_by"
         static let sortOrder = "sort_order"
@@ -91,6 +92,7 @@ struct Constants {
         static let perPage = "num_results_per_page"
         static let groupFilter = "filters[group_id]"
         static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
+        static let fmtOptionsKey = { (key: String) -> String in "fmt_options[\(key)]" }
         static let section = "section"
         static let sortBy = "sort_by"
         static let sortOrder = "sort_order"
