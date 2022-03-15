@@ -36,7 +36,7 @@ public struct CIOSearchQuery: CIORequestData {
      The sort method/order for results
      */
     public let sortOption: CIOSortOption?
-    
+
     /**
      The section to return results from
      */
