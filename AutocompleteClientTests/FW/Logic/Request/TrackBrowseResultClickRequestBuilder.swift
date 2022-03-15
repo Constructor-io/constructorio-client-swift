@@ -37,6 +37,7 @@ class TrackBrowseResultClickRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["item_id"] as? String, customerID)
         XCTAssertEqual(payload?["result_position_on_page"] as? Int, resultPositionOnPage)
         XCTAssertEqual(payload?["key"] as? String, testACKey)
-        XCTAssertEqual(payload?["c"] as? String, "cioios-")
+        XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
+        
     }
 }
