@@ -35,7 +35,7 @@ class TrackBrowseResultsLoadedRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["filter_value"] as? String, filterValue)
         XCTAssertEqual(payload?["result_count"] as? Int, resultCount)
         XCTAssertEqual(payload?["key"] as? String, testACKey)
-        XCTAssertEqual(payload?["c"] as? String, "cioios-")
+        XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
         XCTAssertEqual(payload?["url"] as? String, url)
     }
 }
