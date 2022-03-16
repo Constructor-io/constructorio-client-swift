@@ -14,7 +14,7 @@ public class CIOBrowseQueryBuilder {
      The primary filter name that the user browsed for
      */
     public let filterName: String
-    
+
     /**
      The primary filter value that the user browsed for
      */
@@ -64,7 +64,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add additional filters
      */
-    public func withFilters(_ filters: CIOQueryFilters) -> CIOBrowseQueryBuilder {
+    public func setFilters(_ filters: CIOQueryFilters) -> CIOBrowseQueryBuilder {
         self.filters = filters
         return self
     }
@@ -72,7 +72,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add a sort option
      */
-    public func withSortOption(_ sortOption: CIOSortOption) -> CIOBrowseQueryBuilder {
+    public func setSortOption(_ sortOption: CIOSortOption) -> CIOBrowseQueryBuilder {
         self.sortOption = sortOption
         return self
     }
@@ -80,7 +80,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add a page number
      */
-    public func withPage(_ page: Int) -> CIOBrowseQueryBuilder {
+    public func setPage(_ page: Int) -> CIOBrowseQueryBuilder {
         self.page = page
         return self
     }
@@ -88,7 +88,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add the number of results to return per page
      */
-    public func withPerPage(_ perPage: Int) -> CIOBrowseQueryBuilder {
+    public func setPerPage(_ perPage: Int) -> CIOBrowseQueryBuilder {
         self.perPage = perPage
         return self
     }
@@ -96,7 +96,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add the number of results to return per page
      */
-    public func withSection(_ section: String) -> CIOBrowseQueryBuilder {
+    public func setSection(_ section: String) -> CIOBrowseQueryBuilder {
         self.section = section
         return self
     }
@@ -104,13 +104,13 @@ public class CIOBrowseQueryBuilder {
     /**
      Add a list of hidden fields to return
      */
-    public func withHiddenFields(_ hiddenFields: [String]) -> CIOBrowseQueryBuilder {
+    public func setHiddenFields(_ hiddenFields: [String]) -> CIOBrowseQueryBuilder {
         self.hiddenFields = hiddenFields
         return self
     }
 
     /**
-     Build the request object with all of the provided data
+     Build the request object set all of the provided data
      
      ### Usage Example: ###
      ```
@@ -118,12 +118,13 @@ public class CIOBrowseQueryBuilder {
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
      
-     let builder = CIOBrowseQueryBuilder(query: "blue")
-     searchQuery.filters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
-     searchQuery.page = 2
-     searchQuery.perPage = 50
-     
-     let searchQuery = builder.build()
+     let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
+        .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
+        .setPage(2)
+        .setPerPage(40)
+        .setSection("Products")
+        .setHiddenFields(["hidden_price_field", "color_swatches"])
+        .build()
      ```
      */
     public func build() -> CIOBrowseQuery {
