@@ -13,27 +13,27 @@ public class CIOAutocompleteQueryBuilder {
     /**
      The user typed query to return results for
      */
-    public let query: String
+    let query: String
 
     /**
      The number of results to return
      */
-    public var numResults: Int?
+    var numResults: Int?
 
     /**
      The section to return results from
      */
-    public var numResultsForSection: [String: Int]?
+    var numResultsForSection: [String: Int]?
 
     /**
      The filters used to refine results
      */
-    public var filters: CIOQueryFilters?
+    var filters: CIOQueryFilters?
 
     /**
      The list of hidden metadata fields to return
      */
-    public var hiddenFields: [String]?
+    var hiddenFields: [String]?
 
     /**
      Creata a Autocomplete request query builder

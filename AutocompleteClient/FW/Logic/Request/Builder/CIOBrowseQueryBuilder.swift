@@ -13,42 +13,42 @@ public class CIOBrowseQueryBuilder {
     /**
      The primary filter name that the user browsed for
      */
-    public let filterName: String
+    let filterName: String
 
     /**
      The primary filter value that the user browsed for
      */
-    public let filterValue: String
+    let filterValue: String
 
     /**
      The filters used to refine results
      */
-    public var filters: CIOQueryFilters?
+    var filters: CIOQueryFilters?
 
     /**
      The page number of the results
      */
-    public var page: Int?
+    var page: Int?
 
     /**
      The number of results per page to return
      */
-    public var perPage: Int?
+    var perPage: Int?
 
     /**
      The sort method/order for results
      */
-    public var sortOption: CIOSortOption?
+    var sortOption: CIOSortOption?
 
     /**
      The section to return results from
      */
-    public var section: String?
+    var section: String?
 
     /**
      The list of hidden metadata fields to return
      */
-    public var hiddenFields: [String]?
+    var hiddenFields: [String]?
 
     /**
      Creata a Browse request query builder

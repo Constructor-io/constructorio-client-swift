@@ -13,32 +13,32 @@ public class CIORecommendationsQueryBuilder {
     /**
      The pod ID
      */
-    public let podID: String
+    let podID: String
 
     /**
      The item id to retrieve recommendations for (strategy specific)
      */
-    public var itemID: String?
+    var itemID: String?
 
     /**
      The term to use to refine results (strategy specific)
      */
-    public var term: String?
+    var term: String?
 
     /**
      The filters used to refine results (strategy specific)
      */
-    public var filters: CIOQueryFilters?
+    var filters: CIOQueryFilters?
 
     /**
      The number of results to return
      */
-    public var numResults: Int?
+    var numResults: Int?
 
     /**
      The section to return results from
      */
-    public var section: String?
+    var section: String?
 
     /**
      Creata a Recommendations request query builder
