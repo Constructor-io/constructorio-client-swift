@@ -82,9 +82,9 @@ public struct CIOBrowseQuery: CIORequestData {
         self.filterName = filterName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filterValue = filterValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
-        self.page = page != nil ? page! : Constants.SearchQuery.defaultPage
-        self.perPage = perPage != nil ? perPage! : Constants.SearchQuery.defaultPerPage
-        self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName
+        self.page = page != nil ? page! : Constants.BrowseQuery.defaultPage
+        self.perPage = perPage != nil ? perPage! : Constants.BrowseQuery.defaultPerPage
+        self.section = section != nil ? section! : Constants.BrowseQuery.defaultSectionName
         self.sortOption = sortOption
         self.hiddenFields = hiddenFields
     }

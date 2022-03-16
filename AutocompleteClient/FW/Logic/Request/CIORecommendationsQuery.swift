@@ -62,10 +62,10 @@ public struct CIORecommendationsQuery: CIORequestData {
      let recommendationsQuery = CIORecommendationsQuery(podID: "pod_name", itemID: "item_id", numResults: 5, section: "Products")
      ```
      */
-    public init(podID: String, itemID: String? = nil, term: String? = nil, filters: CIOQueryFilters? = nil, numResults: Int = 5, section: String? = nil) {
+    public init(podID: String, itemID: String? = nil, term: String? = nil, filters: CIOQueryFilters? = nil, numResults: Int? = nil, section: String? = nil) {
         self.podID = podID
         self.filters = filters
-        self.numResults = numResults
+        self.numResults = numResults != nil ? numResults! : Constants.RecommendationsQuery.defaultNumResults
         self.section = section != nil ? section! : Constants.RecommendationsQuery.defaultSectionName
         self.itemID = itemID
         self.term = term

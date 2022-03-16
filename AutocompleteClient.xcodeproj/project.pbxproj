@@ -64,6 +64,8 @@
 		BF12196C25D1FDB300496189 /* CIORecommendationsPod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196B25D1FDB300496189 /* CIORecommendationsPod.swift */; };
 		BF380F1627E12623005E01F5 /* CIOSearchQueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF380F1527E12623005E01F5 /* CIOSearchQueryBuilder.swift */; };
 		BF380F1827E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF380F1727E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift */; };
+		BF380F1A27E2787C005E01F5 /* CIORecommendationsQueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF380F1927E2787C005E01F5 /* CIORecommendationsQueryBuilder.swift */; };
+		BF380F1C27E28115005E01F5 /* CIOAutocompleteQueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF380F1B27E28115005E01F5 /* CIOAutocompleteQueryBuilder.swift */; };
 		BF45F3E626E187640069F13E /* NoSessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29B321762BD700DCFA07 /* NoSessionLoader.swift */; };
 		BF67BD3025E71F6E0039D479 /* CIORecommendationsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67BD2F25E71F6E0039D479 /* CIORecommendationsStrategy.swift */; };
 		BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */; };
@@ -362,6 +364,8 @@
 		BF12196B25D1FDB300496189 /* CIORecommendationsPod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsPod.swift; sourceTree = "<group>"; };
 		BF380F1527E12623005E01F5 /* CIOSearchQueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchQueryBuilder.swift; sourceTree = "<group>"; };
 		BF380F1727E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseQueryBuilder.swift; sourceTree = "<group>"; };
+		BF380F1927E2787C005E01F5 /* CIORecommendationsQueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsQueryBuilder.swift; sourceTree = "<group>"; };
+		BF380F1B27E28115005E01F5 /* CIOAutocompleteQueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOAutocompleteQueryBuilder.swift; sourceTree = "<group>"; };
 		BF67BD2F25E71F6E0039D479 /* CIORecommendationsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsStrategy.swift; sourceTree = "<group>"; };
 		BFC17B2DD098BEA7AF8F0E7E /* Pods-UserApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
@@ -842,6 +846,8 @@
 				F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */,
 				BF380F1527E12623005E01F5 /* CIOSearchQueryBuilder.swift */,
 				BF380F1727E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift */,
+				BF380F1927E2787C005E01F5 /* CIORecommendationsQueryBuilder.swift */,
+				BF380F1B27E28115005E01F5 /* CIOAutocompleteQueryBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -2221,6 +2227,7 @@
 			files = (
 				F6EC29AD2175EF1700DCFA07 /* Session.swift in Sources */,
 				F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */,
+				BF380F1C27E28115005E01F5 /* CIOAutocompleteQueryBuilder.swift in Sources */,
 				F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */,
 				0885D83C25717F460038AE96 /* AbstractBrowseResponseParser.swift in Sources */,
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
@@ -2307,6 +2314,7 @@
 				F6548834208633E20044E403 /* NSAttributedString+Build.swift in Sources */,
 				0885D83925717EFF0038AE96 /* CIOBrowseResponse.swift in Sources */,
 				0855BA4A25B00D5F00CC35F9 /* TrackingTaskResponse.swift in Sources */,
+				BF380F1A27E2787C005E01F5 /* CIORecommendationsQueryBuilder.swift in Sources */,
 				088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */,
 				F65BBCC22151621A007FEB22 /* IDGenerator.swift in Sources */,
 				F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */,

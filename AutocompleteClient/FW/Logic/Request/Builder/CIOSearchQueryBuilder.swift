@@ -120,6 +120,8 @@ public class CIOSearchQueryBuilder {
         .setSection("Products")
         .setHiddenFields(["hidden_price_field", "color_swatches"])
         .build()
+     
+     constructor.search(forQuery: query, completionHandler: { ... })
      ```
      */
     public func build() -> CIOSearchQuery {

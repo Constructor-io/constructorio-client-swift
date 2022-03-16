@@ -62,7 +62,7 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    func testRecommendations_AttachesCustomSectionParameter() {
+    func testRecommendations_AttachesItemIDParameter() {
         let itemID = "P910293"
         let query = CIORecommendationsQuery(podID: "item_page_1", itemID: itemID)
 
@@ -73,7 +73,7 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testRecommendations_AttachesItemIdParameter() {
+    func testRecommendations_AttachesTermParameter() {
         let term = "pizza"
         let query = CIORecommendationsQuery(podID: "item_page_1", term: term)
 
@@ -94,7 +94,7 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testRecommendations_AttachesTermParameter() {
+    func testRecommendations_AttachesCustomSectionParameter() {
         let customSection = "customSection"
         let query = CIORecommendationsQuery(podID: "item_page_1", section: customSection)
 
@@ -153,4 +153,81 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testRecommendations_UsingRecommendationsQueryBuilder_ReturnsNonNilResponse() {
+        let query = CIORecommendationsQueryBuilder(podID: "item_page_1").build()
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations should send a valid request.", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
+
+    func testRecommendations_UsingRecommendationsQueryBuilder_AttachesItemIDParameter() {
+        let itemID = "P910293"
+        let query = CIORecommendationsQueryBuilder(podID: "item_page_1")
+            .setItemID(itemID)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with an item id should send a valid request.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&item_id=\(itemID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
+
+    func testRecommendations_UsingRecommendationsQueryBuilder_AttachesTermParameter() {
+        let term = "pizza"
+        let query = CIORecommendationsQueryBuilder(podID: "item_page_1")
+            .setTerm(term)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with a term should send a valid request.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products&term=\(term)"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
+
+    func testRecommendations_UsingRecommendationsQueryBuilder_AttachesNumResultsParameter() {
+        let customNumResults = 13
+        let query = CIORecommendationsQueryBuilder(podID: "item_page_1")
+            .setNumResults(customNumResults)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with a custom num results count should send a valid request.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=\(customNumResults)&s=\(kRegexSession)&section=Products"), builder.create())
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
+
+    func testRecommendations_UsingRecommendationsQueryBuilder_AttachesCustomSectionParameter() {
+        let customSection = "customSection"
+        let query = CIORecommendationsQueryBuilder(podID: "item_page_1")
+            .setSection(customSection)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with a custom section should send a valid request.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=\(customSection)"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
+
+    func testRecommendations_UsingRecommendationsQueryBuilder_AttachesFilters() {
+        let facetFilters = [(key: "facet1", value: "Natural"),
+                            (key: "facet1", value: "Organic"),
+                            (key: "facet1", value: "Whole-grain")]
+        let query = CIORecommendationsQueryBuilder(podID: "item_page_1")
+            .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with multiple facet filters should have multiple filters in the URL.", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bfacet1%5D=Natural&filters%5Bfacet1%5D=Organic&filters%5Bfacet1%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
 }

@@ -97,6 +97,8 @@ struct Constants {
         static let sortBy = "sort_by"
         static let sortOrder = "sort_order"
         static let defaultSectionName = "Products"
+        static let defaultPage = 1
+        static let defaultPerPage = 30
     }
 
     struct RecommendationsQuery {
@@ -108,6 +110,7 @@ struct Constants {
         static let groupFilter = "filters[group_id]"
         static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }
         static let defaultSectionName = "Products"
+        static let defaultNumResults = 5
     }
 
     struct Response {

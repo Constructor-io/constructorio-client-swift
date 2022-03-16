@@ -51,10 +51,11 @@ public class CIOBrowseQueryBuilder {
     public var hiddenFields: [String]?
 
     /**
-     Creata a Search request query builder
+     Creata a Browse request query builder
      
      - Parameters:
-        - query: The user typed query to return results for
+        - filterName: The primary filter name that the user browsed for
+        - filterValue: The primary filter value that the user browsed for
      */
     public init(filterName: String, filterValue: String) {
         self.filterName = filterName
@@ -125,6 +126,8 @@ public class CIOBrowseQueryBuilder {
         .setSection("Products")
         .setHiddenFields(["hidden_price_field", "color_swatches"])
         .build()
+     
+     constructor.browse(forQuery: query, completionHandler: { ... })
      ```
      */
     public func build() -> CIOBrowseQuery {
