@@ -62,6 +62,8 @@
 		BF12196825D1F06200496189 /* CIORecommendationsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196725D1F06200496189 /* CIORecommendationsQuery.swift */; };
 		BF12196A25D1FD5700496189 /* CIORecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196925D1FD5700496189 /* CIORecommendationsResponse.swift */; };
 		BF12196C25D1FDB300496189 /* CIORecommendationsPod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF12196B25D1FDB300496189 /* CIORecommendationsPod.swift */; };
+		BF380F1627E12623005E01F5 /* CIOSearchQueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF380F1527E12623005E01F5 /* CIOSearchQueryBuilder.swift */; };
+		BF380F1827E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF380F1727E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift */; };
 		BF45F3E626E187640069F13E /* NoSessionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC29B321762BD700DCFA07 /* NoSessionLoader.swift */; };
 		BF67BD3025E71F6E0039D479 /* CIORecommendationsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67BD2F25E71F6E0039D479 /* CIORecommendationsStrategy.swift */; };
 		BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */; };
@@ -358,6 +360,8 @@
 		BF12196725D1F06200496189 /* CIORecommendationsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsQuery.swift; sourceTree = "<group>"; };
 		BF12196925D1FD5700496189 /* CIORecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsResponse.swift; sourceTree = "<group>"; };
 		BF12196B25D1FDB300496189 /* CIORecommendationsPod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsPod.swift; sourceTree = "<group>"; };
+		BF380F1527E12623005E01F5 /* CIOSearchQueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOSearchQueryBuilder.swift; sourceTree = "<group>"; };
+		BF380F1727E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseQueryBuilder.swift; sourceTree = "<group>"; };
 		BF67BD2F25E71F6E0039D479 /* CIORecommendationsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIORecommendationsStrategy.swift; sourceTree = "<group>"; };
 		BFC17B2DD098BEA7AF8F0E7E /* Pods-UserApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		BFC9502425D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
@@ -836,6 +840,8 @@
 				F67BFC9620B84C2600986557 /* QueryItemCollection.swift */,
 				F192DDED1F5F123400114C8C /* RequestBuilder.swift */,
 				F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */,
+				BF380F1527E12623005E01F5 /* CIOSearchQueryBuilder.swift */,
+				BF380F1727E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -2250,12 +2256,14 @@
 				F6EC29B2217601D700DCFA07 /* CIOSessionLoader.swift in Sources */,
 				F6B220EB209C68F8003A5D48 /* CustomSearchBar.swift in Sources */,
 				F1F68DDA1F58B6A300B42602 /* CIOAutocompleteResponseParser.swift in Sources */,
+				BF380F1627E12623005E01F5 /* CIOSearchQueryBuilder.swift in Sources */,
 				F6852559213D604900A27FAA /* AutocompleteResultCount.swift in Sources */,
 				08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */,
 				0828954D256C5A85009A00BC /* CIOAutocompleteResponse.swift in Sources */,
 				0828954B256C5A85009A00BC /* CIOSearchRedirectInfo.swift in Sources */,
 				08289544256C5A85009A00BC /* CIOSortOption.swift in Sources */,
 				BF67BD3025E71F6E0039D479 /* CIORecommendationsStrategy.swift in Sources */,
+				BF380F1827E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
 				F1F68DD41F58B59F00B42602 /* CIOAutocompleteQuery.swift in Sources */,
 				0828954E256C5A85009A00BC /* CIOAutocompleteResult.swift in Sources */,

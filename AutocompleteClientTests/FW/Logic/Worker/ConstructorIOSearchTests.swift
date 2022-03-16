@@ -179,4 +179,47 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testSearch_UsingSearchQueryBuilder_WithValidRequest_ReturnsNonNilResponse() {
+        let query = CIOSearchQueryBuilder(query: "potato").build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with valid parameters should return a non-nil response.", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.search(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testSearch_UsingSearchQueryBuilderWithPageParams() {
+        let query = CIOSearchQueryBuilder(query: "potato")
+            .withPage(5)
+            .withPerPage(50)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with valid parameters should return a non-nil response.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=50&page=5&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.search(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testSearch_UsingSearchQueryBuilderWithFacetFilters() {
+        let facetFilters = [(key: "facetOne", value: "Organic"),
+                            (key: "facetOne", value: "Natural"),
+                            (key: "facetOne", value: "Whole-grain")]
+        let query = CIOSearchQueryBuilder(query: "potato")
+            .withPage(5)
+            .withPerPage(50)
+            .withFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with multiple facet filters with the same name should have a multiple facet URL query items", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=50&page=5&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.search(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
 }

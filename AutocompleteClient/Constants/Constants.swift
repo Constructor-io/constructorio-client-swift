@@ -83,6 +83,8 @@ struct Constants {
         static let sortBy = "sort_by"
         static let sortOrder = "sort_order"
         static let defaultSectionName = "Products"
+        static let defaultPage = 1
+        static let defaultPerPage = 30
     }
 
     struct BrowseQuery {
