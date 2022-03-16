@@ -8,12 +8,12 @@
 
 import Foundation
 
-public typealias FmtOptions = (key: String, value: String)
+public typealias FmtOption = (key: String, value: String)
 
 public struct CIOQueryFmtOptions {
-    public let fmtOptions: [FmtOptions]?
+    public let fmtOptions: [FmtOption]?
 
-    public init(fmtOptions: [FmtOptions]?) {
+    public init(fmtOptions: [FmtOption]?) {
         self.fmtOptions = fmtOptions;
     }
 }

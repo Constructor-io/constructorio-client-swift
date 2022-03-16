@@ -160,14 +160,14 @@ extension RequestBuilder {
         self.set(fmtOption: (key: "hidden_facets", value: hiddenFacet))
     }
     
-    func set(fmtOptions: [FmtOptions]?) {
+    func set(fmtOptions: [FmtOption]?) {
         guard let options = fmtOptions else { return }
         for option in options {
             self.set(fmtOption: option)
         }
     }
 
-    func set(fmtOption: FmtOptions?) {
+    func set(fmtOption: FmtOption?) {
         guard let option = fmtOption else { return }
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.fmtOptionsKey(option.key), value: option.value))
     }
