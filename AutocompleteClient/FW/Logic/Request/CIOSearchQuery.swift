@@ -75,7 +75,7 @@ public struct CIOSearchQuery: CIORequestData {
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
 
-     let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"])
+     let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"])
      ```
      */
     public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, perPage: Int = 30, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil) {

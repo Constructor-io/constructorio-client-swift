@@ -306,7 +306,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let searchResult = responseData.results[0]
-            let hiddenFacet = responseData.facets[0].displayName;
+            let hiddenFacet = responseData.facets[0].name;
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(searchResult)
@@ -384,7 +384,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let browseResult = responseData.results[0]
-            let hiddenFacet = responseData.facets[0].displayName
+            let hiddenFacet = responseData.facets[0].name
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(browseResult)
