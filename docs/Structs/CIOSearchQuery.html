@@ -332,9 +332,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete14CIOSearchQueryV5query7filters10sortOption4page7perPage7section12hiddenFieldsACSS_AA15CIOQueryFiltersVSgAA07CIOSortH0VSgS2iSSSgSaySSGSgtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(query:filters:sortOption:page:perPage:section:hiddenFields:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete14CIOSearchQueryV5query7filters10sortOption4page7perPage7section12hiddenFieldsACSS_AA15CIOQueryFiltersVSgAA07CIOSortH0VSgS2iSSSgSaySSGSgtcfc">init(query:<wbr>filters:<wbr>sortOption:<wbr>page:<wbr>perPage:<wbr>section:<wbr>hiddenFields:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete14CIOSearchQueryV12hiddenFacetsSaySSGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/hiddenFacets" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete14CIOSearchQueryV12hiddenFacetsSaySSGSgvp">hiddenFacets</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The list of hidden facet fields to return</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete14CIOSearchQueryV5query7filters10sortOption4page7perPage7section12hiddenFields0M6FacetsACSS_AA15CIOQueryFiltersVSgAA07CIOSortH0VSgS2iSSSgSaySSGSgATtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(query:filters:sortOption:page:perPage:section:hiddenFields:hiddenFacets:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete14CIOSearchQueryV5query7filters10sortOption4page7perPage7section12hiddenFields0M6FacetsACSS_AA15CIOQueryFiltersVSgAA07CIOSortH0VSgS2iSSSgSaySSGSgATtcfc">init(query:<wbr>filters:<wbr>sortOption:<wbr>page:<wbr>perPage:<wbr>section:<wbr>hiddenFields:<wbr>hiddenFacets:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -348,7 +375,7 @@
                     <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
                     <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kraft Foods"</span><span class="p">)]</span>
 
-<span class="k">let</span> <span class="nv">searchQuery</span> <span class="o">=</span> <span class="kt">CIOSearchQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"red"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">),</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="s">"price_CA"</span><span class="p">,</span> <span class="s">"currency_CA"</span><span class="p">])</span>
+<span class="k">let</span> <span class="nv">searchQuery</span> <span class="o">=</span> <span class="kt">CIOSearchQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"red"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">),</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="s">"price_CA"</span><span class="p">,</span> <span class="s">"currency_CA"</span><span class="p">],</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="s">"brand"</span><span class="p">,</span> <span class="s">"price_CA"</span><span class="p">])</span>
 </code></pre>
 
                       </div>
@@ -356,7 +383,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sortOption</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOSortOption.html">CIOSortOption</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sortOption</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOSortOption.html">CIOSortOption</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -448,6 +475,18 @@
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hiddenFacets</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list of hidden facest to return</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -459,7 +498,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://www.constructor.io" target="_blank" rel="external">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2021-08-31)</p>
+          <p>&copy; 2022 <a class="link" href="https://www.constructor.io" target="_blank" rel="external">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2022-03-30)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
