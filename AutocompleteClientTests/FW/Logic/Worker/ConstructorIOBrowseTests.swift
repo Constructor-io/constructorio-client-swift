@@ -27,7 +27,7 @@ class ConstructorIOBrowseTests: XCTestCase {
         let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet")
 
         let builder = CIOBuilder(expectation: "Calling Browse should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=cioios-&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
 
         self.constructor.browse(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
