@@ -90,4 +90,17 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
         XCTAssertEqual(payload?["order_id"] as? String, orderID)
     }
+    
+    func testTrackPurchaseBuilder_WithLargeItemsArray() {
+        let tracker = CIOTrackPurchaseData(customerIDs: Array(repeating: "itemID", count: 150), sectionName: self.sectionName, orderID: self.orderID)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let items = payload?["items"] as? [[String:String]] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
+        XCTAssertEqual(items.count, 100)
+    }
 }
