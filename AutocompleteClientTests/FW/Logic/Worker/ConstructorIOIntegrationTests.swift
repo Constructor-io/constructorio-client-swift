@@ -13,6 +13,7 @@ import ConstructorAutocomplete
 class ConstructorIOIntegrationTests: XCTestCase {
 
     fileprivate let testACKey = "key_K2hlXt5aVSwoI1Uw"
+    fileprivate let unitTestKey = "ZqXaOfXuBWD4s3XzCI1q"
     fileprivate let searchTerm = "pork"
     fileprivate let session = 90
     fileprivate let filterName = "group_id"
@@ -295,6 +296,25 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testSearch_WithHiddenFacets() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let hiddenFacets = ["Brand", "hiddenFacet"]
+        let query = CIOSearchQuery(query: "item1", hiddenFacets: hiddenFacets)
+        constructorClient.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let searchResult = responseData.results[0]
+            let hiddenFacet = responseData.facets[0].name;
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(searchResult)
+            XCTAssertEqual(hiddenFacet, hiddenFacets[0])
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 
     func testSearch_WithInvalidParameterValue() {
         let expectation = XCTestExpectation(description: "Request 400")
@@ -350,6 +370,25 @@ class ConstructorIOIntegrationTests: XCTestCase {
             XCTAssertNil(cioError)
             XCTAssertNotNil(hiddenPriceCAValue)
             XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testBrowse_WithHiddenFacets() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let hiddenFacets = ["Brand", "hiddenFacet2"]
+        let query = CIOBrowseQuery(filterName: "Brand", filterValue: "XYZ", hiddenFacets: hiddenFacets)
+        constructorClient.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let browseResult = responseData.results[0]
+            let hiddenFacet = responseData.facets[0].name
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(browseResult)
+            XCTAssertEqual(hiddenFacet, hiddenFacets[0])
             expectation.fulfill()
         })
         self.wait(for: expectation)
