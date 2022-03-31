@@ -46,6 +46,11 @@ public class CIOSearchQueryBuilder {
     var hiddenFields: [String]?
 
     /**
+     The list of hidden facets to return
+     */
+    var hiddenFacets: [String]?
+
+    /**
      Creata a Search request query builder
      
      - Parameters:
@@ -96,10 +101,18 @@ public class CIOSearchQueryBuilder {
     }
 
     /**
-     Add a list of hidden fields to return
+     Add a list of hidden metadata fields to return
      */
     public func setHiddenFields(_ hiddenFields: [String]) -> CIOSearchQueryBuilder {
         self.hiddenFields = hiddenFields
+        return self
+    }
+
+    /**
+     Add a list of hidden facets to return
+     */
+    public func setHiddenFacets(_ hiddenFacets: [String]) -> CIOSearchQueryBuilder {
+        self.hiddenFacets = hiddenFacets
         return self
     }
 
@@ -119,12 +132,13 @@ public class CIOSearchQueryBuilder {
         .setPerPage(40)
         .setSection("Products")
         .setHiddenFields(["hidden_price_field", "color_swatches"])
+        .setHiddenFacets(["hidden_facet"])
         .build()
      
      constructor.search(forQuery: query, completionHandler: { ... })
      ```
      */
     public func build() -> CIOSearchQuery {
-        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields)
+        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets)
     }
 }

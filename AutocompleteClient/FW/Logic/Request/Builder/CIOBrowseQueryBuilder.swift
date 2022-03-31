@@ -51,6 +51,11 @@ public class CIOBrowseQueryBuilder {
     var hiddenFields: [String]?
 
     /**
+     The list of hidden facets to return
+     */
+    var hiddenFacets: [String]?
+
+    /**
      Creata a Browse request query builder
      
      - Parameters:
@@ -103,10 +108,18 @@ public class CIOBrowseQueryBuilder {
     }
 
     /**
-     Add a list of hidden fields to return
+     Add a list of hidden metadata fields to return
      */
     public func setHiddenFields(_ hiddenFields: [String]) -> CIOBrowseQueryBuilder {
         self.hiddenFields = hiddenFields
+        return self
+    }
+
+    /**
+     Add a list of hidden facets to return
+     */
+    public func setHiddenFacets(_ hiddenFacets: [String]) -> CIOBrowseQueryBuilder {
+        self.hiddenFacets = hiddenFacets
         return self
     }
 
@@ -125,12 +138,13 @@ public class CIOBrowseQueryBuilder {
         .setPerPage(40)
         .setSection("Products")
         .setHiddenFields(["hidden_price_field", "color_swatches"])
+        .setHiddenFacets(["hidden_facet"])
         .build()
      
      constructor.browse(forQuery: query, completionHandler: { ... })
      ```
      */
     public func build() -> CIOBrowseQuery {
-        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields)
+        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets)
     }
 }

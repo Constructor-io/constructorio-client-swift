@@ -161,6 +161,7 @@ class ConstructorIORecommendationsTests: XCTestCase {
         stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products"), builder.create())
 
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+
         self.wait(for: builder.expectation)
     }
 
