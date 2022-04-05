@@ -41,7 +41,7 @@ public struct CIOSearchQuery: CIORequestData {
      The section to return results from
      */
     public let section: String
-    
+
     /**
      The list of hidden metadata fields to return
      */
@@ -69,7 +69,7 @@ public struct CIOSearchQuery: CIORequestData {
         - hiddenFields: The list of hidden metadata fields to return
         - hiddenFacets: The list of hidden facest to return
      
-     ### Usge Example: ###
+     ### Usage Example: ###
      ```
      let facetFilters = [(key: "Nutrition", value: "Organic"),
                          (key: "Nutrition", value: "Natural"),
@@ -78,11 +78,11 @@ public struct CIOSearchQuery: CIORequestData {
      let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"])
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int = 1, perPage: Int = 30, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
-        self.page = page
-        self.perPage = perPage
+        self.page = page != nil ? page! : Constants.SearchQuery.defaultPage
+        self.perPage = perPage != nil ? perPage! : Constants.SearchQuery.defaultPerPage
         self.section = section != nil ? section! : Constants.SearchQuery.defaultSectionName
         self.sortOption = sortOption
         self.hiddenFields = hiddenFields

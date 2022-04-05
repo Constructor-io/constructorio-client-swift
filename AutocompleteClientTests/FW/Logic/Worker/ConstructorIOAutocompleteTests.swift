@@ -94,4 +94,61 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testAutocomplete_UsingAutocompleteQueryBuilder_WithValidRequest_ReturnsNonNilResponse() {
+        let query = CIOAutocompleteQueryBuilder(query: "potato").build()
+
+        let builder = CIOBuilder(expectation: "Calling autocomplete with valid parameters should return a non-nil response.", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testAutocomplete_UsingAutocompleteQueryBuilder_AttachesNumParams() {
+        let query = CIOAutocompleteQueryBuilder(query: "potato")
+            .setNumResults(10)
+            .setNumResultsForSection([
+                "Products": 5
+            ])
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling autocomplete with num result parameters should return a non-nil response.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=10&num_results_Products=5&s=\(kRegexSession)"), builder.create())
+
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testAutocomplete_UsingAutocompleteQueryBuilder_AttachesFacetFilters() {
+        let facetFilters = [(key: "facetOne", value: "Organic"),
+                            (key: "facetOne", value: "Natural"),
+                            (key: "facetOne", value: "Whole-grain")]
+        let query = CIOAutocompleteQueryBuilder(query: "potato")
+            .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Autocomplete with multiple facet filters with the same name should have multiple filters in the URL", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testAutocomplete_UsingAutocompleteQueryBuilder_AttachesHiddenFields() {
+        let hiddenFields = ["hidden_field_1", "hidden_field_2"]
+        let query = CIOAutocompleteQueryBuilder(query: "potato")
+            .setHiddenFields(hiddenFields)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Autocomplete with multiple facet filters with the same name should have multiple filters in the URL", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bhidden_fields%5D=hidden_field_1&fmt_options%5Bhidden_fields%5D=hidden_field_2&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
 }

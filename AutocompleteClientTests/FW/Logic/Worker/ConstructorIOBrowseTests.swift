@@ -129,4 +129,94 @@ class ConstructorIOBrowseTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testBrowse_UsingSearchQueryBuilder_WithValidRequest_ReturnsNonNilResponse() {
+        let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet").build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with valid parameters should return a non-nil response.", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.browse(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testBrowse_UsingSearchQueryBuilder_AttachesPageParams() {
+        let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
+            .setPage(5)
+            .setPerPage(50)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with valid parameters should return a non-nil response.", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=50&page=5&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.browse(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testBrowse_UsingSearchQueryBuilder_AttachesSortOption() {
+        let sortOption = CIOSortOption(json: [
+            "sort_by": "relevance",
+            "sort_order": "descending",
+            "status": "selected",
+            "display_name": "Relevance"
+        ])
+        let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
+            .setSortOption(sortOption!)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with valid parameters should return a non-nil response.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products&sort_by=relevance&sort_order=descending"), builder.create())
+
+        self.constructor.browse(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testBrowse_UsingSearchQueryBuilder_AttachesFacetFilters() {
+        let facetFilters = [(key: "facetOne", value: "Organic"),
+                            (key: "facetOne", value: "Natural"),
+                            (key: "facetOne", value: "Whole-grain")]
+        let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
+            .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with multiple facet filters with the same name should have a multiple facet URL query items", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.browse(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testBrowse_UsingBrowseQueryBuilder_AttachesHiddenFields() {
+        let hiddenFields = ["hidden_field_1", "hidden_field_2"]
+        let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
+            .setHiddenFields(hiddenFields)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with multiple facet filters with the same name should have a multiple facet URL query items", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bhidden_fields%5D=hidden_field_1&fmt_options%5Bhidden_fields%5D=hidden_field_2&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.browse(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testBrowse_UsingBrowseQueryBuilder_AttachesHiddenFacets() {
+        let hiddenFacets = ["hidden_facet_1", "hidden_facet_2"]
+        let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
+            .setHiddenFacets(hiddenFacets)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with multiple facet filters with the same name should have a multiple facet URL query items", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bhidden_facets%5D=hidden_facet_1&fmt_options%5Bhidden_facets%5D=hidden_facet_2&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.browse(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
 }
