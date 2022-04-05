@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ Request builder for creating an search query.
+ */
 public class CIOSearchQueryBuilder {
 
     /**

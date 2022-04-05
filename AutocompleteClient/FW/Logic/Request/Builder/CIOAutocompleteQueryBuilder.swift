@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ Request builder for creating a autocomplete query
+ */
 public class CIOAutocompleteQueryBuilder {
 
     /**

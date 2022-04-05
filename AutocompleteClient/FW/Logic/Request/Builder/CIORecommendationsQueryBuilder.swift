@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ Request builder for creating a recommendations query
+ */
 public class CIORecommendationsQueryBuilder {
 
     /**
