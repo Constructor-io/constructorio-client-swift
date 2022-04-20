@@ -129,7 +129,22 @@ class ConstructorIOBrowseTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testBrowse_UsingSearchQueryBuilder_WithValidRequest_ReturnsNonNilResponse() {
+    func testBrowse_WithPlusSignInQueryParams_ShouldBeEncoded() {
+        let facetFilters = [
+            (key: "size", value: "6+"),
+            (key: "age", value: "10+")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
+        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", filters: queryFilters)
+
+        let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bage%5D=10%2B&filters%5Bsize%5D=6%2B&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.browse(forQuery: query) { _ in }
+        self.wait(for: builder.expectation)
+    }
+
+    func testBrowse_UsingBrowseQueryBuilder_WithValidRequest_ReturnsNonNilResponse() {
         let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet").build()
 
         let builder = CIOBuilder(expectation: "Calling Search with valid parameters should return a non-nil response.", builder: http(200))
@@ -141,7 +156,7 @@ class ConstructorIOBrowseTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testBrowse_UsingSearchQueryBuilder_AttachesPageParams() {
+    func testBrowse_UsingBrowseQueryBuilder_AttachesPageParams() {
         let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
             .setPage(5)
             .setPerPage(50)
@@ -156,7 +171,7 @@ class ConstructorIOBrowseTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testBrowse_UsingSearchQueryBuilder_AttachesSortOption() {
+    func testBrowse_UsingBrowseQueryBuilder_AttachesSortOption() {
         let sortOption = CIOSortOption(json: [
             "sort_by": "relevance",
             "sort_order": "descending",
@@ -175,7 +190,7 @@ class ConstructorIOBrowseTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-    func testBrowse_UsingSearchQueryBuilder_AttachesFacetFilters() {
+    func testBrowse_UsingBrowseQueryBuilder_AttachesFacetFilters() {
         let facetFilters = [(key: "facetOne", value: "Organic"),
                             (key: "facetOne", value: "Natural"),
                             (key: "facetOne", value: "Whole-grain")]

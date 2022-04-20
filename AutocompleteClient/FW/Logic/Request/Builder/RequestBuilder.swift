@@ -87,6 +87,10 @@ class RequestBuilder {
 
         urlComponents.queryItems = self.trackData!.queryItems(baseItems: allQueryItems.all())
 
+        // Replace "+" with "%2B" in the query parameters
+        urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?
+            .replacingOccurrences(of: "+", with: "%2B")
+
         let url = urlComponents.url!
         let httpBody = self.trackData!.httpBody(baseParams: allQueryItems.allAsDictionary())
 

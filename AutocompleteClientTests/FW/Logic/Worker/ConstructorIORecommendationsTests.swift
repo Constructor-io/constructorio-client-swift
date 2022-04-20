@@ -153,6 +153,20 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testRecommendations_WithPlusSignInQueryParams_ShouldBeEncoded() {
+        let facetFilters = [
+            (key: "size", value: "6+"),
+            (key: "age", value: "10+")
+        ]
+        let query = CIORecommendationsQuery(podID: "item_page_1", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
+
+        let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bage%5D=10%2B&filters%5Bsize%5D=6%2B&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.recommendations(forQuery: query) { _ in }
+        self.wait(for: builder.expectation)
+    }
+
     func testRecommendations_UsingRecommendationsQueryBuilder_ReturnsNonNilResponse() {
         let query = CIORecommendationsQueryBuilder(podID: "item_page_1").build()
 

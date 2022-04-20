@@ -94,6 +94,21 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testAutocomplete_WithPlusSignInQueryParams_ShouldBeEncoded() {
+        let facetFilters = [
+            (key: "size", value: "6+"),
+            (key: "age", value: "10+")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
+        let query = CIOAutocompleteQuery(query: "potato", filters: queryFilters)
+
+        let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bage%5D=10%2B&filters%5Bsize%5D=6%2B&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+
+        self.constructor.autocomplete(forQuery: query) { _ in }
+        self.wait(for: builder.expectation)
+    }
+
     func testAutocomplete_UsingAutocompleteQueryBuilder_WithValidRequest_ReturnsNonNilResponse() {
         let query = CIOAutocompleteQueryBuilder(query: "potato").build()
 
