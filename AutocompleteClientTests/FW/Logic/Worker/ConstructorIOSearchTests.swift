@@ -179,6 +179,21 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testSearch_WithPlusSignInQueryParams_ShouldBeEncoded() {
+        let facetFilters = [
+            (key: "size", value: "6+"),
+            (key: "age", value: "10+")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
+        let query = CIOSearchQuery(query: "potato", filters: queryFilters)
+
+        let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bage%5D=10%2B&filters%5Bsize%5D=6%2B&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.search(forQuery: query) { _ in }
+        self.wait(for: builder.expectation)
+    }
+
     func testSearch_UsingSearchQueryBuilder_WithValidRequest_ReturnsNonNilResponse() {
         let query = CIOSearchQueryBuilder(query: "potato").build()
 
