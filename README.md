@@ -65,7 +65,7 @@ constructor.userID = "abcdefghijk-123"
 ## 4. Request Autocomplete Results
 
 ```swift
-let query = CIOAutocompleteQuery(query: "Dav")
+let query = CIOAutocompleteQuery(query: "apple", numResultsForSection: ["Products": 6, "Search Suggestions": 8])
 
 constructor.autocomplete(forQuery: query) { (response) in
   let data = response.data!
