@@ -125,12 +125,13 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let query = CIOAutocompleteQueryBuilder(query: "potato")
             .setNumResults(10)
             .setNumResultsForSection([
-                "Products": 5
+                "Products": 5,
+                "Search Suggestions": 6
             ])
             .build()
 
         let builder = CIOBuilder(expectation: "Calling autocomplete with num result parameters should return a non-nil response.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=10&num_results_Products=5&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=10&num_results_Products=5&num_results_Search%20Suggestions=6&s=\(kRegexSession)"), builder.create())
 
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
 

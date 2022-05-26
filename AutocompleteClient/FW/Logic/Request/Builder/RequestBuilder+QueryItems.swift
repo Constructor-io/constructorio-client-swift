@@ -82,7 +82,7 @@ extension RequestBuilder {
     func set(numResultsForSection: [String: Int]?) {
         guard let numResultsForSection = numResultsForSection else { return }
         numResultsForSection.forEach {
-            let name = Constants.AutocompleteQuery.queryItemForSection($0.key.replacingOccurrences(of: " ", with: "+"))
+            let name = Constants.AutocompleteQuery.queryItemForSection($0.key)
             queryItems.add(URLQueryItem(name: name, value: String($0.value)))
         }
     }
