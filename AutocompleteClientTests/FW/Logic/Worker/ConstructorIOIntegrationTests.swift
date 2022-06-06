@@ -330,7 +330,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowse() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOBrowseQuery(filterName: "collection_id", filterValue: "431")
+        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431")
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
