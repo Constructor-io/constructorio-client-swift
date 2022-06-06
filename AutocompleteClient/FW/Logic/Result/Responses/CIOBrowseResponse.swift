@@ -41,4 +41,9 @@ public struct CIOBrowseResponse {
      Result ID of the result set returned
      */
     public let resultID: String
+    
+    /**
+     Collection of the result if browsing collection_id
+     */
+    public let collection: CIOCollectionData?
 }

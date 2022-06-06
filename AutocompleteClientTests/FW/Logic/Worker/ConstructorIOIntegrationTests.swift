@@ -306,7 +306,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let searchResult = responseData.results[0]
-            let hiddenFacet = responseData.facets[0].name;
+            let hiddenFacet = responseData.facets[1].name;
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(searchResult)
@@ -330,10 +330,27 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowse() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431")
+        let query = CIOBrowseQuery(filterName: "collection_id", filterValue: "431")
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testBrowseWithCollections() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseQuery(filterName: "collection_id", filterValue: "fresh-fruits")
+        self.constructor.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let displayName = responseData.collection?.display_name
+            let collectionId = responseData.collection?.id
+            
+            XCTAssertNil(cioError)
+            XCTAssertEqual(displayName, "fresh fruits", "num_results_per_page must be at most 100")
+            XCTAssertEqual(collectionId, "fresh-fruits", "num_results_per_page must be at most 100")
             expectation.fulfill()
         })
         self.wait(for: expectation)
