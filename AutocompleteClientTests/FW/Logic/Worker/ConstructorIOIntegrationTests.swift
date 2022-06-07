@@ -306,11 +306,12 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let searchResult = responseData.results[0]
-            let hiddenFacet = responseData.facets[1].name;
+            let hiddenFacetIndex = responseData.facets.firstIndex{$0.name == hiddenFacets[0]}
+
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(searchResult)
-            XCTAssertEqual(hiddenFacet, hiddenFacets[0])
+            XCTAssertEqual(responseData.facets[hiddenFacetIndex!].name, hiddenFacets[0])
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -401,11 +402,11 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let browseResult = responseData.results[0]
-            let hiddenFacet = responseData.facets[0].name
+            let hiddenFacetIndex = responseData.facets.firstIndex{$0.name == hiddenFacets[0]}
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(browseResult)
-            XCTAssertEqual(hiddenFacet, hiddenFacets[0])
+            XCTAssertEqual(responseData.facets[hiddenFacetIndex!].name, hiddenFacets[0])
             expectation.fulfill()
         })
         self.wait(for: expectation)
