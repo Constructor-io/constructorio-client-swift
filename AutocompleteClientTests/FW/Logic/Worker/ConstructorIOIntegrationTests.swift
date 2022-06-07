@@ -349,8 +349,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let collectionId = responseData.collection?.id
             
             XCTAssertNil(cioError)
-            XCTAssertEqual(displayName, "fresh fruits", "num_results_per_page must be at most 100")
-            XCTAssertEqual(collectionId, "fresh-fruits", "num_results_per_page must be at most 100")
+            XCTAssertEqual(displayName, "fresh fruits", "Collection display name matches the provided collection display name")
+            XCTAssertEqual(collectionId, "fresh-fruits", "Collection id matches the provided collection id")
             expectation.fulfill()
         })
         self.wait(for: expectation)
