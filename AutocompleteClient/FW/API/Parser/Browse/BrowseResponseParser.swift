@@ -28,6 +28,7 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
             let sortOptions: [CIOSortOption] = (sortOptionsObj)?.compactMap({ obj  in return CIOSortOption(json: obj) }) ?? []
             let groups: [CIOFilterGroup] = groupsObj?.compactMap({ obj  in return CIOFilterGroup(json: obj) }) ?? []
             let totalNumResults = response["total_num_results"] as? Int ?? 0
+            let collection: CIOCollectionData? = CIOCollectionData(json: response["collection"] as? JSONObject);
             let resultID = json?["result_id"] as? String ?? ""
 
             return CIOBrowseResponse(
@@ -36,7 +37,8 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
                 results: results,
                 sortOptions: sortOptions,
                 totalNumResults: totalNumResults,
-                resultID: resultID
+                resultID: resultID,
+                collection: collection
             )
         } catch {
             throw CIOError(errorType: .invalidResponse)

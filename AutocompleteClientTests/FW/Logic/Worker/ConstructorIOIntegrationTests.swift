@@ -306,11 +306,12 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let searchResult = responseData.results[0]
-            let hiddenFacet = responseData.facets[0].name;
+            let hiddenFacetIndex = responseData.facets.firstIndex{$0.name == hiddenFacets[0]}
+
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(searchResult)
-            XCTAssertEqual(hiddenFacet, hiddenFacets[0])
+            XCTAssertEqual(responseData.facets[hiddenFacetIndex!].name, hiddenFacets[0])
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -334,6 +335,23 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testBrowseWithCollections() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseQuery(filterName: "collection_id", filterValue: "fresh-fruits")
+        self.constructor.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let displayName = responseData.collection?.display_name
+            let collectionId = responseData.collection?.id
+            
+            XCTAssertNil(cioError)
+            XCTAssertEqual(displayName, "fresh fruits", "Collection display name matches the provided collection display name")
+            XCTAssertEqual(collectionId, "fresh-fruits", "Collection id matches the provided collection id")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -384,11 +402,11 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let browseResult = responseData.results[0]
-            let hiddenFacet = responseData.facets[0].name
+            let hiddenFacetIndex = responseData.facets.firstIndex{$0.name == hiddenFacets[0]}
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(browseResult)
-            XCTAssertEqual(hiddenFacet, hiddenFacets[0])
+            XCTAssertEqual(responseData.facets[hiddenFacetIndex!].name, hiddenFacets[0])
             expectation.fulfill()
         })
         self.wait(for: expectation)
