@@ -52,6 +52,7 @@ Make sure to import the `ConstructorAutocomplete` module at the top of your sour
 // Create the client config
 let config = ConstructorIOConfig(
    apiKey: "YOUR API KEY",
+   baseURL: "ac.cnstrc.com", // default
    resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0])
 )
 
