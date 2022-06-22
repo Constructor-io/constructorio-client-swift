@@ -56,6 +56,11 @@ public struct CIOBrowseQuery: CIORequestData {
      The list of hidden facet fields to return
      */
     public let hiddenFacets: [String]?
+    
+    /**
+     The sort method/order for groups
+     */
+    public let groupsSortOption: CIOGroupsSortOption?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.BrowseQuery.format, baseURL, filterName, filterValue)
@@ -74,6 +79,7 @@ public struct CIOBrowseQuery: CIORequestData {
         - section: The section to return results from
         - hiddenFields: The list of hidden metadata fields to return
         - hiddenFacets: The list of hidden facest to return
+        - groupsSortOption: The sort method/order for groups
 
      ### Usage Example: ###
      ```
@@ -84,7 +90,7 @@ public struct CIOBrowseQuery: CIORequestData {
      let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"]))
      ```
      */
-    public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil) {
+    public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil) {
         self.filterName = filterName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filterValue = filterValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
@@ -94,6 +100,7 @@ public struct CIOBrowseQuery: CIORequestData {
         self.sortOption = sortOption
         self.hiddenFields = hiddenFields
         self.hiddenFacets = hiddenFacets
+        self.groupsSortOption = groupsSortOption
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -105,5 +112,6 @@ public struct CIOBrowseQuery: CIORequestData {
         requestBuilder.set(sortOption: self.sortOption)
         requestBuilder.set(hiddenFields: self.hiddenFields)
         requestBuilder.set(hiddenFacets: self.hiddenFacets)
+        requestBuilder.set(groupsSortOption: self.groupsSortOption)
     }
 }
