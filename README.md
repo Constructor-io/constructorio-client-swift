@@ -86,7 +86,7 @@ let filters = CIOQueryFilters(groupFilter: "Bread", facetFilters: [
 let query = CIOSearchQuery(query: "Dave's Bread", page: 5, filters: filters)
 
 // Specify the sort order in which groups are returned
-let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .ascending)
+let groupsSortOption = CIOGroupsSortOption(sortBy: CIOGroupsSortBy.value, sortOrder: CIOGroupsSortOrder.ascending)
 
 constructor.search(forQuery: query, filters: filters, groupsSortOption: groupsSortOption) { (response) in
   let data = response.data!
@@ -101,7 +101,7 @@ constructor.search(forQuery: query, filters: filters, groupsSortOption: groupsSo
 let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet")
 
 // Specify the sort order in which groups are returned
-let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .ascending)
+let groupsSortOption = CIOGroupsSortOption(sortBy: CIOGroupsSortBy.value, sortOrder: CIOGroupsSortOrder.ascending)
 
 constructor.browse(forQuery: query, groupsSortOption: groupsSortOption) { (response) in
   let data = response.data!
