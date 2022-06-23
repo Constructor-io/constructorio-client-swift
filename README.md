@@ -85,7 +85,10 @@ let filters = CIOQueryFilters(groupFilter: "Bread", facetFilters: [
 ])
 let query = CIOSearchQuery(query: "Dave's Bread", page: 5, filters: filters)
 
-constructor.search(forQuery: query) { (response) in
+// Specify the sort order in which groups are returned
+let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .ascending)
+
+constructor.search(forQuery: query, filters: filters, groupsSortOption: groupsSortOption) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
@@ -97,7 +100,10 @@ constructor.search(forQuery: query) { (response) in
 ```swift
 let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet")
 
-constructor.browse(forQuery: query) { (response) in
+// Specify the sort order in which groups are returned
+let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .ascending)
+
+constructor.browse(forQuery: query, groupsSortOption: groupsSortOption) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
