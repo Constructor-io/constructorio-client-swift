@@ -59,6 +59,11 @@ public class CIOBrowseQueryBuilder {
     var hiddenFacets: [String]?
 
     /**
+     The sort method/order for groups
+     */
+    var groupsSortOption: CIOGroupsSortOption?
+
+    /**
      Creata a Browse request query builder
      
      - Parameters:
@@ -127,6 +132,14 @@ public class CIOBrowseQueryBuilder {
     }
 
     /**
+     Add a groups sort option
+     */
+    public func setGroupsSortOption(_ groupsSortOption: CIOGroupsSortOption) -> CIOBrowseQueryBuilder {
+        self.groupsSortOption = groupsSortOption
+        return self
+    }
+
+    /**
      Build the request object set all of the provided data
      
      ### Usage Example: ###
@@ -148,6 +161,6 @@ public class CIOBrowseQueryBuilder {
      ```
      */
     public func build() -> CIOBrowseQuery {
-        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets)
+        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption)
     }
 }

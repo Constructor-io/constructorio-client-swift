@@ -54,6 +54,11 @@ public class CIOSearchQueryBuilder {
     var hiddenFacets: [String]?
 
     /**
+     The sort method/order for groups
+     */
+    var groupsSortOption: CIOGroupsSortOption?
+
+    /**
      Creata a Search request query builder
      
      - Parameters:
@@ -118,6 +123,14 @@ public class CIOSearchQueryBuilder {
         self.hiddenFacets = hiddenFacets
         return self
     }
+    
+    /**
+     Add a groups sort option
+     */
+    public func setGroupsSortOption(_ groupsSortOption: CIOGroupsSortOption) -> CIOSearchQueryBuilder {
+        self.groupsSortOption = groupsSortOption
+        return self
+    }
 
     /**
      Build the request object with all of the provided data
@@ -142,6 +155,6 @@ public class CIOSearchQueryBuilder {
      ```
      */
     public func build() -> CIOSearchQuery {
-        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets)
+        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption)
     }
 }
