@@ -86,7 +86,7 @@ public class CIOAutocompleteQueryBuilder {
     }
     
     /**
-     Add a variation maps to return per variation
+     Add a variations map to return per variation
      */
     public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOAutocompleteQueryBuilder {
         self.variationsMap = variationsMap

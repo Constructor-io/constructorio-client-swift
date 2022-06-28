@@ -132,7 +132,7 @@ public class CIOBrowseQueryBuilder {
     }
     
     /**
-     Add a variation maps to return per variation
+     Add a variations map to return per variation
      */
     public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOBrowseQueryBuilder {
         self.variationsMap = variationsMap

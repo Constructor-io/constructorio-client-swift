@@ -125,7 +125,7 @@ public class CIOSearchQueryBuilder {
     }
 
     /**
-     Add a variation maps to return per variation
+     Add a variations map to return per variation
      */
     public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOSearchQueryBuilder {
         self.variationsMap = variationsMap
