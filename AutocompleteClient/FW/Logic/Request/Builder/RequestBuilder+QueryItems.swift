@@ -147,7 +147,7 @@ extension RequestBuilder {
         guard let hiddenField = hiddenField else { return }
         self.set(fmtOption: (key: "hidden_fields", value: hiddenField))
     }
-    
+
     func set(hiddenFacets: [String]?) {
         guard let hiddenFacets = hiddenFacets else { return }
         for hiddenFacet in hiddenFacets {
@@ -159,7 +159,7 @@ extension RequestBuilder {
         guard let hiddenFacet = hiddenFacet else { return }
         self.set(fmtOption: (key: "hidden_facets", value: hiddenFacet))
     }
-    
+
     func set(fmtOptions: [FmtOption]?) {
         guard let options = fmtOptions else { return }
         for option in options {
@@ -171,11 +171,17 @@ extension RequestBuilder {
         guard let option = fmtOption else { return }
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.fmtOptionsKey(option.key), value: option.value))
     }
-    
+
     func set(variationsMap: CIOQueryVariationsMap?) {
         guard let variationsMap = variationsMap else { return }
         let jsonData = try! JSONEncoder().encode(variationsMap)
         let jsonString = String(data: jsonData, encoding: .utf8)
         queryItems.add(URLQueryItem(name: "variations_map", value: jsonString))
+    }
+
+    func set(groupsSortOption: CIOGroupsSortOption?) {
+        guard let option = groupsSortOption else { return }
+        self.set(fmtOption: (key: "groups_sort_by", value: option.sortBy.rawValue))
+        self.set(fmtOption: (key: "groups_sort_order", value: option.sortOrder.rawValue))
     }
 }

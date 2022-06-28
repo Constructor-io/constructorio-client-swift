@@ -57,6 +57,11 @@ public struct CIOSearchQuery: CIORequestData {
      */
     var variationsMap: CIOQueryVariationsMap?
 
+    /**
+     The sort method/order for groups
+     */
+    public let groupsSortOption: CIOGroupsSortOption?
+
     func url(with baseURL: String) -> String {
         return String(format: Constants.SearchQuery.format, baseURL, query)
     }
@@ -73,6 +78,7 @@ public struct CIOSearchQuery: CIORequestData {
         - section: The section to return results from
         - hiddenFields: The list of hidden metadata fields to return
         - hiddenFacets: The list of hidden facest to return
+        - groupsSortOption: The sort method/order for groups
      
      ### Usage Example: ###
      ```
@@ -83,7 +89,7 @@ public struct CIOSearchQuery: CIORequestData {
      let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"])
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page != nil ? page! : Constants.SearchQuery.defaultPage
@@ -93,6 +99,7 @@ public struct CIOSearchQuery: CIORequestData {
         self.hiddenFields = hiddenFields
         self.hiddenFacets = hiddenFacets
         self.variationsMap = variationsMap
+        self.groupsSortOption = groupsSortOption
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -105,5 +112,6 @@ public struct CIOSearchQuery: CIORequestData {
         requestBuilder.set(hiddenFields: self.hiddenFields)
         requestBuilder.set(hiddenFacets: self.hiddenFacets)
         requestBuilder.set(variationsMap: self.variationsMap)
+        requestBuilder.set(groupsSortOption: self.groupsSortOption)
     }
 }

@@ -200,8 +200,19 @@ class ConstructorIOSearchTests: XCTestCase {
         let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
         let query = CIOSearchQuery(query: "potato", filters: queryFilters)
 
-        let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
+        let builder = CIOBuilder(expectation: "Calling Search with 200 should return a response", builder: http(200))
         stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bage%5D=10%2B&filters%5Bsize%5D=6%2B&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.search(forQuery: query) { _ in }
+        self.wait(for: builder.expectation)
+    }
+
+    func testSearch_AttachesGroupsSortOption() {
+        let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .ascending)
+        let query = CIOSearchQuery(query: "potato", groupsSortOption: groupsSortOption)
+
+        let builder = CIOBuilder(expectation: "Calling Search with 200 should return a response", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bgroups_sort_by%5D=value&fmt_options%5Bgroups_sort_order%5D=ascending&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
 
         self.constructor.search(forQuery: query) { _ in }
         self.wait(for: builder.expectation)
@@ -294,6 +305,19 @@ class ConstructorIOSearchTests: XCTestCase {
 
         self.constructor.search(forQuery: query, completionHandler: { response in })
 
+        self.wait(for: builder.expectation)
+    }
+
+    func testSearch_UsingSearchQueryBuilder_AttachesGroupsSortOption() {
+        let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .ascending)
+        let query = CIOSearchQueryBuilder(query: "potato")
+            .setGroupsSortOption(groupsSortOption)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Search with 200 should return a response", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bgroups_sort_by%5D=value&fmt_options%5Bgroups_sort_order%5D=ascending&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.search(forQuery: query) { _ in }
         self.wait(for: builder.expectation)
     }
 }
