@@ -16,7 +16,7 @@
     <a title="ConstructorAutocomplete  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ConstructorAutocomplete 2.2.3 Docs</a> (92% documented)</p>
+        <p><a href="index.html">ConstructorAutocomplete 2.4.0 Docs</a> (92% documented)</p>
         <p class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -189,6 +189,7 @@ end
 <pre class="highlight swift"><code><span class="c1">// Create the client config</span>
 <span class="k">let</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">ConstructorIOConfig</span><span class="p">(</span>
    <span class="nv">apiKey</span><span class="p">:</span> <span class="s">"YOUR API KEY"</span><span class="p">,</span>
+   <span class="nv">baseURL</span><span class="p">:</span> <span class="s">"ac.cnstrc.com"</span><span class="p">,</span> <span class="c1">// default</span>
    <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">AutocompleteResultCount</span><span class="p">(</span><span class="nv">numResultsForSection</span><span class="p">:</span> <span class="p">[</span><span class="s">"Search Suggestions"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"Products"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">])</span>
 <span class="p">)</span>
 
@@ -215,7 +216,10 @@ end
 <span class="p">])</span>
 <span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOSearchQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"Dave's Bread"</span><span class="p">,</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
 
-<span class="n">constructor</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Specify the sort order in which groups are returned</span>
+<span class="k">let</span> <span class="nv">groupsSortOption</span> <span class="o">=</span> <span class="kt">CIOGroupsSortOption</span><span class="p">(</span><span class="nv">sortBy</span><span class="p">:</span> <span class="kt">CIOGroupsSortBy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nv">sortOrder</span><span class="p">:</span> <span class="kt">CIOGroupsSortOrder</span><span class="o">.</span><span class="n">ascending</span><span class="p">)</span>
+
+<span class="n">constructor</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">,</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="n">groupsSortOption</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
   <span class="c1">// ...</span>
@@ -224,7 +228,10 @@ end
 <h2 id='6-request-browse-results' class='heading'>6. Request Browse Results</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOBrowseQuery</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"potato"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"russet"</span><span class="p">)</span>
 
-<span class="n">constructor</span><span class="o">.</span><span class="nf">browse</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Specify the sort order in which groups are returned</span>
+<span class="k">let</span> <span class="nv">groupsSortOption</span> <span class="o">=</span> <span class="kt">CIOGroupsSortOption</span><span class="p">(</span><span class="nv">sortBy</span><span class="p">:</span> <span class="kt">CIOGroupsSortBy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nv">sortOrder</span><span class="p">:</span> <span class="kt">CIOGroupsSortOrder</span><span class="o">.</span><span class="n">ascending</span><span class="p">)</span>
+
+<span class="n">constructor</span><span class="o">.</span><span class="nf">browse</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="n">groupsSortOption</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
   <span class="c1">// ...</span>
@@ -319,7 +326,7 @@ end
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://www.constructor.io" target="_blank" rel="external">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2022-06-07)</p>
+          <p>&copy; 2022 <a class="link" href="https://www.constructor.io" target="_blank" rel="external">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2022-06-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
