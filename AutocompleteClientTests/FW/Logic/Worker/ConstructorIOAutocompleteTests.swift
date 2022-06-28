@@ -93,6 +93,19 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         }
         self.wait(for: expectation)
     }
+    
+    func testAutocomplete_AttachesVariationsMap() {
+        let groupByOptions = [GroupByOption(name: "Country", field: "data.facets.Country")]
+        let valueOption = ValueOption(aggregation: "min", field: "data.facets.price")
+        let query = CIOAutocompleteQuery(query: "potato", variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["price" : valueOption], Dtype: "array"))
+
+        let builder = CIOBuilder(expectation: "Calling Autocomplete with variations map should have a URL query variations map", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&variations_map=%7B%22dtype%22:%22array%22,%22group_by%22:%5B%7B%22name%22:%22Country%22,%22field%22:%22data.facets.Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22field%22:%22data.facets.price%22,%22aggregation%22:%22min%22%7D%7D%7D"), builder.create())
+
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
 
     func testAutocomplete_WithPlusSignInQueryParams_ShouldBeEncoded() {
         let facetFilters = [
