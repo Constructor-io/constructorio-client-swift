@@ -36,6 +36,11 @@ public struct CIOAutocompleteQuery: CIORequestData {
      The list of hidden metadata fields to return
      */
     public let hiddenFields: [String]?
+    
+    /**
+     The variation map to use with the result set
+     */
+    var variationsMap: CIOQueryVariationsMap?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.AutocompleteQuery.format, baseURL, query)
@@ -56,12 +61,13 @@ public struct CIOAutocompleteQuery: CIORequestData {
      let autocompleteQuery = CIOAutocompleteQuery(query: "apple", numResults: 5, numResultsForSection: ["Products": 6, "Search Suggestions": 8], hiddenFields: ["price_CA", "currency_CA"])
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil, hiddenFields: [String]? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil, hiddenFields: [String]? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.numResults = numResults
         self.numResultsForSection = numResultsForSection
         self.filters = filters
         self.hiddenFields = hiddenFields
+        self.variationsMap = variationsMap
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -70,5 +76,6 @@ public struct CIOAutocompleteQuery: CIORequestData {
         requestBuilder.set(groupFilter: self.filters?.groupFilter)
         requestBuilder.set(facetFilters: self.filters?.facetFilters)
         requestBuilder.set(hiddenFields: self.hiddenFields)
+        requestBuilder.set(variationsMap: self.variationsMap)
     }
 }

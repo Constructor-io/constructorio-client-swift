@@ -51,6 +51,11 @@ public struct CIOSearchQuery: CIORequestData {
      The list of hidden facet fields to return
      */
     public let hiddenFacets: [String]?
+    
+    /**
+     The variation map to use with the result set
+     */
+    var variationsMap: CIOQueryVariationsMap?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.SearchQuery.format, baseURL, query)
@@ -78,7 +83,7 @@ public struct CIOSearchQuery: CIORequestData {
      let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"])
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page != nil ? page! : Constants.SearchQuery.defaultPage
@@ -87,6 +92,7 @@ public struct CIOSearchQuery: CIORequestData {
         self.sortOption = sortOption
         self.hiddenFields = hiddenFields
         self.hiddenFacets = hiddenFacets
+        self.variationsMap = variationsMap
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -98,5 +104,6 @@ public struct CIOSearchQuery: CIORequestData {
         requestBuilder.set(sortOption: self.sortOption)
         requestBuilder.set(hiddenFields: self.hiddenFields)
         requestBuilder.set(hiddenFacets: self.hiddenFacets)
+        requestBuilder.set(variationsMap: self.variationsMap)
     }
 }

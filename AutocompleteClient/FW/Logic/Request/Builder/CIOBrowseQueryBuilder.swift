@@ -57,6 +57,11 @@ public class CIOBrowseQueryBuilder {
      The list of hidden facets to return
      */
     var hiddenFacets: [String]?
+    
+    /**
+     The variation map to use with the result set
+     */
+    var variationsMap: CIOQueryVariationsMap?
 
     /**
      Creata a Browse request query builder
@@ -125,6 +130,14 @@ public class CIOBrowseQueryBuilder {
         self.hiddenFacets = hiddenFacets
         return self
     }
+    
+    /**
+     Add a variation maps to return per variation
+     */
+    public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOBrowseQueryBuilder {
+        self.variationsMap = variationsMap
+        return self
+    }
 
     /**
      Build the request object set all of the provided data
@@ -148,6 +161,6 @@ public class CIOBrowseQueryBuilder {
      ```
      */
     public func build() -> CIOBrowseQuery {
-        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets)
+        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, variationsMap: variationsMap)
     }
 }

@@ -52,6 +52,11 @@ public class CIOSearchQueryBuilder {
      The list of hidden facets to return
      */
     var hiddenFacets: [String]?
+    
+    /**
+     The variation map to use with the result set
+     */
+    var variationsMap: CIOQueryVariationsMap?
 
     /**
      Creata a Search request query builder
@@ -120,6 +125,14 @@ public class CIOSearchQueryBuilder {
     }
 
     /**
+     Add a variation maps to return per variation
+     */
+    public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOSearchQueryBuilder {
+        self.variationsMap = variationsMap
+        return self
+    }
+
+    /**
      Build the request object with all of the provided data
      
      ### Usage Example: ###
@@ -142,6 +155,6 @@ public class CIOSearchQueryBuilder {
      ```
      */
     public func build() -> CIOSearchQuery {
-        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets)
+        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, variationsMap: variationsMap)
     }
 }

@@ -171,4 +171,11 @@ extension RequestBuilder {
         guard let option = fmtOption else { return }
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.fmtOptionsKey(option.key), value: option.value))
     }
+    
+    func set(variationsMap: CIOQueryVariationsMap?) {
+        guard let variationsMap = variationsMap else { return }
+        let jsonData = try! JSONEncoder().encode(variationsMap)
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        queryItems.add(URLQueryItem(name: "variations_map", value: jsonString))
+    }
 }
