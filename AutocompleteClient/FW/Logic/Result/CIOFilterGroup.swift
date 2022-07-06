@@ -26,7 +26,7 @@ public class CIOFilterGroup: NSObject {
     /**
      The number of results that would be returned when selected
      */
-    public let count: Int
+    public let count: Int?
 
     /**
      List of child groups
@@ -47,13 +47,13 @@ public class CIOFilterGroup: NSObject {
     init?(json: JSONObject) {
         guard let name = json["display_name"] as? String else { return nil }
         guard let groupID = json["group_id"] as? String else { return nil }
-        guard let count = json["count"] as? Int else { return nil }
 
         let childrenObj = json["children"] as? [JSONObject]
         let parentObj = json["parents"] as? [JSONObject]
 
         let children: [CIOFilterGroup] = childrenObj?.compactMap { obj in return CIOFilterGroup(json: obj) } ?? []
         let parents: [CIOFilterGroup] = parentObj?.compactMap { obj in return CIOFilterGroup(json: obj) } ?? []
+        let count = json["count"] as? Int
 
         self.displayName = name
         self.groupID = groupID
