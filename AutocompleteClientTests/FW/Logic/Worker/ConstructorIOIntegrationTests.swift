@@ -261,7 +261,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    func testSearch_ShouldReturnGroupsWithParents() {
+    func testSearch_ShouldReturnGroupsWithParentsAndChildren() {
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIOSearchQuery(query: "a")
         self.constructor.search(forQuery: query, completionHandler: { response in
@@ -269,6 +269,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let responseData = response.data!
             let groups = responseData.groups
 
+            XCTAssertFalse(groups[0].children.isEmpty)
             XCTAssertFalse(groups[0].children[0].parents.isEmpty)
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -390,15 +391,16 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    func testBrowseShouldReturnGroupsWithParents() {
+    func testBrowseShouldReturnGroupsWithParentsAndChildren() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "39")
+        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "600")
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let groups = responseData.groups
 
             XCTAssertFalse(groups[0].parents.isEmpty)
+            XCTAssertFalse(groups[0].children.isEmpty)
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
