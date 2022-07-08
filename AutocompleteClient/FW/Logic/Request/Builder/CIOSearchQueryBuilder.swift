@@ -128,7 +128,7 @@ public class CIOSearchQueryBuilder {
         self.hiddenFacets = hiddenFacets
         return self
     }
-    
+
     /**
      Add a groups sort option
      */

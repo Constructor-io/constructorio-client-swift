@@ -174,9 +174,13 @@ extension RequestBuilder {
 
     func set(variationsMap: CIOQueryVariationsMap?) {
         guard let variationsMap = variationsMap else { return }
-        let jsonData = try! JSONEncoder().encode(variationsMap)
-        let jsonString = String(data: jsonData, encoding: .utf8)
-        queryItems.add(URLQueryItem(name: "variations_map", value: jsonString))
+        do {
+            let jsonData = try JSONEncoder().encode(variationsMap)
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            queryItems.add(URLQueryItem(name: "variations_map", value: jsonString))
+        } catch {
+            // Do nothing
+        }
     }
 
     func set(groupsSortOption: CIOGroupsSortOption?) {
