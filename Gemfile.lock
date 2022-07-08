@@ -89,7 +89,7 @@ GEM
     rexml (3.2.5)
     rouge (3.26.0)
     ruby-macho (1.4.0)
-    sassc (2.4.1)
+    sassc (2.5.0)
       ffi (~> 1.9)
     slather (2.4.7)
       CFPropertyList (>= 2.2, < 4)
