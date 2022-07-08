@@ -51,6 +51,11 @@ public struct CIOSearchQuery: CIORequestData {
      The list of hidden facet fields to return
      */
     public let hiddenFacets: [String]?
+    
+    /**
+     The variation map to use with the result set
+     */
+    var variationsMap: CIOQueryVariationsMap?
 
     /**
      The sort method/order for groups
@@ -84,7 +89,7 @@ public struct CIOSearchQuery: CIORequestData {
      let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"])
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page != nil ? page! : Constants.SearchQuery.defaultPage
@@ -93,6 +98,7 @@ public struct CIOSearchQuery: CIORequestData {
         self.sortOption = sortOption
         self.hiddenFields = hiddenFields
         self.hiddenFacets = hiddenFacets
+        self.variationsMap = variationsMap
         self.groupsSortOption = groupsSortOption
     }
 
@@ -105,6 +111,7 @@ public struct CIOSearchQuery: CIORequestData {
         requestBuilder.set(sortOption: self.sortOption)
         requestBuilder.set(hiddenFields: self.hiddenFields)
         requestBuilder.set(hiddenFacets: self.hiddenFacets)
+        requestBuilder.set(variationsMap: self.variationsMap)
         requestBuilder.set(groupsSortOption: self.groupsSortOption)
     }
 }

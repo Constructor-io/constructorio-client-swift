@@ -109,7 +109,6 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
-        print(url)
         XCTAssertTrue(url.contains("filters%5BNutrition%5D=Organic"), "URL should contain the Nutrition facet filter.")
         XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")

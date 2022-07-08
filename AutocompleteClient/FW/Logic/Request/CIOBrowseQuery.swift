@@ -58,6 +58,11 @@ public struct CIOBrowseQuery: CIORequestData {
     public let hiddenFacets: [String]?
     
     /**
+     The variation map to use with the result set
+     */
+    var variationsMap: CIOQueryVariationsMap?
+
+    /**
      The sort method/order for groups
      */
     public let groupsSortOption: CIOGroupsSortOption?
@@ -90,7 +95,7 @@ public struct CIOBrowseQuery: CIORequestData {
      let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"]))
      ```
      */
-    public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil) {
+    public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
         self.filterName = filterName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filterValue = filterValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
@@ -100,6 +105,7 @@ public struct CIOBrowseQuery: CIORequestData {
         self.sortOption = sortOption
         self.hiddenFields = hiddenFields
         self.hiddenFacets = hiddenFacets
+        self.variationsMap = variationsMap
         self.groupsSortOption = groupsSortOption
     }
 
@@ -112,6 +118,7 @@ public struct CIOBrowseQuery: CIORequestData {
         requestBuilder.set(sortOption: self.sortOption)
         requestBuilder.set(hiddenFields: self.hiddenFields)
         requestBuilder.set(hiddenFacets: self.hiddenFacets)
+        requestBuilder.set(variationsMap: self.variationsMap)
         requestBuilder.set(groupsSortOption: self.groupsSortOption)
     }
 }

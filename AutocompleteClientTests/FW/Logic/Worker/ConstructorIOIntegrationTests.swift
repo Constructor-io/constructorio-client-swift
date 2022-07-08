@@ -232,6 +232,48 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testAutocomplete_WithVariationsMapWithArrayDtype() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
+        let valueOption = ValueOption(aggregation: "all", field: "data.url")
+        
+        let query = CIOAutocompleteQuery(query: "item1", variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["url" : valueOption], Dtype: "array"))
+        constructorClient.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let searchResult = responseData.sections["Products"]?[0];
+            let variationsMap = searchResult?.result.variationsMap as? [JSONObject] ?? nil;
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(searchResult)
+            XCTAssertNotNil(variationsMap);
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testAutocomplete_WithVariationsMapWithObjectDtype() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
+        let valueOption = ValueOption(aggregation: "all", field: "data.url")
+        
+        let query = CIOAutocompleteQuery(query: "item1", variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["url" : valueOption], Dtype: "object"))
+        constructorClient.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let searchResult = responseData.sections["Products"]?[0];
+            let variationsMap = searchResult?.result.variationsMap as? JSONObject ?? nil;
+            
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(searchResult)
+            XCTAssertNotNil(variationsMap);
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 
     func testAutocomplete_WithInvalidKey() {
         let expectation = XCTestExpectation(description: "Request 400")
@@ -327,6 +369,48 @@ class ConstructorIOIntegrationTests: XCTestCase {
             XCTAssertNil(cioError)
             XCTAssertNotNil(searchResult)
             XCTAssertEqual(responseData.facets[hiddenFacetIndex!].name, hiddenFacets[0])
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testSearch_WithVariationsMapWithArrayDtype() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
+        let valueOption = ValueOption(aggregation: "all", field: "data.url")
+        
+        let query = CIOSearchQuery(query: "item1", variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["url" : valueOption], Dtype: "array"))
+        constructorClient.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let searchResult = responseData.results[0]
+            let variationsMap = searchResult.variationsMap as? [JSONObject] ?? nil;
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(searchResult)
+            XCTAssertNotNil(variationsMap);
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testSearch_WithVariationsMapWithObjectDtype() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
+        let valueOption = ValueOption(aggregation: "all", field: "data.url")
+        
+        let query = CIOSearchQuery(query: "item1", variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["url" : valueOption], Dtype: "object"))
+        constructorClient.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let searchResult = responseData.results[0]
+            let variationsMap = searchResult.variationsMap as? JSONObject ?? nil;
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(searchResult)
+            XCTAssertNotNil(variationsMap);
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -478,7 +562,49 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testBrowse_WithVariationsMapWithArrayDtype() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
+        let valueOption = ValueOption(aggregation: "all", field: "data.url")
+        
+        let query = CIOBrowseQuery(filterName: "Brand", filterValue: "XYZ", variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["url" : valueOption], Dtype: "array"))
+        constructorClient.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let searchResult = responseData.results[0]
+            let variationsMap = searchResult.variationsMap as? [JSONObject] ?? nil;
 
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(searchResult)
+            XCTAssertNotNil(variationsMap);
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowse_WithVariationsMapWithObjectDtype() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
+        let valueOption = ValueOption(aggregation: "all", field: "data.url")
+        
+        let query = CIOBrowseQuery(filterName: "Brand", filterValue: "XYZ", variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["url" : valueOption], Dtype: "object"))
+        constructorClient.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let searchResult = responseData.results[0]
+            let variationsMap = searchResult.variationsMap as? JSONObject ?? nil;
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(searchResult)
+            XCTAssertNotNil(variationsMap);
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
     func testBrowse_WithUnknownSection() {
         let expectation = XCTestExpectation(description: "Request 400")
         let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", section: "bad_section")

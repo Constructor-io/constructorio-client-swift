@@ -57,6 +57,11 @@ public class CIOBrowseQueryBuilder {
      The list of hidden facets to return
      */
     var hiddenFacets: [String]?
+    
+    /**
+     The variation map to use with the result set
+     */
+    var variationsMap: CIOQueryVariationsMap?
 
     /**
      The sort method/order for groups
@@ -130,6 +135,14 @@ public class CIOBrowseQueryBuilder {
         self.hiddenFacets = hiddenFacets
         return self
     }
+    
+    /**
+     Add a variations map to return per variation
+     */
+    public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOBrowseQueryBuilder {
+        self.variationsMap = variationsMap
+        return self
+    }
 
     /**
      Add a groups sort option
@@ -161,6 +174,6 @@ public class CIOBrowseQueryBuilder {
      ```
      */
     public func build() -> CIOBrowseQuery {
-        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption)
+        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap)
     }
 }

@@ -39,6 +39,11 @@ public class CIOAutocompleteQueryBuilder {
     var hiddenFields: [String]?
 
     /**
+     The variation map to use with the result set
+     */
+    var variationsMap: CIOQueryVariationsMap?
+    
+    /**
      Creata a Autocomplete request query builder
      
      - Parameters:
@@ -79,6 +84,14 @@ public class CIOAutocompleteQueryBuilder {
         self.hiddenFields = hiddenFields
         return self
     }
+    
+    /**
+     Add a variations map to return per variation
+     */
+    public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOAutocompleteQueryBuilder {
+        self.variationsMap = variationsMap
+        return self
+    }
 
     /**
      Build the request object with all of the provided data
@@ -100,6 +113,6 @@ public class CIOAutocompleteQueryBuilder {
      ```
      */
     public func build() -> CIOAutocompleteQuery {
-        return CIOAutocompleteQuery(query: query, filters: filters, numResults: numResults, numResultsForSection: numResultsForSection, hiddenFields: hiddenFields)
+        return CIOAutocompleteQuery(query: query, filters: filters, numResults: numResults, numResultsForSection: numResultsForSection, hiddenFields: hiddenFields, variationsMap: variationsMap)
     }
 }
