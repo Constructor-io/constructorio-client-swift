@@ -48,6 +48,11 @@ public struct CIOSearchResponse {
     public let resultID: String
 
     /**
+     Sources of the result set
+     */
+    public let resultSources: CIOResultSources?
+    
+    /**
      Flag to determine if the response is a redirect
      */
     public var isRedirect: Bool {

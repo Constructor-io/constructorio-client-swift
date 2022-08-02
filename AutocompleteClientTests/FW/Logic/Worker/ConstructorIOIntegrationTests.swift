@@ -302,6 +302,24 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testSearch_ShouldReturnResultSources() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOSearchQuery(query: "a")
+        self.constructor.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let searchResult = responseData.results[0]
+            let embeddingsMatch = responseData.resultSources?.embeddingsMatch.count ?? 0
+            let tokenMatch = responseData.resultSources?.tokenMatch.count ?? 0
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(searchResult)
+            XCTAssertEqual(embeddingsMatch + tokenMatch, responseData.totalNumResults)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 
     func testSearch_ShouldReturnGroupsWithParentsAndChildren() {
         let expectation = XCTestExpectation(description: "Request 204")
@@ -475,6 +493,24 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testBrowse_ShouldReturnResultSources() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "600")
+        self.constructor.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let browseResult = responseData.results[0]
+            let embeddingsMatch = responseData.resultSources?.embeddingsMatch.count ?? 0
+            let tokenMatch = responseData.resultSources?.tokenMatch.count ?? 0
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(browseResult)
+            XCTAssertEqual(embeddingsMatch + tokenMatch, responseData.totalNumResults)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
     func testBrowseShouldReturnGroupsWithParentsAndChildren() {
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIOBrowseQuery(filterName: "group_id", filterValue: "600")

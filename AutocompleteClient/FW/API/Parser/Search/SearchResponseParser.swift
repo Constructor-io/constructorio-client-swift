@@ -29,6 +29,8 @@ class SearchResponseParser: AbstractSearchResponseParser {
             let groups: [CIOFilterGroup] = groupsObj?.compactMap({ obj  in return CIOFilterGroup(json: obj) }) ?? []
             let totalNumResults = response["total_num_results"] as? Int ?? 0
             let resultID = json?["result_id"] as? String ?? ""
+            let resultSources: CIOResultSources? = CIOResultSources(json: response["result_sources"] as? JSONObject)
+
 
             return CIOSearchResponse(
                 facets: facets,
@@ -37,7 +39,8 @@ class SearchResponseParser: AbstractSearchResponseParser {
                 redirectInfo: CIOSearchRedirectInfo(object: response["redirect"] as? JSONObject),
                 sortOptions: sortOptions,
                 totalNumResults: totalNumResults,
-                resultID: resultID
+                resultID: resultID,
+                resultSources: resultSources
             )
         } catch {
             throw CIOError(errorType: .invalidResponse)

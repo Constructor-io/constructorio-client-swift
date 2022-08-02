@@ -46,4 +46,9 @@ public struct CIOBrowseResponse {
      Collection of the result if browsing collection_id
      */
     public let collection: CIOCollectionData?
+    
+    /**
+     Sources of the result set
+     */
+    public let resultSources: CIOResultSources?
 }
