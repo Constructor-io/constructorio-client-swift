@@ -309,6 +309,22 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testAutocomplete_ShoulReturnResultsWithLabels() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOAutocompleteQuery(query: "pork")
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let autocompleteResult = responseData.sections["Products"]?[0]
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(autocompleteResult)
+            XCTAssertEqual(autocompleteResult?.result.labels["is_sponsored"], true)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testSearch() {
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIOSearchQuery(query: "a", filters: nil)
