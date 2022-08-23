@@ -52,7 +52,7 @@ public class CIOSearchQueryBuilder {
      The list of hidden facets to return
      */
     var hiddenFacets: [String]?
-    
+
     /**
      The variation map to use with the result set
      */

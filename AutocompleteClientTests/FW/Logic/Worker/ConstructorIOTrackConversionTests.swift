@@ -67,6 +67,19 @@ class ConstructorIOTrackConversionTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackConversion_WithVariationID() {
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let variationID = "variationID456"
+        let revenue: Double = 1
+        let sectionName = "Search Suggestions"
+        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Search%20Suggestions"), builder.create())
+        self.constructor.trackConversion(itemName: itemName, customerID: customerID, variationID: variationID, revenue: revenue, searchTerm: searchTerm, sectionName: sectionName)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackConversion_WithType() {
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"

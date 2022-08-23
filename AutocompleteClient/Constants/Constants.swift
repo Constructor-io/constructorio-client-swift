@@ -145,6 +145,7 @@ struct Constants {
         static let name = "name"
         static let customerID = "customer_id"
         static let customerIDs = "customer_ids"
+        static let variationID = "variation_id"
         static let resultID = "result_id"
         static let revenue = "revenue"
         static let dateTime = "_dt"

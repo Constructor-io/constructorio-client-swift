@@ -19,18 +19,20 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
     let resultPositionOnPage: Int?
     var sectionName: String?
     let resultID: String?
+    let variationID: String?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackBrowseResultClick.format, baseURL)
     }
 
-    init(filterName: String, filterValue: String, customerID: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil) {
+    init(filterName: String, filterValue: String, customerID: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, variationID: String? = nil) {
         self.filterName = filterName
         self.filterValue = filterValue
         self.customerID = customerID
         self.resultPositionOnPage = resultPositionOnPage
         self.sectionName = sectionName
         self.resultID = resultID
+        self.variationID = variationID
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -43,9 +45,12 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
         var dict = [
             "filter_name": self.filterName,
             "filter_value": self.filterValue,
-            "item_id": self.customerID
+            "item_id": self.customerID,
         ] as [String: Any]
 
+        if self.variationID != nil {
+            dict["variation_id"] = self.variationID
+        }
         if self.resultPositionOnPage != nil {
             dict["result_position_on_page"] = Int(self.resultPositionOnPage!)
         }
