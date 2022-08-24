@@ -11,7 +11,7 @@ import Foundation
 public struct CIOItem {
     var customerID: String
     var variationID: String?
-    
+
     public init(customerID: String, variationID: String? = nil) {
         self.customerID = customerID
         self.variationID = variationID
