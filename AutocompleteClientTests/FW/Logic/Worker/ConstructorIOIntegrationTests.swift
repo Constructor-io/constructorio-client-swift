@@ -187,6 +187,21 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testPurchase_WithVariationIDs() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let items = [
+            CIOItem(customerID: "10001", variationID: "20001"),
+            CIOItem(customerID: "luistrenker-jacket-K245511299-cream", variationID: "M0E20000000E2ZJ")
+        ]
+        constructorClient.trackPurchase(items: items, sectionName: sectionName, revenue: revenue, orderID: orderID, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testRecommendations() {
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIORecommendationsQuery(podID: podID, itemID: customerID, section: sectionName)
