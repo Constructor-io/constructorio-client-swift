@@ -32,7 +32,7 @@ public class CIOResult: NSObject {
      Variations for the result
      */
     public let variations: [CIOResult]
-    
+
     /**
      Variations map for the result
      */
@@ -49,6 +49,11 @@ public class CIOResult: NSObject {
     public let strategy: CIORecommendationsStrategy
 
     /**
+     Labels associated with the result item
+     */
+    public let labels: [String: Bool]
+
+    /**
      Create a result object
      
      - Parameters:
@@ -63,12 +68,14 @@ public class CIOResult: NSObject {
         let variationsObj = json["variations"] as? [JSONObject]
 
         let variations: [CIOResult] = variationsObj?.compactMap { obj in return CIOResult(json: obj) } ?? []
-        
+
         let variationsMap = json["variations_map"] as Any
 
         let strategyData = json["strategy"] as? JSONObject ?? [String: Any]()
 
-        let strategy: CIORecommendationsStrategy = CIORecommendationsStrategy(json: strategyData)!
+        let labels = json["labels"] as? [String: Bool] ?? [:]
+
+        let strategy = CIORecommendationsStrategy(json: strategyData)!
 
         self.value = value
         self.data = data
@@ -77,6 +84,7 @@ public class CIOResult: NSObject {
         self.json = json
         self.strategy = strategy
         self.variationsMap = variationsMap
+        self.labels = labels
     }
 }
 

@@ -51,7 +51,7 @@ public struct CIOSearchResponse {
      Sources of the result set
      */
     public let resultSources: CIOResultSources?
-    
+
     /**
      Flag to determine if the response is a redirect
      */
