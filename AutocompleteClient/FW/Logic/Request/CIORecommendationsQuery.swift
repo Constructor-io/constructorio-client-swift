@@ -28,7 +28,7 @@ public struct CIORecommendationsQuery: CIORequestData {
     public let term: String?
 
     /**
-     The filters used to refine results (strategy specific)
+     The filters used to refine results
      */
     public let filters: CIOQueryFilters?
 
@@ -53,7 +53,7 @@ public struct CIORecommendationsQuery: CIORequestData {
         - podID: The pod ID
         - itemID: The item id to retrieve recommendations for (strategy specific)
         - term: The term to use to refine results (strategy specific)
-        - filters: The filters used to refine results (strategy specific)
+        - filters: The filters used to refine results
         - numResults: The number of results to return
         - section: The section to return results from
 
