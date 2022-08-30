@@ -29,7 +29,7 @@ public class CIORecommendationsQueryBuilder {
     var term: String?
 
     /**
-     The filters used to refine results (strategy specific)
+     The filters used to refine results 
      */
     var filters: CIOQueryFilters?
 
