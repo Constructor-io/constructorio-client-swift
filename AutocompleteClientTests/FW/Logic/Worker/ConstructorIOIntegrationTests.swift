@@ -473,7 +473,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page must be at most 100")
+            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page must be at most 200")
             expectation.fulfill()
         })
         self.wait(for: expectation)

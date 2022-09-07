@@ -5,7 +5,7 @@ let package = Package(
     name: "ConstructorIO",
     
     platforms: [
-        .iOS(.v8)
+        .iOS(.v9)
     ],
     products: [
         .library(name: "ConstructorAutocomplete", targets: ["ConstructorAutocomplete"])
