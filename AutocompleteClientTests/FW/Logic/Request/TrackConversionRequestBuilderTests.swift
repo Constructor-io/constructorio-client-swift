@@ -15,6 +15,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     fileprivate let searchTerm = "test search term"
     fileprivate let itemName = "some item name"
     fileprivate let customerID = "custIDq3éû qd"
+    fileprivate let variationID = "varID123"
     fileprivate let sectionName = "some section name@"
     fileprivate let conversionType = "like"
     fileprivate let revenue = 12.45
@@ -81,6 +82,25 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["section"] as? String, sectionName)
         XCTAssertEqual(payload?["item_name"] as? String, itemName)
         XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
+    }
+
+    func testTrackConversionBuilder_WithVariationID() {
+        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName, customerID: self.customerID, sectionName: sectionName, variationID: self.variationID)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("section=\(encodedSectionName)"), "URL should contain the section.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+        XCTAssertEqual(payload?["section"] as? String, sectionName)
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["variation_id"] as? String, variationID)
         XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
     }
 

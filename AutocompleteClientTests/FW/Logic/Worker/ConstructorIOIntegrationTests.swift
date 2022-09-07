@@ -97,6 +97,16 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testSearchResultClick_WithVariationID() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        constructorClient.trackSearchResultClick(itemName: "Item1", customerID: "10001", variationID: "20001", searchTerm: "item", sectionName: "Products", completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+    }
+
     func testBrowseResultsLoaded() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { response in
@@ -115,6 +125,16 @@ class ConstructorIOIntegrationTests: XCTestCase {
             expectation.fulfill()
         })
         self.wait(for: expectation)
+    }
+
+    func testBrowseResultClick_WithVariationID() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        constructorClient.trackBrowseResultClick(customerID: "10001", variationID: "20001", filterName: "Brand", filterValue: "XYZ", resultPositionOnPage: 1, sectionName: "Products", completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
     }
 
     func testRecommendationsResultsView() {
@@ -145,6 +165,16 @@ class ConstructorIOIntegrationTests: XCTestCase {
             expectation.fulfill()
         })
         self.wait(for: expectation)
+    }
+
+    func testConversion_WithVariationID() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        constructorClient.trackConversion(itemName: "Item 1", customerID: "10001", variationID: "20001", revenue: 10, searchTerm: "item", sectionName: "Products", completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
     }
 
     func testPurchase() {

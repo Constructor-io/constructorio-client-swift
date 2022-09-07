@@ -45,6 +45,11 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.Track.customerIDs, value: customerIDs.prefix(60).joined(separator: ",")))
     }
 
+    func set(variationID: String?) {
+        guard let variationID = variationID else { return }
+        queryItems.add(URLQueryItem(name: Constants.Track.variationID, value: variationID))
+    }
+
     func set(resultID: String?) {
         guard let resultID = resultID else { return }
         queryItems.add(URLQueryItem(name: Constants.Track.resultID, value: resultID))

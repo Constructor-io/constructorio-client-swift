@@ -17,17 +17,19 @@ struct CIOTrackSearchResultClickData: CIORequestData {
     let customerID: String
     var sectionName: String?
     let resultID: String?
+    let variationID: String?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackSearchResultClick.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
-    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, resultID: String? = nil) {
+    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, resultID: String? = nil, variationID: String? = nil) {
         self.searchTerm = searchTerm
         self.itemName = itemName
         self.customerID = customerID
         self.sectionName = sectionName
         self.resultID = resultID
+        self.variationID = variationID
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -35,5 +37,6 @@ struct CIOTrackSearchResultClickData: CIORequestData {
         requestBuilder.set(customerID: self.customerID)
         requestBuilder.set(autocompleteSection: self.sectionName)
         requestBuilder.set(resultID: self.resultID)
+        requestBuilder.set(variationID: self.variationID)
     }
 }

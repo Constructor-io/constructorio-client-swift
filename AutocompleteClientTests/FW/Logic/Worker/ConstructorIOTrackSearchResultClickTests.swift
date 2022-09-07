@@ -53,6 +53,18 @@ class ConstructorIOTrackSearchResultClickTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackSearchResultClick_WithVariationID() {
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let variationID = "variationID456"
+        let sectionName = "Search Suggestions"
+        let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&customer_id=customerID123&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&s=\(kRegexSession)&section=Search%20Suggestions&variation_id=variationID456"), builder.create())
+        self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, variationID: variationID, searchTerm: searchTerm, sectionName: sectionName)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackSearchResultClick_WithSection() {
         let searchTerm = "corn"
         let itemName = "green-giant-corn-can-12oz"

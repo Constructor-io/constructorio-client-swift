@@ -45,6 +45,18 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackBrowseResultClick_WithVariationID() {
+        let filterName = "potato"
+        let filterValue = "russet"
+        let customerID = "customerID123"
+        let variationID = "variationID456"
+        let sectionName = "Search Suggestions"
+        let builder = CIOBuilder(expectation: "Calling trackBrowseResultClick should send a valid request with a section name.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        self.constructor.trackBrowseResultClick(customerID: customerID, variationID: variationID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: nil, sectionName: sectionName)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackBrowseResultClick_WithResultID() {
         let filterName = "potato"
         let filterValue = "russet"
@@ -52,7 +64,7 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         let resultID = "0123456789"
         let builder = CIOBuilder(expectation: "Calling trackBrowseResultClick should send a valid request with a section name.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
-        self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: nil,    sectionName: nil, resultID: resultID)
+        self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: nil, sectionName: nil, resultID: resultID)
         self.wait(for: builder.expectation)
     }
 

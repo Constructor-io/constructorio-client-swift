@@ -185,7 +185,7 @@ constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth"
 constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
 
 // Track when a search result is clicked
-constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-7463", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 ```
 
 ### Browse Events
@@ -195,7 +195,7 @@ constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", custome
 constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674)
 
 // Track when a browse result is clicked
-constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", variationID: "7654321-BA-738", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 ```
 
 ### Recommendations Events
@@ -212,7 +212,7 @@ constructorIO.trackRecommendationResultClick(podID: "pdp_best_sellers", strategy
 
 ```swift
 // Track when an item converts (a.k.a. is added to cart) regardless of the user journey that led to adding to cart
-constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", revenue: 12.99, searchTerm: "tooth", conversionType: "add_to_cart")
+constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-47398", revenue: 12.99, searchTerm: "tooth", conversionType: "add_to_cart")
 
 // Track when items are purchased
 constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")
