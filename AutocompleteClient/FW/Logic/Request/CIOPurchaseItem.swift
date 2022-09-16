@@ -1,5 +1,5 @@
 //
-//  CIOItem.swift
+//  CIOPurchaseItem.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,12 +8,14 @@
 
 import Foundation
 
-public struct CIOItem {
+public struct CIOPurchaseItem {
     var customerID: String
     var variationID: String?
+    var quantity: Int?
 
-    public init(customerID: String, variationID: String? = nil) {
+    public init(customerID: String, variationID: String? = nil, quantity: Int? = nil) {
         self.customerID = customerID
         self.variationID = variationID
+        self.quantity = quantity
     }
 }

@@ -434,7 +434,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")
      ```
      */
-    public func trackPurchase(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackPurchase(items: [CIOPurchaseItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackPurchaseData(items: items, sectionName: section, revenue: revenue, orderID: orderID)
         let request = self.buildRequest(data: data)

@@ -17,7 +17,7 @@ struct CIOTrackPurchaseData: CIORequestData {
     let revenue: Double?
     var sectionName: String?
     var orderID: String?
-    var items: [CIOItem]?
+    var items: [CIOPurchaseItem]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackPurchase.format, baseURL)
@@ -34,7 +34,7 @@ struct CIOTrackPurchaseData: CIORequestData {
         self.orderID = orderID
     }
 
-    init(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
+    init(items: [CIOPurchaseItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
         if items.count > 100 {
             self.items = Array(items[0 ..< 100])
         } else {
@@ -62,7 +62,17 @@ struct CIOTrackPurchaseData: CIORequestData {
         }
 
         if let purchasedItems = self.items {
-            let items = purchasedItems.map { ["item_id": $0.customerID, "variation_id": $0.variationID] }
+            var items = [[String: String]]()
+            purchasedItems.forEach { purchaseItem in
+                let quantity = purchaseItem.quantity ?? 1
+                for _ in 1...quantity {
+                    var item = ["item_id": purchaseItem.customerID]
+                    if let variation_id = purchaseItem.variationID {
+                        item["variation_id"] = variation_id
+                    }
+                    items.append(item)
+                }
+            }
             dict["items"] = items
         }
 
