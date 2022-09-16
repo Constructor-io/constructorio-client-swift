@@ -17,7 +17,7 @@ struct CIOTrackPurchaseData: CIORequestData {
     let revenue: Double?
     var sectionName: String?
     var orderID: String?
-    var items: [CIOPurchaseItem]?
+    var items: [CIOItem]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackPurchase.format, baseURL)
@@ -34,7 +34,7 @@ struct CIOTrackPurchaseData: CIORequestData {
         self.orderID = orderID
     }
 
-    init(items: [CIOPurchaseItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
+    init(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
         if items.count > 100 {
             self.items = Array(items[0 ..< 100])
         } else {

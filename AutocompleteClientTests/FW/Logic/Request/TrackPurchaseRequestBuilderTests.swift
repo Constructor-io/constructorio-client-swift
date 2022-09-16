@@ -106,9 +106,9 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
 
     func testTrackPurchaseBuilder_WithItemsParam() {
         let items = [
-            CIOPurchaseItem(customerID: "custID1", variationID: "varID1"),
-            CIOPurchaseItem(customerID: "custID2", variationID: "varID2"),
-            CIOPurchaseItem(customerID: "custID3", variationID: "varID3")
+            CIOItem(customerID: "custID1", variationID: "varID1"),
+            CIOItem(customerID: "custID2", variationID: "varID2"),
+            CIOItem(customerID: "custID3", variationID: "varID3")
         ]
         let tracker = CIOTrackPurchaseData(items: items, sectionName: self.sectionName, orderID: self.orderID)
         builder.build(trackData: tracker)
@@ -126,8 +126,8 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
 
     func testTrackPurchaseBuilder_WithItemsContainingQuantityParam() {
         let items = [
-            CIOPurchaseItem(customerID: "custID1", variationID: "varID1", quantity: 2),
-            CIOPurchaseItem(customerID: "custID2", variationID: "varID2", quantity: 3)
+            CIOItem(customerID: "custID1", variationID: "varID1", quantity: 2),
+            CIOItem(customerID: "custID2", variationID: "varID2", quantity: 3)
         ]
         let tracker = CIOTrackPurchaseData(items: items, sectionName: self.sectionName, orderID: self.orderID)
         builder.build(trackData: tracker)
