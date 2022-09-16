@@ -219,8 +219,8 @@ constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, o
 
 // New way to track when items are purchased (supported in v2.5.5 and above)
 let purchaseItems = [
-  CIOPurchaseItem(customerID: "custID1", variationID: "varID1", quantity: 2),
-  CIOPurchaseItem(customerID: "custID2", variationID: "varID2", quantity: 3)
+  CIOItem(customerID: "custID1", variationID: "varID1", quantity: 2),
+  CIOItem(customerID: "custID2", variationID: "varID2", quantity: 3)
 ]
 constructorIO.trackPurchase(items: purchaseItems, revenue: 93.89, orderID: "423-2432")
 ```
