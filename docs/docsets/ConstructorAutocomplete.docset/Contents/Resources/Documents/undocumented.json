@@ -114,7 +114,7 @@
     },
     {
       "file": "/Users/jimmy/projects/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
-      "line": 612,
+      "line": 615,
       "symbol": "ConstructorIO.sessionDidChange(from:to:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
