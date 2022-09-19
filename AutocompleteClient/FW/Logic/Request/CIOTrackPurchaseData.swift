@@ -13,21 +13,32 @@ import Foundation
  */
 struct CIOTrackPurchaseData: CIORequestData {
 
-    let customerIDs: [String]
+    var customerIDs: [String]?
     let revenue: Double?
     var sectionName: String?
     var orderID: String?
+    var items: [CIOItem]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackPurchase.format, baseURL)
     }
 
     init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
-        
-        if (customerIDs.count > 100) {
+        if customerIDs.count > 100 {
             self.customerIDs = Array(customerIDs[0 ..< 100])
         } else {
             self.customerIDs = customerIDs
+        }
+        self.sectionName = sectionName
+        self.revenue = revenue
+        self.orderID = orderID
+    }
+
+    init(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
+        if items.count > 100 {
+            self.items = Array(items[0 ..< 100])
+        } else {
+            self.items = items
         }
         self.sectionName = sectionName
         self.revenue = revenue
@@ -43,8 +54,27 @@ struct CIOTrackPurchaseData: CIORequestData {
     }
 
     func httpBody(baseParams: [String: Any]) -> Data? {
-        let items = self.customerIDs.map { ["item_id": $0] }
-        var dict = ["items": items] as [String: Any]
+        var dict = [String: Any]()
+
+        if let purchasedCustomerIDs = self.customerIDs {
+            let items = purchasedCustomerIDs.map { ["item_id": $0] }
+            dict["items"] = items
+        }
+
+        if let purchasedItems = self.items {
+            var items = [[String: String]]()
+            purchasedItems.forEach { purchaseItem in
+                let quantity = purchaseItem.quantity ?? 1
+                for _ in 1...quantity {
+                    var item = ["item_id": purchaseItem.customerID]
+                    if let variation_id = purchaseItem.variationID {
+                        item["variation_id"] = variation_id
+                    }
+                    items.append(item)
+                }
+            }
+            dict["items"] = items
+        }
 
         if self.orderID != nil {
             dict["order_id"] = self.orderID
