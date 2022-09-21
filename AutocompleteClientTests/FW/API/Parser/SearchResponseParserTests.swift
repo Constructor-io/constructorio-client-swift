@@ -153,4 +153,23 @@ class SearchResponseParserTests: XCTestCase {
         }
     }
 
+    func testSearchParser_ParsingJSONString_ParsesRefinedContent() {
+        let data = TestResource.load(name: TestResource.Response.searchJSONRefinedContentFilename)
+        do {
+            let response = try self.parser.parse(searchResponseData: data)
+            let refinedContentData = response.refinedContent.first!.data
+
+            XCTAssertNotNil(refinedContentData.header, "Valid header should be correctly parsed")
+            XCTAssertNotNil(refinedContentData.body, "Valid body should be correctly parsed")
+            XCTAssertNotNil(refinedContentData.altText, "Valid altText should be correctly parsed")
+            XCTAssertNotNil(refinedContentData.assetUrl, "Valid assetUrl should be correctly parsed")
+            XCTAssertNotNil(refinedContentData.mobileAssetUrl, "Valid mobileAssetUrl should be correctly parsed")
+            XCTAssertNotNil(refinedContentData.mobileAssetAltText, "Valid mobileAssetAltText should be correctly parsed")
+            XCTAssertNotNil(refinedContentData.ctaLink, "Valid ctaLink should be correctly parsed")
+            XCTAssertNotNil(refinedContentData.ctaText, "Valid ctaText should be correctly parsed")
+
+        } catch {
+            XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
+        }
+    }
 }
