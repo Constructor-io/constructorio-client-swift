@@ -15,8 +15,8 @@ public struct CIORefinedContent {
     /**
      Refine dcontent data
      */
-    public let data: CIORefinedContentData
-    
+    public let data: [String: String]
+
     /**
      Create a refined content object
      
@@ -24,11 +24,8 @@ public struct CIORefinedContent {
         - json: JSON data from server reponse
      */
     public init?(json: JSONObject) {
-        guard let dataJson = json["data"] as? JSONObject,
-        let data: CIORefinedContentData = CIORefinedContentData(json: dataJson) else {
-            return nil
-        }
-        
+        guard let data = json["data"] as? [String: String] else { return nil }
+
         self.data = data
     }
 }
