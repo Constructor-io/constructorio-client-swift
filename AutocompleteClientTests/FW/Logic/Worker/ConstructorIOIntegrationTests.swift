@@ -616,7 +616,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    func testSearch_ShouldReturnArtbitraryRefinedContentData() {
+    func testSearch_ShouldReturnRefinedContentWithArtbitraryData() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIOSearchQuery(query: "item")
