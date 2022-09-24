@@ -600,17 +600,25 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let responseData = response.data!
             let refinedContent = responseData.refinedContent[0]
             let refinedContentData = refinedContent.data
+            let header = refinedContentData["header"] as? String
+            let body = refinedContentData["body"] as? String
+            let altText = refinedContentData["altText"] as? String
+            let assetUrl = refinedContentData["assetUrl"] as? String
+            let mobileAssetUrl = refinedContentData["mobileAssetUrl"] as? String
+            let mobileAssetAltText = refinedContentData["mobileAssetAltText"] as? String
+            let ctaLink = refinedContentData["ctaLink"] as? String
+            let ctaText = refinedContentData["ctaText"] as? String
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(refinedContent)
-            XCTAssertEqual(refinedContentData["header"], "Content 1 Header")
-            XCTAssertEqual(refinedContentData["body"], "Content 1 Body")
-            XCTAssertEqual(refinedContentData["altText"], "Content 1 desktop alt text")
-            XCTAssertEqual(refinedContentData["assetUrl"], "https://constructor.io/wp-content/uploads/2022/09/groceryshop-2022-r2.png")
-            XCTAssertEqual(refinedContentData["mobileAssetUrl"], "https://constructor.io/wp-content/uploads/2022/09/groceryshop-2022-r2.png")
-            XCTAssertEqual(refinedContentData["mobileAssetAltText"], "Content 1 mobile alt text")
-            XCTAssertEqual(refinedContentData["ctaLink"], "https://constructor.io/wp-content/uploads/2022/09/groceryshop-2022-r2.png")
-            XCTAssertEqual(refinedContentData["ctaText"], "Content 1 CTA Button")
+            XCTAssertEqual(header, "Content 1 Header")
+            XCTAssertEqual(body, "Content 1 Body")
+            XCTAssertEqual(altText, "Content 1 desktop alt text")
+            XCTAssertEqual(assetUrl, "https://constructor.io/wp-content/uploads/2022/09/groceryshop-2022-r2.png")
+            XCTAssertEqual(mobileAssetUrl, "https://constructor.io/wp-content/uploads/2022/09/groceryshop-2022-r2.png")
+            XCTAssertEqual(mobileAssetAltText, "Content 1 mobile alt text")
+            XCTAssertEqual(ctaLink, "https://constructor.io/wp-content/uploads/2022/09/groceryshop-2022-r2.png")
+            XCTAssertEqual(ctaText, "Content 1 CTA Button")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -625,11 +633,15 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let responseData = response.data!
             let refinedContent = responseData.refinedContent[0]
             let refinedContentData = refinedContent.data
+            let tag1Value = refinedContentData["tag-1"] as? String
+            let tag2Value = refinedContentData["tag-2"] as? String
+            let arbitraryDataObject = refinedContentData["arbitraryDataObject"] as? [String: String] ?? [:]
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(refinedContent)
-            XCTAssertEqual(refinedContentData["tag-1"], "tag-1-value")
-            XCTAssertEqual(refinedContentData["tag-2"], "tag-2-value")
+            XCTAssertEqual(tag1Value, "tag-1-value")
+            XCTAssertEqual(tag2Value, "tag-2-value")
+            XCTAssertEqual(arbitraryDataObject["pizza"], "pie")
             expectation.fulfill()
         })
         self.wait(for: expectation)
