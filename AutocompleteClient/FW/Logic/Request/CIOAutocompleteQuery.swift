@@ -10,7 +10,7 @@ import Foundation
 
 /**
  Struct encapsulating the necessary and additional parameters required to execute an autocomplete query.
- */
+ */ 
 public struct CIOAutocompleteQuery: CIORequestData {
     /**
      The user typed query to return results for

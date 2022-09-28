@@ -6,7 +6,7 @@
 //  http://constructor.io/
 //
 
-import Foundation
+import Foundation 
 
 /**
  Struct encapsulating the necessary and additional parameters required to execute a search query.

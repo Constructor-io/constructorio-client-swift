@@ -215,4 +215,11 @@ struct Constants {
         static let id = "constructor.io/session/id"
         static let createdAt = "constructor.io/session/createdAt"
     }
+    
+    struct Quiz {
+        static let format = "%@/v1/quizzes/%@/%@"
+        static let quizId = "quiz_id"
+        static let answers = "a"
+        static let defaultAnswersValue = ""
+    }
 }

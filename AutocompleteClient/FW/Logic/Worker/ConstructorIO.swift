@@ -13,6 +13,7 @@ public typealias SearchQueryCompletionHandler = (SearchTaskResponse) -> Void
 public typealias BrowseQueryCompletionHandler = (BrowseTaskResponse) -> Void
 public typealias RecommendationsQueryCompletionHandler = (RecommendationsTaskResponse) -> Void
 public typealias TrackingCompletionHandler = (TrackingTaskResponse) -> Void
+public typealias QuizzesQueryCompletionHandler = (QuizTaskResponse) -> Void
 
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
@@ -35,6 +36,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
     var browseParser: AbstractBrowseResponseParser = DependencyContainer.sharedInstance.browseResponseParser()
     var recommendationsParser: AbstractRecommendationsResponseParser = DependencyContainer.sharedInstance.recommendationsResponseParser()
+    var quizzesParser: AbstractQuizzesResponseParser = DependencyContainer.sharedInstance.quizzesResponseParser()
 
     public var sessionID: Int {
         get {
@@ -165,6 +167,28 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func recommendations(forQuery query: CIORecommendationsQuery, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeRecommendations(request, completionHandler: completionHandler)
+    }
+    
+    /**
+     Get Quiz results for a query.
+    
+     - Parameters:
+        - query: The query object, consisting of the query to get Quizzes for and additional options.
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     let quizzesQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
+
+     constructorIO.quizzes(forQuery: quizzesQuery) { response in
+        let data = response.data!
+        let error = response.error!
+     }
+     ```
+     */
+    public func quizzes(forQuery query: CIOQuizzesQuery, completionHandler: @escaping  QuizzesQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeQuizzes(request, completionHandler: completionHandler)
     }
 
     /**
@@ -575,6 +599,29 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             }
         }
     }
+    
+    private func executeQuizzes(_ request: URLRequest, completionHandler: @escaping QuizzesQueryCompletionHandler) {
+        let dispatchHandlerOnMainQueue = { response in
+            DispatchQueue.main.async {
+                completionHandler(response)
+            }
+        }
+
+        self.networkClient.execute(request) { response in
+            if let error = response.error {
+                dispatchHandlerOnMainQueue(QuizTaskResponse(error: error))
+                return
+            }
+
+            let data = response.data!
+            do {
+                let parsedResponse = try self.parseQuizzes(data)
+                dispatchHandlerOnMainQueue(QuizTaskResponse(data: parsedResponse))
+            } catch {
+                dispatchHandlerOnMainQueue(QuizTaskResponse(error: error))
+            }
+        }
+    }
 
     private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
         let dispatchHandlerOnMainQueue = { response in
@@ -608,6 +655,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     private func parseRecommendations(_ recommendationsResponseData: Data) throws -> CIORecommendationsResponse {
         return try self.recommendationsParser.parse(recommendationsResponseData: recommendationsResponseData)
+    }
+    
+    private func parseQuizzes(_ quizzesResponseData: Data) throws -> CIOQuizzesResponse {
+        return try self.quizzesParser.parse(quizzesResponseData: quizzesResponseData)
     }
 
     // MARK: CIOSessionManagerDelegate
