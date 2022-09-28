@@ -54,7 +54,7 @@ public class CIOAnswerQuizQueryBuilder {
         .build()
      
      //?????
-     constructor.quizzez(forQuery: query, completionHandler: { ... })
+     constructor.quizzes(forQuery: query, completionHandler: { ... })
      ```
      */
     

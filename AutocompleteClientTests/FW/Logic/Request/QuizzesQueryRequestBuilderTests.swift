@@ -20,7 +20,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
     override func setUp() { 
         super.setUp()
 //        self.endodedQuery = answers.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        self.builder = RequestBuilder(apiKey: self.testACKey, baseURL: Constants.Query.baseURLString)
+        self.builder = RequestBuilder(apiKey: self.testACKey, baseURL: "https://quizzes.cnstrc.com")
     }
 
     func testQuizzesQueryBuilder() {
@@ -29,7 +29,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
         print(url)
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v1/quizzes/\(quizId)/next"))
+        XCTAssertTrue(url.hasPrefix("https://quizzes.cnstrc.com/v1/quizzes/\(quizId)/next"))
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")
@@ -42,7 +42,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
         print(url)
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v1/quizzes/\(quizId)/finalize"))
+        XCTAssertTrue(url.hasPrefix("https://quizzes.cnstrc.com/v1/quizzes/\(quizId)/finalize"))
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")

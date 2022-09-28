@@ -10,6 +10,7 @@ import XCTest
 @testable import ConstructorAutocomplete
 
 class AutocompleteQueryRequestBuilderTests: XCTestCase {
+    
     fileprivate let query: String = "testing query?!-123"
     fileprivate var endodedQuery: String = ""
     fileprivate let testACKey: String = "abcdefgh123"

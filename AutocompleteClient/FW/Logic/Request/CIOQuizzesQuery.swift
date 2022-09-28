@@ -38,7 +38,7 @@ public struct CIOQuizzesQuery: CIORequestData {
      ### Usage Example: ###
      ```
 
-     let answerQuizQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
+     let quizzesQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
      ```
      */
     public init(quizId: String, answers: [String]? = nil) {
