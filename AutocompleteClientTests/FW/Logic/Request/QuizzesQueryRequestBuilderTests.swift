@@ -17,7 +17,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
     fileprivate let testACKey: String = "abcdefgh123"
     fileprivate var builder: RequestBuilder!
 
-    override func setUp() { 
+    override func setUp() {
         super.setUp()
 //        self.endodedQuery = answers.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.builder = RequestBuilder(apiKey: self.testACKey, baseURL: "https://quizzes.cnstrc.com")

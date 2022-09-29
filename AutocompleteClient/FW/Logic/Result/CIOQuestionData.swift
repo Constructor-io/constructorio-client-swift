@@ -15,7 +15,7 @@ public struct CIOQuestionData {
     /**
      Question ID
      */
-    public let id: String
+    public let id: Int
 
     /**
      Title of the result question
@@ -56,13 +56,18 @@ public extension CIOQuestionData {
         - json: JSON data from the server response
      */
     init?(json: JSONObject) {
-        guard let id = json["id"] as? String else { return nil }
+        guard let id = json["id"] as? Int else { return nil }
         let title = json["title"] as? String
         let description = json["description"] as? String
         let optionsObj = json["options"] as? [JSONObject]
         let ctaText = json["cta_text"] as? String
-        let images = json["images"] as? CIOQuestionImages
         let inputPlaceholder = json["input_placeholder"] as? String
+                    
+        if let images = json["images"] as? JSONObject {
+            self.images = CIOQuestionImages(json: images)
+        } else {
+            return nil
+        }
 
         let options: [CIOQuestionOption]? = optionsObj?.compactMap { obj in return CIOQuestionOption(json: obj) }
 
@@ -70,7 +75,7 @@ public extension CIOQuestionData {
         self.title = title
         self.description = description
         self.ctaText = ctaText
-        self.images = images
+        
         self.options = options
         self.inputPlaceholder = inputPlaceholder
     }

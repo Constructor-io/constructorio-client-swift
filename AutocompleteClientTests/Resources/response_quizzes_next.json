@@ -5,7 +5,12 @@
     "description": "Sample description",
     "type": "single",
     "cta_text": "Next",
-    "images": null,
+    "images": {
+      "primary_url": "https://example.com/image",
+      "primary_alt": "Example image",
+      "secondary_url": null,
+      "secondary_alt": null
+    },
     "options": [
       {
         "id": 1,

@@ -13,9 +13,14 @@ import Foundation
  */
 public struct CIOQuizzesResponse {
     /**
-     List of facets returned for the result set
+     Next question in the quiz
      */
-    public let nextQuestion: CIOQuestionData
+    public let nextQuestion: CIOQuestionData?
+    
+    /**
+     Final question in the quiz
+     */
+    public let result: CIOQuizzesFinalizeData?
     
     /**
      Version Id of the result question

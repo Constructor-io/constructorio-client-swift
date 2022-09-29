@@ -58,6 +58,8 @@
 		08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */; };
 		08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */; };
 		651F5B9E3E0C5CC7A2090EC8 /* Pods_AutocompleteClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */; };
+		7D06CCA128E5122B00AB6A8C /* response_quizzes_finalize.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8528E3C04C00A584E3 /* response_quizzes_finalize.json */; };
+		7D06CCA328E516BC00AB6A8C /* CIOQuizzesFinalizeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D06CCA228E516BC00AB6A8C /* CIOQuizzesFinalizeData.swift */; };
 		7D45383A28DC085600490BFE /* CIOQuizzesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383928DC085600490BFE /* CIOQuizzesQuery.swift */; };
 		7D45383C28DC0DA200490BFE /* CIOAnswerQuizQueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383B28DC0DA200490BFE /* CIOAnswerQuizQueryBuilder.swift */; };
 		7D45383E28DC14AE00490BFE /* CIOQuizzesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383D28DC14AE00490BFE /* CIOQuizzesResponse.swift */; };
@@ -377,6 +379,7 @@
 		08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchSubmitData.swift; sourceTree = "<group>"; };
 		453FBD0FBF9C8817B960B758 /* Pods-UserApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication.release.xcconfig"; sourceTree = "<group>"; };
 		5362DE84EA35B4B9FE26EE1F /* Pods_AutocompleteClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D06CCA228E516BC00AB6A8C /* CIOQuizzesFinalizeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizzesFinalizeData.swift; sourceTree = "<group>"; };
 		7D45383928DC085600490BFE /* CIOQuizzesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizzesQuery.swift; sourceTree = "<group>"; };
 		7D45383B28DC0DA200490BFE /* CIOAnswerQuizQueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOAnswerQuizQueryBuilder.swift; sourceTree = "<group>"; };
 		7D45383D28DC14AE00490BFE /* CIOQuizzesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizzesResponse.swift; sourceTree = "<group>"; };
@@ -806,6 +809,7 @@
 				7D45383F28DC16F400490BFE /* CIOQuestionData.swift */,
 				7D45384328DC19A500490BFE /* CIOQuestionOption.swift */,
 				7D45384128DC181100490BFE /* CIOQuestionImages.swift */,
+				7D06CCA228E516BC00AB6A8C /* CIOQuizzesFinalizeData.swift */,
 				08289540256C5A85009A00BC /* Responses */,
 			);
 			path = Result;
@@ -2114,6 +2118,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D06CCA128E5122B00AB6A8C /* response_quizzes_finalize.json in Resources */,
 				BFC9503725D6619000118D4C /* response_recommendations.json in Resources */,
 				F6F1D707234B693D0092341D /* response_search_json_variations.json in Resources */,
 				F6F1D70B234B6FD50092341D /* response_search_json_variation_custom_data.json in Resources */,
@@ -2327,6 +2332,7 @@
 				BFC9503225D49EC600118D4C /* RecommendationsTaskResponse.swift in Sources */,
 				F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */,
 				08A7E40F2575E37A000FA02F /* CIOTrackBrowseResultsLoadedData.swift in Sources */,
+				7D06CCA328E516BC00AB6A8C /* CIOQuizzesFinalizeData.swift in Sources */,
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,
 				F60BEA1A1F571956008F0053 /* CIOAutocompleteDelegate.swift in Sources */,
 				F65B9E502146995800101617 /* SearchResponseParser.swift in Sources */,

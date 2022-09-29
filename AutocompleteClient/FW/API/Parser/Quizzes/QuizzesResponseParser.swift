@@ -14,14 +14,15 @@ class QuizzesResponseParser: AbstractQuizzesResponseParser {
         do {
             let json = try JSONSerialization.jsonObject(with: quizzesResponseData) as? JSONObject
 
-            guard let nextQuestion = json?["next_question"] as? CIOQuestionData else {
-                throw CIOError(errorType: .invalidResponse)
-            }
             let versionId = json?["version_id"] as? String
             let isLastQuestion = json?["is_last_question"] as? Bool
+            
+            let nextQuestion = CIOQuestionData(json: json?["next_question"] as? JSONObject ?? [:])
+            let result = CIOQuizzesFinalizeData(json: json?["result"] as? JSONObject ?? [:])
 
             return CIOQuizzesResponse(
                 nextQuestion: nextQuestion,
+                result: result,
                 versionId: versionId,
                 isLastQuestion: isLastQuestion
             )
