@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating a result data object with additional information about the result
  */
-public struct CIOQuestionData {
+public struct CIONextQuestionData {
     /**
      Question ID
      */
@@ -49,7 +49,7 @@ public struct CIOQuestionData {
     
 }
 
-public extension CIOQuestionData {
+public extension CIONextQuestionData {
     /**
      Create a result data object
      - Parameters:

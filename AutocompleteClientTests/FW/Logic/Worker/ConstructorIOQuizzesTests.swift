@@ -45,6 +45,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
             XCTAssertNotNil(response.data, "Calling Quizzes next with valid parameters should return a non-nil response.")
             XCTAssertNotNil(response.data?.nextQuestion?.options, "Calling Quizzes next with valid parameters should return a non-nil options response.")
             XCTAssertEqual(response.data?.nextQuestion?.images?.primaryUrl, "https://example.com/image")
+            XCTAssertNil(response.data?.nextQuestion?.images?.secondaryUrl, "Calling Quizzes next with valid parameters should return a nil for secondary image url.")
 
             expectation.fulfill()
         })

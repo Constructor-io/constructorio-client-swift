@@ -17,8 +17,8 @@ class QuizzesResponseParser: AbstractQuizzesResponseParser {
             let versionId = json?["version_id"] as? String
             let isLastQuestion = json?["is_last_question"] as? Bool
             
-            let nextQuestion = CIOQuestionData(json: json?["next_question"] as? JSONObject ?? [:])
-            let result = CIOQuizzesFinalizeData(json: json?["result"] as? JSONObject ?? [:])
+            let nextQuestion = CIONextQuestionData(json: json?["next_question"] as? JSONObject ?? [:])
+            let result = CIOQuizResultData(json: json?["result"] as? JSONObject ?? [:])
 
             return CIOQuizzesResponse(
                 nextQuestion: nextQuestion,

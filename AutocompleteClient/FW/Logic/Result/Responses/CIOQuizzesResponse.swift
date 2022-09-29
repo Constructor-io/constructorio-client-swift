@@ -15,12 +15,12 @@ public struct CIOQuizzesResponse {
     /**
      Next question in the quiz
      */
-    public let nextQuestion: CIOQuestionData?
+    public let nextQuestion: CIONextQuestionData?
     
     /**
      Final question in the quiz
      */
-    public let result: CIOQuizzesFinalizeData?
+    public let result: CIOQuizResultData?
     
     /**
      Version Id of the result question
