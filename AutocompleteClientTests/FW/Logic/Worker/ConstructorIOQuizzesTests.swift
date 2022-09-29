@@ -43,7 +43,9 @@ class ConstructorIOQuizzesTests: XCTestCase {
 
         self.constructor.quizzes(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Quizzes next with valid parameters should return a non-nil response.")
+            XCTAssertNotNil(response.data?.nextQuestion?.options, "Calling Quizzes next with valid parameters should return a non-nil options response.")
             XCTAssertEqual(response.data?.nextQuestion?.images?.primaryUrl, "https://example.com/image")
+
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -60,6 +62,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
 
         self.constructor.quizzes(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data?.result, "Calling Quizzes finalize next with valid parameters should return a non-nil response.")
+            XCTAssertNotNil(response.data?.result?.filterExpressions, "Calling Quizzes finalize next with valid parameters should return a non-nil filter expressions response.")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -72,7 +75,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(404))
 
         self.constructor.quizzes(forQuery: query, completionHandler: { response in
-            XCTAssertNotNil(response.error, "Quizzes Browse returns non-nil error if API errors out.")
+            XCTAssertNotNil(response.error, "Quizzes returns non-nil error if API errors out.")
             expectation.fulfill()
         })
         self.wait(for: expectation)
