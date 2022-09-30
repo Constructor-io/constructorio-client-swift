@@ -33,7 +33,7 @@ public struct CIOSearchResponse {
     public let redirectInfo: CIOSearchRedirectInfo?
 
     /**
-     A list sorting options
+     A list of sorting options
      */
     public let sortOptions: [CIOSortOption]
 
@@ -51,6 +51,11 @@ public struct CIOSearchResponse {
      Sources of the result set
      */
     public let resultSources: CIOResultSources?
+    
+    /**
+     A list of refined content
+     */
+    public let refinedContent: [CIORefinedContent]
 
     /**
      Flag to determine if the response is a redirect
