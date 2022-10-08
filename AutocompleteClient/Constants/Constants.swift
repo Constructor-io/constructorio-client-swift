@@ -220,6 +220,5 @@ struct Constants {
         static let format = "%@/v1/quizzes/%@/%@"
         static let quizId = "quiz_id"
         static let answers = "a"
-        static let defaultAnswersValue = ""
     }
 }

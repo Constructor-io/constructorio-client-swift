@@ -18,7 +18,7 @@ public struct CIOQuestionOptionAttribute {
 
 
 /**
- Struct encapsulating a question images
+ Struct encapsulating a question option
  */
 public struct CIOQuestionOption {
     public let id: String
@@ -28,11 +28,11 @@ public struct CIOQuestionOption {
 }
 
 /**
- Define a question images
+ Define a question option
  */
 public extension CIOQuestionOption {
     /**
-     Create a question images
+     Create a question options
     
      - Parameters:
         - json: JSON data from the server response

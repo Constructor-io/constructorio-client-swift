@@ -18,7 +18,13 @@ public struct CIOQuizzesQuery: CIORequestData {
     public let quizId: String
 
     /**
-     A list of answers in the format ?a=[option_id_1]&a=[option_id_2] with one a parameter for each question. The expected format for each parameter depends on the question type, as described below
+     A list of answers that be in the following formats:
+     * Single Select: "answer1"
+     * Multiple Select: "answer1, answer2"
+     * Open Text: "true"
+     * Cover Page: "seen"
+     
+     Please refer to "https://docs.constructor.io/rest_api/quiz/using_quizzes/" for additional details
      */
     public let answers: [String]?
 
@@ -33,11 +39,10 @@ public struct CIOQuizzesQuery: CIORequestData {
 
      - Parameters:
         - quizId: The id of the quiz
-        - answers: A list of answers in the format ?a=[option_id_1]&a=[option_id_2] with one a parameter for each question. The expected format for    each parameter depends on the question type, as described below.
+        - answers: A list of answers
 
      ### Usage Example: ###
      ```
-
      let quizzesQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
      ```
      */

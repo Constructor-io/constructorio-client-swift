@@ -13,7 +13,7 @@ public typealias SearchQueryCompletionHandler = (SearchTaskResponse) -> Void
 public typealias BrowseQueryCompletionHandler = (BrowseTaskResponse) -> Void
 public typealias RecommendationsQueryCompletionHandler = (RecommendationsTaskResponse) -> Void
 public typealias TrackingCompletionHandler = (TrackingTaskResponse) -> Void
-public typealias QuizzesQueryCompletionHandler = (QuizTaskResponse) -> Void
+public typealias QuizzesQueryCompletionHandler = (QuizzesTaskResponse) -> Void
 
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
@@ -609,16 +609,16 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
         self.networkClient.execute(request) { response in
             if let error = response.error {
-                dispatchHandlerOnMainQueue(QuizTaskResponse(error: error))
+                dispatchHandlerOnMainQueue(QuizzesTaskResponse(error: error))
                 return
             }
 
             let data = response.data!
             do {
                 let parsedResponse = try self.parseQuizzes(data)
-                dispatchHandlerOnMainQueue(QuizTaskResponse(data: parsedResponse))
+                dispatchHandlerOnMainQueue(QuizzesTaskResponse(data: parsedResponse))
             } catch {
-                dispatchHandlerOnMainQueue(QuizTaskResponse(error: error))
+                dispatchHandlerOnMainQueue(QuizzesTaskResponse(error: error))
             }
         }
     }

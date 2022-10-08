@@ -1,5 +1,5 @@
 //
-//  QuizTaskResponse.swift
+//  QuizzesTaskResponse.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-public class QuizTaskResponse: TaskResponse<CIOQuizzesResponse, Error> {}
+public class QuizzesTaskResponse: TaskResponse<CIOQuizzesResponse, Error> {}

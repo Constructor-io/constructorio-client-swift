@@ -75,7 +75,6 @@ public extension CIONextQuestionData {
         self.title = title
         self.description = description
         self.ctaText = ctaText
-        
         self.options = options
         self.inputPlaceholder = inputPlaceholder
     }
