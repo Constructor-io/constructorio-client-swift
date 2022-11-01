@@ -90,17 +90,60 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
         XCTAssertEqual(payload?["order_id"] as? String, orderID)
     }
-    
+
     func testTrackPurchaseBuilder_WithLargeItemsArray() {
         let tracker = CIOTrackPurchaseData(customerIDs: Array(repeating: "itemID", count: 150), sectionName: self.sectionName, orderID: self.orderID)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
-        let items = payload?["items"] as? [[String:String]] ?? []
+        let items = payload?["items"] as? [[String: String]] ?? []
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
         XCTAssertEqual(items.count, 100)
+    }
+
+    func testTrackPurchaseBuilder_WithItemsParam() {
+        let items = [
+            CIOItem(customerID: "custID1", variationID: "varID1"),
+            CIOItem(customerID: "custID2", variationID: "varID2"),
+            CIOItem(customerID: "custID3", variationID: "varID3")
+        ]
+        let tracker = CIOTrackPurchaseData(items: items, sectionName: self.sectionName, orderID: self.orderID)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let purchasedItems = payload?["items"] as? [[String: String]] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
+        XCTAssertEqual(purchasedItems.count, 3)
+        XCTAssertEqual(purchasedItems[0]["item_id"], items[0].customerID)
+        XCTAssertEqual(purchasedItems[0]["variation_id"], items[0].variationID)
+    }
+
+    func testTrackPurchaseBuilder_WithItemsContainingQuantityParam() {
+        let items = [
+            CIOItem(customerID: "custID1", variationID: "varID1", quantity: 2),
+            CIOItem(customerID: "custID2", variationID: "varID2", quantity: 3)
+        ]
+        let tracker = CIOTrackPurchaseData(items: items, sectionName: self.sectionName, orderID: self.orderID)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let purchasedItems = payload?["items"] as? [[String: String]] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
+        XCTAssertEqual(purchasedItems.count, 5)
+        XCTAssertEqual(purchasedItems[0]["item_id"], items[0].customerID)
+        XCTAssertEqual(purchasedItems[0]["variation_id"], items[0].variationID)
+        XCTAssertEqual(purchasedItems[1]["item_id"], items[0].customerID)
+        XCTAssertEqual(purchasedItems[1]["variation_id"], items[0].variationID)
+        XCTAssertEqual(purchasedItems[2]["item_id"], items[1].customerID)
+        XCTAssertEqual(purchasedItems[2]["variation_id"], items[1].variationID)
     }
 }

@@ -443,6 +443,28 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeTracking(request, completionHandler: completionHandler)
     }
 
+    /**
+     Track when a user completes an order (usually fired on order confirmation page)
+
+     - Parameters:
+        - items: The items purchased
+        - revenue: The revenue of the purchase
+        - orderID: The order identifier
+        - sectionName The name of the autocomplete section the term came from (defaults to "products")
+        - completionHandler: The callback to execute on completion.
+     
+     ### Usage Example: ###
+     ```
+     constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")
+     ```
+     */
+    public func trackPurchase(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackPurchaseData(items: items, sectionName: section, revenue: revenue, orderID: orderID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
     private func trackSessionStart(session: Int, completionHandler: TrackingCompletionHandler? = nil) {
         let request = self.buildSessionStartRequest(session: session)
         executeTracking(request, completionHandler: completionHandler)

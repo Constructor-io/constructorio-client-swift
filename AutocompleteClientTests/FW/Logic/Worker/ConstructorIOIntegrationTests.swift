@@ -187,6 +187,35 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testPurchase_WithVariationIDs() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let items = [
+            CIOItem(customerID: "10001", variationID: "20001"),
+            CIOItem(customerID: "luistrenker-jacket-K245511299-cream", variationID: "M0E20000000E2ZJ")
+        ]
+        constructorClient.trackPurchase(items: items, sectionName: sectionName, revenue: revenue, orderID: orderID, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testPurchase_WithQuantity() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let items = [
+            CIOItem(customerID: "10001", variationID: "20001", quantity: 2)
+        ]
+        constructorClient.trackPurchase(items: items, sectionName: sectionName, revenue: revenue, orderID: orderID, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testRecommendations() {
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIORecommendationsQuery(podID: podID, itemID: customerID, section: sectionName)
@@ -557,6 +586,62 @@ class ConstructorIOIntegrationTests: XCTestCase {
             XCTAssertNil(cioError)
             XCTAssertNotNil(searchResult)
             XCTAssertEqual(searchResult.labels["is_sponsored"], true)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testSearch_ShouldReturnRefinedContent() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOSearchQuery(query: "item")
+        constructorClient.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let refinedContent = responseData.refinedContent[0]
+            let refinedContentData = refinedContent.data
+            let header = refinedContentData["header"] as? String
+            let body = refinedContentData["body"] as? String
+            let altText = refinedContentData["altText"] as? String
+            let assetUrl = refinedContentData["assetUrl"] as? String
+            let mobileAssetUrl = refinedContentData["mobileAssetUrl"] as? String
+            let mobileAssetAltText = refinedContentData["mobileAssetAltText"] as? String
+            let ctaLink = refinedContentData["ctaLink"] as? String
+            let ctaText = refinedContentData["ctaText"] as? String
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(refinedContent)
+            XCTAssertEqual(header, "Content 1 Header")
+            XCTAssertEqual(body, "Content 1 Body")
+            XCTAssertEqual(altText, "Content 1 desktop alt text")
+            XCTAssertEqual(assetUrl, "https://constructor.io/wp-content/uploads/2022/09/groceryshop-2022-r2.png")
+            XCTAssertEqual(mobileAssetUrl, "https://constructor.io/wp-content/uploads/2022/09/groceryshop-2022-r2.png")
+            XCTAssertEqual(mobileAssetAltText, "Content 1 mobile alt text")
+            XCTAssertEqual(ctaLink, "https://constructor.io/wp-content/uploads/2022/09/groceryshop-2022-r2.png")
+            XCTAssertEqual(ctaText, "Content 1 CTA Button")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testSearch_ShouldReturnRefinedContentWithArtbitraryData() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOSearchQuery(query: "item")
+        constructorClient.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let refinedContent = responseData.refinedContent[0]
+            let refinedContentData = refinedContent.data
+            let tag1Value = refinedContentData["tag-1"] as? String
+            let tag2Value = refinedContentData["tag-2"] as? String
+            let arbitraryDataObject = refinedContentData["arbitraryDataObject"] as? [String: String] ?? [:]
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(refinedContent)
+            XCTAssertEqual(tag1Value, "tag-1-value")
+            XCTAssertEqual(tag2Value, "tag-2-value")
+            XCTAssertEqual(arbitraryDataObject["pizza"], "pie")
             expectation.fulfill()
         })
         self.wait(for: expectation)

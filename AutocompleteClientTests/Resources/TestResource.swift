@@ -37,6 +37,8 @@ struct TestResource {
         static let quizzesJSONFilenameNext = "response_quizzes_next"
         static let quizzesJSONFilenameFinalize = "response_quizzes_finalize"
         static let numberOfResultsInRecommendationsResponse = 10
+
+        static let searchJSONRefinedContentFilename = "response_search_json_refined_content"
     }
 
     static func load(name: String, type: String = "json") -> Data {
