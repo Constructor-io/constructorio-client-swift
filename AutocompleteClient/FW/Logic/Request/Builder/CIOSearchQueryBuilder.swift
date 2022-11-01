@@ -162,7 +162,7 @@ public class CIOSearchQueryBuilder {
         .setSection("Products")
         .setHiddenFields(["hidden_price_field", "color_swatches"])
         .setHiddenFacets(["hidden_facet"])
-        .build() 
+        .build()
      
      constructor.search(forQuery: query, completionHandler: { ... })
      ```

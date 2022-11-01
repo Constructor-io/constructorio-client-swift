@@ -7,7 +7,6 @@
 //
 
 import Foundation
- 
 /**
  Struct encapsulating the necessary and additional parameters required to execute a quizzes query.
  */
@@ -17,7 +16,7 @@ public struct CIOQuizzesQuery: CIORequestData {
      */
     public let quizId: String
 
-     /**
+    /**
      A list of answers that be in the following formats:
      * Single Select: "answer1"
      * Multiple Select: "answer1, answer2"
