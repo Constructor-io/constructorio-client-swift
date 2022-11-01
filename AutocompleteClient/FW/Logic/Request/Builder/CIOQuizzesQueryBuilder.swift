@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Request builder for creating an browse query.
+ Request builder for creating a quizzes query.
  */
 public class CIOQuizzesQueryBuilder {
 
@@ -34,7 +34,6 @@ public class CIOQuizzesQueryBuilder {
      
      - Parameters:
         - quizId: The id of the quiz
-        - answers: A list of answers
      */
     
     public init(quizId: String) {
@@ -60,7 +59,7 @@ public class CIOQuizzesQueryBuilder {
      
      constructor.quizzes(forQuery: query, completionHandler: { ... })
      ```
-     */
+     */ 
     
     public func build() -> CIOQuizzesQuery {
         return CIOQuizzesQuery(quizId: quizId, answers: answers)

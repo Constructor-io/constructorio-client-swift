@@ -7,9 +7,9 @@
 //
 
 import Foundation
-
+ 
 /**
- Struct encapsulating the necessary and additional parameters required to execute a search query.
+ Struct encapsulating the necessary and additional parameters required to execute a quizzes query.
  */
 public struct CIOQuizzesQuery: CIORequestData {
     /**
@@ -17,7 +17,7 @@ public struct CIOQuizzesQuery: CIORequestData {
      */
     public let quizId: String
 
-    /**
+     /**
      A list of answers that be in the following formats:
      * Single Select: "answer1"
      * Multiple Select: "answer1, answer2"
@@ -26,7 +26,7 @@ public struct CIOQuizzesQuery: CIORequestData {
      
      Please refer to "https://docs.constructor.io/rest_api/quiz/using_quizzes/" for additional details
      */
-    public let answers: [String]?
+    public var answers: [String]?
 
     public var finalize: Bool = false
     

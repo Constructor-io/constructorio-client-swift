@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Struct representing the search data response from the server.
+ Struct representing the quizzes data response from the server.
  */
 public struct CIOQuizzesResponse {
     /**

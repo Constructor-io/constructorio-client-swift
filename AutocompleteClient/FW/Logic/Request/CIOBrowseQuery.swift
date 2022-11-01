@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Struct encapsulating the necessary and additional parameters required to execute a search query.
+ Struct encapsulating the necessary and additional parameters required to execute a browse query.
  */
 public struct CIOBrowseQuery: CIORequestData {
     /**
