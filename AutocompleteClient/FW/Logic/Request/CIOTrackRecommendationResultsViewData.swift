@@ -20,12 +20,13 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
     let resultCount: Int?
     let sectionName: String?
     let resultID: String?
+    let beaconMode: Bool?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackRecommendationResultsView.format, baseURL)
     }
 
-    init(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, url: String = "Not Available") {
+    init(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, url: String = "Not Available", beaconMode: Bool? = nil) {
         self.podID = podID
         self.url = url
         self.numResultsViewed = numResultsViewed
@@ -33,6 +34,7 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
         self.resultCount = resultCount
         self.sectionName = sectionName
         self.resultID = resultID
+        self.beaconMode = beaconMode
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -61,6 +63,9 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
         }
         if self.resultID != nil {
             dict["result_id"] = self.resultID
+        }
+        if self.beaconMode != nil {
+            dict["beacon"] = self.beaconMode
         }
 
         dict.merge(baseParams) { current, _ in current }

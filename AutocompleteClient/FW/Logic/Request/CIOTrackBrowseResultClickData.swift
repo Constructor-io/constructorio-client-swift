@@ -20,12 +20,13 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
     var sectionName: String?
     let resultID: String?
     let variationID: String?
+    let beaconMode: Bool?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackBrowseResultClick.format, baseURL)
     }
 
-    init(filterName: String, filterValue: String, customerID: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, variationID: String? = nil) {
+    init(filterName: String, filterValue: String, customerID: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, variationID: String? = nil, beaconMode: Bool? = nil) {
         self.filterName = filterName
         self.filterValue = filterValue
         self.customerID = customerID
@@ -33,6 +34,7 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
         self.sectionName = sectionName
         self.resultID = resultID
         self.variationID = variationID
+        self.beaconMode = beaconMode
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -59,6 +61,9 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
         }
         if self.resultID != nil {
             dict["result_id"] = self.resultID
+        }
+        if self.beaconMode != nil {
+            dict["beacon"] = self.beaconMode
         }
 
         dict.merge(baseParams) { current, _ in current }

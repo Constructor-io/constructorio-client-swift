@@ -17,17 +17,19 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
     let resultCount: Int
     let resultID: String?
     let url: String
+    let beaconMode: Bool?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackBrowseResultsLoaded.format, baseURL)
     }
 
-    init(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available") {
+    init(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available", beaconMode: Bool? = nil) {
         self.filterName = filterName
         self.filterValue = filterValue
         self.resultCount = resultCount
         self.resultID = resultID
         self.url = url
+        self.beaconMode = beaconMode
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -46,6 +48,9 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
 
         if self.resultID != nil {
             dict["resultID"] = self.resultID
+        }
+        if self.beaconMode != nil {
+            dict["beacon"] = self.beaconMode
         }
 
         dict.merge(baseParams) { current, _ in current }

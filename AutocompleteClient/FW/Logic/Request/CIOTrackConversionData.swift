@@ -20,12 +20,13 @@ struct CIOTrackConversionData: CIORequestData {
     let revenue: Double?
     let conversionType: String?
     let variationID: String?
+    let beaconMode: Bool?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackConversion.format, baseURL)
     }
 
-    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, variationID: String? = nil) {
+    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, variationID: String? = nil, beaconMode: Bool? = nil) {
         self.searchTerm = searchTerm
         self.itemName = itemName
         self.customerID = customerID
@@ -33,6 +34,7 @@ struct CIOTrackConversionData: CIORequestData {
         self.revenue = revenue
         self.conversionType = conversionType
         self.variationID = variationID
+        self.beaconMode = beaconMode
     }
 
     func httpMethod() -> String {
@@ -63,6 +65,9 @@ struct CIOTrackConversionData: CIORequestData {
 
         if self.conversionType != nil {
             dict["type"] = self.conversionType
+        }
+        if self.beaconMode != nil {
+            dict["beacon"] = self.beaconMode
         }
 
         dict.merge(baseParams) { current, _ in current }

@@ -17,12 +17,13 @@ struct CIOTrackPurchaseData: CIORequestData {
     let revenue: Double?
     var sectionName: String?
     var orderID: String?
+    let beaconMode: Bool?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackPurchase.format, baseURL)
     }
 
-    init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
+    init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, beaconMode: Bool? = nil) {
         
         if (customerIDs.count > 100) {
             self.customerIDs = Array(customerIDs[0 ..< 100])
@@ -32,6 +33,7 @@ struct CIOTrackPurchaseData: CIORequestData {
         self.sectionName = sectionName
         self.revenue = revenue
         self.orderID = orderID
+        self.beaconMode = beaconMode
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -52,6 +54,9 @@ struct CIOTrackPurchaseData: CIORequestData {
 
         if self.revenue != nil {
             dict["revenue"] = self.revenue
+        }
+        if self.beaconMode != nil {
+            dict["beacon"] = self.beaconMode
         }
 
         dict.merge(baseParams) { current, _ in current }
