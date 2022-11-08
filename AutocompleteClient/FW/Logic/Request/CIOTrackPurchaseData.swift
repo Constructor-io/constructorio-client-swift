@@ -37,7 +37,7 @@ struct CIOTrackPurchaseData: CIORequestData {
         self.beaconMode = beaconMode
     }
 
-    init(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
+    init(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, beaconMode: Bool? = nil) {
         if items.count > 100 {
             self.items = Array(items[0 ..< 100])
         } else {
@@ -46,6 +46,7 @@ struct CIOTrackPurchaseData: CIORequestData {
         self.sectionName = sectionName
         self.revenue = revenue
         self.orderID = orderID
+        self.beaconMode = beaconMode
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {

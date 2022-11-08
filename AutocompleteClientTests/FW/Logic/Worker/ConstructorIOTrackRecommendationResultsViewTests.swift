@@ -41,11 +41,12 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         let resultCount = 10
         let sectionName = "Content"
         let resultID = "resultID789"
+        let beaconMode = true
 
         let builder = CIOBuilder(expectation: "Calling trackRecommendationResultsView should send a valid request with optional params.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
 
-        self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
+        self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, beaconMode: beaconMode)
         self.wait(for: builder.expectation)
     }
 

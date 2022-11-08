@@ -28,9 +28,10 @@ class ConstructorIOTrackBrowseResultsLoadedTests: XCTestCase {
         let filterName = "potato"
         let filterValue = "russet"
         let resultCount = 12
+        let beaconMode = false
         let builder = CIOBuilder(expectation: "Calling trackBrowseResultsLoaded should send a valid request.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
-        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount)
+        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, beaconMode: beaconMode)
         self.wait(for: builder.expectation)
     }
 
