@@ -13,10 +13,11 @@ import Foundation
  */
 struct CIOTrackPurchaseData: CIORequestData {
 
-    let customerIDs: [String]
+    var customerIDs: [String]?
     let revenue: Double?
     var sectionName: String?
     var orderID: String?
+    var items: [CIOItem]?
     let beaconMode: Bool?
 
     func url(with baseURL: String) -> String {
@@ -36,6 +37,17 @@ struct CIOTrackPurchaseData: CIORequestData {
         self.beaconMode = beaconMode
     }
 
+    init(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
+        if items.count > 100 {
+            self.items = Array(items[0 ..< 100])
+        } else {
+            self.items = items
+        }
+        self.sectionName = sectionName
+        self.revenue = revenue
+        self.orderID = orderID
+    }
+
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(autocompleteSection: self.sectionName)
     }
@@ -45,8 +57,27 @@ struct CIOTrackPurchaseData: CIORequestData {
     }
 
     func httpBody(baseParams: [String: Any]) -> Data? {
-        let items = self.customerIDs.map { ["item_id": $0] }
-        var dict = ["items": items] as [String: Any]
+        var dict = [String: Any]()
+
+        if let purchasedCustomerIDs = self.customerIDs {
+            let items = purchasedCustomerIDs.map { ["item_id": $0] }
+            dict["items"] = items
+        }
+
+        if let purchasedItems = self.items {
+            var items = [[String: String]]()
+            purchasedItems.forEach { purchaseItem in
+                let quantity = purchaseItem.quantity ?? 1
+                for _ in 1...quantity {
+                    var item = ["item_id": purchaseItem.customerID]
+                    if let variation_id = purchaseItem.variationID {
+                        item["variation_id"] = variation_id
+                    }
+                    items.append(item)
+                }
+            }
+            dict["items"] = items
+        }
 
         if self.orderID != nil {
             dict["order_id"] = self.orderID
