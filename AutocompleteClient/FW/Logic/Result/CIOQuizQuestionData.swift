@@ -40,7 +40,7 @@ public struct CIOQuizQuestionData {
     /**
      Options of the result question
      */
-    public let options: [CIOQuestionOption]?
+    public let options: [CIOQuizQuestionOption]?
     
     /**
      Input placeholder of the result question
@@ -69,7 +69,7 @@ public extension CIOQuizQuestionData {
             return nil
         }
 
-        let options: [CIOQuestionOption]? = optionsObj?.compactMap { obj in return CIOQuestionOption(json: obj) }
+        let options: [CIOQuizQuestionOption]? = optionsObj?.compactMap { obj in return CIOQuizQuestionOption(json: obj) }
 
         self.id = id
         self.title = title

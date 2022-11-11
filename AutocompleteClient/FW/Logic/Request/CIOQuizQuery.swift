@@ -1,5 +1,5 @@
 //
-//  CIOQuizQuestionQuery.swift
+//  CIOQuizQuery.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,9 +8,9 @@
 
 import Foundation
 /**
- Struct encapsulating the necessary and additional parameters required to execute a quizzes query.
+ Struct encapsulating the necessary and additional parameters required to execute a quiz query.
  */
-public struct CIOQuizzesQuery: CIORequestData {
+public struct CIOQuizQuery: CIORequestData {
     /**
      The id of the quiz
      */
@@ -35,7 +35,7 @@ public struct CIOQuizzesQuery: CIORequestData {
     }
 
     /**
-     Create a Answer Quiz request query object
+     Create a Quiz request query object
 
      - Parameters:
         - quizId: The id of the quiz
@@ -44,8 +44,8 @@ public struct CIOQuizzesQuery: CIORequestData {
 
      ### Usage Example: ###
      ```
-     let quizQuesitonQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
-     let quizResultsQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'], finalize: true)
+     let quizQuesitonQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'])
+     let quizResultsQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'], finalize: true)
      ```
      */
     public init(quizId: String, answers: [String]? = nil, finalize: Bool? = false) {

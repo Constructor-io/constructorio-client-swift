@@ -58,16 +58,16 @@
 		08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */; };
 		08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */; };
 		651F5B9E3E0C5CC7A2090EC8 /* Pods_AutocompleteClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */; };
-		7D06CCA128E5122B00AB6A8C /* response_quizzes_finalize.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8528E3C04C00A584E3 /* response_quizzes_finalize.json */; };
+		7D06CCA128E5122B00AB6A8C /* response_quiz_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */; };
 		7D06CCA328E516BC00AB6A8C /* CIOQuizResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D06CCA228E516BC00AB6A8C /* CIOQuizResultsData.swift */; };
-		7D45383A28DC085600490BFE /* CIOQuizzesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383928DC085600490BFE /* CIOQuizzesQuery.swift */; };
+		7D45383A28DC085600490BFE /* CIOQuizQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383928DC085600490BFE /* CIOQuizQuery.swift */; };
 		7D45383E28DC14AE00490BFE /* CIOQuizQuestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383D28DC14AE00490BFE /* CIOQuizQuestionResponse.swift */; };
 		7D45384028DC16F400490BFE /* CIOQuizQuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383F28DC16F400490BFE /* CIOQuizQuestionData.swift */; };
 		7D45384228DC181100490BFE /* CIOQuestionImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45384128DC181100490BFE /* CIOQuestionImages.swift */; };
-		7D45384428DC19A500490BFE /* CIOQuestionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45384328DC19A500490BFE /* CIOQuestionOption.swift */; };
+		7D45384428DC19A500490BFE /* CIOQuizQuestionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45384328DC19A500490BFE /* CIOQuizQuestionOption.swift */; };
 		7D54FF8028E3B92000A584E3 /* ConstructorIOQuizzesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D54FF7F28E3B92000A584E3 /* ConstructorIOQuizzesTests.swift */; };
-		7D54FF8428E3BFA400A584E3 /* response_quizzes_next.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8328E3BFA400A584E3 /* response_quizzes_next.json */; };
-		7D54FF8628E3C04C00A584E3 /* response_quizzes_finalize.json in Sources */ = {isa = PBXBuildFile; fileRef = 7D54FF8528E3C04C00A584E3 /* response_quizzes_finalize.json */; };
+		7D54FF8428E3BFA400A584E3 /* response_quiz_question.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8328E3BFA400A584E3 /* response_quiz_question.json */; };
+		7D54FF8628E3C04C00A584E3 /* response_quiz_results.json in Sources */ = {isa = PBXBuildFile; fileRef = 7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */; };
 		7D91F6F7291BE840005F9D8D /* CIOQuizResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D91F6F6291BE840005F9D8D /* CIOQuizResultsResponse.swift */; };
 		7D91F6F9291D7B0A005F9D8D /* QuizResultsTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D91F6F8291D7B0A005F9D8D /* QuizResultsTaskResponse.swift */; };
 		7D91F6FB291DF3EB005F9D8D /* AbstractQuizResultsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D91F6FA291DF3EB005F9D8D /* AbstractQuizResultsResponseParser.swift */; };
@@ -386,14 +386,14 @@
 		453FBD0FBF9C8817B960B758 /* Pods-UserApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication.release.xcconfig"; sourceTree = "<group>"; };
 		5362DE84EA35B4B9FE26EE1F /* Pods_AutocompleteClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D06CCA228E516BC00AB6A8C /* CIOQuizResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizResultsData.swift; sourceTree = "<group>"; };
-		7D45383928DC085600490BFE /* CIOQuizzesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizzesQuery.swift; sourceTree = "<group>"; };
+		7D45383928DC085600490BFE /* CIOQuizQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuery.swift; sourceTree = "<group>"; };
 		7D45383D28DC14AE00490BFE /* CIOQuizQuestionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuestionResponse.swift; sourceTree = "<group>"; };
 		7D45383F28DC16F400490BFE /* CIOQuizQuestionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuestionData.swift; sourceTree = "<group>"; };
 		7D45384128DC181100490BFE /* CIOQuestionImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuestionImages.swift; sourceTree = "<group>"; };
-		7D45384328DC19A500490BFE /* CIOQuestionOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuestionOption.swift; sourceTree = "<group>"; };
+		7D45384328DC19A500490BFE /* CIOQuizQuestionOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuestionOption.swift; sourceTree = "<group>"; };
 		7D54FF7F28E3B92000A584E3 /* ConstructorIOQuizzesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOQuizzesTests.swift; sourceTree = "<group>"; };
-		7D54FF8328E3BFA400A584E3 /* response_quizzes_next.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_quizzes_next.json; sourceTree = "<group>"; };
-		7D54FF8528E3C04C00A584E3 /* response_quizzes_finalize.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_quizzes_finalize.json; sourceTree = "<group>"; };
+		7D54FF8328E3BFA400A584E3 /* response_quiz_question.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_quiz_question.json; sourceTree = "<group>"; };
+		7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_quiz_results.json; sourceTree = "<group>"; };
 		7D91F6F6291BE840005F9D8D /* CIOQuizResultsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizResultsResponse.swift; sourceTree = "<group>"; };
 		7D91F6F8291D7B0A005F9D8D /* QuizResultsTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultsTaskResponse.swift; sourceTree = "<group>"; };
 		7D91F6FA291DF3EB005F9D8D /* AbstractQuizResultsResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractQuizResultsResponseParser.swift; sourceTree = "<group>"; };
@@ -798,7 +798,7 @@
 				F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */,
 				08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */,
 				F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */,
-				7D45383928DC085600490BFE /* CIOQuizzesQuery.swift */,
+				7D45383928DC085600490BFE /* CIOQuizQuery.swift */,
 				BF02E29E28B5739C0062B44F /* CIOItem.swift */,
 			);
 			path = Request;
@@ -824,7 +824,7 @@
 				BF12196B25D1FDB300496189 /* CIORecommendationsPod.swift */,
 				BF67BD2F25E71F6E0039D479 /* CIORecommendationsStrategy.swift */,
 				7D45383F28DC16F400490BFE /* CIOQuizQuestionData.swift */,
-				7D45384328DC19A500490BFE /* CIOQuestionOption.swift */,
+				7D45384328DC19A500490BFE /* CIOQuizQuestionOption.swift */,
 				7D45384128DC181100490BFE /* CIOQuestionImages.swift */,
 				7D06CCA228E516BC00AB6A8C /* CIOQuizResultsData.swift */,
 				08289540256C5A85009A00BC /* Responses */,
@@ -1450,8 +1450,8 @@
 				F6F1D708234B6BFA0092341D /* response_search_json_invalid_variations.json */,
 				F6F1D70A234B6FD50092341D /* response_search_json_variation_custom_data.json */,
 				BFC9503325D4B57300118D4C /* response_recommendations.json */,
-				7D54FF8328E3BFA400A584E3 /* response_quizzes_next.json */,
-				7D54FF8528E3C04C00A584E3 /* response_quizzes_finalize.json */,
+				7D54FF8328E3BFA400A584E3 /* response_quiz_question.json */,
+				7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */,
 				BFE918F828DBB4AC005D92D8 /* response_search_json_refined_content.json */,
 			);
 			path = Resources;
@@ -2136,13 +2136,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D06CCA128E5122B00AB6A8C /* response_quizzes_finalize.json in Resources */,
+				7D06CCA128E5122B00AB6A8C /* response_quiz_results.json in Resources */,
 				BFE918F928DBB727005D92D8 /* response_search_json_refined_content.json in Resources */,
 				BFC9503725D6619000118D4C /* response_recommendations.json in Resources */,
 				F6F1D707234B693D0092341D /* response_search_json_variations.json in Resources */,
 				F6F1D70B234B6FD50092341D /* response_search_json_variation_custom_data.json in Resources */,
 				F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */,
-				7D54FF8428E3BFA400A584E3 /* response_quizzes_next.json in Resources */,
+				7D54FF8428E3BFA400A584E3 /* response_quiz_question.json in Resources */,
 				F67868DF22295CA200C76C0D /* response_search_redirect.json in Resources */,
 				F65BBCAE214FC99E007FEB22 /* response_search_json.json in Resources */,
 				F64F46B11F5970140094C697 /* response_json_single_section.json in Resources */,
@@ -2408,7 +2408,7 @@
 				8DF2172D2888AE5E006384A5 /* CIOResultSources.swift in Sources */,
 				0885D84425718AD10038AE96 /* CIOBrowseQuery.swift in Sources */,
 				0885D83E2571870B0038AE96 /* BrowseResponseParser.swift in Sources */,
-				7D45384428DC19A500490BFE /* CIOQuestionOption.swift in Sources */,
+				7D45384428DC19A500490BFE /* CIOQuizQuestionOption.swift in Sources */,
 				F67868DB2224328D00C76C0D /* AutocompleteTaskResponse.swift in Sources */,
 				0828954A256C5A85009A00BC /* CIOResultFacet.swift in Sources */,
 				088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */,
@@ -2436,7 +2436,7 @@
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractAutocompleteResponseParser.swift in Sources */,
 				F65BBCB821515E46007FEB22 /* ClientIDGenerator.swift in Sources */,
-				7D45383A28DC085600490BFE /* CIOQuizzesQuery.swift in Sources */,
+				7D45383A28DC085600490BFE /* CIOQuizQuery.swift in Sources */,
 				F62510C520529DD40040E3DF /* Collection+MapKeys.swift in Sources */,
 				F63809031F5D6D1400C3B322 /* DependencyContainer.swift in Sources */,
 				F6A37CB5209378C900F82A55 /* CIOSearchBarDisplayMode.swift in Sources */,
@@ -2461,7 +2461,7 @@
 				F64F46B51F5975070094C697 /* AutocompleteResultTests.swift in Sources */,
 				BFC9503D25D7509600118D4C /* TrackRecommendationResultClickRequestBuilder.swift in Sources */,
 				F1C557451F605C9D0040D6AD /* TrackConversionRequestBuilderTests.swift in Sources */,
-				7D54FF8628E3C04C00A584E3 /* response_quizzes_finalize.json in Sources */,
+				7D54FF8628E3C04C00A584E3 /* response_quiz_results.json in Sources */,
 				F685254021380CAB00A27FAA /* Matcher+Regex.swift in Sources */,
 				087F4BDF228B100E0058B467 /* ConstructorIOTrackPurchaseTests.swift in Sources */,
 				BFE1C72D2602CF0E0017B4A0 /* ConstructorIOUserSegmentsTests.swift in Sources */,

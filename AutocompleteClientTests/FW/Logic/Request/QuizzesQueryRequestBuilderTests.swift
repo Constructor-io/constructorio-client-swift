@@ -22,7 +22,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
     }
 
     func testQuizQuestionQueryBuilder() {
-        let query = CIOQuizzesQuery(quizId: self.quizId, answers: self.answers)
+        let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
@@ -34,7 +34,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
     }
     
     func testQuizResultsQueryBuilder() {
-        let query = CIOQuizzesQuery(quizId: self.quizId, answers: self.answers, finalize: true)
+        let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers, finalize: true)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString

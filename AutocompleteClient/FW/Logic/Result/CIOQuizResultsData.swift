@@ -1,5 +1,5 @@
 //
-//  CIOQuizResultData.swift
+//  CIOQuizResultsData.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.

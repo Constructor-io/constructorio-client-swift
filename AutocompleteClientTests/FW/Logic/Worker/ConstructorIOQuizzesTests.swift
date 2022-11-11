@@ -24,7 +24,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
     }
 
     func testQuizQuestion_CreatesValidRequest() {
-        let query = CIOQuizzesQuery(quizId: "test-quiz", answers: ["1", "2"])
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1", "2"])
         
         let builder = CIOBuilder(expectation: "Calling Quiz Question should send a valid request.", builder: http(200))
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), builder.create())
@@ -34,7 +34,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
     }
     
     func testQuizResults_CreatesValidRequest() {
-        let query = CIOQuizzesQuery(quizId: "test-quiz", answers: ["1", "2"], finalize: true)
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1", "2"], finalize: true)
         
         let builder = CIOBuilder(expectation: "Calling Quiz Results should send a valid request.", builder: http(200))
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/finalize?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), builder.create())
@@ -46,9 +46,9 @@ class ConstructorIOQuizzesTests: XCTestCase {
     func testQuizQuistion_WithValidRequest_ReturnsNonNilResponse() {
         let expectation = self.expectation(description: "Calling Quiz Question with valid parameters should return a non-nil response.")
 
-        let query = CIOQuizzesQuery(quizId: "test-quiz", answers: ["1"])
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1"])
 
-        let dataToReturn = TestResource.load(name: TestResource.Response.quizzesJSONFilenameNext)
+        let dataToReturn = TestResource.load(name: TestResource.Response.quizQuestionJSONFilename)
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(200, data: dataToReturn))
 
         self.constructor.getQuizQuestion(forQuery: query, completionHandler: { response in
@@ -65,9 +65,9 @@ class ConstructorIOQuizzesTests: XCTestCase {
     func testQuizResults_WithValidRequest_ReturnsNonNilResponse() {
         let expectation = self.expectation(description: "Calling Quiz Results with valid parameters should return a non-nil response.")
 
-        let query = CIOQuizzesQuery(quizId: "test-quiz", answers: ["1", "2, 3"], finalize: true)
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1", "2, 3"], finalize: true)
 
-        let dataToReturn = TestResource.load(name: TestResource.Response.quizzesJSONFilenameFinalize)
+        let dataToReturn = TestResource.load(name: TestResource.Response.quizResultsJSONFilename)
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/finalize?_dt=\(kRegexTimestamp)&a=1&a=2,3&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(200, data: dataToReturn))
 
         self.constructor.getQuizResults(forQuery: query, completionHandler: { response in
@@ -81,7 +81,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
     func testQuizQuestion_ReturnsErrorObject_IfAPIReturnsInvalidResponse() {
         let expectation = self.expectation(description: "Calling Quiz Question returns non-nil error if API errors out.")
 
-        let query = CIOQuizzesQuery(quizId: "test-quiz", answers: ["1", "2"])
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1", "2"])
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(404))
 
         self.constructor.getQuizQuestion(forQuery: query, completionHandler: { response in
@@ -94,7 +94,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
     func testQuizResults_ReturnsErrorObject_IfAPIReturnsInvalidResponse() {
         let expectation = self.expectation(description: "Calling Quiz Results returns non-nil error if API errors out.")
 
-        let query = CIOQuizzesQuery(quizId: "test-quiz", answers: ["1", "2"], finalize: true)
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1", "2"], finalize: true)
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/finalize?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(404))
 
         self.constructor.getQuizResults(forQuery: query, completionHandler: { response in

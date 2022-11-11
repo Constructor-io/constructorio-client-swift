@@ -34,8 +34,8 @@ struct TestResource {
         static let multipleVariationsWithCustomDataJSONFilename = "response_search_json_variation_custom_data"
 
         static let recommendationsJSONFilename = "response_recommendations"
-        static let quizzesJSONFilenameNext = "response_quizzes_next"
-        static let quizzesJSONFilenameFinalize = "response_quizzes_finalize"
+        static let quizQuestionJSONFilename = "response_quiz_question"
+        static let quizResultsJSONFilename = "response_quiz_results"
         static let numberOfResultsInRecommendationsResponse = 10
 
         static let searchJSONRefinedContentFilename = "response_search_json_refined_content"

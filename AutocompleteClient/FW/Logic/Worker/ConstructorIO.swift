@@ -180,7 +180,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let quizQuestionQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
+     let quizQuestionQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'])
 
      constructorIO.getQuizQuestion(forQuery: quizQuestionQuery) { response in
         let data = response.data!
@@ -188,7 +188,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      }
      ```
      */
-    public func getQuizQuestion(forQuery query: CIOQuizzesQuery, completionHandler: @escaping  QuizQuestionQueryCompletionHandler) {
+    public func getQuizQuestion(forQuery query: CIOQuizQuery, completionHandler: @escaping  QuizQuestionQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeGetQuizQuestion(request, completionHandler: completionHandler)
     }
@@ -202,7 +202,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let quizResultsQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'], finalize: true)
+     let quizResultsQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'], finalize: true)
      
      constructorIO.getQuizResults(forQuery: quizResultsQuery) { response in
         let data = response.data!
@@ -210,7 +210,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      }
      ```
      */
-    public func getQuizResults(forQuery query: CIOQuizzesQuery, completionHandler: @escaping  QuizResultsQueryCompletionHandler) {
+    public func getQuizResults(forQuery query: CIOQuizQuery, completionHandler: @escaping  QuizResultsQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeGetQuizResults(request, completionHandler: completionHandler)
     }
