@@ -1,5 +1,5 @@
 //
-//  CIOQuizzesQuery.swift
+//  CIOQuizQuestionQuery.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -27,10 +27,10 @@ public struct CIOQuizzesQuery: CIORequestData {
      */
     public var answers: [String]?
 
-    public var finalize: Bool = false
+    public var finalize: Bool = false 
     
     func url(with baseURL: String) -> String {
-        return String(format: Constants.Quiz.format, baseURL, quizId, finalize == true ? "finalize" : "next")
+        return String(format: finalize == true ? Constants.Quiz.Results.format : Constants.Quiz.Question.format, baseURL, quizId)
     }
 
     /**
@@ -45,9 +45,10 @@ public struct CIOQuizzesQuery: CIORequestData {
      let quizzesQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
      ```
      */
-    public init(quizId: String, answers: [String]? = nil) {
+    public init(quizId: String, answers: [String]? = nil, finalize: Bool? = nil) {
         self.quizId = quizId
         self.answers = answers
+        self.finalize = finalize ?? false
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {

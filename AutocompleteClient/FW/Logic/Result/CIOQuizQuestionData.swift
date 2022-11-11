@@ -1,5 +1,5 @@
 //
-//  CIOQuestionData.swift
+//  CIOQuizQuestionData.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating a result data object with additional information about the result
  */
-public struct CIONextQuestionData {
+public struct CIOQuizQuestionData {
     /**
      Question ID
      */
@@ -49,7 +49,7 @@ public struct CIONextQuestionData {
     
 }
 
-public extension CIONextQuestionData {
+public extension CIOQuizQuestionData {
     /**
      Create a result data object
      - Parameters:

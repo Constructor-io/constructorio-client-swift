@@ -217,7 +217,12 @@ struct Constants {
     }
     
     struct Quiz {
-        static let format = "%@/v1/quizzes/%@/%@"
+        struct Question {
+            static let format = "%@/v1/quizzes/%@/next"
+        }
+        struct Results {
+            static let format = "%@/v1/quizzes/%@/finalize"
+        }
         static let quizId = "quiz_id"
         static let answers = "a"
     }

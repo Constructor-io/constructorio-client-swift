@@ -34,8 +34,12 @@ class DependencyContainer {
         return RecommendationsResponseParser()
     }
     
-    var quizzesResponseParser: () -> AbstractQuizzesResponseParser = {
-        return QuizzesResponseParser()
+    var quizQuestionResponseParser: () -> AbstractQuizQuestionResponseParser = {
+        return QuizQuestionResponseParser()
+    }
+    
+    var quizResultsResponseParser: () -> AbstractQuizResultsResponseParser = {
+        return QuizResultsResponseParser()
     }
 
     var sessionManager: () -> SessionManager = {
