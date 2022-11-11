@@ -27,10 +27,11 @@ public struct CIOQuizzesQuery: CIORequestData {
      */
     public var answers: [String]?
 
-    public var finalize: Bool = false 
+    public var finalize: Bool?
     
     func url(with baseURL: String) -> String {
-        return String(format: finalize == true ? Constants.Quiz.Results.format : Constants.Quiz.Question.format, baseURL, quizId)
+        let format = finalize == true ? Constants.Quiz.Results.format : Constants.Quiz.Question.format
+        return String(format: format, baseURL , quizId)
     }
 
     /**
@@ -39,16 +40,18 @@ public struct CIOQuizzesQuery: CIORequestData {
      - Parameters:
         - quizId: The id of the quiz
         - answers: A list of answers
+        - finalize: Finalize quiz submission
 
      ### Usage Example: ###
      ```
-     let quizzesQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
+     let quizQuesitonQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
+     let quizResultsQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'], finalize: true)
      ```
      */
-    public init(quizId: String, answers: [String]? = nil, finalize: Bool? = nil) {
+    public init(quizId: String, answers: [String]? = nil, finalize: Bool? = false) {
         self.quizId = quizId
         self.answers = answers
-        self.finalize = finalize ?? false
+        self.finalize = finalize
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {

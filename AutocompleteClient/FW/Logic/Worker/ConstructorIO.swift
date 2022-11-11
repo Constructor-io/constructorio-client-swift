@@ -180,9 +180,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let quizzesQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
+     let quizQuestionQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'])
 
-     constructorIO.getQuizQuestion(forQuery: quizzesQuery) { response in
+     constructorIO.getQuizQuestion(forQuery: quizQuestionQuery) { response in
         let data = response.data!
         let error = response.error!
      }
@@ -202,10 +202,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let quizzesQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'], finalize: true)
-     quizzesQuery.finalize = true
+     let quizResultsQuery = CIOQuizzesQuery(quizId: "123", answers: ['a', 'b'], finalize: true)
      
-     constructorIO.getQuizResults(forQuery: quizzesQuery) { response in
+     constructorIO.getQuizResults(forQuery: quizResultsQuery) { response in
         let data = response.data!
         let error = response.error!
      }

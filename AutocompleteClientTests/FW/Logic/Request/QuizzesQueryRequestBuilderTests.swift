@@ -21,7 +21,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
         self.builder = RequestBuilder(apiKey: self.testACKey, baseURL: "https://quizzes.cnstrc.com")
     }
 
-    func testQuizzesQueryBuilder_next() {
+    func testQuizQuestionQueryBuilder() {
         let query = CIOQuizzesQuery(quizId: self.quizId, answers: self.answers)
         builder.build(trackData: query)
         let request = builder.getRequest()
@@ -33,9 +33,8 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.httpMethod, "GET")
     }
     
-    func testQuizzesQueryBuilder_finalize() {
-        var query = CIOQuizzesQuery(quizId: self.quizId, answers: self.answers)
-        query.finalize = true
+    func testQuizResultsQueryBuilder() {
+        let query = CIOQuizzesQuery(quizId: self.quizId, answers: self.answers, finalize: true)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString

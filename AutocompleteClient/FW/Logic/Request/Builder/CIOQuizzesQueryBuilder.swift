@@ -29,6 +29,8 @@ public class CIOQuizzesQueryBuilder {
      */
     var answers: [String]?
     
+    public var finalize: Bool?
+    
     /**
      Create a Quizzes query builder
      

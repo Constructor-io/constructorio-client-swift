@@ -1,5 +1,5 @@
 //
-//  QuizResultTaskResponse.swift
+//  QuizResultsTaskResponse.swift
 //  ConstructorAutocomplete
 //
 //  Created by Islam Mouatafa on 11/10/22.

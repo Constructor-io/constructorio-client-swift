@@ -1,5 +1,5 @@
 //
-//  CIOQuizResultResponse.swift
+//  CIOQuizResultsResponse.swift
 //  ConstructorAutocomplete
 //
 //  Created by Islam Mouatafa on 11/9/22.
@@ -13,7 +13,7 @@ import Foundation
  */
 public struct CIOQuizResultsResponse {
     /**
-     Final question in the quiz
+     quiz result
      */
     public let result: CIOQuizResultsData
     
