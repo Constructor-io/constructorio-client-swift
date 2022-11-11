@@ -61,20 +61,20 @@
 		7D06CCA128E5122B00AB6A8C /* response_quiz_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */; };
 		7D06CCA328E516BC00AB6A8C /* CIOQuizResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D06CCA228E516BC00AB6A8C /* CIOQuizResultsData.swift */; };
 		7D45383A28DC085600490BFE /* CIOQuizQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383928DC085600490BFE /* CIOQuizQuery.swift */; };
-		7D45383E28DC14AE00490BFE /* CIOQuizQuestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383D28DC14AE00490BFE /* CIOQuizQuestionResponse.swift */; };
-		7D45384028DC16F400490BFE /* CIOQuizQuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383F28DC16F400490BFE /* CIOQuizQuestionData.swift */; };
-		7D45384228DC181100490BFE /* CIOQuestionImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45384128DC181100490BFE /* CIOQuestionImages.swift */; };
-		7D45384428DC19A500490BFE /* CIOQuizQuestionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45384328DC19A500490BFE /* CIOQuizQuestionOption.swift */; };
+		7D45383E28DC14AE00490BFE /* CIOQuizNextQuestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383D28DC14AE00490BFE /* CIOQuizNextQuestionResponse.swift */; };
+		7D45384028DC16F400490BFE /* CIOQuizNextQuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383F28DC16F400490BFE /* CIOQuizNextQuestionData.swift */; };
+		7D45384228DC181100490BFE /* CIOQuizNextQuestionImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45384128DC181100490BFE /* CIOQuizNextQuestionImages.swift */; };
+		7D45384428DC19A500490BFE /* CIOQuizNextQuestionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45384328DC19A500490BFE /* CIOQuizNextQuestionOption.swift */; };
 		7D54FF8028E3B92000A584E3 /* ConstructorIOQuizzesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D54FF7F28E3B92000A584E3 /* ConstructorIOQuizzesTests.swift */; };
-		7D54FF8428E3BFA400A584E3 /* response_quiz_question.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8328E3BFA400A584E3 /* response_quiz_question.json */; };
+		7D54FF8428E3BFA400A584E3 /* response_quiz_next_question.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8328E3BFA400A584E3 /* response_quiz_next_question.json */; };
 		7D54FF8628E3C04C00A584E3 /* response_quiz_results.json in Sources */ = {isa = PBXBuildFile; fileRef = 7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */; };
 		7D91F6F7291BE840005F9D8D /* CIOQuizResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D91F6F6291BE840005F9D8D /* CIOQuizResultsResponse.swift */; };
 		7D91F6F9291D7B0A005F9D8D /* QuizResultsTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D91F6F8291D7B0A005F9D8D /* QuizResultsTaskResponse.swift */; };
 		7D91F6FB291DF3EB005F9D8D /* AbstractQuizResultsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D91F6FA291DF3EB005F9D8D /* AbstractQuizResultsResponseParser.swift */; };
 		7D91F6FD291DF498005F9D8D /* QuizResultsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D91F6FC291DF498005F9D8D /* QuizResultsResponseParser.swift */; };
-		7DDA7D9028DCE9AA004C8AC8 /* QuizQuestionTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D8F28DCE9AA004C8AC8 /* QuizQuestionTaskResponse.swift */; };
-		7DDA7D9328DCF513004C8AC8 /* AbstractQuizQuestionResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D9228DCF513004C8AC8 /* AbstractQuizQuestionResponseParser.swift */; };
-		7DDA7D9528DCF5B7004C8AC8 /* QuizQuestionResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D9428DCF5B7004C8AC8 /* QuizQuestionResponseParser.swift */; };
+		7DDA7D9028DCE9AA004C8AC8 /* QuizNextQuestionTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D8F28DCE9AA004C8AC8 /* QuizNextQuestionTaskResponse.swift */; };
+		7DDA7D9328DCF513004C8AC8 /* AbstractQuizNextQuestionResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D9228DCF513004C8AC8 /* AbstractQuizNextQuestionResponseParser.swift */; };
+		7DDA7D9528DCF5B7004C8AC8 /* QuizNextQuestionResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D9428DCF5B7004C8AC8 /* QuizNextQuestionResponseParser.swift */; };
 		7DDA7D9728DCFDC4004C8AC8 /* QuizzesQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D9628DCFDC4004C8AC8 /* QuizzesQueryRequestBuilderTests.swift */; };
 		8D40DD2427CD8D70008D3762 /* CIOQueryFmtOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D40DD2327CD8D70008D3762 /* CIOQueryFmtOptions.swift */; };
 		8D4CFEB6286B6CC2006C500A /* CIOQueryVariationsMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CFEB5286B6CC2006C500A /* CIOQueryVariationsMap.swift */; };
@@ -387,20 +387,20 @@
 		5362DE84EA35B4B9FE26EE1F /* Pods_AutocompleteClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D06CCA228E516BC00AB6A8C /* CIOQuizResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizResultsData.swift; sourceTree = "<group>"; };
 		7D45383928DC085600490BFE /* CIOQuizQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuery.swift; sourceTree = "<group>"; };
-		7D45383D28DC14AE00490BFE /* CIOQuizQuestionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuestionResponse.swift; sourceTree = "<group>"; };
-		7D45383F28DC16F400490BFE /* CIOQuizQuestionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuestionData.swift; sourceTree = "<group>"; };
-		7D45384128DC181100490BFE /* CIOQuestionImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuestionImages.swift; sourceTree = "<group>"; };
-		7D45384328DC19A500490BFE /* CIOQuizQuestionOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuestionOption.swift; sourceTree = "<group>"; };
+		7D45383D28DC14AE00490BFE /* CIOQuizNextQuestionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizNextQuestionResponse.swift; sourceTree = "<group>"; };
+		7D45383F28DC16F400490BFE /* CIOQuizNextQuestionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizNextQuestionData.swift; sourceTree = "<group>"; };
+		7D45384128DC181100490BFE /* CIOQuizNextQuestionImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizNextQuestionImages.swift; sourceTree = "<group>"; };
+		7D45384328DC19A500490BFE /* CIOQuizNextQuestionOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizNextQuestionOption.swift; sourceTree = "<group>"; };
 		7D54FF7F28E3B92000A584E3 /* ConstructorIOQuizzesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOQuizzesTests.swift; sourceTree = "<group>"; };
-		7D54FF8328E3BFA400A584E3 /* response_quiz_question.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_quiz_question.json; sourceTree = "<group>"; };
+		7D54FF8328E3BFA400A584E3 /* response_quiz_next_question.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_quiz_next_question.json; sourceTree = "<group>"; };
 		7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_quiz_results.json; sourceTree = "<group>"; };
 		7D91F6F6291BE840005F9D8D /* CIOQuizResultsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizResultsResponse.swift; sourceTree = "<group>"; };
 		7D91F6F8291D7B0A005F9D8D /* QuizResultsTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultsTaskResponse.swift; sourceTree = "<group>"; };
 		7D91F6FA291DF3EB005F9D8D /* AbstractQuizResultsResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractQuizResultsResponseParser.swift; sourceTree = "<group>"; };
 		7D91F6FC291DF498005F9D8D /* QuizResultsResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultsResponseParser.swift; sourceTree = "<group>"; };
-		7DDA7D8F28DCE9AA004C8AC8 /* QuizQuestionTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionTaskResponse.swift; sourceTree = "<group>"; };
-		7DDA7D9228DCF513004C8AC8 /* AbstractQuizQuestionResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractQuizQuestionResponseParser.swift; sourceTree = "<group>"; };
-		7DDA7D9428DCF5B7004C8AC8 /* QuizQuestionResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionResponseParser.swift; sourceTree = "<group>"; };
+		7DDA7D8F28DCE9AA004C8AC8 /* QuizNextQuestionTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizNextQuestionTaskResponse.swift; sourceTree = "<group>"; };
+		7DDA7D9228DCF513004C8AC8 /* AbstractQuizNextQuestionResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractQuizNextQuestionResponseParser.swift; sourceTree = "<group>"; };
+		7DDA7D9428DCF5B7004C8AC8 /* QuizNextQuestionResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizNextQuestionResponseParser.swift; sourceTree = "<group>"; };
 		7DDA7D9628DCFDC4004C8AC8 /* QuizzesQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
 		8D40DD2327CD8D70008D3762 /* CIOQueryFmtOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQueryFmtOptions.swift; sourceTree = "<group>"; };
 		8D4CFEB5286B6CC2006C500A /* CIOQueryVariationsMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQueryVariationsMap.swift; sourceTree = "<group>"; };
@@ -675,7 +675,7 @@
 				08289542256C5A85009A00BC /* CIOAutocompleteResponse.swift */,
 				0885D83825717EFF0038AE96 /* CIOBrowseResponse.swift */,
 				BF12196925D1FD5700496189 /* CIORecommendationsResponse.swift */,
-				7D45383D28DC14AE00490BFE /* CIOQuizQuestionResponse.swift */,
+				7D45383D28DC14AE00490BFE /* CIOQuizNextQuestionResponse.swift */,
 				7D91F6F6291BE840005F9D8D /* CIOQuizResultsResponse.swift */,
 			);
 			path = Responses;
@@ -732,9 +732,9 @@
 		7DDA7D9128DCF4F0004C8AC8 /* Quizzes */ = {
 			isa = PBXGroup;
 			children = (
-				7DDA7D9228DCF513004C8AC8 /* AbstractQuizQuestionResponseParser.swift */,
+				7DDA7D9228DCF513004C8AC8 /* AbstractQuizNextQuestionResponseParser.swift */,
 				7D91F6FA291DF3EB005F9D8D /* AbstractQuizResultsResponseParser.swift */,
-				7DDA7D9428DCF5B7004C8AC8 /* QuizQuestionResponseParser.swift */,
+				7DDA7D9428DCF5B7004C8AC8 /* QuizNextQuestionResponseParser.swift */,
 				7D91F6FC291DF498005F9D8D /* QuizResultsResponseParser.swift */,
 			);
 			path = Quizzes;
@@ -823,9 +823,9 @@
 				08289538256C5A84009A00BC /* CIOSortOption.swift */,
 				BF12196B25D1FDB300496189 /* CIORecommendationsPod.swift */,
 				BF67BD2F25E71F6E0039D479 /* CIORecommendationsStrategy.swift */,
-				7D45383F28DC16F400490BFE /* CIOQuizQuestionData.swift */,
-				7D45384328DC19A500490BFE /* CIOQuizQuestionOption.swift */,
-				7D45384128DC181100490BFE /* CIOQuestionImages.swift */,
+				7D45383F28DC16F400490BFE /* CIOQuizNextQuestionData.swift */,
+				7D45384328DC19A500490BFE /* CIOQuizNextQuestionOption.swift */,
+				7D45384128DC181100490BFE /* CIOQuizNextQuestionImages.swift */,
 				7D06CCA228E516BC00AB6A8C /* CIOQuizResultsData.swift */,
 				08289540256C5A85009A00BC /* Responses */,
 			);
@@ -1384,7 +1384,7 @@
 				0885D83F257189B70038AE96 /* BrowseTaskResponse.swift */,
 				0855BA4925B00D5F00CC35F9 /* TrackingTaskResponse.swift */,
 				BFC9503125D49EC600118D4C /* RecommendationsTaskResponse.swift */,
-				7DDA7D8F28DCE9AA004C8AC8 /* QuizQuestionTaskResponse.swift */,
+				7DDA7D8F28DCE9AA004C8AC8 /* QuizNextQuestionTaskResponse.swift */,
 				7D91F6F8291D7B0A005F9D8D /* QuizResultsTaskResponse.swift */,
 			);
 			path = Response;
@@ -1450,7 +1450,7 @@
 				F6F1D708234B6BFA0092341D /* response_search_json_invalid_variations.json */,
 				F6F1D70A234B6FD50092341D /* response_search_json_variation_custom_data.json */,
 				BFC9503325D4B57300118D4C /* response_recommendations.json */,
-				7D54FF8328E3BFA400A584E3 /* response_quiz_question.json */,
+				7D54FF8328E3BFA400A584E3 /* response_quiz_next_question.json */,
 				7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */,
 				BFE918F828DBB4AC005D92D8 /* response_search_json_refined_content.json */,
 			);
@@ -2142,7 +2142,7 @@
 				F6F1D707234B693D0092341D /* response_search_json_variations.json in Resources */,
 				F6F1D70B234B6FD50092341D /* response_search_json_variation_custom_data.json in Resources */,
 				F6B4627F1F6BA61C0082C20B /* response_json_multiple_groups.json in Resources */,
-				7D54FF8428E3BFA400A584E3 /* response_quiz_question.json in Resources */,
+				7D54FF8428E3BFA400A584E3 /* response_quiz_next_question.json in Resources */,
 				F67868DF22295CA200C76C0D /* response_search_redirect.json in Resources */,
 				F65BBCAE214FC99E007FEB22 /* response_search_json.json in Resources */,
 				F64F46B11F5970140094C697 /* response_json_single_section.json in Resources */,
@@ -2321,7 +2321,7 @@
 				BF380F1C27E28115005E01F5 /* CIOAutocompleteQueryBuilder.swift in Sources */,
 				F1B17CB21F58E5830015FF62 /* AutocompleteResult.swift in Sources */,
 				0885D83C25717F460038AE96 /* AbstractBrowseResponseParser.swift in Sources */,
-				7DDA7D9028DCE9AA004C8AC8 /* QuizQuestionTaskResponse.swift in Sources */,
+				7DDA7D9028DCE9AA004C8AC8 /* QuizNextQuestionTaskResponse.swift in Sources */,
 				F65015481F586A42008E50C0 /* UIView+FadeInOut.swift in Sources */,
 				F67D42AC220360700053B9C3 /* AbstractAutocompleteViewModel.swift in Sources */,
 				BFC9502E25D48CFD00118D4C /* RecommendationsResponseParser.swift in Sources */,
@@ -2349,7 +2349,7 @@
 				F60DF22C215D639900730339 /* ConstructorIOConfig.swift in Sources */,
 				0885D840257189B70038AE96 /* BrowseTaskResponse.swift in Sources */,
 				F63808EF1F5D2F5B00C3B322 /* AutocompleteViewModelSection.swift in Sources */,
-				7D45383E28DC14AE00490BFE /* CIOQuizQuestionResponse.swift in Sources */,
+				7D45383E28DC14AE00490BFE /* CIOQuizNextQuestionResponse.swift in Sources */,
 				08A7E40E2575E37A000FA02F /* CIOTrackBrowseResultClickData.swift in Sources */,
 				BFC9503225D49EC600118D4C /* RecommendationsTaskResponse.swift in Sources */,
 				F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */,
@@ -2377,14 +2377,14 @@
 				F63808F81F5D497200C3B322 /* NetworkResponse.swift in Sources */,
 				F699C3471F57ED4200FD681A /* CIOAutocompleteUICustomization.swift in Sources */,
 				8D4CFEB6286B6CC2006C500A /* CIOQueryVariationsMap.swift in Sources */,
-				7D45384228DC181100490BFE /* CIOQuestionImages.swift in Sources */,
+				7D45384228DC181100490BFE /* CIOQuizNextQuestionImages.swift in Sources */,
 				F68A72FA1F56D22B00FA4D1B /* AutocompleteViewModel.swift in Sources */,
 				F63808F21F5D47AF00C3B322 /* URLSessionNetworkClient.swift in Sources */,
 				F688A4931F56B57E00F169C1 /* CIOAutocompleteViewController.swift in Sources */,
 				F699C3501F57F60500FD681A /* UIView+AutoLayout.swift in Sources */,
 				BF12196A25D1FD5700496189 /* CIORecommendationsResponse.swift in Sources */,
 				F685255F2141543C00A27FAA /* RequestBuilder+QueryItems.swift in Sources */,
-				7DDA7D9328DCF513004C8AC8 /* AbstractQuizQuestionResponseParser.swift in Sources */,
+				7DDA7D9328DCF513004C8AC8 /* AbstractQuizNextQuestionResponseParser.swift in Sources */,
 				BF12196825D1F06200496189 /* CIORecommendationsQuery.swift in Sources */,
 				088F7D1C210FA3B4005B9FB4 /* CIOSessionManagerDelegate.swift in Sources */,
 				08289545256C5A85009A00BC /* CIOFilterFacetOption.swift in Sources */,
@@ -2408,7 +2408,7 @@
 				8DF2172D2888AE5E006384A5 /* CIOResultSources.swift in Sources */,
 				0885D84425718AD10038AE96 /* CIOBrowseQuery.swift in Sources */,
 				0885D83E2571870B0038AE96 /* BrowseResponseParser.swift in Sources */,
-				7D45384428DC19A500490BFE /* CIOQuizQuestionOption.swift in Sources */,
+				7D45384428DC19A500490BFE /* CIOQuizNextQuestionOption.swift in Sources */,
 				F67868DB2224328D00C76C0D /* AutocompleteTaskResponse.swift in Sources */,
 				0828954A256C5A85009A00BC /* CIOResultFacet.swift in Sources */,
 				088F7D1E210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift in Sources */,
@@ -2429,9 +2429,9 @@
 				F60BEA1D1F571C5C008F0053 /* SearchResultCell.swift in Sources */,
 				F67BFC9720B84C2600986557 /* QueryItemCollection.swift in Sources */,
 				F685255D21414E1D00A27FAA /* CIOTrackSessionStartData.swift in Sources */,
-				7D45384028DC16F400490BFE /* CIOQuizQuestionData.swift in Sources */,
+				7D45384028DC16F400490BFE /* CIOQuizNextQuestionData.swift in Sources */,
 				F67BFC9320B8457B00986557 /* UIView+FindSubview.swift in Sources */,
-				7DDA7D9528DCF5B7004C8AC8 /* QuizQuestionResponseParser.swift in Sources */,
+				7DDA7D9528DCF5B7004C8AC8 /* QuizNextQuestionResponseParser.swift in Sources */,
 				F64F46C51F59A6890094C697 /* AutocompleteViewModelDelegate.swift in Sources */,
 				F62510CA2052CF240040E3DF /* SessionManager.swift in Sources */,
 				F63809061F5D6D9C00C3B322 /* AbstractAutocompleteResponseParser.swift in Sources */,

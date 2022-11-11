@@ -217,7 +217,7 @@ struct Constants {
     }
     
     struct Quiz {
-        struct Question {
+        struct NextQuestion {
             static let format = "%@/v1/quizzes/%@/next"
         }
         struct Results {

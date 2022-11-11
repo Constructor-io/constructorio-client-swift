@@ -13,7 +13,7 @@ public typealias SearchQueryCompletionHandler = (SearchTaskResponse) -> Void
 public typealias BrowseQueryCompletionHandler = (BrowseTaskResponse) -> Void
 public typealias RecommendationsQueryCompletionHandler = (RecommendationsTaskResponse) -> Void
 public typealias TrackingCompletionHandler = (TrackingTaskResponse) -> Void
-public typealias QuizQuestionQueryCompletionHandler = (QuizQuestionTaskResponse) -> Void
+public typealias QuizNextQuestionQueryCompletionHandler = (QuizNextQuestionTaskResponse) -> Void
 public typealias QuizResultsQueryCompletionHandler = (QuizResultsTaskResponse) -> Void
 
 /**
@@ -37,7 +37,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
     var browseParser: AbstractBrowseResponseParser = DependencyContainer.sharedInstance.browseResponseParser()
     var recommendationsParser: AbstractRecommendationsResponseParser = DependencyContainer.sharedInstance.recommendationsResponseParser()
-    var quizQuestionParser: AbstractQuizQuestionResponseParser = DependencyContainer.sharedInstance.quizQuestionResponseParser()
+    var quizNextQuestionParser: AbstractQuizNextQuestionResponseParser = DependencyContainer.sharedInstance.quizNextQuestionResponseParser()
     var quizResultsParser: AbstractQuizResultsResponseParser = DependencyContainer.sharedInstance.quizResultsResponseParser()
 
     public var sessionID: Int {
@@ -182,15 +182,15 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      let quizQuestionQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'])
 
-     constructorIO.getQuizQuestion(forQuery: quizQuestionQuery) { response in
+     constructorIO.getQuizNextQuestion(forQuery: quizQuestionQuery) { response in
         let data = response.data!
         let error = response.error!
      }
      ```
      */
-    public func getQuizQuestion(forQuery query: CIOQuizQuery, completionHandler: @escaping  QuizQuestionQueryCompletionHandler) {
+    public func getQuizNextQuestion(forQuery query: CIOQuizQuery, completionHandler: @escaping  QuizNextQuestionQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
-        executeGetQuizQuestion(request, completionHandler: completionHandler)
+        executeGetQuizNextQuestion(request, completionHandler: completionHandler)
     }
     
     /**
@@ -646,7 +646,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
     
-    private func executeGetQuizQuestion(_ request: URLRequest, completionHandler: @escaping QuizQuestionQueryCompletionHandler) {
+    private func executeGetQuizNextQuestion(_ request: URLRequest, completionHandler: @escaping QuizNextQuestionQueryCompletionHandler) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
                 completionHandler(response)
@@ -655,16 +655,16 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
         self.networkClient.execute(request) { response in
             if let error = response.error {
-                dispatchHandlerOnMainQueue(QuizQuestionTaskResponse(error: error))
+                dispatchHandlerOnMainQueue(QuizNextQuestionTaskResponse(error: error))
                 return
             }
 
             let data = response.data!
             do {
-                let parsedResponse = try self.parseQuizQuestion(data)
-                dispatchHandlerOnMainQueue(QuizQuestionTaskResponse(data: parsedResponse))
+                let parsedResponse = try self.parseQuizNextQuestion(data)
+                dispatchHandlerOnMainQueue(QuizNextQuestionTaskResponse(data: parsedResponse))
             } catch {
-                dispatchHandlerOnMainQueue(QuizQuestionTaskResponse(error: error))
+                dispatchHandlerOnMainQueue(QuizNextQuestionTaskResponse(error: error))
             }
         }
     }
@@ -726,8 +726,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         return try self.recommendationsParser.parse(recommendationsResponseData: recommendationsResponseData)
     }
     
-    private func parseQuizQuestion(_ quizQuestionResponseData: Data) throws -> CIOQuizQuestionResponse {
-        return try self.quizQuestionParser.parse(quizQuestionResponseData: quizQuestionResponseData)
+    private func parseQuizNextQuestion(_ quizNextQuestionResponseData: Data) throws -> CIOQuizNextQuestionResponse {
+        return try self.quizNextQuestionParser.parse(quizNextQuestionResponseData: quizNextQuestionResponseData)
     }
     
     private func parseQuizResults(_ quizResultsResponseData: Data) throws -> CIOQuizResultsResponse {

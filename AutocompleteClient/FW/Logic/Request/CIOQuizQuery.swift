@@ -30,7 +30,7 @@ public struct CIOQuizQuery: CIORequestData {
     public var finalize: Bool?
     
     func url(with baseURL: String) -> String {
-        let format = finalize == true ? Constants.Quiz.Results.format : Constants.Quiz.Question.format
+        let format = finalize == true ? Constants.Quiz.Results.format : Constants.Quiz.NextQuestion.format
         return String(format: format, baseURL , quizId)
     }
 

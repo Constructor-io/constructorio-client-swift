@@ -29,7 +29,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling Quiz Question should send a valid request.", builder: http(200))
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), builder.create())
 
-        self.constructor.getQuizQuestion(forQuery: query, completionHandler: { response in })
+        self.constructor.getQuizNextQuestion(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
     
@@ -48,10 +48,10 @@ class ConstructorIOQuizzesTests: XCTestCase {
 
         let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1"])
 
-        let dataToReturn = TestResource.load(name: TestResource.Response.quizQuestionJSONFilename)
+        let dataToReturn = TestResource.load(name: TestResource.Response.quizNextQuestionJSONFilename)
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(200, data: dataToReturn))
 
-        self.constructor.getQuizQuestion(forQuery: query, completionHandler: { response in
+        self.constructor.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Quiz Question with valid parameters should return a non-nil response.")
             XCTAssertNotNil(response.data?.nextQuestion.options, "Calling Quiz Question with valid parameters should return a non-nil options response.")
             XCTAssertEqual(response.data?.nextQuestion.images?.primaryUrl, "https://example.com/image")
@@ -84,7 +84,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
         let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1", "2"])
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(404))
 
-        self.constructor.getQuizQuestion(forQuery: query, completionHandler: { response in
+        self.constructor.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.error, "Quiz Question returns non-nil error if API errors out.")
             expectation.fulfill()
         })
