@@ -33,7 +33,6 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
         self.resultCount = resultCount
         self.sectionName = sectionName
         self.resultID = resultID
-        self.beaconMode = beaconMode
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}

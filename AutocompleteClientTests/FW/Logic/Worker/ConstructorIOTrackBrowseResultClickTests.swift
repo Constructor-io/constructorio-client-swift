@@ -80,7 +80,7 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: nil, sectionName: nil)
         self.wait(for: builder.expectation)
     }
-    
+
     func testTrackBrowseResultClick_With400() {
         let expectation = self.expectation(description: "Calling trackBrowseResultClick with 400 should return badRequest CIOError.")
         let filterName = "potato"
