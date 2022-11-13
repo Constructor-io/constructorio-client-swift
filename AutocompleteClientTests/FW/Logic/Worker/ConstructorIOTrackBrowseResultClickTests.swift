@@ -81,18 +81,6 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
     
-    func testTrackBrowseResultClick_WithBeacon() {
-        let filterName = "potato"
-        let filterValue = "russet"
-        let customerID = "customerID123"
-        let sectionName = "Search Suggestions"
-        let beaconMode = true
-        let builder = CIOBuilder(expectation: "Calling trackBrowseResultClick should send a valid request with a beacon mode.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
-        self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: nil, sectionName: sectionName, beaconMode: beaconMode)
-        self.wait(for: builder.expectation)
-    }
-
     func testTrackBrowseResultClick_With400() {
         let expectation = self.expectation(description: "Calling trackBrowseResultClick with 400 should return badRequest CIOError.")
         let filterName = "potato"

@@ -105,18 +105,6 @@ class ConstructorIOTrackConversionTests: XCTestCase {
         constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
-    
-    func testTrackConversion_WithBeacon() {
-        let searchTerm = "corn"
-        let itemName = "green-giant-corn-can-12oz"
-        let customerID = "customerID123"
-        let revenue: Double = 1
-        let beaconMode = true
-        let builder = CIOBuilder(expectation: "Calling trackConversion should send a valid request with a beacon mode.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products"), builder.create())
-        self.constructor.trackConversion(itemName: itemName, customerID: customerID, revenue: revenue, searchTerm: searchTerm, beaconMode: beaconMode)
-        self.wait(for: builder.expectation)
-    }
 
     func testTrackConversion_With400() {
         let expectation = self.expectation(description: "Calling trackConversion with 400 should return badRequest CIOError.")

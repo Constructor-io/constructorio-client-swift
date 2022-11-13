@@ -46,12 +46,11 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
         let resultPositionOnPage = 2
         let sectionName = "Content"
         let resultID = "resultID789"
-        let beaconMode = true
 
         let builder = CIOBuilder(expectation: "Calling trackRecommendationResultClick should send a valid request with optional params.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
 
-        self.constructor.trackRecommendationResultClick(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: resultID, beaconMode: beaconMode)
+        self.constructor.trackRecommendationResultClick(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: resultID)
         self.wait(for: builder.expectation)
     }
 

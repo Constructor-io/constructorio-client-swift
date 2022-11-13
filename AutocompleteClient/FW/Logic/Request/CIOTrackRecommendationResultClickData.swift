@@ -23,13 +23,12 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
     let resultPositionOnPage: Int?
     let sectionName: String?
     let resultID: String?
-    let beaconMode: Bool?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackRecommendationResultClick.format, baseURL)
     }
 
-    init(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, beaconMode: Bool? = nil) {
+    init(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil) {
         self.podID = podID
         self.strategyID = strategyID
         self.customerID = customerID
@@ -40,7 +39,6 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
         self.resultPositionOnPage = resultPositionOnPage
         self.sectionName = sectionName
         self.resultID = resultID
-        self.beaconMode = beaconMode
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -79,10 +77,8 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
         if self.resultID != nil {
             dict["result_id"] = self.resultID
         }
-        if self.beaconMode != nil {
-            dict["beacon"] = self.beaconMode
-        }
-
+        
+        dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }
 
         return try? JSONSerialization.data(withJSONObject: dict)

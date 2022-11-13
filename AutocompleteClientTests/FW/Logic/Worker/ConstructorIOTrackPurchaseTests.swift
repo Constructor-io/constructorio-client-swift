@@ -57,15 +57,6 @@ class ConstructorIOTrackPurchaseTests: XCTestCase {
         self.constructor.trackPurchase(customerIDs: customerIDs, orderID: orderID)
         self.wait(for: builder.expectation)
     }
-    
-    func testTrackPurchase_WithBeacon() {
-        let customerIDs = ["customer_id_q2ew"]
-        let beaconMode = true
-        let builder = CIOBuilder(expectation: "Calling trackPurchase should send a valid request with a beacon mode.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/purchase?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products"), builder.create())
-        self.constructor.trackPurchase(customerIDs: customerIDs, beaconMode: beaconMode)
-        self.wait(for: builder.expectation)
-    }
 
     func testTrackPurchase_With400() {
         let expectation = self.expectation(description: "Calling trackPurchase with 400 should return badRequest CIOError.")
