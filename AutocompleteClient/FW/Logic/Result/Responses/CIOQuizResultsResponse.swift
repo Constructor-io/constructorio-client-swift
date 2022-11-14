@@ -15,7 +15,7 @@ public struct CIOQuizResultsResponse {
     /**
      quiz result
      */
-    public let result: CIOQuizResultsData
+    public let result: CIOQuizResult
     
     /**
      Version Id of the result question

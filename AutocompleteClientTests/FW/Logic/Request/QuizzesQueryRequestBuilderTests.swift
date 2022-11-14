@@ -21,7 +21,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
         self.builder = RequestBuilder(apiKey: self.testACKey, baseURL: "https://quizzes.cnstrc.com")
     }
 
-    func testQuizQuestionQueryBuilder() {
+    func testQuizQueryBuilder_NextQuestion() {
         let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers)
         builder.build(trackData: query)
         let request = builder.getRequest()
@@ -32,8 +32,8 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
-    
-    func testQuizResultsQueryBuilder() {
+
+    func testQuizQueryBuilder_QuizResults() {
         let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers, finalize: true)
         builder.build(trackData: query)
         let request = builder.getRequest()

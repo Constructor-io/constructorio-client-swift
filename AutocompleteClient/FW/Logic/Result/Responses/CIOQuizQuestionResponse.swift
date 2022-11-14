@@ -1,5 +1,5 @@
 //
-//  CIOQuizNextQuestionResponse.swift
+//  CIOQuizQuestionResponse.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -11,11 +11,11 @@ import Foundation
 /**
  Struct representing the quiz next question data response from the server.
  */
-public struct CIOQuizNextQuestionResponse {
+public struct CIOQuizQuestionResponse {
     /**
      Next question in the quiz
      */
-    public let nextQuestion: CIOQuizNextQuestionData
+    public let nextQuestion: CIOQuizQuestion
         
     /**
      Version Id of the result question

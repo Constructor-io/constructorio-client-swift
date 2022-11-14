@@ -14,7 +14,7 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
         do {
             let json = try JSONSerialization.jsonObject(with: quizResultsResponseData) as? JSONObject
             let versionId = json?["version_id"] as? String ?? ""
-            let result = CIOQuizResultsData(json: json?["result"] as? JSONObject ?? [:])
+            let result = CIOQuizResult(json: json?["result"] as? JSONObject ?? [:])
 
             return CIOQuizResultsResponse( 
                 result: result!,

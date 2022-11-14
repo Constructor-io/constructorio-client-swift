@@ -1,5 +1,5 @@
 //
-//  CIONextQuestionImages.swift
+//  CIOQuestionImages.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating a question images
  */
-public struct CIOQuizNextQuestionImages {
+public struct CIOQuizImages {
     public let primaryUrl: String?
     public let primaryAlt: String?
     public let secondaryUrl: String?
@@ -21,7 +21,7 @@ public struct CIOQuizNextQuestionImages {
 /**
  Define a question images
  */
-public extension CIOQuizNextQuestionImages {
+public extension CIOQuizImages {
     /**
      Create a question images
     

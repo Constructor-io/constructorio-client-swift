@@ -1,5 +1,5 @@
 //
-//  CIOQuizNextQuestionOption.swift
+//  CIOQuizOption.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating a question option attribute
  */
-public struct CIOQuizNextQuestionOptionAttribute {
+public struct CIOQuizOptionAttribute {
     public let name: String
     public let value: String
 }
@@ -19,17 +19,17 @@ public struct CIOQuizNextQuestionOptionAttribute {
 /**
  Struct encapsulating a question option
  */
-public struct CIOQuizNextQuestionOption {
+public struct CIOQuizOption {
     public let id: String
     public let value: String
-    public let attribute: CIOQuizNextQuestionOptionAttribute?
-    public let images: CIOQuizNextQuestionImages?
+    public let attribute: CIOQuizOptionAttribute?
+    public let images: CIOQuizImages?
 }
 
 /**
  Define a question option
  */
-public extension CIOQuizNextQuestionOption {
+public extension CIOQuizOption {
     /**
      Create a question options
     
@@ -39,8 +39,8 @@ public extension CIOQuizNextQuestionOption {
     init?(json: JSONObject) {
         guard let id = json["id"] as? String else { return nil }
         guard let value = json["value"] as? String else { return nil }
-        let attribute = json["attribute"] as? CIOQuizNextQuestionOptionAttribute
-        let images = json["images"] as? CIOQuizNextQuestionImages
+        let attribute = json["attribute"] as? CIOQuizOptionAttribute
+        let images = json["images"] as? CIOQuizImages
 
         self.id = id
         self.value = value

@@ -1,5 +1,5 @@
 //
-//  CIOQuizNextQuestionData.swift
+//  CIOQuizQuestion.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating a result data object with additional information about the result
  */
-public struct CIOQuizNextQuestionData {
+public struct CIOQuizQuestion {
     /**
      Question ID
      */
@@ -35,12 +35,12 @@ public struct CIOQuizNextQuestionData {
     /**
      Images of the result question
      */
-    public let images: CIOQuizNextQuestionImages?
+    public let images: CIOQuizImages?
 
     /**
      Options of the result question
      */
-    public let options: [CIOQuizNextQuestionOption]?
+    public let options: [CIOQuizOption]?
     
     /**
      Input placeholder of the result question
@@ -49,7 +49,7 @@ public struct CIOQuizNextQuestionData {
     
 }
 
-public extension CIOQuizNextQuestionData {
+public extension CIOQuizQuestion {
     /**
      Create a result data object
      - Parameters:
@@ -64,12 +64,12 @@ public extension CIOQuizNextQuestionData {
         let inputPlaceholder = json["input_placeholder"] as? String
                     
         if let images = json["images"] as? JSONObject {
-            self.images = CIOQuizNextQuestionImages(json: images)
+            self.images = CIOQuizImages(json: images)
         } else {
             return nil
         }
 
-        let options: [CIOQuizNextQuestionOption]? = optionsObj?.compactMap { obj in return CIOQuizNextQuestionOption(json: obj) }
+        let options: [CIOQuizOption]? = optionsObj?.compactMap { obj in return CIOQuizOption(json: obj) }
 
         self.id = id
         self.title = title

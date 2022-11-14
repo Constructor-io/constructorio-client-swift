@@ -1,5 +1,5 @@
 //
-//  QuizNextQuestionResponseParser.swift
+//  QuizQuestionResponseParser.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-class QuizNextQuestionResponseParser: AbstractQuizNextQuestionResponseParser {
-    func parse(quizNextQuestionResponseData: Data) throws -> CIOQuizNextQuestionResponse {
+class QuizQuestionResponseParser: AbstractQuizQuestionResponseParser {
+    func parse(quizQuestionResponseData: Data) throws -> CIOQuizQuestionResponse {
 
         do {
-            let json = try JSONSerialization.jsonObject(with: quizNextQuestionResponseData) as? JSONObject
+            let json = try JSONSerialization.jsonObject(with: quizQuestionResponseData) as? JSONObject
             let versionId = json?["version_id"] as? String ?? ""
             let isLastQuestion = json?["is_last_question"] as? Bool ?? false
-            let nextQuestion = CIOQuizNextQuestionData(json: json?["next_question"] as? JSONObject ?? [:])
+            let nextQuestion = CIOQuizQuestion(json: json?["next_question"] as? JSONObject ?? [:])
 
-            return CIOQuizNextQuestionResponse(
+            return CIOQuizQuestionResponse(
                 nextQuestion: nextQuestion!,
                 versionId: versionId,
                 isLastQuestion: isLastQuestion

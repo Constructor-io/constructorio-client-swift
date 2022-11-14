@@ -215,9 +215,9 @@ struct Constants {
         static let id = "constructor.io/session/id"
         static let createdAt = "constructor.io/session/createdAt"
     }
-    
+
     struct Quiz {
-        struct NextQuestion {
+        struct Question {
             static let format = "%@/v1/quizzes/%@/next"
         }
         struct Results {

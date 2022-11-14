@@ -9,7 +9,7 @@
 import XCTest
 import ConstructorAutocomplete
 
-class ConstructorIOQuizzesTests: XCTestCase {
+class ConstructorIOQuizTests: XCTestCase {
 
     var constructor: ConstructorIO!
 
@@ -23,19 +23,19 @@ class ConstructorIOQuizzesTests: XCTestCase {
         super.tearDown()
     }
 
-    func testQuizQuestion_CreatesValidRequest() {
+    func testQuizNextQuestion_CreatesValidRequest() {
         let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1", "2"])
-        
+
         let builder = CIOBuilder(expectation: "Calling Quiz Question should send a valid request.", builder: http(200))
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), builder.create())
 
         self.constructor.getQuizNextQuestion(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
-    
+
     func testQuizResults_CreatesValidRequest() {
         let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1", "2"], finalize: true)
-        
+
         let builder = CIOBuilder(expectation: "Calling Quiz Results should send a valid request.", builder: http(200))
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/finalize?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), builder.create())
 
@@ -48,7 +48,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
 
         let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1"])
 
-        let dataToReturn = TestResource.load(name: TestResource.Response.quizNextQuestionJSONFilename)
+        let dataToReturn = TestResource.load(name: TestResource.Response.quizQuestionJSONFilename)
         stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(200, data: dataToReturn))
 
         self.constructor.getQuizNextQuestion(forQuery: query, completionHandler: { response in
@@ -61,7 +61,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testQuizResults_WithValidRequest_ReturnsNonNilResponse() {
         let expectation = self.expectation(description: "Calling Quiz Results with valid parameters should return a non-nil response.")
 
@@ -90,7 +90,7 @@ class ConstructorIOQuizzesTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testQuizResults_ReturnsErrorObject_IfAPIReturnsInvalidResponse() {
         let expectation = self.expectation(description: "Calling Quiz Results returns non-nil error if API errors out.")
 

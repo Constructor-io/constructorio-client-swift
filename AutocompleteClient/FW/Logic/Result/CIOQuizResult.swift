@@ -12,7 +12,7 @@ import Foundation
 /**
  Struct encapsulating a result data object with additional information about the result
  */
-public struct CIOQuizResultsData {
+public struct CIOQuizResult {
     /**
      Filter Expressions
      */
@@ -24,7 +24,7 @@ public struct CIOQuizResultsData {
     public let resultsUrl: String
 }
 
-public extension CIOQuizResultsData {
+public extension CIOQuizResult {
     /**
      Create a result data object
      - Parameters:
