@@ -34,7 +34,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
     }
 
     func testQuizQueryBuilder_QuizResults() {
-        let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers, finalize: true)
+        let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers)
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString

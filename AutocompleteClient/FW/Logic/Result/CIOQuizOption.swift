@@ -9,42 +9,59 @@
 import Foundation
 
 /**
- Struct encapsulating a question option attribute
- */
-public struct CIOQuizOptionAttribute {
-    public let name: String
-    public let value: String
-}
-
-/**
- Struct encapsulating a question option
+ Struct encapsulating a quiz option
  */
 public struct CIOQuizOption {
-    public let id: String
+    /*
+     The id of the option
+     */
+    public let id: Int
+
+    /*
+     The value of the option
+     */
     public let value: String
+
+    /*
+     The attribute associated with the option
+     */
     public let attribute: CIOQuizOptionAttribute?
+
+    /*
+     The images associated with the option
+     */
     public let images: CIOQuizImages?
 }
 
 /**
- Define a question option
+ Define a quiz option
  */
 public extension CIOQuizOption {
     /**
-     Create a question options
+     Create a quiz option
     
      - Parameters:
         - json: JSON data from the server response
      */
     init?(json: JSONObject) {
-        guard let id = json["id"] as? String else { return nil }
+        guard let id = json["id"] as? Int else { return nil }
         guard let value = json["value"] as? String else { return nil }
-        let attribute = json["attribute"] as? CIOQuizOptionAttribute
-        let images = json["images"] as? CIOQuizImages
+//        let attribute = json["attribute"] as? CIOQuizOptionAttribute
+
+        if let attribute = json["attribute"] as? JSONObject {
+            self.attribute = CIOQuizOptionAttribute(json: attribute)
+        } else {
+            return nil
+        }
+
+        if let images = json["images"] as? JSONObject {
+            self.images = CIOQuizImages(json: images)
+        } else {
+            return nil
+        }
 
         self.id = id
         self.value = value
-        self.attribute = attribute
-        self.images = images
+//        self.attribute = attribute
     }
 }

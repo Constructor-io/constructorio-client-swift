@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /**
  Struct encapsulating a result data object with additional information about the result
  */
@@ -31,8 +30,8 @@ public extension CIOQuizResult {
         - json: JSON data from the server response
      */
     init?(json: JSONObject) {
-        guard let filterExpressions = json["filter_expression"] as? [String: Any] else {return nil}
-        guard let resultsUrl = json["results_url"] as? String else {return nil}
+        guard let filterExpressions = json["filter_expression"] as? [String: Any] else { return nil }
+        guard let resultsUrl = json["results_url"] as? String else { return nil }
 
         self.filterExpressions = filterExpressions
         self.resultsUrl = resultsUrl

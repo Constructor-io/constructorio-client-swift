@@ -27,11 +27,12 @@ public struct CIOQuizQuery: CIORequestData {
      */
     public var answers: [String]?
 
-    public var finalize: Bool?
-
     func url(with baseURL: String) -> String {
-        let format = finalize == true ? Constants.Quiz.Results.format : Constants.Quiz.Question.format
-        return String(format: format, baseURL , quizId)
+        return "" // Do nothing - Returns empty string to satsify protocol requirement
+    }
+
+    func urlWithFormat(baseURL: String, format: String) -> String {
+        return String(format: format, baseURL, quizId)
     }
 
     /**
@@ -44,14 +45,12 @@ public struct CIOQuizQuery: CIORequestData {
 
      ### Usage Example: ###
      ```
-     let quizQuesitonQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'])
-     let quizResultsQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'], finalize: true)
+     let quizQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'])
      ```
      */
-    public init(quizId: String, answers: [String]? = nil, finalize: Bool? = false) {
+    public init(quizId: String, answers: [String]? = nil) {
         self.quizId = quizId
         self.answers = answers
-        self.finalize = finalize
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {

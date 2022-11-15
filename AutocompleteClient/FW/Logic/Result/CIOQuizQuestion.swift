@@ -18,35 +18,40 @@ public struct CIOQuizQuestion {
     public let id: Int
 
     /**
-     Title of the result question
+     Title of the question
      */
     public let title: String?
 
     /**
-     Description of the result question
+     The type of question
+     */
+    public let type: String?
+
+    /**
+     Description for the question
      */
     public let description: String?
 
     /**
-     CTA text of the result question
+     CTA text of the question
      */
     public let ctaText: String?
 
     /**
-     Images of the result question
+     Images associated with the question
      */
     public let images: CIOQuizImages?
 
     /**
-     Options of the result question
+     List of possible options (answers) for the question
      */
     public let options: [CIOQuizOption]?
-    
+
     /**
-     Input placeholder of the result question
+     The input placeholder for the question
      */
     public let inputPlaceholder: String?
-    
+
 }
 
 public extension CIOQuizQuestion {
@@ -58,21 +63,23 @@ public extension CIOQuizQuestion {
     init?(json: JSONObject) {
         guard let id = json["id"] as? Int else { return nil }
         let title = json["title"] as? String
+        let type = json["type"] as? String
         let description = json["description"] as? String
         let optionsObj = json["options"] as? [JSONObject]
         let ctaText = json["cta_text"] as? String
         let inputPlaceholder = json["input_placeholder"] as? String
-                    
+
         if let images = json["images"] as? JSONObject {
             self.images = CIOQuizImages(json: images)
         } else {
             return nil
         }
 
-        let options: [CIOQuizOption]? = optionsObj?.compactMap { obj in return CIOQuizOption(json: obj) }
+        let options: [CIOQuizOption]? = optionsObj?.compactMap { obj in return CIOQuizOption(json: obj) } ?? []
 
         self.id = id
         self.title = title
+        self.type = type
         self.description = description
         self.ctaText = ctaText
         self.options = options

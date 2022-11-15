@@ -55,6 +55,7 @@ struct Constants {
     struct Query {
         static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
+        static let baseQuizURLString = "https://quizzes.cnstrc.com"
         static let httpMethod = "GET"
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
     }

@@ -189,7 +189,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func getQuizNextQuestion(forQuery query: CIOQuizQuery, completionHandler: @escaping  QuizQuestionQueryCompletionHandler) {
-        let request = self.buildRequest(data: query)
+        let request = self.buildQuizRequest(data: query, finalize: false)
         executeGetQuizNextQuestion(request, completionHandler: completionHandler)
     }
 
@@ -202,7 +202,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let quizResultsQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'], finalize: true)
+     let quizResultsQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'])
      
      constructorIO.getQuizResults(forQuery: quizResultsQuery) { response in
         let data = response.data!
@@ -211,7 +211,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func getQuizResults(forQuery query: CIOQuizQuery, completionHandler: @escaping  QuizResultsQueryCompletionHandler) {
-        let request = self.buildRequest(data: query)
+        let request = self.buildQuizRequest(data: query, finalize: true)
         executeGetQuizResults(request, completionHandler: completionHandler)
     }
 
@@ -505,6 +505,17 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         return requestBuilder.getRequest()
     }
 
+    private func buildQuizRequest(data: CIORequestData, finalize: Bool) -> URLRequest {
+        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey, baseQuizURL: self.config.baseQuizURL ?? Constants.Query.baseQuizURLString)
+        self.attachClientID(requestBuilder: requestBuilder)
+        self.attachUserID(requestBuilder: requestBuilder)
+        self.attachSessionIDWithIncrement(requestBuilder: requestBuilder)
+        self.attachABTestCells(requestBuilder: requestBuilder)
+        self.attachSegments(requestBuilder: requestBuilder)
+        requestBuilder.build(trackData: data)
+        return requestBuilder.getQuizRequest(finalize: finalize)
+    }
+
     private func buildSessionStartRequest(session: Int) -> URLRequest {
         let data = CIOTrackSessionStartData(session: session)
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey, baseURL: self.config.baseURL ?? Constants.Query.baseURLString)
@@ -725,11 +736,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     private func parseRecommendations(_ recommendationsResponseData: Data) throws -> CIORecommendationsResponse {
         return try self.recommendationsParser.parse(recommendationsResponseData: recommendationsResponseData)
     }
-    
+
     private func parseQuizQuestion(_ quizQuestionResponseData: Data) throws -> CIOQuizQuestionResponse {
         return try self.quizQuestionParser.parse(quizQuestionResponseData: quizQuestionResponseData)
     }
-    
+
     private func parseQuizResults(_ quizResultsResponseData: Data) throws -> CIOQuizResultsResponse {
         return try self.quizResultsParser.parse(quizResultsResponseData: quizResultsResponseData)
     }

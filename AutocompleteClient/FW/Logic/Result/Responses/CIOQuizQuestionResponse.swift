@@ -9,21 +9,21 @@
 import Foundation
 
 /**
- Struct representing the quiz next question data response from the server.
+ Struct representing the quiz question response from the server.
  */
 public struct CIOQuizQuestionResponse {
     /**
      Next question in the quiz
      */
     public let nextQuestion: CIOQuizQuestion
-        
+
     /**
-     Version Id of the result question
+     Version Id of the quiz
      */
     public let versionId: String
 
     /**
-     Is the question last
+     Flag to determine if it's the last question in the quiz
      */
     public let isLastQuestion: Bool
 }

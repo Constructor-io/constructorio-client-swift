@@ -51,7 +51,7 @@ public struct CIOSearchResponse {
      Sources of the result set
      */
     public let resultSources: CIOResultSources?
-    
+
     /**
      A list of refined content
      */
