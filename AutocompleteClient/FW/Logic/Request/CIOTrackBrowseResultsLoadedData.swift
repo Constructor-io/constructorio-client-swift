@@ -47,7 +47,7 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
         if self.resultID != nil {
             dict["resultID"] = self.resultID
         }
-        
+
         dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }
 

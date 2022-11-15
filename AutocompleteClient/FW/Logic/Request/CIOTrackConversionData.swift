@@ -64,7 +64,7 @@ struct CIOTrackConversionData: CIORequestData {
         if self.conversionType != nil {
             dict["type"] = self.conversionType
         }
-        
+
         dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }
 

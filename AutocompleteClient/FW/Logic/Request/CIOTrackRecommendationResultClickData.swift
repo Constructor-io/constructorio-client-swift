@@ -77,7 +77,7 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
         if self.resultID != nil {
             dict["result_id"] = self.resultID
         }
-        
+
         dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }
 
