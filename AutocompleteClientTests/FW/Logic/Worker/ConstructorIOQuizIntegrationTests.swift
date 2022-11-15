@@ -56,6 +56,51 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testGetQuizNextQuestion_WithVersionId() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 200")
+        let query = CIOQuizQuery(quizId: "test-quiz", versionId: "160ff14a-bf30-4fd0-b8f1-ad0a58d0b2f0")
+        constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(responseData.versionId)
+            XCTAssertEqual(responseData.isLastQuestion, false)
+            XCTAssertEqual(responseData.nextQuestion.id, 1)
+            XCTAssertEqual(responseData.nextQuestion.title, "This is a test quiz.")
+            XCTAssertEqual(responseData.nextQuestion.images?.primaryUrl, "/test-asset")
+            XCTAssertEqual(responseData.nextQuestion.type, "single")
+            XCTAssertEqual(responseData.nextQuestion.ctaText, nil)
+            XCTAssertEqual(responseData.nextQuestion.description, "This is a test description")
+            XCTAssertEqual(responseData.nextQuestion.images?.primaryUrl, "/test-asset")
+            XCTAssertNotNil(responseData.nextQuestion.options)
+            XCTAssertEqual(responseData.nextQuestion.options?[0].id, 1)
+            XCTAssertEqual(responseData.nextQuestion.options?[0].value, "Yes")
+            XCTAssertEqual(responseData.nextQuestion.options?[0].attribute?.name, "group_id")
+            XCTAssertEqual(responseData.nextQuestion.options?[0].attribute?.value, "BrandX")
+            XCTAssertEqual(responseData.nextQuestion.options?[0].images?.primaryUrl, "/test-asset")
+
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testGetQuizNextQuestion_WithInvalidVersionId() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 200")
+        let query = CIOQuizQuery(quizId: "test-quiz", versionId: "1")
+        constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "The quiz you requested, \"test-quiz\" was not found with version \"1\", please specify a valid quiz id and remove the version_id parameter before trying again.")
+
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 
     func testGetQuizNextQuestion_WithSingleTypeUsingSingleAnswer() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
@@ -194,6 +239,40 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             XCTAssertNotNil(responseData.result)
             XCTAssertNotNil(responseData.result.filterExpressions)
             XCTAssertTrue(responseData.result.resultsUrl.contains("https://ac.cnstrc.com/browse/items?key=ZqXaOfXuBWD4s3XzCI1q&num_results_per_page=10&collection_filter_expression=%7B%22and%22%3A%5B%7B%22name%22%3A%22group_id%22%2C%22value%22%3A%22BrandX%22%7D%2C%7B%22or%22%3A%5B%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22Blue%22%7D%2C%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22red%22%7D%5D%7D%5D%7D"))
+
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testGetQuizResults_WithVersionId() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 200")
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: ["1", "1,2", "true", "seen"], versionId: "160ff14a-bf30-4fd0-b8f1-ad0a58d0b2f0")
+        constructorClient.getQuizResults(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(responseData.versionId)
+            XCTAssertNotNil(responseData.result)
+            XCTAssertNotNil(responseData.result.filterExpressions)
+            XCTAssertTrue(responseData.result.resultsUrl.contains("https://ac.cnstrc.com/browse/items?key=ZqXaOfXuBWD4s3XzCI1q&num_results_per_page=10&collection_filter_expression=%7B%22and%22%3A%5B%7B%22name%22%3A%22group_id%22%2C%22value%22%3A%22BrandX%22%7D%2C%7B%22or%22%3A%5B%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22Blue%22%7D%2C%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22red%22%7D%5D%7D%5D%7D"))
+
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testGetQuizResults_WithInvalidVersionId() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 200")
+        let query = CIOQuizQuery(quizId: "test-quiz", versionId: "1")
+        constructorClient.getQuizResults(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "The quiz you requested, \"test-quiz\" was not found with version \"1\", please specify a valid quiz id and remove the version_id parameter before trying again.")
 
             expectation.fulfill()
         })

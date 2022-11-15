@@ -30,8 +30,8 @@ public extension CIOQuizResult {
         - json: JSON data from the server response
      */
     init?(json: JSONObject) {
-        guard let filterExpressions = json["filter_expression"] as? [String: Any] else { return nil }
-        guard let resultsUrl = json["results_url"] as? String else { return nil }
+        let filterExpressions = json["filter_expression"] as? [String: Any] ?? [:]
+        let resultsUrl = json["results_url"] as? String ?? ""
 
         self.filterExpressions = filterExpressions
         self.resultsUrl = resultsUrl
