@@ -180,7 +180,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let quizQuestionQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'])
+     let quizQuestionQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1", "2"]], versionId: "some-version-id")
 
      constructorIO.getQuizNextQuestion(forQuery: quizQuestionQuery) { response in
         let data = response.data!
@@ -202,7 +202,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let quizResultsQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'])
+     let quizResultsQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1", "2"]], versionId: "some-version-id")
      
      constructorIO.getQuizResults(forQuery: quizResultsQuery) { response in
         let data = response.data!
