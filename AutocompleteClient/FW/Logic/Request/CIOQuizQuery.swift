@@ -25,7 +25,7 @@ public struct CIOQuizQuery: CIORequestData {
      
      Please refer to "https://docs.constructor.io/rest_api/quiz/using_quizzes/" for additional details
      */
-    public var answers: [String]?
+    public var answers: [[String]]?
 
     /*
      The version of the quiz you would like to request for
@@ -50,10 +50,10 @@ public struct CIOQuizQuery: CIORequestData {
 
      ### Usage Example: ###
      ```
-     let quizQuery = CIOQuizQuery(quizId: "123", answers: ['a', 'b'])
+     let quizQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1","2"], versionId: "some-version-id")
      ```
      */
-    public init(quizId: String, answers: [String]? = nil, versionId: String? = nil) {
+    public init(quizId: String, answers: [[String]]? = nil, versionId: String? = nil) {
         self.quizId = quizId
         self.answers = answers
         self.versionId = versionId

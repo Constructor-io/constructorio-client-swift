@@ -11,7 +11,7 @@ import XCTest
 
 class QuizzesQueryRequestBuilderTests: XCTestCase {
     fileprivate let quizId: String = "1"
-    fileprivate let answers: [String] = ["1", "2,3", "seen", "true"]
+    fileprivate let answers: [[String]] = [["1"], ["2", "3"], ["seen"], ["true"]]
     fileprivate let versionId: String = "version-id"
     fileprivate var endodedQuery: String = ""
     fileprivate let testACKey: String = "abcdefgh123"

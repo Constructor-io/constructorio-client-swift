@@ -194,12 +194,12 @@ extension RequestBuilder {
         self.set(fmtOption: (key: "groups_sort_order", value: option.sortOrder.rawValue))
     }
 
-    func set(answer: String?) {
+    func set(answer: [String]?) {
         guard let answer = answer else { return }
-        queryItems.add(URLQueryItem(name: Constants.Quiz.answers, value: answer))
+        queryItems.add(URLQueryItem(name: Constants.Quiz.answers, value: answer.joined(separator: ",")))
     }
 
-    func set(answers: [String]?) {
+    func set(answers: [[String]]?) {
         guard let answers = answers else { return }
         for answer in answers {
             self.set(answer: answer)
