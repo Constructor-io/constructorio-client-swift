@@ -48,6 +48,7 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
             dict["resultID"] = self.resultID
         }
 
+        dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }
 
         return try? JSONSerialization.data(withJSONObject: dict)

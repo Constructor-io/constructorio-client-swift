@@ -65,6 +65,7 @@ struct CIOTrackConversionData: CIORequestData {
             dict["type"] = self.conversionType
         }
 
+        dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }
 
         return try? JSONSerialization.data(withJSONObject: dict)

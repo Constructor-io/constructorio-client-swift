@@ -63,6 +63,7 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
             dict["result_id"] = self.resultID
         }
 
+        dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }
 
         return try? JSONSerialization.data(withJSONObject: dict)
