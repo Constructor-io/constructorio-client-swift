@@ -193,4 +193,16 @@ extension RequestBuilder {
         self.set(fmtOption: (key: "groups_sort_by", value: option.sortBy.rawValue))
         self.set(fmtOption: (key: "groups_sort_order", value: option.sortOrder.rawValue))
     }
+    
+    func set(ids: [String]?) {
+        guard let itemIds = ids else { return }
+        for itemId in itemIds {
+            self.set(id: itemId)
+        }
+    }
+    
+    func set(id: String?) {
+        guard let itemId = id else { return }
+        queryItems.add(URLQueryItem(name: "ids", value: itemId))
+    }
 }

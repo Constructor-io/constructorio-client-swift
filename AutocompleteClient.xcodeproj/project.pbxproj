@@ -60,7 +60,10 @@
 		651F5B9E3E0C5CC7A2090EC8 /* Pods_AutocompleteClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */; };
 		8D40DD2427CD8D70008D3762 /* CIOQueryFmtOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D40DD2327CD8D70008D3762 /* CIOQueryFmtOptions.swift */; };
 		8D4CFEB6286B6CC2006C500A /* CIOQueryVariationsMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CFEB5286B6CC2006C500A /* CIOQueryVariationsMap.swift */; };
+		8D4F1ACE29357FA000803327 /* CIOBrowseItemsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4F1ACD29357FA000803327 /* CIOBrowseItemsQuery.swift */; };
 		8D689ECD284EAC6F005B6DD6 /* CIOCollectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D689ECC284EAC6F005B6DD6 /* CIOCollectionData.swift */; };
+		8D815F84293598B4001E3DAE /* CIOBrowseItemsQueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D815F83293598B4001E3DAE /* CIOBrowseItemsQueryBuilder.swift */; };
+		8D815F862935997D001E3DAE /* ConstructorIOBrowseItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D815F852935997D001E3DAE /* ConstructorIOBrowseItemsTests.swift */; };
 		8DF2172D2888AE5E006384A5 /* CIOResultSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2172C2888AE5E006384A5 /* CIOResultSources.swift */; };
 		8DF2172F2888B56D006384A5 /* CIOResultSourceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2172E2888B56D006384A5 /* CIOResultSourceData.swift */; };
 		99D6877853DE657CAF7E876C /* Pods_UserApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D938EAC4478309F3008F3B0D /* Pods_UserApplication.framework */; };
@@ -369,7 +372,10 @@
 		5362DE84EA35B4B9FE26EE1F /* Pods_AutocompleteClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D40DD2327CD8D70008D3762 /* CIOQueryFmtOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQueryFmtOptions.swift; sourceTree = "<group>"; };
 		8D4CFEB5286B6CC2006C500A /* CIOQueryVariationsMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQueryVariationsMap.swift; sourceTree = "<group>"; };
+		8D4F1ACD29357FA000803327 /* CIOBrowseItemsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseItemsQuery.swift; sourceTree = "<group>"; };
 		8D689ECC284EAC6F005B6DD6 /* CIOCollectionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOCollectionData.swift; sourceTree = "<group>"; };
+		8D815F83293598B4001E3DAE /* CIOBrowseItemsQueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseItemsQueryBuilder.swift; sourceTree = "<group>"; };
+		8D815F852935997D001E3DAE /* ConstructorIOBrowseItemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOBrowseItemsTests.swift; sourceTree = "<group>"; };
 		8DF2172C2888AE5E006384A5 /* CIOResultSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOResultSources.swift; sourceTree = "<group>"; };
 		8DF2172E2888B56D006384A5 /* CIOResultSourceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOResultSourceData.swift; sourceTree = "<group>"; };
 		A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -751,6 +757,7 @@
 				08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */,
 				F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */,
 				BF02E29E28B5739C0062B44F /* CIOItem.swift */,
+				8D4F1ACD29357FA000803327 /* CIOBrowseItemsQuery.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -858,6 +865,7 @@
 				BFC9504025DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift */,
 				BFC9504225DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift */,
 				BFE1C72C2602CF0E0017B4A0 /* ConstructorIOUserSegmentsTests.swift */,
+				8D815F852935997D001E3DAE /* ConstructorIOBrowseItemsTests.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -872,6 +880,7 @@
 				BF380F1727E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift */,
 				BF380F1927E2787C005E01F5 /* CIORecommendationsQueryBuilder.swift */,
 				BF380F1B27E28115005E01F5 /* CIOAutocompleteQueryBuilder.swift */,
+				8D815F83293598B4001E3DAE /* CIOBrowseItemsQueryBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -2301,11 +2310,13 @@
 				0828954D256C5A85009A00BC /* CIOAutocompleteResponse.swift in Sources */,
 				0828954B256C5A85009A00BC /* CIOSearchRedirectInfo.swift in Sources */,
 				08289544256C5A85009A00BC /* CIOSortOption.swift in Sources */,
+				8D4F1ACE29357FA000803327 /* CIOBrowseItemsQuery.swift in Sources */,
 				BF67BD3025E71F6E0039D479 /* CIORecommendationsStrategy.swift in Sources */,
 				BFE918F528DB9721005D92D8 /* CIORefinedContent.swift in Sources */,
 				BF380F1827E15CE0005E01F5 /* CIOBrowseQueryBuilder.swift in Sources */,
 				F1F68DE71F58C78C00B42602 /* ConstructorIO.swift in Sources */,
 				F1F68DD41F58B59F00B42602 /* CIOAutocompleteQuery.swift in Sources */,
+				8D815F84293598B4001E3DAE /* CIOBrowseItemsQueryBuilder.swift in Sources */,
 				0828954E256C5A85009A00BC /* CIOAutocompleteResult.swift in Sources */,
 				F63808F81F5D497200C3B322 /* NetworkResponse.swift in Sources */,
 				F699C3471F57ED4200FD681A /* CIOAutocompleteUICustomization.swift in Sources */,
@@ -2419,6 +2430,7 @@
 				F66B216521DF851F00AAB030 /* StringTrimTests.swift in Sources */,
 				08465ECC2161D0B100AEBD76 /* TrackSessionStartRequestBuilder.swift in Sources */,
 				F64F46BE1F59846E0094C697 /* XCTest+TimeoutFail.swift in Sources */,
+				8D815F862935997D001E3DAE /* ConstructorIOBrowseItemsTests.swift in Sources */,
 				0885D84A257195620038AE96 /* ConstructorIOBrowseTests.swift in Sources */,
 				F60FE90A1F5C5B9D0037A0AB /* AutocompleteQueryRequestBuilderTests.swift in Sources */,
 				F64F46A61F595B980094C697 /* CIOAutocompleteResponseParserTests.swift in Sources */,
