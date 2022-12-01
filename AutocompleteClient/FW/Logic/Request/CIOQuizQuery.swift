@@ -17,13 +17,7 @@ public struct CIOQuizQuery: CIORequestData {
     public let quizId: String
 
     /**
-     A list of answers that be in the following formats:
-     * Single Select: "answer1"
-     * Multiple Select: "answer1, answer2"
-     * Open Text: "true"
-     * Cover Page: "seen"
-     
-     Please refer to "https://docs.constructor.io/rest_api/quiz/using_quizzes/" for additional details
+     A list of answers. Please refer to "https://docs.constructor.io/rest_api/quiz/using_quizzes/" for additional details
      */
     public var answers: [[String]]?
 
@@ -50,7 +44,7 @@ public struct CIOQuizQuery: CIORequestData {
 
      ### Usage Example: ###
      ```
-     let quizQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1","2"], versionId: "some-version-id")
+     let quizQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1","2"]], versionId: "some-version-id")
      ```
      */
     public init(quizId: String, answers: [[String]]? = nil, versionId: String? = nil) {
