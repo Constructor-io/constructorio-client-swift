@@ -215,6 +215,36 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testItemDetailLoad() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        constructorClient.trackItemDetailLoad(customerID: "10001", itemName: "item1", completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+    }
+    
+    func testItemDetailLoad_WithVariationID() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        constructorClient.trackItemDetailLoad(customerID: "10001", itemName: "item1", variationID: "20001", completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+    }
+    
+    func testItemDetailLoad_WithSection() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        constructorClient.trackItemDetailLoad(customerID: "10001", itemName: "item1", sectionName: "Merchants", completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+    }
 
     func testRecommendations() {
         let expectation = XCTestExpectation(description: "Request 204")
