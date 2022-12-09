@@ -16,6 +16,7 @@ class TrackItemDetailLoadRequestBuilderTests: XCTestCase {
     fileprivate let customerID = "custIDq3 qd"
     fileprivate let variationID = "varID123"
     fileprivate let sectionName = "some section name@"
+    fileprivate let url = "test.com"
 
     fileprivate var builder: RequestBuilder!
 
@@ -33,12 +34,13 @@ class TrackItemDetailLoadRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(payload?["item_id"] as? String, customerID)
         XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["url"] as? String, "unknown")
         XCTAssertEqual(payload?["key"] as? String, testACKey)
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
     }
 
     func testTrackItemDetailLoadBuilder_WithVariationID() {
-        let tracker = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: sectionName)
+        let tracker = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: sectionName, url: url)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
@@ -47,6 +49,7 @@ class TrackItemDetailLoadRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["item_id"] as? String, customerID)
         XCTAssertEqual(payload?["item_name"] as? String, itemName)
         XCTAssertEqual(payload?["variation_id"] as? String, variationID)
+        XCTAssertEqual(payload?["url"] as? String, url)
         XCTAssertEqual(payload?["section"] as? String, sectionName)
         XCTAssertEqual(payload?["key"] as? String, testACKey)
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
