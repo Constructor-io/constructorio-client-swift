@@ -193,4 +193,21 @@ extension RequestBuilder {
         self.set(fmtOption: (key: "groups_sort_by", value: option.sortBy.rawValue))
         self.set(fmtOption: (key: "groups_sort_order", value: option.sortOrder.rawValue))
     }
+
+    func set(answer: [String]?) {
+        guard let answer = answer else { return }
+        queryItems.add(URLQueryItem(name: Constants.Quiz.answers, value: answer.joined(separator: ",")))
+    }
+
+    func set(answers: [[String]]?) {
+        guard let answers = answers else { return }
+        for answer in answers {
+            self.set(answer: answer)
+        }
+    }
+
+    func set(versionId: String?) {
+        guard let versionId = versionId else { return }
+        queryItems.add(URLQueryItem(name: Constants.Quiz.versionId, value: versionId))
+    }
 }

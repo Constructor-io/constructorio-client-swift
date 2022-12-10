@@ -43,6 +43,11 @@ public struct ConstructorIOConfig {
     public var baseURL: String?
 
     /**
+     The base URL to make requests to
+     */
+    public var baseQuizURL: String?
+
+    /**
      Create a configuration object
      
      - Parameters:
@@ -52,6 +57,7 @@ public struct ConstructorIOConfig {
         - testCells: List of test cell information to associate with requests
         - segments: List of segments to associate with requets
         - baseURL: The base URL to make requests to
+        - baseQuizURL: The base Quiz URL to make requests to
 
      ### Usage Example: ###
      ```
@@ -68,13 +74,14 @@ public struct ConstructorIOConfig {
      )
      ```
      */
-    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil) {
+    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil, baseQuizURL: String? = nil) {
         self.apiKey = apiKey
         self.resultCount = resultCount
         self.defaultItemSectionName = defaultItemSectionName
         self.testCells = testCells
         self.segments = segments
         self.baseURL = baseURL
+        self.baseQuizURL = baseQuizURL
     }
 
 }

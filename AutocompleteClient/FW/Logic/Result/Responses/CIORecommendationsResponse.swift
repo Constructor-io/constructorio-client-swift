@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Struct representing the search data response from the server.
+ Struct representing the recommendations data response from the server.
  */
 public struct CIORecommendationsResponse {
     /**
