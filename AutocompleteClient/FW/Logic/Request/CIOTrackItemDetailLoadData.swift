@@ -17,19 +17,19 @@ struct CIOTrackItemDetailLoadData: CIORequestData {
     let customerID: String
     let sectionName: String?
     let variationID: String?
-    let pageUrl: String?
+    let url: String
     
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackItemDetailLoad.format, baseURL)
     }
 
-    init(itemName: String, customerID: String,variationID: String? = nil, sectionName: String? = nil, url: String? = nil) {
+    init(itemName: String, customerID: String,variationID: String? = nil, sectionName: String? = nil, url: String = "unknown") {
         self.customerID = customerID
         self.sectionName = sectionName
         self.variationID = variationID
         self.itemName = itemName
-        self.pageUrl = url
+        self.url = url
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -42,7 +42,7 @@ struct CIOTrackItemDetailLoadData: CIORequestData {
         var dict = [
             "item_name": self.itemName,
             "item_id": self.customerID,
-            "url": self.pageUrl ?? "unknown"
+            "url": self.url,
         ] as [String: Any]
 
         if self.variationID != nil {

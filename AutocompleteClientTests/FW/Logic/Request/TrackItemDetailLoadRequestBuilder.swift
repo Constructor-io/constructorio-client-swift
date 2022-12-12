@@ -1,5 +1,5 @@
 //
-//  TrackItemDeteailLoadRequestBuilderTests.swift
+//  TrackItemDetailLoadRequestBuilderTests.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.

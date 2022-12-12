@@ -24,7 +24,7 @@ class ConstructorIOTrackItemDetailLoadTests: XCTestCase {
         OHHTTPStubs.removeAllStubs()
     }
 
-    func testTrackBrowseResultClick() {
+    func testTrackItemDetailLoad() {
         let itemName = "potato"
         let customerID = "customerID123"
         let variationID = "variationID123"
@@ -69,7 +69,7 @@ class ConstructorIOTrackItemDetailLoadTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    func testTrackBrowseResultClick_WithNoConnectivity() {
+    func testTrackItemDetailLoad_WithNoConnectivity() {
         let expectation = self.expectation(description: "Calling trackItemDetailLoad with no connectvity should return noConnectivity CIOError.")
         let itemName = "potato"
         let customerID = "customerID123"
