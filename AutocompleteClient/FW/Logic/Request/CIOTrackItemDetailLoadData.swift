@@ -24,7 +24,7 @@ struct CIOTrackItemDetailLoadData: CIORequestData {
         return String(format: Constants.TrackItemDetailLoad.format, baseURL)
     }
 
-    init(itemName: String, customerID: String,variationID: String? = nil, sectionName: String? = nil, url: String = "unknown") {
+    init(itemName: String, customerID: String,variationID: String? = nil, sectionName: String? = nil, url: String = "Not Available") {
         self.customerID = customerID
         self.sectionName = sectionName
         self.variationID = variationID

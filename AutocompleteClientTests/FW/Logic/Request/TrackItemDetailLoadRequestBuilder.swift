@@ -34,7 +34,7 @@ class TrackItemDetailLoadRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(payload?["item_id"] as? String, customerID)
         XCTAssertEqual(payload?["item_name"] as? String, itemName)
-        XCTAssertEqual(payload?["url"] as? String, "unknown")
+        XCTAssertEqual(payload?["url"] as? String, "Not Available")
         XCTAssertEqual(payload?["key"] as? String, testACKey)
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
     }

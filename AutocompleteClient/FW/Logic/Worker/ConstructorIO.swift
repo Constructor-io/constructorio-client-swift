@@ -449,15 +449,16 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - itemName: The item name
         - variationID: The id of the variation
         - sectionName: The name of the section the product is in.
+        - url: The url of the product
      
      ### Usage Example: ###
      ```
-     constructorIO.trackItemDetailLoad(customerID: "7654321-BA", itemName: "Pencil", variationID: "7654321-BA-738", sectionName: "Products")
+     constructorIO.trackItemDetailLoad(customerID: "7654321-BA", itemName: "Pencil", variationID: "7654321-BA-738", sectionName: "Products", "test.com/764321")
      ```
      */
-    public func trackItemDetailLoad(customerID: String, itemName: String, variationID: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackItemDetailLoad(customerID: String, itemName: String, variationID: String? = nil, sectionName: String? = nil, url: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: section)
+        let data = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: section, url: url ?? "Not Available")
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
