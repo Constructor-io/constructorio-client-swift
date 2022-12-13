@@ -224,6 +224,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
     
     func testItemDetailLoad_WithVariationID() {
@@ -234,16 +235,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
     
     func testItemDetailLoad_WithSection() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 204")
-        constructorClient.trackItemDetailLoad(customerID: "10001", itemName: "item1", sectionName: "Merchants", completionHandler: { response in
+        constructorClient.trackItemDetailLoad(customerID: "10001", itemName: "item1", sectionName: "Products", completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
         })
+        self.wait(for: expectation)
     }
 
     func testRecommendations() {
