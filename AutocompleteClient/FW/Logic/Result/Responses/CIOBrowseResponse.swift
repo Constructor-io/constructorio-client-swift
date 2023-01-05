@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Struct representing the search data response from the server.
+ Struct representing the browse data response from the server.
  */
 public struct CIOBrowseResponse {
     /**
@@ -41,12 +41,12 @@ public struct CIOBrowseResponse {
      Result ID of the result set returned
      */
     public let resultID: String
-    
+
     /**
      Collection of the result if browsing collection_id
      */
     public let collection: CIOCollectionData?
-    
+
     /**
      Sources of the result set
      */

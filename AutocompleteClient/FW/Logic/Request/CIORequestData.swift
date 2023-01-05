@@ -13,6 +13,8 @@ protocol CIORequestData {
     func decorateRequest(requestBuilder: RequestBuilder)
 
     func url(with baseURL: String) -> String
+    
+    func urlWithFormat(baseURL: String, format: String) -> String
 
     func queryItems(baseItems: [URLQueryItem]) -> [URLQueryItem]
 
@@ -35,5 +37,10 @@ extension CIORequestData {
     // default query items is all of them
     func queryItems(baseItems: [URLQueryItem]) -> [URLQueryItem] {
         return baseItems
+    }
+
+    // default to empty string
+    func urlWithFormat(baseURL: String, format: String) -> String {
+        return ""
     }
 }

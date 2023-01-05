@@ -55,6 +55,7 @@ struct Constants {
     struct Query {
         static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
+        static let baseQuizURLString = "https://quizzes.cnstrc.com"
         static let httpMethod = "GET"
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
     }
@@ -218,5 +219,17 @@ struct Constants {
         static let key = "constructor.io/session"
         static let id = "constructor.io/session/id"
         static let createdAt = "constructor.io/session/createdAt"
+    }
+
+    struct Quiz {
+        struct Question {
+            static let format = "%@/v1/quizzes/%@/next"
+        }
+        struct Results {
+            static let format = "%@/v1/quizzes/%@/finalize"
+        }
+        static let quizId = "quiz_id"
+        static let answers = "a"
+        static let versionId = "version_id"
     }
 }
