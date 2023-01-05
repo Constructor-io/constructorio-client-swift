@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 import ConstructorAutocomplete
+import XCTest
 
 class ConstructorIOUserIDTests: XCTestCase {
 
@@ -25,7 +25,7 @@ class ConstructorIOUserIDTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
         stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&ui=abcdefg"), builder.create())
 
-        self.constructor.autocomplete(forQuery: query) { (_) in }
+        self.constructor.autocomplete(forQuery: query) { _ in }
         self.wait(for: builder.expectation)
     }
 

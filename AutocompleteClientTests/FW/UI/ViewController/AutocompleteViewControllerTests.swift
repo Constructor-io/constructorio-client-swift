@@ -42,7 +42,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
     func testAutocompleteViewController_DisplayError() {
         self.initializeViewController()
 
-        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Unknown error"])
+        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unknown error"])
 
         // call with no uiCustomization set
         self.viewController.displayError(error: error)
@@ -193,7 +193,7 @@ class AutocompleteViewControllerTests: XCTestCase, CIOAutocompleteDelegate, CIOA
                     let cell = self.viewController.tableView(self.viewController.tableView, cellForRowAt: indexPath)
                     self.viewController.tableView(self.viewController.tableView, willDisplay: cell, forRowAt: indexPath)
                     self.viewController.tableView(self.viewController.tableView, didSelectRowAt: indexPath)
-                    let _ = self.viewController.tableView(self.viewController.tableView, viewForHeaderInSection: 0)
+                    _ = self.viewController.tableView(self.viewController.tableView, viewForHeaderInSection: 0)
                 }
             }
         }

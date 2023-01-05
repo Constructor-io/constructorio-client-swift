@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import Foundation
 @testable import ConstructorAutocomplete
+import Foundation
 
 class MockResponseParserDelegate: NSObject, ResponseParserDelegate {
 

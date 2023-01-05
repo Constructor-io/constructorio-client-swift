@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 import ConstructorAutocomplete
+import XCTest
 
 class ConstructorIOBrowseItemsTests: XCTestCase {
 
@@ -128,11 +128,11 @@ class ConstructorIOBrowseItemsTests: XCTestCase {
 
         self.wait(for: builder.expectation)
     }
-    
+
     func testBrowseItems_AttachesVariationsMap() {
         let groupByOptions = [GroupByOption(name: "Country", field: "data.facets.Country")]
         let valueOption = ValueOption(aggregation: "min", field: "data.facets.price")
-        let query = CIOBrowseItemsQuery(ids: ["123", "234"], variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["price" : valueOption], Dtype: "array"))
+        let query = CIOBrowseItemsQuery(ids: ["123", "234"], variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["price": valueOption], Dtype: "array"))
 
         let builder = CIOBuilder(expectation: "Calling BrowseItems with variations map should have a URL query variations map", builder: http(200))
         stub(regex("https://ac.cnstrc.com/browse/items?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&ids=123&ids=234&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products&variations_map=%7B%22dtype%22:%22array%22,%22group_by%22:%5B%7B%22name%22:%22Country%22,%22field%22:%22data.facets.Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22field%22:%22data.facets.price%22,%22aggregation%22:%22min%22%7D%7D%7D"), builder.create())

@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import UIKit
 import ConstructorAutocomplete
+import UIKit
 
 public class ClosureAutocompleteViewModelDelegate: AutocompleteViewModelDelegate {
 

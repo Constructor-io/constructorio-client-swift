@@ -144,7 +144,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: query)
         executeBrowse(request, completionHandler: completionHandler)
     }
-    
+
     /**
      Get browse items results for a query.
 
@@ -501,7 +501,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     private func attachABTestCells(requestBuilder: RequestBuilder) {
-        self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
+        self.config.testCells?.forEach({ [unowned requestBuilder] cell in
             requestBuilder.set(testCellKey: cell.key, testCellValue: cell.value)
         })
     }

@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import UIKit
 @testable import ConstructorAutocomplete
+import UIKit
 
 class ClosureDateProvider: DateProvider {
 

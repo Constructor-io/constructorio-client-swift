@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 @testable import ConstructorAutocomplete
+import XCTest
 
 class SessionManagerTests: XCTestCase {
 
@@ -73,7 +73,7 @@ class SessionManagerTests: XCTestCase {
 
         let timeout: TimeInterval = 0.05
         let sessionManager = CIOSessionManager(dateProvider: CurrentTimeDateProvider(), timeout: timeout, sessionLoader: NoSessionLoader())
-        let delegate = ClosureSessionManagerDelegate { (from, to) in
+        let delegate = ClosureSessionManagerDelegate { from, to in
             XCTAssertEqual(from, 1)
             XCTAssertEqual(to, 2)
             expectation.fulfill()

@@ -51,7 +51,7 @@ public struct CIOBrowseItemsQuery: CIORequestData {
      The list of hidden facet fields to return
      */
     public let hiddenFacets: [String]?
-    
+
     /**
      The variation map to use with the result set
      */

@@ -6,9 +6,9 @@
 //  http://constructor.io/
 //
 
-import XCTest
 import ConstructorAutocomplete
 import OHHTTPStubs
+import XCTest
 
 class ConstructorIOUserSegmentsTests: XCTestCase {
 

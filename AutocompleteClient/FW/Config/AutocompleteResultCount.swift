@@ -16,7 +16,7 @@ public struct AutocompleteResultCount {
      The total number of results to request for
      */
     public let numResults: Int?
-    
+
     /**
      The number of results to request for per section
      */

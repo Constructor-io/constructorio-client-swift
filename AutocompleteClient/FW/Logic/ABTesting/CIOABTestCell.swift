@@ -16,7 +16,7 @@ public struct CIOABTestCell {
      The name of the test cell
      */
     let key: String
-    
+
     /**
      The test cell value
      */

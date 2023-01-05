@@ -102,7 +102,7 @@ struct Constants {
         static let defaultPage = 1
         static let defaultPerPage = 30
     }
-    
+
     struct BrowseItemsQuery {
         static let format = "%@/browse/items"
         static let page = "page"

@@ -52,7 +52,7 @@ public class CIOBrowseItemsQueryBuilder {
      The list of hidden facets to return
      */
     var hiddenFacets: [String]?
-    
+
     /**
      The variation map to use with the result set
      */
@@ -128,7 +128,7 @@ public class CIOBrowseItemsQueryBuilder {
         self.hiddenFacets = hiddenFacets
         return self
     }
-    
+
     /**
      Add a variations map to return per variation
      */
