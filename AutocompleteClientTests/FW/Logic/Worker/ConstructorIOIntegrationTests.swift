@@ -6,10 +6,10 @@
 //  http://constructor.io/
 //
 
-import XCTest
 import ConstructorAutocomplete
+import XCTest
 
-// swiftlint:disable type_body_length
+// swiftlint:disable type_body_length file_length
 class ConstructorIOIntegrationTests: XCTestCase {
 
     fileprivate let testACKey = "key_K2hlXt5aVSwoI1Uw"
@@ -34,6 +34,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     fileprivate let numResultsViewed = 5
     fileprivate let resultPage = 1
     fileprivate let conversionType = "add_to_cart"
+    fileprivate let itemIds = ["on_yellow_md", "on_scal", "veg_pid_2301498", "veg_pid_2302265", "on_scal_or", "grlc_grlc_or", "grlc_grlc", "veg_pid_2301750"]
 
     var constructor: ConstructorIO!
 
@@ -823,7 +824,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "You\'re trying to access an invalid endpoint. Please check documentation for allowed endpoints.")
+            XCTAssertEqual(cioError?.errorMessage, "You are trying to access an invalid endpoint. Please check documentation for allowed endpoints.")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -884,4 +885,187 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testBrowseItems() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseItemsQuery(ids: itemIds)
+        self.constructor.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+
+            for result in response.data?.results ?? [] {
+                XCTAssertTrue(self.itemIds.contains(result.data.id!))
+            }
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseItemsShouldReturnGroupsWithParentsAndChildren() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseItemsQuery(ids: itemIds)
+        self.constructor.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let groups = responseData.groups
+
+            for result in response.data?.results ?? [] {
+                XCTAssertTrue(self.itemIds.contains(result.data.id!))
+            }
+            XCTAssertFalse(groups[0].children[0].parents.isEmpty)
+            XCTAssertFalse(groups[0].children.isEmpty)
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseItems_WithFilters() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let facetFilters = [
+            (key: "Brand", value: "A&W")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: facetFilters)
+        let query = CIOBrowseItemsQuery(ids: itemIds, filters: queryFilters)
+        self.constructor.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+
+            for result in response.data?.results ?? [] {
+                XCTAssertTrue(self.itemIds.contains(result.data.id!))
+            }
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseItems_WithHiddenFields() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let hiddenFields = ["price_US", "price_CA"]
+        let query = CIOBrowseItemsQuery(ids: itemIds, hiddenFields: hiddenFields)
+        self.constructor.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let browseResult = responseData.results[0]
+            let resultData = browseResult.data
+            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
+            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(hiddenPriceCAValue)
+            XCTAssertNotNil(hiddenPriceUSValue)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseItems_WithHiddenFacets() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let hiddenFacets = ["Brand", "hiddenFacet2"]
+        let query = CIOBrowseItemsQuery(ids: ["10001", "10002", "10009"], hiddenFacets: hiddenFacets)
+        constructorClient.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let browseResult = responseData.results[0]
+            let hiddenFacetIndex = responseData.facets.firstIndex { $0.name == hiddenFacets[0] }
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(browseResult)
+            XCTAssertEqual(responseData.facets[hiddenFacetIndex!].name, hiddenFacets[0])
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseItems_WithVariationsMapWithArrayDtype() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
+        let valueOption = ValueOption(aggregation: "all", field: "data.url")
+
+        let query = CIOBrowseItemsQuery(ids: ["10001", "10002", "10009"], variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["url": valueOption], Dtype: "array"))
+        constructorClient.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let browseResult = responseData.results[0]
+            let variationsMap = browseResult.variationsMap as? [JSONObject]
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(browseResult)
+            XCTAssertNotNil(variationsMap)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseItems_WithVariationsMapWithObjectDtype() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
+        let valueOption = ValueOption(aggregation: "all", field: "data.url")
+
+        let query = CIOBrowseItemsQuery(ids: ["10001", "10002", "10009"], variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["url": valueOption], Dtype: "object"))
+        constructorClient.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let browseResult = responseData.results[0]
+            let variationsMap = browseResult.variationsMap as? JSONObject
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(browseResult)
+            XCTAssertNotNil(variationsMap)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseItems_WithUnknownSection() {
+        let expectation = XCTestExpectation(description: "Request 400")
+        let query = CIOBrowseItemsQuery(ids: ["10001"], section: "bad_section")
+        self.constructor.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNotNil(cioError)
+            XCTAssertEqual(cioError?.errorMessage, "Unknown section: bad_section")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseItems_WithGroupSortOptionValueAscending() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .ascending)
+        let query = CIOBrowseItemsQuery(ids: itemIds, groupsSortOption: groupsSortOption)
+        constructorClient.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let browseResult = responseData.results[0]
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(browseResult)
+            XCTAssertEqual(responseData.groups[0].displayName, "Grocery")
+            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Pantry")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseItems_WithGroupSortOptionValueDescending() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .descending)
+        let query = CIOBrowseItemsQuery(ids: itemIds, groupsSortOption: groupsSortOption)
+        constructorClient.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let browseResult = responseData.results[0]
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(browseResult)
+            XCTAssertEqual(responseData.groups[0].displayName, "Vegetables")
+            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Onions & Garlic")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 }

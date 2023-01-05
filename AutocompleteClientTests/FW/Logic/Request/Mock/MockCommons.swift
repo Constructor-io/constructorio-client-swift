@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 import OHHTTPStubs
+import XCTest
 
 public typealias Matcher = OHHTTPStubsTestBlock
 public typealias Builder = OHHTTPStubsResponseBlock

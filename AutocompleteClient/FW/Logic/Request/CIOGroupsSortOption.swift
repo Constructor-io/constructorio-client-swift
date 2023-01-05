@@ -21,7 +21,7 @@ public struct CIOGroupsSortOption {
      The sort order (i.e. "ascending" or "descending")
      */
     public let sortOrder: CIOGroupsSortOrder
-    
+
     /**
      Create a groups sort option
      
@@ -33,13 +33,13 @@ public struct CIOGroupsSortOption {
         self.sortBy = sortBy
         self.sortOrder = sortOrder
     }
-    
+
     public enum CIOGroupsSortBy: String {
         case relevance
         case value
         case num_matches
     }
-    
+
     public enum CIOGroupsSortOrder: String {
         case ascending
         case descending

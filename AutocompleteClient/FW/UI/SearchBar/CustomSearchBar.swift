@@ -10,7 +10,7 @@ import UIKit
 
 public class CustomSearchBar: UISearchBar {
 
-    public var shouldShowCancelButton: Bool = false
+    public var shouldShowCancelButton = false
 
     public init() {
         super.init(frame: .zero)

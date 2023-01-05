@@ -42,7 +42,7 @@ public class CIOAutocompleteQueryBuilder {
      The variation map to use with the result set
      */
     var variationsMap: CIOQueryVariationsMap?
-    
+
     /**
      Creata a Autocomplete request query builder
      
@@ -84,7 +84,7 @@ public class CIOAutocompleteQueryBuilder {
         self.hiddenFields = hiddenFields
         return self
     }
-    
+
     /**
      Add a variations map to return per variation
      */

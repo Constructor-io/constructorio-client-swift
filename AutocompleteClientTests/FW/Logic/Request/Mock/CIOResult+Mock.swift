@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 import ConstructorAutocomplete
+import XCTest
 
 public extension CIOAutocompleteResult {
 

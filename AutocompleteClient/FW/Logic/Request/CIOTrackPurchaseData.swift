@@ -24,7 +24,7 @@ struct CIOTrackPurchaseData: CIORequestData {
     }
 
     init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
-        if (customerIDs.count > 100) {
+        if customerIDs.count > 100 {
             self.customerIDs = Array(customerIDs[0 ..< 100])
         } else {
             self.customerIDs = customerIDs

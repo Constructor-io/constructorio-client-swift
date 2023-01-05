@@ -1,5 +1,5 @@
 //
-//  CIOBrowseQuery.swift
+//  CIOBrowseItemsQuery.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,18 +9,13 @@
 import Foundation
 
 /**
- Struct encapsulating the necessary and additional parameters required to execute a browse query.
+ Struct encapsulating the necessary and additional parameters required to execute a browse items query.
  */
-public struct CIOBrowseQuery: CIORequestData {
+public struct CIOBrowseItemsQuery: CIORequestData {
     /**
-     The primary filter name that the user browsed for
+     The list of item ids to request
      */
-    public let filterName: String
-
-    /**
-     The primary filter value that the user browsed for
-     */
-    public let filterValue: String
+    public let ids: [String]
 
     /**
      The filters used to refine results
@@ -68,15 +63,14 @@ public struct CIOBrowseQuery: CIORequestData {
     public let groupsSortOption: CIOGroupsSortOption?
 
     func url(with baseURL: String) -> String {
-        return String(format: Constants.BrowseQuery.format, baseURL, filterName, filterValue)
+        return String(format: Constants.BrowseItemsQuery.format, baseURL, "items")
     }
 
     /**
      Create a Browse request query object
 
      - Parameters:
-        - filterName: The primary filter name that the user browsed for
-        - filterValue: The primary filter value that the user browsed for
+        - ids: The list of item ids to request
         - filters: The filters used to refine results
         - page: The page number of the results
         - perPage: The number of results per page to return
@@ -92,12 +86,10 @@ public struct CIOBrowseQuery: CIORequestData {
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
 
-     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"]))
+     let browseQuery = CIOBrowseItemsQuery(ids: ["123", "234"], filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"]))
      ```
      */
-    public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
-        self.filterName = filterName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        self.filterValue = filterValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
+    public init(ids: [String], filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
         self.filters = filters
         self.page = page != nil ? page! : Constants.BrowseQuery.defaultPage
         self.perPage = perPage != nil ? perPage! : Constants.BrowseQuery.defaultPerPage
@@ -107,6 +99,7 @@ public struct CIOBrowseQuery: CIORequestData {
         self.hiddenFacets = hiddenFacets
         self.variationsMap = variationsMap
         self.groupsSortOption = groupsSortOption
+        self.ids = ids
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -120,5 +113,6 @@ public struct CIOBrowseQuery: CIORequestData {
         requestBuilder.set(hiddenFacets: self.hiddenFacets)
         requestBuilder.set(variationsMap: self.variationsMap)
         requestBuilder.set(groupsSortOption: self.groupsSortOption)
+        requestBuilder.set(ids: self.ids)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CIOBrowseQueryBuilder.swift
+//  CIOBrowseItemsQueryBuilder.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -9,19 +9,14 @@
 import Foundation
 
 /**
- Request builder for creating an browse query.
+ Request builder for creating an browse items query.
  */
-public class CIOBrowseQueryBuilder {
+public class CIOBrowseItemsQueryBuilder {
 
     /**
-     The primary filter name that the user browsed for
-     */
-    let filterName: String
-
-    /**
-     The primary filter value that the user browsed for
-     */
-    let filterValue: String
+     The list of item ids to request
+     **/
+    let ids: [String]
 
     /**
      The filters used to refine results
@@ -72,18 +67,16 @@ public class CIOBrowseQueryBuilder {
      Creata a Browse request query builder
      
      - Parameters:
-        - filterName: The primary filter name that the user browsed for
-        - filterValue: The primary filter value that the user browsed for
+        - ids - the list of item ids to request
      */
-    public init(filterName: String, filterValue: String) {
-        self.filterName = filterName
-        self.filterValue = filterValue
+    public init(ids: [String]) {
+        self.ids = ids
     }
 
     /**
      Add additional filters
      */
-    public func setFilters(_ filters: CIOQueryFilters) -> CIOBrowseQueryBuilder {
+    public func setFilters(_ filters: CIOQueryFilters) -> CIOBrowseItemsQueryBuilder {
         self.filters = filters
         return self
     }
@@ -91,7 +84,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add a sort option
      */
-    public func setSortOption(_ sortOption: CIOSortOption) -> CIOBrowseQueryBuilder {
+    public func setSortOption(_ sortOption: CIOSortOption) -> CIOBrowseItemsQueryBuilder {
         self.sortOption = sortOption
         return self
     }
@@ -99,7 +92,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add a page number
      */
-    public func setPage(_ page: Int) -> CIOBrowseQueryBuilder {
+    public func setPage(_ page: Int) -> CIOBrowseItemsQueryBuilder {
         self.page = page
         return self
     }
@@ -107,7 +100,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add the number of results to return per page
      */
-    public func setPerPage(_ perPage: Int) -> CIOBrowseQueryBuilder {
+    public func setPerPage(_ perPage: Int) -> CIOBrowseItemsQueryBuilder {
         self.perPage = perPage
         return self
     }
@@ -115,7 +108,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add the number of results to return per page
      */
-    public func setSection(_ section: String) -> CIOBrowseQueryBuilder {
+    public func setSection(_ section: String) -> CIOBrowseItemsQueryBuilder {
         self.section = section
         return self
     }
@@ -123,7 +116,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add a list of hidden metadata fields to return
      */
-    public func setHiddenFields(_ hiddenFields: [String]) -> CIOBrowseQueryBuilder {
+    public func setHiddenFields(_ hiddenFields: [String]) -> CIOBrowseItemsQueryBuilder {
         self.hiddenFields = hiddenFields
         return self
     }
@@ -131,7 +124,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add a list of hidden facets to return
      */
-    public func setHiddenFacets(_ hiddenFacets: [String]) -> CIOBrowseQueryBuilder {
+    public func setHiddenFacets(_ hiddenFacets: [String]) -> CIOBrowseItemsQueryBuilder {
         self.hiddenFacets = hiddenFacets
         return self
     }
@@ -139,7 +132,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add a variations map to return per variation
      */
-    public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOBrowseQueryBuilder {
+    public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOBrowseItemsQueryBuilder {
         self.variationsMap = variationsMap
         return self
     }
@@ -147,7 +140,7 @@ public class CIOBrowseQueryBuilder {
     /**
      Add a groups sort option
      */
-    public func setGroupsSortOption(_ groupsSortOption: CIOGroupsSortOption) -> CIOBrowseQueryBuilder {
+    public func setGroupsSortOption(_ groupsSortOption: CIOGroupsSortOption) -> CIOBrowseItemsQueryBuilder {
         self.groupsSortOption = groupsSortOption
         return self
     }
@@ -161,7 +154,7 @@ public class CIOBrowseQueryBuilder {
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
      
-     let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
+     let query = CIOBrowseItemsQueryBuilder(ids: ["123", "123"])
         .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
         .setPage(2)
         .setPerPage(40)
@@ -170,10 +163,10 @@ public class CIOBrowseQueryBuilder {
         .setHiddenFacets(["hidden_facet"])
         .build()
      
-     constructor.browse(forQuery: query, completionHandler: { ... })
+     constructor.browseItems(forQuery: query, completionHandler: { ... })
      ```
      */
-    public func build() -> CIOBrowseQuery {
-        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap)
+    public func build() -> CIOBrowseItemsQuery {
+        return CIOBrowseItemsQuery(ids: ids, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap)
     }
 }

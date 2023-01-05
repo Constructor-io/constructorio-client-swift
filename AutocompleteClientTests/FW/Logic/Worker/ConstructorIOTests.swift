@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 @testable import ConstructorAutocomplete
+import XCTest
 
 class ConstructorIOTests: XCTestCase {
 
@@ -35,7 +35,7 @@ class ConstructorIOTests: XCTestCase {
         }
 
         // mock out the network client
-        DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
+        DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient() }
 
         let constructor = TestConstants.testConstructor()
 
@@ -68,7 +68,7 @@ class ConstructorIOTests: XCTestCase {
         }
 
         // mock out the network client
-        DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient (error: customError) }
+        DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient(error: customError) }
 
         let constructor = TestConstants.testConstructor()
 
@@ -97,7 +97,7 @@ class ConstructorIOTests: XCTestCase {
         }
 
         // mock out the network client
-        DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient () }
+        DependencyContainer.sharedInstance.networkClient = { return MockNetworkClient() }
 
         let constructor = TestConstants.testConstructor()
 

@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 @testable import ConstructorAutocomplete
+import XCTest
 
 public class MockAutocompleteViewModel: AbstractAutocompleteViewModel {
 
@@ -36,8 +36,8 @@ public class MockAutocompleteViewModel: AbstractAutocompleteViewModel {
     }
 
     internal func setResultFromDictionary(dictionary: [String: [CIOAutocompleteResult]]?) {
-        self.results = (dictionary ?? [:]).map { (section, items) in AutocompleteViewModelSection(items: items, sectionName: section) }
-            .sorted { (s1, s2) in self.modelSorter(s1.sectionName, s2.sectionName) }
+        self.results = (dictionary ?? [:]).map { section, items in AutocompleteViewModelSection(items: items, sectionName: section) }
+            .sorted { s1, s2 in self.modelSorter(s1.sectionName, s2.sectionName) }
     }
 
     public func set(searchResult: AutocompleteResult, completionHandler: @escaping () -> Void) {

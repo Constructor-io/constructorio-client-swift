@@ -26,7 +26,7 @@ public class CIOResultSourceData: NSObject {
         guard let json = json, let count = json["count"] as? Int else {
             return nil
         }
-        
-        self.count = count;
+
+        self.count = count
     }
 }

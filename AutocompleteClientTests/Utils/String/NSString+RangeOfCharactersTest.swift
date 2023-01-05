@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 @testable import ConstructorAutocomplete
+import XCTest
 
 class RangeOfCharactersTest: XCTestCase {
 

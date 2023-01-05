@@ -15,12 +15,12 @@ public class CIOResultSources: NSObject {
      Number of token match results
      */
     public let tokenMatch: CIOResultSourceData
-    
+
     /**
      Number of embedding match results
      */
     public let embeddingsMatch: CIOResultSourceData
-    
+
     /**
      Create a result sources object
      
@@ -31,11 +31,11 @@ public class CIOResultSources: NSObject {
         guard let json = json,
         let tokenMatchJson = json["token_match"] as? JSONObject,
         let embeddingsMatchJson = json["embeddings_match"] as? JSONObject,
-        let tokenMatchData: CIOResultSourceData = CIOResultSourceData(json: tokenMatchJson),
-        let embeddingsMatchData: CIOResultSourceData = CIOResultSourceData(json: embeddingsMatchJson) else {
+        let tokenMatchData = CIOResultSourceData(json: tokenMatchJson),
+        let embeddingsMatchData = CIOResultSourceData(json: embeddingsMatchJson) else {
             return nil
         }
-        
+
         self.tokenMatch = tokenMatchData
         self.embeddingsMatch = embeddingsMatchData
     }
