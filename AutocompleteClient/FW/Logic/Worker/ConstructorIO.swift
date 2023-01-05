@@ -160,7 +160,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      let browseItemsQuery = CIOBrowseItemsQuery(ids: ["123", "123"], filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products")
      
-     constructorIO.browseItems(forQuery: browseQuery) { response in
+     constructorIO.browseItems(forQuery: browseItemsQuery) { response in
         let data = response.data!
         let error = response.error!
      }
