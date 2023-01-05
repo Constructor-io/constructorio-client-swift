@@ -14,14 +14,16 @@ class RequestBuilder {
     var dateProvider: DateProvider
 
     let baseURL: String
+    let baseQuizURL: String
 
     var trackData: CIORequestData!
 
     var searchTerm = ""
 
-    init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider(), baseURL: String) {
+    init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider(), baseURL: String? = nil, baseQuizURL: String? = nil) {
         self.dateProvider = dateProvider
-        self.baseURL = baseURL
+        self.baseURL = baseURL ?? Constants.Query.baseURLString
+        self.baseQuizURL = baseQuizURL ?? Constants.Query.baseQuizURLString
         self.set(apiKey: apiKey)
     }
 
@@ -101,6 +103,26 @@ class RequestBuilder {
             request.httpBody = httpBody
         }
         request.httpMethod = self.trackData!.httpMethod()
+
+        return request
+    }
+
+    final func getQuizRequest(finalize: Bool) -> URLRequest {
+        let quizQuestionURLString = self.trackData!.urlWithFormat(baseURL: self.baseQuizURL, format: Constants.Quiz.Question.format)
+        let quizResultsURLString = self.trackData!.urlWithFormat(baseURL: self.baseQuizURL, format: Constants.Quiz.Results.format)
+        let urlString = finalize ? quizResultsURLString : quizQuestionURLString
+        var urlComponents = URLComponents(string: urlString)!
+        var allQueryItems = self.queryItems
+        let versionString = Constants.versionString()
+
+        allQueryItems.add(URLQueryItem(name: "c", value: versionString))
+        self.addDateQueryItem(queryItems: &allQueryItems)
+        urlComponents.queryItems = self.trackData!.queryItems(baseItems: allQueryItems.all())
+        urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?
+            .replacingOccurrences(of: "+", with: "%2B")
+
+        let url = urlComponents.url!
+        let request = URLRequest(url: url)
 
         return request
     }
