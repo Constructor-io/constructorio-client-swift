@@ -86,14 +86,14 @@
 		08F13322DED445A402DDB469176A0DB6 /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		0F2B968710CB5741495D604A7F467049 /* OHHTTPStubsSwift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OHHTTPStubsSwift.swift; path = OHHTTPStubs/Sources/Swift/OHHTTPStubsSwift.swift; sourceTree = "<group>"; };
 		0F4F160C4E1A8623AD78B49D8BE2CD85 /* OHHTTPStubs-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "OHHTTPStubs-Info.plist"; sourceTree = "<group>"; };
-		1269ACF342D6506B37A8DC7D234FD911 /* Pods-UserApplication-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-UserApplication-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1269ACF342.6.16B37A8DC7D234FD911 /* Pods-UserApplication-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-UserApplication-acknowledgements.markdown"; sourceTree = "<group>"; };
 		12E8FDE65C7574C92403566E186E0052 /* OHHTTPStubsMethodSwizzling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OHHTTPStubsMethodSwizzling.m; path = OHHTTPStubs/Sources/NSURLSession/OHHTTPStubsMethodSwizzling.m; sourceTree = "<group>"; };
 		147759E8E5FE51C7A727F3C5A77466A7 /* Pods-AutocompleteClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AutocompleteClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		15930F0F51648CA480E7D12B14F49ECB /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
 		15AE52673A84DB022A0610AF67A8A0A4 /* FormatIndicatedCacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormatIndicatedCacheSerializer.swift; path = Sources/FormatIndicatedCacheSerializer.swift; sourceTree = "<group>"; };
 		16E4DFCD78767B1E4C71A4D281754103 /* Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Indicator.swift; path = Sources/Indicator.swift; sourceTree = "<group>"; };
 		17E33041B314FA837A3CAEB9DF3CDE9F /* OHHTTPStubs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OHHTTPStubs.framework; path = OHHTTPStubs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A64FCEFC2C57779D711B256C01802F8 /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Kingfisher.modulemap; sourceTree = "<group>"; };
+		1A64FCEFC2C57779D711B2.6.11802F8 /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Kingfisher.modulemap; sourceTree = "<group>"; };
 		2201E7AC1FCE51F3ED2B5A367D70FCD0 /* Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Placeholder.swift; path = Sources/Placeholder.swift; sourceTree = "<group>"; };
 		222DAEF0D819F359AFCFF3D4F927E8A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		2C9C827887D62B26C9F6846E3AF0A110 /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/ImageDownloader.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 		40FCC56A34A1A05A26D884A965FCE128 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				1A64FCEFC2C57779D711B256C01802F8 /* Kingfisher.modulemap */,
+				1A64FCEFC2C57779D711B2.6.11802F8 /* Kingfisher.modulemap */,
 				00608CB1C20ECC720C2ABA62BAB04616 /* Kingfisher.xcconfig */,
 				616D9BFC24B553CD074D4C2C3D9E5ADE /* Kingfisher-dummy.m */,
 				5D62712D03F38BF83D99B742667AA7BD /* Kingfisher-Info.plist */,
@@ -306,7 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				7849A990307305C0C131D799D08C9C25 /* Pods-UserApplication.modulemap */,
-				1269ACF342D6506B37A8DC7D234FD911 /* Pods-UserApplication-acknowledgements.markdown */,
+				1269ACF342.6.16B37A8DC7D234FD911 /* Pods-UserApplication-acknowledgements.markdown */,
 				EC2DE0799404592A88E11EDDAD979CCA /* Pods-UserApplication-acknowledgements.plist */,
 				A1FFDDA9628AFD58E6952E06D7362790 /* Pods-UserApplication-dummy.m */,
 				9489A7F7C599E5BDBC4BF7293F3BDD39 /* Pods-UserApplication-frameworks.sh */,
@@ -430,7 +430,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73C67953256B00D0FB3BA79E64D0C747 /* Headers */ = {
+		73C679532.6.10D0FB3BA79E64D0C747 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -499,7 +499,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 096FD8733033A1C8560E0B9159C14845 /* Build configuration list for PBXNativeTarget "Pods-AutocompleteClientTests" */;
 			buildPhases = (
-				73C67953256B00D0FB3BA79E64D0C747 /* Headers */,
+				73C679532.6.10D0FB3BA79E64D0C747 /* Headers */,
 				39BB5499D42E1BCC5A0DB3F4259E761B /* Sources */,
 				BF762B1D7F3EE09365A8939423C04BBE /* Frameworks */,
 				D868A038918FD7B4F1C5E74F8A823EBA /* Resources */,

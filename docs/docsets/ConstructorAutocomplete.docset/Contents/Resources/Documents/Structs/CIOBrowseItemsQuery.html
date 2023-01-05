@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CIOSearchQueryBuilder Class Reference</title>
+    <title>CIOBrowseItemsQuery Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/CIOSearchQueryBuilder" class="dashAnchor"></a>
-    <a title="CIOSearchQueryBuilder Class Reference"></a>
+    <a name="//apple_ref/swift/Struct/CIOBrowseItemsQuery" class="dashAnchor"></a>
+    <a title="CIOBrowseItemsQuery Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">ConstructorAutocomplete 2.6.1 Docs</a> (91% documented)</p>
@@ -29,7 +29,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">ConstructorAutocomplete Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        CIOSearchQueryBuilder Class Reference
+        CIOBrowseItemsQuery Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -195,15 +195,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CIOSearchQueryBuilder</h1>
+            <h1>CIOBrowseItemsQuery</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CIOBrowseItemsQuery</span> <span class="p">:</span> <span class="kt">CIORequestData</span></code></pre>
 
                 </div>
               </div>
-            <p>Request builder for creating an search query.</p>
+            <p>Struct encapsulating the necessary and additional parameters required to execute a browse items query.</p>
 
           </section>
           <section class="section task-group-section">
@@ -212,9 +212,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC5queryACSS_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(query:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC5queryACSS_tcfc">init(query:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV3idsSaySSGvp"></a>
+                    <a name="//apple_ref/swift/Property/ids" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV3idsSaySSGvp">ids</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -222,14 +222,264 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creata a Search request query builder</p>
+                        <p>The list of item ids to request</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">ids</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV7filtersAA15CIOQueryFiltersVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/filters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV7filtersAA15CIOQueryFiltersVSgvp">filters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The filters used to refine results</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV4pageSivp"></a>
+                    <a name="//apple_ref/swift/Property/page" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV4pageSivp">page</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The page number of the results</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV7perPageSivp"></a>
+                    <a name="//apple_ref/swift/Property/perPage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV7perPageSivp">perPage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of results per page to return</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">perPage</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV10sortOptionAA07CIOSortG0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/sortOption" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV10sortOptionAA07CIOSortG0VSgvp">sortOption</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The sort method/order for results</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">sortOption</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOSortOption.html">CIOSortOption</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV7sectionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/section" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV7sectionSSvp">section</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The section to return results from</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV12hiddenFieldsSaySSGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/hiddenFields" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV12hiddenFieldsSaySSGSgvp">hiddenFields</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The list of hidden metadata fields to return</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV12hiddenFacetsSaySSGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/hiddenFacets" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV12hiddenFacetsSaySSGSgvp">hiddenFacets</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The list of hidden facet fields to return</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV16groupsSortOptionAA09CIOGroupsgH0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/groupsSortOption" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV16groupsSortOptionAA09CIOGroupsgH0VSgvp">groupsSortOption</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The sort method/order for groups</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="kt">CIOGroupsSortOption</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV3ids7filters10sortOption4page7perPage7section12hiddenFields0N6Facets010groupsSortI013variationsMapACSaySSG_AA15CIOQueryFiltersVSgAA07CIOSortI0VSgSiSgAUSSSgANSgAwA09CIOGroupsrI0VSgAA0u10VariationsT0VSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(ids:filters:sortOption:page:perPage:section:hiddenFields:hiddenFacets:groupsSortOption:variationsMap:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete19CIOBrowseItemsQueryV3ids7filters10sortOption4page7perPage7section12hiddenFields0N6Facets010groupsSortI013variationsMapACSaySSG_AA15CIOQueryFiltersVSgAA07CIOSortI0VSgSiSgAUSSSgANSgAwA09CIOGroupsrI0VSgAA0u10VariationsT0VSgtcfc">init(ids:<wbr>filters:<wbr>sortOption:<wbr>page:<wbr>perPage:<wbr>section:<wbr>hiddenFields:<wbr>hiddenFacets:<wbr>groupsSortOption:<wbr>variationsMap:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a Browse request query object</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">facetFilters</span> <span class="o">=</span> <span class="p">[(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Organic"</span><span class="p">),</span>
+                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
+                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kraft Foods"</span><span class="p">)]</span>
+
+<span class="k">let</span> <span class="nv">browseQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseItemsQuery</span><span class="p">(</span><span class="nv">ids</span><span class="p">:</span> <span class="p">[</span><span class="s">"123"</span><span class="p">,</span> <span class="s">"234"</span><span class="p">],</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">),</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="s">"price_CA"</span><span class="p">,</span> <span class="s">"currency_CA"</span><span class="p">],</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="s">"brand"</span><span class="p">,</span> <span class="s">"price_CA"</span><span class="p">]))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">ids</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sortOption</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOSortOption.html">CIOSortOption</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="kt">CIOGroupsSortOption</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">variationsMap</span><span class="p">:</span> <span class="kt">CIOQueryVariationsMap</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -240,304 +490,113 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>query</em>
+                                <em>ids</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The user typed query to return results for</p>
+                                  <p>The list of item ids to request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The filters used to refine results</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>page</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The page number of the results</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>perPage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of results per page to return</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sortOption</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sort method/order for results</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>section</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The section to return results from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hiddenFields</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list of hidden metadata fields to return</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hiddenFacets</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list of hidden facest to return</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>groupsSortOption</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sort method/order for groups</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC10setFiltersyAcA08CIOQueryG0VF"></a>
-                    <a name="//apple_ref/swift/Method/setFilters(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC10setFiltersyAcA08CIOQueryG0VF">setFilters(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add additional filters</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setFilters</span><span class="p">(</span><span class="n">_</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC13setSortOptionyAcA07CIOSortH0VF"></a>
-                    <a name="//apple_ref/swift/Method/setSortOption(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC13setSortOptionyAcA07CIOSortH0VF">setSortOption(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add a sort option</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setSortOption</span><span class="p">(</span><span class="n">_</span> <span class="nv">sortOption</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOSortOption.html">CIOSortOption</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC7setPageyACSiF"></a>
-                    <a name="//apple_ref/swift/Method/setPage(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC7setPageyACSiF">setPage(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add a page number</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setPage</span><span class="p">(</span><span class="n">_</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC10setPerPageyACSiF"></a>
-                    <a name="//apple_ref/swift/Method/setPerPage(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC10setPerPageyACSiF">setPerPage(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add the number of results to return per page</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setPerPage</span><span class="p">(</span><span class="n">_</span> <span class="nv">perPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC10setSectionyACSSF"></a>
-                    <a name="//apple_ref/swift/Method/setSection(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC10setSectionyACSSF">setSection(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add the number of results to return per page</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setSection</span><span class="p">(</span><span class="n">_</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC15setHiddenFieldsyACSaySSGF"></a>
-                    <a name="//apple_ref/swift/Method/setHiddenFields(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC15setHiddenFieldsyACSaySSGF">setHiddenFields(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add a list of hidden metadata fields to return</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setHiddenFields</span><span class="p">(</span><span class="n">_</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC15setHiddenFacetsyACSaySSGF"></a>
-                    <a name="//apple_ref/swift/Method/setHiddenFacets(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC15setHiddenFacetsyACSaySSGF">setHiddenFacets(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add a list of hidden facets to return</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setHiddenFacets</span><span class="p">(</span><span class="n">_</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC19setGroupsSortOptionyAcA09CIOGroupshI0VF"></a>
-                    <a name="//apple_ref/swift/Method/setGroupsSortOption(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC19setGroupsSortOptionyAcA09CIOGroupshI0VF">setGroupsSortOption(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add a groups sort option</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setGroupsSortOption</span><span class="p">(</span><span class="n">_</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="kt">CIOGroupsSortOption</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC16setVariationsMapyAcA08CIOQuerygH0VF"></a>
-                    <a name="//apple_ref/swift/Method/setVariationsMap(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC16setVariationsMapyAcA08CIOQuerygH0VF">setVariationsMap(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add a variations map to return per variation</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setVariationsMap</span><span class="p">(</span><span class="n">_</span> <span class="nv">variationsMap</span><span class="p">:</span> <span class="kt">CIOQueryVariationsMap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOSearchQueryBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC5buildAA0cD0VyF"></a>
-                    <a name="//apple_ref/swift/Method/build()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete21CIOSearchQueryBuilderC5buildAA0cD0VyF">build()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Build the request object with all of the provided data</p>
-<h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">facetFilters</span> <span class="o">=</span> <span class="p">[(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Organic"</span><span class="p">),</span>
-                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
-                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kraft Foods"</span><span class="p">)]</span>
-
-
-<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOSearchQueryBuilder</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"blue"</span><span class="p">)</span>
-   <span class="o">.</span><span class="nf">setFilters</span><span class="p">(</span><span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">))</span>
-   <span class="o">.</span><span class="nf">setPage</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-   <span class="o">.</span><span class="nf">setPerPage</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
-   <span class="o">.</span><span class="nf">setSection</span><span class="p">(</span><span class="s">"Products"</span><span class="p">)</span>
-   <span class="o">.</span><span class="nf">setHiddenFields</span><span class="p">([</span><span class="s">"hidden_price_field"</span><span class="p">,</span> <span class="s">"color_swatches"</span><span class="p">])</span>
-   <span class="o">.</span><span class="nf">setHiddenFacets</span><span class="p">([</span><span class="s">"hidden_facet"</span><span class="p">])</span>
-   <span class="o">.</span><span class="nf">build</span><span class="p">()</span>
-
-<span class="n">constructor</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="p">})</span>
-</code></pre>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">build</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/CIOSearchQuery.html">CIOSearchQuery</a></span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>
