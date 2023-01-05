@@ -824,7 +824,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "You\'re trying to access an invalid endpoint. Please check documentation for allowed endpoints.")
+            XCTAssertEqual(cioError?.errorMessage, "You are trying to access an invalid endpoint. Please check documentation for allowed endpoints.")
             expectation.fulfill()
         })
         self.wait(for: expectation)
