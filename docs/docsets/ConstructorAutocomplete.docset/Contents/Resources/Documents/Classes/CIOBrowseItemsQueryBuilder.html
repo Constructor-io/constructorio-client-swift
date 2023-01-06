@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CIOBrowseItemsQueryBuilder Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/CIOBrowseItemsQueryBuilder" class="dashAnchor"></a>
+    <a title="CIOBrowseItemsQueryBuilder Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ConstructorAutocomplete 2.6.1 Docs</a> (91% documented)</p>
+        <div class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ConstructorAutocomplete Reference</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        CIOBrowseItemsQueryBuilder Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Client.html">Client</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ConstructorIOConfig.html">ConstructorIOConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ConstructorIO.html">ConstructorIO</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Result%20Request%20Structures.html">Result Request Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CIOAutocompleteQuery.html">CIOAutocompleteQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseQuery.html">CIOBrowseQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIORecommendationsQuery.html">CIORecommendationsQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOSearchQuery.html">CIOSearchQuery</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Result%20Request%20Builders.html">Result Request Builders</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CIOAutocompleteQueryBuilder.html">CIOAutocompleteQueryBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOBrowseQueryBuilder.html">CIOBrowseQueryBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIORecommendationsQueryBuilder.html">CIORecommendationsQueryBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOSearchQueryBuilder.html">CIOSearchQueryBuilder</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Response%20Structures.html">Response Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CIOAutocompleteResponse.html">CIOAutocompleteResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseResponse.html">CIOBrowseResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIORecommendationsResponse.html">CIORecommendationsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOSearchResponse.html">CIOSearchResponse</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Result%20Structures%20%26%20Classes.html">Result Structures &amp; Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CIOAutocompleteResult.html">CIOAutocompleteResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOFilterFacet.html">CIOFilterFacet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOFilterFacetOption.html">CIOFilterFacetOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOFilterGroup.html">CIOFilterGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOGroup.html">CIOGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIORecommendationsPod.html">CIORecommendationsPod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIORecommendationsStrategy.html">CIORecommendationsStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOResult.html">CIOResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOResultData.html">CIOResultData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOResultFacet.html">CIOResultFacet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOSearchRedirectInfo.html">CIOSearchRedirectInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOSortOption.html">CIOSortOption</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CIOBrowseItemsQueryBuilder.html">CIOBrowseItemsQueryBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOCollectionData.html">CIOCollectionData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOResultSourceData.html">CIOResultSourceData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOResultSources.html">CIOResultSources</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseItemsQuery.html">CIOBrowseItemsQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOQuizImages.html">CIOQuizImages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOQuizOption.html">CIOQuizOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOQuizOptionAttribute.html">CIOQuizOptionAttribute</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOQuizQuery.html">CIOQuizQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOQuizQuestion.html">CIOQuizQuestion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOQuizQuestionResponse.html">CIOQuizQuestionResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOQuizResult.html">CIOQuizResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOQuizResultsResponse.html">CIOQuizResultsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIORefinedContent.html">CIORefinedContent</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CIOBrowseItemsQueryBuilder</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                </div>
+              </div>
+            <p>Request builder for creating an browse items query.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC3idsACSaySSG_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(ids:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC3idsACSaySSG_tcfc">init(ids:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creata a Browse request query builder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">ids</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC10setFiltersyAcA08CIOQueryH0VF"></a>
+                    <a name="//apple_ref/swift/Method/setFilters(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC10setFiltersyAcA08CIOQueryH0VF">setFilters(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add additional filters</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setFilters</span><span class="p">(</span><span class="n">_</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC13setSortOptionyAcA07CIOSortI0VF"></a>
+                    <a name="//apple_ref/swift/Method/setSortOption(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC13setSortOptionyAcA07CIOSortI0VF">setSortOption(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add a sort option</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setSortOption</span><span class="p">(</span><span class="n">_</span> <span class="nv">sortOption</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOSortOption.html">CIOSortOption</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC7setPageyACSiF"></a>
+                    <a name="//apple_ref/swift/Method/setPage(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC7setPageyACSiF">setPage(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add a page number</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setPage</span><span class="p">(</span><span class="n">_</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC10setPerPageyACSiF"></a>
+                    <a name="//apple_ref/swift/Method/setPerPage(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC10setPerPageyACSiF">setPerPage(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add the number of results to return per page</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setPerPage</span><span class="p">(</span><span class="n">_</span> <span class="nv">perPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC10setSectionyACSSF"></a>
+                    <a name="//apple_ref/swift/Method/setSection(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC10setSectionyACSSF">setSection(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add the number of results to return per page</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setSection</span><span class="p">(</span><span class="n">_</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC15setHiddenFieldsyACSaySSGF"></a>
+                    <a name="//apple_ref/swift/Method/setHiddenFields(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC15setHiddenFieldsyACSaySSGF">setHiddenFields(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add a list of hidden metadata fields to return</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setHiddenFields</span><span class="p">(</span><span class="n">_</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC15setHiddenFacetsyACSaySSGF"></a>
+                    <a name="//apple_ref/swift/Method/setHiddenFacets(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC15setHiddenFacetsyACSaySSGF">setHiddenFacets(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add a list of hidden facets to return</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setHiddenFacets</span><span class="p">(</span><span class="n">_</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC16setVariationsMapyAcA08CIOQueryhI0VF"></a>
+                    <a name="//apple_ref/swift/Method/setVariationsMap(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC16setVariationsMapyAcA08CIOQueryhI0VF">setVariationsMap(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add a variations map to return per variation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setVariationsMap</span><span class="p">(</span><span class="n">_</span> <span class="nv">variationsMap</span><span class="p">:</span> <span class="kt">CIOQueryVariationsMap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC19setGroupsSortOptionyAcA09CIOGroupsiJ0VF"></a>
+                    <a name="//apple_ref/swift/Method/setGroupsSortOption(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC19setGroupsSortOptionyAcA09CIOGroupsiJ0VF">setGroupsSortOption(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add a groups sort option</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setGroupsSortOption</span><span class="p">(</span><span class="n">_</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="kt">CIOGroupsSortOption</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CIOBrowseItemsQueryBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC5buildAA0cdE0VyF"></a>
+                    <a name="//apple_ref/swift/Method/build()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseItemsQueryBuilderC5buildAA0cdE0VyF">build()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Build the request object set all of the provided data</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">facetFilters</span> <span class="o">=</span> <span class="p">[(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Organic"</span><span class="p">),</span>
+                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
+                    <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kraft Foods"</span><span class="p">)]</span>
+
+<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOBrowseItemsQueryBuilder</span><span class="p">(</span><span class="nv">ids</span><span class="p">:</span> <span class="p">[</span><span class="s">"123"</span><span class="p">,</span> <span class="s">"123"</span><span class="p">])</span>
+   <span class="o">.</span><span class="nf">setFilters</span><span class="p">(</span><span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">))</span>
+   <span class="o">.</span><span class="nf">setPage</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+   <span class="o">.</span><span class="nf">setPerPage</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+   <span class="o">.</span><span class="nf">setSection</span><span class="p">(</span><span class="s">"Products"</span><span class="p">)</span>
+   <span class="o">.</span><span class="nf">setHiddenFields</span><span class="p">([</span><span class="s">"hidden_price_field"</span><span class="p">,</span> <span class="s">"color_swatches"</span><span class="p">])</span>
+   <span class="o">.</span><span class="nf">setHiddenFacets</span><span class="p">([</span><span class="s">"hidden_facet"</span><span class="p">])</span>
+   <span class="o">.</span><span class="nf">build</span><span class="p">()</span>
+
+<span class="n">constructor</span><span class="o">.</span><span class="nf">browseItems</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">build</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/CIOBrowseItemsQuery.html">CIOBrowseItemsQuery</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-01-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

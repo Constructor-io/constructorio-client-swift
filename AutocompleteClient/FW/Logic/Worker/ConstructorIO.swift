@@ -150,6 +150,32 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     /**
+     Get browse items results for a query.
+
+     - Parameters:
+        - query: The query object, consisting of the query to browse items for and additional options.
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     let facetFilters = [(key: "Nutrition", value: "Organic"),
+                         (key: "Nutrition", value: "Natural"),
+                         (key: "Brand", value: "Kraft Foods")]
+
+     let browseItemsQuery = CIOBrowseItemsQuery(ids: ["123", "123"], filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products")
+     
+     constructorIO.browseItems(forQuery: browseItemsQuery) { response in
+        let data = response.data!
+        let error = response.error!
+     }
+     ```
+     */
+    public func browseItems(forQuery query: CIOBrowseItemsQuery, completionHandler: @escaping BrowseQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeBrowse(request, completionHandler: completionHandler)
+    }
+
+    /**
      Get recommendation results for a query.
     
      - Parameters:
@@ -556,7 +582,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     private func attachABTestCells(requestBuilder: RequestBuilder) {
-        self.config.testCells?.forEach({ [unowned requestBuilder] (cell) in
+        self.config.testCells?.forEach({ [unowned requestBuilder] cell in
             requestBuilder.set(testCellKey: cell.key, testCellValue: cell.value)
         })
     }

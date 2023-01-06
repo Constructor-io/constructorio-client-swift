@@ -1,5 +1,5 @@
 //
-//  CIOSearchQueryBuilder.swift
+//  CIOBrowseQueryBuilder.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
@@ -57,7 +57,7 @@ public class CIOBrowseQueryBuilder {
      The list of hidden facets to return
      */
     var hiddenFacets: [String]?
-    
+
     /**
      The variation map to use with the result set
      */
@@ -135,7 +135,7 @@ public class CIOBrowseQueryBuilder {
         self.hiddenFacets = hiddenFacets
         return self
     }
-    
+
     /**
      Add a variations map to return per variation
      */

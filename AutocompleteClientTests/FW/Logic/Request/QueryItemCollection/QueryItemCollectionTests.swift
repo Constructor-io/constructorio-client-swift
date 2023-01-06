@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 @testable import ConstructorAutocomplete
+import XCTest
 
 class QueryItemCollectionTests: XCTestCase {
 
@@ -18,7 +18,7 @@ class QueryItemCollectionTests: XCTestCase {
 
     func testQueryItemCollection_SubscriptGetter() {
         let collection = QueryItemCollection()
-        let _ = collection["key"]
+        _ = collection["key"]
     }
 
     func testQueryItemCollection_SubscriptSetter() {

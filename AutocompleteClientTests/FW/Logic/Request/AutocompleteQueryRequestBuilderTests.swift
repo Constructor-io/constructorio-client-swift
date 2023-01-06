@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 @testable import ConstructorAutocomplete
+import XCTest
 
 class AutocompleteQueryRequestBuilderTests: XCTestCase {
     fileprivate let query: String = "testing query?!-123"

@@ -14,6 +14,6 @@ public struct CIOQueryFmtOptions {
     public let fmtOptions: [FmtOption]?
 
     public init(fmtOptions: [FmtOption]?) {
-        self.fmtOptions = fmtOptions;
+        self.fmtOptions = fmtOptions
     }
 }

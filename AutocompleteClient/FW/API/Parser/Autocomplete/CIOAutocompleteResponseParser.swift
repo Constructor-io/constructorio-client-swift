@@ -58,7 +58,7 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
         return jsonObjects.compactMap { CIOResult(json: $0) }
             .enumerated()
-            .reduce([CIOAutocompleteResult](), { (arr, enumeratedAutocompleteResult) in
+            .reduce([CIOAutocompleteResult](), { arr, enumeratedAutocompleteResult in
 
                 let autocompleteResult = enumeratedAutocompleteResult.element
                 let index = enumeratedAutocompleteResult.offset

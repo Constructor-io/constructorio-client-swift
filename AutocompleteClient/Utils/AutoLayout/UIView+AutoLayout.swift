@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
     func fitViewInsideLayoutGuides(_ view: UIView) {
-        if(view.superview == nil || view.superview != self) {
+        if view.superview == nil || view.superview != self {
             view.removeFromSuperview()
             self.view.addSubview(view)
         }
@@ -26,7 +26,7 @@ extension UIViewController {
 
 extension UIView {
     func addViewToFit(_ view: UIView) {
-        if(view.superview != self) {
+        if view.superview != self {
             if view.superview != nil {
                 view.removeFromSuperview()
             }

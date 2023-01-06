@@ -36,7 +36,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
      The list of hidden metadata fields to return
      */
     public let hiddenFields: [String]?
-    
+
     /**
      The variation map to use with the result set
      */
