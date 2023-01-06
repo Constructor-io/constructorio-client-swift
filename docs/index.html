@@ -16,7 +16,7 @@
     <a title="ConstructorAutocomplete  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ConstructorAutocomplete 2.6.1 Docs</a> (91% documented)</p>
+        <p><a href="index.html">ConstructorAutocomplete 2.6.2 Docs</a> (91% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -373,6 +373,10 @@ end
   <span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"custID2"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"varID2"</span><span class="p">,</span> <span class="nv">quantity</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
 <span class="p">]</span>
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackPurchase</span><span class="p">(</span><span class="nv">items</span><span class="p">:</span> <span class="n">purchaseItems</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">93.89</span><span class="p">,</span> <span class="nv">orderID</span><span class="p">:</span> <span class="s">"423-2432"</span><span class="p">)</span>
+</code></pre>
+<h3 id='miscellaneous-events' class='heading'>Miscellaneous Events</h3>
+<pre class="highlight swift"><code><span class="c1">// Track when a product detail page is loaded (a.k.a after a user clicks on an item)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackItemDetailLoad</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"item1"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"var1"</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">)</span>
 </code></pre>
 
           </section>
