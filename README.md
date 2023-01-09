@@ -151,8 +151,31 @@ constructor.recommendations(forQuery: query) { (response) in
 }
 ```
 
+## 8. Request Quiz Next Question
 
-## 8. Instrument Behavioral Events
+```swift
+let query = CIOQuizQuery(quizId: "quiz-1", answers: [["1"], ["2"]])
+
+constructor.getQuizNextQuestion(forQuery: query) { (response) in
+  let data = response.data!
+  let error = response.error!
+  // ...
+}
+```
+
+## 9. Request Quiz Results
+
+```swift
+let query = CIOQuizQuery(quizId: "quiz-1", answers: [["1"], ["2"]])
+
+constructor.getQuizResults(forQuery: query) { (response) in
+  let data = response.data!
+  let error = response.error!
+  // ...
+}
+```
+
+## 10. Instrument Behavioral Events
 
 The iOS Client sends behavioral events to [Constructor.io](http://constructor.io/) in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.
 
