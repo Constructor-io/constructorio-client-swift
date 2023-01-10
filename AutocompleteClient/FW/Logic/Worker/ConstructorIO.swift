@@ -201,7 +201,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      Get Quiz question for a query.
     
      - Parameters:
-        - query: The query object, consisting of the query to get Quiz question or results for and additional options.
+        - query: The CIOQuizQuery object required to get the next quiz question.
         - completionHandler: The callback to execute on completion.
 
      ### Usage Example: ###
@@ -223,7 +223,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      Get Quiz results for a query.
     
      - Parameters:
-        - query: The query object, consisting of the query to get quiz question or results for and additional options.
+        - query: The CIOQuizQuery object required to get the quiz results.
         - completionHandler: The callback to execute on completion.
 
      ### Usage Example: ###
