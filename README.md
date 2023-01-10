@@ -58,10 +58,10 @@ let config = ConstructorIOConfig(
 )
 
 // Create the client instance
-let constructor = ConstructorIO(config: config)
+let constructorIO = ConstructorIO(config: config)
 
 // Set the user ID (for a logged in user) used for cross device personalization
-constructor.userID = "abcdefghijk-123"
+constructorIO.userID = "abcdefghijk-123"
 ```
 
 ## 4. Request Autocomplete Results
@@ -69,7 +69,7 @@ constructor.userID = "abcdefghijk-123"
 ```swift
 let query = CIOAutocompleteQuery(query: "apple", numResultsForSection: ["Products": 6, "Search Suggestions": 8])
 
-constructor.autocomplete(forQuery: query) { (response) in
+constructorIO.autocomplete(forQuery: query) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
@@ -89,7 +89,7 @@ let query = CIOSearchQuery(query: "Dave's Bread", page: 5, filters: filters)
 // Specify the sort order in which groups are returned
 let groupsSortOption = CIOGroupsSortOption(sortBy: CIOGroupsSortBy.value, sortOrder: CIOGroupsSortOrder.ascending)
 
-constructor.search(forQuery: query, filters: filters, groupsSortOption: groupsSortOption) { (response) in
+constructorIO.search(forQuery: query, filters: filters, groupsSortOption: groupsSortOption) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
@@ -104,7 +104,7 @@ let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet")
 // Specify the sort order in which groups are returned
 let groupsSortOption = CIOGroupsSortOption(sortBy: CIOGroupsSortBy.value, sortOrder: CIOGroupsSortOrder.ascending)
 
-constructor.browse(forQuery: query, groupsSortOption: groupsSortOption) { (response) in
+constructorIO.browse(forQuery: query, groupsSortOption: groupsSortOption) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
@@ -116,7 +116,7 @@ constructor.browse(forQuery: query, groupsSortOption: groupsSortOption) { (respo
 ```swift
 let query = CIORecommendationsQuery(podId: "pdp_best_sellers", filters: filters)
 
-constructor.recommendations(forQuery: query) { (response) in
+constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
@@ -128,7 +128,7 @@ constructor.recommendations(forQuery: query) { (response) in
 let itemId = "P18232"
 let query = CIORecommendationsQuery(podId: "pdp_complementary_items", itemId: itemId)
 
-constructor.recommendations(forQuery: query) { (response) in
+constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
@@ -144,7 +144,7 @@ let filters = CIOQueryFilters(groupFilter: "cat_1234", facetFilters: [
 ])
 let query = CIORecommendationsQuery(podId: "pdp_filtered_items", filters: filters)
 
-constructor.recommendations(forQuery: query) { (response) in
+constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
@@ -156,7 +156,7 @@ constructor.recommendations(forQuery: query) { (response) in
 ```swift
 let query = CIOQuizQuery(quizId: "quiz-1", answers: [["1"], ["2"]])
 
-constructor.getQuizNextQuestion(forQuery: query) { (response) in
+constructorIO.getQuizNextQuestion(forQuery: query) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
@@ -168,7 +168,7 @@ constructor.getQuizNextQuestion(forQuery: query) { (response) in
 ```swift
 let query = CIOQuizQuery(quizId: "quiz-1", answers: [["1"], ["2"]])
 
-constructor.getQuizResults(forQuery: query) { (response) in
+constructorIO.getQuizResults(forQuery: query) { (response) in
   let data = response.data!
   let error = response.error!
   // ...
