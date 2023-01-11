@@ -16,7 +16,7 @@
     <a title="ConstructorAutocomplete  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ConstructorAutocomplete 2.6.2 Docs</a> (91% documented)</p>
+        <p><a href="index.html">ConstructorAutocomplete 2.6.2 Docs</a> (93% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -60,6 +60,9 @@
               <li class="nav-group-task">
                 <a href="Structs/CIOSearchQuery.html">CIOSearchQuery</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOQuizQuery.html">CIOQuizQuery</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -93,6 +96,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/CIOSearchResponse.html">CIOSearchResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOQuizQuestionResponse.html">CIOQuizQuestionResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOQuizResultsResponse.html">CIOQuizResultsResponse</a>
               </li>
             </ul>
           </li>
@@ -135,6 +144,21 @@
               <li class="nav-group-task">
                 <a href="Structs/CIOSortOption.html">CIOSortOption</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOQuizQuestion.html">CIOQuizQuestion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOQuizOption.html">CIOQuizOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOQuizOptionAttribute.html">CIOQuizOptionAttribute</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOQuizImages.html">CIOQuizImages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOQuizResult.html">CIOQuizResult</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -159,30 +183,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/CIOBrowseItemsQuery.html">CIOBrowseItemsQuery</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CIOQuizImages.html">CIOQuizImages</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CIOQuizOption.html">CIOQuizOption</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CIOQuizOptionAttribute.html">CIOQuizOptionAttribute</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CIOQuizQuery.html">CIOQuizQuery</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CIOQuizQuestion.html">CIOQuizQuestion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CIOQuizQuestionResponse.html">CIOQuizQuestionResponse</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CIOQuizResult.html">CIOQuizResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CIOQuizResultsResponse.html">CIOQuizResultsResponse</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/CIORefinedContent.html">CIORefinedContent</a>
@@ -239,15 +239,15 @@ end
 <span class="p">)</span>
 
 <span class="c1">// Create the client instance</span>
-<span class="k">let</span> <span class="nv">constructor</span> <span class="o">=</span> <span class="kt">ConstructorIO</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="n">config</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">constructorIO</span> <span class="o">=</span> <span class="kt">ConstructorIO</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="n">config</span><span class="p">)</span>
 
 <span class="c1">// Set the user ID (for a logged in user) used for cross device personalization</span>
-<span class="n">constructor</span><span class="o">.</span><span class="n">userID</span> <span class="o">=</span> <span class="s">"abcdefghijk-123"</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="n">userID</span> <span class="o">=</span> <span class="s">"abcdefghijk-123"</span>
 </code></pre>
 <h2 id='4-request-autocomplete-results' class='heading'>4. Request Autocomplete Results</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOAutocompleteQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"apple"</span><span class="p">,</span> <span class="nv">numResultsForSection</span><span class="p">:</span> <span class="p">[</span><span class="s">"Products"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"Search Suggestions"</span><span class="p">:</span> <span class="mi">8</span><span class="p">])</span>
 
-<span class="n">constructor</span><span class="o">.</span><span class="nf">autocomplete</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">autocomplete</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
   <span class="c1">// ...</span>
@@ -264,7 +264,7 @@ end
 <span class="c1">// Specify the sort order in which groups are returned</span>
 <span class="k">let</span> <span class="nv">groupsSortOption</span> <span class="o">=</span> <span class="kt">CIOGroupsSortOption</span><span class="p">(</span><span class="nv">sortBy</span><span class="p">:</span> <span class="kt">CIOGroupsSortBy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nv">sortOrder</span><span class="p">:</span> <span class="kt">CIOGroupsSortOrder</span><span class="o">.</span><span class="n">ascending</span><span class="p">)</span>
 
-<span class="n">constructor</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">,</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="n">groupsSortOption</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">,</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="n">groupsSortOption</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
   <span class="c1">// ...</span>
@@ -276,7 +276,7 @@ end
 <span class="c1">// Specify the sort order in which groups are returned</span>
 <span class="k">let</span> <span class="nv">groupsSortOption</span> <span class="o">=</span> <span class="kt">CIOGroupsSortOption</span><span class="p">(</span><span class="nv">sortBy</span><span class="p">:</span> <span class="kt">CIOGroupsSortBy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nv">sortOrder</span><span class="p">:</span> <span class="kt">CIOGroupsSortOrder</span><span class="o">.</span><span class="n">ascending</span><span class="p">)</span>
 
-<span class="n">constructor</span><span class="o">.</span><span class="nf">browse</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="n">groupsSortOption</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">browse</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="n">groupsSortOption</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
   <span class="c1">// ...</span>
@@ -285,7 +285,7 @@ end
 <h2 id='7-request-recommendation-results' class='heading'>7. Request Recommendation Results</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podId</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
 
-<span class="n">constructor</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
   <span class="c1">// ...</span>
@@ -295,7 +295,7 @@ end
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">itemId</span> <span class="o">=</span> <span class="s">"P18232"</span>
 <span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podId</span><span class="p">:</span> <span class="s">"pdp_complementary_items"</span><span class="p">,</span> <span class="nv">itemId</span><span class="p">:</span> <span class="n">itemId</span><span class="p">)</span>
 
-<span class="n">constructor</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
   <span class="c1">// ...</span>
@@ -309,13 +309,31 @@ end
 <span class="p">])</span>
 <span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podId</span><span class="p">:</span> <span class="s">"pdp_filtered_items"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
 
-<span class="n">constructor</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre>
-<h2 id='8-instrument-behavioral-events' class='heading'>8. Instrument Behavioral Events</h2>
+<h2 id='8-request-quiz-next-question' class='heading'>8. Request Quiz Next Question</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOQuizQuery</span><span class="p">(</span><span class="nv">quizId</span><span class="p">:</span> <span class="s">"quiz-1"</span><span class="p">,</span> <span class="nv">answers</span><span class="p">:</span> <span class="p">[[</span><span class="s">"1"</span><span class="p">],</span> <span class="p">[</span><span class="s">"2"</span><span class="p">]])</span>
+
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">getQuizNextQuestion</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+  <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='9-request-quiz-results' class='heading'>9. Request Quiz Results</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOQuizQuery</span><span class="p">(</span><span class="nv">quizId</span><span class="p">:</span> <span class="s">"quiz-1"</span><span class="p">,</span> <span class="nv">answers</span><span class="p">:</span> <span class="p">[[</span><span class="s">"1"</span><span class="p">],</span> <span class="p">[</span><span class="s">"2"</span><span class="p">]])</span>
+
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">getQuizResults</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+  <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='10-instrument-behavioral-events' class='heading'>10. Instrument Behavioral Events</h2>
 
 <p>The iOS Client sends behavioral events to <a href="http://constructor.io/">Constructor.io</a> in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.</p>
 
@@ -382,7 +400,7 @@ end
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-01-05)</p>
+          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-01-12)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
