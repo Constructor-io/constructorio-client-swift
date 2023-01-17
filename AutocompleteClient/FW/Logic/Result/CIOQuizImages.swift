@@ -12,22 +12,22 @@ import Foundation
  Struct encapsulating a question images
  */
 public struct CIOQuizImages {
-    /*
+    /**
      Primary image URL
      */
     public let primaryUrl: String?
 
-    /*
+    /**
      Primary image alternative text
      */
     public let primaryAlt: String?
 
-    /*
+    /**
      Secondary image URL
      */
     public let secondaryUrl: String?
 
-    /*
+    /**
      Secondary image alternative text
      */
     public let secondaryAlt: String?

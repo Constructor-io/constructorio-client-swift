@@ -19,6 +19,7 @@ custom_categories:
       - CIOBrowseQuery
       - CIORecommendationsQuery
       - CIOSearchQuery
+      - CIOQuizQuery
   - name: Result Request Builders
     children:
       - CIOAutocompleteQueryBuilder
@@ -31,6 +32,8 @@ custom_categories:
       - CIOBrowseResponse
       - CIORecommendationsResponse
       - CIOSearchResponse
+      - CIOQuizQuestionResponse
+      - CIOQuizResultsResponse
   - name: Result Structures & Classes
     children:
       - CIOAutocompleteResult
@@ -45,3 +48,8 @@ custom_categories:
       - CIOResultFacet
       - CIOSearchRedirectInfo
       - CIOSortOption
+      - CIOQuizQuestion
+      - CIOQuizOption
+      - CIOQuizOptionAttribute
+      - CIOQuizImages
+      - CIOQuizResult

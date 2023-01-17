@@ -12,22 +12,22 @@ import Foundation
  Struct encapsulating a quiz option
  */
 public struct CIOQuizOption {
-    /*
+    /**
      The id of the option
      */
     public let id: Int
 
-    /*
+    /**
      The value of the option
      */
     public let value: String
 
-    /*
+    /**
      The attribute associated with the option
      */
     public let attribute: CIOQuizOptionAttribute?
 
-    /*
+    /**
      The images associated with the option
      */
     public let images: CIOQuizImages?

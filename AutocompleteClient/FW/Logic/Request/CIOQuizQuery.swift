@@ -21,7 +21,7 @@ public struct CIOQuizQuery: CIORequestData {
      */
     public var answers: [[String]]?
 
-    /*
+    /**
      The version of the quiz you would like to request for
      */
     public var versionId: String?
