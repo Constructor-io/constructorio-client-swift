@@ -12,20 +12,21 @@ import XCTest
 // swiftlint:disable type_body_length file_length
 class ConstructorIOIntegrationTests: XCTestCase {
 
-    fileprivate let testACKey = "key_K2hlXt5aVSwoI1Uw"
-    fileprivate let unitTestKey = "ZqXaOfXuBWD4s3XzCI1q"
-    fileprivate let searchTerm = "pork"
+    fileprivate let testACKey = "key_vM4GkLckwiuxwyRA"
+    fileprivate let searchTerm = "item"
     fileprivate let session = 90
-    fileprivate let filterName = "group_id"
-    fileprivate let filterValue = "544"
+    fileprivate let groupFilterName = "group_id"
+    fileprivate let groupFilterValue = "BrandA"
+    fileprivate let collectionFilterName = "collection_id"
+    fileprivate let collectionFilterValue = "test"
     fileprivate let resultCount = 123
     fileprivate let resultPositionOnPage = 3
     fileprivate let revenue = 7.99
     fileprivate let orderID = "234641"
     fileprivate let sectionName = "Products"
-    fileprivate let itemName = "Boneless Pork Shoulder Roast"
-    fileprivate let customerID = "prrst_shldr_bls"
-    fileprivate let customerIDs = ["prrst_shldr_bls", "prrst_crwn"]
+    fileprivate let itemName = "Item1"
+    fileprivate let customerID = "10001"
+    fileprivate let customerIDs = ["10001", "10002"]
     fileprivate let originalQuery = "pork#@#??!!asd"
     fileprivate let group = CIOGroup(displayName: "groupName1", groupID: "groupID2", path: "path/to/group")
     fileprivate let podID = "item_page_1"
@@ -34,7 +35,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     fileprivate let numResultsViewed = 5
     fileprivate let resultPage = 1
     fileprivate let conversionType = "add_to_cart"
-    fileprivate let itemIds = ["on_yellow_md", "on_scal", "veg_pid_2301498", "veg_pid_2302265", "on_scal_or", "grlc_grlc_or", "grlc_grlc", "veg_pid_2301750"]
+    fileprivate let itemIds = ["10003", "10004", "10005", "10006", "10007"]
 
     var constructor: ConstructorIO!
 
@@ -99,7 +100,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testSearchResultClick_WithVariationID() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         constructorClient.trackSearchResultClick(itemName: "Item1", customerID: "10001", variationID: "20001", searchTerm: "item", sectionName: "Products", completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -110,7 +111,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowseResultsLoaded() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: nil, completionHandler: { response in
+        self.constructor.trackBrowseResultsLoaded(filterName: groupFilterName, filterValue: groupFilterValue, resultCount: resultCount, resultID: nil, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -120,7 +121,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowseResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: nil, completionHandler: { response in
+        self.constructor.trackBrowseResultClick(customerID: customerID, filterName: groupFilterName, filterValue: groupFilterValue, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: nil, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -129,7 +130,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testBrowseResultClick_WithVariationID() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         constructorClient.trackBrowseResultClick(customerID: "10001", variationID: "20001", filterName: "Brand", filterValue: "XYZ", resultPositionOnPage: 1, sectionName: "Products", completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -169,7 +170,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testConversion_WithVariationID() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         constructorClient.trackConversion(itemName: "Item 1", customerID: "10001", variationID: "20001", revenue: 10, searchTerm: "item", sectionName: "Products", completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -189,7 +190,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testPurchase_WithVariationIDs() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Tracking 204")
         let items = [
             CIOItem(customerID: "10001", variationID: "20001"),
@@ -204,7 +205,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testPurchase_WithQuantity() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Tracking 204")
         let items = [
             CIOItem(customerID: "10001", variationID: "20001", quantity: 2)
@@ -216,9 +217,9 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testItemDetailLoad() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         constructorClient.trackItemDetailLoad(customerID: "10001", itemName: "item1", completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -227,9 +228,9 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testItemDetailLoad_WithVariationID() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         constructorClient.trackItemDetailLoad(customerID: "10001", itemName: "item1", variationID: "20001", completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -238,9 +239,9 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testItemDetailLoad_WithSection() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         constructorClient.trackItemDetailLoad(customerID: "10001", itemName: "item1", sectionName: "Products", completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -280,8 +281,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testRecommendations_ShouldReturnResultsWithLabels() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let filters = CIOQueryFilters(groupFilter: "544", facetFilters: nil)
-        let query = CIORecommendationsQuery(podID: "pdp3", filters: filters, section: sectionName)
+        let filters = CIOQueryFilters(groupFilter: "Styles", facetFilters: nil)
+        let query = CIORecommendationsQuery(podID: "filtered_items", filters: filters, section: sectionName)
         self.constructor.recommendations(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -297,10 +298,14 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testAutocomplete() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOAutocompleteQuery(query: "a", filters: nil, numResults: 20)
+        let query = CIOAutocompleteQuery(query: "item", filters: nil, numResults: 20)
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+
+            let responseData = response.data!
+            let results = responseData.sections["Products"]!
+            XCTAssertFalse(results.isEmpty)
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -309,13 +314,17 @@ class ConstructorIOIntegrationTests: XCTestCase {
     func testAutocomplete_WithFilters() {
         let expectation = XCTestExpectation(description: "Request 204")
         let facetFilters = [
-            (key: "Brand", value: "A&W")
+            (key: "Brand", value: "XYZ")
         ]
         let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
-        let query = CIOAutocompleteQuery(query: "a", filters: queryFilters, numResults: 20)
+        let query = CIOAutocompleteQuery(query: "item", filters: queryFilters, numResults: 20)
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+
+            let responseData = response.data!
+            let results = responseData.sections["Products"]!
+            XCTAssertFalse(results.isEmpty)
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -323,28 +332,26 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testAutocomplete_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFields = ["price_US", "price_CA"]
-        let query = CIOAutocompleteQuery(query: "a", numResults: 20, hiddenFields: hiddenFields)
+        let hiddenFields = ["testField"]
+        let query = CIOAutocompleteQuery(query: "item1", numResults: 20, hiddenFields: hiddenFields)
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let products = responseData.sections["Products"]!
             let autocompleteResult = products[0].result
             let resultData = autocompleteResult.data
-            let price = resultData.metadata["price"] as? String
-            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
-            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
+            let testHiddenFieldValue = resultData.metadata["testField"] as? String
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(hiddenPriceCAValue)
-            XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
+            XCTAssertNotNil(testHiddenFieldValue)
+            XCTAssertEqual(testHiddenFieldValue, "hiddenFieldValue")
             expectation.fulfill()
         })
         self.wait(for: expectation)
     }
 
     func testAutocomplete_WithVariationsMapWithArrayDtype() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
         let valueOption = ValueOption(aggregation: "all", field: "data.url")
@@ -365,7 +372,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testAutocomplete_WithVariationsMapWithObjectDtype() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
         let valueOption = ValueOption(aggregation: "all", field: "data.url")
@@ -387,16 +394,12 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testAutocomplete_WithInvalidKey() {
         let expectation = XCTestExpectation(description: "Request 400")
-        let facetFilters = [
-            (key: "Brand", value: "A&W")
-        ]
-        let queryFilters = CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters)
-        let query = CIOAutocompleteQuery(query: "a", filters: queryFilters, numResults: 20)
+        let query = CIOAutocompleteQuery(query: "a")
         let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: "bad_api_key"))
         constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "We have no record of this key. You can find your key at app.constructor.io/dashboard.")
+            XCTAssertEqual(cioError?.errorMessage, "You have supplied an invalid `key` or `autocomplete_key`. You can find your key at app.constructor.io/dashboard/accounts/api_integration.")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -404,7 +407,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testAutocomplete_ShoulReturnResultsWithLabels() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOAutocompleteQuery(query: "pork")
+        let query = CIOAutocompleteQuery(query: "item")
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -420,10 +423,15 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testSearch() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOSearchQuery(query: "a", filters: nil)
+        let query = CIOSearchQuery(query: "item", filters: nil)
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+
+            let responseData = response.data!
+            let results = responseData.results
+            XCTAssertFalse(results.isEmpty)
+
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -431,7 +439,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testSearch_ShouldReturnResultSources() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOSearchQuery(query: "a")
+        let query = CIOSearchQuery(query: "item")
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -449,7 +457,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testSearch_ShouldReturnGroupsWithParentsAndChildren() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOSearchQuery(query: "a")
+        let query = CIOSearchQuery(query: "item")
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -466,13 +474,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
     func testSearch_WithFilters() {
         let expectation = XCTestExpectation(description: "Request 204")
         let facetFilters = [
-            (key: "Brand", value: "A&W")
+            (key: "Brand", value: "ABC")
         ]
-        let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: facetFilters)
-        let query = CIOSearchQuery(query: "a", filters: queryFilters)
+        let queryFilters = CIOQueryFilters(groupFilter: "All", facetFilters: facetFilters)
+        let query = CIOSearchQuery(query: "item", filters: queryFilters)
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+
+            let responseData = response.data!
+            let results = responseData.results
+            XCTAssertFalse(results.isEmpty)
+
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -480,29 +493,27 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testSearch_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFields = ["price_US", "price_CA"]
-        let query = CIOSearchQuery(query: "a", hiddenFields: hiddenFields)
+        let hiddenFields = ["testField"]
+        let query = CIOSearchQuery(query: "item", hiddenFields: hiddenFields)
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let searchResult = responseData.results[0]
             let resultData = searchResult.data
-            let price = resultData.metadata["price"] as? String
-            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
-            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
+            let hiddenTestFieldValue = resultData.metadata["testField"] as? String
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(hiddenPriceCAValue)
-            XCTAssertEqual(price, hiddenPriceUSValue, "Hidden price value matches the visible price value")
+            XCTAssertNotNil(hiddenTestFieldValue)
+            XCTAssertEqual(hiddenTestFieldValue, "hiddenFieldValue")
             expectation.fulfill()
         })
         self.wait(for: expectation)
     }
 
     func testSearch_WithHiddenFacets() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFacets = ["Brand", "hiddenFacet"]
+        let hiddenFacets = ["Brand"]
         let query = CIOSearchQuery(query: "item1", hiddenFacets: hiddenFacets)
         constructorClient.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -519,7 +530,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testSearch_WithVariationsMapWithArrayDtype() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
         let valueOption = ValueOption(aggregation: "all", field: "data.url")
@@ -540,7 +551,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testSearch_WithVariationsMapWithObjectDtype() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
         let valueOption = ValueOption(aggregation: "all", field: "data.url")
@@ -562,11 +573,11 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testSearch_WithInvalidParameterValue() {
         let expectation = XCTestExpectation(description: "Request 400")
-        let query = CIOSearchQuery(query: "a", filters: nil, perPage: 500)
+        let query = CIOSearchQuery(query: "item", filters: nil, perPage: 500)
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page must be at most 200")
+            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page: ensure this value is less than or equal to 200")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -576,7 +587,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .ascending)
-        let query = CIOSearchQuery(query: "pork", groupsSortOption: groupsSortOption)
+        let query = CIOSearchQuery(query: "item", groupsSortOption: groupsSortOption)
         constructorClient.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -584,7 +595,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(searchResult)
-            XCTAssertEqual(responseData.groups[0].displayName, "Dairy")
+            XCTAssertEqual(responseData.groups[0].displayName, "All")
+            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Brands")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -594,7 +606,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .descending)
-        let query = CIOSearchQuery(query: "pork", groupsSortOption: groupsSortOption)
+        let query = CIOSearchQuery(query: "item", groupsSortOption: groupsSortOption)
         constructorClient.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -602,7 +614,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(searchResult)
-            XCTAssertEqual(responseData.groups[0].displayName, "Meat & Poultry")
+            XCTAssertEqual(responseData.groups[0].displayName, "All")
+            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Styles")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -611,7 +624,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     func testSearch_ShouldReturnResultsWithLabels() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOSearchQuery(query: "pork")
+        let query = CIOSearchQuery(query: "item")
         constructorClient.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -626,7 +639,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testSearch_ShouldReturnRefinedContent() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIOSearchQuery(query: "item")
         constructorClient.search(forQuery: query, completionHandler: { response in
@@ -659,7 +672,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testSearch_ShouldReturnRefinedContentWithArtbitraryData() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let query = CIOSearchQuery(query: "item")
         constructorClient.search(forQuery: query, completionHandler: { response in
@@ -683,10 +696,15 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowse() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431")
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: groupFilterValue)
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+
+            let responseData = response.data!
+            let results = responseData.results
+            XCTAssertFalse(results.isEmpty)
+
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -694,7 +712,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowse_ShouldReturnResultSources() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "600")
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: groupFilterValue)
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -712,7 +730,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowseShouldReturnGroupsWithParentsAndChildren() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "600")
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: groupFilterValue)
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -728,7 +746,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowseWithCollections() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOBrowseQuery(filterName: "collection_id", filterValue: "fresh-fruits")
+        let query = CIOBrowseQuery(filterName: collectionFilterName, filterValue: collectionFilterValue)
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -736,8 +754,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let collectionId = responseData.collection?.id
 
             XCTAssertNil(cioError)
-            XCTAssertEqual(displayName, "fresh fruits", "Collection display name matches the provided collection display name")
-            XCTAssertEqual(collectionId, "fresh-fruits", "Collection id matches the provided collection id")
+            XCTAssertEqual(displayName, "test", "Collection display name matches the provided collection display name")
+            XCTAssertEqual(collectionId, "test", "Collection id matches the provided collection id")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -749,7 +767,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
             (key: "Brand", value: "A&W")
         ]
         let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: facetFilters)
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", filters: queryFilters)
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: groupFilterValue, filters: queryFilters)
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
@@ -760,28 +778,27 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowse_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFields = ["price_US", "price_CA"]
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", hiddenFields: hiddenFields)
+        let hiddenFields = ["testField"]
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: groupFilterValue, hiddenFields: hiddenFields)
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let browseResult = responseData.results[0]
             let resultData = browseResult.data
-            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
-            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
+            let hiddenTestFieldValue = resultData.metadata["testField"] as? String
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(hiddenPriceCAValue)
-            XCTAssertNotNil(hiddenPriceUSValue)
+            XCTAssertNotNil(hiddenTestFieldValue)
+            XCTAssertEqual(hiddenTestFieldValue, "hiddenFieldValue")
             expectation.fulfill()
         })
         self.wait(for: expectation)
     }
 
     func testBrowse_WithHiddenFacets() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFacets = ["Brand", "hiddenFacet2"]
+        let hiddenFacets = ["Brand"]
         let query = CIOBrowseQuery(filterName: "Brand", filterValue: "XYZ", hiddenFacets: hiddenFacets)
         constructorClient.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -798,7 +815,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testBrowse_WithVariationsMapWithArrayDtype() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
         let valueOption = ValueOption(aggregation: "all", field: "data.url")
@@ -819,7 +836,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testBrowse_WithVariationsMapWithObjectDtype() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
         let valueOption = ValueOption(aggregation: "all", field: "data.url")
@@ -841,7 +858,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowse_WithUnknownSection() {
         let expectation = XCTestExpectation(description: "Request 400")
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", section: "bad_section")
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: "431", section: "bad_section")
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
@@ -853,7 +870,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowse_WithEmptyFilterValue() {
         let expectation = XCTestExpectation(description: "Request 400")
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "")
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: "")
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
@@ -867,7 +884,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .ascending)
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", groupsSortOption: groupsSortOption)
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: "All", groupsSortOption: groupsSortOption)
         constructorClient.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -875,8 +892,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(browseResult)
-            XCTAssertEqual(responseData.groups[0].displayName, "Grocery")
-            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Baby")
+            XCTAssertEqual(responseData.groups[0].displayName, "All")
+            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Brands")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -886,7 +903,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupsSortOption = CIOGroupsSortOption(sortBy: .value, sortOrder: .descending)
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "431", groupsSortOption: groupsSortOption)
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: "All", groupsSortOption: groupsSortOption)
         constructorClient.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -894,8 +911,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(browseResult)
-            XCTAssertEqual(responseData.groups[0].displayName, "Grocery")
-            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Pet")
+            XCTAssertEqual(responseData.groups[0].displayName, "All")
+            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Styles")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -904,7 +921,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     func testBrowse_ShouldReturnResultsWithLabels() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
-        let query = CIOBrowseQuery(filterName: "group_id", filterValue: "544")
+        let query = CIOBrowseQuery(filterName: "Brand", filterValue: "XYZ")
         constructorClient.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -973,28 +990,27 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testBrowseItems_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFields = ["price_US", "price_CA"]
+        let hiddenFields = ["testField"]
         let query = CIOBrowseItemsQuery(ids: itemIds, hiddenFields: hiddenFields)
         self.constructor.browseItems(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
             let browseResult = responseData.results[0]
             let resultData = browseResult.data
-            let hiddenPriceUSValue = resultData.metadata["price_US"] as? String
-            let hiddenPriceCAValue = resultData.metadata["price_CA"] as? String
+            let hiddenTestFieldValue = resultData.metadata["testField"] as? String
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(hiddenPriceCAValue)
-            XCTAssertNotNil(hiddenPriceUSValue)
+            XCTAssertNotNil(hiddenTestFieldValue)
+            XCTAssertEqual(hiddenTestFieldValue, "hiddenFieldValue")
             expectation.fulfill()
         })
         self.wait(for: expectation)
     }
 
     func testBrowseItems_WithHiddenFacets() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
-        let hiddenFacets = ["Brand", "hiddenFacet2"]
+        let hiddenFacets = ["Brand"]
         let query = CIOBrowseItemsQuery(ids: ["10001", "10002", "10009"], hiddenFacets: hiddenFacets)
         constructorClient.browseItems(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -1011,7 +1027,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testBrowseItems_WithVariationsMapWithArrayDtype() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
         let valueOption = ValueOption(aggregation: "all", field: "data.url")
@@ -1032,7 +1048,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
 
     func testBrowseItems_WithVariationsMapWithObjectDtype() {
-        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         let groupByOptions = [GroupByOption(name: "variation_id", field: "data.variation_id")]
         let valueOption = ValueOption(aggregation: "all", field: "data.url")
@@ -1076,8 +1092,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(browseResult)
-            XCTAssertEqual(responseData.groups[0].displayName, "Grocery")
-            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Pantry")
+            XCTAssertEqual(responseData.groups[0].displayName, "All")
+            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Brands")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -1095,8 +1111,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(browseResult)
-            XCTAssertEqual(responseData.groups[0].displayName, "Vegetables")
-            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Onions & Garlic")
+            XCTAssertEqual(responseData.groups[0].displayName, "All")
+            XCTAssertEqual(responseData.groups[0].children[0].displayName, "Styles")
             expectation.fulfill()
         })
         self.wait(for: expectation)

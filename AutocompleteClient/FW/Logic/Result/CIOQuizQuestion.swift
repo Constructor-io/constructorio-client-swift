@@ -72,7 +72,7 @@ public extension CIOQuizQuestion {
         if let images = json["images"] as? JSONObject {
             self.images = CIOQuizImages(json: images)
         } else {
-            return nil
+            self.images = CIOQuizImages(json: [String: Any]())
         }
 
         let options: [CIOQuizOption]? = optionsObj?.compactMap { obj in return CIOQuizOption(json: obj) } ?? []
