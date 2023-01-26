@@ -66,7 +66,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizNextQuestion_WithVersionId() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizId: "test-quiz", versionId: "5c2041f6-11f9-47eb-b9c4-39823a74018e")
+        let query = CIOQuizQuery(quizId: "test-quiz", versionId: "e03210db-0cc6-459c-8f17-bf014c4f554d")
         constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -86,7 +86,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             XCTAssertEqual(responseData.nextQuestion.options?[0].value, "Yes")
             XCTAssertEqual(responseData.nextQuestion.options?[0].attribute?.name, "group_id")
             XCTAssertEqual(responseData.nextQuestion.options?[0].attribute?.value, "BrandX")
-            XCTAssertNil(responseData.nextQuestion.options?[0].images?.primaryUrl)
+            XCTAssertEqual(responseData.nextQuestion.options?[0].images?.primaryUrl, "/test-asset")
 
             expectation.fulfill()
         })
@@ -254,7 +254,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizResults_WithVersionId() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["1", "2"], ["true"], ["seen"]], versionId: "dac69af7-e653-44e8-a7e4-d444148ea960")
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["1", "2"], ["true"], ["seen"]], versionId: "e03210db-0cc6-459c-8f17-bf014c4f554d")
         constructorClient.getQuizResults(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
