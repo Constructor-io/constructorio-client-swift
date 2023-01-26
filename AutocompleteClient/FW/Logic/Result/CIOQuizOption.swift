@@ -46,22 +46,20 @@ public extension CIOQuizOption {
     init?(json: JSONObject) {
         guard let id = json["id"] as? Int else { return nil }
         guard let value = json["value"] as? String else { return nil }
-//        let attribute = json["attribute"] as? CIOQuizOptionAttribute
 
         if let attribute = json["attribute"] as? JSONObject {
             self.attribute = CIOQuizOptionAttribute(json: attribute)
         } else {
-            return nil
+            self.attribute = CIOQuizOptionAttribute(json: [String: Any]())
         }
 
         if let images = json["images"] as? JSONObject {
             self.images = CIOQuizImages(json: images)
         } else {
-            return nil
+            self.images = CIOQuizImages(json: [String: Any]())
         }
 
         self.id = id
         self.value = value
-//        self.attribute = attribute
     }
 }

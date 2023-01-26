@@ -12,7 +12,7 @@ import ConstructorAutocomplete
 // swiftlint:disable type_body_length
 class ConstructorIOQuizIntegrationTests: XCTestCase {
 
-    fileprivate let unitTestKey = "ZqXaOfXuBWD4s3XzCI1q"
+    fileprivate let unitTestKey = "key_vM4GkLckwiuxwyRA"
     fileprivate let session = 90
     fileprivate let sectionName = "Products"
 
@@ -52,16 +52,21 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             XCTAssertEqual(responseData.nextQuestion.options?[0].attribute?.name, "group_id")
             XCTAssertEqual(responseData.nextQuestion.options?[0].attribute?.value, "BrandX")
             XCTAssertEqual(responseData.nextQuestion.options?[0].images?.primaryUrl, "/test-asset")
+            XCTAssertEqual(responseData.nextQuestion.options?[1].id, 2)
+            XCTAssertEqual(responseData.nextQuestion.options?[1].value, "No")
+            XCTAssertEqual(responseData.nextQuestion.options?[1].attribute?.name, "Brand")
+            XCTAssertEqual(responseData.nextQuestion.options?[1].attribute?.value, "XYZ")
+            XCTAssertNil(responseData.nextQuestion.options?[1].images?.primaryUrl)
 
             expectation.fulfill()
         })
         self.wait(for: expectation)
     }
-    
+
     func testGetQuizNextQuestion_WithVersionId() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizId: "test-quiz", versionId: "160ff14a-bf30-4fd0-b8f1-ad0a58d0b2f0")
+        let query = CIOQuizQuery(quizId: "test-quiz", versionId: "e03210db-0cc6-459c-8f17-bf014c4f554d")
         constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -239,7 +244,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             XCTAssertNotNil(responseData.versionId)
             XCTAssertNotNil(responseData.result)
             XCTAssertNotNil(responseData.result.filterExpressions)
-            XCTAssertTrue(responseData.result.resultsUrl.contains("https://ac.cnstrc.com/browse/items?key=ZqXaOfXuBWD4s3XzCI1q&num_results_per_page=10&collection_filter_expression=%7B%22and%22%3A%5B%7B%22name%22%3A%22group_id%22%2C%22value%22%3A%22BrandX%22%7D%2C%7B%22or%22%3A%5B%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22Blue%22%7D%2C%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22red%22%7D%5D%7D%5D%7D"))
+            XCTAssertTrue(responseData.result.resultsUrl.contains("https://ac.cnstrc.com/browse/items?key=key_vM4GkLckwiuxwyRA&num_results_per_page=10&collection_filter_expression=%7B%22and%22%3A%5B%7B%22name%22%3A%22group_id%22%2C%22value%22%3A%22BrandX%22%7D%2C%7B%22or%22%3A%5B%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22Blue%22%7D%2C%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22red%22%7D%5D%7D%5D%7D"))
 
             expectation.fulfill()
         })
@@ -249,7 +254,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizResults_WithVersionId() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["1", "2"], ["true"], ["seen"]], versionId: "160ff14a-bf30-4fd0-b8f1-ad0a58d0b2f0")
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["1", "2"], ["true"], ["seen"]], versionId: "e03210db-0cc6-459c-8f17-bf014c4f554d")
         constructorClient.getQuizResults(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -258,7 +263,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             XCTAssertNotNil(responseData.versionId)
             XCTAssertNotNil(responseData.result)
             XCTAssertNotNil(responseData.result.filterExpressions)
-            XCTAssertTrue(responseData.result.resultsUrl.contains("https://ac.cnstrc.com/browse/items?key=ZqXaOfXuBWD4s3XzCI1q&num_results_per_page=10&collection_filter_expression=%7B%22and%22%3A%5B%7B%22name%22%3A%22group_id%22%2C%22value%22%3A%22BrandX%22%7D%2C%7B%22or%22%3A%5B%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22Blue%22%7D%2C%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22red%22%7D%5D%7D%5D%7D"))
+            XCTAssertTrue(responseData.result.resultsUrl.contains("https://ac.cnstrc.com/browse/items?key=key_vM4GkLckwiuxwyRA&num_results_per_page=10&collection_filter_expression=%7B%22and%22%3A%5B%7B%22name%22%3A%22group_id%22%2C%22value%22%3A%22BrandX%22%7D%2C%7B%22or%22%3A%5B%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22Blue%22%7D%2C%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22red%22%7D%5D%7D%5D%7D"))
 
             expectation.fulfill()
         })
