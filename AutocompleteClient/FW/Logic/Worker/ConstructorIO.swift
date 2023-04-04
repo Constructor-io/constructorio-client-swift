@@ -21,7 +21,7 @@ public typealias QuizResultsQueryCompletionHandler = (QuizResultsTaskResponse) -
  */
 public class ConstructorIO: CIOSessionManagerDelegate {
 
-    public let config: ConstructorIOConfig
+    public var config: ConstructorIOConfig
 
     public static var logger: CIOLogger = CIOPrintLogger()
 
