@@ -25,6 +25,11 @@ public struct CIOQuizQuery: CIORequestData {
      The version of the quiz you would like to request for
      */
     public var versionId: String?
+    
+    /**
+     The session id of the quiz
+     */
+    public var sessionId: String?
 
     func url(with baseURL: String) -> String {
         return "" // Do nothing - Returns empty string to satsify protocol requirement
@@ -41,20 +46,23 @@ public struct CIOQuizQuery: CIORequestData {
         - quizId: The id of the quiz
         - answers: A list of answers
         - versionId: The version of the quiz you would like to request
+        - sessionId: The session of the quiz you would like to request
 
      ### Usage Example: ###
      ```
      let quizQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1","2"]], versionId: "some-version-id")
      ```
      */
-    public init(quizId: String, answers: [[String]]? = nil, versionId: String? = nil) {
+    public init(quizId: String, answers: [[String]]? = nil, versionId: String? = nil, sessionId: String? = nil) {
         self.quizId = quizId
         self.answers = answers
         self.versionId = versionId
+        self.sessionId = sessionId
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(answers: self.answers)
         requestBuilder.set(versionId: self.versionId)
+        requestBuilder.set(sessionId: self.sessionId)
     }
 }

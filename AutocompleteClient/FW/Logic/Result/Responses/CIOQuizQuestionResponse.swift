@@ -21,6 +21,16 @@ public struct CIOQuizQuestionResponse {
      Version Id of the quiz
      */
     public let versionId: String
+    
+    /**
+     Session Id of the quiz
+     */
+    public let sessionId: String
+
+    /**
+     Id of the quiz
+     */
+    public let quizId: String
 
     /**
      Flag to determine if it's the last question in the quiz

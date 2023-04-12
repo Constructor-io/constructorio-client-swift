@@ -222,4 +222,9 @@ extension RequestBuilder {
         guard let versionId = versionId else { return }
         queryItems.add(URLQueryItem(name: Constants.Quiz.versionId, value: versionId))
     }
+    
+    func set(sessionId: String?) {
+        guard let sessionId = sessionId else { return }
+        queryItems.add(URLQueryItem(name: Constants.Quiz.sessionId, value: sessionId))
+    }
 }

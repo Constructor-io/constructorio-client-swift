@@ -14,6 +14,8 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
 
     fileprivate let unitTestKey = "key_vM4GkLckwiuxwyRA"
     fileprivate let session = 90
+    fileprivate let versionId = "e03210db-0cc6-459c-8f17-bf014c4f554d"
+    fileprivate let sessionId = "session-id"
     fileprivate let sectionName = "Products"
 
     var constructor: ConstructorIO!
@@ -63,16 +65,17 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    func testGetQuizNextQuestion_WithVersionId() {
+    func testGetQuizNextQuestion_WithVersionIdAndSessionId() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizId: "test-quiz", versionId: "e03210db-0cc6-459c-8f17-bf014c4f554d")
+        let query = CIOQuizQuery(quizId: "test-quiz", versionId: self.versionId, sessionId: self.sessionId)
         constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(responseData.versionId)
+            XCTAssertEqual(responseData.versionId, self.versionId)
+            XCTAssertEqual(responseData.sessionId, self.sessionId)
             XCTAssertEqual(responseData.isLastQuestion, false)
             XCTAssertEqual(responseData.nextQuestion.id, 1)
             XCTAssertEqual(responseData.nextQuestion.title, "This is a test quiz.")
@@ -101,7 +104,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
 
             XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "The quiz you requested, \"test-quiz\" was not found with version \"1\", please specify a valid quiz id and remove the version_id parameter before trying again.")
+            XCTAssertEqual(cioError?.errorMessage, "The quiz you requested, \"test-quiz\" was not found with version \"1\", please specify a valid quiz id and remove the quiz_version_id parameter before trying again.")
 
             expectation.fulfill()
         })
@@ -241,29 +244,39 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             let responseData = response.data!
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(responseData.versionId)
-            XCTAssertNotNil(responseData.result)
-            XCTAssertNotNil(responseData.result.filterExpressions)
-            XCTAssertTrue(responseData.result.resultsUrl.contains("https://ac.cnstrc.com/browse/items?key=key_vM4GkLckwiuxwyRA&num_results_per_page=10&collection_filter_expression=%7B%22and%22%3A%5B%7B%22name%22%3A%22group_id%22%2C%22value%22%3A%22BrandX%22%7D%2C%7B%22or%22%3A%5B%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22Blue%22%7D%2C%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22red%22%7D%5D%7D%5D%7D"))
+            XCTAssertNotEqual(responseData.versionId, "")
+            XCTAssertNotEqual(responseData.sessionId, "")
+            XCTAssertNotEqual(responseData.quizId, "")
+            XCTAssertNotEqual(responseData.resultID, "")
+            XCTAssertGreaterThan(responseData.sortOptions.count, 0)
+            XCTAssertGreaterThan(responseData.groups.count, 0)
+            XCTAssertGreaterThan(responseData.facets.count, 0)
+            XCTAssertGreaterThan(responseData.results.count, 0)
+            XCTAssertGreaterThan(responseData.totalNumResults, 0)
 
             expectation.fulfill()
         })
         self.wait(for: expectation)
     }
 
-    func testGetQuizResults_WithVersionId() {
+    func testGetQuizResults_WithVersionIdAndSessionId() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["1", "2"], ["true"], ["seen"]], versionId: "e03210db-0cc6-459c-8f17-bf014c4f554d")
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["1", "2"], ["true"], ["seen"]], versionId: self.versionId, sessionId: self.sessionId)
         constructorClient.getQuizResults(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(responseData.versionId)
-            XCTAssertNotNil(responseData.result)
-            XCTAssertNotNil(responseData.result.filterExpressions)
-            XCTAssertTrue(responseData.result.resultsUrl.contains("https://ac.cnstrc.com/browse/items?key=key_vM4GkLckwiuxwyRA&num_results_per_page=10&collection_filter_expression=%7B%22and%22%3A%5B%7B%22name%22%3A%22group_id%22%2C%22value%22%3A%22BrandX%22%7D%2C%7B%22or%22%3A%5B%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22Blue%22%7D%2C%7B%22name%22%3A%22Color%22%2C%22value%22%3A%22red%22%7D%5D%7D%5D%7D"))
+            XCTAssertEqual(responseData.versionId, self.versionId)
+            XCTAssertEqual(responseData.sessionId, self.sessionId)
+            XCTAssertNotEqual(responseData.quizId, "")
+            XCTAssertNotEqual(responseData.resultID, "")
+            XCTAssertGreaterThan(responseData.sortOptions.count, 0)
+            XCTAssertGreaterThan(responseData.groups.count, 0)
+            XCTAssertGreaterThan(responseData.facets.count, 0)
+            XCTAssertGreaterThan(responseData.results.count, 0)
+            XCTAssertGreaterThan(responseData.totalNumResults, 0)
 
             expectation.fulfill()
         })
@@ -278,7 +291,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             let cioError = response.error as? CIOError
 
             XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "The quiz you requested, \"test-quiz\" was not found with version \"1\", please specify a valid quiz id and remove the version_id parameter before trying again.")
+            XCTAssertEqual(cioError?.errorMessage, "The quiz you requested, \"test-quiz\" was not found with version \"1\", please specify a valid quiz id and remove the quiz_version_id parameter before trying again.")
 
             expectation.fulfill()
         })
