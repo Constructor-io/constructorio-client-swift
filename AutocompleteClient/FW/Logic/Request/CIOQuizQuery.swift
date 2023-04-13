@@ -22,12 +22,16 @@ public struct CIOQuizQuery: CIORequestData {
     public var answers: [[String]]?
 
     /**
-     The version of the quiz you would like to request for
+     Specific quiz_version_id for the quiz. 
+     Version ID will be returned with the first request and it should be passed with subsequent requests.
+     More information can be found: https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-versioning
      */
     public var versionId: String?
     
     /**
-     The session id of the quiz
+     Specific quiz_session_id for the quiz.
+     Session ID will be returned with the first request and it should be passed with subsequent requests.
+     More information can be found: https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-sessions
      */
     public var sessionId: String?
 
