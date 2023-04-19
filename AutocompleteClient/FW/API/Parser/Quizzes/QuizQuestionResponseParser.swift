@@ -13,16 +13,16 @@ class QuizQuestionResponseParser: AbstractQuizQuestionResponseParser {
 
         do {
             let json = try JSONSerialization.jsonObject(with: quizQuestionResponseData) as? JSONObject
-            let versionId = json?["quiz_version_id"] as? String ?? ""
+            let quizVersionId = json?["quiz_version_id"] as? String ?? ""
             let quizId = json?["quiz_id"] as? String ?? ""
-            let sessionId = json?["quiz_session_id"] as? String ?? ""
+            let quizSessionId = json?["quiz_session_id"] as? String ?? ""
             let isLastQuestion = json?["is_last_question"] as? Bool ?? false
             let nextQuestion = CIOQuizQuestion(json: json?["next_question"] as? JSONObject ?? [:])
 
             return CIOQuizQuestionResponse(
                 nextQuestion: nextQuestion!,
-                versionId: versionId,
-                sessionId: sessionId,
+                quizVersionId: quizVersionId,
+                quizSessionId: quizSessionId,
                 quizId: quizId,
                 isLastQuestion: isLastQuestion
             )

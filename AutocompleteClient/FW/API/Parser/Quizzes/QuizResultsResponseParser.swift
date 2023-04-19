@@ -31,9 +31,9 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
             let resultSources: CIOResultSources? = CIOResultSources(json: response["result_sources"] as? JSONObject)
             
             let resultID = json?["result_id"] as? String ?? ""
-            let versionId = json?["quiz_version_id"] as? String ?? ""
+            let quizVersionId = json?["quiz_version_id"] as? String ?? ""
             let quizId = json?["quiz_id"] as? String ?? ""
-            let sessionId = json?["quiz_session_id"] as? String ?? ""
+            let quizSessionId = json?["quiz_session_id"] as? String ?? ""
             let result = CIOQuizResult(json: json?["result"] as? JSONObject ?? [:])
 
             return CIOQuizResultsResponse(
@@ -44,8 +44,8 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
                 totalNumResults: totalNumResults,
                 resultSources: resultSources,
                 resultID: resultID,
-                versionId: versionId,
-                sessionId: sessionId,
+                quizVersionId: quizVersionId,
+                quizSessionId: quizSessionId,
                 quizId: quizId
             )
         } catch {
