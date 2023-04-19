@@ -245,7 +245,7 @@ struct Constants {
         }
         static let quizId = "quiz_id"
         static let answers = "a"
-        static let versionId = "quiz_version_id"
-        static let sessionId = "quiz_session_id"
+        static let quizVersionId = "quiz_version_id"
+        static let quizSessionId = "quiz_session_id"
     }
 }

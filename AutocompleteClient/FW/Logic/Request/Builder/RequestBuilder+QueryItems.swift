@@ -220,11 +220,11 @@ extension RequestBuilder {
 
     func set(quizVersionId: String?) {
         guard let versionId = quizVersionId else { return }
-        queryItems.add(URLQueryItem(name: Constants.Quiz.versionId, value: versionId))
+        queryItems.add(URLQueryItem(name: Constants.Quiz.quizVersionId, value: versionId))
     }
     
     func set(quizSessionId: String?) {
         guard let sessionId = quizSessionId else { return }
-        queryItems.add(URLQueryItem(name: Constants.Quiz.sessionId, value: sessionId))
+        queryItems.add(URLQueryItem(name: Constants.Quiz.quizSessionId, value: sessionId))
     }
 }
