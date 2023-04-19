@@ -12,8 +12,8 @@ import XCTest
 class QuizzesQueryRequestBuilderTests: XCTestCase {
     fileprivate let quizId: String = "1"
     fileprivate let answers: [[String]] = [["1"], ["2", "3"], ["seen"], ["true"]]
-    fileprivate let versionId: String = "version-id"
-    fileprivate let sessionId: String = "session-id"
+    fileprivate let quizVersionId: String = "version-id"
+    fileprivate let quizSessionId: String = "session-id"
     fileprivate var endodedQuery: String = ""
     fileprivate let testACKey: String = "abcdefgh123"
     fileprivate var builder: RequestBuilder!
@@ -24,7 +24,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
     }
 
     func testQuizQueryBuilder_NextQuestion() {
-        let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers, versionId: self.versionId, sessionId: self.sessionId)
+        let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers, quizVersionId: self.quizVersionId, quizSessionId: self.quizSessionId)
         builder.build(trackData: query)
         let request = builder.getQuizRequest(finalize: false)
         let url = request.url!.absoluteString
@@ -38,7 +38,7 @@ class QuizzesQueryRequestBuilderTests: XCTestCase {
     }
 
     func testQuizQueryBuilder_QuizResults() {
-        let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers, versionId: self.versionId, sessionId: self.sessionId)
+        let query = CIOQuizQuery(quizId: self.quizId, answers: self.answers, quizVersionId: self.quizVersionId, quizSessionId: self.quizSessionId)
         builder.build(trackData: query)
         let request = builder.getQuizRequest(finalize: true)
         let url = request.url!.absoluteString

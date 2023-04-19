@@ -12,8 +12,8 @@ import ConstructorAutocomplete
 class ConstructorIOQuizTests: XCTestCase {
 
     var constructor: ConstructorIO!
-    var sessionId = "session-id"
-    var versionId = "e03210db-0cc6-459c-8f17-bf014c4f554d"
+    var quizSessionId = "session-id"
+    var quizVersionId = "dd10eea4-f765-4bb1-b8e5-46b09a190cfe"
     
     override func setUp() {
         super.setUp()
@@ -26,20 +26,20 @@ class ConstructorIOQuizTests: XCTestCase {
     }
 
     func testQuizNextQuestion_CreatesValidRequest() {
-        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["2"]], versionId: self.versionId, sessionId: self.sessionId)
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["2"]], quizVersionId: self.quizVersionId, quizSessionId: self.quizSessionId)
 
         let builder = CIOBuilder(expectation: "Calling Quiz Question should send a valid request.", builder: http(200))
-        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&quiz_session_id=\(self.sessionId)&quiz_version_id=\(self.versionId)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&quiz_session_id=\(self.quizSessionId)&quiz_version_id=\(self.quizVersionId)&s=\(kRegexSession)"), builder.create())
 
         self.constructor.getQuizNextQuestion(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
 
     func testQuizResults_CreatesValidRequest() {
-        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["2"]], versionId: self.versionId, sessionId: self.sessionId)
+        let query = CIOQuizQuery(quizId: "test-quiz", answers: [["1"], ["2"]], quizVersionId: self.quizVersionId, quizSessionId: self.quizSessionId)
 
         let builder = CIOBuilder(expectation: "Calling Quiz Results should send a valid request.", builder: http(200))
-        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/results?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&quiz_session_id=\(self.sessionId)&quiz_version_id=\(self.versionId)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/results?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&quiz_session_id=\(self.quizSessionId)&quiz_version_id=\(self.quizVersionId)&s=\(kRegexSession)"), builder.create())
 
         self.constructor.getQuizResults(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
