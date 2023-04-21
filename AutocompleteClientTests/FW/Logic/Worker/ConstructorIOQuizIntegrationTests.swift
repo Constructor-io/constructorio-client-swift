@@ -120,7 +120,8 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             let responseData = response.data!
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(responseData.quizVersionId)
+            XCTAssertNotEqual(responseData.quizVersionId, "")
+            XCTAssertNotEqual(responseData.quizSessionId, "")
             XCTAssertEqual(responseData.isLastQuestion, false)
             XCTAssertEqual(responseData.nextQuestion.id, 2)
             XCTAssertEqual(responseData.nextQuestion.title, "This is a multiple select question")
@@ -165,7 +166,8 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             let responseData = response.data!
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(responseData.quizVersionId)
+            XCTAssertNotEqual(responseData.quizVersionId, "")
+            XCTAssertNotEqual(responseData.quizSessionId, "")
             XCTAssertEqual(responseData.isLastQuestion, false)
             XCTAssertEqual(responseData.nextQuestion.id, 3)
             XCTAssertEqual(responseData.nextQuestion.title, "Test Cover")
@@ -204,7 +206,8 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             let responseData = response.data!
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(responseData.quizVersionId)
+            XCTAssertNotEqual(responseData.quizVersionId, "")
+            XCTAssertNotEqual(responseData.quizSessionId, "")
             XCTAssertEqual(responseData.isLastQuestion, true)
             XCTAssertEqual(responseData.nextQuestion.id, 4)
             XCTAssertEqual(responseData.nextQuestion.title, "Test Open Text")

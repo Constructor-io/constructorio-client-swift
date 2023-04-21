@@ -50,7 +50,7 @@ public struct CIOQuizQuery: CIORequestData {
         - quizId: The id of the quiz
         - answers: A list of answers
         - quizVersionId: The version of the quiz you would like to request
-        - quizSessionId: The session of the quiz you would like to request
+        - quizSessionId: The identifier for the current session of the quiz
 
      ### Usage Example: ###
      ```

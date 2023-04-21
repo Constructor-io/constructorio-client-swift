@@ -219,12 +219,12 @@ extension RequestBuilder {
     }
 
     func set(quizVersionId: String?) {
-        guard let versionId = quizVersionId else { return }
-        queryItems.add(URLQueryItem(name: Constants.Quiz.quizVersionId, value: versionId))
+        guard let quizVersionId = quizVersionId else { return }
+        queryItems.add(URLQueryItem(name: Constants.Quiz.quizVersionId, value: quizVersionId))
     }
     
     func set(quizSessionId: String?) {
-        guard let sessionId = quizSessionId else { return }
-        queryItems.add(URLQueryItem(name: Constants.Quiz.quizSessionId, value: sessionId))
+        guard let quizSessionId = quizSessionId else { return }
+        queryItems.add(URLQueryItem(name: Constants.Quiz.quizSessionId, value: quizSessionId))
     }
 }
