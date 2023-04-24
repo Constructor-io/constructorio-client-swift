@@ -17,7 +17,7 @@
     <a title="CIOQuizResultsResponse Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 2.6.4 Docs</a> (93% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 2.7.0 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -212,9 +212,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV6resultAA0C6ResultVvp"></a>
-                    <a name="//apple_ref/swift/Property/result" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV6resultAA0C6ResultVvp">result</a>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV6facetsSayAA14CIOFilterFacetVGvp"></a>
+                    <a name="//apple_ref/swift/Property/facets" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV6facetsSayAA14CIOFilterFacetVGvp">facets</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -222,14 +222,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Quiz result</p>
+                        <p>List of facets returned for the result set</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">result</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOQuizResult.html">CIOQuizResult</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">facets</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/CIOFilterFacet.html">CIOFilterFacet</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -239,9 +239,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV9versionIdSSvp"></a>
-                    <a name="//apple_ref/swift/Property/versionId" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV9versionIdSSvp">versionId</a>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV6groupsSayAA14CIOFilterGroupCGvp"></a>
+                    <a name="//apple_ref/swift/Property/groups" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV6groupsSayAA14CIOFilterGroupCGvp">groups</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -249,14 +249,234 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Version Id of the quiz result</p>
+                        <p>List of groups (categories) returned for the result set</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">versionId</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">groups</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/CIOFilterGroup.html">CIOFilterGroup</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV7resultsSayAA9CIOResultCGvp"></a>
+                    <a name="//apple_ref/swift/Property/results" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV7resultsSayAA9CIOResultCGvp">results</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>List of results returned for the browse query</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">results</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/CIOResult.html">CIOResult</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV11sortOptionsSayAA13CIOSortOptionVGvp"></a>
+                    <a name="//apple_ref/swift/Property/sortOptions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV11sortOptionsSayAA13CIOSortOptionVGvp">sortOptions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>List of sorting options</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">sortOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/CIOSortOption.html">CIOSortOption</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV08totalNumD0Sivp"></a>
+                    <a name="//apple_ref/swift/Property/totalNumResults" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV08totalNumD0Sivp">totalNumResults</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Total number of results for the result</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">totalNumResults</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV13resultSourcesAA09CIOResultG0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/resultSources" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV13resultSourcesAA09CIOResultG0CSgvp">resultSources</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sources of the result set</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">resultSources</span><span class="p">:</span> <span class="kt"><a href="../Classes/CIOResultSources.html">CIOResultSources</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV8resultIDSSvp"></a>
+                    <a name="//apple_ref/swift/Property/resultID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV8resultIDSSvp">resultID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Result ID of the result set returned</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV13quizVersionIdSSvp"></a>
+                    <a name="//apple_ref/swift/Property/quizVersionId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV13quizVersionIdSSvp">quizVersionId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unique quiz_version_id for the quiz.
+The quiz version id will be returned with the first request and it should be passed with subsequent requests.
+More information can be found: <a href="https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-versioning">https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-versioning</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">quizVersionId</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV13quizSessionIdSSvp"></a>
+                    <a name="//apple_ref/swift/Property/quizSessionId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV13quizSessionIdSSvp">quizSessionId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unique quiz_session_id for the quiz.
+The quiz session id will be returned with the first request and it should be passed with subsequent requests.
+More information can be found: <a href="https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-sessions">https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-sessions</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">quizSessionId</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete22CIOQuizResultsResponseV6quizIdSSvp"></a>
+                    <a name="//apple_ref/swift/Property/quizId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete22CIOQuizResultsResponseV6quizIdSSvp">quizId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Id of the quiz</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">quizId</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -268,7 +488,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-04-04)</p>
+          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-04-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
