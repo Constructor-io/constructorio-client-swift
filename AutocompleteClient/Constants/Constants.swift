@@ -241,10 +241,11 @@ struct Constants {
             static let format = "%@/v1/quizzes/%@/next"
         }
         struct Results {
-            static let format = "%@/v1/quizzes/%@/finalize"
+            static let format = "%@/v1/quizzes/%@/results"
         }
         static let quizId = "quiz_id"
         static let answers = "a"
-        static let versionId = "version_id"
+        static let quizVersionId = "quiz_version_id"
+        static let quizSessionId = "quiz_session_id"
     }
 }

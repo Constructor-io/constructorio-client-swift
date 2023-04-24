@@ -22,9 +22,18 @@ public struct CIOQuizQuery: CIORequestData {
     public var answers: [[String]]?
 
     /**
-     The version of the quiz you would like to request for
+     Unique quiz_version_id for the quiz.
+     The quiz version id will be returned with the first request and it should be passed with subsequent requests.
+     More information can be found: https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-versioning
      */
-    public var versionId: String?
+    public var quizVersionId: String?
+    
+    /**
+     Unique quiz_session_id for the quiz.
+     The quiz session id will be returned with the first request and it should be passed with subsequent requests.
+     More information can be found: https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-sessions
+     */
+    public var quizSessionId: String?
 
     func url(with baseURL: String) -> String {
         return "" // Do nothing - Returns empty string to satsify protocol requirement
@@ -40,21 +49,24 @@ public struct CIOQuizQuery: CIORequestData {
      - Parameters:
         - quizId: The id of the quiz
         - answers: A list of answers
-        - versionId: The version of the quiz you would like to request
+        - quizVersionId: The version of the quiz you would like to request
+        - quizSessionId: The identifier for the current session of the quiz
 
      ### Usage Example: ###
      ```
-     let quizQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1","2"]], versionId: "some-version-id")
+     let quizQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1","2"]], quizVersionId: "some-version-id")
      ```
      */
-    public init(quizId: String, answers: [[String]]? = nil, versionId: String? = nil) {
+    public init(quizId: String, answers: [[String]]? = nil, quizVersionId: String? = nil, quizSessionId: String? = nil) {
         self.quizId = quizId
         self.answers = answers
-        self.versionId = versionId
+        self.quizVersionId = quizVersionId
+        self.quizSessionId = quizSessionId
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(answers: self.answers)
-        requestBuilder.set(versionId: self.versionId)
+        requestBuilder.set(quizVersionId: self.quizVersionId)
+        requestBuilder.set(quizSessionId: self.quizSessionId)
     }
 }
