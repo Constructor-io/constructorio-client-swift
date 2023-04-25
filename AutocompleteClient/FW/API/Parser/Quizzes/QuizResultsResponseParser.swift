@@ -34,7 +34,6 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
             let quizVersionId = json?["quiz_version_id"] as? String ?? ""
             let quizId = json?["quiz_id"] as? String ?? ""
             let quizSessionId = json?["quiz_session_id"] as? String ?? ""
-            let result = CIOQuizResult(json: json?["result"] as? JSONObject ?? [:])
 
             return CIOQuizResultsResponse(
                 facets: facets,
