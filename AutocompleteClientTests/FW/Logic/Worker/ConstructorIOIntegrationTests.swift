@@ -41,7 +41,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        self.constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        self.constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, segments: ["123", "234"]))
     }
 
     override func tearDown() {

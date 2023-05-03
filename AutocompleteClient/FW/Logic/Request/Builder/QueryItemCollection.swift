@@ -66,8 +66,19 @@ struct QueryItemCollection {
         var dict: [String: Any] = [:]
         flattenedArray.forEach { item in
             if item.value != nil {
-                dict[item.name] = item.value
+                if let value = dict[item.name] {
+                    if var arrayValue = value as? [String] {
+                        arrayValue.append(item.value!)
+                    } else {
+                        dict[item.name] = [value, item.value!]
+                    }
+                } else {
+                    dict[item.name] = item.value
+                }
             }
+        }
+        if let usValue = dict["us"] as? String {
+            dict["us"] = [usValue]
         }
         // swiftlint:disable force_cast
         if dict["s"] != nil {
