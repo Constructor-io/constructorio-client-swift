@@ -70,7 +70,6 @@ struct QueryItemCollection {
             }
         }
         dict["us"] = nil
-        print(dict)
         // swiftlint:disable force_cast
         if dict["s"] != nil {
             dict["s"] = Int64(dict["s"] as! String)
