@@ -52,6 +52,10 @@ struct CIOTrackPurchaseData: CIORequestData {
     func httpMethod() -> String {
         return "POST"
     }
+    
+    func roundTo2dp(num: Double) -> Double {
+        return (num * 100).rounded() / 100
+    }
 
     func httpBody(baseParams: [String: Any]) -> Data? {
         var dict = [String: Any]()
@@ -81,7 +85,7 @@ struct CIOTrackPurchaseData: CIORequestData {
         }
 
         if self.revenue != nil {
-            dict["revenue"] = self.revenue
+            dict["revenue"] = self.roundTo2dp(num: self.revenue!)
         }
 
         dict["beacon"] = true

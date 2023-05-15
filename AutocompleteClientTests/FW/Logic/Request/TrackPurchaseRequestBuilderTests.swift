@@ -78,6 +78,18 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
         XCTAssertEqual(payload?["revenue"] as? Double, revenue)
     }
+    
+    func testTrackPurchaseBuilder_WithFloatingPointRevenue() {
+        let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs, sectionName: self.sectionName, revenue: 12.345678)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
+        XCTAssertEqual(payload?["revenue"] as? Double, 12.35, "Incorrect rounding of floating point revenue.")
+    }
 
     func testTrackPurchaseBuilder_WithOrderID() {
         let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs, sectionName: self.sectionName, orderID: self.orderID)
