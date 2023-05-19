@@ -48,4 +48,15 @@ class ConstructorIOABTestCellTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackInputFocus_WithEmptyTestCellName() {
+        let config = ConstructorIOConfig(apiKey: "key_OucJxxrfiTVUQx0C", testCells: [
+            CIOABTestCell(key: "", value: "there")
+        ])
+        let constructor = TestConstants.testConstructor(config)
+        let searchTerm = "corn"
+        let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request without test cells", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&term=corn"), builder.create())
+        constructor.trackInputFocus(searchTerm: searchTerm)
+        self.wait(for: builder.expectation)
+    }
 }
