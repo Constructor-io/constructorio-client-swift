@@ -68,6 +68,10 @@ extension RequestBuilder {
     func set(searchSection: String) {
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.section, value: searchSection))
     }
+    
+    func set(section: String) {
+        queryItems.add(URLQueryItem(name: Constants.Query.section, value: section))
+    }
 
     func set(revenue: Double?) {
         guard let revenue = revenue else { return }

@@ -174,6 +174,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: query)
         executeBrowse(request, completionHandler: completionHandler)
     }
+    
+    public func browseGroups(forQuery query: CIOBrowseGroupsQuery, completionHandler: @escaping BrowseQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeBrowse(request, completionHandler: completionHandler)
+    }
 
     /**
      Get recommendation results for a query.

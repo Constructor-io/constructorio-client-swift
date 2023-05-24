@@ -36,6 +36,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     fileprivate let resultPage = 1
     fileprivate let conversionType = "add_to_cart"
     fileprivate let itemIds = ["10003", "10004", "10005", "10006", "10007"]
+    fileprivate let groupId = "All"
 
     var constructor: ConstructorIO!
 
@@ -1113,6 +1114,73 @@ class ConstructorIOIntegrationTests: XCTestCase {
             XCTAssertNotNil(browseResult)
             XCTAssertEqual(responseData.groups[0].displayName, "All")
             XCTAssertEqual(responseData.groups[0].children[0].displayName, "Styles")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testBrowseGroups() {
+        let expectation = XCTestExpectation(description: "Request 200")
+        let query = CIOBrowseGroupsQuery()
+        
+        self.constructor.config.segments = nil
+        self.constructor.browseGroups(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let groupIds = response.data?.groups.compactMap { $0.groupID }
+            
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(groupIds)
+            XCTAssertTrue(groupIds?.contains(self.groupId) == true)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testBrowseGroups_WithSpecificGroupId() {
+        let expectation = XCTestExpectation(description: "Request 200")
+        let groupIdFilter = CIOQueryFilters(groupFilter: "Styles", facetFilters: nil)
+        let query = CIOBrowseGroupsQuery(filters: groupIdFilter)
+        
+        self.constructor.config.segments = nil
+        self.constructor.browseGroups(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            
+            let parentGroup = response.data?.groups[0]
+            let grandparentsGroupIds = parentGroup?.parents.compactMap { $0.groupID }
+            let childGroupIds = parentGroup?.children.compactMap { $0.groupID }
+            
+            XCTAssertTrue(grandparentsGroupIds?.contains(self.groupId) ?? false)
+            XCTAssertTrue(childGroupIds?.contains("StyleA") ?? false)
+            XCTAssertTrue(childGroupIds?.contains("StyleB") ?? false)
+            
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testBrowseGroups_WithMaxDepth() {
+        let expectation = XCTestExpectation(description: "Request 200")
+        let maxDepthFmtOption: FmtOption = ("groups_max_depth", "2")
+        let query = CIOBrowseGroupsQuery(fmtOptions: CIOQueryFmtOptions(fmtOptions: [maxDepthFmtOption]))
+        
+        self.constructor.config.segments = nil
+        self.constructor.browseGroups(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            
+            let parentGroup = response.data?.groups[0]
+            XCTAssertNotNil(parentGroup?.children)
+            XCTAssertFalse(parentGroup?.children.isEmpty ?? true)
+            
+            let childGroup = parentGroup?.children[0]
+            XCTAssertNotNil(childGroup?.children)
+            XCTAssertFalse(childGroup?.children.isEmpty ?? true)
+            
+            let grandchildGroup = childGroup?.children[0]
+            XCTAssertNotNil(grandchildGroup?.children)
+            XCTAssertTrue(grandchildGroup?.children.isEmpty ?? false)
+
             expectation.fulfill()
         })
         self.wait(for: expectation)
