@@ -1,5 +1,5 @@
 //
-//  CIOBrowseFacetsQueryBuilder.swift
+//  CIOBrowseFacetOptionsQueryBuilder.swift
 //  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.

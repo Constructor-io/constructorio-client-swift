@@ -188,13 +188,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let facetFilters = [(key: "Nutrition", value: "Organic"),
-                         (key: "Nutrition", value: "Natural"),
-                         (key: "Brand", value: "Kraft Foods")]
-
-     let browseItemsQuery = CIOBrowseItemsQuery(ids: ["123", "123"], filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products")
+     let browseFacetsQuery = CIOBrowseFacetsQuery(page: 1, perPage: 10, showHiddenFacets: true)
      
-     constructorIO.browseItems(forQuery: browseItemsQuery) { response in
+     constructorIO.browseFacets(forQuery: browseFacetsQuery) { response in
         let data = response.data!
         let error = response.error!
      }
@@ -206,7 +202,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     /**
-     Get browse facets results for a query.
+     Get browse facet options results for a query.
 
      - Parameters:
         - query: The query object, consisting of the query to browse facet options for and additional options.
@@ -216,7 +212,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      let browseFacetOptionsQuery = CIOBrowseFacetOptionsQuery(facetNme: "price", showHiddenFacets: true)
      
-     constructorIO.browseFacetOptions(forQuery: browseFacetOptions) { response in
+     constructorIO.browseFacetOptions(forQuery: browseFacetOptionsQuery) { response in
         let data = response.data!
         let error = response.error!
      }
