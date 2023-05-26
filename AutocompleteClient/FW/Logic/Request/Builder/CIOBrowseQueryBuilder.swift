@@ -69,7 +69,7 @@ public class CIOBrowseQueryBuilder {
     var groupsSortOption: CIOGroupsSortOption?
 
     /**
-     Creata a Browse request query builder
+     Create a Browse request query builder
      
      - Parameters:
         - filterName: The primary filter name that the user browsed for

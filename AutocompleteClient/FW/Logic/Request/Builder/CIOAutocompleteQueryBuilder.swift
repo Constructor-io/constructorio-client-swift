@@ -44,7 +44,7 @@ public class CIOAutocompleteQueryBuilder {
     var variationsMap: CIOQueryVariationsMap?
 
     /**
-     Creata a Autocomplete request query builder
+     Create a Autocomplete request query builder
      
      - Parameters:
         - query: The user typed query to return results for

@@ -97,6 +97,11 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.page, value: pageString))
     }
 
+    func set(offset: Int) {
+        let offsetString = String(offset)
+        queryItems.add(URLQueryItem(name: Constants.BrowseFacetsQuery.offset, value: offsetString))
+    }
+    
     func set(perPage: Int) {
         let perPageString = String(perPage)
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.perPage, value: perPageString))
@@ -163,6 +168,17 @@ extension RequestBuilder {
     func set(hiddenFacet: String?) {
         guard let hiddenFacet = hiddenFacet else { return }
         self.set(fmtOption: (key: "hidden_facets", value: hiddenFacet))
+    }
+    
+    func set(showHiddenFacets: Bool) {
+        let showHiddenFacetsString = String(showHiddenFacets)
+        queryItems.add(URLQueryItem(name: Constants.BrowseFacetsQuery.showHiddenFacets, value: showHiddenFacetsString))
+    }
+    
+    func set(facetName: String?) {
+        guard let facetName = facetName else { return }
+        let facetNameString = String(facetName)
+        queryItems.add(URLQueryItem(name: Constants.BrowseFacetOptionsQuery.facetName, value: facetNameString))
     }
 
     func set(fmtOptions: [FmtOption]?) {
