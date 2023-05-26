@@ -64,7 +64,7 @@ public class CIOSearchQueryBuilder {
     var groupsSortOption: CIOGroupsSortOption?
 
     /**
-     Creata a Search request query builder
+     Create a Search request query builder
      
      - Parameters:
         - query: The user typed query to return results for

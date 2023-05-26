@@ -44,8 +44,11 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Browse Facets with valid parameters should return a non-nil response.")
 
-            XCTAssertNotNil(response.data?.totalNumResults)
-            XCTAssertNotNil(response.data?.facets)
+            XCTAssertTrue(response.data?.totalNumResults == 9)
+            XCTAssertTrue(response.data?.facets.count == 5)
+            XCTAssertTrue(response.data?.facets[0].name == "brand")
+            XCTAssertTrue(response.data?.facets[0].displayName == "Brand")
+            XCTAssertTrue(response.data?.facets[0].type == "multiple")
             XCTAssertNotNil(response.data?.resultID)
             expectation.fulfill()
         })
@@ -116,8 +119,11 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Browse Facets with valid parameters should return a non-nil response.")
 
-            XCTAssertNotNil(response.data?.totalNumResults)
-            XCTAssertNotNil(response.data?.facets)
+            XCTAssertTrue(response.data?.totalNumResults == 9)
+            XCTAssertTrue(response.data?.facets.count == 5)
+            XCTAssertTrue(response.data?.facets[0].name == "brand")
+            XCTAssertTrue(response.data?.facets[0].displayName == "Brand")
+            XCTAssertTrue(response.data?.facets[0].type == "multiple")
             XCTAssertNotNil(response.data?.resultID)
             expectation.fulfill()
         })

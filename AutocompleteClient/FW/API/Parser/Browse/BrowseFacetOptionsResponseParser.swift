@@ -1,5 +1,5 @@
 //
-//  BrowseFacetsResponseParser.swift
+//  BrowseFacetOptionsResponseParser.swift
 //  AutocompleteClient
 //
 //  Copyright © Constructor.io. All rights reserved.

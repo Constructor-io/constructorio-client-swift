@@ -34,7 +34,7 @@ public class CIOBrowseFacetsQueryBuilder {
     var showHiddenFacets: Bool?
 
     /**
-     Creata a Browse request query builder
+     Create a Browse Facets request query builder
      */
     public init() {
     }

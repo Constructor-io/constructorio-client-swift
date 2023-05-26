@@ -64,7 +64,7 @@ public class CIOBrowseItemsQueryBuilder {
     var groupsSortOption: CIOGroupsSortOption?
 
     /**
-     Creata a Browse request query builder
+     Create a Browse Items request query builder
      
      - Parameters:
         - ids - the list of item ids to request

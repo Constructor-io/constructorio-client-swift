@@ -24,7 +24,7 @@ public class CIOBrowseFacetOptionsQueryBuilder {
     var showHiddenFacets: Bool?
 
     /**
-     Creata a Browse facet options request query builder
+     Create a Browse facet options request query builder
      */
     public init(facetName: String) {
         self.facetName = facetName
