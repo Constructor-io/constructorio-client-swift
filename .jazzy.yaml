@@ -17,6 +17,10 @@ custom_categories:
     children:
       - CIOAutocompleteQuery
       - CIOBrowseQuery
+      - CIOBrowseItemsQuery
+      - CIOBrowseFacetsQuery
+      - CIOBrowseFacetOptionsQuery
+      - CIOBrowseGroupsQuery
       - CIORecommendationsQuery
       - CIOSearchQuery
       - CIOQuizQuery
@@ -24,12 +28,18 @@ custom_categories:
     children:
       - CIOAutocompleteQueryBuilder
       - CIOBrowseQueryBuilder
+      - CIOBrowseItemsQueryBuilder
+      - CIOBrowseFacetsQueryBuilder
+      - CIOBrowseFacetOptionsQueryBuilder
+      - CIOBrowseGroupsQueryBuilder
       - CIORecommendationsQueryBuilder
       - CIOSearchQueryBuilder
   - name: Response Structures
     children:
       - CIOAutocompleteResponse
       - CIOBrowseResponse
+      - CIOBrowseFacetsResponse
+      - CIOBrowseFacetOptionsResponse
       - CIORecommendationsResponse
       - CIOSearchResponse
       - CIOQuizQuestionResponse

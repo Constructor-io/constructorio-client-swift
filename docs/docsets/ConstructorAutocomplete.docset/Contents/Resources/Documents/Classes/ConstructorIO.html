@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 2.7.3 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 2.8.0 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -56,6 +56,15 @@
                 <a href="../Structs/CIOBrowseQuery.html">CIOBrowseQuery</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseItemsQuery.html">CIOBrowseItemsQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseFacetsQuery.html">CIOBrowseFacetsQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseFacetOptionsQuery.html">CIOBrowseFacetOptionsQuery</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/CIORecommendationsQuery.html">CIORecommendationsQuery</a>
               </li>
               <li class="nav-group-task">
@@ -76,6 +85,15 @@
                 <a href="../Classes/CIOBrowseQueryBuilder.html">CIOBrowseQueryBuilder</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/CIOBrowseItemsQueryBuilder.html">CIOBrowseItemsQueryBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOBrowseFacetsQueryBuilder.html">CIOBrowseFacetsQueryBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CIOBrowseFacetOptionsQueryBuilder.html">CIOBrowseFacetOptionsQueryBuilder</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/CIORecommendationsQueryBuilder.html">CIORecommendationsQueryBuilder</a>
               </li>
               <li class="nav-group-task">
@@ -91,6 +109,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/CIOBrowseResponse.html">CIOBrowseResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseFacetsResponse.html">CIOBrowseFacetsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOBrowseFacetOptionsResponse.html">CIOBrowseFacetOptionsResponse</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/CIORecommendationsResponse.html">CIORecommendationsResponse</a>
@@ -166,9 +190,6 @@
             <a href="../Other%20Classes.html">Other Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/CIOBrowseItemsQueryBuilder.html">CIOBrowseItemsQueryBuilder</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/CIOCollectionData.html">CIOCollectionData</a>
               </li>
               <li class="nav-group-task">
@@ -182,9 +203,6 @@
           <li class="nav-group-name">
             <a href="../Other%20Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Structs/CIOBrowseItemsQuery.html">CIOBrowseItemsQuery</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Structs/CIORefinedContent.html">CIORefinedContent</a>
               </li>
@@ -520,6 +538,138 @@
                               <td>
                                 <div>
                                   <p>The query object, consisting of the query to browse items for and additional options.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC12browseFacets8forQuery17completionHandleryAA09CIOBrowseeG0V_yAA06BrowseE12TaskResponseCctF"></a>
+                    <a name="//apple_ref/swift/Method/browseFacets(forQuery:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC12browseFacets8forQuery17completionHandleryAA09CIOBrowseeG0V_yAA06BrowseE12TaskResponseCctF">browseFacets(forQuery:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get browse facets results for a query.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">browseFacetsQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseFacetsQuery</span><span class="p">(</span><span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">showHiddenFacets</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">browseFacets</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">browseFacetsQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">browseFacets</span><span class="p">(</span><span class="n">forQuery</span> <span class="nv">query</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOBrowseFacetsQuery.html">CIOBrowseFacetsQuery</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">BrowseFacetsQueryCompletionHandler</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>query</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The query object, consisting of the query to browse facets for and additional options.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC18browseFacetOptions8forQuery17completionHandleryAA09CIOBrowseefH0V_yAA06BrowseeF12TaskResponseCctF"></a>
+                    <a name="//apple_ref/swift/Method/browseFacetOptions(forQuery:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC18browseFacetOptions8forQuery17completionHandleryAA09CIOBrowseefH0V_yAA06BrowseeF12TaskResponseCctF">browseFacetOptions(forQuery:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get browse facet options results for a query.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">browseFacetOptionsQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseFacetOptionsQuery</span><span class="p">(</span><span class="nv">facetNme</span><span class="p">:</span> <span class="s">"price"</span><span class="p">,</span> <span class="nv">showHiddenFacets</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">browseFacetOptions</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">browseFacetOptionsQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
+   <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">browseFacetOptions</span><span class="p">(</span><span class="n">forQuery</span> <span class="nv">query</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOBrowseFacetOptionsQuery.html">CIOBrowseFacetOptionsQuery</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">BrowseFacetOptionsQueryCompletionHandler</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>query</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The query object, consisting of the query to browse facet options for and additional options.</p>
                                 </div>
                               </td>
                             </tr>
@@ -2089,7 +2239,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-05-18)</p>
+          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-05-26)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
