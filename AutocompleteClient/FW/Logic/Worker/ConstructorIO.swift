@@ -175,6 +175,27 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         executeBrowse(request, completionHandler: completionHandler)
     }
     
+    /**
+     Get browse groups results for a query.
+
+     - Parameters:
+        - query: The query object, consisting of the query to browse groups for and additional options.
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     let browseGroupsQuery = CIOBrowseGroupsQuery(
+        groupId: "group_1",
+        section: "Products",
+        groupsMaxDepth: 5
+     )
+     
+     constructor.browseGroups(forQuery: browseGroupsQuery) { response in
+         let data = response.data!
+         let error = response.error!
+     }
+     ```
+     */
     public func browseGroups(forQuery query: CIOBrowseGroupsQuery, completionHandler: @escaping BrowseQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeBrowse(request, completionHandler: completionHandler)

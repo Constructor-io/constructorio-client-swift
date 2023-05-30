@@ -76,7 +76,7 @@ class ConstructorIOBrowseGroupsTests: XCTestCase {
     }
 
     func testBrowseGroups_AttachesSpecificGroupId() {
-        let query = CIOBrowseGroupsQuery(filters: CIOQueryFilters(groupFilter: "151", facetFilters: nil))
+        let query = CIOBrowseGroupsQuery(groupId: "151")
 
         let builder = CIOBuilder(expectation: "Calling BrowseGroups with a group filter should have a group_id URL query item.", builder: http(200))
         
@@ -87,8 +87,7 @@ class ConstructorIOBrowseGroupsTests: XCTestCase {
     }
 
     func testBrowseGroups_AttachesMaxDepth() {
-        let fmtOptions = CIOQueryFmtOptions(fmtOptions: [(key: "groups_max_depth", value: "5") as FmtOption])
-        let query = CIOBrowseGroupsQuery(fmtOptions: fmtOptions)
+        let query = CIOBrowseGroupsQuery(groupsMaxDepth: 5)
 
         let builder = CIOBuilder(expectation: "Calling BrowseGroups with groups sort option should return a response", builder: http(200))
         
@@ -104,20 +103,6 @@ class ConstructorIOBrowseGroupsTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling BrowseGroups with valid parameters should return a non-nil response.", builder: http(200))
 
         stub(regex("https://ac.cnstrc.com/browse/groups?c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products"), builder.create())
-
-        self.constructor.browseGroups(forQuery: query, completionHandler: { _ in })
-        self.wait(for: builder.expectation)
-    }
-
-    func testBrowseGroups_UsingBrowseGroupsQueryBuilder_AttachesFmtOptions() {
-        let fmtOptions = CIOQueryFmtOptions(fmtOptions: [(key: "groups_max_depth", value: "5") as FmtOption])
-        let query = CIOBrowseGroupsQueryBuilder()
-            .setFmtOptions(fmtOptions)
-            .build()
-
-        let builder = CIOBuilder(expectation: "Calling BrowseGroups with valid parameters should return a non-nil response.", builder: http(200))
-        
-        stub(regex("https://ac.cnstrc.com/browse/groups?c=\(kRegexVersion)&fmt_options%5Bgroups_max_depth%5D=5&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products"), builder.create())
 
         self.constructor.browseGroups(forQuery: query, completionHandler: { _ in })
         self.wait(for: builder.expectation)
@@ -145,20 +130,6 @@ class ConstructorIOBrowseGroupsTests: XCTestCase {
         let builder = CIOBuilder(expectation: "Calling BrowseGroups with custom section should return a non-nil response.", builder: http(200))
         
         stub(regex("https://ac.cnstrc.com/browse/groups?c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=\(customSection)"), builder.create())
-
-        self.constructor.browseGroups(forQuery: query, completionHandler: { _ in })
-        self.wait(for: builder.expectation)
-    }
-    
-    func testBrowseGroups_UsingBrowseGroupsQueryBuilder_AttachesFilters() {
-        let groupIdFilter = CIOQueryFilters(groupFilter: "151", facetFilters: nil)
-        let query = CIOBrowseGroupsQueryBuilder()
-            .setFilters(groupIdFilter)
-            .build()
-
-        let builder = CIOBuilder(expectation: "Calling BrowseGroups with a group filter should have a group_id URL query item.", builder: http(200))
-        
-        stub(regex("https://ac.cnstrc.com/browse/groups?c=\(kRegexVersion)&filters%5Bgroup_id%5D=151&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products"), builder.create())
 
         self.constructor.browseGroups(forQuery: query, completionHandler: { _ in })
         self.wait(for: builder.expectation)

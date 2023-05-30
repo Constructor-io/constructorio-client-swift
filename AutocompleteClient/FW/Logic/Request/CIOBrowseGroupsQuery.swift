@@ -14,10 +14,9 @@ import Foundation
 public struct CIOBrowseGroupsQuery: CIORequestData {
     
     /**
-     The filters used to refine results
-     filters[group_id] - The id of the specific group that should be included in the response
+     The id of the specific group that should be included in the response
      */
-    public let filters: CIOQueryFilters?
+    public let groupId: String?
 
     /**
      The section to return results from
@@ -25,10 +24,9 @@ public struct CIOBrowseGroupsQuery: CIORequestData {
     public let section: String
     
     /**
-     The format options used to refine result groups
-     fmt_options[groups_max_depth] - In case of hierarchical groups, maximum depth of the hierarchy that should be included in the response
+     The maximum depth of the hierarchy, in case of hierarchical groups, that should be included in the response
      */
-    public let fmtOptions: CIOQueryFmtOptions?
+    public let groupsMaxDepth: Int?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.BrowseGroupsQuery.format, baseURL)
@@ -38,35 +36,31 @@ public struct CIOBrowseGroupsQuery: CIORequestData {
      Create a Browse Groups request query object
 
      - Parameters:
-        - filters: The filters used to refine results
+        - groupId: The id of the specific group that should be included in the response
         - section: The section to return results from
-        - fmtOptions: The format options used to refine result groups
+        - groupsMaxDepth: The maximum depth of the hierarchy, in case of hierarchical groups, that should be included in the response
 
      ### Usage Example: ###
      ```
-     let groupId = "group_1"
-     let fmtOptions = [(key: "groups_max_depth", value: "5") as FmtOption]
-
      let browseGroupsQuery = CIOBrowseGroupsQuery(
-        filters: CIOQueryFilters(groupFilter: groupId, facetFilters: nil),
+        groupId: "group_1",
         section: "Products",
-        fmtOptions: CIOQueryFmtOptions(fmtOptions)
+        groupsMaxDepth: 5
      )
-     
-     constructor.browseGroups(forQuery: browseGroupsQuery, completionHandler: { ... })
      ```
      */
-    public init(filters: CIOQueryFilters? = nil, section: String? = nil, fmtOptions: CIOQueryFmtOptions? = nil) {
-        
-        self.filters = filters
+    public init(groupId: String? = nil, section: String? = nil, groupsMaxDepth: Int? = nil) {
+        self.groupId = groupId
         self.section = section ?? Constants.BrowseGroupsQuery.defaultSectionName
-        self.fmtOptions = fmtOptions
+        self.groupsMaxDepth = groupsMaxDepth
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(groupFilter: self.filters?.groupFilter)
-        requestBuilder.set(facetFilters: self.filters?.facetFilters)
-        requestBuilder.set(fmtOptions: self.fmtOptions?.fmtOptions)
+        requestBuilder.set(groupFilter: groupId)
+        if let groupsMaxDepth = self.groupsMaxDepth {
+            let maxDepthFmtOption = ("groups_max_depth", String(groupsMaxDepth)) as FmtOption
+            requestBuilder.set(fmtOptions: [maxDepthFmtOption])
+        }
         requestBuilder.set(section: self.section)
     }
 }

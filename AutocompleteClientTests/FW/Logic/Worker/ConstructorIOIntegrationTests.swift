@@ -1138,8 +1138,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     
     func testBrowseGroups_WithSpecificGroupId() {
         let expectation = XCTestExpectation(description: "Request 200")
-        let groupIdFilter = CIOQueryFilters(groupFilter: "Styles", facetFilters: nil)
-        let query = CIOBrowseGroupsQuery(filters: groupIdFilter)
+        let query = CIOBrowseGroupsQuery(groupId: "Styles")
         
         self.constructor.config.segments = nil
         self.constructor.browseGroups(forQuery: query, completionHandler: { response in
@@ -1161,8 +1160,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     
     func testBrowseGroups_WithMaxDepth() {
         let expectation = XCTestExpectation(description: "Request 200")
-        let maxDepthFmtOption: FmtOption = ("groups_max_depth", "2")
-        let query = CIOBrowseGroupsQuery(fmtOptions: CIOQueryFmtOptions(fmtOptions: [maxDepthFmtOption]))
+        let query = CIOBrowseGroupsQuery(groupsMaxDepth: 2)
         
         self.constructor.config.segments = nil
         self.constructor.browseGroups(forQuery: query, completionHandler: { response in
