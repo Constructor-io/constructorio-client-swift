@@ -1,0 +1,53 @@
+{
+  "response": {
+    "facets": [
+      {
+        "display_name": "Brand",
+        "name": "brand",
+        "type": "multiple",
+        "options": [
+          {
+            "status": "",
+            "count": 2460,
+            "display_name": "Brand1",
+            "value": "brand1",
+            "data": null
+          },
+          {
+            "status": "",
+            "count": 662,
+            "display_name": "Brand2",
+            "value": "brand2",
+            "data": null
+          },
+          {
+            "status": "",
+            "count": 409,
+            "display_name": "Brand3",
+            "value": "brand3",
+            "data": null
+          }
+        ],
+        "hidden": false,
+        "data": {}
+      }
+    ]
+  },
+  "result_id": "8943b599-4d16-432a-ba28-cb9eb95e4625",
+  "request": {
+    "facet_name": "brand",
+    "fmt_options": {
+      "show_hidden_facets": true,
+      "groups_start": "current",
+      "groups_max_depth": 1,
+      "show_hidden_fields": false,
+      "show_protected_facets": false
+    },
+    "term": "",
+    "page": 1,
+    "num_results_per_page": 20,
+    "sort_by": "relevance",
+    "sort_order": "descending",
+    "section": "Products"
+  }
+}

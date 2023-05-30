@@ -11,6 +11,8 @@ import Foundation
 public typealias AutocompleteQueryCompletionHandler = (AutocompleteTaskResponse) -> Void
 public typealias SearchQueryCompletionHandler = (SearchTaskResponse) -> Void
 public typealias BrowseQueryCompletionHandler = (BrowseTaskResponse) -> Void
+public typealias BrowseFacetsQueryCompletionHandler = (BrowseFacetsTaskResponse) -> Void
+public typealias BrowseFacetOptionsQueryCompletionHandler = (BrowseFacetOptionsTaskResponse) -> Void
 public typealias RecommendationsQueryCompletionHandler = (RecommendationsTaskResponse) -> Void
 public typealias TrackingCompletionHandler = (TrackingTaskResponse) -> Void
 public typealias QuizQuestionQueryCompletionHandler = (QuizQuestionTaskResponse) -> Void
@@ -36,6 +38,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     var autocompleteParser: AbstractAutocompleteResponseParser = DependencyContainer.sharedInstance.autocompleteResponseParser()
     var searchParser: AbstractSearchResponseParser = DependencyContainer.sharedInstance.searchResponseParser()
     var browseParser: AbstractBrowseResponseParser = DependencyContainer.sharedInstance.browseResponseParser()
+    var browseFacetsParser: AbstractBrowseFacetsResponseParser = DependencyContainer.sharedInstance.browseFacetsResponseParser()
+    var browseFacetOptionsParser: AbstractBrowseFacetOptionsResponseParser = DependencyContainer.sharedInstance.browseFacetOptionsResponseParser()
     var recommendationsParser: AbstractRecommendationsResponseParser = DependencyContainer.sharedInstance.recommendationsResponseParser()
     var quizQuestionParser: AbstractQuizQuestionResponseParser = DependencyContainer.sharedInstance.quizQuestionResponseParser()
     var quizResultsParser: AbstractQuizResultsResponseParser = DependencyContainer.sharedInstance.quizResultsResponseParser()
@@ -174,7 +178,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: query)
         executeBrowse(request, completionHandler: completionHandler)
     }
-    
+
     /**
      Get browse groups results for a query.
 
@@ -189,7 +193,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         section: "Products",
         groupsMaxDepth: 5
      )
-     
+
      constructor.browseGroups(forQuery: browseGroupsQuery) { response in
          let data = response.data!
          let error = response.error!
@@ -199,6 +203,50 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func browseGroups(forQuery query: CIOBrowseGroupsQuery, completionHandler: @escaping BrowseQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeBrowse(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Get browse facets results for a query.
+
+     - Parameters:
+        - query: The query object, consisting of the query to browse facets for and additional options.
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     let browseFacetsQuery = CIOBrowseFacetsQuery(page: 1, perPage: 10, showHiddenFacets: true)
+
+     constructorIO.browseFacets(forQuery: browseFacetsQuery) { response in
+        let data = response.data!
+        let error = response.error!
+     }
+     ```
+     */
+    public func browseFacets(forQuery query: CIOBrowseFacetsQuery, completionHandler: @escaping BrowseFacetsQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeBrowseFacets(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Get browse facet options results for a query.
+
+     - Parameters:
+        - query: The query object, consisting of the query to browse facet options for and additional options.
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     let browseFacetOptionsQuery = CIOBrowseFacetOptionsQuery(facetNme: "price", showHiddenFacets: true)
+
+     constructorIO.browseFacetOptions(forQuery: browseFacetOptionsQuery) { response in
+        let data = response.data!
+        let error = response.error!
+     }
+     ```
+     */
+    public func browseFacetOptions(forQuery query: CIOBrowseFacetOptionsQuery, completionHandler: @escaping BrowseFacetOptionsQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeBrowseFacetOptions(request, completionHandler: completionHandler)
     }
 
     /**
@@ -708,6 +756,52 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
+    private func executeBrowseFacets(_ request: URLRequest, completionHandler: @escaping BrowseFacetsQueryCompletionHandler) {
+        let dispatchHandlerOnMainQueue = { response in
+            DispatchQueue.main.async {
+                completionHandler(response)
+            }
+        }
+
+        self.networkClient.execute(request) { response in
+            if let error = response.error {
+                dispatchHandlerOnMainQueue(BrowseFacetsTaskResponse(error: error))
+                return
+            }
+
+            let data = response.data!
+            do {
+                let parsedResponse = try self.parseBrowseFacets(data)
+                dispatchHandlerOnMainQueue(BrowseFacetsTaskResponse(data: parsedResponse))
+            } catch {
+                dispatchHandlerOnMainQueue(BrowseFacetsTaskResponse(error: error))
+            }
+        }
+    }
+    
+    private func executeBrowseFacetOptions(_ request: URLRequest, completionHandler: @escaping BrowseFacetOptionsQueryCompletionHandler) {
+        let dispatchHandlerOnMainQueue = { response in
+            DispatchQueue.main.async {
+                completionHandler(response)
+            }
+        }
+
+        self.networkClient.execute(request) { response in
+            if let error = response.error {
+                dispatchHandlerOnMainQueue(BrowseFacetOptionsTaskResponse(error: error))
+                return
+            }
+
+            let data = response.data!
+            do {
+                let parsedResponse = try self.parseBrowseFacetOptions(data)
+                dispatchHandlerOnMainQueue(BrowseFacetOptionsTaskResponse(data: parsedResponse))
+            } catch {
+                dispatchHandlerOnMainQueue(BrowseFacetOptionsTaskResponse(error: error))
+            }
+        }
+    }
+    
     private func executeRecommendations(_ request: URLRequest, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
@@ -805,6 +899,14 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     private func parseBrowse(_ browseResponseData: Data) throws -> CIOBrowseResponse {
         return try self.browseParser.parse(browseResponseData: browseResponseData)
+    }
+    
+    private func parseBrowseFacets(_ browseFacetsResponseData: Data) throws -> CIOBrowseFacetsResponse {
+        return try self.browseFacetsParser.parse(browseFacetsResponseData: browseFacetsResponseData)
+    }
+    
+    private func parseBrowseFacetOptions(_ browseFacetOptionsResponseData: Data) throws -> CIOBrowseFacetOptionsResponse {
+        return try self.browseFacetOptionsParser.parse(browseFacetOptionsResponseData: browseFacetOptionsResponseData)
     }
 
     private func parseRecommendations(_ recommendationsResponseData: Data) throws -> CIORecommendationsResponse {

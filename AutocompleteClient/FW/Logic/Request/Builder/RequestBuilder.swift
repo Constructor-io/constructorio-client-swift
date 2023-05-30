@@ -69,7 +69,11 @@ class RequestBuilder {
     final func getRequest() -> URLRequest {
         // TODO: Do not force unwrap trackData here;
         let urlString = self.trackData!.url(with: self.baseURL)
-        let ignoreDtPaths = [String(format: Constants.BrowseGroupsQuery.format, "")];
+        let ignoreDtPaths = [
+            String(format: Constants.BrowseGroupsQuery.format, ""), 
+            String(format: Constants.BrowseFacetsQuery.format, ""), 
+            String(format: Constants.BrowseFacetOptionsQuery.format, "")
+        ];
 
         var urlComponents = URLComponents(string: urlString)!
 

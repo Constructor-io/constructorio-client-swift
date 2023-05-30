@@ -124,6 +124,30 @@ struct Constants {
         static let format = "%@/browse/groups"
         static let defaultSectionName = "Products"
     }
+    
+    struct BrowseFacetsQuery {
+        static let format = "%@/browse/facets"
+        static let page = "page"
+        static let perPage = "num_results_per_page"
+        static let offset = "offset"
+        static let showHiddenFacets = "fmt_options[show_hidden_facets]"
+        static let section = "section"
+        static let defaultSectionName = "Products"
+        static let defaultPage = 1
+        static let defaultPerPage = 20
+        static let defaultShowHiddenFacets = false
+        static let defaultOffset = 0
+    }
+
+    struct BrowseFacetOptionsQuery {
+        static let format = "%@/browse/facet_options"
+        static let facetName = "facet_name"
+        static let showHiddenFacets = "fmt_options[show_hidden_facets]"
+        static let section = "section"
+        static let defaultSectionName = "Products"
+        static let defaultPage = 1
+        static let defaultShowHiddenFacets = false
+    }
 
     struct RecommendationsQuery {
         static let format = "%@/recommendations/v1/pods/%@"

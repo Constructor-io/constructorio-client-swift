@@ -16,6 +16,8 @@ struct TestResource {
         static let numberOfSectionsInMultipleSectionsResponse = 2
 
         static let searchJSONFilename = "response_search_json"
+        static let browseFacetsJSONFilename = "response_browse_facets_json"
+        static let browseFacetOptionsJSONFilename = "response_browse_facet_options_json"
         static let searchJSONRedirectFile = "response_search_redirect"
         static let numberOfFacetsInSearchResponse = 2
         static let numberOfFacetsOptionsInSearchResponseResult1 = 43

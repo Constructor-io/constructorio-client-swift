@@ -29,7 +29,15 @@ class DependencyContainer {
     var browseResponseParser: () -> AbstractBrowseResponseParser = {
         return BrowseResponseParser()
     }
+    
+    var browseFacetsResponseParser: () -> AbstractBrowseFacetsResponseParser = {
+        return BrowseFacetsResponseParser()
+    }
 
+    var browseFacetOptionsResponseParser: () -> AbstractBrowseFacetOptionsResponseParser = {
+        return BrowseFacetOptionsResponseParser()
+    }
+    
     var recommendationsResponseParser: () -> AbstractRecommendationsResponseParser = {
         return RecommendationsResponseParser()
     }

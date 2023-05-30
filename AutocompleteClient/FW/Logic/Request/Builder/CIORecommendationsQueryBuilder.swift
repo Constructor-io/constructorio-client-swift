@@ -44,7 +44,7 @@ public class CIORecommendationsQueryBuilder {
     var section: String?
 
     /**
-     Creata a Recommendations request query builder
+     Create a Recommendations request query builder
      
      - Parameters:
         - podID: The pod ID

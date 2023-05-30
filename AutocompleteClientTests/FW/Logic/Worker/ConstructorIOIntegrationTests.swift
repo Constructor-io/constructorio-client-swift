@@ -1178,7 +1178,100 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let grandchildGroup = childGroup?.children[0]
             XCTAssertNotNil(grandchildGroup?.children)
             XCTAssertTrue(grandchildGroup?.children.isEmpty ?? false)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 
+
+    func testBrowseFacets() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseFacetsQuery()
+        constructorClient.browseFacets(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(response.data?.facets)
+            XCTAssertTrue(!(response.data?.facets.isEmpty)!)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseFacets_WithShowHiddenFacets() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseFacetsQuery(showHiddenFacets: true)
+        constructorClient.browseFacets(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(response.data?.facets)
+            XCTAssertTrue(!(response.data?.facets.isEmpty)!)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseFacets_WithPageAndPerPage() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseFacetsQuery(page: 100, perPage: 10)
+        constructorClient.browseFacets(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(response.data?.facets)
+            XCTAssertTrue(((response.data?.facets.isEmpty) != nil))
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseFacets_WithOffset() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseFacetsQuery(offset: 100)
+        constructorClient.browseFacets(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(response.data?.facets)
+            XCTAssertTrue(((response.data?.facets.isEmpty) != nil))
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseFacetOptions() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseFacetOptionsQuery(facetName: "Color")
+        constructorClient.browseFacetOptions(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(response.data?.facets)
+            XCTAssertNotNil(response.data?.facets[0].options)
+            XCTAssertTrue(!(response.data?.facets.isEmpty)!)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseFacetOptions_WithShowHiddenFacets() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseFacetOptionsQuery(facetName: "Brand", showHiddenFacets: true)
+        constructorClient.browseFacetOptions(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(response.data?.facets)
+            XCTAssertNotNil(response.data?.facets[0].options)
+            XCTAssertTrue(!(response.data?.facets.isEmpty)!)
             expectation.fulfill()
         })
         self.wait(for: expectation)
