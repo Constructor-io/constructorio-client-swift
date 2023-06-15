@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CIOBrowseFacetOptionsQuery Structure Reference</title>
+    <title>CIOBrowseGroupsQuery Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/CIOBrowseFacetOptionsQuery" class="dashAnchor"></a>
-    <a title="CIOBrowseFacetOptionsQuery Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/CIOBrowseGroupsQuery" class="dashAnchor"></a>
+    <a title="CIOBrowseGroupsQuery Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">ConstructorAutocomplete 2.8.1 Docs</a> (94% documented)</p>
@@ -29,7 +29,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">ConstructorAutocomplete Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        CIOBrowseFacetOptionsQuery Structure Reference
+        CIOBrowseGroupsQuery Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -219,15 +219,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CIOBrowseFacetOptionsQuery</h1>
+            <h1>CIOBrowseGroupsQuery</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CIOBrowseFacetOptionsQuery</span> <span class="p">:</span> <span class="kt">CIORequestData</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CIOBrowseGroupsQuery</span> <span class="p">:</span> <span class="kt">CIORequestData</span></code></pre>
 
                 </div>
               </div>
-            <p>Struct encapsulating the necessary and additional parameters required to execute a browse facet options query.</p>
+            <p>Struct encapsulating the necessary and additional parameters required to execute a browse groups query.</p>
 
           </section>
           <section class="section task-group-section">
@@ -236,9 +236,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete26CIOBrowseFacetOptionsQueryV9facetNameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/facetName" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseFacetOptionsQueryV9facetNameSSvp">facetName</a>
+                    <a name="/s:23ConstructorAutocomplete20CIOBrowseGroupsQueryV7groupIdSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/groupId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete20CIOBrowseGroupsQueryV7groupIdSSSgvp">groupId</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -246,14 +246,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Name of the facet whose options to return</p>
+                        <p>The id of the specific group that should be included in the response</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">facetName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">groupId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -263,9 +263,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete26CIOBrowseFacetOptionsQueryV16showHiddenFacetsSbSgvp"></a>
-                    <a name="//apple_ref/swift/Property/showHiddenFacets" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseFacetOptionsQueryV16showHiddenFacetsSbSgvp">showHiddenFacets</a>
+                    <a name="/s:23ConstructorAutocomplete20CIOBrowseGroupsQueryV7sectionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/section" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete20CIOBrowseGroupsQueryV7sectionSSvp">section</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -273,14 +273,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Whether or not to return hidden facets</p>
+                        <p>The section to return results from</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">showHiddenFacets</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -290,9 +290,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete26CIOBrowseFacetOptionsQueryV9facetName16showHiddenFacetsACSS_SbSgtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(facetName:showHiddenFacets:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete26CIOBrowseFacetOptionsQueryV9facetName16showHiddenFacetsACSS_SbSgtcfc">init(facetName:<wbr>showHiddenFacets:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete20CIOBrowseGroupsQueryV14groupsMaxDepthSiSgvp"></a>
+                    <a name="//apple_ref/swift/Property/groupsMaxDepth" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete20CIOBrowseGroupsQueryV14groupsMaxDepthSiSgvp">groupsMaxDepth</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -300,9 +300,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Create a Browse facet options request query object</p>
+                        <p>The maximum depth of the hierarchy, in case of hierarchical groups, that should be included in the response</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">groupsMaxDepth</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete20CIOBrowseGroupsQueryV7groupId7section14groupsMaxDepthACSSSg_AGSiSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(groupId:section:groupsMaxDepth:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete20CIOBrowseGroupsQueryV7groupId7section14groupsMaxDepthACSSSg_AGSiSgtcfc">init(groupId:<wbr>section:<wbr>groupsMaxDepth:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a Browse Groups request query object</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">browseFacetsQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseFacetOptionsQuery</span><span class="p">(</span><span class="nv">facetName</span><span class="p">:</span> <span class="s">"price"</span><span class="p">,</span> <span class="nv">showHiddenFacets</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">browseGroupsQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseGroupsQuery</span><span class="p">(</span>
+   <span class="nv">groupId</span><span class="p">:</span> <span class="s">"group_1"</span><span class="p">,</span>
+   <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span>
+   <span class="nv">groupsMaxDepth</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -310,7 +341,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">facetName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">showHiddenFacets</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">groupId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">groupsMaxDepth</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -321,24 +352,36 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>facetName</em>
+                                <em>groupId</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Name of the facet whose options to return</p>
+                                  <p>The id of the specific group that should be included in the response</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>showHiddenFacets</em>
+                                <em>section</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Whether or not to return hidden facets</p>
+                                  <p>The section to return results from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>groupsMaxDepth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The maximum depth of the hierarchy, in case of hierarchical groups, that should be included in the response</p>
                                 </div>
                               </td>
                             </tr>
