@@ -178,7 +178,33 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: query)
         executeBrowse(request, completionHandler: completionHandler)
     }
-    
+
+    /**
+     Get browse groups results for a query.
+
+     - Parameters:
+        - query: The query object, consisting of the query to browse groups for and additional options.
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     let browseGroupsQuery = CIOBrowseGroupsQuery(
+        groupId: "group_1",
+        section: "Products",
+        groupsMaxDepth: 5
+     )
+
+     constructor.browseGroups(forQuery: browseGroupsQuery) { response in
+         let data = response.data!
+         let error = response.error!
+     }
+     ```
+     */
+    public func browseGroups(forQuery query: CIOBrowseGroupsQuery, completionHandler: @escaping BrowseQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeBrowse(request, completionHandler: completionHandler)
+    }
+
     /**
      Get browse facets results for a query.
 
@@ -189,7 +215,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ### Usage Example: ###
      ```
      let browseFacetsQuery = CIOBrowseFacetsQuery(page: 1, perPage: 10, showHiddenFacets: true)
-     
+
      constructorIO.browseFacets(forQuery: browseFacetsQuery) { response in
         let data = response.data!
         let error = response.error!
@@ -211,7 +237,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ### Usage Example: ###
      ```
      let browseFacetOptionsQuery = CIOBrowseFacetOptionsQuery(facetNme: "price", showHiddenFacets: true)
-     
+
      constructorIO.browseFacetOptions(forQuery: browseFacetOptionsQuery) { response in
         let data = response.data!
         let error = response.error!

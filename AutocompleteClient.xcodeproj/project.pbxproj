@@ -76,6 +76,9 @@
 		7DDA7D9328DCF513004C8AC8 /* AbstractQuizQuestionResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D9228DCF513004C8AC8 /* AbstractQuizQuestionResponseParser.swift */; };
 		7DDA7D9528DCF5B7004C8AC8 /* QuizQuestionResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D9428DCF5B7004C8AC8 /* QuizQuestionResponseParser.swift */; };
 		7DDA7D9728DCFDC4004C8AC8 /* QuizzesQueryRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA7D9628DCFDC4004C8AC8 /* QuizzesQueryRequestBuilderTests.swift */; };
+		8A5572812A1429930041DB65 /* CIOBrowseGroupsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5572802A1429930041DB65 /* CIOBrowseGroupsQuery.swift */; };
+		8A5572832A1433350041DB65 /* CIOBrowseGroupsQueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5572822A1433350041DB65 /* CIOBrowseGroupsQueryBuilder.swift */; };
+		8A5572852A143E840041DB65 /* ConstructorIOBrowseGroupsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5572842A143E840041DB65 /* ConstructorIOBrowseGroupsTests.swift */; };
 		8D0308702A1ED67C0084AB85 /* CIOBrowseFacetOptionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D03086F2A1ED67C0084AB85 /* CIOBrowseFacetOptionsResponse.swift */; };
 		8D0308722A1ED6FC0084AB85 /* CIOBrowseFacetOptionsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0308712A1ED6FC0084AB85 /* CIOBrowseFacetOptionsQuery.swift */; };
 		8D0308742A1ED8AF0084AB85 /* AbstractBrowseFacetOptionsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0308732A1ED8AF0084AB85 /* AbstractBrowseFacetOptionsResponseParser.swift */; };
@@ -426,6 +429,9 @@
 		7DDA7D9228DCF513004C8AC8 /* AbstractQuizQuestionResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractQuizQuestionResponseParser.swift; sourceTree = "<group>"; };
 		7DDA7D9428DCF5B7004C8AC8 /* QuizQuestionResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionResponseParser.swift; sourceTree = "<group>"; };
 		7DDA7D9628DCFDC4004C8AC8 /* QuizzesQueryRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesQueryRequestBuilderTests.swift; sourceTree = "<group>"; };
+		8A5572802A1429930041DB65 /* CIOBrowseGroupsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseGroupsQuery.swift; sourceTree = "<group>"; };
+		8A5572822A1433350041DB65 /* CIOBrowseGroupsQueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseGroupsQueryBuilder.swift; sourceTree = "<group>"; };
+		8A5572842A143E840041DB65 /* ConstructorIOBrowseGroupsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOBrowseGroupsTests.swift; sourceTree = "<group>"; };
 		8D03086F2A1ED67C0084AB85 /* CIOBrowseFacetOptionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseFacetOptionsResponse.swift; sourceTree = "<group>"; };
 		8D0308712A1ED6FC0084AB85 /* CIOBrowseFacetOptionsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOBrowseFacetOptionsQuery.swift; sourceTree = "<group>"; };
 		8D0308732A1ED8AF0084AB85 /* AbstractBrowseFacetOptionsResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractBrowseFacetOptionsResponseParser.swift; sourceTree = "<group>"; };
@@ -856,6 +862,8 @@
 				F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */,
 				7D45383928DC085600490BFE /* CIOQuizQuery.swift */,
 				BF02E29E28B5739C0062B44F /* CIOItem.swift */,
+				8D4F1ACD29357FA000803327 /* CIOBrowseItemsQuery.swift */,
+				8A5572802A1429930041DB65 /* CIOBrowseGroupsQuery.swift */,
 				8DCA83DC2A1BD82F00CD2110 /* CIOBrowseFacetsQuery.swift */,
 				8D0308712A1ED6FC0084AB85 /* CIOBrowseFacetOptionsQuery.swift */,
 			);
@@ -962,6 +970,8 @@
 				087F4BDC228B100E0058B467 /* ConstructorIOTrackPurchaseTests.swift */,
 				F6D86B13216BAD7F00077388 /* ConstructorIOSearchTests.swift */,
 				0885D849257195620038AE96 /* ConstructorIOBrowseTests.swift */,
+				8D815F852935997D001E3DAE /* ConstructorIOBrowseItemsTests.swift */,
+				8A5572842A143E840041DB65 /* ConstructorIOBrowseGroupsTests.swift */,
 				F64E94E8212DC93300E50EDE /* ConstructorIOAutocompleteTests.swift */,
 				F63808FE1F5D6C1000C3B322 /* ConstructorIOTests.swift */,
 				0874A32D216BCE2700812CDC /* ConstructorIOABTestCellTests.swift */,
@@ -971,7 +981,6 @@
 				BFC9504225DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift */,
 				BFE1C72C2602CF0E0017B4A0 /* ConstructorIOUserSegmentsTests.swift */,
 				8D815F8B29413B31001E3DAE /* ConstructorIOTrackItemDetailLoadTests.swift */,
-				8D815F852935997D001E3DAE /* ConstructorIOBrowseItemsTests.swift */,
 				7D54FF7F28E3B92000A584E3 /* ConstructorIOQuizTests.swift */,
 				BFBB2BAF29231E2700C458FF /* ConstructorIOQuizIntegrationTests.swift */,
 				8DCA83E62A1C010100CD2110 /* ConstructorIOBrowseFacetsTests.swift */,
@@ -991,6 +1000,7 @@
 				BF380F1927E2787C005E01F5 /* CIORecommendationsQueryBuilder.swift */,
 				BF380F1B27E28115005E01F5 /* CIOAutocompleteQueryBuilder.swift */,
 				8D815F83293598B4001E3DAE /* CIOBrowseItemsQueryBuilder.swift */,
+				8A5572822A1433350041DB65 /* CIOBrowseGroupsQueryBuilder.swift */,
 				8DCA83DE2A1BE29B00CD2110 /* CIOBrowseFacetsQueryBuilder.swift */,
 				8D0308792A1EDA5C0084AB85 /* CIOBrowseFacetOptionsQueryBuilder.swift */,
 			);
@@ -2390,6 +2400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6EC29AD2175EF1700DCFA07 /* Session.swift in Sources */,
+				8A5572832A1433350041DB65 /* CIOBrowseGroupsQueryBuilder.swift in Sources */,
 				8DF2172F2888B56D006384A5 /* CIOResultSourceData.swift in Sources */,
 				F672F6BA20ABE9EC00EA1525 /* CIOTrackConversionData.swift in Sources */,
 				BF380F1C27E28115005E01F5 /* CIOAutocompleteQueryBuilder.swift in Sources */,
@@ -2511,6 +2522,7 @@
 				0885D83925717EFF0038AE96 /* CIOBrowseResponse.swift in Sources */,
 				0855BA4A25B00D5F00CC35F9 /* TrackingTaskResponse.swift in Sources */,
 				BF380F1A27E2787C005E01F5 /* CIORecommendationsQueryBuilder.swift in Sources */,
+				8A5572812A1429930041DB65 /* CIOBrowseGroupsQuery.swift in Sources */,
 				088F7D27210FA43C005B9FB4 /* CurrentTimeDateProvider.swift in Sources */,
 				F65BBCC22151621A007FEB22 /* IDGenerator.swift in Sources */,
 				F6B462821F6BACE80082C20B /* ResponseParserDelegate.swift in Sources */,
@@ -2620,6 +2632,7 @@
 				F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */,
 				F6852556213BCE9E00A27FAA /* MockCommons.swift in Sources */,
 				0855BA4E25B010CC00CC35F9 /* ConstructorIOIntegrationTests.swift in Sources */,
+				8A5572852A143E840041DB65 /* ConstructorIOBrowseGroupsTests.swift in Sources */,
 				7D54FF8028E3B92000A584E3 /* ConstructorIOQuizTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

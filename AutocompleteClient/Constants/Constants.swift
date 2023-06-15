@@ -58,6 +58,7 @@ struct Constants {
         static let baseQuizURLString = "https://quizzes.cnstrc.com"
         static let httpMethod = "GET"
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
+        static let section = "section"
     }
 
     struct ClientID {
@@ -117,6 +118,11 @@ struct Constants {
         static let defaultSectionName = "Products"
         static let defaultPage = 1
         static let defaultPerPage = 30
+    }
+    
+    struct BrowseGroupsQuery {
+        static let format = "%@/browse/groups"
+        static let defaultSectionName = "Products"
     }
     
     struct BrowseFacetsQuery {

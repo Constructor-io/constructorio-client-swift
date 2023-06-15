@@ -37,6 +37,11 @@ public class CIOFilterGroup: NSObject {
      List of parent groups that it belongs to
      */
     public let parents: [CIOFilterGroup]
+    
+    /**
+     JSON object with custom metadata attached with the item group.
+     */
+    public let data: JSONObject?
 
     /**
      Create a filter group object
@@ -54,11 +59,13 @@ public class CIOFilterGroup: NSObject {
         let children: [CIOFilterGroup] = childrenObj?.compactMap { obj in return CIOFilterGroup(json: obj) } ?? []
         let parents: [CIOFilterGroup] = parentObj?.compactMap { obj in return CIOFilterGroup(json: obj) } ?? []
         let count = json["count"] as? Int
+        let data = json["data"] as? JSONObject
 
         self.displayName = name
         self.groupID = groupID
         self.count = count
         self.children = children
         self.parents = parents
+        self.data = data
     }
 }

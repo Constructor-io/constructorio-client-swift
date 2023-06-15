@@ -69,7 +69,11 @@ class RequestBuilder {
     final func getRequest() -> URLRequest {
         // TODO: Do not force unwrap trackData here;
         let urlString = self.trackData!.url(with: self.baseURL)
-        let ignoreDtPaths = [String(format: Constants.BrowseFacetsQuery.format, ""), String(format: Constants.BrowseFacetOptionsQuery.format, "")];
+        let ignoreDtPaths = [
+            String(format: Constants.BrowseGroupsQuery.format, ""), 
+            String(format: Constants.BrowseFacetsQuery.format, ""), 
+            String(format: Constants.BrowseFacetOptionsQuery.format, "")
+        ];
 
         var urlComponents = URLComponents(string: urlString)!
 
@@ -84,7 +88,7 @@ class RequestBuilder {
         if (!ignoreDtPaths.contains { urlString.contains($0) }) {
             self.addDateQueryItem(queryItems: &allQueryItems)
         }
-
+        
         // attach `action` if necessary from base url
         if urlComponents.queryItems != nil {
             allQueryItems.add((urlComponents.queryItems?.first)!)
