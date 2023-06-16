@@ -657,7 +657,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     private func attachABTestCells(requestBuilder: RequestBuilder) {
         self.config.testCells?.forEach({ [unowned requestBuilder] cell in
-            requestBuilder.set(testCellKey: cell.key, testCellValue: cell.value)
+            if (!cell.key.isEmpty) {
+                requestBuilder.set(testCellKey: cell.key, testCellValue: cell.value)
+            }
         })
     }
 
