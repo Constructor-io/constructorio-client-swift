@@ -1,5 +1,5 @@
 # .slather.yml
 
-scheme: AutocompleteClient
+scheme: ConstructorAutocomplete
 workspace: AutocompleteClient.xcworkspace
 xcodeproj:  AutocompleteClient.xcodeproj
