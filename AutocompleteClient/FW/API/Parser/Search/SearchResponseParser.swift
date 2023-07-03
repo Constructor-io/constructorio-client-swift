@@ -32,6 +32,10 @@ class SearchResponseParser: AbstractSearchResponseParser {
             let resultID = json?["result_id"] as? String ?? ""
             let resultSources: CIOResultSources? = CIOResultSources(json: response["result_sources"] as? JSONObject)
             let refinedContent: [CIORefinedContent] = refinedContentObj?.compactMap({ obj in return CIORefinedContent(json: obj) }) ?? []
+            
+            guard let request: JSONObject = json?["request"] as? JSONObject else {
+                throw CIOError(errorType: .invalidResponse)
+            }
 
             return CIOSearchResponse(
                 facets: facets,
@@ -42,7 +46,8 @@ class SearchResponseParser: AbstractSearchResponseParser {
                 totalNumResults: totalNumResults,
                 resultID: resultID,
                 resultSources: resultSources,
-                refinedContent: refinedContent
+                refinedContent: refinedContent,
+                request: request
             )
         } catch {
             throw CIOError(errorType: .invalidResponse)
