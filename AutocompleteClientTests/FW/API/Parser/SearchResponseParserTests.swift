@@ -172,4 +172,30 @@ class SearchResponseParserTests: XCTestCase {
             XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
         }
     }
+    
+    func testSearchParser_parsingRequestObjectAsJson_hasRelevantFields() {
+        let data = TestResource.load(name: TestResource.Response.searchJSONFilename)
+        do {
+            let response = try self.parser.parse(searchResponseData: data)
+            let requestJson = response.request
+            
+            let fmtOptions = requestJson["fmt_options"] as? JSONObject
+            let groupsMaxDepth = fmtOptions?["groups_max_depth"]
+            let groupsStart = fmtOptions?["groups_start"]
+
+            XCTAssertNotNil(fmtOptions, "Valid fmtOptions should be correctly parsed")
+            XCTAssertEqual(groupsMaxDepth as? Int, Optional(1), "Valid groupsMaxDepth should be correctly parsed")
+            XCTAssertEqual(groupsStart as? String, "current", "Valid groupsStart should be correctly parsed")
+            XCTAssertEqual(requestJson["num_results_per_page"] as? Int, Optional(24), "Valid numResults should be correctly parsed")
+            XCTAssertEqual(requestJson["page"] as? Int, Optional(1), "Valid page should be correctly parsed")
+            XCTAssertEqual(requestJson["section"] as? String, "Products", "Valid section should be correctly parsed")
+            XCTAssertEqual(requestJson["sort_by"] as? String, "relevance", "Valid sortBy should be correctly parsed")
+            XCTAssertEqual(requestJson["sort_order"] as? String, "descending", "Valid sortOrder should be correctly parsed")
+            XCTAssertEqual(requestJson["term"] as? String, "banana", "Valid term should be correctly parsed")
+            XCTAssertEqual(requestJson["us"] as? [String], ["COUNTRY_US"], "Valid userSegment should be correctly parsed")
+
+        } catch {
+            XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
+        }
+    }
 }

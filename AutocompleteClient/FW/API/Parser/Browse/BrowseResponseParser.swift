@@ -31,6 +31,10 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
             let collection: CIOCollectionData? = CIOCollectionData(json: response["collection"] as? JSONObject)
             let resultID = json?["result_id"] as? String ?? ""
             let resultSources: CIOResultSources? = CIOResultSources(json: response["result_sources"] as? JSONObject)
+            
+            guard let request: JSONObject = json?["request"] as? JSONObject else {
+                throw CIOError(errorType: .invalidResponse)
+            }
 
             return CIOBrowseResponse(
                 facets: facets,
@@ -40,7 +44,8 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
                 totalNumResults: totalNumResults,
                 resultID: resultID,
                 collection: collection,
-                resultSources: resultSources
+                resultSources: resultSources,
+                request: request
             )
         } catch {
             throw CIOError(errorType: .invalidResponse)

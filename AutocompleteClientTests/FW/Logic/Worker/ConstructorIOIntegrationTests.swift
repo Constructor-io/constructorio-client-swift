@@ -432,6 +432,9 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let responseData = response.data!
             let results = responseData.results
             XCTAssertFalse(results.isEmpty)
+            
+            let request = responseData.request
+            XCTAssertNotNil(request)
 
             expectation.fulfill()
         })
@@ -705,6 +708,9 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let responseData = response.data!
             let results = responseData.results
             XCTAssertFalse(results.isEmpty)
+            
+            let request = responseData.request
+            XCTAssertNotNil(request)
 
             expectation.fulfill()
         })
