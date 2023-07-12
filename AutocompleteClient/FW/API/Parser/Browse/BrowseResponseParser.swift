@@ -22,6 +22,7 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
             let resultsObj: [JSONObject]? = response["results"] as? [JSONObject]
             let sortOptionsObj: [JSONObject]? = response["sort_options"] as? [JSONObject]
             let groupsObj = response["groups"] as? [JSONObject]
+            let refinedContentObj = response["refined_content"] as? [JSONObject]
 
             let facets: [CIOFilterFacet] = (facetsObj)?.compactMap { obj in return CIOFilterFacet(json: obj) } ?? []
             let results: [CIOResult] = (resultsObj)?.compactMap { obj in return CIOResult(json: obj) } ?? []
@@ -31,6 +32,7 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
             let collection: CIOCollectionData? = CIOCollectionData(json: response["collection"] as? JSONObject)
             let resultID = json?["result_id"] as? String ?? ""
             let resultSources: CIOResultSources? = CIOResultSources(json: response["result_sources"] as? JSONObject)
+            let refinedContent: [CIORefinedContent] = refinedContentObj?.compactMap({ obj in return CIORefinedContent(json: obj) }) ?? []
             
             guard let request: JSONObject = json?["request"] as? JSONObject else {
                 throw CIOError(errorType: .invalidResponse)
@@ -44,6 +46,7 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
                 totalNumResults: totalNumResults,
                 resultID: resultID,
                 collection: collection,
+                refinedContent: refinedContent,
                 resultSources: resultSources,
                 request: request
             )

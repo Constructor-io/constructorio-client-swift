@@ -48,6 +48,11 @@ public struct CIOBrowseResponse {
     public let collection: CIOCollectionData?
 
     /**
+     A list of refined content
+     */
+    public let refinedContent: [CIORefinedContent]
+
+    /**
      Sources of the result set
      */
     public let resultSources: CIOResultSources?
