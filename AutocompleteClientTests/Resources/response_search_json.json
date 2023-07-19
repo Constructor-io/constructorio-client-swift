@@ -16,6 +16,10 @@
         "facets": [{
             "display_name": "Brand",
             "name": "Brand",
+            "data": {
+                "url": "example.com"
+            },
+            "hidden": true,
             "options": [{
                 "count": 7,
                 "data": {},

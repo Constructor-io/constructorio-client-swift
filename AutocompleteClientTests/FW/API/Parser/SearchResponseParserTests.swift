@@ -60,6 +60,7 @@ class SearchResponseParserTests: XCTestCase {
         }
     }
 
+
     func testSearchParser_ParsingJSONString_HasCorrectFacetOptionsCount() {
         let data = TestResource.load(name: TestResource.Response.searchJSONFilename)
         do {
@@ -196,6 +197,21 @@ class SearchResponseParserTests: XCTestCase {
 
         } catch {
             XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
+    func testSearchParser_ParsingJSONString_ParsingValidFacetFields() {
+        let data = TestResource.load(name: TestResource.Response.searchJSONFilename)
+        do {
+            let response = try self.parser.parse(searchResponseData: data)
+            let facetData = response.facets.first?.data as? JSONObject
+
+            XCTAssertNotNil(facetData, "Valid data object should be correctly parsed")
+            XCTAssertEqual(facetData?["url"] as? String, "example.com", "Valid data url value should be correctly parsed")
+
+            XCTAssertEqual(response.facets.first?.hidden, true , "Valid hidden value should be correctly parsed")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
     }
 }
