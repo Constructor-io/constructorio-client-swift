@@ -41,6 +41,17 @@ public struct CIOFilterFacet {
      The type of the facet (i.e. range or multiple)
      */
     public let type: String
+
+    /**
+     Whether the facet is hidden or not  (i.e. true or false)
+     */
+    public let hidden: Bool
+
+    /**
+     Additional metadata for the facet option
+     */
+    public let data: [String: Any]
+
 }
 
 public extension CIOFilterFacet {
@@ -54,7 +65,9 @@ public extension CIOFilterFacet {
         guard let displayName = json["display_name"] as? String else { return nil }
         guard let name = json["name"] as? String else { return nil }
         guard let type = json["type"] as? String else { return nil }
+        guard let hidden = json["hidden"] as? Bool else { return nil }
 
+        let data = json["data"] as? [String: Any] ?? [:]
         let min = json["min"] as? Int
         let max = json["max"] as? Int
         let optionsObj = json["options"] as? [JSONObject]
@@ -67,5 +80,7 @@ public extension CIOFilterFacet {
         self.max = (max != nil) ? max! : 0
         self.options = options
         self.type = type
+        self.hidden = hidden
+        self.data = data
     }
 }
