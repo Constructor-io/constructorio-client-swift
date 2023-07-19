@@ -60,7 +60,6 @@ class SearchResponseParserTests: XCTestCase {
         }
     }
 
-
     func testSearchParser_ParsingJSONString_HasCorrectFacetOptionsCount() {
         let data = TestResource.load(name: TestResource.Response.searchJSONFilename)
         do {
