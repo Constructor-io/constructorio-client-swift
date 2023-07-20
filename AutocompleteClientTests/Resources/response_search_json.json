@@ -283,6 +283,7 @@
         }, {
             "display_name": "Claims",
             "name": "Claims",
+            "hidden": false,
             "options": [{
                 "count": 44,
                 "data": {},
