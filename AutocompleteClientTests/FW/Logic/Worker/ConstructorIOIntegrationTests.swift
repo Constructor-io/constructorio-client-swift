@@ -697,6 +697,26 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testSearch_ShouldReturnFacetsData() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOSearchQuery(query: "item")
+        constructorClient.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let facet = responseData.facets.first
+            let facetData = facet?.data
+            let facetHidden = facet?.hidden
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(facetData)
+            XCTAssertEqual(facetHidden, false)
+            XCTAssertEqual(facetData?["cheese"] as? String, "pizza")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 
     func testBrowse() {
         let expectation = XCTestExpectation(description: "Request 204")
@@ -1027,6 +1047,26 @@ class ConstructorIOIntegrationTests: XCTestCase {
             XCTAssertFalse(groups[0].children[0].parents.isEmpty)
             XCTAssertFalse(groups[0].children.isEmpty)
             XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testBrowse_ShouldReturnFacetsData() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        let query = CIOBrowseItemsQuery(ids: itemIds)
+        constructorClient.browseItems(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let facet = responseData.facets.first
+            let facetData = facet?.data
+            let facetHidden = facet?.hidden
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(facetData)
+            XCTAssertEqual(facetHidden, false)
+            XCTAssertEqual(facetData?["cheese"] as? String, "pizza")
             expectation.fulfill()
         })
         self.wait(for: expectation)
