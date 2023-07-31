@@ -64,7 +64,23 @@ let constructorIO = ConstructorIO(config: config)
 constructorIO.userID = "abcdefghijk-123"
 ```
 
-## 4. Request Autocomplete Results
+## 4. Retrieving the clientID and sessionID
+If you are retrieving results from your backend servers instead of direclty using our SDK, there are certain personalization parameters that are needed to be passed along with your requests. And those parameters can be accessed from the Constructor instance.
+
+1. **Client Id**
+
+```swift
+let constructorClientId = constructorIO.clientID
+```
+2. **Session Id**
+
+```swift
+let constructorSessionId = constructorIO.sessionID
+```
+
+In most cases, you will want to store those parameters as cookies preferably as **ConstructorioID_client_id** and **ConstructorioID_session_id** to be sent with your requests to your backend servers.
+
+## 5. Request Autocomplete Results
 
 ```swift
 let query = CIOAutocompleteQuery(query: "apple", numResultsForSection: ["Products": 6, "Search Suggestions": 8])
@@ -76,7 +92,7 @@ constructorIO.autocomplete(forQuery: query) { (response) in
 }
 ```
 
-## 5. Request Search Results
+## 6. Request Search Results
 
 ```swift
 let filters = CIOQueryFilters(groupFilter: "Bread", facetFilters: [
@@ -96,7 +112,7 @@ constructorIO.search(forQuery: query, filters: filters, groupsSortOption: groups
 }
 ```
 
-## 6. Request Browse Results
+## 7. Request Browse Results
 
 ```swift
 let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet")
@@ -111,7 +127,7 @@ constructorIO.browse(forQuery: query, groupsSortOption: groupsSortOption) { (res
 }
 ```
 
-## 7. Request Recommendation Results
+## 8. Request Recommendation Results
 
 ```swift
 let query = CIORecommendationsQuery(podId: "pdp_best_sellers", filters: filters)
@@ -151,7 +167,7 @@ constructorIO.recommendations(forQuery: query) { (response) in
 }
 ```
 
-## 8. Request Quiz Next Question
+## 9. Request Quiz Next Question
 
 ```swift
 let query = CIOQuizQuery(quizId: "quiz-1", answers: [["1"], ["2"]])
@@ -163,7 +179,7 @@ constructorIO.getQuizNextQuestion(forQuery: query) { (response) in
 }
 ```
 
-## 9. Request Quiz Results
+## 10. Request Quiz Results
 
 ```swift
 let query = CIOQuizQuery(quizId: "quiz-1", answers: [["1"], ["2"]])
@@ -175,7 +191,7 @@ constructorIO.getQuizResults(forQuery: query) { (response) in
 }
 ```
 
-## 10. Instrument Behavioral Events
+## 11. Instrument Behavioral Events
 
 The iOS Client sends behavioral events to [Constructor.io](http://constructor.io/) in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.
 
