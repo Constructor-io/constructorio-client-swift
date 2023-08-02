@@ -253,6 +253,18 @@ struct Constants {
         static let format = "%@/v2/behavioral_action/purchase"
     }
 
+    struct trackQuizResultsLoaded {
+        static let format = "%@/v2/behavioral_action/quiz_result_load"
+    }
+
+    struct trackQuizResultClick {
+        static let format = "%@/v2/behavioral_action/quiz_result_click"
+    }
+
+    struct trackQuizConversion {
+        static let format = "%@/v2/behavioral_action/quiz_conversion"
+    }
+
     struct Logging {
         private static let prefix = "[ConstructorIO]:"
         private static let format: (_ message: String) -> String = { message in return "\(Logging.prefix) \(message)" }

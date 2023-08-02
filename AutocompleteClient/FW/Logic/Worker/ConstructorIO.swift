@@ -525,7 +525,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - itemName: The item name.
         - customerID: The item ID.
         - variationID: The variation ID
-        - revenue: The  revenue of the item.
+        - revenue: The revenue of the item.
         - searchTerm: The term that the user searched for if searching (defaults to 'TERM_UNKNOWN')
         - conversionType: The type of conversion (defaults to "add_to_cart")
         - sectionName The name of the autocomplete section the term came from (defaults to "products")
@@ -613,6 +613,91 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     private func trackSessionStart(session: Int, completionHandler: TrackingCompletionHandler? = nil) {
         let request = self.buildSessionStartRequest(session: session)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user views a quizzes results page
+
+     - Parameters:
+        - quizID: The quiz identifier
+        - quizVersionID: The quiz version identifier
+        - quizSessionID: The quiz session identifier associated with this conversion event
+        - url: The current page url
+        - resultID: The identifier of result set returned by the Constructor quiz response
+        - resultPage: The current page of the results
+        - resultCount: The total numbe of results
+        - sectionName The name of the autocomplete section the results came from
+        - completionHandler: The callback to execute on completion.
+     
+     ### Usage Example: ###
+     ```
+     constructorIO.trackQuizResultsLoaded(quizId: 'coffee-quiz', quizVersionId: '1231244', quizSessionId: '3123', url: 'www.example.com', resultCount: 167)
+     ```
+     */
+    public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, url: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizID, quizSessionID: quizSessionID, url: url, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+    
+    /**
+     Track when a user clicks a result that appears within a quizzes results page
+
+     - Parameters:
+        - quizID: The quiz identifier
+        - quizVersionID: The quiz version identifier
+        - quizSessionID: The quiz session identifier associated with this conversion event
+        - customerID: The item ID.
+        - variationID: The variation ID
+        - itemName: The product item name
+        - resultID: The identifier of result set returned by the Constructor quiz response
+        - resultPage: The current page of the results
+        - resultCount: The total numbe of results
+        - numResultsPerPage: The number of results on the current page
+        - resultPositionOnPage: The position of clicked item
+        - sectionName The name of the autocomplete section the result came from
+        - completionHandler: The callback to execute on completion.
+     
+     ### Usage Example: ###
+     ```
+     constructorIO.trackQuizResultClick(quizID: 'coffee-quiz', quizVersionID: '1231244', quizSessionID: '123', customerID: '123', itemName: 'espresso')
+     ```
+     */
+    public func trackQuizResultClick(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, numResultsPerPage: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackQuizResultClickData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, resultID: resultID, resultPage: resultPage, resultCount: resultCount, numResultsPerPage: numResultsPerPage, resultPositionOnPage: resultPositionOnPage, sectionName: section)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user clicks a result that appears within a quizzes results page
+
+     - Parameters:
+        - quizID: The quiz identifier
+        - quizVersionID: The quiz version identifier
+        - quizSessionID: The quiz session identifier associated with this conversion event
+        - customerID: The item ID.
+        - variationID: The variation ID
+        - itemName: The product item name
+        - revenue: The sale price if available, otherwise the regular (retail) price of item
+        - conversionType: The type of conversion (defaults to "add_to_cart")
+        - isCustomType: The flag to specify if type is custom conversion type
+        - displayName: The display name for the custom conversion type
+        - sectionName The name of the autocomplete section the result came from
+        - completionHandler: The callback to execute on completion.
+ 
+     ### Usage Example: ###
+     ```
+     constructorIO.trackQuizConversion(quizId: 'coffee-quiz', quizVersionId: '1231244', quizSessionId: '3123', itemName: 'espresso', variationId: '167', type: 'add_to_cart', revenue: 1.0)
+     ```
+     */
+    public func trackQuizConversion(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, isCustomType: Bool? = nil, displayName: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackQuizConversionData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, revenue: revenue, conversionType: conversionType, isCustomType: isCustomType, displayName: displayName, sectionName: section)
+        let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
 
