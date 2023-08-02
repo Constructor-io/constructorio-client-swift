@@ -25,7 +25,7 @@ public struct CIOAutocompleteResponse {
     public let json: JSONObject
     
     /**
-     Request object used to retrieve the Recommendations Response
+     Request object used to retrieve the Autocomplete Response
      */
     public var request: JSONObject
 
