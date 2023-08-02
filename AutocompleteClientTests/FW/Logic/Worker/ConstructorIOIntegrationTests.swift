@@ -1295,8 +1295,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let responseData = response.data!
 
             XCTAssertNil(cioError)
-            XCTAssertNotNil(response.data?.facets)
-            XCTAssertTrue(!(response.data?.facets.isEmpty)!)
+            XCTAssertNotNil(responseData.facets)
+            XCTAssertTrue(!(responseData.facets.isEmpty))
             expectation.fulfill()
         })
         self.wait(for: expectation)
