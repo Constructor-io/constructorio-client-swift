@@ -63,7 +63,7 @@ public struct CIOSearchResponse {
     public var isRedirect: Bool {
         return self.redirectInfo != nil
     }
-    
+
     /**
      Request object used to retrieve the Search Response
      */

@@ -35,6 +35,10 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
             let quizId = json?["quiz_id"] as? String ?? ""
             let quizSessionId = json?["quiz_session_id"] as? String ?? ""
 
+            guard let request: JSONObject = json?["request"] as? JSONObject else {
+                throw CIOError(errorType: .invalidResponse)
+            }
+
             return CIOQuizResultsResponse(
                 facets: facets,
                 groups: groups,
@@ -45,7 +49,8 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
                 resultID: resultID,
                 quizVersionId: quizVersionId,
                 quizSessionId: quizSessionId,
-                quizId: quizId
+                quizId: quizId,
+                request: request
             )
         } catch {
             throw CIOError(errorType: .invalidResponse)

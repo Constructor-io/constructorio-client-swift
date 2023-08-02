@@ -31,15 +31,22 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
         guard let section = json[Constants.Response.singleSectionResultField] as? [JSONObject] else {
             throw CIOError(errorType: .invalidResponse)
         }
+        guard let request: JSONObject = json["request"] as? JSONObject else {
+            throw CIOError(errorType: .invalidResponse)
+        }
 
         let results = self.jsonToAutocompleteItems(jsonObjects: section)
         var metadata = json
         metadata[Constants.Response.singleSectionResultField] = nil
-        return CIOAutocompleteResponse(sections: [Constants.Response.singleSectionResultField: results], json: json)
+
+        return CIOAutocompleteResponse(sections: [Constants.Response.singleSectionResultField: results], json: json, request: request)
     }
 
     private func parse(multiSectionJson json: JSONObject) throws -> CIOAutocompleteResponse {
         guard let sections = json[Constants.Response.multiSectionResultField] as? [String: [JSONObject]] else {
+            throw CIOError(errorType: .invalidResponse)
+        }
+        guard let request: JSONObject = json["request"] as? JSONObject else {
             throw CIOError(errorType: .invalidResponse)
         }
 
@@ -51,7 +58,7 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
         var metadata = json
         metadata[Constants.Response.multiSectionResultField] = nil
-        return CIOAutocompleteResponse(sections: results, json: json)
+        return CIOAutocompleteResponse(sections: results, json: json, request: request)
     }
 
     fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOAutocompleteResult] {
