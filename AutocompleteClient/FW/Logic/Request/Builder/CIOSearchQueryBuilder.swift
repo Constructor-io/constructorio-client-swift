@@ -65,6 +65,7 @@ public class CIOSearchQueryBuilder {
     
     /**
      The pre filter expression used to refine results
+     Syntax for adding pre filtrer expressions https://docs.constructor.io/rest_api/collections/#add-items-dynamically
      */
     var preFilterExpression: String?
 
