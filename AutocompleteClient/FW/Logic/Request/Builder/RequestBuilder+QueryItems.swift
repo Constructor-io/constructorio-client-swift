@@ -207,6 +207,11 @@ extension RequestBuilder {
             // Do nothing
         }
     }
+    
+    func set(preFilterExpression: String?) {
+        guard let preFilterExpression = preFilterExpression else { return }
+        queryItems.add(URLQueryItem(name: "pre_filter_expression", value: preFilterExpression))
+    }
 
     func set(groupsSortOption: CIOGroupsSortOption?) {
         guard let option = groupsSortOption else { return }

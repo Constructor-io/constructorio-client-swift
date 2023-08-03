@@ -61,6 +61,11 @@ public struct CIOSearchQuery: CIORequestData {
      The sort method/order for groups
      */
     public let groupsSortOption: CIOGroupsSortOption?
+    
+    /**
+     The pre filter expression used to refine results
+     */
+    public let preFilterExpression: String?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.SearchQuery.format, baseURL, query)
@@ -79,17 +84,20 @@ public struct CIOSearchQuery: CIORequestData {
         - hiddenFields: The list of hidden metadata fields to return
         - hiddenFacets: The list of hidden facest to return
         - groupsSortOption: The sort method/order for groups
-     
+        - preFilterExpression: The pre filter expression used to refine results
+
      ### Usage Example: ###
      ```
      let facetFilters = [(key: "Nutrition", value: "Organic"),
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
-
-     let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"])
+    
+     let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
+     
+     let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], preFilterExpression: preFilterExpression)
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil, preFilterExpression: String? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
         self.page = page != nil ? page! : Constants.SearchQuery.defaultPage
@@ -100,6 +108,7 @@ public struct CIOSearchQuery: CIORequestData {
         self.hiddenFacets = hiddenFacets
         self.variationsMap = variationsMap
         self.groupsSortOption = groupsSortOption
+        self.preFilterExpression = preFilterExpression
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -113,5 +122,6 @@ public struct CIOSearchQuery: CIORequestData {
         requestBuilder.set(hiddenFacets: self.hiddenFacets)
         requestBuilder.set(variationsMap: self.variationsMap)
         requestBuilder.set(groupsSortOption: self.groupsSortOption)
+        requestBuilder.set(preFilterExpression: self.preFilterExpression)
     }
 }

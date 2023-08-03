@@ -67,6 +67,11 @@ public class CIOBrowseQueryBuilder {
      The sort method/order for groups
      */
     var groupsSortOption: CIOGroupsSortOption?
+    
+    /**
+     The pre filter expression used to refine results
+     */
+    var preFilterExpression: String?
 
     /**
      Create a Browse request query builder
@@ -151,6 +156,14 @@ public class CIOBrowseQueryBuilder {
         self.groupsSortOption = groupsSortOption
         return self
     }
+    
+    /**
+     Add the pre filter expression
+     */
+    public func setPreFilterExpression(_ preFilterExpression: String) -> CIOBrowseQueryBuilder {
+        self.preFilterExpression = preFilterExpression
+        return self
+    }
 
     /**
      Build the request object set all of the provided data
@@ -161,6 +174,8 @@ public class CIOBrowseQueryBuilder {
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
      
+     let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
+     
      let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
         .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
         .setPage(2)
@@ -168,12 +183,13 @@ public class CIOBrowseQueryBuilder {
         .setSection("Products")
         .setHiddenFields(["hidden_price_field", "color_swatches"])
         .setHiddenFacets(["hidden_facet"])
+        .setPreFilterExpression()
         .build()
      
      constructor.browse(forQuery: query, completionHandler: { ... })
      ```
      */
     public func build() -> CIOBrowseQuery {
-        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap)
+        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap, preFilterExpression: preFilterExpression)
     }
 }

@@ -494,6 +494,24 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testSearch_WithPreFilterExpression() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
+        
+        let query = CIOSearchQuery(query: "item", preFilterExpression: preFilterExpression)
+        self.constructor.search(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let request = responseData.request
+            let requestPreFilterExpression = request["pre_filter_expression"]
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(requestPreFilterExpression)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
 
     func testSearch_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
@@ -798,6 +816,23 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+    
+    func testBrowse_WithPreFilterExpression() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
+        
+        let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: groupFilterValue, preFilterExpression: preFilterExpression)
+        self.constructor.browse(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let request = responseData.request
+            let requestPreFilterExpression = request["pre_filter_expression"]
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(requestPreFilterExpression)
             expectation.fulfill()
         })
         self.wait(for: expectation)
