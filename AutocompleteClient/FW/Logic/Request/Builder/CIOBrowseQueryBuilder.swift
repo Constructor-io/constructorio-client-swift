@@ -70,7 +70,7 @@ public class CIOBrowseQueryBuilder {
     
     /**
      The pre filter expression used to refine results
-     Syntax for adding pre filtrer expressions https://docs.constructor.io/rest_api/collections/#add-items-dynamically
+     Syntax for adding pre filter expressions https://docs.constructor.io/rest_api/collections/#add-items-dynamically
      */
     var preFilterExpression: String?
 
@@ -184,7 +184,7 @@ public class CIOBrowseQueryBuilder {
         .setSection("Products")
         .setHiddenFields(["hidden_price_field", "color_swatches"])
         .setHiddenFacets(["hidden_facet"])
-        .setPreFilterExpression()
+        .setPreFilterExpression(preFilterExpression)
         .build()
      
      constructor.browse(forQuery: query, completionHandler: { ... })
