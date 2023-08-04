@@ -62,6 +62,12 @@ public class CIOSearchQueryBuilder {
      The sort method/order for groups
      */
     var groupsSortOption: CIOGroupsSortOption?
+    
+    /**
+     The pre filter expression used to refine results
+     Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.io/rest_api/collections/#add-items-dynamically
+     */
+    var preFilterExpression: String?
 
     /**
      Create a Search request query builder
@@ -136,6 +142,14 @@ public class CIOSearchQueryBuilder {
         self.groupsSortOption = groupsSortOption
         return self
     }
+    
+    /**
+     Add the pre filter expression
+     */
+    public func setPreFilterExpression(_ preFilterExpression: String) -> CIOSearchQueryBuilder {
+        self.preFilterExpression = preFilterExpression
+        return self
+    }
 
     /**
      Add a variations map to return per variation
@@ -154,7 +168,8 @@ public class CIOSearchQueryBuilder {
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
             
-     
+     let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
+
      let query = CIOSearchQueryBuilder(query: "blue")
         .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
         .setPage(2)
@@ -162,12 +177,13 @@ public class CIOSearchQueryBuilder {
         .setSection("Products")
         .setHiddenFields(["hidden_price_field", "color_swatches"])
         .setHiddenFacets(["hidden_facet"])
+        .setPreFilterExpression(preFilterExpression)
         .build()
      
      constructor.search(forQuery: query, completionHandler: { ... })
      ```
      */
     public func build() -> CIOSearchQuery {
-        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap)
+        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap, preFilterExpression: preFilterExpression)
     }
 }
