@@ -17,7 +17,7 @@
     <a title="CIOSearchQuery Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 3.0.0 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 3.0.1 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -479,9 +479,37 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete14CIOSearchQueryV5query7filters10sortOption4page7perPage7section12hiddenFields0M6Facets010groupsSortH013variationsMapACSS_AA15CIOQueryFiltersVSgAA07CIOSortH0VSgSiSgATSSSgSaySSGSgAwA09CIOGroupsqH0VSgAA0t10VariationsS0VSgtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(query:filters:sortOption:page:perPage:section:hiddenFields:hiddenFacets:groupsSortOption:variationsMap:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete14CIOSearchQueryV5query7filters10sortOption4page7perPage7section12hiddenFields0M6Facets010groupsSortH013variationsMapACSS_AA15CIOQueryFiltersVSgAA07CIOSortH0VSgSiSgATSSSgSaySSGSgAwA09CIOGroupsqH0VSgAA0t10VariationsS0VSgtcfc">init(query:<wbr>filters:<wbr>sortOption:<wbr>page:<wbr>perPage:<wbr>section:<wbr>hiddenFields:<wbr>hiddenFacets:<wbr>groupsSortOption:<wbr>variationsMap:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete14CIOSearchQueryV19preFilterExpressionSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/preFilterExpression" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete14CIOSearchQueryV19preFilterExpressionSSSgvp">preFilterExpression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The pre filter expression used to refine results
+Please refer to our docs for the syntax on adding pre filter expressions: <a href="https://docs.constructor.io/rest_api/collections/#add-items-dynamically">https://docs.constructor.io/rest_api/collections/#add-items-dynamically</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">preFilterExpression</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete14CIOSearchQueryV5query7filters10sortOption4page7perPage7section12hiddenFields0M6Facets010groupsSortH013variationsMap19preFilterExpressionACSS_AA15CIOQueryFiltersVSgAA07CIOSortH0VSgSiSgAUSSSgSaySSGSgAxA09CIOGroupsqH0VSgAA0w10VariationsS0VSgAVtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(query:filters:sortOption:page:perPage:section:hiddenFields:hiddenFacets:groupsSortOption:variationsMap:preFilterExpression:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete14CIOSearchQueryV5query7filters10sortOption4page7perPage7section12hiddenFields0M6Facets010groupsSortH013variationsMap19preFilterExpressionACSS_AA15CIOQueryFiltersVSgAA07CIOSortH0VSgSiSgAUSSSgSaySSGSgAxA09CIOGroupsqH0VSgAA0w10VariationsS0VSgAVtcfc">init(query:<wbr>filters:<wbr>sortOption:<wbr>page:<wbr>perPage:<wbr>section:<wbr>hiddenFields:<wbr>hiddenFacets:<wbr>groupsSortOption:<wbr>variationsMap:<wbr>preFilterExpression:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -495,7 +523,9 @@
                     <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
                     <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kraft Foods"</span><span class="p">)]</span>
 
-<span class="k">let</span> <span class="nv">searchQuery</span> <span class="o">=</span> <span class="kt">CIOSearchQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"red"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">),</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="s">"price_CA"</span><span class="p">,</span> <span class="s">"currency_CA"</span><span class="p">],</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="s">"brand"</span><span class="p">,</span> <span class="s">"price_CA"</span><span class="p">])</span>
+<span class="k">let</span> <span class="nv">preFilterExpression</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">or</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">and</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">group_id</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">electronics-group-id</span><span class="se">\"</span><span class="s">},{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Price</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">range</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">-inf</span><span class="se">\"</span><span class="s">,200.0]}]},{</span><span class="se">\"</span><span class="s">and</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Type</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Laptop</span><span class="se">\"</span><span class="s">},{</span><span class="se">\"</span><span class="s">not</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Price</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">range</span><span class="se">\"</span><span class="s">:[800.0,</span><span class="se">\"</span><span class="s">inf</span><span class="se">\"</span><span class="s">]}}]}]}"</span>
+
+<span class="k">let</span> <span class="nv">searchQuery</span> <span class="o">=</span> <span class="kt">CIOSearchQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"red"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">),</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="s">"price_CA"</span><span class="p">,</span> <span class="s">"currency_CA"</span><span class="p">],</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="s">"brand"</span><span class="p">,</span> <span class="s">"price_CA"</span><span class="p">],</span> <span class="nv">preFilterExpression</span><span class="p">:</span> <span class="n">preFilterExpression</span><span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -503,7 +533,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sortOption</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOSortOption.html">CIOSortOption</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="kt">CIOGroupsSortOption</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">variationsMap</span><span class="p">:</span> <span class="kt">CIOQueryVariationsMap</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sortOption</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOSortOption.html">CIOSortOption</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFacets</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">groupsSortOption</span><span class="p">:</span> <span class="kt">CIOGroupsSortOption</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">variationsMap</span><span class="p">:</span> <span class="kt">CIOQueryVariationsMap</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">preFilterExpression</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -619,6 +649,18 @@
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>preFilterExpression</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pre filter expression used to refine results</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -630,7 +672,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-07-31)</p>
+          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-08-04)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
