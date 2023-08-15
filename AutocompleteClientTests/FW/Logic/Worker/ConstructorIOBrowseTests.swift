@@ -141,6 +141,19 @@ class ConstructorIOBrowseTests: XCTestCase {
 
         self.wait(for: builder.expectation)
     }
+    
+    func testBrowse_AttachesPreFilterExpression() {
+        let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
+        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", preFilterExpression: preFilterExpression)
+        
+        let builder = CIOBuilder(expectation: "Calling Browse with pre filter expression should have a URL query pre_filter_expression", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&pre_filter_expression=%7B%22or%22:%5B%7B%22and%22:%5B%7B%22name%22:%22group_id%22,%22value%22:%22electronics-group-id%22%7D,%7B%22name%22:%22Price%22,%22range%22:%5B%22-inf%22,200.0%5D%7D%5D%7D,%7B%22and%22:%5B%7B%22name%22:%22Type%22,%22value%22:%22Laptop%22%7D,%7B%22not%22:%7B%22name%22:%22Price%22,%22range%22:%5B800.0,%22inf%22%5D%7D%7D%5D%7D%5D%7D&s=\(kRegexSession)&section=Products"), builder.create())
+
+        self.constructor.browse(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
 
     func testBrowse_WithPlusSignInQueryParams_ShouldBeEncoded() {
         let facetFilters = [
