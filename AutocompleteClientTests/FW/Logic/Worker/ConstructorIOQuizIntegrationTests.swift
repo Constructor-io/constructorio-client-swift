@@ -339,7 +339,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
 
     func testTrackQuizResultsLoaded() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackQuizResultsLoaded(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId, url: url, completionHandler: { response in
+        self.constructor.trackQuizResultsLoaded(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -349,7 +349,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
 
     func testTrackQuizResultsLoaded_WithOptionalParams() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackQuizResultsLoaded(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId, url: url, resultID: resultId, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, completionHandler: { response in
+        self.constructor.trackQuizResultsLoaded(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId,  resultID: resultId, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()

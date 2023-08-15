@@ -26,7 +26,7 @@ struct CIOTrackQuizResultsLoadedData: CIORequestData {
         return String(format: Constants.trackQuizResultsLoaded.format, baseURL)
     }
 
-    init(quizID: String, quizVersionID: String, quizSessionID: String, url: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil) {
+    init(quizID: String, quizVersionID: String, quizSessionID: String, url: String = "Not Available", resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil) {
         self.quizID = quizID
         self.quizVersionID = quizVersionID
         self.quizSessionID = quizSessionID

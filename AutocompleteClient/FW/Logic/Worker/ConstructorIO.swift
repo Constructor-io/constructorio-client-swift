@@ -623,7 +623,6 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - quizID: The quiz identifier
         - quizVersionID: The quiz version identifier
         - quizSessionID: The quiz session identifier associated with this conversion event
-        - url: The current page url
         - resultID: The identifier of result set returned by the Constructor quiz response
         - resultPage: The current page of the results
         - resultCount: The total numbe of results
@@ -632,12 +631,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackQuizResultsLoaded(quizId: 'coffee-quiz', quizVersionId: '1231244', quizSessionId: '3123', url: 'www.example.com', resultCount: 167)
+     constructorIO.trackQuizResultsLoaded(quizId: 'coffee-quiz', quizVersionId: '1231244', quizSessionId: '3123', resultCount: 167)
      ```
      */
-    public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, url: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizID, quizSessionID: quizSessionID, url: url, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section)
+        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
