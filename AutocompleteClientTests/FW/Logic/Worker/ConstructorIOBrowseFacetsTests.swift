@@ -107,7 +107,6 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
-
     func testBrowseFacets_UsingQueryBuilder_WithValidRequest_ReturnsNonNilResponse() {
         let expectation = self.expectation(description: "Calling Browse Facets with valid parameters should return a non-nil response.")
 

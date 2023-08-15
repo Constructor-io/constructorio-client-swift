@@ -62,7 +62,7 @@ public class CIOSearchQueryBuilder {
      The sort method/order for groups
      */
     var groupsSortOption: CIOGroupsSortOption?
-    
+
     /**
      The pre filter expression used to refine results
      Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.io/rest_api/collections/#add-items-dynamically
@@ -142,7 +142,7 @@ public class CIOSearchQueryBuilder {
         self.groupsSortOption = groupsSortOption
         return self
     }
-    
+
     /**
      Add the pre filter expression
      */

@@ -52,7 +52,7 @@ struct CIOTrackPurchaseData: CIORequestData {
     func httpMethod() -> String {
         return "POST"
     }
-    
+
     func roundTo2dp(num: Double) -> Double {
         return (num * 100).rounded() / 100
     }

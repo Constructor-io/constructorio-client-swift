@@ -18,7 +18,6 @@ struct CIOTrackItemDetailLoadData: CIORequestData {
     let sectionName: String?
     let variationID: String?
     let url: String
-    
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackItemDetailLoad.format, baseURL)
@@ -42,7 +41,7 @@ struct CIOTrackItemDetailLoadData: CIORequestData {
         var dict = [
             "item_name": self.itemName,
             "item_id": self.customerID,
-            "url": self.url,
+            "url": self.url
         ] as [String: Any]
 
         if self.variationID != nil {

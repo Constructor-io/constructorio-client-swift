@@ -56,7 +56,7 @@ public struct CIOBrowseResponse {
      Sources of the result set
      */
     public let resultSources: CIOResultSources?
-    
+
     /**
      Request object used to retrieve the Browse Response
      */

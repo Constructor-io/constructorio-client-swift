@@ -6,9 +6,9 @@
 //  http://constructor.io/
 //
 
-import XCTest
-import OHHTTPStubs
 import ConstructorAutocomplete
+import OHHTTPStubs
+import XCTest
 
 class ConstructorIOTrackItemDetailLoadTests: XCTestCase {
 

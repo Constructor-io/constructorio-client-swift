@@ -590,7 +590,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
-    
+
     /**
      Track when a user views a product detail page
 
@@ -659,7 +659,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     private func attachABTestCells(requestBuilder: RequestBuilder) {
         self.config.testCells?.forEach({ [unowned requestBuilder] cell in
-            if (!cell.key.isEmpty) {
+            if !cell.key.isEmpty {
                 requestBuilder.set(testCellKey: cell.key, testCellValue: cell.value)
             }
         })
@@ -782,7 +782,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             }
         }
     }
-    
+
     private func executeBrowseFacetOptions(_ request: URLRequest, completionHandler: @escaping BrowseFacetOptionsQueryCompletionHandler) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
@@ -805,7 +805,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             }
         }
     }
-    
+
     private func executeRecommendations(_ request: URLRequest, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
@@ -904,11 +904,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     private func parseBrowse(_ browseResponseData: Data) throws -> CIOBrowseResponse {
         return try self.browseParser.parse(browseResponseData: browseResponseData)
     }
-    
+
     private func parseBrowseFacets(_ browseFacetsResponseData: Data) throws -> CIOBrowseFacetsResponse {
         return try self.browseFacetsParser.parse(browseFacetsResponseData: browseFacetsResponseData)
     }
-    
+
     private func parseBrowseFacetOptions(_ browseFacetOptionsResponseData: Data) throws -> CIOBrowseFacetOptionsResponse {
         return try self.browseFacetOptionsParser.parse(browseFacetOptionsResponseData: browseFacetOptionsResponseData)
     }

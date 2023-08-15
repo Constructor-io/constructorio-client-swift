@@ -21,7 +21,7 @@ public struct CIOBrowseFacetsQuery: CIORequestData {
      The offset of results to request (can't be used with page)
      */
     public let offset: Int?
-    
+
     /**
      The number of results per page to return
      */

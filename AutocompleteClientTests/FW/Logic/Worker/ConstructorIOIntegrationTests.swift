@@ -432,7 +432,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let responseData = response.data!
             let results = responseData.results
             XCTAssertFalse(results.isEmpty)
-            
+
             let request = responseData.request
             XCTAssertNotNil(request)
 
@@ -494,11 +494,11 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testSearch_WithPreFilterExpression() {
         let expectation = XCTestExpectation(description: "Request 204")
         let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
-        
+
         let query = CIOSearchQuery(query: "item", preFilterExpression: preFilterExpression)
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -511,7 +511,6 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-
 
     func testSearch_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
@@ -715,7 +714,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testSearch_ShouldReturnFacetsData() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
@@ -746,7 +745,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
             let responseData = response.data!
             let results = responseData.results
             XCTAssertFalse(results.isEmpty)
-            
+
             let request = responseData.request
             XCTAssertNotNil(request)
 
@@ -820,11 +819,11 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testBrowse_WithPreFilterExpression() {
         let expectation = XCTestExpectation(description: "Request 204")
         let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
-        
+
         let query = CIOBrowseQuery(filterName: groupFilterName, filterValue: groupFilterValue, preFilterExpression: preFilterExpression)
         self.constructor.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
@@ -1086,7 +1085,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testBrowse_ShouldReturnFacetsData() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
@@ -1255,16 +1254,16 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testBrowseGroups() {
         let expectation = XCTestExpectation(description: "Request 200")
         let query = CIOBrowseGroupsQuery()
-        
+
         self.constructor.config.segments = nil
         self.constructor.browseGroups(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let groupIds = response.data?.groups.compactMap { $0.groupID }
-            
+
             XCTAssertNil(cioError)
             XCTAssertNotNil(groupIds)
             XCTAssertTrue(groupIds?.contains(self.groupId) == true)
@@ -1272,46 +1271,46 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testBrowseGroups_WithSpecificGroupId() {
         let expectation = XCTestExpectation(description: "Request 200")
         let query = CIOBrowseGroupsQuery(groupId: "Styles")
-        
+
         self.constructor.config.segments = nil
         self.constructor.browseGroups(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
-            
+
             let parentGroup = response.data?.groups[0]
             let grandparentsGroupIds = parentGroup?.parents.compactMap { $0.groupID }
             let childGroupIds = parentGroup?.children.compactMap { $0.groupID }
-            
+
             XCTAssertTrue(grandparentsGroupIds?.contains(self.groupId) ?? false)
             XCTAssertTrue(childGroupIds?.contains("StyleA") ?? false)
             XCTAssertTrue(childGroupIds?.contains("StyleB") ?? false)
-            
+
             expectation.fulfill()
         })
         self.wait(for: expectation)
     }
-    
+
     func testBrowseGroups_WithMaxDepth() {
         let expectation = XCTestExpectation(description: "Request 200")
         let query = CIOBrowseGroupsQuery(groupsMaxDepth: 2)
-        
+
         self.constructor.config.segments = nil
         self.constructor.browseGroups(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
-            
+
             let parentGroup = response.data?.groups[0]
             XCTAssertNotNil(parentGroup?.children)
             XCTAssertFalse(parentGroup?.children.isEmpty ?? true)
-            
+
             let childGroup = parentGroup?.children[0]
             XCTAssertNotNil(childGroup?.children)
             XCTAssertFalse(childGroup?.children.isEmpty ?? true)
-            
+
             let grandchildGroup = childGroup?.children[0]
             XCTAssertNotNil(grandchildGroup?.children)
             XCTAssertTrue(grandchildGroup?.children.isEmpty ?? false)
@@ -1319,7 +1318,6 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-
 
     func testBrowseFacets() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))

@@ -13,7 +13,7 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
 
         do {
             let json = try JSONSerialization.jsonObject(with: quizResultsResponseData) as? JSONObject
-            
+
             guard let response = json?["response"] as? JSONObject else {
                 throw CIOError(errorType: .invalidResponse)
             }
@@ -29,7 +29,7 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
             let groups: [CIOFilterGroup] = groupsObj?.compactMap({ obj  in return CIOFilterGroup(json: obj) }) ?? []
             let totalNumResults = response["total_num_results"] as? Int ?? 0
             let resultSources: CIOResultSources? = CIOResultSources(json: response["result_sources"] as? JSONObject)
-            
+
             let resultID = json?["result_id"] as? String ?? ""
             let quizVersionId = json?["quiz_version_id"] as? String ?? ""
             let quizId = json?["quiz_id"] as? String ?? ""

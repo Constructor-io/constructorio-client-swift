@@ -62,7 +62,7 @@ public struct CIOSearchQuery: CIORequestData {
      The sort method/order for groups
      */
     public let groupsSortOption: CIOGroupsSortOption?
-    
+
     /**
      The pre filter expression used to refine results
      Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.io/rest_api/collections/#add-items-dynamically

@@ -33,7 +33,7 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
             let resultID = json?["result_id"] as? String ?? ""
             let resultSources: CIOResultSources? = CIOResultSources(json: response["result_sources"] as? JSONObject)
             let refinedContent: [CIORefinedContent] = refinedContentObj?.compactMap({ obj in return CIORefinedContent(json: obj) }) ?? []
-            
+
             guard let request: JSONObject = json?["request"] as? JSONObject else {
                 throw CIOError(errorType: .invalidResponse)
             }

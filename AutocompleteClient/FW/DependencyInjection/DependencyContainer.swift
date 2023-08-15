@@ -29,7 +29,7 @@ class DependencyContainer {
     var browseResponseParser: () -> AbstractBrowseResponseParser = {
         return BrowseResponseParser()
     }
-    
+
     var browseFacetsResponseParser: () -> AbstractBrowseFacetsResponseParser = {
         return BrowseFacetsResponseParser()
     }
@@ -37,15 +37,15 @@ class DependencyContainer {
     var browseFacetOptionsResponseParser: () -> AbstractBrowseFacetOptionsResponseParser = {
         return BrowseFacetOptionsResponseParser()
     }
-    
+
     var recommendationsResponseParser: () -> AbstractRecommendationsResponseParser = {
         return RecommendationsResponseParser()
     }
-    
+
     var quizQuestionResponseParser: () -> AbstractQuizQuestionResponseParser = {
         return QuizQuestionResponseParser()
     }
-    
+
     var quizResultsResponseParser: () -> AbstractQuizResultsResponseParser = {
         return QuizResultsResponseParser()
     }

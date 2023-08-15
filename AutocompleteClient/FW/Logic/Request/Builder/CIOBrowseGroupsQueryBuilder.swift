@@ -12,7 +12,7 @@ import Foundation
  Request builder for creating an browse groups query.
  */
 public class CIOBrowseGroupsQueryBuilder {
-    
+
     /**
      The id of the specific group that should be included in the response
      */
@@ -40,7 +40,7 @@ public class CIOBrowseGroupsQueryBuilder {
         self.groupId = groupId
         return self
     }
-    
+
     /**
      Specify the maximum depth of the hierarchy that should be included in the response
      Defaults to 1 if unspecified
@@ -49,7 +49,7 @@ public class CIOBrowseGroupsQueryBuilder {
         self.groupsMaxDepth = maxDepth
         return self
     }
-    
+
     /**
      Specify the section to return results from
      */

@@ -59,7 +59,7 @@ class ConstructorIOABTestCellTests: XCTestCase {
         constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
-    
+
     func testTrackInputFocus_WithEmptyTestCellValue() {
         let config = ConstructorIOConfig(apiKey: "key_OucJxxrfiTVUQx0C", testCells: [
             CIOABTestCell(key: "hi", value: "")

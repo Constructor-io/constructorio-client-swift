@@ -13,7 +13,7 @@ protocol CIORequestData {
     func decorateRequest(requestBuilder: RequestBuilder)
 
     func url(with baseURL: String) -> String
-    
+
     func urlWithFormat(baseURL: String, format: String) -> String
 
     func queryItems(baseItems: [URLQueryItem]) -> [URLQueryItem]
