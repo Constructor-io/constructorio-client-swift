@@ -18,6 +18,8 @@ public typealias TrackingCompletionHandler = (TrackingTaskResponse) -> Void
 public typealias QuizQuestionQueryCompletionHandler = (QuizQuestionTaskResponse) -> Void
 public typealias QuizResultsQueryCompletionHandler = (QuizResultsTaskResponse) -> Void
 
+// swiftlint:disable type_body_length file_length
+
 /**
  The main class to be used for getting autocomplete results and tracking behavioural data.
  */
@@ -930,3 +932,4 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
 }
+// swiftlint:enable type_body_length file_length

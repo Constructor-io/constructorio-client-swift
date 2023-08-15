@@ -1414,3 +1414,4 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 }
+// swiftlint:enable type_body_length file_length
