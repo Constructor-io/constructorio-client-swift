@@ -37,7 +37,7 @@ public class CIOFilterGroup: NSObject {
      List of parent groups that it belongs to
      */
     public let parents: [CIOFilterGroup]
-    
+
     /**
      JSON object with custom metadata attached with the item group.
      */

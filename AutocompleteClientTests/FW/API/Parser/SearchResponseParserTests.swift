@@ -172,13 +172,13 @@ class SearchResponseParserTests: XCTestCase {
             XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
         }
     }
-    
+
     func testSearchParser_parsingRequestObjectAsJson_hasRelevantFields() {
         let data = TestResource.load(name: TestResource.Response.searchJSONFilename)
         do {
             let response = try self.parser.parse(searchResponseData: data)
             let requestJson = response.request
-            
+
             let fmtOptions = requestJson["fmt_options"] as? JSONObject
             let groupsMaxDepth = fmtOptions?["groups_max_depth"]
             let groupsStart = fmtOptions?["groups_start"]
@@ -208,7 +208,7 @@ class SearchResponseParserTests: XCTestCase {
             XCTAssertNotNil(facetData, "Valid data object should be correctly parsed")
             XCTAssertEqual(facetData?["url"] as? String, "example.com", "Valid data url value should be correctly parsed")
 
-            XCTAssertEqual(response.facets.first?.hidden, true , "Valid hidden value should be correctly parsed")
+            XCTAssertEqual(response.facets.first?.hidden, true, "Valid hidden value should be correctly parsed")
         } catch {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }

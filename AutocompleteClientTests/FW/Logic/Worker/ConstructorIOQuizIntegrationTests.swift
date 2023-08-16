@@ -6,8 +6,8 @@
 //  http://constructor.io/
 //
 
-import XCTest
 import ConstructorAutocomplete
+import XCTest
 
 // swiftlint:disable type_body_length
 class ConstructorIOQuizIntegrationTests: XCTestCase {

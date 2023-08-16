@@ -68,7 +68,7 @@ extension RequestBuilder {
     func set(searchSection: String) {
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.section, value: searchSection))
     }
-    
+
     func set(section: String) {
         queryItems.add(URLQueryItem(name: Constants.Query.section, value: section))
     }
@@ -105,7 +105,7 @@ extension RequestBuilder {
         let offsetString = String(offset)
         queryItems.add(URLQueryItem(name: Constants.BrowseFacetsQuery.offset, value: offsetString))
     }
-    
+
     func set(perPage: Int) {
         let perPageString = String(perPage)
         queryItems.add(URLQueryItem(name: Constants.SearchQuery.perPage, value: perPageString))
@@ -173,12 +173,12 @@ extension RequestBuilder {
         guard let hiddenFacet = hiddenFacet else { return }
         self.set(fmtOption: (key: "hidden_facets", value: hiddenFacet))
     }
-    
+
     func set(showHiddenFacets: Bool) {
         let showHiddenFacetsString = String(showHiddenFacets)
         queryItems.add(URLQueryItem(name: Constants.BrowseFacetsQuery.showHiddenFacets, value: showHiddenFacetsString))
     }
-    
+
     func set(facetName: String?) {
         guard let facetName = facetName else { return }
         let facetNameString = String(facetName)
@@ -207,7 +207,7 @@ extension RequestBuilder {
             // Do nothing
         }
     }
-    
+
     func set(preFilterExpression: String?) {
         guard let preFilterExpression = preFilterExpression else { return }
         queryItems.add(URLQueryItem(name: "pre_filter_expression", value: preFilterExpression))
@@ -230,7 +230,7 @@ extension RequestBuilder {
         guard let itemId = id else { return }
         queryItems.add(URLQueryItem(name: "ids", value: itemId))
     }
-    
+
     func set(answer: [String]?) {
         guard let answer = answer else { return }
         queryItems.add(URLQueryItem(name: Constants.Quiz.answers, value: answer.joined(separator: ",")))
@@ -247,7 +247,7 @@ extension RequestBuilder {
         guard let quizVersionId = quizVersionId else { return }
         queryItems.add(URLQueryItem(name: Constants.Quiz.quizVersionId, value: quizVersionId))
     }
-    
+
     func set(quizSessionId: String?) {
         guard let quizSessionId = quizSessionId else { return }
         queryItems.add(URLQueryItem(name: Constants.Quiz.quizSessionId, value: quizSessionId))

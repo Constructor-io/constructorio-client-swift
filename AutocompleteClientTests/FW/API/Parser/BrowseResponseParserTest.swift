@@ -23,13 +23,13 @@ class BrowseResponseParserTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testBrowseParser_parsingRequestObjectAsJson_hasRelevantFields() {
         let data = TestResource.load(name: TestResource.Response.browseJSONFilename)
         do {
             let response = try self.parser.parse(browseResponseData: data)
             let requestJson = response.request
-            
+
             let fmtOptions = requestJson["fmt_options"] as? JSONObject
             let groupsMaxDepth = fmtOptions?["groups_max_depth"]
             let groupsStart = fmtOptions?["groups_start"]
@@ -48,12 +48,12 @@ class BrowseResponseParserTests: XCTestCase {
             XCTAssertNotNil(requestJson["features"], "Valid features should be correctly parsed")
             XCTAssertNotNil(requestJson["feature_variants"], "Valid featureVariants should be correctly parsed")
             XCTAssertNotNil(requestJson["searchandized_items"], "Valid searchandizedItems should be correctly parsed")
-            
+
         } catch {
             XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
         }
     }
-    
+
     func testBrowseParser_ParsingJSONString_ParsesRefinedContent() {
         let data = TestResource.load(name: TestResource.Response.browseJSONFilename)
         do {

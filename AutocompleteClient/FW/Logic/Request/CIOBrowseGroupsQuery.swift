@@ -12,7 +12,7 @@ import Foundation
  Struct encapsulating the necessary and additional parameters required to execute a browse groups query.
  */
 public struct CIOBrowseGroupsQuery: CIORequestData {
-    
+
     /**
      The id of the specific group that should be included in the response
      */
@@ -22,7 +22,7 @@ public struct CIOBrowseGroupsQuery: CIORequestData {
      The section to return results from
      */
     public let section: String
-    
+
     /**
      The maximum depth of the hierarchy, in case of hierarchical groups, that should be included in the response
      */

@@ -6,15 +6,15 @@
 //  http://constructor.io/
 //
 
-import XCTest
 import ConstructorAutocomplete
+import XCTest
 
 class ConstructorIOQuizTests: XCTestCase {
 
     var constructor: ConstructorIO!
     var quizSessionId = "session-id"
     var quizVersionId = "dd10eea4-f765-4bb1-b8e5-46b09a190cfe"
-    
+
     override func setUp() {
         super.setUp()
         self.constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: "ZqXaOfXuBWD4s3XzCI1q", baseURL: "https://quizzes.cnstrc.com"))

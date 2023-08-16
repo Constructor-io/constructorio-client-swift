@@ -12,7 +12,7 @@ import Foundation
  Request builder for creating an browse facets query.
  */
 public class CIOBrowseFacetsQueryBuilder {
-    
+
     /**
      The page of results to request (can't be used with offset)
      */
@@ -22,7 +22,7 @@ public class CIOBrowseFacetsQueryBuilder {
      The offset of results to request (can't be used with page)
      */
     var offset: Int?
-    
+
     /**
      The number of results per page to return
      */
@@ -62,7 +62,6 @@ public class CIOBrowseFacetsQueryBuilder {
         self.showHiddenFacets = showHiddenFacets
         return self
     }
-
 
     /**
      Add a offset of results to return

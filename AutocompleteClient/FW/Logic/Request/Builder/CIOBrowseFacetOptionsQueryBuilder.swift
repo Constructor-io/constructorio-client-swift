@@ -12,12 +12,12 @@ import Foundation
  Request builder for creating an browse facet options query.
  */
 public class CIOBrowseFacetOptionsQueryBuilder {
-    
+
     /**
      The name of the facet whose options to return
      */
     var facetName: String
-    
+
     /**
      Whether or not to return hidden facets
      */
@@ -29,7 +29,7 @@ public class CIOBrowseFacetOptionsQueryBuilder {
     public init(facetName: String) {
         self.facetName = facetName
     }
-    
+
     /**
      Add a bool indicating whether or not to return hidden facets
      */

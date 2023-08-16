@@ -27,7 +27,7 @@ public struct CIOQuizQuery: CIORequestData {
      More information can be found: https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-versioning
      */
     public var quizVersionId: String?
-    
+
     /**
      Unique quiz_session_id for the quiz.
      The quiz session id will be returned with the first request and it should be passed with subsequent requests.

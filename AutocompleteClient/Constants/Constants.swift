@@ -119,12 +119,12 @@ struct Constants {
         static let defaultPage = 1
         static let defaultPerPage = 30
     }
-    
+
     struct BrowseGroupsQuery {
         static let format = "%@/browse/groups"
         static let defaultSectionName = "Products"
     }
-    
+
     struct BrowseFacetsQuery {
         static let format = "%@/browse/facets"
         static let page = "page"
@@ -232,7 +232,7 @@ struct Constants {
     struct TrackBrowseResultClick {
         static let format = "%@/v2/behavioral_action/browse_result_click"
     }
-    
+
     struct TrackItemDetailLoad {
         static let format = "%@/v2/behavioral_action/item_detail_load"
     }
