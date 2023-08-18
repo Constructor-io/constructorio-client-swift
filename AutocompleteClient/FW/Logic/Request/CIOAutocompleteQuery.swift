@@ -52,7 +52,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
      - Parameters:
         - query: The user typed query to return results for
         - numResults: The number of results to return
-        - numResultsForSection: The section to return results from
+        - numResultsForSection: The number of results to return for each section
         - filters: The filters used to refine results
         - hiddenFields: The list of hidden metadata fields to return
      

@@ -30,8 +30,8 @@
     },
     {
       "file": "/Users/jimmy/projects/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/Responses/CIOAutocompleteResponse.swift",
-      "line": 27,
-      "symbol": "CIOAutocompleteResponse.init(sections:json:)",
+      "line": 32,
+      "symbol": "CIOAutocompleteResponse.init(sections:json:request:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
