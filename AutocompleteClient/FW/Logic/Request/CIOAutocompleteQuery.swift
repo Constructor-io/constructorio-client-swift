@@ -23,7 +23,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
     let numResults: Int?
 
     /**
-     The section to return results from
+     The number of results to return for each section
      */
     let numResultsForSection: [String: Int]?
 
@@ -52,7 +52,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
      - Parameters:
         - query: The user typed query to return results for
         - numResults: The number of results to return
-        - numresultsForSection: The section to return results from
+        - numResultsForSection: The section to return results from
         - filters: The filters used to refine results
         - hiddenFields: The list of hidden metadata fields to return
      
