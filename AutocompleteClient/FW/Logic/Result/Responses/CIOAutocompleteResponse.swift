@@ -23,9 +23,15 @@ public struct CIOAutocompleteResponse {
      Additional information about the request and result ID
      */
     public let json: JSONObject
+    
+    /**
+     Request object used to retrieve the Autocomplete Response
+     */
+    public var request: JSONObject
 
-    public init(sections: [String: [CIOAutocompleteResult]], json: JSONObject) {
+    public init(sections: [String: [CIOAutocompleteResult]], json: JSONObject, request: JSONObject = [:]) {
         self.sections = sections
         self.json = json
+        self.request = request
     }
 }

@@ -31,4 +31,9 @@ public struct CIORecommendationsResponse {
      Result ID of the result set returned
      */
     public let resultID: String
+    
+    /**
+     Request object used to retrieve the Recommendations Response
+     */
+    public var request: JSONObject
 }

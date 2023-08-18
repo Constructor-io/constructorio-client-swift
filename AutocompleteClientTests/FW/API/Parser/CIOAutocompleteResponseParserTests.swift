@@ -54,6 +54,27 @@ class CIOAutocompleteResponseParserTests: XCTestCase {
         }
     }
 
+    func testParsingMultipleSectionJSONString_HasCorrectRequestObject() {
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            let requestJson = response.request
+
+            XCTAssertEqual(response.sections.count, TestResource.Response.numberOfSectionsInMultipleSectionsResponse, "Number of parsed sections should match the JSON response")
+            XCTAssertEqual(requestJson["num_results_per_page"] as? Int, Optional(20), "Valid numResults should be correctly parsed")
+            XCTAssertEqual(requestJson["page"] as? Int, Optional(1), "Valid page should be correctly parsed")
+            XCTAssertEqual(requestJson["section"] as? String, "Products", "Valid section should be correctly parsed")
+            XCTAssertEqual(requestJson["sort_by"] as? String, "relevance", "Valid sortBy should be correctly parsed")
+            XCTAssertEqual(requestJson["sort_order"] as? String, "descending", "Valid sortOrder should be correctly parsed")
+            XCTAssertEqual(requestJson["term"] as? String, "", "Valid term should be correctly parsed")
+            XCTAssertNotNil(requestJson["features"], "Valid features should be correctly parsed")
+            XCTAssertNotNil(requestJson["feature_variants"], "Valid featureVariants should be correctly parsed")
+            XCTAssertNotNil(requestJson["searchandized_items"], "Valid searchandizedItems should be correctly parsed")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
     func testParsingSingleSectionJSONString_HasSingleSection() {
         let data = TestResource.load(name: TestResource.Response.singleSectionJSONFilename)
         do {

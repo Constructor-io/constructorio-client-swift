@@ -65,4 +65,9 @@ public struct CIOQuizResultsResponse {
      Id of the quiz
      */
     public let quizId: String
+    
+    /**
+     Request object used to retrieve the Quizzes Response
+     */
+    public var request: JSONObject
 }
