@@ -625,7 +625,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - quizSessionID: The quiz session identifier associated with this conversion event
         - resultID: The identifier of result set returned by the Constructor quiz response
         - resultPage: The current page of the results
-        - resultCount: The total numbe of results
+        - resultCount: The total number of results
         - sectionName The name of the autocomplete section the results came from
         - completionHandler: The callback to execute on completion.
      
@@ -653,7 +653,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - itemName: The product item name
         - resultID: The identifier of result set returned by the Constructor quiz response
         - resultPage: The current page of the results
-        - resultCount: The total numbe of results
+        - resultCount: The total number of results
         - numResultsPerPage: The number of results on the current page
         - resultPositionOnPage: The position of clicked item
         - sectionName The name of the autocomplete section the result came from
