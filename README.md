@@ -94,6 +94,9 @@ let config = ConstructorIOConfig(
 
 // Create the client instance
 let constructorIO = ConstructorIO(config: config)
+
+// The test cells in the config can be edited after instantiating the client instance
+constructorIO.config.testCells = [CIOABTestCell(key: "constructorio_test", value: "experiment_1")]
 ```
 
 ## 6. Request Autocomplete Results
