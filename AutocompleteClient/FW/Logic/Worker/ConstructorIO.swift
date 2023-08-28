@@ -631,7 +631,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackQuizResultsLoaded(quizId: 'coffee-quiz', quizVersionId: '1231244', quizSessionId: '3123', resultCount: 167)
+     constructorIO.trackQuizResultsLoaded(quizId: "coffee-quiz", quizVersionId: "1231244", quizSessionId: "3123", resultCount: 167)
      ```
      */
     public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -661,7 +661,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackQuizResultClick(quizID: 'coffee-quiz', quizVersionID: '1231244', quizSessionID: '123', customerID: '123', itemName: 'espresso')
+     constructorIO.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", itemName: "espresso")
      ```
      */
     public func trackQuizResultClick(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, numResultsPerPage: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {

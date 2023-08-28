@@ -202,6 +202,7 @@ Three types of these events exist:
 1. **Search Events** measure user interaction with search results
 1. **Browse Events** measure user interaction with browse results
 1. **Recommendation Events** measure user interaction with recommendations
+1. **Quiz Events** measure user interaction with quiz results
 1. **Conversion Events** measure user events like `add to cart` or `purchase`
 
 ### Autocomplete Events
@@ -245,6 +246,22 @@ constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResul
 
 // Track when a recomendation result is clicked
 constructorIO.trackRecommendationResultClick(podID: "pdp_best_sellers", strategyID: "best_sellers", customerID: "P183021", variationID: "7281930", numResultsPerPage: 30, resultPage: 1, resultCount: 15, resultPositionOnPage: 1, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+```
+
+### Quiz Events
+
+```swift
+// Track when a quiz result is clicked
+ConstructorIo.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", itemName: 
+"espresso")
+
+
+// Track when quiz results are loaded
+ConstructorIo.trackQuizResultsLoaded(quizId: "coffee-quiz", quizVersionId: "1231244", quizSessionId: "3123", resultCount: 167)
+
+
+// Track when a quiz result is converted on
+ConstructorIo.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", itemName: "espresso")
 ```
 
 ### Conversion Events
