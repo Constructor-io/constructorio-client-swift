@@ -256,7 +256,7 @@ ConstructorIo.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "123124
 "espresso")
 
 // Track when quiz results are loaded
-ConstructorIo.trackQuizResultsLoaded(quizId: "coffee-quiz", quizVersionId: "1231244", quizSessionId: "3123", resultCount: 167)
+ConstructorIo.trackQuizResultsLoaded(quizId: "coffee-quiz", quizVersionId: "1231244", quizSessionId: "123", resultCount: 20)
 
 // Track when a quiz result is converted on
 ConstructorIo.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", itemName: "espresso")

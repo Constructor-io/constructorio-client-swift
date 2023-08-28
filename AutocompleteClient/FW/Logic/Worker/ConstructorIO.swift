@@ -631,7 +631,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackQuizResultsLoaded(quizId: "coffee-quiz", quizVersionId: "1231244", quizSessionId: "3123", resultCount: 167)
+     constructorIO.trackQuizResultsLoaded(quizId: "coffee-quiz", quizVersionId: "1231244", quizSessionId: "123", resultCount: 20)
      ```
      */
     public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
