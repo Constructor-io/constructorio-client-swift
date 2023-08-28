@@ -533,7 +533,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-47398", revenue: 12.99, searchTerm: "tooth", conversionType: "add_to_cart")
+     constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-47398", revenue: 12.99, searchTerm: "tooth")
      ```
      */
     public func trackConversion(itemName: String, customerID: String, variationID: String? = nil, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, conversionType: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -690,7 +690,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
  
      ### Usage Example: ###
      ```
-     constructorIO.trackQuizConversion(quizId: 'coffee-quiz', quizVersionId: '1231244', quizSessionId: '3123', itemName: 'espresso', variationId: '167', type: 'add_to_cart', revenue: 1.0)
+     constructorIO.trackQuizConversion(quizId: 'coffee-quiz', quizVersionId: '1231244', quizSessionId: '3123', customerID: "123", variationId: '167', itemName: 'espresso', revenue: "20.0")
      ```
      */
     public func trackQuizConversion(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, isCustomType: Bool? = nil, displayName: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {

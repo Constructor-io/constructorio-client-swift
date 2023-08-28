@@ -51,7 +51,6 @@ struct CIOTrackQuizResultsLoadedData: CIORequestData {
             "quiz_version_id": self.quizVersionID,
             "quiz_session_id": self.quizSessionID,
             "url": self.url,
-            "action_class": "result_load"
         ] as [String: Any]
 
         if self.resultID != nil {

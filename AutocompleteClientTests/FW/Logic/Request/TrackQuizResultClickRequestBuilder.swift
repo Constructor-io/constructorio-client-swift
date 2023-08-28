@@ -57,7 +57,6 @@ class TrackQuizResultClickRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["section"] as? String, self.sectionName)
 
         XCTAssertEqual(payload?["key"] as? String, self.testACKey)
-        XCTAssertEqual(payload?["action_class"] as? String, "result_click")
         XCTAssertEqual(payload?["beacon"] as? Bool, true)
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
     }

@@ -57,7 +57,6 @@ struct CIOTrackQuizConversionData: CIORequestData {
             "quiz_version_id": self.quizVersionID,
             "quiz_session_id": self.quizSessionID,
             "item_id": self.customerID,
-            "action_class": "conversion"
         ] as [String: Any]
 
         if self.variationID != nil {
