@@ -198,12 +198,12 @@ The iOS Client sends behavioral events to [Constructor.io](http://constructor.io
 Three types of these events exist:
 
 1. **General Events** are sent as needed when an instance of the Client is created or initialized
-1. **Autocomplete Events** measure user interaction with autocomplete results
-1. **Search Events** measure user interaction with search results
-1. **Browse Events** measure user interaction with browse results
-1. **Recommendation Events** measure user interaction with recommendations
-1. **Quiz Events** measure user interaction with quiz results
-1. **Conversion Events** measure user events like `add to cart` or `purchase`
+2. **Autocomplete Events** measure user interaction with autocomplete results
+3. **Search Events** measure user interaction with search results
+4. **Browse Events** measure user interaction with browse results
+5. **Recommendation Events** measure user interaction with recommendations
+6. **Quiz Events** measure user interaction with quiz results
+7. **Conversion Events** measure user events like `add to cart` or `purchase`
 
 ### Autocomplete Events
 
@@ -256,10 +256,11 @@ ConstructorIo.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "123124
 "espresso")
 
 // Track when quiz results are loaded
-ConstructorIo.trackQuizResultsLoaded(quizId: "coffee-quiz", quizVersionId: "1231244", quizSessionId: "123", resultCount: 20)
+ConstructorIo.trackQuizResultsLoaded(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", resultCount: 20)
 
 // Track when a quiz result is converted on
-ConstructorIo.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", itemName: "espresso")
+ConstructorIo.trackQuizConversion(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", variationID: "167", itemName: "espresso", revenue: 20.0)
+
 ```
 
 ### Conversion Events

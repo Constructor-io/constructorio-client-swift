@@ -631,7 +631,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackQuizResultsLoaded(quizId: "coffee-quiz", quizVersionId: "1231244", quizSessionId: "123", resultCount: 20)
+     constructorIO.trackQuizResultsLoaded(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", resultCount: 20)
      ```
      */
     public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -690,7 +690,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
  
      ### Usage Example: ###
      ```
-     constructorIO.trackQuizConversion(quizId: 'coffee-quiz', quizVersionId: '1231244', quizSessionId: '3123', customerID: "123", variationId: '167', itemName: 'espresso', revenue: "20.0")
+     constructorIO.trackQuizConversion(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "3123", customerID: "123", variationID: "167", itemName: "espresso", revenue: 20.0)
      ```
      */
     public func trackQuizConversion(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, isCustomType: Bool? = nil, displayName: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
