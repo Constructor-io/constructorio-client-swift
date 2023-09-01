@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 3.0.3 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 3.1.0 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -1937,7 +1937,7 @@
                       <div class="abstract">
                         <p>Track when a user performs an action indicating interest in an item (add to cart, add to wishlist, etc.)</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackConversion</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="s">"Fashionable Toothpicks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"1234567-AB-47398"</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">12.99</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">conversionType</span><span class="p">:</span> <span class="s">"add_to_cart"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackConversion</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="s">"Fashionable Toothpicks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"1234567-AB-47398"</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">12.99</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -1997,7 +1997,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The  revenue of the item.</p>
+                                  <p>The revenue of the item.</p>
                                 </div>
                               </td>
                             </tr>
@@ -2310,12 +2310,483 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC22trackQuizResultsLoaded6quizID0h7VersionI00h7SessionI006resultI00L4Page0L5Count11sectionName17completionHandlerySS_S3SSgSiSgAnMyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackQuizResultsLoaded(quizID:quizVersionID:quizSessionID:resultID:resultPage:resultCount:sectionName:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC22trackQuizResultsLoaded6quizID0h7VersionI00h7SessionI006resultI00L4Page0L5Count11sectionName17completionHandlerySS_S3SSgSiSgAnMyAA20TrackingTaskResponseCcSgtF">trackQuizResultsLoaded(quizID:<wbr>quizVersionID:<wbr>quizSessionID:<wbr>resultID:<wbr>resultPage:<wbr>resultCount:<wbr>sectionName:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user views a quizzes results page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackQuizResultsLoaded</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="s">"coffee-quiz"</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="s">"1231244"</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackQuizResultsLoaded</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quizID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quiz identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quizVersionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quiz version identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quizSessionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quiz session identifier associated with this conversion event</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier of result set returned by the Constructor quiz response</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultPage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current page of the results</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultCount</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The total number of results</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC20trackQuizResultClick6quizID0h7VersionI00h7SessionI008customerI009variationI08itemName06resultI00P4Page0P5Count013numResultsPerQ00p10PositionOnQ007sectionO017completionHandlerySS_S4SSgA2RSiSgA3sRyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackQuizResultClick(quizID:quizVersionID:quizSessionID:customerID:variationID:itemName:resultID:resultPage:resultCount:numResultsPerPage:resultPositionOnPage:sectionName:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC20trackQuizResultClick6quizID0h7VersionI00h7SessionI008customerI009variationI08itemName06resultI00P4Page0P5Count013numResultsPerQ00p10PositionOnQ007sectionO017completionHandlerySS_S4SSgA2RSiSgA3sRyAA20TrackingTaskResponseCcSgtF">trackQuizResultClick(quizID:<wbr>quizVersionID:<wbr>quizSessionID:<wbr>customerID:<wbr>variationID:<wbr>itemName:<wbr>resultID:<wbr>resultPage:<wbr>resultCount:<wbr>numResultsPerPage:<wbr>resultPositionOnPage:<wbr>sectionName:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user clicks a result that appears within a quizzes results page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackQuizResultClick</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="s">"coffee-quiz"</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="s">"1231244"</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"espresso"</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackQuizResultClick</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">numResultsPerPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quizID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quiz identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quizVersionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quiz version identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quizSessionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quiz session identifier associated with this conversion event</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>customerID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The item ID.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>variationID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The variation ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>itemName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The product item name</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier of result set returned by the Constructor quiz response</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultPage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current page of the results</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultCount</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The total number of results</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>numResultsPerPage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of results on the current page</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultPositionOnPage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of clicked item</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC19trackQuizConversion6quizID0g7VersionH00g7SessionH008customerH009variationH08itemName7revenue14conversionType08isCustomQ007displayN007sectionN017completionHandlerySS_S4SSgAQSdSgAQSbSgA2QyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackQuizConversion(quizID:quizVersionID:quizSessionID:customerID:variationID:itemName:revenue:conversionType:isCustomType:displayName:sectionName:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC19trackQuizConversion6quizID0g7VersionH00g7SessionH008customerH009variationH08itemName7revenue14conversionType08isCustomQ007displayN007sectionN017completionHandlerySS_S4SSgAQSdSgAQSbSgA2QyAA20TrackingTaskResponseCcSgtF">trackQuizConversion(quizID:<wbr>quizVersionID:<wbr>quizSessionID:<wbr>customerID:<wbr>variationID:<wbr>itemName:<wbr>revenue:<wbr>conversionType:<wbr>isCustomType:<wbr>displayName:<wbr>sectionName:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user clicks a result that appears within a quizzes results page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackQuizConversion</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="s">"coffee-quiz"</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="s">"1231244"</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="s">"3123"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"167"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"espresso"</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackQuizConversion</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">conversionType</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">isCustomType</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">displayName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quizID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quiz identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quizVersionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quiz version identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quizSessionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quiz session identifier associated with this conversion event</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>customerID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The item ID.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>variationID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The variation ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>itemName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The product item name</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>revenue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sale price if available, otherwise the regular (retail) price of item</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>conversionType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The type of conversion (defaults to &ldquo;add_to_cart&rdquo;)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isCustomType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The flag to specify if type is custom conversion type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>displayName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The display name for the custom conversion type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-08-18)</p>
+          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-09-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

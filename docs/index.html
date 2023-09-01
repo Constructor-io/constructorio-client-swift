@@ -16,7 +16,7 @@
     <a title="ConstructorAutocomplete  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ConstructorAutocomplete 3.0.3 Docs</a> (94% documented)</p>
+        <p><a href="index.html">ConstructorAutocomplete 3.1.0 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -285,7 +285,24 @@ end
 </code></pre>
 
 <p>In most cases, you will want to store those parameters as cookies preferably as <strong>ConstructorioID_client_id</strong> and <strong>ConstructorioID_session_id</strong> to be sent with your requests to your backend servers.</p>
-<h2 id='5-request-autocomplete-results' class='heading'>5. Request Autocomplete Results</h2>
+<h2 id='5-setting-test-cell-information-for-a-b-tests' class='heading'>5. Setting test cell information for A/B tests</h2>
+
+<p>When A/B testing, it is important to specify which cell the user is being assigned to. Information about the test cell can be set through the <code><a href="Structs/ConstructorIOConfig.html">ConstructorIOConfig</a></code> object.</p>
+<pre class="highlight kotlin"><code><span class="n">let</span> <span class="n">testCell</span> <span class="p">=</span> <span class="nc">CIOABTestCell</span>
+
+<span class="n">let</span> <span class="n">config</span> <span class="p">=</span> <span class="nc">ConstructorIOConfig</span><span class="p">(</span>
+   <span class="n">apiKey</span><span class="p">:</span> <span class="s">"YOUR API KEY"</span><span class="p">,</span>
+   <span class="n">baseURL</span><span class="p">:</span> <span class="s">"ac.cnstrc.com"</span><span class="p">,</span> <span class="c1">// default</span>
+   <span class="n">testCells</span><span class="p">:</span> <span class="p">[</span><span class="nc">CIOABTestCell</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="s">"constructorio_test"</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="s">"control_1"</span><span class="p">)]</span>
+<span class="p">)</span>
+
+<span class="c1">// Create the client instance</span>
+<span class="n">let</span> <span class="n">constructorIO</span> <span class="p">=</span> <span class="nc">ConstructorIO</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">config</span><span class="p">)</span>
+
+<span class="c1">// The test cells in the config can be edited after instantiating the client instance</span>
+<span class="n">constructorIO</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">testCells</span> <span class="p">=</span> <span class="p">[</span><span class="nc">CIOABTestCell</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="s">"constructorio_test"</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="s">"experiment_1"</span><span class="p">)]</span>
+</code></pre>
+<h2 id='6-request-autocomplete-results' class='heading'>6. Request Autocomplete Results</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOAutocompleteQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"apple"</span><span class="p">,</span> <span class="nv">numResultsForSection</span><span class="p">:</span> <span class="p">[</span><span class="s">"Products"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"Search Suggestions"</span><span class="p">:</span> <span class="mi">8</span><span class="p">])</span>
 
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">autocomplete</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
@@ -294,7 +311,7 @@ end
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre>
-<h2 id='6-request-search-results' class='heading'>6. Request Search Results</h2>
+<h2 id='7-request-search-results' class='heading'>7. Request Search Results</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">filters</span> <span class="o">=</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="s">"Bread"</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="p">[</span>
   <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Organic"</span><span class="p">),</span>
   <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
@@ -311,7 +328,7 @@ end
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre>
-<h2 id='7-request-browse-results' class='heading'>7. Request Browse Results</h2>
+<h2 id='8-request-browse-results' class='heading'>8. Request Browse Results</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOBrowseQuery</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"potato"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"russet"</span><span class="p">)</span>
 
 <span class="c1">// Specify the sort order in which groups are returned</span>
@@ -323,8 +340,8 @@ end
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre>
-<h2 id='8-request-recommendation-results' class='heading'>8. Request Recommendation Results</h2>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podId</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
+<h2 id='9-request-recommendation-results' class='heading'>9. Request Recommendation Results</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
 
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
@@ -334,7 +351,7 @@ end
 </code></pre>
 <h3 id='with-an-item-id-for-the-alternative-complementary-items-recommendations-strategy' class='heading'>With an item id for the alternative/complementary items recommendations strategy</h3>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">itemId</span> <span class="o">=</span> <span class="s">"P18232"</span>
-<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podId</span><span class="p">:</span> <span class="s">"pdp_complementary_items"</span><span class="p">,</span> <span class="nv">itemId</span><span class="p">:</span> <span class="n">itemId</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_complementary_items"</span><span class="p">,</span> <span class="nv">itemID</span><span class="p">:</span> <span class="n">itemId</span><span class="p">)</span>
 
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
@@ -348,7 +365,7 @@ end
   <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
   <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kroger"</span><span class="p">)</span>
 <span class="p">])</span>
-<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podId</span><span class="p">:</span> <span class="s">"pdp_filtered_items"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_filtered_items"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="n">filters</span><span class="p">)</span>
 
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">recommendations</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
   <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
@@ -356,7 +373,7 @@ end
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre>
-<h2 id='9-request-quiz-next-question' class='heading'>9. Request Quiz Next Question</h2>
+<h2 id='10-request-quiz-next-question' class='heading'>10. Request Quiz Next Question</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOQuizQuery</span><span class="p">(</span><span class="nv">quizId</span><span class="p">:</span> <span class="s">"quiz-1"</span><span class="p">,</span> <span class="nv">answers</span><span class="p">:</span> <span class="p">[[</span><span class="s">"1"</span><span class="p">],</span> <span class="p">[</span><span class="s">"2"</span><span class="p">]])</span>
 
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">getQuizNextQuestion</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
@@ -365,7 +382,7 @@ end
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre>
-<h2 id='10-request-quiz-results' class='heading'>10. Request Quiz Results</h2>
+<h2 id='11-request-quiz-results' class='heading'>11. Request Quiz Results</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOQuizQuery</span><span class="p">(</span><span class="nv">quizId</span><span class="p">:</span> <span class="s">"quiz-1"</span><span class="p">,</span> <span class="nv">answers</span><span class="p">:</span> <span class="p">[[</span><span class="s">"1"</span><span class="p">],</span> <span class="p">[</span><span class="s">"2"</span><span class="p">]])</span>
 
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">getQuizResults</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="k">in</span>
@@ -374,7 +391,7 @@ end
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre>
-<h2 id='11-instrument-behavioral-events' class='heading'>11. Instrument Behavioral Events</h2>
+<h2 id='12-instrument-behavioral-events' class='heading'>12. Instrument Behavioral Events</h2>
 
 <p>The iOS Client sends behavioral events to <a href="http://constructor.io/">Constructor.io</a> in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.</p>
 
@@ -386,6 +403,7 @@ end
 <li><strong>Search Events</strong> measure user interaction with search results</li>
 <li><strong>Browse Events</strong> measure user interaction with browse results</li>
 <li><strong>Recommendation Events</strong> measure user interaction with recommendations</li>
+<li><strong>Quiz Events</strong> measure user interaction with quiz results</li>
 <li><strong>Conversion Events</strong> measure user events like <code>add to cart</code> or <code>purchase</code></li>
 </ol>
 <h3 id='autocomplete-events' class='heading'>Autocomplete Events</h3>
@@ -419,6 +437,17 @@ end
 <span class="c1">// Track when a recomendation result is clicked</span>
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultClick</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">strategyID</span><span class="p">:</span> <span class="s">"best_sellers"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"P183021"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7281930"</span><span class="p">,</span> <span class="nv">numResultsPerPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
 </code></pre>
+<h3 id='quiz-events' class='heading'>Quiz Events</h3>
+<pre class="highlight swift"><code><span class="c1">// Track when a quiz result is clicked</span>
+<span class="kt">ConstructorIo</span><span class="o">.</span><span class="nf">trackQuizResultClick</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="s">"coffee-quiz"</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="s">"1231244"</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"espresso"</span><span class="p">)</span>
+
+<span class="c1">// Track when quiz results are loaded</span>
+<span class="kt">ConstructorIo</span><span class="o">.</span><span class="nf">trackQuizResultsLoaded</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="s">"coffee-quiz"</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="s">"1231244"</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1">// Track when a quiz result is converted on</span>
+<span class="kt">ConstructorIo</span><span class="o">.</span><span class="nf">trackQuizConversion</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="s">"coffee-quiz"</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="s">"1231244"</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"167"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"espresso"</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">)</span>
+
+</code></pre>
 <h3 id='conversion-events' class='heading'>Conversion Events</h3>
 <pre class="highlight swift"><code><span class="c1">// Track when an item converts (a.k.a. is added to cart) regardless of the user journey that led to adding to cart</span>
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackConversion</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="s">"Fashionable Toothpicks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"1234567-AB-47398"</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">12.99</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">conversionType</span><span class="p">:</span> <span class="s">"add_to_cart"</span><span class="p">)</span>
@@ -441,7 +470,7 @@ end
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-08-18)</p>
+          <p>&copy; 2023 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2023-09-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
