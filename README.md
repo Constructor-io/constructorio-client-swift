@@ -149,7 +149,7 @@ constructorIO.browse(forQuery: query, groupsSortOption: groupsSortOption) { (res
 ## 9. Request Recommendation Results
 
 ```swift
-let query = CIORecommendationsQuery(podId: "pdp_best_sellers", filters: filters)
+let query = CIORecommendationsQuery(podID: "pdp_best_sellers", filters: filters)
 
 constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
@@ -161,7 +161,7 @@ constructorIO.recommendations(forQuery: query) { (response) in
 ### With an item id for the alternative/complementary items recommendations strategy
 ```swift
 let itemId = "P18232"
-let query = CIORecommendationsQuery(podId: "pdp_complementary_items", itemId: itemId)
+let query = CIORecommendationsQuery(podID: "pdp_complementary_items", itemID: itemId)
 
 constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
@@ -177,7 +177,7 @@ let filters = CIOQueryFilters(groupFilter: "cat_1234", facetFilters: [
   (key: "Nutrition", value: "Natural"),
   (key: "Brand", value: "Kroger")
 ])
-let query = CIORecommendationsQuery(podId: "pdp_filtered_items", filters: filters)
+let query = CIORecommendationsQuery(podID: "pdp_filtered_items", filters: filters)
 
 constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
@@ -217,11 +217,12 @@ The iOS Client sends behavioral events to [Constructor.io](http://constructor.io
 Three types of these events exist:
 
 1. **General Events** are sent as needed when an instance of the Client is created or initialized
-1. **Autocomplete Events** measure user interaction with autocomplete results
-1. **Search Events** measure user interaction with search results
-1. **Browse Events** measure user interaction with browse results
-1. **Recommendation Events** measure user interaction with recommendations
-1. **Conversion Events** measure user events like `add to cart` or `purchase`
+2. **Autocomplete Events** measure user interaction with autocomplete results
+3. **Search Events** measure user interaction with search results
+4. **Browse Events** measure user interaction with browse results
+5. **Recommendation Events** measure user interaction with recommendations
+6. **Quiz Events** measure user interaction with quiz results
+7. **Conversion Events** measure user events like `add to cart` or `purchase`
 
 ### Autocomplete Events
 
@@ -264,6 +265,20 @@ constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResul
 
 // Track when a recomendation result is clicked
 constructorIO.trackRecommendationResultClick(podID: "pdp_best_sellers", strategyID: "best_sellers", customerID: "P183021", variationID: "7281930", numResultsPerPage: 30, resultPage: 1, resultCount: 15, resultPositionOnPage: 1, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+```
+
+### Quiz Events
+
+```swift
+// Track when a quiz result is clicked
+ConstructorIo.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", itemName: "espresso")
+
+// Track when quiz results are loaded
+ConstructorIo.trackQuizResultsLoaded(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", resultCount: 20)
+
+// Track when a quiz result is converted on
+ConstructorIo.trackQuizConversion(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", variationID: "167", itemName: "espresso", revenue: 20.0)
+
 ```
 
 ### Conversion Events

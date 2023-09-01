@@ -18,6 +18,22 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     fileprivate let quizSessionId = "session-id"
     fileprivate let sectionName = "Products"
 
+    // For tracking
+    fileprivate let quizId = "test-quiz"
+    fileprivate let customerId = "960109549"
+    fileprivate let variationId = "no variations"
+    fileprivate let itemName = "Lucerne Cottage Cheese Small Curd 2% Milkfat Lowfat - 24 Oz"
+    fileprivate let url = "www.example.com"
+    fileprivate let resultId = "abc"
+    fileprivate let resultPage = 1
+    fileprivate let resultCount = 12
+    fileprivate let numResultsPerPage = 13
+    fileprivate let resultPositionOnPage = 6
+    fileprivate let revenue = 24.1
+    fileprivate let conversionType = "add_to_cart_two"
+    fileprivate let isCustomType = true
+    fileprivate let displayName = "bongo"
+
     var constructor: ConstructorIO!
 
     override func setUp() {
@@ -296,6 +312,66 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             XCTAssertNotNil(cioError)
             XCTAssertEqual(cioError?.errorMessage, "The quiz you requested, \"test-quiz\" was not found with version \"1\", please specify a valid quiz id and remove the quiz_version_id parameter before trying again.")
 
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackQuizResultClick() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackQuizResultClick(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId, customerID: customerId, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackQuizResultClick_WithOptionalParams() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackQuizResultClick(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId, customerID: customerId, variationID: variationId, itemName: itemName, resultID: resultId, resultPage: resultPage, resultCount: resultCount, numResultsPerPage: numResultsPerPage, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackQuizResultsLoaded() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackQuizResultsLoaded(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }   
+
+    func testTrackQuizResultsLoaded_WithOptionalParams() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackQuizResultsLoaded(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId,  resultID: resultId, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackQuizConversion() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackQuizConversion(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId, customerID: customerId, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackQuizConversion_WithOptionalParams() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackQuizConversion(quizID: quizId, quizVersionID: quizVersionId, quizSessionID: quizSessionId, customerID: customerId, variationID: variationId, itemName: itemName, revenue: revenue, conversionType: conversionType, isCustomType: isCustomType, displayName: displayName, sectionName: sectionName, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
             expectation.fulfill()
         })
         self.wait(for: expectation)
