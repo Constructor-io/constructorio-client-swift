@@ -130,7 +130,7 @@ constructorIO.browse(forQuery: query, groupsSortOption: groupsSortOption) { (res
 ## 8. Request Recommendation Results
 
 ```swift
-let query = CIORecommendationsQuery(podId: "pdp_best_sellers", filters: filters)
+let query = CIORecommendationsQuery(podID: "pdp_best_sellers", filters: filters)
 
 constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
@@ -142,7 +142,7 @@ constructorIO.recommendations(forQuery: query) { (response) in
 ### With an item id for the alternative/complementary items recommendations strategy
 ```swift
 let itemId = "P18232"
-let query = CIORecommendationsQuery(podId: "pdp_complementary_items", itemId: itemId)
+let query = CIORecommendationsQuery(podID: "pdp_complementary_items", itemID: itemId)
 
 constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
@@ -158,7 +158,7 @@ let filters = CIOQueryFilters(groupFilter: "cat_1234", facetFilters: [
   (key: "Nutrition", value: "Natural"),
   (key: "Brand", value: "Kroger")
 ])
-let query = CIORecommendationsQuery(podId: "pdp_filtered_items", filters: filters)
+let query = CIORecommendationsQuery(podID: "pdp_filtered_items", filters: filters)
 
 constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
@@ -252,8 +252,7 @@ constructorIO.trackRecommendationResultClick(podID: "pdp_best_sellers", strategy
 
 ```swift
 // Track when a quiz result is clicked
-ConstructorIo.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", itemName: 
-"espresso")
+ConstructorIo.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", itemName: "espresso")
 
 // Track when quiz results are loaded
 ConstructorIo.trackQuizResultsLoaded(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", resultCount: 20)
