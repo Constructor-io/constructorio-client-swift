@@ -285,9 +285,9 @@ struct Constants {
         struct Results {
             static let format = "%@/v1/quizzes/%@/results"
         }
-        static let quizId = "quiz_id"
+        static let quizID = "quiz_id"
         static let answers = "a"
-        static let quizVersionId = "quiz_version_id"
-        static let quizSessionId = "quiz_session_id"
+        static let quizVersionID = "quiz_version_id"
+        static let quizSessionID = "quiz_session_id"
     }
 }

@@ -22,19 +22,19 @@ public struct CIOQuizQuestionResponse {
      The quiz version id will be returned with the first request and it should be passed with subsequent requests.
      More information can be found: https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-versioning
      */
-    public let quizVersionId: String
+    public let quizVersionID: String
 
     /**
      Unique quiz_session_id for the quiz.
      The quiz session id will be returned with the first request and it should be passed with subsequent requests.
      More information can be found: https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-sessions
      */
-    public let quizSessionId: String
+    public let quizSessionID: String
 
     /**
      Id of the quiz
      */
-    public let quizId: String
+    public let quizID: String
 
     /**
      Flag to determine if it's the last question in the quiz

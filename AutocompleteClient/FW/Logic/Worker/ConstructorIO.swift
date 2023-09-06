@@ -282,7 +282,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let quizQuestionQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1", "2"]], quizVersionId: "some-version-id", quizSessionId: "some-session-id")
+     let quizQuestionQuery = CIOQuizQuery(quizID: "123", answers: [["1"], ["1", "2"]], quizVersionID: "some-version-id", quizSessionID: "some-session-id")
 
      constructorIO.getQuizNextQuestion(forQuery: quizQuestionQuery) { response in
         let data = response.data!
@@ -304,7 +304,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let quizResultsQuery = CIOQuizQuery(quizId: "123", answers: [["1"], ["1", "2"]], quizVersionId: "some-version-id", quizSessionId: "some-session-id")
+     let quizResultsQuery = CIOQuizQuery(quizID: "123", answers: [["1"], ["1", "2"]], quizVersionID: "some-version-id", quizSessionID: "some-session-id")
      
      constructorIO.getQuizResults(forQuery: quizResultsQuery) { response in
         let data = response.data!

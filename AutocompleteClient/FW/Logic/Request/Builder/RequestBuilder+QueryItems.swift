@@ -243,13 +243,13 @@ extension RequestBuilder {
         }
     }
 
-    func set(quizVersionId: String?) {
-        guard let quizVersionId = quizVersionId else { return }
-        queryItems.add(URLQueryItem(name: Constants.Quiz.quizVersionId, value: quizVersionId))
+    func set(quizVersionID: String?) {
+        guard let quizVersionID = quizVersionID else { return }
+        queryItems.add(URLQueryItem(name: Constants.Quiz.quizVersionID, value: quizVersionID))
     }
 
-    func set(quizSessionId: String?) {
-        guard let quizSessionId = quizSessionId else { return }
-        queryItems.add(URLQueryItem(name: Constants.Quiz.quizSessionId, value: quizSessionId))
+    func set(quizSessionID: String?) {
+        guard let quizSessionID = quizSessionID else { return }
+        queryItems.add(URLQueryItem(name: Constants.Quiz.quizSessionID, value: quizSessionID))
     }
 }
