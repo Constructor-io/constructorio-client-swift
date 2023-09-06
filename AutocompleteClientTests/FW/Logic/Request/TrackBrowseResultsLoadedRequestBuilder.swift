@@ -38,4 +38,17 @@ class TrackBrowseResultsLoadedRequestBuilderTests: XCTestCase {
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
         XCTAssertEqual(payload?["url"] as? String, url)
     }
+    
+    func testTrackBrowseResultsLoadedBuilder_WithItemsParam() {
+        let customerIDs = ["custID1", "custID2", "custID3"]
+        let tracker = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, customerIDs: customerIDs)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedItems = payload?["items"] as? [[String: String]] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedItems.count, 3)
+        XCTAssertEqual(loadedItems[0]["item_id"], customerIDs[0])
+    }
 }
