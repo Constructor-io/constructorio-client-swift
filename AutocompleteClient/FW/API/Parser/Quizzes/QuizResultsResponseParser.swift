@@ -31,9 +31,9 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
             let resultSources: CIOResultSources? = CIOResultSources(json: response["result_sources"] as? JSONObject)
 
             let resultID = json?["result_id"] as? String ?? ""
-            let quizVersionId = json?["quiz_version_id"] as? String ?? ""
-            let quizId = json?["quiz_id"] as? String ?? ""
-            let quizSessionId = json?["quiz_session_id"] as? String ?? ""
+            let quizVersionID = json?["quiz_version_id"] as? String ?? ""
+            let quizID = json?["quiz_id"] as? String ?? ""
+            let quizSessionID = json?["quiz_session_id"] as? String ?? ""
 
             guard let request: JSONObject = json?["request"] as? JSONObject else {
                 throw CIOError(errorType: .invalidResponse)
@@ -47,9 +47,9 @@ class QuizResultsResponseParser: AbstractQuizResultsResponseParser {
                 totalNumResults: totalNumResults,
                 resultSources: resultSources,
                 resultID: resultID,
-                quizVersionId: quizVersionId,
-                quizSessionId: quizSessionId,
-                quizId: quizId,
+                quizVersionID: quizVersionID,
+                quizSessionID: quizSessionID,
+                quizID: quizID,
                 request: request
             )
         } catch {

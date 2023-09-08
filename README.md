@@ -189,7 +189,7 @@ constructorIO.recommendations(forQuery: query) { (response) in
 ## 10. Request Quiz Next Question
 
 ```swift
-let query = CIOQuizQuery(quizId: "quiz-1", answers: [["1"], ["2"]])
+let query = CIOQuizQuery(quizID: "quiz-1", answers: [["1"], ["2"]])
 
 constructorIO.getQuizNextQuestion(forQuery: query) { (response) in
   let data = response.data!
@@ -201,7 +201,7 @@ constructorIO.getQuizNextQuestion(forQuery: query) { (response) in
 ## 11. Request Quiz Results
 
 ```swift
-let query = CIOQuizQuery(quizId: "quiz-1", answers: [["1"], ["2"]])
+let query = CIOQuizQuery(quizID: "quiz-1", answers: [["1"], ["2"]])
 
 constructorIO.getQuizResults(forQuery: query) { (response) in
   let data = response.data!
