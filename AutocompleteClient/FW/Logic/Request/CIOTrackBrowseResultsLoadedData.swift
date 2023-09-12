@@ -17,17 +17,19 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
     let resultCount: Int
     let resultID: String?
     let url: String
+    let customerIDs: [String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackBrowseResultsLoaded.format, baseURL)
     }
 
-    init(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available") {
+    init(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available", customerIDs: [String]? = nil) {
         self.filterName = filterName
         self.filterValue = filterValue
         self.resultCount = resultCount
         self.resultID = resultID
         self.url = url
+        self.customerIDs = customerIDs
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -43,6 +45,11 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
             "result_count": Int(self.resultCount),
             "url": self.url
         ] as [String: Any]
+        
+        if let loadedCustomerIDs = self.customerIDs {
+            let items = loadedCustomerIDs.map { ["item_id": $0] }
+            dict["items"] = items
+        }
 
         if self.resultID != nil {
             dict["resultID"] = self.resultID

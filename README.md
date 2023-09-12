@@ -253,6 +253,9 @@ constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", custome
 // Track when browse results are loaded into view
 constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674)
 
+// Track when browse results are loaded into view with items array (supported in v3.1.2 and above)
+constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
+
 // Track when a browse result is clicked
 constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", variationID: "7654321-BA-738", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 ```

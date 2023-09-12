@@ -434,11 +434,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+     constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"], resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
      ```
      */
-    public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID)
+    public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, customerIDs: [String]? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID, customerIDs: customerIDs)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
