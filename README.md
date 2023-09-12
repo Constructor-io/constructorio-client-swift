@@ -251,6 +251,9 @@ constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", custome
 
 ```swift
 // Track when browse results are loaded into view
+constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674)
+
+// Track when browse results are loaded into view with items array (supported in v3.1.2 and above)
 constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
 
 // Track when a browse result is clicked
