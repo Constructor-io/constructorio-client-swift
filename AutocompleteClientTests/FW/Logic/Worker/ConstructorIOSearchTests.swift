@@ -192,6 +192,29 @@ class ConstructorIOSearchTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testSearch_AttachesVariationsMapWithFilterBy() {
+        let groupByOptions = [GroupByOption(name: "Country", field: "data.Country")]
+        let valueOption = ValueOption(aggregation: "min", field: "data.price")
+
+        let filterValueA = FilterByExpressionValue(fieldPath: "data.size", value: "M")
+        let filterValueB = FilterByExpressionValue(fieldPath: "data.size", value: "L")
+        let filterValueC = FilterByExpressionValue(fieldPath: "data.length", value: 25)
+        let filterValueD = FilterByExpressionValue(fieldPath: "data.in_stock", value: false)
+        let filterConditionsNot = FilterByExpressionNot(not: filterValueD)
+        let filterConditionsAnd = FilterByExpressionAnd(exprArr: [filterValueA, filterValueC])
+        let filterConditionsOr = FilterByExpressionOr(exprArr: [filterValueB, filterConditionsAnd, filterConditionsNot])
+
+        let variationsMap = CIOQueryVariationsMap(GroupBy: groupByOptions, FilterBy: filterConditionsOr, Values: ["price": valueOption], Dtype: "array")
+
+        let query = CIOSearchQuery(query: "potato", variationsMap: variationsMap)
+        let builder = CIOBuilder(expectation: "Calling Search with variations map should have a URL query variations map", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/search/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products&variations_map=%7B%22values%22:%7B%22price%22:%7B%22field%22:%22data.price%22,%22aggregation%22:%22min%22%7D%7D,%22dtype%22:%22array%22,%22filter_by%22:%7B%22or%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22L%22%7D,%7B%22and%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22M%22%7D,%7B%22field%22:%22data.length%22,%22value%22:25%7D%5D%7D,%7B%22not%22:%7B%22field%22:%22data.in_stock%22,%22value%22:false%7D%7D%5D%7D,%22group_by%22:%5B%7B%22name%22:%22Country%22,%22field%22:%22data.Country%22%7D%5D%7D"), builder.create())
+
+        self.constructor.search(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
     func testSearch_AttachesPreFilterExpression() {
         let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
         let query = CIOSearchQuery(query: "potato", preFilterExpression: preFilterExpression)
