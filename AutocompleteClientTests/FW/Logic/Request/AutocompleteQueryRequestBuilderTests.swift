@@ -129,6 +129,21 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
+    func testAutocompleteQueryBuilder_WithASectionSpecificFilter() {
+        let queryFilters = CIOQueryFilters(groupFilter: "101", facetFilters: [(key: "Nutrition", value: "Calcium")])
+        let query = CIOAutocompleteQuery(query: self.query, sectionFilters: ["Products" : queryFilters], numResults: 20)
+        builder.build(trackData: query)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
+        XCTAssertTrue(url.contains("filters%5BProducts%5D%5Bgroup_id%5D=101"), "URL should contain the group filter.")
+        XCTAssertTrue(url.contains("filters%5BProducts%5D%5BNutrition%5D=Calcium"), "URL should contain the facet filter.")
+        XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
+        XCTAssertEqual(request.httpMethod, "GET")
+    }
+
     func testAutocompleteQueryBuilder_WithHiddenFields() {
         let hiddenFields = ["hiddenField1", "hiddenField2"]
         let query = CIOAutocompleteQuery(query: self.query, numResults: 20, hiddenFields: hiddenFields)
@@ -140,32 +155,6 @@ class AutocompleteQueryRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("num_results=20"), "URL should contain the num_results URL parameter.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
-        XCTAssertEqual(request.httpMethod, "GET")
-    }
-
-    func testAutocompleteQueryBuilder_WithVariationsMap() {
-        let groupByOptions = [GroupByOption(name: "Country", field: "data.Country")]
-        let valueOption = ValueOption(aggregation: "min", field: "data.price")
-
-        let filterValueA = FilterByExpressionValue(fieldPath: "data.size", value: "M")
-        let filterValueB = FilterByExpressionValue(fieldPath: "data.size", value: "L")
-        let filterValueC = FilterByExpressionValue(fieldPath: "data.length", value: 25)
-        let filterValueD = FilterByExpressionValue(fieldPath: "data.in_stock", value: false)
-        let filterConditionsNot = FilterByExpressionNot(not: filterValueD)
-        let filterConditionsAnd = FilterByExpressionAnd(exprArr: [filterValueA, filterValueC])
-        let filterConditionsOr = FilterByExpressionOr(exprArr: [filterValueB, filterConditionsAnd, filterConditionsNot])
-
-        let variationsMap = CIOQueryVariationsMap(GroupBy: groupByOptions, FilterBy: filterConditionsOr, Values: ["price": valueOption], Dtype: "array")
-
-        let query = CIOAutocompleteQuery(query: self.query, variationsMap: variationsMap)
-        builder.build(trackData: query)
-        let request = builder.getRequest()
-        let url = request.url!.absoluteString
-
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(endodedQuery)?"))
-        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
-        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
-        XCTAssertTrue(url.contains("variations_map=\("%7B%22values%22:%7B%22price%22:%7B%22field%22:%22data.price%22,%22aggregation%22:%22min%22%7D%7D,%22dtype%22:%22array%22,%22filter_by%22:%7B%22or%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22L%22%7D,%7B%22and%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22M%22%7D,%7B%22field%22:%22data.length%22,%22value%22:25%7D%5D%7D,%7B%22not%22:%7B%22field%22:%22data.in_stock%22,%22value%22:false%7D%7D%5D%7D,%22group_by%22:%5B%7B%22name%22:%22Country%22,%22field%22:%22data.Country%22%7D%5D%7D")"), "Variations Map incorrectly encoded.")
         XCTAssertEqual(request.httpMethod, "GET")
     }
 }

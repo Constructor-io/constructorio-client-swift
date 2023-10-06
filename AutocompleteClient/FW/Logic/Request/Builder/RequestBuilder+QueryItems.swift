@@ -122,6 +122,25 @@ extension RequestBuilder {
             self.set(facetFilter: filter)
         }
     }
+    
+    func set(sectionFacetFilters: [Filter]?, sectionName: String) {
+        guard let filters = sectionFacetFilters else { return }
+        
+        for filter in filters {
+            queryItems.add(URLQueryItem(name: Constants.AutocompleteQuery.sectionFilterKey(sectionName,filter.key), value: filter.value))
+        }
+    }
+    
+    func set(sectionFilters: [String: CIOQueryFilters]?) {
+        guard let filters = sectionFilters else { return }
+        
+        filters.forEach {
+            self.set(sectionFacetFilters: $0.value.facetFilters, sectionName: $0.key)
+
+            guard let groupFilter = $0.value.groupFilter else { return }
+            queryItems.add(URLQueryItem(name: Constants.AutocompleteQuery.sectionFilterKey($0.key, "group_id"), value: groupFilter))
+        }
+    }
 
     func set(facetFilter: Filter?) {
         guard let filter = facetFilter else { return }
@@ -201,12 +220,7 @@ extension RequestBuilder {
         guard let variationsMap = variationsMap else { return }
         do {
             let jsonData = try JSONEncoder().encode(variationsMap)
-            var jsonString = String(data: jsonData, encoding: .utf8)!
-            if let filterByJsonStr = variationsMap.FilterByJsonStr {
-                let regex = try NSRegularExpression(pattern: "\\}$")
-                let range = NSRange(location: 0, length: jsonString.count)
-                jsonString = regex.stringByReplacingMatches(in: jsonString, range: range, withTemplate: ",\"filter_by\":\(filterByJsonStr)}")
-            }
+            let jsonString = String(data: jsonData, encoding: .utf8)
             queryItems.add(URLQueryItem(name: "variations_map", value: jsonString))
         } catch {
             // Do nothing

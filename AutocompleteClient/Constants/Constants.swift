@@ -71,6 +71,7 @@ struct Constants {
         static let numResultsForSectionNamePrefix = "num_results_"
         static let queryItemForSection = { (name: String) -> String in return Constants.AutocompleteQuery.numResultsForSectionNamePrefix + name }
         static let sectionNameSearchSuggestions = "Search Suggestions"
+        static let sectionFilterKey = { (section: String, key: String) -> String in "filters[\(section)][\(key)]" }
         static let sectionNameProducts = "Products"
         static let defaultItemCountPerSection = 10
     }

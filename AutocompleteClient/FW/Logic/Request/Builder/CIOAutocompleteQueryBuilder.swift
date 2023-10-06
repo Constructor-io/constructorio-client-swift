@@ -34,6 +34,11 @@ public class CIOAutocompleteQueryBuilder {
     var filters: CIOQueryFilters?
 
     /**
+     The filters to only apply to specific sections
+     */
+    var sectionFilters: [String: CIOQueryFilters]?
+
+    /**
      The list of hidden metadata fields to return
      */
     var hiddenFields: [String]?
@@ -77,6 +82,14 @@ public class CIOAutocompleteQueryBuilder {
         self.filters = filters
         return self
     }
+    
+    /**
+     Add additional filters applied only to specific sections
+     */
+    public func setSectionFilters(_ sectionFilters: [String: CIOQueryFilters]) -> CIOAutocompleteQueryBuilder {
+        self.sectionFilters = sectionFilters
+        return self
+    }
 
     /**
      Add a list of hidden fields to return
@@ -114,6 +127,6 @@ public class CIOAutocompleteQueryBuilder {
      ```
      */
     public func build() -> CIOAutocompleteQuery {
-        return CIOAutocompleteQuery(query: query, filters: filters, numResults: numResults, numResultsForSection: numResultsForSection, hiddenFields: hiddenFields, variationsMap: variationsMap)
+        return CIOAutocompleteQuery(query: query, filters: filters, sectionFilters: sectionFilters, numResults: numResults, numResultsForSection: numResultsForSection, hiddenFields: hiddenFields, variationsMap: variationsMap)
     }
 }
