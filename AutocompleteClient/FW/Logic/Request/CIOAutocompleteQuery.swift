@@ -33,6 +33,11 @@ public struct CIOAutocompleteQuery: CIORequestData {
     let filters: CIOQueryFilters?
 
     /**
+     The filters to only apply to specific sections
+     */
+    let sectionFilters: [String: CIOQueryFilters]?
+
+    /**
      The list of hidden metadata fields to return
      */
     public let hiddenFields: [String]?
@@ -54,6 +59,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
         - numResults: The number of results to return
         - numResultsForSection: The number of results to return for each section
         - filters: The filters used to refine results
+        - sectionFilters: The filters to only apply to specific sections
         - hiddenFields: The list of hidden metadata fields to return
      
      ### Usage Example: ###
@@ -61,11 +67,12 @@ public struct CIOAutocompleteQuery: CIORequestData {
      let autocompleteQuery = CIOAutocompleteQuery(query: "apple", numResults: 5, numResultsForSection: ["Products": 6, "Search Suggestions": 8], hiddenFields: ["price_CA", "currency_CA"])
      ```
      */
-    public init(query: String, filters: CIOQueryFilters? = nil, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil, hiddenFields: [String]? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
+    public init(query: String, filters: CIOQueryFilters? = nil, sectionFilters: [String: CIOQueryFilters]? = nil, numResults: Int? = nil, numResultsForSection: [String: Int]? = nil, hiddenFields: [String]? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
         self.query = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.numResults = numResults
         self.numResultsForSection = numResultsForSection
         self.filters = filters
+        self.sectionFilters = sectionFilters
         self.hiddenFields = hiddenFields
         self.variationsMap = variationsMap
     }
@@ -75,6 +82,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
         requestBuilder.set(numResultsForSection: self.numResultsForSection)
         requestBuilder.set(groupFilter: self.filters?.groupFilter)
         requestBuilder.set(facetFilters: self.filters?.facetFilters)
+        requestBuilder.set(sectionFilters: self.sectionFilters)
         requestBuilder.set(hiddenFields: self.hiddenFields)
         requestBuilder.set(variationsMap: self.variationsMap)
     }

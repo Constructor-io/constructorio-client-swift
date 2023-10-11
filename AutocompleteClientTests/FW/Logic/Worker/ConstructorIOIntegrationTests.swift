@@ -341,6 +341,27 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testAutocomplete_WithSectionSpecificFilters() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let facetFilters = [
+            (key: "Brand", value: "XYZ")
+        ]
+        let queryFilters = CIOQueryFilters(groupFilter: "BrandXY", facetFilters: facetFilters)
+        let query = CIOAutocompleteQuery(query: "item", sectionFilters: ["Products" : queryFilters], numResults: 20)
+        self.constructor.autocomplete(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+
+            let responseData = response.data!
+            let productResults = responseData.sections["Products"]!
+            XCTAssertFalse(productResults.isEmpty)
+            let suggestionResults = responseData.sections["Search Suggestions"]!
+            XCTAssertFalse(productResults.isEmpty)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testAutocomplete_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
         let hiddenFields = ["testField"]
