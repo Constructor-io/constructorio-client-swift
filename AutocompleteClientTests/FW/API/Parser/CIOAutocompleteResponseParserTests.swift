@@ -88,8 +88,8 @@ class CIOAutocompleteResponseParserTests: XCTestCase {
     func testParsingMultipleGroupsJSONString_HasCorrectItemCount() {
         let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename)
         do {
+            responseParser.maxGroups = 10
             let response = try responseParser.parse(autocompleteResponseData: data)
-
             if let results = response.sections[Constants.Response.singleSectionResultField] {
                 XCTAssertEqual(results.count, TestResource.Response.numberOfGroupsInMultipleSectionsResponse + 1, "Number of parsed items with multiple groups should match the number of groups plus one.")
             } else {
@@ -137,6 +137,21 @@ class CIOAutocompleteResponseParserTests: XCTestCase {
 
             // first item contains two group results, so we're looking for more than two results where group is not nil
             XCTAssertEqual(suggestionsContainingNonNilGroup.count, 0, "There should be no items with non nil group if the delegate returns false.")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+    
+    func testParsingMultipleGroupsJSONString_HasCorrectItemCountWithZeroMaxGroups() {
+        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename)
+        do {
+            responseParser.maxGroups = 0
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            if let results = response.sections[Constants.Response.singleSectionResultField] {
+                XCTAssertEqual(results.count, 1, "Number of parsed items with multiple groups should not include the number of groups")
+            } else {
+                XCTFail("Results incorrectly parsed, no results array for key \(Constants.Response.singleSectionResultField) when server returns a single section")
+            }
         } catch {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
