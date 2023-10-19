@@ -135,6 +135,13 @@
     },
     {
       "file": "/Users/jimmy/projects/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "line": 40,
+      "symbol": "ConstructorIO.autocompleteParser",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jimmy/projects/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 49,
       "symbol": "ConstructorIO.sessionID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
