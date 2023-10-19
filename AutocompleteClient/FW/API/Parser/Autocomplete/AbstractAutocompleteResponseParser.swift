@@ -8,9 +8,9 @@
 
 import Foundation
 
-protocol AbstractAutocompleteResponseParser {
+public protocol AbstractAutocompleteResponseParser {
 
     var delegate: ResponseParserDelegate? { get set }
-
+    var maxGroups: Int? { get set }
     func parse(autocompleteResponseData: Data) throws -> CIOAutocompleteResponse
 }

@@ -8,13 +8,14 @@
 
 import Foundation
 
-struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
+public struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
 
-    weak var delegate: ResponseParserDelegate?
-
+    public var delegate: ResponseParserDelegate?
+    public var maxGroups: Int? = 0
+    
     init() {}
 
-    func parse(autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
+    public func parse(autocompleteResponseData: Data) throws -> CIOAutocompleteResponse {
         do {
             if let json = try JSONSerialization.jsonObject(with: autocompleteResponseData) as? JSONObject {
                 let isSingleSection = json.keys.contains(Constants.Response.singleSectionResultField)
@@ -111,7 +112,7 @@ struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser {
     }
 
     fileprivate func delegateMaximumGroupsShownPerResult(result: CIOResult, at index: Int) -> Int {
-        return self.delegate?.maximumGroupsShownPerResult(result: result, at: index) ?? Int.max
+        return self.delegate?.maximumGroupsShownPerResult(result: result, at: index) ?? self.maxGroups!
     }
 
     fileprivate func delegateShouldParseResult(_ result: CIOResult, _ group: CIOGroup?) -> Bool? {
