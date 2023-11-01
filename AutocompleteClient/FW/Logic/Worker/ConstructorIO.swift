@@ -642,7 +642,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
-    
+
     /**
      Track when a user clicks a result that appears within a quizzes results page
 
@@ -959,7 +959,44 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
+    var PII_REGEX = [
+        #"^[\w\-+\\.]+@([\w-]+\.)+[\w-]{2,4}$"#, // Email
+        #"^(?:\+\d{11,12}|\+\d{1,3}\s\d{3}\s\d{3}\s\d{3,4}|\(\d{3}\)\d{7}|\(\d{3}\)\s\d{3}\s\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\)\s\d{3}-\d{4})$"#, // Phone Number
+        #"^(?:4[0-9]{15}|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$"# // Visa, Mastercard, Amex, Discover, JCB and Diners Club, regex source: https://www.regular-expressions.info/creditcard.html
+        // Add more PII REGEX
+    ]
+
+    private func containsPII(query: String) -> Bool {
+        let piiDetected = PII_REGEX.contains {
+            return query.range(
+                of: $0,
+                options: .regularExpression
+            ) != nil
+        }
+
+        return piiDetected
+    }
+
+    public func requestContainsPII(request: String) -> Bool {
+        let url = URL(string: request)
+        let paths = url?.path.removingPercentEncoding!.components(separatedBy: "/")
+        let paramValues = url?.query?.removingPercentEncoding!.components(separatedBy: "&").map { $0.components(separatedBy: "=")[1] }
+
+        let pathsContainPII = paths?.contains {
+            containsPII(query: $0)
+        }
+
+        let paramsContainPII = paramValues?.contains {
+            containsPII(query: $0)
+        }
+
+        return pathsContainPII! || paramsContainPII!
+    }
+
     private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
+        // PII Detection
+        if requestContainsPII(request: request.url!.absoluteString) { return }
+
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
                 completionHandler?(response)

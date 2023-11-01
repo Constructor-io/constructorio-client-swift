@@ -12,6 +12,56 @@ import XCTest
 class ConstructorIOTests: XCTestCase {
 
     var networkClient: NetworkClient!
+    let piiParams = [
+        // Email
+        "test@test.com",
+        "test-100@test.com",
+        "test.100@test.com",
+        "test@test.com",
+        "test+123@test.info",
+        "test-100@test.net",
+        "test.100@test.com.au",
+        "test@test.io",
+        "test@test.com.com",
+        "test+100@test.com",
+        "test-100@test-test.io",
+        // Phone Number
+        "+12363334011",
+        "+1 236 333 4011",
+        "(236)2228542",
+        "(236) 222 8542",
+        "(236)222-8542",
+        "(236) 222-8542",
+        "+420736447763",
+        "+420 736 447 763",
+        // Sources of example card numbers:
+        // - https://support.bluesnap.com/docs/test-credit-card-numbers
+        // - https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm
+        "4263982640269299", // Visa
+        "4917484589897107", // Visa
+        "4001919257537193", // Visa
+        "4007702835532454", // Visa
+        "4111111111111111", // Visa
+        "4012888888881881", // Visa
+        "5425233430109903", // MasterCard
+        "2222420000001113", // MasterCard
+        "2223000048410010", // MasterCard
+        "5555555555554444", // MasterCard
+        "5105105105105100", // MasterCard
+        "374245455400126", // American Express
+        "378282246310005", // American Express
+        "371449635398431", // American Express
+        "378734493671000", // American Express
+        "6011556448578945", // Discover
+        "6011000991300009", // Discover
+        "6011111111111117", // Discover
+        "6011000990139424", // Discover
+        "3566000020000410", // JCB
+        "3530111333300000", // JCB
+        "3566002020360505", // JCB
+        "30569309025904", // Diners Club
+        "38520000023237", // Diners Club
+    ]
 
     override  func setUp() {
         super.setUp()
@@ -128,4 +178,23 @@ class ConstructorIOTests: XCTestCase {
         XCTAssertNotNil(constructor.clientID, "Client ID shouldn't be nil")
     }
 
+    func testConstructor_requestsWithPiiInPathAreDetected() {
+        let constructor = TestConstants.testConstructor()
+        var url: String
+
+        for pathParam in piiParams {
+            url = "https://ac.cnstrc.com/autocomplete/\(pathParam)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test"
+            XCTAssertTrue(constructor.requestContainsPII(request: url), "Path param containing PII is detected")
+        }
+    }
+
+    func testConstructor_requestsWithPiiInQueryParamsAreDetected() {
+        let constructor = TestConstants.testConstructor()
+        var url: String
+
+        for queryParam in piiParams {
+            url = "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(queryParam)&s=test"
+            XCTAssertTrue(constructor.requestContainsPII(request: url), "Path param containing PII is detected")
+        }
+    }
 }
