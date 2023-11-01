@@ -60,7 +60,49 @@ class ConstructorIOTests: XCTestCase {
         "3530111333300000", // JCB
         "3566002020360505", // JCB
         "30569309025904", // Diners Club
-        "38520000023237", // Diners Club
+        "38520000023237" // Diners Club
+    ]
+
+    let noPiiParams = [
+        // Email
+        "daniel",
+        "daniel @constructor.io",
+        "daniel@.com.my",
+        "daniel123@gmail.a",
+        "daniel123@.com",
+        "daniel123@.com.com",
+        "daniel()*@gmail.com",
+        "daniel@%*.com",
+        "daniel@tillero@gmail.com",
+        "daniel@tillero",
+        // Phone Number
+        "123",
+        "123 456 789",
+        "236 222 5432",
+        "2362225432",
+        "736447763",
+        "736 447 763",
+        "236456789012",
+        "2364567890123",
+        // Credit Card
+        "1025",
+        "4155279860457", // Edge case that we just pass as valid. If we were to account for it, we would be filtering out SKUs as well
+        "4222222222222", // Edge case that we just pass as valid. If we were to account for it, we would be filtering out SKUs as well
+        "6155279860457",
+        "1234567890",
+        "12345678901",
+        "123456789012",
+        "1234567890123",
+        "1234567890145",
+        "12345678901678",
+        "1234567890167890",
+        "12345678901678901",
+        "123456789016789012",
+        "1234567890167890123",
+        "12345678901678901234",
+        "123456789016789012345",
+        "12345678901678901234567",
+        "123456789016789012345678"
     ]
 
     override  func setUp() {
@@ -184,7 +226,7 @@ class ConstructorIOTests: XCTestCase {
 
         for pathParam in piiParams {
             url = "https://ac.cnstrc.com/autocomplete/\(pathParam)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test"
-            XCTAssertTrue(constructor.requestContainsPII(request: url), "Path param containing PII is detected")
+            XCTAssertTrue(constructor.requestContainsPII(request: url), "Path param containing PII returns true")
         }
     }
 
@@ -194,7 +236,27 @@ class ConstructorIOTests: XCTestCase {
 
         for queryParam in piiParams {
             url = "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(queryParam)&s=test"
-            XCTAssertTrue(constructor.requestContainsPII(request: url), "Path param containing PII is detected")
+            XCTAssertTrue(constructor.requestContainsPII(request: url), "Query param containing PII returns true")
+        }
+    }
+
+    func testConstructor_requestsWithNoPiiInPathAreCompleted() {
+        let constructor = TestConstants.testConstructor()
+        var url: String
+
+        for pathParam in noPiiParams {
+            url = "https://ac.cnstrc.com/autocomplete/\(pathParam)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test"
+            XCTAssertFalse(constructor.requestContainsPII(request: url), "Path param without PII returns false")
+        }
+    }
+
+    func testConstructor_requestsWithNoPiiInQueryParamsAreCompleted() {
+        let constructor = TestConstants.testConstructor()
+        var url: String
+
+        for queryParam in noPiiParams {
+            url = "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(queryParam)&s=test"
+            XCTAssertFalse(constructor.requestContainsPII(request: url), "Query param without PII returns false")
         }
     }
 }

@@ -979,8 +979,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     public func requestContainsPII(request: String) -> Bool {
         let url = URL(string: request)
-        let paths = url?.path.removingPercentEncoding!.components(separatedBy: "/")
-        let paramValues = url?.query?.removingPercentEncoding!.components(separatedBy: "&").map { $0.components(separatedBy: "=")[1] }
+        let paths = url?.path.removingPercentEncoding?.components(separatedBy: "/")
+        let paramValues = url?.query?.removingPercentEncoding?.components(separatedBy: "&").map { $0.components(separatedBy: "=")[1] }
 
         let pathsContainPII = paths?.contains {
             containsPII(query: $0)
@@ -990,7 +990,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             containsPII(query: $0)
         }
 
-        return pathsContainPII! || paramsContainPII!
+        return pathsContainPII ?? false || paramsContainPII ?? false
     }
 
     private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
