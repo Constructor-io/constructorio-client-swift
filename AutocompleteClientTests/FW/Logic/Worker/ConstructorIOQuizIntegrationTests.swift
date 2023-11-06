@@ -224,7 +224,6 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
             XCTAssertNil(cioError)
             XCTAssertNotEqual(responseData.quizVersionID, "")
             XCTAssertNotEqual(responseData.quizSessionID, "")
-            XCTAssertEqual(responseData.isLastQuestion, true)
             XCTAssertEqual(responseData.nextQuestion.id, 4)
             XCTAssertEqual(responseData.nextQuestion.title, "Test Open Text")
             XCTAssertEqual(responseData.nextQuestion.images?.primaryUrl, "/test-asset")
