@@ -219,8 +219,15 @@ extension RequestBuilder {
     func set(variationsMap: CIOQueryVariationsMap?) {
         guard let variationsMap = variationsMap else { return }
         do {
-            let jsonData = try JSONEncoder().encode(variationsMap)
-            let jsonString = String(data: jsonData, encoding: .utf8)
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.outputFormatting = .sortedKeys
+            let jsonData = try jsonEncoder.encode(variationsMap)
+            var jsonString = String(data: jsonData, encoding: .utf8)!
+            if let filterByJsonStr = variationsMap.FilterByJsonStr {
+                let regex = try NSRegularExpression(pattern: "\\}$")
+                let range = NSRange(location: 0, length: jsonString.count)
+                jsonString = regex.stringByReplacingMatches(in: jsonString, range: range, withTemplate: ",\"filter_by\":\(filterByJsonStr)}")
+            }
             queryItems.add(URLQueryItem(name: "variations_map", value: jsonString))
         } catch {
             // Do nothing

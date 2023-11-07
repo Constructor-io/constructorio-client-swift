@@ -35,9 +35,4 @@ public struct CIOQuizQuestionResponse {
      Id of the quiz
      */
     public let quizID: String
-
-    /**
-     Flag to determine if it's the last question in the quiz
-     */
-    public let isLastQuestion: Bool
 }
