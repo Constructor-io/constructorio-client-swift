@@ -45,14 +45,14 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
             "result_count": Int(self.resultCount),
             "url": self.url
         ] as [String: Any]
-        
+
         if let loadedCustomerIDs = self.customerIDs {
             let items = loadedCustomerIDs.map { ["item_id": $0] }
             dict["items"] = items
         }
 
         if self.resultID != nil {
-            dict["resultID"] = self.resultID
+            dict["result_id"] = self.resultID
         }
 
         dict["beacon"] = true
