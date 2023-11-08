@@ -45,7 +45,7 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
             "result_count": Int(self.resultCount),
             "url": self.url
         ] as [String: Any]
-        
+
         if let loadedCustomerIDs = self.customerIDs {
             let items = loadedCustomerIDs.map { ["item_id": $0] }
             dict["items"] = items
