@@ -12,6 +12,12 @@ import XCTest
 
 class ConstructorIOTrackBrowseResultsLoadedTests: XCTestCase {
 
+    fileprivate let filterName = "potato"
+    fileprivate let filterValue = "russet"
+    fileprivate let resultCount = 12
+    fileprivate let resultID = "result-id"
+    fileprivate let customerIDs = ["10001", "10002"]
+
     var constructor: ConstructorIO!
 
     override func setUp() {
@@ -25,20 +31,14 @@ class ConstructorIOTrackBrowseResultsLoadedTests: XCTestCase {
     }
 
     func testTrackBrowseResultsLoaded() {
-        let filterName = "potato"
-        let filterValue = "russet"
-        let resultCount = 12
         let builder = CIOBuilder(expectation: "Calling trackBrowseResultsLoaded should send a valid request.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
-        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount)
+        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID)
         self.wait(for: builder.expectation)
     }
 
     func testTrackBrowseResultsLoaded_With400() {
         let expectation = self.expectation(description: "Calling trackBrowseResultsLoaded with 400 should return badRequest CIOError.")
-        let filterName = "potato"
-        let filterValue = "russet"
-        let resultCount = 12
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
         self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, completionHandler: { response in
             if let cioError = response.error as? CIOError {
@@ -51,9 +51,6 @@ class ConstructorIOTrackBrowseResultsLoadedTests: XCTestCase {
 
     func testTrackBrowseResultsLoaded_With500() {
         let expectation = self.expectation(description: "Calling trackBrowseResultsLoaded with 500 should return internalServerError CIOError.")
-        let filterName = "potato"
-        let filterValue = "russet"
-        let resultCount = 12
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(500))
         self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, completionHandler: { response in
             if let cioError = response.error as? CIOError {
@@ -66,9 +63,6 @@ class ConstructorIOTrackBrowseResultsLoadedTests: XCTestCase {
 
     func testTrackBrowseResultsLoaded_WithNoConnectivity() {
         let expectation = self.expectation(description: "Calling trackBrowseResultsLoaded with no connectvity should return noConnectivity CIOError.")
-        let filterName = "potato"
-        let filterValue = "russet"
-        let resultCount = 12
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), noConnectivity())
         self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, completionHandler: { response in
             if let cioError = response.error as? CIOError {

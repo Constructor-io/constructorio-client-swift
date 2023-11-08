@@ -52,7 +52,7 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
         }
 
         if self.resultID != nil {
-            dict["resultID"] = self.resultID
+            dict["result_id"] = self.resultID
         }
 
         dict["beacon"] = true
