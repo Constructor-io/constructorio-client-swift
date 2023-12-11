@@ -33,7 +33,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     public var sessionManager: SessionManager
 
-    public let clientID: String?
+    public var clientID: String?
 
     public var userID: String?
 
@@ -49,6 +49,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public var sessionID: Int {
         get {
             return self.sessionManager.getSessionWithIncrement()
+        }
+
+        set (newID) {
+            self.sessionManager.setSessionID(id: newID)
         }
     }
 
@@ -700,6 +704,36 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let data = CIOTrackQuizConversionData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, revenue: revenue, conversionType: conversionType, isCustomType: isCustomType, displayName: displayName, sectionName: section)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Set a custom clientID
+
+     - Parameters:
+        - clientID: The Client ID
+
+     ### Usage Example: ###
+     ```
+     constructorIO.setClientId(clientID: "new-client-id")
+     ```
+     */
+    public func setClientId(clientID: String) {
+        self.clientID = clientID
+    }
+
+    /**
+     Set a custom sessionID
+
+     - Parameters:
+        - sessionID: The Session ID
+
+     ### Usage Example: ###
+     ```
+     constructorIO.setSessionId(sessionID: 1234)
+     ```
+     */
+    public func setSessionId(sessionID: Int) {
+        self.sessionID = sessionID
     }
 
     private func buildRequest(data: CIORequestData) -> URLRequest {

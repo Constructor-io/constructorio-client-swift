@@ -14,5 +14,7 @@ public protocol SessionManager: AnyObject {
     func getSessionWithIncrement() -> Int
     func getSessionWithoutIncrement() -> Int
 
+    func setSessionID(id: Int)
+
     func setup()
 }
