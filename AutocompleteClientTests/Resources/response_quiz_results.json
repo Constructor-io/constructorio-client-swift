@@ -1,28 +1,224 @@
 {
-  "result": {
-    "filter_expression": {
+  "request": {
+    "page": 1,
+    "num_results_per_page": 20,
+    "sort_by": "relevance",
+    "sort_order": "descending",
+    "collection_filter_expression": {
       "and": [
-        { "name": "group_id", "value": "W123456" },
         {
-          "or": [
-            { "name": "group_id", "value": "W95680" },
-            { "name": "group_id", "value": "W1338473" },
-            { "name": "group_id", "value": "W1349792" },
-            { "name": "group_id", "value": "W162459" }
-          ]
+          "name": "Color",
+          "value": "red"
         },
         {
-          "or": [
-            { "name": "color", "value": "Blue" },
-            { "name": "color", "value": "Black" },
-            { "name": "color", "value": "Grey" }
-          ]
+          "name": "Brand",
+          "value": "XYZ"
         }
       ]
     },
-    "results_url": "https://ac.cnstrc.com/browse/items?key=xaUaZEQHQWnrNZbq&num_results_per_page=10&collection_filter_expression=%3D%7B%22and%22%3A%5B%7B%22name%22%3A%22group_id%22%2C%22value%22%3A%22W123456%22%7D%2C%7B%22or%22%3A%5B%7B%22name%22%3A%22color%22%2C%22value%22%3A%22Purple%22%7D%2C%7B%22name%22%3A%22color%22%2C%22value%22%3A%22Black%22%7D%2C%7B%22name%22%3A%22color%22%2C%22value%22%3A%22Blue%22%7D%5D%7D%5D%7D"
+    "blacklist_rules": true,
+    "term": "",
+    "fmt_options": {
+      "groups_start": "current",
+      "groups_max_depth": 1,
+      "show_hidden_facets": false,
+      "show_hidden_fields": false,
+      "show_protected_facets": false
+    },
+    "section": "Products",
+    "features": {
+      "query_items": true,
+      "a_a_test": true,
+      "auto_generated_refined_query_rules": true,
+      "manual_searchandizing": true,
+      "personalization": true,
+      "filter_items": true,
+      "use_reranker_service_for_search": false,
+      "use_reranker_service_for_browse": false,
+      "use_reranker_service_for_all": false,
+      "custom_autosuggest_ui": false,
+      "disable_test_only_global_rules_search": false,
+      "disable_test_only_global_rules_browse": false
+    },
+    "feature_variants": {
+      "query_items": "query_items_ctr_and_l2r",
+      "a_a_test": null,
+      "auto_generated_refined_query_rules": "default_rules",
+      "manual_searchandizing": null,
+      "personalization": "default_personalization",
+      "filter_items": "filter_items_w_atcs_and_purchases",
+      "use_reranker_service_for_search": null,
+      "use_reranker_service_for_browse": null,
+      "use_reranker_service_for_all": null,
+      "custom_autosuggest_ui": null,
+      "disable_test_only_global_rules_search": null,
+      "disable_test_only_global_rules_browse": null
+    }
   },
-  "quiz_version_id": "11db5ac7-67e1-4000-9000-414d8425cab3",
-  "quiz_session_id": "session-67e1-4000-9000-414d8425cab3",
-  "quiz_id": "123",
+  "response": {
+    "result_sources": {
+      "token_match": {
+        "count": 2
+      },
+      "embeddings_match": {
+        "count": 0
+      }
+    },
+    "facets": [
+      {
+        "type": "multiple",
+        "name": "Color",
+        "display_name": "Color",
+        "hidden": false,
+        "data": {},
+        "options": [
+          {
+            "display_name": "red",
+            "status": "",
+            "value": "red",
+            "count": 2,
+            "data": {}
+          },
+          {
+            "display_name": "Blue",
+            "status": "",
+            "value": "Blue",
+            "count": 1,
+            "data": {}
+          }
+        ]
+      }
+    ],
+    "groups": [],
+    "results": [
+      {
+        "value": "item1 variation",
+        "matched_terms": [],
+        "data": {
+          "id": "10001",
+          "url": "https://test.com/p/20001",
+          "variation_id": "20001",
+          "facets": [
+            {
+              "name": "Brand",
+              "values": [
+                "XYZ"
+              ]
+            },
+            {
+              "name": "Color",
+              "values": [
+                "Blue",
+                "red"
+              ]
+            }
+          ],
+          "groups": [
+            {
+              "group_id": "StyleA",
+              "display_name": null,
+              "path": "/",
+              "path_list": []
+            }
+          ],
+          "deactivated": false
+        },
+        "variations": [
+          {
+            "data": {
+              "url": "https://test.com/p/20001",
+              "variation_id": "20001",
+              "facets": [
+                {
+                  "name": "Brand",
+                  "values": [
+                    "XYZ"
+                  ]
+                },
+                {
+                  "name": "Color",
+                  "values": [
+                    "Blue",
+                    "red"
+                  ]
+                }
+              ],
+              "deactivated": false
+            },
+            "value": "item1 variation"
+          }
+        ]
+      },
+      {
+        "value": "Item5",
+        "matched_terms": [],
+        "data": {
+          "id": "10005",
+          "url": "https://test.com/p/10005",
+          "facets": [
+            {
+              "name": "Brand",
+              "values": [
+                "XYZ"
+              ]
+            },
+            {
+              "name": "Color",
+              "values": [
+                "red"
+              ]
+            }
+          ],
+          "groups": [
+            {
+              "group_id": "BrandXY",
+              "display_name": null,
+              "path": "/",
+              "path_list": []
+            }
+          ],
+          "deactivated": false
+        }
+      }
+    ],
+    "sort_options": [
+      {
+        "display_name": "Collections descending",
+        "status": "",
+        "sort_by": "Collections",
+        "sort_order": "descending"
+      },
+      {
+        "display_name": "relevance ascending",
+        "status": "",
+        "sort_by": "relevance",
+        "sort_order": "descending"
+      }
+    ],
+    "refined_content": [],
+    "total_num_results": 2,
+    "features": []
+  },
+  "result_id": "041c8a2e-5421-41fc-842e-9d859db0e263",
+  "quiz_id": "test-quiz",
+  "version_id": "307949e5-b388-471e-8d13-1676639c7180",
+  "quiz_version_id": "307949e5-b388-471e-8d13-1676639c7180",
+  "quiz_session_id": "213ef964-b249-43ee-9020-5b781d55a7dd",
+  "quiz_selected_options": [
+    {
+      "value": "No",
+      "has_attribute": true,
+      "is_matched": false
+    },
+    {
+      "value": "No",
+      "has_attribute": true,
+      "is_matched": false
+    },
+    {
+      "value": "Maybe",
+      "has_attribute": false,
+      "is_matched": false
+    }
+  ]
 }

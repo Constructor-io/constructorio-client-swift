@@ -67,10 +67,10 @@ class ConstructorIOQuizTests: XCTestCase {
     func testQuizResults_WithValidRequest_ReturnsNonNilResponse() {
         let expectation = self.expectation(description: "Calling Quiz Results with valid parameters should return a non-nil response.")
 
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["2, 3"]])
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["2"], ["2, 3"]])
 
         let dataToReturn = TestResource.load(name: TestResource.Response.quizResultsJSONFilename)
-        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/results?_dt=\(kRegexTimestamp)&a=1&a=2,3&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(200, data: dataToReturn))
+        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/results?_dt=\(kRegexTimestamp)&a=2&a=2,%203&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(200, data: dataToReturn))
 
         self.constructor.getQuizResults(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data?.results, "Calling Quiz Results next with valid parameters should return a non-nil response.")
@@ -82,10 +82,10 @@ class ConstructorIOQuizTests: XCTestCase {
     func testQuizResults_WithValidRequest_ReturnsNonNilResponseWithRequestObject() {
         let expectation = self.expectation(description: "Calling Quiz Results with valid parameters should return a non-nil response with the request object.")
 
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["2, 3"]])
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["2"], ["2, 3"]])
 
         let dataToReturn = TestResource.load(name: TestResource.Response.quizResultsJSONFilename)
-        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/results?_dt=\(kRegexTimestamp)&a=1&a=2,3&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(200, data: dataToReturn))
+        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/results?_dt=\(kRegexTimestamp)&a=2&a=2,3&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(200, data: dataToReturn))
 
         self.constructor.getQuizResults(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data?.results, "Calling Quiz Results next with valid parameters should return a non-nil response with request object")
@@ -99,8 +99,8 @@ class ConstructorIOQuizTests: XCTestCase {
     func testQuizNextQuestion_ReturnsErrorObject_IfAPIReturnsInvalidResponse() {
         let expectation = self.expectation(description: "Calling Quiz Question returns non-nil error if API errors out.")
 
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["2"]])
-        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=1&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(404))
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["2"], ["2"]])
+        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/next?_dt=\(kRegexTimestamp)&a=2&a=2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)"), http(404))
 
         self.constructor.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.error, "Quiz Question returns non-nil error if API errors out.")
