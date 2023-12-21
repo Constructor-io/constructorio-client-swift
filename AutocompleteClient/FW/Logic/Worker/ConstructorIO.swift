@@ -959,6 +959,25 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
+    class PIIPattern {
+        let pattern: String
+        let replaceBy: String
+
+        init(pattern: String, replaceBy: String) {
+            self.pattern = pattern
+            self.replaceBy = replaceBy
+        }
+    }
+
+    let PIIPatterns = [
+        // Email
+        PIIPattern(pattern: #"^[\w\-+\\.]+@([\w-]+\.)+[\w-]{2,4}$"#, replaceBy: "<email_omitted>"),
+        // Phone
+        PIIPattern(pattern: #"^(?:\+\d{11,12}|\+\d{1,3}\s\d{3}\s\d{3}\s\d{3,4}|\(\d{3}\)\d{7}|\(\d{3}\)\s\d{3}\s\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\)\s\d{3}-\d{4})$"#, replaceBy: "<phone_omitted>"),
+        // Visa, Mastercard, Amex, Discover, JCB and Diners Club, regex source: https://www.regular-expressions.info/creditcard.html
+        PIIPattern(pattern: #"^(?:4[0-9]{15}|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$"#, replaceBy: "<credit_omitted>")
+    ]
+
     private func containsPII(query: String, pattern: String) -> Bool {
         return query.range(
             of: pattern,
@@ -971,31 +990,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let paths = request.url?.path.removingPercentEncoding?.components(separatedBy: "/")
         let params = request.url?.query?.removingPercentEncoding?.components(separatedBy: "&").map { $0.components(separatedBy: "=")[1] }
 
-        // Email
-        let emailPIIPattern = #"^[\w\-+\\.]+@([\w-]+\.)+[\w-]{2,4}$"#
-        for path in paths ?? [] where containsPII(query: path, pattern: emailPIIPattern) {
-            requestString = requestString!.replacingOccurrences(of: path, with: "<email_omitted>")
-        }
-        for param in params ?? [] where containsPII(query: param, pattern: emailPIIPattern) {
-            requestString = requestString!.replacingOccurrences(of: param, with: "<email_omitted>")
-        }
-
-        // Phone
-        let phonePIIPattern = #"^(?:\+\d{11,12}|\+\d{1,3}\s\d{3}\s\d{3}\s\d{3,4}|\(\d{3}\)\d{7}|\(\d{3}\)\s\d{3}\s\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\)\s\d{3}-\d{4})$"#
-        for path in paths ?? [] where containsPII(query: path, pattern: phonePIIPattern) {
-            requestString = requestString!.replacingOccurrences(of: path, with: "<phone_omitted>")
-        }
-        for param in params ?? [] where containsPII(query: param, pattern: phonePIIPattern) {
-            requestString = requestString!.replacingOccurrences(of: param, with: "<phone_omitted>")
-        }
-
-        // Visa, Mastercard, Amex, Discover, JCB and Diners Club, regex source: https://www.regular-expressions.info/creditcard.html
-        let creditPIIPattern = #"^(?:4[0-9]{15}|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$"#
-        for path in paths ?? [] where containsPII(query: path, pattern: creditPIIPattern) {
-            requestString = requestString!.replacingOccurrences(of: path, with: "<credit_omitted>")
-        }
-        for param in params ?? [] where containsPII(query: param, pattern: creditPIIPattern) {
-            requestString = requestString!.replacingOccurrences(of: param, with: "<credit_omitted>")
+        for pattern in PIIPatterns {
+            for path in paths ?? [] where containsPII(query: path, pattern: pattern.pattern) {
+                requestString = requestString!.replacingOccurrences(of: path, with: pattern.replaceBy)
+            }
+            for param in params ?? [] where containsPII(query: param, pattern: pattern.pattern) {
+                requestString = requestString!.replacingOccurrences(of: param, with: pattern.replaceBy)
+            }
         }
 
         var obfuscatedRequest = request
