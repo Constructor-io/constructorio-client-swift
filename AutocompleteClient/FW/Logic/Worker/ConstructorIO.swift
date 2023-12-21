@@ -959,51 +959,62 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
-    var PII_REGEX = [
-        #"^[\w\-+\\.]+@([\w-]+\.)+[\w-]{2,4}$"#, // Email
-        #"^(?:\+\d{11,12}|\+\d{1,3}\s\d{3}\s\d{3}\s\d{3,4}|\(\d{3}\)\d{7}|\(\d{3}\)\s\d{3}\s\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\)\s\d{3}-\d{4})$"#, // Phone Number
-        #"^(?:4[0-9]{15}|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$"# // Visa, Mastercard, Amex, Discover, JCB and Diners Club, regex source: https://www.regular-expressions.info/creditcard.html
-        // Add more PII REGEX
-    ]
-
-    private func containsPII(query: String) -> Bool {
-        let piiDetected = PII_REGEX.contains {
-            return query.range(
-                of: $0,
-                options: .regularExpression
-            ) != nil
-        }
-
-        return piiDetected
+    private func containsPII(query: String, pattern: String) -> Bool {
+        return query.range(
+            of: pattern,
+            options: .regularExpression
+        ) != nil
     }
 
-    public func requestContainsPII(request: String) -> Bool {
-        let url = URL(string: request)
-        let paths = url?.path.removingPercentEncoding?.components(separatedBy: "/")
-        let paramValues = url?.query?.removingPercentEncoding?.components(separatedBy: "&").map { $0.components(separatedBy: "=")[1] }
+    public func obfuscatePIIRequest(request: URLRequest) -> URLRequest {
+        var requestString = request.url!.absoluteString.removingPercentEncoding
+        let paths = request.url?.path.removingPercentEncoding?.components(separatedBy: "/")
+        let params = request.url?.query?.removingPercentEncoding?.components(separatedBy: "&").map { $0.components(separatedBy: "=")[1] }
 
-        let pathsContainPII = paths?.contains {
-            containsPII(query: $0)
+        // Email
+        let emailPIIPattern = #"^[\w\-+\\.]+@([\w-]+\.)+[\w-]{2,4}$"#
+        for path in paths ?? [] where containsPII(query: path, pattern: emailPIIPattern) {
+            requestString = requestString!.replacingOccurrences(of: path, with: "<email_omitted>")
+        }
+        for param in params ?? [] where containsPII(query: param, pattern: emailPIIPattern) {
+            requestString = requestString!.replacingOccurrences(of: param, with: "<email_omitted>")
         }
 
-        let paramsContainPII = paramValues?.contains {
-            containsPII(query: $0)
+        // Phone
+        let phonePIIPattern = #"^(?:\+\d{11,12}|\+\d{1,3}\s\d{3}\s\d{3}\s\d{3,4}|\(\d{3}\)\d{7}|\(\d{3}\)\s\d{3}\s\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\)\s\d{3}-\d{4})$"#
+        for path in paths ?? [] where containsPII(query: path, pattern: phonePIIPattern) {
+            requestString = requestString!.replacingOccurrences(of: path, with: "<phone_omitted>")
+        }
+        for param in params ?? [] where containsPII(query: param, pattern: phonePIIPattern) {
+            requestString = requestString!.replacingOccurrences(of: param, with: "<phone_omitted>")
         }
 
-        return pathsContainPII ?? false || paramsContainPII ?? false
+        // Visa, Mastercard, Amex, Discover, JCB and Diners Club, regex source: https://www.regular-expressions.info/creditcard.html
+        let creditPIIPattern = #"^(?:4[0-9]{15}|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$"#
+        for path in paths ?? [] where containsPII(query: path, pattern: creditPIIPattern) {
+            requestString = requestString!.replacingOccurrences(of: path, with: "<credit_omitted>")
+        }
+        for param in params ?? [] where containsPII(query: param, pattern: creditPIIPattern) {
+            requestString = requestString!.replacingOccurrences(of: param, with: "<credit_omitted>")
+        }
+
+        var obfuscatedRequest = request
+        obfuscatedRequest.url = URL(string: requestString!)
+
+        return obfuscatedRequest
     }
 
     private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
-        // PII Detection
-        if requestContainsPII(request: request.url!.absoluteString) { return }
-
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
                 completionHandler?(response)
             }
         }
 
-        self.networkClient.execute(request) { response in
+        // PII detection & request obfuscation
+        let requestWithoutPII = obfuscatePIIRequest(request: request)
+
+        self.networkClient.execute(requestWithoutPII) { response in
             if let error = response.error {
                 dispatchHandlerOnMainQueue(TrackingTaskResponse(error: error))
                 return

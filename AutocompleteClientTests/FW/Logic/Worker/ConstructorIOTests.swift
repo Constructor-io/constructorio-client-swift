@@ -12,8 +12,7 @@ import XCTest
 class ConstructorIOTests: XCTestCase {
 
     var networkClient: NetworkClient!
-    let piiParams = [
-        // Email
+    let emailPIIParams = [
         "test@test.com",
         "test-100@test.com",
         "test.100@test.com",
@@ -24,8 +23,10 @@ class ConstructorIOTests: XCTestCase {
         "test@test.io",
         "test@test.com.com",
         "test+100@test.com",
-        "test-100@test-test.io",
-        // Phone Number
+        "test-100@test-test.io"
+    ]
+
+    let phonePIIParams = [
         "+12363334011",
         "+1 236 333 4011",
         "(236)2228542",
@@ -33,7 +34,10 @@ class ConstructorIOTests: XCTestCase {
         "(236)222-8542",
         "(236) 222-8542",
         "+420736447763",
-        "+420 736 447 763",
+        "+420 736 447 763"
+    ]
+
+    let creditPIIParams = [
         // Sources of example card numbers:
         // - https://support.bluesnap.com/docs/test-credit-card-numbers
         // - https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm
@@ -220,43 +224,35 @@ class ConstructorIOTests: XCTestCase {
         XCTAssertNotNil(constructor.clientID, "Client ID shouldn't be nil")
     }
 
-    func testConstructor_requestsWithPiiInPathAreDetected() {
+    func testConstructor_requestsWithPiiAreObfuscated() {
         let constructor = TestConstants.testConstructor()
-        var url: String
 
-        for pathParam in piiParams {
-            url = "https://ac.cnstrc.com/autocomplete/\(pathParam)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test"
-            XCTAssertTrue(constructor.requestContainsPII(request: url), "Path param containing PII returns true")
+        for param in emailPIIParams {
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(param)/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
+            let request = URLRequest(url: url)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<email_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=<email_omitted>&s=test")?.absoluteString)
+        }
+
+        for param in phonePIIParams {
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(param)/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
+            let request = URLRequest(url: url)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<phone_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=<phone_omitted>&s=test")?.absoluteString)
+        }
+
+        for param in creditPIIParams {
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(param)/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
+            let request = URLRequest(url: url)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<credit_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=<credit_omitted>&s=test")?.absoluteString)
         }
     }
 
-    func testConstructor_requestsWithPiiInQueryParamsAreDetected() {
+    func testConstructor_requestsWithNoPiiRemainTheSame() {
         let constructor = TestConstants.testConstructor()
-        var url: String
 
-        for queryParam in piiParams {
-            url = "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(queryParam)&s=test"
-            XCTAssertTrue(constructor.requestContainsPII(request: url), "Query param containing PII returns true")
-        }
-    }
-
-    func testConstructor_requestsWithNoPiiInPathAreCompleted() {
-        let constructor = TestConstants.testConstructor()
-        var url: String
-
-        for pathParam in noPiiParams {
-            url = "https://ac.cnstrc.com/autocomplete/\(pathParam)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test"
-            XCTAssertFalse(constructor.requestContainsPII(request: url), "Path param without PII returns false")
-        }
-    }
-
-    func testConstructor_requestsWithNoPiiInQueryParamsAreCompleted() {
-        let constructor = TestConstants.testConstructor()
-        var url: String
-
-        for queryParam in noPiiParams {
-            url = "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(queryParam)&s=test"
-            XCTAssertFalse(constructor.requestContainsPII(request: url), "Query param without PII returns false")
+        for param in noPiiParams {
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(param)/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
+            let request = URLRequest(url: url)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/\(param)/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")?.absoluteString)
         }
     }
 }
