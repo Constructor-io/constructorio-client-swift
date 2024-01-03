@@ -67,6 +67,10 @@ class CIOSessionManager: SessionManager {
         self.session = Session(id: self.session.id + 1, createdAt: self.dateProvider.provideDate().timeIntervalSince1970)
     }
 
+    func setSessionID(id: Int) {
+        self.session.setSessionID(sessionID: id)
+    }
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

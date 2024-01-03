@@ -9,7 +9,7 @@
 import Foundation
 
 public class Session: NSObject, NSCoding {
-    public let id: Int
+    public var id: Int
     public let createdAt: TimeInterval
 
     public init(id: Int, createdAt: TimeInterval) {
@@ -25,5 +25,9 @@ public class Session: NSObject, NSCoding {
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.id, forKey: Constants.Session.id)
         aCoder.encode(self.createdAt, forKey: Constants.Session.createdAt)
+    }
+
+    public func setSessionID(sessionID: Int) {
+        self.id = sessionID
     }
 }
