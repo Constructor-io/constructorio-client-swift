@@ -224,6 +224,22 @@ class ConstructorIOTests: XCTestCase {
         XCTAssertNotNil(constructor.clientID, "Client ID shouldn't be nil")
     }
 
+    func testConstructor_clientIDSetter() {
+        let constructor = TestConstants.testConstructor()
+        XCTAssertNotNil(constructor.clientID, "Client ID shouldn't be nil")
+
+        constructor.setClientId(clientID: "11111111-1111-1111-1111-111111111111")
+        XCTAssertEqual(constructor.clientID, "11111111-1111-1111-1111-111111111111")
+    }
+
+    func testConstructor_sessionIDSetter() {
+        let constructor = TestConstants.testConstructor()
+        XCTAssertNotNil(constructor.sessionID, "Session ID shouldn't be nil")
+
+        constructor.setSessionId(sessionID: 1111)
+        XCTAssertEqual(constructor.sessionID, 1111)
+    }
+    
     func testConstructor_requestsWithPiiAreObfuscated() {
         let constructor = TestConstants.testConstructor()
 
