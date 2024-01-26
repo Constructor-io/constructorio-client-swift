@@ -69,16 +69,16 @@ class ConstructorIOTests: XCTestCase {
 
     let noPiiParams = [
         // Email
-        "daniel",
-        "daniel @constructor.io",
-        "daniel@.com.my",
-        "daniel123@gmail.a",
-        "daniel123@.com",
-        "daniel123@.com.com",
-        "daniel()*@gmail.com",
-        "daniel@%*.com",
-        "daniel@tillero@gmail.com",
-        "daniel@tillero",
+        "test",
+        "test @test.io",
+        "test@.com.my",
+        "test123@test.a",
+        "test123@.com",
+        "test123@.com.com",
+        "test()*@test.com",
+        "test@%*.com",
+        "test@test@test.com",
+        "test@test",
         // Phone Number
         "123",
         "123 456 789",
@@ -239,7 +239,7 @@ class ConstructorIOTests: XCTestCase {
         constructor.setSessionId(sessionID: 1111)
         XCTAssertEqual(constructor.sessionID, 1111)
     }
-    
+
     func testConstructor_requestsWithPiiAreObfuscated() {
         let constructor = TestConstants.testConstructor()
 
