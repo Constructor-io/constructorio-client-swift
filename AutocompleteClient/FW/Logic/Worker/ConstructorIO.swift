@@ -30,6 +30,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public static var logger: CIOLogger = CIOPrintLogger()
 
     private let networkClient: NetworkClient
+    
+    private var clientIdLoader: ClientIdLoader = CIOClientIdLoader()
 
     public var sessionManager: SessionManager
 
@@ -77,7 +79,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public init(config: ConstructorIOConfig) {
         self.config = config
 
-        self.clientID = DependencyContainer.sharedInstance.clientIDGenerator().generateID()
+        self.clientID = clientIdLoader.loadClientId();
         self.sessionManager = DependencyContainer.sharedInstance.sessionManager()
         self.networkClient = DependencyContainer.sharedInstance.networkClient()
 
@@ -719,6 +721,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func setClientId(clientID: String) {
         self.clientID = clientID
+        clientIdLoader.saveClientId(clientID)
     }
 
     /**

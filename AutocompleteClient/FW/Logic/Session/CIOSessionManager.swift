@@ -68,7 +68,7 @@ class CIOSessionManager: SessionManager {
     }
 
     func setSessionID(id: Int) {
-        self.session.setSessionID(sessionID: id)
+        self.session = Session(id: id, createdAt: self.dateProvider.provideDate().timeIntervalSince1970)
     }
 
     deinit {

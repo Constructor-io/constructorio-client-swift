@@ -277,6 +277,7 @@ struct Constants {
         static let key = "constructor.io/session"
         static let id = "constructor.io/session/id"
         static let createdAt = "constructor.io/session/createdAt"
+        static let clientId = "constructor.io/session/clientId"
     }
 
     struct Quiz {

@@ -14,7 +14,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
 
     fileprivate let unitTestKey = "key_vM4GkLckwiuxwyRA"
     fileprivate let session = 90
-    fileprivate let quizVersionID = "e03210db-0cc6-459c-8f17-bf014c4f554d"
+    fileprivate let quizVersionID = "bc319700-5ed5-4562-ac45-2bc9d892f801"
     fileprivate let quizSessionID = "session-id"
     fileprivate let sectionName = "Products"
 
