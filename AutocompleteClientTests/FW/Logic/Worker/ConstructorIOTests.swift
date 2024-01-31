@@ -23,7 +23,12 @@ class ConstructorIOTests: XCTestCase {
         "test@test.io",
         "test@test.com.com",
         "test+100@test.com",
-        "test-100@test-test.io"
+        "test-100@test-test.io",
+        " test@test.io",
+        "test@test.com.com ",
+        " test.100@test.com.au ",
+        "text test.100@test.io text",
+        "test@test@test.com", // This string includes a valid email - test@test.com
     ]
 
     let phonePIIParams = [
@@ -77,7 +82,6 @@ class ConstructorIOTests: XCTestCase {
         "test123@.com.com",
         "test()*@test.com",
         "test@%*.com",
-        "test@test@test.com",
         "test@test",
         // Phone Number
         "123",
