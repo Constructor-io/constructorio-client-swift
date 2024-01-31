@@ -149,7 +149,14 @@
     },
     {
       "file": "/Users/jimmy/projects/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
-      "line": 1051,
+      "line": 1025,
+      "symbol": "ConstructorIO.obfuscatePIIRequest(request:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jimmy/projects/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "line": 1100,
       "symbol": "ConstructorIO.sessionDidChange(from:to:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
