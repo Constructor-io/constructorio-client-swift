@@ -28,7 +28,7 @@ class ConstructorIOTests: XCTestCase {
         "test@test.com.com ",
         " test.100@test.com.au ",
         "text test.100@test.io text",
-        "test@test@test.com", // This string includes a valid email - test@test.com
+        "test@test@test.com" // This string includes a valid email - test@test.com
     ]
 
     let phonePIIParams = [
@@ -110,7 +110,13 @@ class ConstructorIOTests: XCTestCase {
         "12345678901678901234",
         "123456789016789012345",
         "12345678901678901234567",
-        "123456789016789012345678"
+        "123456789016789012345678",
+        // Special Random Queries
+        "Shirts&T-Shirts",
+        "Shoes/Slippers",
+        "Pants*Shorts",
+        "Socks=white",
+        "Socks?white"
     ]
 
     override  func setUp() {
@@ -247,22 +253,46 @@ class ConstructorIOTests: XCTestCase {
     func testConstructor_requestsWithPiiAreObfuscated() {
         let constructor = TestConstants.testConstructor()
 
+        // Testing Paths
+        for path in emailPIIParams {
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(path)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")!
+            let request = URLRequest(url: url)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<email_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")?.absoluteString)
+        }
+
+        // Testing Params
         for param in emailPIIParams {
-            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(param)/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
             let request = URLRequest(url: url)
-            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<email_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=<email_omitted>&s=test")?.absoluteString)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=<email_omitted>&s=test")?.absoluteString)
         }
 
+        // Testing Paths
+        for path in phonePIIParams {
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(path)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")!
+            let request = URLRequest(url: url)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<phone_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")?.absoluteString)
+        }
+
+        // Testing Params
         for param in phonePIIParams {
-            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(param)/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
             let request = URLRequest(url: url)
-            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<phone_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=<phone_omitted>&s=test")?.absoluteString)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=<phone_omitted>&s=test")?.absoluteString)
         }
 
-        for param in creditPIIParams {
-            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(param)/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
+        // Testing Paths
+        for path in creditPIIParams {
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(path)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")!
             let request = URLRequest(url: url)
-            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<credit_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=<credit_omitted>&s=test")?.absoluteString)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<credit_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")?.absoluteString)
+        }
+
+        // Testing Params
+        for param in creditPIIParams {
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
+            let request = URLRequest(url: url)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=<credit_omitted>&s=test")?.absoluteString)
         }
     }
 

@@ -1023,21 +1023,27 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     public func obfuscatePIIRequest(request: URLRequest) -> URLRequest {
-        var requestString = request.url!.absoluteString.removingPercentEncoding
-        let paths = request.url?.path.removingPercentEncoding?.components(separatedBy: "/")
-        let params = request.url?.query?.removingPercentEncoding?.components(separatedBy: "&").map { $0.components(separatedBy: "=")[1] }
+        var requestString = request.url!.absoluteString
+        let paths = request.url?.path.components(separatedBy: "/")
+        let params = request.url?.query?.components(separatedBy: "&").map {
+            if $0.contains("=") {
+                $0.components(separatedBy: "=")[1].removingPercentEncoding
+            } else {
+                $0.removingPercentEncoding
+            }
+        }
 
         for pattern in PIIPatterns {
             for path in paths ?? [] where containsPII(query: path, pattern: pattern.pattern) {
-                requestString = requestString!.replacingOccurrences(of: path, with: pattern.replaceBy)
+                requestString = requestString.replacingOccurrences(of: path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!, with: pattern.replaceBy)
             }
-            for param in params ?? [] where containsPII(query: param, pattern: pattern.pattern) {
-                requestString = requestString!.replacingOccurrences(of: param, with: pattern.replaceBy)
+            for param in params ?? [] where containsPII(query: param!, pattern: pattern.pattern) {
+                requestString = requestString.replacingOccurrences(of: param!.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!, with: pattern.replaceBy)
             }
         }
 
         var obfuscatedRequest = request
-        obfuscatedRequest.url = URL(string: requestString!)
+        obfuscatedRequest.url = URL(string: requestString)
 
         return obfuscatedRequest
     }
