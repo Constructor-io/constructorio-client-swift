@@ -1008,7 +1008,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     let PIIPatterns = [
         // Email
-        PIIPattern(pattern: #"[\w\-+\\.]+@([\w-]+\.)+[\w-]{2,4}"#, replaceBy: "<email_omitted>"),
+        PIIPattern(pattern: #"^[\w\-+\\.]+@([\w-]+\.)+[\w-]{2,4}$"#, replaceBy: "<email_omitted>"),
         // Phone
         PIIPattern(pattern: #"^(?:\+\d{11,12}|\+\d{1,3}\s\d{3}\s\d{3}\s\d{3,4}|\(\d{3}\)\d{7}|\(\d{3}\)\s\d{3}\s\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\)\s\d{3}-\d{4})$"#, replaceBy: "<phone_omitted>"),
         // Visa, Mastercard, Amex, Discover, JCB and Diners Club, regex source: https://www.regular-expressions.info/creditcard.html
