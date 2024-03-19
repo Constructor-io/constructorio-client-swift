@@ -1038,7 +1038,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
                 requestString = requestString.replacingOccurrences(of: path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!, with: pattern.replaceBy)
             }
             for param in params ?? [] where containsPII(query: param!, pattern: pattern.pattern) {
-                requestString = requestString.replacingOccurrences(of: param!.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!, with: pattern.replaceBy)
+                requestString = requestString.replacingOccurrences(of: param!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!, with: pattern.replaceBy)
             }
         }
 
