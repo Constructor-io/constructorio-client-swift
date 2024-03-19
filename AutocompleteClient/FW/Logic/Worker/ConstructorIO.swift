@@ -648,7 +648,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
-
+    
     /**
      Track when a user clicks a result that appears within a quizzes results page
 
@@ -996,52 +996,6 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         }
     }
 
-    class PIIPattern {
-        let pattern: String
-        let replaceBy: String
-
-        init(pattern: String, replaceBy: String) {
-            self.pattern = pattern
-            self.replaceBy = replaceBy
-        }
-    }
-
-    let PIIPatterns = [
-        // Email
-        PIIPattern(pattern: #"^[\w\-+\\.]+@([\w-]+\.)+[\w-]{2,4}$"#, replaceBy: "<email_omitted>"),
-        // Phone
-        PIIPattern(pattern: #"^(?:\+\d{11,12}|\+\d{1,3}\s\d{3}\s\d{3}\s\d{3,4}|\(\d{3}\)\d{7}|\(\d{3}\)\s\d{3}\s\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\)\s\d{3}-\d{4})$"#, replaceBy: "<phone_omitted>"),
-        // Visa, Mastercard, Amex, Discover, JCB and Diners Club, regex source: https://www.regular-expressions.info/creditcard.html
-        PIIPattern(pattern: #"^(?:4[0-9]{15}|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$"#, replaceBy: "<credit_omitted>")
-    ]
-
-    private func containsPII(query: String, pattern: String) -> Bool {
-        return query.range(
-            of: pattern,
-            options: .regularExpression
-        ) != nil
-    }
-
-    public func obfuscatePIIRequest(request: URLRequest) -> URLRequest {
-        var requestString = request.url!.absoluteString.removingPercentEncoding
-        let paths = request.url?.path.removingPercentEncoding?.components(separatedBy: "/")
-        let params = request.url?.query?.removingPercentEncoding?.components(separatedBy: "&").map { $0.components(separatedBy: "=")[1] }
-
-        for pattern in PIIPatterns {
-            for path in paths ?? [] where containsPII(query: path, pattern: pattern.pattern) {
-                requestString = requestString!.replacingOccurrences(of: path, with: pattern.replaceBy)
-            }
-            for param in params ?? [] where containsPII(query: param, pattern: pattern.pattern) {
-                requestString = requestString!.replacingOccurrences(of: param, with: pattern.replaceBy)
-            }
-        }
-
-        var obfuscatedRequest = request
-        obfuscatedRequest.url = URL(string: requestString!)
-
-        return obfuscatedRequest
-    }
-
     private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
@@ -1049,10 +1003,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
             }
         }
 
-        // PII detection & request obfuscation
-        let requestWithoutPII = obfuscatePIIRequest(request: request)
-
-        self.networkClient.execute(requestWithoutPII) { response in
+        self.networkClient.execute(request) { response in
             if let error = response.error {
                 dispatchHandlerOnMainQueue(TrackingTaskResponse(error: error))
                 return
