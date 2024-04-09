@@ -41,6 +41,22 @@ carthage update
 
 Drag the ```ConstructorIO.framework``` from Carthage/Build/iOS into your project and link it with your application target. Also, make sure to copy the framework by adding a new Copy Files phase.
 
+### 1.c Import using Swift Package Manager
+
+To install using SwiftPM. Go into Xcode and click on `File` > `Add Package Dependency` and enter [Constructor's Swift Client repository URL](https://github.com/constructor-io/constructorio-client-swift).
+
+If you develop frameworks and would like to utilize the Swift API Client as a dependency, update your Package.swift file with the following:
+
+let package = Package(
+    // 3.3.9 ..< 4.0.0
+    dependencies: [
+        .package(url: "https://github.com/constructor-io/constructorio-client-swift", from: "3.3.9")
+    ],
+    // ...
+)
+
+Lastly, you'll just need to import `ConstructorAutocomplete` to your source files to begin using it.
+
 ## 2. Retrieve an API key
 
 You can find this in your [Constructor.io dashboard](https://constructor.io/dashboard).  Contact sales if you'd like to sign up, or support if you believe your company already has an account.
