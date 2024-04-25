@@ -1,6 +1,4 @@
-//
-//  ConstructorIOConfig.swift
-//  Constructor.io
+//config
 //
 //  Copyright © Constructor.io. All rights reserved.
 //  http://constructor.io/
@@ -33,7 +31,7 @@ public struct ConstructorIOConfig {
     public var testCells: [CIOABTestCell]?
     
     /**
-     Additional analytics tags to pass. Will be merged with analytics tags passed on the request level `
+     Additional analytics tags to pass. Will be merged with analytics tags passed on the request level
      */
     public var defaultAnalyticsTags: [String: String]?
 
