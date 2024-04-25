@@ -535,8 +535,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - variationID: The variation ID
         - revenue: The revenue of the item.
         - searchTerm: The term that the user searched for if searching (defaults to 'TERM_UNKNOWN')
-        - conversionType: The type of conversion (defaults to "add_to_cart")
         - sectionName The name of the autocomplete section the term came from (defaults to "products")
+        - conversionType: The type of conversion (defaults to "add_to_cart")
+        - displayName: Display name for the custom conversion type
+        - isCustomType: Specify if type is a custom conversion type
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -544,11 +546,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-47398", revenue: 12.99, searchTerm: "tooth")
      ```
      */
-    public func trackConversion(itemName: String, customerID: String, variationID: String? = nil, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, conversionType: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackConversion(itemName: String, customerID: String, variationID: String? = nil, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, conversionType: String? = nil, displayName: String? = nil, isCustomType: Bool? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let type = conversionType ?? Constants.Track.defaultConversionType
         let term = searchTerm == nil ? "TERM_UNKNOWN" : (searchTerm!.isEmpty) ? "TERM_UNKNOWN" : searchTerm
-        let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue, conversionType: type, variationID: variationID)
+        let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue, conversionType: type, variationID: variationID, displayName: displayName, isCustomType: isCustomType)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }

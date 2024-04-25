@@ -19,11 +19,14 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     fileprivate let sectionName = "some section name@"
     fileprivate let conversionType = "like"
     fileprivate let revenue = 12.45
+    fileprivate let isCustomType = true
+    fileprivate let displayName = "bongo"
 
     fileprivate var encodedSearchTerm: String = ""
     fileprivate var encodedItemName: String = ""
     fileprivate var encodedCustomerID: String = ""
     fileprivate var encodedSectionName: String = ""
+    
 
     fileprivate var builder: RequestBuilder!
 
@@ -105,7 +108,7 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackConversionBuilder_WithConversionType() {
-        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName, customerID: self.customerID, conversionType: self.conversionType)
+        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName, customerID: self.customerID, conversionType: self.conversionType, displayName: self.displayName, isCustomType: self.isCustomType)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
@@ -119,6 +122,8 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["item_name"] as? String, itemName)
         XCTAssertEqual(payload?["item_id"] as? String, customerID)
         XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
+        XCTAssertEqual(payload?["is_custom_type"] as? Bool, isCustomType)
+        XCTAssertEqual(payload?["display_name"] as? String, displayName)
     }
 
     func testTrackConversionBuilder_WithRevenue() {
