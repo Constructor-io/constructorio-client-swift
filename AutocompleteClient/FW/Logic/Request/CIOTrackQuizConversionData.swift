@@ -24,12 +24,13 @@ struct CIOTrackQuizConversionData: CIORequestData {
     let isCustomType: Bool?
     let displayName: String?
     var sectionName: String?
+    let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.trackQuizConversion.format, baseURL)
     }
 
-    init(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, isCustomType: Bool? = nil, displayName: String? = nil, sectionName: String? = nil) {
+    init(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, isCustomType: Bool? = nil, displayName: String? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil) {
         self.quizID = quizID
         self.quizVersionID = quizVersionID
         self.quizSessionID = quizSessionID
@@ -41,6 +42,7 @@ struct CIOTrackQuizConversionData: CIORequestData {
         self.isCustomType = isCustomType
         self.displayName = displayName
         self.sectionName = sectionName
+        self.analyticsTags = analyticsTags
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -76,6 +78,9 @@ struct CIOTrackQuizConversionData: CIORequestData {
         }
         if self.displayName != nil {
             dict["display_name"] = self.displayName
+        }
+        if (self.analyticsTags != nil) {
+            dict["analytics_tags"] = self.analyticsTags
         }
 
         dict["beacon"] = true

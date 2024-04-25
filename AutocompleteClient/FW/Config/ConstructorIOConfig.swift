@@ -31,6 +31,11 @@ public struct ConstructorIOConfig {
      List of test cell information to associate with requests
      */
     public var testCells: [CIOABTestCell]?
+    
+    /**
+     Additional analytics tags to pass. Will be merged with analytics tags passed on the request level `
+     */
+    public var defaultAnalyticsTags: [String: String]?
 
     /**
      List of segments to associate with requests
@@ -74,7 +79,7 @@ public struct ConstructorIOConfig {
      )
      ```
      */
-    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil, baseQuizURL: String? = nil) {
+    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil, baseQuizURL: String? = nil, defaultAnalyticsTags: [String: String]? = nil) {
         self.apiKey = apiKey
         self.resultCount = resultCount
         self.defaultItemSectionName = defaultItemSectionName
@@ -82,6 +87,7 @@ public struct ConstructorIOConfig {
         self.segments = segments
         self.baseURL = baseURL
         self.baseQuizURL = baseQuizURL
+        self.defaultAnalyticsTags = defaultAnalyticsTags
     }
 
 }

@@ -51,6 +51,26 @@ class TrackConversionRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["item_id"] as? String, customerID)
         XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
     }
+    
+    func testTrackConversionBuilderWithAnalyticsTags() {
+        let analyticsTags = ["test": "testing", "version": "123"]
+        let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName, customerID: self.customerID, analyticsTags: analyticsTags)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let analyticsTagsPayload = payload?["analytics_tags"] as? [String: String] ?? [:]
+
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/conversion?"))
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
+        XCTAssertEqual(analyticsTagsPayload, analyticsTags)
+    }
 
     func testTrackConversionBuilder_WithCustomBaseURL() {
         let tracker = CIOTrackConversionData(searchTerm: self.searchTerm, itemName: self.itemName, customerID: self.customerID)

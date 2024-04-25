@@ -436,6 +436,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - filterValue: The value of the primary filter that the user browsed for (i.e "blue")
         - resultCount: The number of results returned in total
         - resultID: Identifier of result set
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -443,8 +444,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"], resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
      ```
      */
-    public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, customerIDs: [String]? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID, customerIDs: customerIDs)
+    public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, customerIDs: [String]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID, customerIDs: customerIDs, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -460,6 +461,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - resultPositionOnPage: The position of clicked item
         - sectionName The name of the autocomplete section the term came from
         - resultID: Identifier of result set
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -467,9 +469,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", variationID: "7654321-BA-738", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
      ```
      */
-    public func trackBrowseResultClick(customerID: String, variationID: String? = nil, filterName: String, filterValue: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackBrowseResultClick(customerID: String, variationID: String? = nil, filterName: String, filterValue: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID, variationID: variationID)
+        let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID, variationID: variationID, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -484,6 +486,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - resultCount: The total number of recommendation results
         - sectionName: The name of the autocomplete section the term came from
         - resultID: Identifier of result set
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -491,9 +494,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
      ```
      */
-    public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID)
+        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -512,6 +515,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - resultPositionOnPage: The position of the recommendation result that was clicked on
         - sectionName The name of the autocomplete section the term came from
         - resultID: Identifier of result set
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -519,9 +523,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackRecommendationResultClick(podID: "pdp_best_sellers", strategyID: "best_sellers", customerID: "P183021", variationID: "7281930", numResultsPerPage: 30, resultPage: 1, resultCount: 15, resultPositionOnPage: 1, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
      ```
      */
-    public func trackRecommendationResultClick(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackRecommendationResultClick(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID)
+        let data = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -537,6 +541,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - searchTerm: The term that the user searched for if searching (defaults to 'TERM_UNKNOWN')
         - conversionType: The type of conversion (defaults to "add_to_cart")
         - sectionName The name of the autocomplete section the term came from (defaults to "products")
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -544,11 +549,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-47398", revenue: 12.99, searchTerm: "tooth")
      ```
      */
-    public func trackConversion(itemName: String, customerID: String, variationID: String? = nil, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, conversionType: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackConversion(itemName: String, customerID: String, variationID: String? = nil, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, conversionType: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let type = conversionType ?? Constants.Track.defaultConversionType
         let term = searchTerm == nil ? "TERM_UNKNOWN" : (searchTerm!.isEmpty) ? "TERM_UNKNOWN" : searchTerm
-        let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue, conversionType: type, variationID: variationID)
+        let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue, conversionType: type, variationID: variationID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -561,6 +566,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - revenue: The revenue of the purchase
         - orderID: The order identifier
         - sectionName The name of the autocomplete section the term came from (defaults to "products")
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -568,9 +574,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")
      ```
      */
-    public func trackPurchase(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackPurchase(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackPurchaseData(customerIDs: customerIDs, sectionName: section, revenue: revenue, orderID: orderID)
+        let data = CIOTrackPurchaseData(customerIDs: customerIDs, sectionName: section, revenue: revenue, orderID: orderID, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -583,6 +589,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - revenue: The revenue of the purchase
         - orderID: The order identifier
         - sectionName The name of the autocomplete section the term came from (defaults to "products")
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -590,9 +597,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")
      ```
      */
-    public func trackPurchase(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackPurchase(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackPurchaseData(items: items, sectionName: section, revenue: revenue, orderID: orderID)
+        let data = CIOTrackPurchaseData(items: items, sectionName: section, revenue: revenue, orderID: orderID, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -605,6 +612,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - itemName: The item name
         - variationID: The id of the variation
         - sectionName: The name of the section the product is in.
+        - analyticsTags Additional analytics tags to pass
         - url: The url of the product
      
      ### Usage Example: ###
@@ -612,9 +620,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackItemDetailLoad(customerID: "7654321-BA", itemName: "Pencil", variationID: "7654321-BA-738", sectionName: "Products", "test.com/764321")
      ```
      */
-    public func trackItemDetailLoad(customerID: String, itemName: String, variationID: String? = nil, sectionName: String? = nil, url: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackItemDetailLoad(customerID: String, itemName: String, variationID: String? = nil, sectionName: String? = nil, url: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: section, url: url ?? "Not Available")
+        let data = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: section, url: url ?? "Not Available", analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -635,6 +643,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - resultPage: The current page of the results
         - resultCount: The total number of results
         - sectionName The name of the autocomplete section the results came from
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -642,9 +651,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackQuizResultsLoaded(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", resultCount: 20)
      ```
      */
-    public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section)
+        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -665,6 +674,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - numResultsPerPage: The number of results on the current page
         - resultPositionOnPage: The position of clicked item
         - sectionName The name of the autocomplete section the result came from
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -672,9 +682,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackQuizResultClick(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", itemName: "espresso")
      ```
      */
-    public func trackQuizResultClick(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, numResultsPerPage: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackQuizResultClick(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, numResultsPerPage: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackQuizResultClickData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, resultID: resultID, resultPage: resultPage, resultCount: resultCount, numResultsPerPage: numResultsPerPage, resultPositionOnPage: resultPositionOnPage, sectionName: section)
+        let data = CIOTrackQuizResultClickData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, resultID: resultID, resultPage: resultPage, resultCount: resultCount, numResultsPerPage: numResultsPerPage, resultPositionOnPage: resultPositionOnPage, sectionName: section, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -694,6 +704,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - isCustomType: The flag to specify if type is custom conversion type
         - displayName: The display name for the custom conversion type
         - sectionName The name of the autocomplete section the result came from
+        - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
  
      ### Usage Example: ###
@@ -701,9 +712,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackQuizConversion(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "3123", customerID: "123", variationID: "167", itemName: "espresso", revenue: 20.0)
      ```
      */
-    public func trackQuizConversion(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, isCustomType: Bool? = nil, displayName: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackQuizConversion(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, isCustomType: Bool? = nil, displayName: String? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackQuizConversionData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, revenue: revenue, conversionType: conversionType, isCustomType: isCustomType, displayName: displayName, sectionName: section)
+        let data = CIOTrackQuizConversionData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, revenue: revenue, conversionType: conversionType, isCustomType: isCustomType, displayName: displayName, sectionName: section, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -738,6 +749,17 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func setSessionId(sessionID: Int) {
         self.sessionID = sessionID
     }
+    
+    private func mergeDictionary(baseDictionary: [String: String]?, newDictionary: [String: String]?) -> [String: String]? {
+        if (newDictionary == nil || newDictionary!.isEmpty) {
+            return baseDictionary
+        } else if (baseDictionary != nil && !baseDictionary!.isEmpty) {
+            return baseDictionary!.merging(newDictionary!) { (_, new) in new }
+        }
+        
+        return nil
+    }
+
 
     private func buildRequest(data: CIORequestData) -> URLRequest {
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey, baseURL: self.config.baseURL ?? Constants.Query.baseURLString)

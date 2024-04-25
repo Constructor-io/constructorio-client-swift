@@ -21,12 +21,13 @@ struct CIOTrackQuizResultsLoadedData: CIORequestData {
     let resultPage: Int?
     let resultCount: Int?
     var sectionName: String?
+    let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.trackQuizResultsLoaded.format, baseURL)
     }
 
-    init(quizID: String, quizVersionID: String, quizSessionID: String, url: String = "Not Available", resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil) {
+    init(quizID: String, quizVersionID: String, quizSessionID: String, url: String = "Not Available", resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil) {
         self.quizID = quizID
         self.quizVersionID = quizVersionID
         self.quizSessionID = quizSessionID
@@ -35,6 +36,7 @@ struct CIOTrackQuizResultsLoadedData: CIORequestData {
         self.resultPage = resultPage
         self.resultCount = resultCount
         self.sectionName = sectionName
+        self.analyticsTags = analyticsTags
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -61,6 +63,9 @@ struct CIOTrackQuizResultsLoadedData: CIORequestData {
         }
         if self.resultCount != nil {
             dict["result_count"] = Int(self.resultCount!)
+        }
+        if (self.analyticsTags != nil) {
+            dict["analytics_tags"] = self.analyticsTags
         }
 
         dict["beacon"] = true

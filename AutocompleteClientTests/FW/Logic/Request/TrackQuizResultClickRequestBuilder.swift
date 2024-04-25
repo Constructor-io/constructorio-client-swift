@@ -28,6 +28,8 @@ class TrackQuizResultClickRequestBuilderTests: XCTestCase {
     let numResultsPerPage = 13
     let resultPositionOnPage = 6
     let sectionName = "Products"
+    let analyticsTags = ["test": "testing", "version": "123"]
+
 
     fileprivate var builder: RequestBuilder!
 
@@ -37,10 +39,11 @@ class TrackQuizResultClickRequestBuilderTests: XCTestCase {
     }
 
     func testTrackQuizResultClickBuilder() {
-        let tracker = CIOTrackQuizResultClickData(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID, variationID: self.variationID, itemName: self.itemName, resultID: self.resultID, resultPage: self.resultPage, resultCount: self.resultCount, numResultsPerPage: self.numResultsPerPage, resultPositionOnPage: self.resultPositionOnPage, sectionName: self.sectionName)
+        let tracker = CIOTrackQuizResultClickData(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID, variationID: self.variationID, itemName: self.itemName, resultID: self.resultID, resultPage: self.resultPage, resultCount: self.resultCount, numResultsPerPage: self.numResultsPerPage, resultPositionOnPage: self.resultPositionOnPage, sectionName: self.sectionName, analyticsTags: self.analyticsTags)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let analyticsTagsPayload = payload?["analytics_tags"] as? [String: String] ?? [:]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(payload?["quiz_id"] as? String, self.quizID)
@@ -59,5 +62,6 @@ class TrackQuizResultClickRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["key"] as? String, self.testACKey)
         XCTAssertEqual(payload?["beacon"] as? Bool, true)
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
+        XCTAssertEqual(analyticsTagsPayload, self.analyticsTags)
     }
 }
