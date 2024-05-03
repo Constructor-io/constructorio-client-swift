@@ -26,7 +26,6 @@ class TrackConversionRequestBuilderTests: XCTestCase {
     fileprivate var encodedItemName: String = ""
     fileprivate var encodedCustomerID: String = ""
     fileprivate var encodedSectionName: String = ""
-    
 
     fileprivate var builder: RequestBuilder!
 
