@@ -49,9 +49,9 @@ If you develop frameworks and would like to utilize the Swift API Client as a de
 
 ```swift
 let package = Package(
-    // 3.3.9 ..< 4.0.0
+    // 3.3.10 ..< 4.0.0
     dependencies: [
-        .package(url: "https://github.com/constructor-io/constructorio-client-swift", from: "3.3.9")
+        .package(url: "https://github.com/constructor-io/constructorio-client-swift", from: "3.3.10")
     ],
     // ...
 )
