@@ -42,6 +42,12 @@ public class CIORecommendationsQueryBuilder {
      The section to return results from
      */
     var section: String?
+    
+    /**
+     The pre filter expression used to refine results
+     Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.io/rest_api/collections/#add-items-dynamically
+    */
+    var preFilterExpression: String?
 
     /**
      Create a Recommendations request query builder
@@ -94,21 +100,32 @@ public class CIORecommendationsQueryBuilder {
     }
 
     /**
+     Add the pre filter expression
+     */
+    public func setPreFilterExpression(_ preFilterExpression: String) -> CIORecommendationsQueryBuilder {
+        self.preFilterExpression = preFilterExpression
+        return self
+    }
+
+    /**
      Build the request object with all of the provided data
      
      ### Usage Example: ###
      ```
+     let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
+
      let query = CIORecommendationsQueryBuilder(query: "blue")
         .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
         .setItemID("ITEM_123_456")
         .setNumResults(10)
         .setSection("Products")
+        .setPreFilterExpression(preFilterExpression)
         .build()
 
      constructor.recommendations(forQuery: query, completionHandler: { ... })
      ```
      */
     public func build() -> CIORecommendationsQuery {
-        return CIORecommendationsQuery(podID: podID, itemID: itemID, term: term, filters: filters, numResults: numResults, section: section)
+        return CIORecommendationsQuery(podID: podID, itemID: itemID, term: term, filters: filters, numResults: numResults, section: section, preFilterExpression: preFilterExpression)
     }
 }
