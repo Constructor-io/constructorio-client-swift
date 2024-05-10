@@ -1063,21 +1063,18 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         var newRequest = request
 
         if var queryItems = components.queryItems {
-            // Find the query parameter by name and replace its value
+            // Find and replace all occurrences of the query parameter by name
             for (index, item) in queryItems.enumerated() where item.name == name {
                 queryItems[index].value = newValue
-                components.queryItems = queryItems
-                newRequest.url = components.url
-                return newRequest
             }
-        }
 
-        // Add the query parameter if it doesn't exist
-        if components.queryItems == nil {
-            components.queryItems = []
+            components.queryItems = queryItems // Update the query items with replaced values
+            newRequest.url = components.url // Update the URL of the new request
+        } else {
+            // Add the query parameter if it doesn't exist
+            components.queryItems = [URLQueryItem(name: name, value: newValue)]
+            newRequest.url = components.url // Update the URL of the new request
         }
-        components.queryItems?.append(URLQueryItem(name: name, value: newValue))
-        newRequest.url = components.url
 
         return newRequest
     }
