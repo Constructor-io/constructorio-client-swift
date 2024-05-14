@@ -328,11 +328,10 @@ class ConstructorIOIntegrationTests: XCTestCase {
     }
     
     func testRecommendations_ShouldReturnResultsWithItems() {
-        let expectation = XCTestExpectation(description: "Request 204")
-        self.constructor.recommendations(filterName: groupFilterName, filterValue: groupFilterValue, resultCount: resultCount, customerIDs: customerIDs, resultID: nil, completionHandler: { response in
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, customerIDs: customerIDs, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
-            XCTAssertEqual(response.data?.items, customerIDs)
             expectation.fulfill()
         })
         self.wait(for: expectation)

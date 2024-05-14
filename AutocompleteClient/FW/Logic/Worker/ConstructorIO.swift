@@ -485,10 +485,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - sectionName: The name of the autocomplete section the term came from
         - resultID: Identifier of result set
         - completionHandler: The callback to execute on completion.
+        - customerIDs: The items that were loaded
      
      ### Usage Example: ###
      ```
-     constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+     constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2", customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
      ```
      */
     public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, customerIDs: [String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
