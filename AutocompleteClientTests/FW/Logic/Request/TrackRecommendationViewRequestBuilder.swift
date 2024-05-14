@@ -52,4 +52,17 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         XCTAssertEqual(payload?["section"] as? String, sectionName)
         XCTAssertEqual(payload?["result_id"] as? String, resultID)
     }
+    
+    func testTrackRecommendationResultClickBuilder_WithItemsParam() {
+        let customerIDs = ["custID1", "custID2", "custID3"]
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, customerIDs: customerIDs)
+        builder.build(trackData: recommendationViewData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedItems = payload?["items"] as? [[String: String]] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedItems.count, 3)
+        XCTAssertEqual(loadedItems[0]["item_id"], customerIDs[0])
+    }
 }
