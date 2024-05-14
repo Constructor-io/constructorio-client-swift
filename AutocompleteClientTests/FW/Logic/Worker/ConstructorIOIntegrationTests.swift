@@ -327,7 +327,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
     
-    func testRecommendations_ShouldReturnResultsWithItems() {
+    func testRecommendations_withItems() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, customerIDs: customerIDs, completionHandler: { response in
             let cioError = response.error as? CIOError
