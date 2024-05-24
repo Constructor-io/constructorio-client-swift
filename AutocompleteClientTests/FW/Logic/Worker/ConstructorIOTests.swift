@@ -12,23 +12,32 @@ import XCTest
 class ConstructorIOTests: XCTestCase {
 
     var networkClient: NetworkClient!
+
+    struct PiiParam {
+        var value: String
+        var pathReplacement: String
+        var paramReplacement: String
+    }
+
     let emailPIIParams = [
-        "test@test.com",
-        "test-100@test.com",
-        "test.100@test.com",
-        "test@test.com",
-        "test+123@test.info",
-        "test-100@test.net",
-        "test.100@test.com.au",
-        "test@test.io",
-        "test@test.com.com",
-        "test+100@test.com",
-        "test-100@test-test.io",
-        " test@test.io",
-        "test@test.com.com ",
-        " test.100@test.com.au ",
-        "text test.100@test.io text",
-        "test@test@test.com" // This string includes a valid email - test@test.com
+        PiiParam(value: "test@test.com", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test-100@test.com", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test.100@test.com", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test@test.com", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test+123@test.info", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test-100@test.net", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test.100@test.com.au", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test@test.io", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test@test.com.com", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test+100@test.com", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test-100@test-test.io", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: " test@test.io", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test@test.com.com ", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: " test.100@test.com.au ", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "text test.100@test.io text", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"),
+        PiiParam(value: "test@test@test.com", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>"), // Includes a valid email - test@test.com
+        PiiParam(value: "test@test.com&asd", pathReplacement: "<email_omitted>", paramReplacement: "<email_omitted>&asd"), // Includes a valid email - test@test.com
+        PiiParam(value: "test@test.com/asd", pathReplacement: "<email_omitted>/asd", paramReplacement: "<email_omitted>") // Includes a valid email - test@test.com
     ]
 
     let phonePIIParams = [
@@ -255,16 +264,16 @@ class ConstructorIOTests: XCTestCase {
 
         // Testing Paths
         for path in emailPIIParams {
-            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(path)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")!
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/\(path.value)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")!
             let request = URLRequest(url: url)
-            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/<email_omitted>/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")?.absoluteString)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/\(path.pathReplacement)/search?_dt=test&c=test&i=test&key=test&original_query=test&s=test")?.absoluteString)
         }
 
         // Testing Params
         for param in emailPIIParams {
-            let url = URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(param)&s=test")!
+            let url = URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(param.value)&s=test")!
             let request = URLRequest(url: url)
-            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=<email_omitted>&s=test")?.absoluteString)
+            XCTAssertEqual(constructor.obfuscatePIIRequest(request: request).url?.absoluteString, URL(string: "https://ac.cnstrc.com/autocomplete/test/search?_dt=test&c=test&i=test&key=test&original_query=\(param.paramReplacement)&s=test")?.absoluteString)
         }
 
         // Testing Paths
