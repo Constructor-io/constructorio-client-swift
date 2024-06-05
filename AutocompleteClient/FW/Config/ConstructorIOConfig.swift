@@ -1,4 +1,6 @@
-//config
+//
+//  ConstructorIOConfig.swift
+//  Constructor.io
 //
 //  Copyright © Constructor.io. All rights reserved.
 //  http://constructor.io/
