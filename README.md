@@ -71,6 +71,7 @@ Make sure to import the `ConstructorAutocomplete` module at the top of your sour
 // Create the client config
 let config = ConstructorIOConfig(
    apiKey: "YOUR API KEY",
+   baseURL: "https://ac.cnstrc.com", // default service url. protocol must be specified (i.e. https)
    resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0])
 )
 
@@ -105,6 +106,7 @@ let testCell = CIOABTestCell
 
 let config = ConstructorIOConfig(
    apiKey: "YOUR API KEY",
+   baseURL: "https://ac.cnstrc.com", // default service url. protocol must be specified (i.e. https)
    testCells: [CIOABTestCell(key: "constructorio_test", value: "control_1")]
 )
 
