@@ -70,7 +70,7 @@ public struct ConstructorIOConfig {
             CIOABTestCell(key: "search", value: "constructor"),
             CIOABTestCell(key: "autosuggest", value: "control")
         ],
-        baseURL: "ac.cnstrc.com"
+        baseURL: "https://ac.cnstrc.com"
      )
      ```
      */
