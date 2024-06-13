@@ -38,6 +38,24 @@ class TrackItemDetailLoadRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["key"] as? String, testACKey)
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
     }
+    
+    func testTrackItemDetailLoadBuilder_WithAnalyticsTags() {
+        let analyticsTags = ["test": "testing", "version": "123"]
+        let tracker = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, sectionName: sectionName, analyticsTags: analyticsTags)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let analyticsTagsPayload = payload?["analytics_tags"] as? [String: String] ?? [:]
+       
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["url"] as? String, "Not Available")
+        XCTAssertEqual(payload?["key"] as? String, testACKey)
+        XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
+        XCTAssertEqual(analyticsTagsPayload, analyticsTags)
+    }
 
     func testTrackItemDetailLoadBuilder_WithVariationID() {
         let tracker = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: sectionName, url: url)

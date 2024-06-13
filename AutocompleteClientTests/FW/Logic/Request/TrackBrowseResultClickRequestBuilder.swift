@@ -40,6 +40,24 @@ class TrackBrowseResultClickRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["key"] as? String, testACKey)
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
     }
+    
+    func testTrackBrowseResultClickBuilder_WithAnalyticsTags() {
+        let analyticsTags = ["test": "testing", "version": "123"]
+        let tracker = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, analyticsTags: analyticsTags)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let analyticsTagsPayload = payload?["analytics_tags"] as? [String: String] ?? [:]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(payload?["filter_name"] as? String, filterName)
+        XCTAssertEqual(payload?["filter_value"] as? String, filterValue)
+        XCTAssertEqual(payload?["item_id"] as? String, customerID)
+        XCTAssertEqual(payload?["result_position_on_page"] as? Int, resultPositionOnPage)
+        XCTAssertEqual(payload?["key"] as? String, testACKey)
+        XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
+        XCTAssertEqual(analyticsTagsPayload, analyticsTags)
+    }
 
     func testTrackBrowseResultClickBuilder_WithVariationID() {
         let tracker = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, variationID: variationID)

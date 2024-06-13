@@ -42,6 +42,22 @@ class TrackPurchaseRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
     }
+    
+    func testTrackPurchaseBuilder_WithAnalyticsTags() {
+        let analyticsTags = ["test": "testing", "version": "123"]
+        let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs, analyticsTags: analyticsTags)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let analyticsTagsPayload = payload?["analytics_tags"] as? [String: String] ?? [:]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/purchase?"))
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key.")
+        XCTAssertEqual(analyticsTagsPayload, analyticsTags)
+    }
 
     func testTrackPurchaseBuilder_WithCustomBaseURL() {
         let tracker = CIOTrackPurchaseData(customerIDs: self.customerIDs)

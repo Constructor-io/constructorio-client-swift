@@ -27,6 +27,7 @@ class TrackQuizConversionRequestBuilderTests: XCTestCase {
     let isCustomType = true
     let displayName = "bongo"
     let sectionName = "Products"
+    let analyticsTags = ["test": "testing", "version": "123"]
 
     fileprivate var builder: RequestBuilder!
 
@@ -36,10 +37,11 @@ class TrackQuizConversionRequestBuilderTests: XCTestCase {
     }
 
     func testTrackQuizConversionBuilder() {
-        let tracker = CIOTrackQuizConversionData(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID, variationID: self.variationID, itemName: self.itemName, revenue: self.revenue, conversionType: self.conversionType, isCustomType: self.isCustomType, displayName: self.displayName, sectionName: self.sectionName)
+        let tracker = CIOTrackQuizConversionData(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID, variationID: self.variationID, itemName: self.itemName, revenue: self.revenue, conversionType: self.conversionType, isCustomType: self.isCustomType, displayName: self.displayName, sectionName: self.sectionName, analyticsTags: self.analyticsTags)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let analyticsTagsPayload = payload?["analytics_tags"] as? [String: String] ?? [:]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(payload?["quiz_id"] as? String, self.quizID)
@@ -57,5 +59,6 @@ class TrackQuizConversionRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["key"] as? String, self.testACKey)
         XCTAssertEqual(payload?["beacon"] as? Bool, true)
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
+        XCTAssertEqual(analyticsTagsPayload, self.analyticsTags)
     }
 }
