@@ -539,8 +539,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - variationID: The variation ID
         - revenue: The revenue of the item.
         - searchTerm: The term that the user searched for if searching (defaults to 'TERM_UNKNOWN')
-        - conversionType: The type of conversion (defaults to "add_to_cart")
         - sectionName The name of the autocomplete section the term came from (defaults to "products")
+        - conversionType: The type of conversion (defaults to "add_to_cart")
+        - displayName: Display name for the custom conversion type
+        - isCustomType: Specify if type is a custom conversion type
         - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
@@ -549,11 +551,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackConversion(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-47398", revenue: 12.99, searchTerm: "tooth")
      ```
      */
-    public func trackConversion(itemName: String, customerID: String, variationID: String? = nil, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, conversionType: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackConversion(itemName: String, customerID: String, variationID: String? = nil, revenue: Double?, searchTerm: String? = nil, sectionName: String? = nil, conversionType: String? = nil, displayName: String? = nil, isCustomType: Bool? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let type = conversionType ?? Constants.Track.defaultConversionType
         let term = searchTerm == nil ? "TERM_UNKNOWN" : (searchTerm!.isEmpty) ? "TERM_UNKNOWN" : searchTerm
-        let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue, conversionType: type, variationID: variationID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue, conversionType: type, variationID: variationID, displayName: displayName, isCustomType: isCustomType, analyticsTags: analyticsTags)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -1044,28 +1046,77 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         ) != nil
     }
 
-    public func obfuscatePIIRequest(request: URLRequest) -> URLRequest {
-        var requestString = request.url!.absoluteString
-        let paths = request.url?.path.components(separatedBy: "/")
-        let params = request.url?.query?.components(separatedBy: "&").map {
-            if $0.contains("=") {
-                $0.components(separatedBy: "=")[1].removingPercentEncoding
-            } else {
-                $0.removingPercentEncoding
+    private func getQueryParams(request: URLRequest) -> [String: String]? {
+        guard let url = request.url, let components = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = components.queryItems else {
+            return nil
+        }
+
+        var keyValuePairs = [String: String]()
+        for item in queryItems {
+            if let name = item.name.removingPercentEncoding, let value = item.value?.removingPercentEncoding {
+                keyValuePairs[name] = value
             }
         }
+
+        return keyValuePairs
+    }
+
+    private func replacePathParam(request: URLRequest, name: String, newValue: String) -> URLRequest {
+        guard var components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) else {
+            return request // Return if URL components cannot be created
+        }
+
+        var newRequest = request
+
+        // Check if the path contains the parameter placeholder
+        var path = components.path
+        if path.contains(name) {
+            path = path.replacingOccurrences(of: name, with: newValue)
+            components.path = path
+            newRequest.url = components.url
+        }
+
+        return newRequest
+    }
+
+    private func replaceQueryParamValue(request: URLRequest, name: String, newValue: String) -> URLRequest {
+        guard var components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) else {
+            return request // Return if URL components cannot be created
+        }
+
+        var newRequest = request
+
+        if var queryItems = components.queryItems {
+            // Find and replace all occurrences of the query parameter by name
+            for (index, item) in queryItems.enumerated() where item.name == name {
+                queryItems[index].value = newValue
+            }
+
+            components.queryItems = queryItems // Update the query items with replaced values
+            newRequest.url = components.url // Update the URL of the new request
+        } else {
+            // Add the query parameter if it doesn't exist
+            components.queryItems = [URLQueryItem(name: name, value: newValue)]
+            newRequest.url = components.url // Update the URL of the new request
+        }
+
+        return newRequest
+    }
+
+    public func obfuscatePIIRequest(request: URLRequest) -> URLRequest {
+        let paths = request.url?.path.components(separatedBy: "/")
+        let params = getQueryParams(request: request)
+
+        var obfuscatedRequest = request
 
         for pattern in PIIPatterns {
             for path in paths ?? [] where containsPII(query: path, pattern: pattern.pattern) {
-                requestString = requestString.replacingOccurrences(of: path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!, with: pattern.replaceBy)
+                obfuscatedRequest = replacePathParam(request: obfuscatedRequest, name: path, newValue: pattern.replaceBy)
             }
-            for param in params ?? [] where containsPII(query: param!, pattern: pattern.pattern) {
-                requestString = requestString.replacingOccurrences(of: param!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!, with: pattern.replaceBy)
+            for (key, value) in params ?? [:] where containsPII(query: value, pattern: pattern.pattern) {
+                obfuscatedRequest = replaceQueryParamValue(request: obfuscatedRequest, name: key, newValue: pattern.replaceBy)
             }
         }
-
-        var obfuscatedRequest = request
-        obfuscatedRequest.url = URL(string: requestString)
 
         return obfuscatedRequest
     }

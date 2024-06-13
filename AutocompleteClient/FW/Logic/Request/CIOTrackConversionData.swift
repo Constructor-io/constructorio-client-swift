@@ -20,13 +20,15 @@ struct CIOTrackConversionData: CIORequestData {
     let revenue: Double?
     let conversionType: String?
     let analyticsTags: [String: String]?
+    let displayName: String?
+    let isCustomType: Bool?
     let variationID: String?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackConversion.format, baseURL)
     }
 
-    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, variationID: String? = nil, analyticsTags: [String: String]? = nil) {
+    init(searchTerm: String, itemName: String, customerID: String, sectionName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, variationID: String? = nil, displayName: String? = nil, isCustomType: Bool? = nil, analyticsTags: [String: String]? = nil) {
         self.searchTerm = searchTerm
         self.itemName = itemName
         self.customerID = customerID
@@ -35,6 +37,8 @@ struct CIOTrackConversionData: CIORequestData {
         self.conversionType = conversionType
         self.variationID = variationID
         self.analyticsTags = analyticsTags
+        self.displayName = displayName
+        self.isCustomType = isCustomType
     }
 
     func httpMethod() -> String {
@@ -69,6 +73,14 @@ struct CIOTrackConversionData: CIORequestData {
         
         if (self.analyticsTags != nil) {
             dict["analytics_tags"] = self.analyticsTags
+        }
+
+        if self.isCustomType != nil {
+            dict["is_custom_type"] = self.isCustomType
+        }
+
+        if self.displayName != nil {
+            dict["display_name"] = self.displayName
         }
 
         dict["beacon"] = true

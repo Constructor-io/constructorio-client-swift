@@ -49,9 +49,9 @@ If you develop frameworks and would like to utilize the Swift API Client as a de
 
 ```swift
 let package = Package(
-    // 3.3.9 ..< 4.0.0
+    // 3.3.11 ..< 4.0.0
     dependencies: [
-        .package(url: "https://github.com/constructor-io/constructorio-client-swift", from: "3.3.9")
+        .package(url: "https://github.com/constructor-io/constructorio-client-swift", from: "3.3.11")
     ],
     // ...
 )
@@ -71,7 +71,6 @@ Make sure to import the `ConstructorAutocomplete` module at the top of your sour
 // Create the client config
 let config = ConstructorIOConfig(
    apiKey: "YOUR API KEY",
-   baseURL: "ac.cnstrc.com", // default
    resultCount: AutocompleteResultCount(numResultsForSection: ["Search Suggestions" : 3, "Products" : 0])
 )
 
@@ -106,7 +105,6 @@ let testCell = CIOABTestCell
 
 let config = ConstructorIOConfig(
    apiKey: "YOUR API KEY",
-   baseURL: "ac.cnstrc.com", // default
    testCells: [CIOABTestCell(key: "constructorio_test", value: "control_1")]
 )
 
