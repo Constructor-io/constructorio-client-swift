@@ -41,10 +41,12 @@ class TrackRecommendationResultClickRequestBuilder: XCTestCase {
     }
 
     func testTrackRecommendationResultClickBuilder_WithOptionalParams() {
-        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: resultID)
+        let analyticsTags = ["test": "testing", "version": "123"]
+        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: resultID, analyticsTags: analyticsTags)
         builder.build(trackData: recommendationClickData)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let analyticsTagsPayload = payload?["analytics_tags"] as? [String: String] ?? [:]
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(payload?["pod_id"] as? String, podID)
@@ -55,5 +57,6 @@ class TrackRecommendationResultClickRequestBuilder: XCTestCase {
         XCTAssertEqual(payload?["result_page"] as? Int, resultPage)
         XCTAssertEqual(payload?["result_count"] as? Int, resultCount)
         XCTAssertEqual(payload?["result_position_on_page"] as? Int, resultPositionOnPage)
+        XCTAssertEqual(analyticsTagsPayload, analyticsTags)
     }
 }

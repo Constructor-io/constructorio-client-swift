@@ -18,17 +18,19 @@ struct CIOTrackItemDetailLoadData: CIORequestData {
     let sectionName: String?
     let variationID: String?
     let url: String
+    let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackItemDetailLoad.format, baseURL)
     }
 
-    init(itemName: String, customerID: String,variationID: String? = nil, sectionName: String? = nil, url: String = "Not Available") {
+    init(itemName: String, customerID: String,variationID: String? = nil, sectionName: String? = nil, url: String = "Not Available", analyticsTags: [String: String]? = nil) {
         self.customerID = customerID
         self.sectionName = sectionName
         self.variationID = variationID
         self.itemName = itemName
         self.url = url
+        self.analyticsTags = analyticsTags
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -49,6 +51,10 @@ struct CIOTrackItemDetailLoadData: CIORequestData {
         }
         if self.sectionName != nil {
             dict["section"] = self.sectionName
+        }
+
+        if (self.analyticsTags != nil) {
+            dict["analytics_tags"] = self.analyticsTags
         }
 
         dict["beacon"] = true

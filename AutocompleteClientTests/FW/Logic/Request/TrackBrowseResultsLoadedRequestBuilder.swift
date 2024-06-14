@@ -39,6 +39,24 @@ class TrackBrowseResultsLoadedRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["url"] as? String, url)
     }
     
+    func testTrackBrowseResultsLoadedBuilder_WithAnalyticsTags() {
+        let analyticsTags = ["test": "testing", "version": "123"]
+        let tracker = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, analyticsTags: analyticsTags)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let analyticsTagsPayload = payload?["analytics_tags"] as? [String: String] ?? [:]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(payload?["filter_name"] as? String, filterName)
+        XCTAssertEqual(payload?["filter_value"] as? String, filterValue)
+        XCTAssertEqual(payload?["result_count"] as? Int, resultCount)
+        XCTAssertEqual(payload?["key"] as? String, testACKey)
+        XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
+        XCTAssertEqual(payload?["url"] as? String, url)
+        XCTAssertEqual(analyticsTagsPayload, analyticsTags)
+    }
+    
     func testTrackBrowseResultsLoadedBuilder_WithItemsParam() {
         let customerIDs = ["custID1", "custID2", "custID3"]
         let tracker = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, customerIDs: customerIDs)

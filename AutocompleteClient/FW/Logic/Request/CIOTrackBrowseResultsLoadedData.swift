@@ -18,18 +18,20 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
     let resultID: String?
     let url: String
     let customerIDs: [String]?
+    let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackBrowseResultsLoaded.format, baseURL)
     }
 
-    init(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available", customerIDs: [String]? = nil) {
+    init(filterName: String, filterValue: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available", customerIDs: [String]? = nil, analyticsTags: [String: String]? = nil) {
         self.filterName = filterName
         self.filterValue = filterValue
         self.resultCount = resultCount
         self.resultID = resultID
         self.url = url
         self.customerIDs = customerIDs
+        self.analyticsTags = analyticsTags
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -53,6 +55,10 @@ struct CIOTrackBrowseResultsLoadedData: CIORequestData {
 
         if self.resultID != nil {
             dict["result_id"] = self.resultID
+        }
+
+        if (self.analyticsTags != nil) {
+            dict["analytics_tags"] = self.analyticsTags
         }
 
         dict["beacon"] = true

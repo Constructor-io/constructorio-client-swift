@@ -23,12 +23,13 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
     let resultPositionOnPage: Int?
     let sectionName: String?
     let resultID: String?
+    let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackRecommendationResultClick.format, baseURL)
     }
 
-    init(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil) {
+    init(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil) {
         self.podID = podID
         self.strategyID = strategyID
         self.customerID = customerID
@@ -39,6 +40,7 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
         self.resultPositionOnPage = resultPositionOnPage
         self.sectionName = sectionName
         self.resultID = resultID
+        self.analyticsTags = analyticsTags
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -76,6 +78,9 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
         }
         if self.resultID != nil {
             dict["result_id"] = self.resultID
+        }
+        if (self.analyticsTags != nil) {
+            dict["analytics_tags"] = self.analyticsTags
         }
 
         dict["beacon"] = true

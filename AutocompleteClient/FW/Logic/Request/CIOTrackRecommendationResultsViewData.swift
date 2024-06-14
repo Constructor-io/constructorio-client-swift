@@ -21,12 +21,13 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
     let sectionName: String?
     let resultID: String?
     let customerIDs: [String]?
+    let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackRecommendationResultsView.format, baseURL)
     }
 
-    init(podID: String, numResultsViewed: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, url: String = "Not Available", customerIDs: [String]? = nil) {
+    init(podID: String, numResultsViewed: Int? = nil, customerIDs: [String]? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, url: String = "Not Available", analyticsTags: [String: String]? = nil) {
         self.podID = podID
         self.url = url
         self.numResultsViewed = numResultsViewed
@@ -35,6 +36,7 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
         self.sectionName = sectionName
         self.resultID = resultID
         self.customerIDs = customerIDs
+        self.analyticsTags = analyticsTags
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -68,6 +70,9 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
            let items = loadedCustomerIDs.map { ["item_id": $0] }
            dict["items"] = items
        }
+        if (self.analyticsTags != nil) {
+            dict["analytics_tags"] = self.analyticsTags
+        }
 
         dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }

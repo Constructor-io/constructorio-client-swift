@@ -17,7 +17,7 @@
     <a title="ConstructorIOConfig Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 3.3.11 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 3.3.12 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -346,6 +346,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:23ConstructorAutocomplete0A8IOConfigV20defaultAnalyticsTagsSDyS2SGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/defaultAnalyticsTags" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A8IOConfigV20defaultAnalyticsTagsSDyS2SGSgvp">defaultAnalyticsTags</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Additional analytics tags to pass. Will be merged with analytics tags passed on the request level</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">defaultAnalyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:23ConstructorAutocomplete0A8IOConfigV8segmentsSaySSGSgvp"></a>
                     <a name="//apple_ref/swift/Property/segments" class="dashAnchor"></a>
                     <a class="token" href="#/s:23ConstructorAutocomplete0A8IOConfigV8segmentsSaySSGSgvp">segments</a>
@@ -427,9 +454,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete0A8IOConfigV6apiKey11resultCount22defaultItemSectionName9testCells8segments7baseURL0o4QuizP0ACSS_AA0b6ResultG0VSgSSSgSayAA13CIOABTestCellVGSgSaySSGSgA2Ntcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(apiKey:resultCount:defaultItemSectionName:testCells:segments:baseURL:baseQuizURL:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete0A8IOConfigV6apiKey11resultCount22defaultItemSectionName9testCells8segments7baseURL0o4QuizP0ACSS_AA0b6ResultG0VSgSSSgSayAA13CIOABTestCellVGSgSaySSGSgA2Ntcfc">init(apiKey:<wbr>resultCount:<wbr>defaultItemSectionName:<wbr>testCells:<wbr>segments:<wbr>baseURL:<wbr>baseQuizURL:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete0A8IOConfigV6apiKey11resultCount22defaultItemSectionName9testCells8segments7baseURL0o4QuizP00H13AnalyticsTagsACSS_AA0b6ResultG0VSgSSSgSayAA13CIOABTestCellVGSgSaySSGSgA2OSDyS2SGSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(apiKey:resultCount:defaultItemSectionName:testCells:segments:baseURL:baseQuizURL:defaultAnalyticsTags:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A8IOConfigV6apiKey11resultCount22defaultItemSectionName9testCells8segments7baseURL0o4QuizP00H13AnalyticsTagsACSS_AA0b6ResultG0VSgSSSgSayAA13CIOABTestCellVGSgSaySSGSgA2OSDyS2SGSgtcfc">init(apiKey:<wbr>resultCount:<wbr>defaultItemSectionName:<wbr>testCells:<wbr>segments:<wbr>baseURL:<wbr>baseQuizURL:<wbr>defaultAnalyticsTags:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -457,7 +484,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">AutocompleteResultCount</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n"><a href="../Structs/ConstructorIOConfig.html#/s:23ConstructorAutocomplete0A8IOConfigV22defaultItemSectionNameSSSgvp">defaultItemSectionName</a></span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">testCells</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOABTestCell</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">segments</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">baseURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">baseQuizURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">AutocompleteResultCount</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n"><a href="../Structs/ConstructorIOConfig.html#/s:23ConstructorAutocomplete0A8IOConfigV22defaultItemSectionNameSSSgvp">defaultItemSectionName</a></span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">testCells</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOABTestCell</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">segments</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">baseURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">baseQuizURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n"><a href="../Structs/ConstructorIOConfig.html#/s:23ConstructorAutocomplete0A8IOConfigV20defaultAnalyticsTagsSDyS2SGSgvp">defaultAnalyticsTags</a></span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -560,7 +587,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2024 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2024-05-14)</p>
+          <p>&copy; 2024 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2024-06-13)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

@@ -18,12 +18,13 @@ struct CIOTrackPurchaseData: CIORequestData {
     var sectionName: String?
     var orderID: String?
     var items: [CIOItem]?
+    let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackPurchase.format, baseURL)
     }
 
-    init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
+    init(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, analyticsTags: [String: String]? = nil) {
         if customerIDs.count > 100 {
             self.customerIDs = Array(customerIDs[0 ..< 100])
         } else {
@@ -32,9 +33,10 @@ struct CIOTrackPurchaseData: CIORequestData {
         self.sectionName = sectionName
         self.revenue = revenue
         self.orderID = orderID
+        self.analyticsTags = analyticsTags
     }
 
-    init(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil) {
+    init(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, analyticsTags: [String: String]? = nil) {
         if items.count > 100 {
             self.items = Array(items[0 ..< 100])
         } else {
@@ -43,6 +45,7 @@ struct CIOTrackPurchaseData: CIORequestData {
         self.sectionName = sectionName
         self.revenue = revenue
         self.orderID = orderID
+        self.analyticsTags = analyticsTags
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -86,6 +89,10 @@ struct CIOTrackPurchaseData: CIORequestData {
 
         if self.revenue != nil {
             dict["revenue"] = self.roundTo2dp(num: self.revenue!)
+        }
+        
+        if (self.analyticsTags != nil) {
+            dict["analytics_tags"] = self.analyticsTags
         }
 
         dict["beacon"] = true

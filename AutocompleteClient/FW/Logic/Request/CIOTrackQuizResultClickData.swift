@@ -25,12 +25,13 @@ struct CIOTrackQuizResultClickData: CIORequestData {
     let numResultsPerPage: Int?
     let resultPositionOnPage: Int?
     var sectionName: String?
+    let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.trackQuizResultClick.format, baseURL)
     }
 
-    init(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, numResultsPerPage: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil) {
+    init(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, numResultsPerPage: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil) {
         self.quizID = quizID
         self.quizVersionID = quizVersionID
         self.quizSessionID = quizSessionID
@@ -43,6 +44,7 @@ struct CIOTrackQuizResultClickData: CIORequestData {
         self.numResultsPerPage = numResultsPerPage
         self.resultPositionOnPage = resultPositionOnPage
         self.sectionName = sectionName
+        self.analyticsTags = analyticsTags
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -81,6 +83,9 @@ struct CIOTrackQuizResultClickData: CIORequestData {
         }
         if self.resultPositionOnPage != nil {
             dict["result_position_on_page"] = Int(self.resultPositionOnPage!)
+        }
+        if (self.analyticsTags != nil) {
+            dict["analytics_tags"] = self.analyticsTags
         }
 
         dict["beacon"] = true
