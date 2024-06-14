@@ -67,8 +67,8 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
             dict["result_id"] = self.resultID
         }
         if let loadedCustomerIDs = self.customerIDs {
-           let items = loadedCustomerIDs.map { ["item_id": $0] }
-           dict["items"] = items
+            let items = loadedCustomerIDs.map { ["item_id": $0] }
+            dict["items"] = items
        }
         if (self.analyticsTags != nil) {
             dict["analytics_tags"] = self.analyticsTags

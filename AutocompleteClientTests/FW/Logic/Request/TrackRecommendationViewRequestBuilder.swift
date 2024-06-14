@@ -58,7 +58,7 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
     
     func testTrackRecommendationResultClickBuilder_WithItemsParam() {
         let customerIDs = ["custID1", "custID2", "custID3"]
-        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, customerIDs: customerIDs)
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
         builder.build(trackData: recommendationViewData)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]

@@ -329,7 +329,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     
     func testRecommendations_withItems() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, customerIDs: customerIDs, completionHandler: { response in
+        self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()

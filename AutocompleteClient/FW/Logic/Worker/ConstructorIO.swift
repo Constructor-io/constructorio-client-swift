@@ -497,7 +497,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, customerIDs: [String]? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
 
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
