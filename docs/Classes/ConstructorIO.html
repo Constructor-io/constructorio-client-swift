@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 3.3.12 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 3.3.13 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -1649,9 +1649,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultsView5podID03numF6Viewed10resultPage0L5Count11sectionName0lI013analyticsTags17completionHandlerySS_SiSgA2MSSSgANSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/trackRecommendationResultsView(podID:numResultsViewed:resultPage:resultCount:sectionName:resultID:analyticsTags:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultsView5podID03numF6Viewed10resultPage0L5Count11sectionName0lI013analyticsTags17completionHandlerySS_SiSgA2MSSSgANSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackRecommendationResultsView(podID:<wbr>numResultsViewed:<wbr>resultPage:<wbr>resultCount:<wbr>sectionName:<wbr>resultID:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultsView5podID03numF6Viewed11customerIDs10resultPage0N5Count11sectionName0nI013analyticsTags17completionHandlerySS_SiSgSaySSGSgA2NSSSgAQSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackRecommendationResultsView(podID:numResultsViewed:customerIDs:resultPage:resultCount:sectionName:resultID:analyticsTags:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultsView5podID03numF6Viewed11customerIDs10resultPage0N5Count11sectionName0nI013analyticsTags17completionHandlerySS_SiSgSaySSGSgA2NSSSgAQSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackRecommendationResultsView(podID:<wbr>numResultsViewed:<wbr>customerIDs:<wbr>resultPage:<wbr>resultCount:<wbr>sectionName:<wbr>resultID:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1661,7 +1661,7 @@
                       <div class="abstract">
                         <p>Track when a user views a pod of recommendation results</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">],</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -1669,7 +1669,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1698,6 +1698,18 @@
                               <td>
                                 <div>
                                   <p>The count of results that is visible to the user</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>customerIDs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The items that were loaded</p>
                                 </div>
                               </td>
                             </tr>
@@ -2910,7 +2922,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2024 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2024-06-13)</p>
+          <p>&copy; 2024 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2024-06-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

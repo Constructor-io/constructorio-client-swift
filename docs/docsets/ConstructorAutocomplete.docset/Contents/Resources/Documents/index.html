@@ -16,7 +16,7 @@
     <a title="ConstructorAutocomplete  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ConstructorAutocomplete 3.3.12 Docs</a> (94% documented)</p>
+        <p><a href="index.html">ConstructorAutocomplete 3.3.13 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -253,9 +253,9 @@ end
 
 <p>If you develop frameworks and would like to utilize the Swift API Client as a dependency, update your <code>Package.swift</code> file with the following:</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
-    <span class="c1">// 3.3.12 ..&lt; 4.0.0</span>
+    <span class="c1">// 3.3.13 ..&lt; 4.0.0</span>
     <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-        <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/constructor-io/constructorio-client-swift"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"3.3.12"</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/constructor-io/constructorio-client-swift"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"3.3.13"</span><span class="p">)</span>
     <span class="p">],</span>
     <span class="c1">// ...</span>
 <span class="p">)</span>
@@ -448,6 +448,9 @@ end
 <pre class="highlight swift"><code><span class="c1">// Track when recommendation results are viewed</span>
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
 
+<span class="c1">// Track when recommendation results are viewed with items array (supported in v3.3.13 and above)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">],</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+
 <span class="c1">// Track when a recomendation result is clicked</span>
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultClick</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">strategyID</span><span class="p">:</span> <span class="s">"best_sellers"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"P183021"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7281930"</span><span class="p">,</span> <span class="nv">numResultsPerPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
 </code></pre>
@@ -484,7 +487,7 @@ end
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2024 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2024-06-13)</p>
+          <p>&copy; 2024 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2024-06-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
