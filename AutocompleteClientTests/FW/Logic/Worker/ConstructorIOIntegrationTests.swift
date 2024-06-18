@@ -326,6 +326,16 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testRecommendations_withItems() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 
     func testAutocomplete() {
         let expectation = XCTestExpectation(description: "Request 204")

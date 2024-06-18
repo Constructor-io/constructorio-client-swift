@@ -282,6 +282,9 @@ constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snack
 // Track when recommendation results are viewed
 constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 
+// Track when recommendation results are viewed with items array (supported in v3.3.13 and above)
+constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"], resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+
 // Track when a recomendation result is clicked
 constructorIO.trackRecommendationResultClick(podID: "pdp_best_sellers", strategyID: "best_sellers", customerID: "P183021", variationID: "7281930", numResultsPerPage: 30, resultPage: 1, resultCount: 15, resultPositionOnPage: 1, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 ```
