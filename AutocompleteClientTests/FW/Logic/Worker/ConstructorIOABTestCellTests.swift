@@ -31,7 +31,7 @@ class ConstructorIOABTestCellTests: XCTestCase {
         let constructor = TestConstants.testConstructor(config)
         let searchTerm = "corn"
         let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&ef-hi=there&ef-howare=you&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&ef-hi=there&ef-howare=you&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn&\(TestConstants.defaultSegments)"), builder.create())
         constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
@@ -43,7 +43,7 @@ class ConstructorIOABTestCellTests: XCTestCase {
         let constructor = TestConstants.testConstructor(config)
         let searchTerm = "corn"
         let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&ef-hi=there&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&term=corn"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&ef-hi=there&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&term=corn&\(TestConstants.defaultSegments)"), builder.create())
         constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
@@ -55,7 +55,7 @@ class ConstructorIOABTestCellTests: XCTestCase {
         let constructor = TestConstants.testConstructor(config)
         let searchTerm = "corn"
         let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request without test cells", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&term=corn"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&term=corn&\(TestConstants.defaultSegments)"), builder.create())
         constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
@@ -67,7 +67,7 @@ class ConstructorIOABTestCellTests: XCTestCase {
         let constructor = TestConstants.testConstructor(config)
         let searchTerm = "corn"
         let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request without test cells", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&ef-hi=&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&term=corn"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&ef-hi=&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&term=corn&\(TestConstants.defaultSegments)"), builder.create())
         constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }

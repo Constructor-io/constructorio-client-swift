@@ -27,7 +27,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQuery()
 
         let builder = CIOBuilder(expectation: "Calling Browse Facets should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -39,7 +39,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQuery()
 
         let dataToReturn = TestResource.load(name: TestResource.Response.browseFacetsJSONFilename)
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), http(200, data: dataToReturn))
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(200, data: dataToReturn))
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Browse Facets with valid parameters should return a non-nil response.")
@@ -59,7 +59,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let expectation = self.expectation(description: "Calling Browse Facets returns non-nil error if API errors out.")
 
         let query = CIOBrowseFacetsQuery()
-    stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), http(404))
+    stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(404))
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.error, "Calling Browse returns non-nil error if API errors out.")
@@ -72,7 +72,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQuery(page: 100)
 
         let builder = CIOBuilder(expectation: "Calling Browse Facets should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&page=100&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&page=100&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
@@ -81,7 +81,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQuery(offset: 100)
 
         let builder = CIOBuilder(expectation: "Calling Browse Facets should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&offset=100&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&offset=100&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -91,7 +91,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQuery(perPage: 100)
 
         let builder = CIOBuilder(expectation: "Calling Browse Facets should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&num_results_per_page=100&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&num_results_per_page=100&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -101,7 +101,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQuery(showHiddenFacets: true)
 
         let builder = CIOBuilder(expectation: "Calling Browse Facets should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&fmt_options%5Bshow_hidden_facets%5D=true&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&fmt_options%5Bshow_hidden_facets%5D=true&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -113,7 +113,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQueryBuilder().build()
 
         let dataToReturn = TestResource.load(name: TestResource.Response.browseFacetsJSONFilename)
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), http(200, data: dataToReturn))
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(200, data: dataToReturn))
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Browse Facets with valid parameters should return a non-nil response.")
@@ -133,7 +133,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQueryBuilder().setPage(100).build()
 
         let builder = CIOBuilder(expectation: "Calling Browse Facets should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&page=100&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&page=100&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
@@ -142,7 +142,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQueryBuilder().setOffset(100).build()
 
         let builder = CIOBuilder(expectation: "Calling Browse Facets should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&offset=100&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&offset=100&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -152,7 +152,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQueryBuilder().setPerPage(100).build()
 
         let builder = CIOBuilder(expectation: "Calling Browse Facets should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&num_results_per_page=100&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&num_results_per_page=100&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -162,7 +162,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
         let query = CIOBrowseFacetsQueryBuilder().setShowHiddenFacets(true).build()
 
         let builder = CIOBuilder(expectation: "Calling Browse Facets should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&fmt_options%5Bshow_hidden_facets%5D=true&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facets?c=\(kRegexVersion)&fmt_options%5Bshow_hidden_facets%5D=true&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.browseFacets(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)

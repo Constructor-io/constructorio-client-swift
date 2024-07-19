@@ -23,7 +23,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: term)
 
         let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.autocomplete(forQuery: query) { _ in }
         self.wait(for: builder.expectation)
@@ -34,7 +34,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
 
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), noConnectivity())
 
         self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
@@ -50,7 +50,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
 
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(400))
 
         self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
@@ -67,7 +67,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: term)
         let errorData = "{\"message\":\"Unknown parameter has been supplied in the request\"}".data(using: .utf8)!
 
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400, data: errorData))
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(400, data: errorData))
 
         self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
@@ -83,7 +83,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let term = "a term"
         let query = CIOAutocompleteQuery(query: term)
 
-        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(500))
+        stub(regex("https://ac.cnstrc.com/autocomplete/a%20term?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(500))
 
         self.constructor.autocomplete(forQuery: query) { response in
             if let error = response.error as? CIOError {
@@ -100,7 +100,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: "potato", variationsMap: CIOQueryVariationsMap(GroupBy: groupByOptions, Values: ["price": valueOption], Dtype: "array"))
 
         let builder = CIOBuilder(expectation: "Calling Autocomplete with variations map should have a URL query variations map", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&variations_map=%7B%22dtype%22:%22array%22,%22group_by%22:%5B%7B%22field%22:%22data.facets.Country%22,%22name%22:%22Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22aggregation%22:%22min%22,%22field%22:%22data.facets.price%22%7D%7D%7D"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)&variations_map=%7B%22dtype%22:%22array%22,%22group_by%22:%5B%7B%22field%22:%22data.facets.Country%22,%22name%22:%22Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22aggregation%22:%22min%22,%22field%22:%22data.facets.price%22%7D%7D%7D"), builder.create())
 
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
 
@@ -123,7 +123,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         let query = CIOAutocompleteQuery(query: "potato", variationsMap: variationsMap)
         let builder = CIOBuilder(expectation: "Calling Autocomplete with variations map should have a URL query variations map", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&variations_map=%7B%22dtype%22:%22array%22,%22filter_by%22:%7B%22or%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22L%22%7D,%7B%22and%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22M%22%7D,%7B%22field%22:%22data.length%22,%22value%22:25%7D%5D%7D,%7B%22not%22:%7B%22field%22:%22data.in_stock%22,%22value%22:false%7D%7D%5D%7D,%22group_by%22:%5B%7B%22field%22:%22data.Country%22,%22name%22:%22Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22aggregation%22:%22min%22,%22field%22:%22data.price%22%7D%7D%7D"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)&variations_map=%7B%22dtype%22:%22array%22,%22filter_by%22:%7B%22or%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22L%22%7D,%7B%22and%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22M%22%7D,%7B%22field%22:%22data.length%22,%22value%22:25%7D%5D%7D,%7B%22not%22:%7B%22field%22:%22data.in_stock%22,%22value%22:false%7D%7D%5D%7D,%22group_by%22:%5B%7B%22field%22:%22data.Country%22,%22name%22:%22Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22aggregation%22:%22min%22,%22field%22:%22data.price%22%7D%7D%7D"), builder.create())
 
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
 
@@ -139,7 +139,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         let query = CIOAutocompleteQuery(query: "potato", variationsMap: variationsMap)
         let builder = CIOBuilder(expectation: "Calling Autocomplete with variations map should have a URL query variations map", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&variations_map=%7B%22dtype%22:%22array%22,%22group_by%22:%5B%7B%22field%22:%22data.Country%22,%22name%22:%22Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22aggregation%22:%22min%22,%22field%22:%22data.price%22%7D%7D,%22filter_by%22:%7B%22or%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22L%22%7D,%7B%22and%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22M%22%7D,%7B%22field%22:%22data.length%22,%22value%22:25%7D%5D%7D,%7B%22not%22:%7B%22field%22:%22data.in_stock%22,%22value%22:false%7D%7D%5D%7D%7D"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)&variations_map=%7B%22dtype%22:%22array%22,%22group_by%22:%5B%7B%22field%22:%22data.Country%22,%22name%22:%22Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22aggregation%22:%22min%22,%22field%22:%22data.price%22%7D%7D,%22filter_by%22:%7B%22or%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22L%22%7D,%7B%22and%22:%5B%7B%22field%22:%22data.size%22,%22value%22:%22M%22%7D,%7B%22field%22:%22data.length%22,%22value%22:25%7D%5D%7D,%7B%22not%22:%7B%22field%22:%22data.in_stock%22,%22value%22:false%7D%7D%5D%7D%7D"), builder.create())
 
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -154,7 +154,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: "potato", filters: queryFilters)
 
         let builder = CIOBuilder(expectation: "Calling Autocomplete with 200 should return a response", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bage%5D=10%2B&filters%5Bsize%5D=6%2B&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5Bage%5D=10%2B&filters%5Bsize%5D=6%2B&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.autocomplete(forQuery: query) { _ in }
         self.wait(for: builder.expectation)
@@ -165,7 +165,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
 
         let builder = CIOBuilder(expectation: "Calling autocomplete with valid parameters should return a non-nil response.", builder: http(200))
 
-        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
 
@@ -182,7 +182,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
             .build()
 
         let builder = CIOBuilder(expectation: "Calling autocomplete with num result parameters should return a non-nil response.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=10&num_results_Products=5&num_results_Search%20Suggestions=6&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=10&num_results_Products=5&num_results_Search%20Suggestions=6&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
 
@@ -198,7 +198,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
             .build()
 
         let builder = CIOBuilder(expectation: "Calling Autocomplete with multiple facet filters with the same name should have multiple filters in the URL", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&filters%5BfacetOne%5D=Natural&filters%5BfacetOne%5D=Organic&filters%5BfacetOne%5D=Whole-grain&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
 
@@ -212,7 +212,7 @@ class ConstructorIOAutocompleteTests: XCTestCase {
             .build()
 
         let builder = CIOBuilder(expectation: "Calling Autocomplete with multiple facet filters with the same name should have multiple filters in the URL", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bhidden_fields%5D=hidden_field_1&fmt_options%5Bhidden_fields%5D=hidden_field_2&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/potato?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bhidden_fields%5D=hidden_field_1&fmt_options%5Bhidden_fields%5D=hidden_field_2&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in })
 

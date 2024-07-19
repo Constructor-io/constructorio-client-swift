@@ -27,7 +27,7 @@ class ConstructorIOTrackInputFocusTests: XCTestCase {
     func testTrackInputFocus() {
         let searchTerm = "corn"
         let builder = CIOBuilder(expectation: "Calling trackInputFocus should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn"), builder.create())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn&\(TestConstants.defaultSegments)"), builder.create())
         self.constructor.trackInputFocus(searchTerm: searchTerm)
         self.wait(for: builder.expectation)
     }
@@ -35,7 +35,7 @@ class ConstructorIOTrackInputFocusTests: XCTestCase {
     func testTrackInputFocus_With400() {
         let expectation = self.expectation(description: "Calling trackInputFocus with 400 should return badRequest CIOError.")
         let searchTerm = "corn"
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn"), http(400))
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn&\(TestConstants.defaultSegments)"), http(400))
         self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -48,7 +48,7 @@ class ConstructorIOTrackInputFocusTests: XCTestCase {
     func testTrackInputFocus_With500() {
         let expectation = self.expectation(description: "Calling trackInputFocus with 500 should return internalServerError CIOError.")
         let searchTerm = "corn"
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn"), http(500))
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn&\(TestConstants.defaultSegments)"), http(500))
         self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -61,7 +61,7 @@ class ConstructorIOTrackInputFocusTests: XCTestCase {
     func testTrackInputFocus_WithNoConnectivity() {
         let expectation = self.expectation(description: "Calling trackInputFocus with no connectvity should return noConnectivity CIOError.")
         let searchTerm = "corn"
-        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/behavior?_dt=\(kRegexTimestamp)&action=focus&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&term=corn&\(TestConstants.defaultSegments)"), noConnectivity())
         self.constructor.trackInputFocus(searchTerm: searchTerm, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")
