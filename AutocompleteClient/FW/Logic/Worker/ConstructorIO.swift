@@ -813,9 +813,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     private func attachSegments(requestBuilder: RequestBuilder) {
-        if let us = self.config.segments {
-            requestBuilder.set(segments: us)
-        }
+        requestBuilder.set(segments: Array(Set((self.config.segments ?? []) + Constants.Query.defaultSegments)))
     }
 
     private func attachUserID(requestBuilder: RequestBuilder) {

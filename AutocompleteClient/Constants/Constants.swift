@@ -56,6 +56,7 @@ struct Constants {
         static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let baseQuizURLString = "https://quizzes.cnstrc.com"
+        static let defaultSegments = ["cio-ios", "cio-app"]
         static let httpMethod = "GET"
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
         static let section = "section"
