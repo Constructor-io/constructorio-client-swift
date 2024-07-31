@@ -35,21 +35,21 @@ class ConstructorIOTrackQuizConversionTests: XCTestCase {
 
     func testTrackQuizConversion() {
         let builder = CIOBuilder(expectation: "Calling trackQuizConversion should send a valid request with the default section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), builder.create())
         self.constructor.trackQuizConversion(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID, sectionName: nil)
         self.wait(for: builder.expectation)
     }
 
     func testTrackQuizConversion_WithSection() {
         let builder = CIOBuilder(expectation: "Calling trackQuizConversion should send a valid request with a section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Search%20Suggestions"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Search%20Suggestions&\(TestConstants.defaultSegments)"), builder.create())
         self.constructor.trackQuizConversion(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID, sectionName: self.sectionName)
         self.wait(for: builder.expectation)
     }
 
     func testTrackQuizConversion_WithSectionFromConfig() {
         let builder = CIOBuilder(expectation: "Calling trackQuizConversion should send a valid request with the custom default section name from the config.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=section321"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=section321&\(TestConstants.defaultSegments)"), builder.create())
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: "section321")
         let constructor = TestConstants.testConstructor(config)
         constructor.trackQuizConversion(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID)
@@ -58,7 +58,7 @@ class ConstructorIOTrackQuizConversionTests: XCTestCase {
 
     func testTrackQuizConversion_With400() {
         let expectation = self.expectation(description: "Calling trackQuizConversion with 400 should return badRequest CIOError.")
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products"), http(400))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), http(400))
         self.constructor.trackQuizConversion(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .badRequest, "If tracking call returns status code 400, the error should be delegated to the completion handler")
@@ -70,7 +70,7 @@ class ConstructorIOTrackQuizConversionTests: XCTestCase {
 
     func testTrackQuizConversion_With500() {
         let expectation = self.expectation(description: "Calling trackQuizConversion with 500 should return internalServerError CIOError.")
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products"), http(500))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), http(500))
         self.constructor.trackQuizConversion(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .internalServerError, "If tracking call returns status code 500, the error should be delegated to the completion handler")
@@ -82,7 +82,7 @@ class ConstructorIOTrackQuizConversionTests: XCTestCase {
 
     func testTrackQuizConversion_WithNoConnectivity() {
         let expectation = self.expectation(description: "Calling trackQuizConversion with no connectvity should return noConnectivity CIOError.")
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/quiz_conversion?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), noConnectivity())
         self.constructor.trackQuizConversion(quizID: self.quizID, quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID, customerID: self.customerID, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .noConnection, "If tracking call returns no connectivity, the error should be delegated to the completion handler")

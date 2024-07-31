@@ -28,7 +28,7 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         let podID = "item_page_1"
 
         let builder = CIOBuilder(expectation: "Calling trackRecommendationResultsView should send a valid request with a default section name.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.trackRecommendationResultsView(podID: podID)
         self.wait(for: builder.expectation)
@@ -43,7 +43,7 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         let resultID = "resultID789"
 
         let builder = CIOBuilder(expectation: "Calling trackRecommendationResultsView should send a valid request with optional params.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.trackRecommendationResultsView(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
         self.wait(for: builder.expectation)
@@ -54,7 +54,7 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         let sectionName = "Content"
 
         let builder = CIOBuilder(expectation: "Calling trackRecommendationResultsView should send a valid request with the section from the client config.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
         let constructor = TestConstants.testConstructor(config)
@@ -67,7 +67,7 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackRecommendationResultsView with 400 should return badRequest CIOError.")
         let podID = "item_page_1"
 
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(400))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(400))
 
         self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: { response in
                 if let cioError = response.error as? CIOError {
@@ -83,7 +83,7 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackRecommendationResultsView with 500 should return internalServerError CIOError.")
         let podID = "item_page_1"
 
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), http(500))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(500))
 
         self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: {
             response in
@@ -99,7 +99,7 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         let expectation = self.expectation(description: "Calling trackRecommendationResultsView with no connectivity should return noConnectivity CIOError.")
         let podID = "item_page_1"
 
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)"), noConnectivity())
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), noConnectivity())
 
         self.constructor.trackRecommendationResultsView(podID: podID, completionHandler: {
             response in

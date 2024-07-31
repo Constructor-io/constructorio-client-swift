@@ -27,7 +27,7 @@ class ConstructorIOBrowseFacetOptionsTests: XCTestCase {
         let query = CIOBrowseFacetOptionsQuery(facetName: "price")
 
         let builder = CIOBuilder(expectation: "Calling Browse Facet Options should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.browseFacetOptions(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -39,7 +39,7 @@ class ConstructorIOBrowseFacetOptionsTests: XCTestCase {
         let query = CIOBrowseFacetOptionsQuery(facetName: "price")
 
         let dataToReturn = TestResource.load(name: TestResource.Response.browseFacetOptionsJSONFilename)
-        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), http(200, data: dataToReturn))
+        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(200, data: dataToReturn))
 
         self.constructor.browseFacetOptions(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Browse Facet Options with valid parameters should return a non-nil response.")
@@ -66,7 +66,7 @@ class ConstructorIOBrowseFacetOptionsTests: XCTestCase {
         let expectation = self.expectation(description: "Calling Browse Facet Options returns non-nil error if API errors out.")
 
         let query = CIOBrowseFacetOptionsQuery(facetName: "price")
-    stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), http(404))
+    stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(404))
 
         self.constructor.browseFacetOptions(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.error, "Calling Browse returns non-nil error if API errors out.")
@@ -79,7 +79,7 @@ class ConstructorIOBrowseFacetOptionsTests: XCTestCase {
         let query = CIOBrowseFacetOptionsQuery(facetName: "price", showHiddenFacets: true)
 
         let builder = CIOBuilder(expectation: "Calling Browse Facet Options should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&fmt_options%5Bshow_hidden_facets%5D=true&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&fmt_options%5Bshow_hidden_facets%5D=true&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
 
         self.constructor.browseFacetOptions(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
@@ -91,7 +91,7 @@ class ConstructorIOBrowseFacetOptionsTests: XCTestCase {
         let query = CIOBrowseFacetOptionsQueryBuilder(facetName: "price").build()
 
         let dataToReturn = TestResource.load(name: TestResource.Response.browseFacetOptionsJSONFilename)
-        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), http(200, data: dataToReturn))
+        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(200, data: dataToReturn))
 
         self.constructor.browseFacetOptions(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data, "Calling Browse Facet Options with valid parameters should return a non-nil response.")
@@ -118,7 +118,7 @@ class ConstructorIOBrowseFacetOptionsTests: XCTestCase {
         let query = CIOBrowseFacetOptionsQueryBuilder(facetName: "price").setShowHiddenFacets(true).build()
 
         let builder = CIOBuilder(expectation: "Calling Browse Facet Options should send a valid request.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&fmt_options%5Bshow_hidden_facets%5D=true&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/browse/facet_options?c=\(kRegexVersion)&facet_name=price&fmt_options%5Bshow_hidden_facets%5D=true&i=\(kRegexClientID)&key=key_OucJxxrfiTVUQx0C&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
         self.constructor.browseFacetOptions(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
