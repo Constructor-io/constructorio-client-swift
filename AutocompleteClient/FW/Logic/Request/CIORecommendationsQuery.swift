@@ -43,6 +43,11 @@ public struct CIORecommendationsQuery: CIORequestData {
     public let section: String
     
     /**
+     The list of hidden metadata fields to return
+     */
+    public let hiddenFields: [String]?
+    
+    /**
      The pre filter expression used to refine results
      Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.io/rest_api/collections/#add-items-dynamically
      */
@@ -63,20 +68,22 @@ public struct CIORecommendationsQuery: CIORequestData {
         - filters: The filters used to refine results
         - numResults: The number of results to return
         - section: The section to return results from
+        - hiddenFields: The list of hidden metadata fields to return
         - preFilterExpression: The pre filter expression used to refine results
 
      ### Usage Example: ###
      ```
      let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
      
-     let recommendationsQuery = CIORecommendationsQuery(podID: "pod_name", itemID: "item_id", numResults: 5, section: "Products", preFilterExpression: preFilterExpression)
+     let recommendationsQuery = CIORecommendationsQuery(podID: "pod_name", itemID: "item_id", numResults: 5, section: "Products", hiddenFields: ["price_CA", "currency_CA"], preFilterExpression: preFilterExpression)
      ```
      */
-    public init(podID: String, itemID: String? = nil, term: String? = nil, filters: CIOQueryFilters? = nil, numResults: Int? = nil, section: String? = nil, preFilterExpression: String? = nil) {
+    public init(podID: String, itemID: String? = nil, term: String? = nil, filters: CIOQueryFilters? = nil, numResults: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, preFilterExpression: String? = nil) {
         self.podID = podID
         self.filters = filters
         self.numResults = numResults != nil ? numResults! : Constants.RecommendationsQuery.defaultNumResults
         self.section = section != nil ? section! : Constants.RecommendationsQuery.defaultSectionName
+        self.hiddenFields = hiddenFields
         self.itemID = itemID
         self.term = term
         self.preFilterExpression = preFilterExpression
@@ -87,6 +94,7 @@ public struct CIORecommendationsQuery: CIORequestData {
         requestBuilder.set(itemID: self.itemID)
         requestBuilder.set(term: self.term)
         requestBuilder.set(searchSection: self.section)
+        requestBuilder.set(hiddenFields: self.hiddenFields)
         requestBuilder.set(groupFilter: self.filters?.groupFilter)
         requestBuilder.set(facetFilters: self.filters?.facetFilters)
         requestBuilder.set(preFilterExpression: self.preFilterExpression)
