@@ -139,4 +139,18 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
 
         XCTAssertTrue(url.hasPrefix("\(customBaseURL)/recommendations/v1/pods/\(podID)?"))
     }
+    
+    func testRecommendationsQueryBuilder_WithHiddenFields() {
+        let hiddenFields = ["hiddenField1", "hiddenField2"]
+        let query = CIORecommendationsQuery(podID: self.podID, hiddenFields: hiddenFields)
+        builder.build(trackData: query)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
+        XCTAssertTrue(url.contains("fmt_options%5Bhidden_fields%5D=hiddenField1&fmt_options%5Bhidden_fields%5D=hiddenField2"), "URL should contain hidden field parameters.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
+        XCTAssertEqual(request.httpMethod, "GET")
+    }
 }

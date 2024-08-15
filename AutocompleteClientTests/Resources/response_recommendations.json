@@ -2,7 +2,13 @@
   "request": {
     "item_id": "138250149",
     "num_results": 10,
-    "pod_id": "item_page_1"
+    "pod_id": "item_page_1",
+    "fmt_options": {
+      "hidden_fields": [
+        "hiddenField1",
+        "hiddenField2"
+      ]
+    }
   },
   "response": {
     "results": [{

@@ -44,6 +44,11 @@ public class CIORecommendationsQueryBuilder {
     var section: String?
     
     /**
+     The list of hidden metadata fields to return
+     */
+    var hiddenFields: [String]?
+    
+    /**
      The pre filter expression used to refine results
      Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.io/rest_api/collections/#add-items-dynamically
     */
@@ -98,6 +103,14 @@ public class CIORecommendationsQueryBuilder {
         self.section = section
         return self
     }
+    
+    /**
+     Add a list of hidden metadata fields to return
+     */
+    public func setHiddenFields(_ hiddenFields: [String]) -> CIORecommendationsQueryBuilder {
+        self.hiddenFields = hiddenFields
+        return self
+    }
 
     /**
      Add the pre filter expression
@@ -119,6 +132,7 @@ public class CIORecommendationsQueryBuilder {
         .setItemID("ITEM_123_456")
         .setNumResults(10)
         .setSection("Products")
+        .setHiddenFields(["hidden_price_field", "color_swatches"])
         .setPreFilterExpression(preFilterExpression)
         .build()
 
@@ -126,6 +140,6 @@ public class CIORecommendationsQueryBuilder {
      ```
      */
     public func build() -> CIORecommendationsQuery {
-        return CIORecommendationsQuery(podID: podID, itemID: itemID, term: term, filters: filters, numResults: numResults, section: section, preFilterExpression: preFilterExpression)
+        return CIORecommendationsQuery(podID: podID, itemID: itemID, term: term, filters: filters, numResults: numResults, section: section, hiddenFields: hiddenFields, preFilterExpression: preFilterExpression)
     }
 }

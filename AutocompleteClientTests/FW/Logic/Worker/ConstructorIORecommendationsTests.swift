@@ -257,4 +257,18 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
+    
+    func testRecommendations_UsingRecommendationsQueryBuilder_AttachesHiddenFields() {
+        let hiddenFields = ["hidden_field_1", "hidden_field_2"]
+        let query = CIORecommendationsQueryBuilder(podID: "item_page_1")
+            .setHiddenFields(hiddenFields)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with hidden fields should send a valid request", builder: http(200))
+        
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bhidden_fields%5D=hidden_field_1&fmt_options%5Bhidden_fields%5D=hidden_field_2&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
 }

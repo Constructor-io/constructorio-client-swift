@@ -80,6 +80,7 @@ class RecommendationsResponseParserTests: XCTestCase {
             XCTAssertEqual(requestJson["item_id"] as? String, "138250149", "Valid item_id should be correctly parsed")
             XCTAssertEqual(requestJson["pod_id"] as? String, "item_page_1", "Valid pod_id should be correctly parsed")
             XCTAssertEqual(requestJson["num_results"] as? Int, 10, "Valid num_results should be correctly parsed")
+            XCTAssertNotNil(requestJson["fmt_options"] as? JSONObject, "Valid fmtOptions should be correctly parsed")
         } catch {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }

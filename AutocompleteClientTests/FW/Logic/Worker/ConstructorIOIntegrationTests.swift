@@ -281,6 +281,26 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testRecommendations_WithHiddenFields() {
+        let expectation = XCTestExpectation(description: "Request 204")
+        let filters = CIOQueryFilters(groupFilter: "Styles", facetFilters: nil)
+        let hiddenFields = ["testField"]
+        let query = CIORecommendationsQuery(podID: "filtered_items", filters: filters, section: sectionName, hiddenFields: hiddenFields)
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            let responseData = response.data!
+            let recommendationResult = responseData.results[0]
+            let resultData = recommendationResult.data
+            let hiddenTestFieldValue = resultData.metadata["testField"] as? String
+
+            XCTAssertNil(cioError)
+            XCTAssertNotNil(hiddenTestFieldValue)
+            XCTAssertEqual(hiddenTestFieldValue, "hiddenFieldValue")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testRecommendations_WithInvalidPodId() {
         let expectation = XCTestExpectation(description: "Request 400")
         let query = CIORecommendationsQuery(podID: "bad_pod_id", itemID: customerID, section: sectionName)
