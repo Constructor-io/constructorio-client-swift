@@ -283,8 +283,9 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testRecommendations_WithHiddenFields() {
         let expectation = XCTestExpectation(description: "Request 204")
+        let filters = CIOQueryFilters(groupFilter: "Styles", facetFilters: nil)
         let hiddenFields = ["testField"]
-        let query = CIORecommendationsQuery(podID: podID, hiddenFields: hiddenFields, section: sectionName)
+        let query = CIORecommendationsQuery(podID: "filtered_items", filters: filters, section: sectionName, hiddenFields: hiddenFields)
         self.constructor.recommendations(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!

@@ -146,6 +146,7 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
         builder.build(trackData: query)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+
         XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
         XCTAssertTrue(url.contains("fmt_options%5Bhidden_fields%5D=hiddenField1&fmt_options%5Bhidden_fields%5D=hiddenField2"), "URL should contain hidden field parameters.")
         XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
