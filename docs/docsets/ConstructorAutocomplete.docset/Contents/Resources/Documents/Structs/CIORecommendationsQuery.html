@@ -17,7 +17,7 @@
     <a title="CIORecommendationsQuery Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 3.3.15 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 3.4.0 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -27,9 +27,7 @@
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html">ConstructorAutocomplete</a>
-        <img id="carat" src="../img/carat.png" alt=""/>
-        <a href="../Result%20Request%20Structures.html">Result Request Structures</a>
+        <a href="../index.html">ConstructorAutocomplete Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
         CIORecommendationsQuery Structure Reference
       </p>
@@ -400,6 +398,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:23ConstructorAutocomplete23CIORecommendationsQueryV12hiddenFieldsSaySSGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/hiddenFields" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete23CIORecommendationsQueryV12hiddenFieldsSaySSGSgvp">hiddenFields</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The list of hidden metadata fields to return</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:23ConstructorAutocomplete23CIORecommendationsQueryV19preFilterExpressionSSSgvp"></a>
                     <a name="//apple_ref/swift/Property/preFilterExpression" class="dashAnchor"></a>
                     <a class="token" href="#/s:23ConstructorAutocomplete23CIORecommendationsQueryV19preFilterExpressionSSSgvp">preFilterExpression</a>
@@ -428,9 +453,9 @@ Please refer to our docs for the syntax on adding pre filter expressions: <a hre
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete23CIORecommendationsQueryV5podID04itemF04term7filters10numResults7section19preFilterExpressionACSS_SSSgAkA15CIOQueryFiltersVSgSiSgA2Ktcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(podID:itemID:term:filters:numResults:section:preFilterExpression:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete23CIORecommendationsQueryV5podID04itemF04term7filters10numResults7section19preFilterExpressionACSS_SSSgAkA15CIOQueryFiltersVSgSiSgA2Ktcfc">init(podID:<wbr>itemID:<wbr>term:<wbr>filters:<wbr>numResults:<wbr>section:<wbr>preFilterExpression:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete23CIORecommendationsQueryV5podID04itemF04term7filters10numResults7section12hiddenFields19preFilterExpressionACSS_SSSgAlA15CIOQueryFiltersVSgSiSgALSaySSGSgALtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(podID:itemID:term:filters:numResults:section:hiddenFields:preFilterExpression:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete23CIORecommendationsQueryV5podID04itemF04term7filters10numResults7section12hiddenFields19preFilterExpressionACSS_SSSgAlA15CIOQueryFiltersVSgSiSgALSaySSGSgALtcfc">init(podID:<wbr>itemID:<wbr>term:<wbr>filters:<wbr>numResults:<wbr>section:<wbr>hiddenFields:<wbr>preFilterExpression:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -442,7 +467,7 @@ Please refer to our docs for the syntax on adding pre filter expressions: <a hre
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">preFilterExpression</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">or</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">and</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">group_id</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">electronics-group-id</span><span class="se">\"</span><span class="s">},{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Price</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">range</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">-inf</span><span class="se">\"</span><span class="s">,200.0]}]},{</span><span class="se">\"</span><span class="s">and</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Type</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Laptop</span><span class="se">\"</span><span class="s">},{</span><span class="se">\"</span><span class="s">not</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Price</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">range</span><span class="se">\"</span><span class="s">:[800.0,</span><span class="se">\"</span><span class="s">inf</span><span class="se">\"</span><span class="s">]}}]}]}"</span>
 
-<span class="k">let</span> <span class="nv">recommendationsQuery</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pod_name"</span><span class="p">,</span> <span class="nv">itemID</span><span class="p">:</span> <span class="s">"item_id"</span><span class="p">,</span> <span class="nv">numResults</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">preFilterExpression</span><span class="p">:</span> <span class="n">preFilterExpression</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">recommendationsQuery</span> <span class="o">=</span> <span class="kt">CIORecommendationsQuery</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pod_name"</span><span class="p">,</span> <span class="nv">itemID</span><span class="p">:</span> <span class="s">"item_id"</span><span class="p">,</span> <span class="nv">numResults</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="s">"price_CA"</span><span class="p">,</span> <span class="s">"currency_CA"</span><span class="p">],</span> <span class="nv">preFilterExpression</span><span class="p">:</span> <span class="n">preFilterExpression</span><span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -450,7 +475,7 @@ Please refer to our docs for the syntax on adding pre filter expressions: <a hre
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">itemID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">term</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">numResults</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">preFilterExpression</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">itemID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">term</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">numResults</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hiddenFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">preFilterExpression</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -533,6 +558,18 @@ Please refer to our docs for the syntax on adding pre filter expressions: <a hre
                             <tr>
                               <td>
                                 <code>
+                                <em>hiddenFields</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list of hidden metadata fields to return</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>preFilterExpression</em>
                                 </code>
                               </td>
@@ -553,8 +590,8 @@ Please refer to our docs for the syntax on adding pre filter expressions: <a hre
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2024 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2024-07-31)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2024 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2024-08-15)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
