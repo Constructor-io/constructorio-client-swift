@@ -2,7 +2,7 @@
 //  AutocompleteResultCountTests.swift
 //  AutocompleteClientTests
 //
-//  Copyright © Constructor.io. All rights reserved.
+//  Copyright (c) Constructor.io Corporation. All rights reserved.
 //  http://constructor.io/
 //
 
