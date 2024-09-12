@@ -10,13 +10,26 @@ import UIKit
 
 struct Constants {
 
+    static var getConstructorSDKVersion: () -> String = {
+        let SDKBundle = Bundle(for: RequestBuilder.self)  // No need for optional binding
+        let sdkVersion = (SDKBundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? ""
+        
+        return sdkVersion
+    }
+    
+    static var getCustomerAppVersion: () -> String = {
+        let customerAppVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+        
+        return customerAppVersion
+    }
+    
     static var versionString: () -> String = {
         var prefix = "cioios-"
-        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-            return "\(prefix)\(version)"
-        } else {
-            return prefix
-        }
+
+        let constrictorSDKVersion = Constants.getConstructorSDKVersion()
+        let customerAppVersion = Constants.getCustomerAppVersion()
+        
+        return "\(prefix)\(customerAppVersion)::\(constrictorSDKVersion)"
     }
 
     struct UI {
