@@ -348,7 +348,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - searchTerm: The term that the user selected
         - originalQuery: The current text in the input field
         - sectionName: The name of the autocomplete section the term came from (usually "Search Suggestions")
-        - group: Item group (if present)
+        - group: The group to search within if a user elected to search in a group, i.e. "Pumpkin in Canned Goods" (if present)
         - resultID: Identifier of result set
         - completionHandler: The callback to execute on completion.
 
@@ -369,7 +369,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      - Parameters:
         - searchTerm: The term that the user searched for
         - originalQuery: The current text in the input field
-        - group: Item group (if present)
+        - group: The group to search within if a user elected to search in a group, i.e. "Pumpkin in Canned Goods" (if present)
         - completionHandler: The callback to execute on completion.
 
      ### Usage Example: ###
