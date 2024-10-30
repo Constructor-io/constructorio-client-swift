@@ -105,8 +105,7 @@ GEM
     public_suffix (4.0.7)
     racc (1.7.3)
     redcarpet (3.6.0)
-    rexml (3.3.6)
-      strscan
+    rexml (3.3.9)
     rouge (4.3.0)
     ruby-macho (2.5.1)
     sassc (2.4.0)
@@ -120,7 +119,6 @@ GEM
       xcodeproj (~> 1.21)
     sqlite3 (1.7.3)
       mini_portile2 (~> 2.8.0)
-    strscan (3.1.0)
     typhoeus (1.4.1)
       ethon (>= 0.9.0)
     tzinfo (2.0.6)
