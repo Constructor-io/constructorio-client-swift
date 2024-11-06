@@ -13,7 +13,7 @@ let kRegexTimestamp = "[1-9][0-9]*"
 let kRegexClientID = "([A-Z0-9-])*"
 let kRegexSession = "[0-9]*"
 let kRegexAutocompleteKey = "[a-zA-Z-_0-9]*"
-let kRegexVersion = "cioios-[\\d\\.]*"
+let kRegexVersion = "cioios-[\\d\\.]*::[\\d\\.]*"
 
 struct TestConstants {
     static let defaultUserInterfaceExpectationTimeout: TimeInterval = 50.0

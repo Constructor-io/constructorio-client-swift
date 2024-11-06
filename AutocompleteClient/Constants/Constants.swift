@@ -29,7 +29,7 @@ struct Constants {
         let constructorSDKVersion = Constants.getConstructorSDKVersion()
         let customerAppVersion = Constants.getCustomerAppVersion()
         
-        return "\(prefix)\(customerAppVersion)::\(constructorSDKVersion)"
+        return "\(prefix)\(constructorSDKVersion)::\(customerAppVersion)"
     }
 
     struct UI {
