@@ -20,14 +20,14 @@ public struct CIOQuizQuestionResponse {
     /**
      Unique quiz_version_id for the quiz. 
      The quiz version id will be returned with the first request and it should be passed with subsequent requests.
-     More information can be found: https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-versioning
+     More information can be found: https://docs.constructor.com/reference/configuration-quizzes
      */
     public let quizVersionID: String
 
     /**
      Unique quiz_session_id for the quiz.
      The quiz session id will be returned with the first request and it should be passed with subsequent requests.
-     More information can be found: https://docs.constructor.io/rest_api/quiz/using_quizzes/#quiz-sessions
+     More information can be found: https://docs.constructor.com/reference/configuration-quizzes
      */
     public let quizSessionID: String
 

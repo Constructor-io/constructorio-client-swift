@@ -50,7 +50,7 @@ public class CIORecommendationsQueryBuilder {
     
     /**
      The pre filter expression used to refine results
-     Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.io/rest_api/collections/#add-items-dynamically
+     Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.com/reference/configuration-collections
     */
     var preFilterExpression: String?
 
