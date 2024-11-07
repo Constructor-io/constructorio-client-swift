@@ -70,7 +70,7 @@ public class CIOBrowseQueryBuilder {
 
     /**
      The pre filter expression used to refine results.
-     Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.com/reference/configuration-collections
+     Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.com/reference/shared-filter-expressions
      */
     var preFilterExpression: String?
 
