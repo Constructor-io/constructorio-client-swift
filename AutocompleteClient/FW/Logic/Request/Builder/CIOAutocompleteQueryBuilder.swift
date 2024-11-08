@@ -45,7 +45,7 @@ public class CIOAutocompleteQueryBuilder {
 
     /**
      The variation map to use with the result set
-     Please refer to our docs for the syntax on adding variations mapping: https://docs.constructor.io/rest_api/variations_mapping/
+     Please refer to our docs for the syntax on adding variations mapping: https://docs.constructor.com/reference/shared-variations-mapping
      */
     var variationsMap: CIOQueryVariationsMap?
 
