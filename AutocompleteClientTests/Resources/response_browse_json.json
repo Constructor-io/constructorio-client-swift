@@ -122,7 +122,10 @@
                 },
                 "value": "Item4",
                 "is_slotted": false,
-                "labels": {}
+                "labels": {
+                  "is_sponsored": true,
+                  "__cnstrc_new_arrivals": { "display_name": "New Arrival", "test": "test"}
+                }
             },
             {
                 "matched_terms": [],
