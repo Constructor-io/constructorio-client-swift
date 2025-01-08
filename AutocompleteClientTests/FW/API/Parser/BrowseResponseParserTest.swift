@@ -53,6 +53,22 @@ class BrowseResponseParserTests: XCTestCase {
             XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
         }
     }
+    
+    func testBrowseParser_ParsingJSONString_ParsesLabels() {
+        let data = TestResource.load(name: TestResource.Response.browseJSONFilename)
+        do {
+            let response = try self.parser.parse(browseResponseData: data)
+            let labels = response.results[0].labels
+            let newArrivals = labels["__cnstrc_new_arrivals"] as! [String: Any]
+
+            XCTAssertEqual(labels["is_sponsored"] as! Bool, true)
+            XCTAssertEqual(newArrivals["display_name"] as! String, "New Arrival")
+            XCTAssertEqual(newArrivals["test"] as! String, "test")
+
+        } catch {
+            XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
+        }
+    }
 
     func testBrowseParser_ParsingJSONString_ParsesRefinedContent() {
         let data = TestResource.load(name: TestResource.Response.browseJSONFilename)
