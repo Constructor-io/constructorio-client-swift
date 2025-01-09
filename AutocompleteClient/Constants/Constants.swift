@@ -233,7 +233,7 @@ struct Constants {
     }
 
     struct TrackSearchResultsLoaded {
-        static let format = "%@/behavior?action=search-results"
+        static let format = "%@/v2/behavioral_action/search_result_load"
     }
 
     struct TrackSearchResultClick {
