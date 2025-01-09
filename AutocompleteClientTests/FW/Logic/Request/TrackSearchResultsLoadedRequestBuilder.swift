@@ -30,14 +30,15 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/behavior?"))
-        XCTAssertTrue(url.contains("action=search-results"), "URL should contain the search-results action")
-        XCTAssertTrue(url.contains("term=\(encodedSearchTerm)"), "URL should contain the search term")
-        XCTAssertTrue(url.contains("num_results=\(resultCount)"), "URL should contain the number of results")
-        XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
-        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/search_result_load?"))
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
+        XCTAssertEqual(payload?["result_count"] as? Int, resultCount)
+        XCTAssertEqual(payload?["key"] as? String, testACKey)
+        XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
+        XCTAssertEqual(payload?["url"] as? String, "Not Available")
     }
 
     func testTrackSearchResultsLoadedBuilderWithCustomerIDs() {
@@ -45,15 +46,25 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedItems = payload?["items"] as? [[String: String]] ?? []
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/behavior?"))
-        XCTAssertTrue(url.contains("action=search-results"), "URL should contain the search-results action")
-        XCTAssertTrue(url.contains("term=\(encodedSearchTerm)"), "URL should contain the search term")
-        XCTAssertTrue(url.contains("num_results=\(resultCount)"), "URL should contain the number of results")
-        XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
-        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
-        XCTAssertTrue(url.contains("customer_ids=abc,123,doremi"), "URL should contain the api key")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/search_result_load?"))
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedItems.count, 3)
+        XCTAssertEqual(loadedItems[0]["item_id"], customerIDs[0])
+    }
+    
+    func testSearchResultsLoadedBuilder_WithAnalyticsTags() {
+        let analyticsTags = ["test": "testing", "version": "123"]
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, analyticsTags: analyticsTags)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let analyticsTagsPayload = payload?["analytics_tags"] as? [String: String] ?? [:]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(analyticsTagsPayload, analyticsTags)
     }
 
     func testTrackSearchResultsLoadedBuilder_WithCustomBaseURL() {

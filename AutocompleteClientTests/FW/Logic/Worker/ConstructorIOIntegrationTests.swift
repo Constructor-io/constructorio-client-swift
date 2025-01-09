@@ -92,6 +92,16 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+    
+    func testSearchResultsLoaded_withItems() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, customerIDs: customerIDs, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 
     func testSearchResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
