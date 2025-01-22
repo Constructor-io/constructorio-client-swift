@@ -152,13 +152,30 @@ class ConstructorIORecommendationsTests: XCTestCase {
 
         self.wait(for: builder.expectation)
     }
-    
+
     func testRecommendations_AttachesPreFilterExpression() {
         let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
         let query = CIORecommendationsQuery(podID: "item_page_1", preFilterExpression: preFilterExpression)
 
         let builder = CIOBuilder(expectation: "Calling Recommendations with pre filter expression should have a URL query pre_filter_expression", builder: http(200))
         stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&pre_filter_expression=%7B%22or%22:%5B%7B%22and%22:%5B%7B%22name%22:%22group_id%22,%22value%22:%22electronics-group-id%22%7D,%7B%22name%22:%22Price%22,%22range%22:%5B%22-inf%22,200.0%5D%7D%5D%7D,%7B%22and%22:%5B%7B%22name%22:%22Type%22,%22value%22:%22Laptop%22%7D,%7B%22not%22:%7B%22name%22:%22Price%22,%22range%22:%5B800.0,%22inf%22%5D%7D%7D%5D%7D%5D%7D&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+
+        self.wait(for: builder.expectation)
+    }
+
+    func testRecommendations_AttachesVariationsMap() {
+        let variationsMap = CIOQueryVariationsMap(
+           GroupBy: [GroupByOption(name: "Country", field: "data.Country")],
+           Values: ["price": ValueOption(aggregation: "min", field: "data.price")],
+           Dtype: "array"
+        )
+
+        let query = CIORecommendationsQuery(podID: "item_page_1", variationsMap: variationsMap)
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with variations map expression should have a URL query variations_map", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)&variations_map=%7B%22dtype%22:%22array%22,%22group_by%22:%5B%7B%22field%22:%22data.Country%22,%22name%22:%22Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22aggregation%22:%22min%22,%22field%22:%22data.price%22%7D%7D%7D"), builder.create())
 
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
 
@@ -257,7 +274,7 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
-    
+
     func testRecommendations_UsingRecommendationsQueryBuilder_AttachesHiddenFields() {
         let hiddenFields = ["hidden_field_1", "hidden_field_2"]
         let query = CIORecommendationsQueryBuilder(podID: "item_page_1")
@@ -265,8 +282,27 @@ class ConstructorIORecommendationsTests: XCTestCase {
             .build()
 
         let builder = CIOBuilder(expectation: "Calling Recommendations with hidden fields should send a valid request", builder: http(200))
-        
+
         stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bhidden_fields%5D=hidden_field_1&fmt_options%5Bhidden_fields%5D=hidden_field_2&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
+
+    func testRecommendations_UsingRecommendationsQueryBuilder_AttachesVariationsMap() {
+        let variationsMap = CIOQueryVariationsMap(
+           GroupBy: [GroupByOption(name: "Country", field: "data.Country")],
+           Values: ["price": ValueOption(aggregation: "min", field: "data.price")],
+           Dtype: "array"
+        )
+
+        let query = CIORecommendationsQueryBuilder(podID: "item_page_1")
+            .setVariationsMap(variationsMap)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with hidden fields should send a valid request", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)&variations_map=%7B%22dtype%22:%22array%22,%22group_by%22:%5B%7B%22field%22:%22data.Country%22,%22name%22:%22Country%22%7D%5D,%22values%22:%7B%22price%22:%7B%22aggregation%22:%22min%22,%22field%22:%22data.price%22%7D%7D%7D"), builder.create())
 
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)

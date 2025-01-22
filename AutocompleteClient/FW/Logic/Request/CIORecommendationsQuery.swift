@@ -57,6 +57,12 @@ public struct CIORecommendationsQuery: CIORequestData {
     func url(with baseURL: String) -> String {
         return String(format: Constants.RecommendationsQuery.format, baseURL, podID)
     }
+    
+    /**
+     The variation map to use with the result set
+     Please refer to our docs for the syntax on adding variations mapping: https://docs.constructor.com/reference/shared-variations-mapping
+     */
+    var variationsMap: CIOQueryVariationsMap?
 
     /**
      Create a Recommendations request query object
@@ -70,15 +76,22 @@ public struct CIORecommendationsQuery: CIORequestData {
         - section: The section to return results from
         - hiddenFields: The list of hidden metadata fields to return
         - preFilterExpression: The pre filter expression used to refine results
+        - variationsMap: The variation map to use with the result set
 
      ### Usage Example: ###
      ```
      let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
      
-     let recommendationsQuery = CIORecommendationsQuery(podID: "pod_name", itemID: "item_id", numResults: 5, section: "Products", hiddenFields: ["price_CA", "currency_CA"], preFilterExpression: preFilterExpression)
+     let variationsMap = CIOQueryVariationsMap(
+        GroupBy: [GroupByOption(name: "Country", field: "data.Country")],
+        Values: ["price": ValueOption(aggregation: "min", field: "data.price")],
+        Dtype: "array"
+     )
+     
+     let recommendationsQuery = CIORecommendationsQuery(podID: "pod_name", itemID: "item_id", numResults: 5, section: "Products", hiddenFields: ["price_CA", "currency_CA"], preFilterExpression: preFilterExpression, variationsMap: variationsMap)
      ```
      */
-    public init(podID: String, itemID: String? = nil, term: String? = nil, filters: CIOQueryFilters? = nil, numResults: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, preFilterExpression: String? = nil) {
+    public init(podID: String, itemID: String? = nil, term: String? = nil, filters: CIOQueryFilters? = nil, numResults: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, preFilterExpression: String? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
         self.podID = podID
         self.filters = filters
         self.numResults = numResults != nil ? numResults! : Constants.RecommendationsQuery.defaultNumResults
@@ -87,6 +100,7 @@ public struct CIORecommendationsQuery: CIORequestData {
         self.itemID = itemID
         self.term = term
         self.preFilterExpression = preFilterExpression
+        self.variationsMap = variationsMap
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -98,5 +112,6 @@ public struct CIORecommendationsQuery: CIORequestData {
         requestBuilder.set(groupFilter: self.filters?.groupFilter)
         requestBuilder.set(facetFilters: self.filters?.facetFilters)
         requestBuilder.set(preFilterExpression: self.preFilterExpression)
+        requestBuilder.set(variationsMap: self.variationsMap)
     }
 }

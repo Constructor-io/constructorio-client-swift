@@ -61,6 +61,7 @@ public struct CIOAutocompleteQuery: CIORequestData {
         - filters: The filters used to refine results
         - sectionFilters: The filters to only apply to specific sections
         - hiddenFields: The list of hidden metadata fields to return
+        - variationsMap: The variation map to use with the result set
      
      ### Usage Example: ###
      ```
