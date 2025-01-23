@@ -53,6 +53,11 @@ public class CIORecommendationsQueryBuilder {
      Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.com/reference/shared-filter-expressions
     */
     var preFilterExpression: String?
+    
+    /**
+     The variation map to use with the result set
+     */
+    var variationsMap: CIOQueryVariationsMap?
 
     /**
      Create a Recommendations request query builder
@@ -119,6 +124,14 @@ public class CIORecommendationsQueryBuilder {
         self.preFilterExpression = preFilterExpression
         return self
     }
+    
+    /**
+     Add a variations map to return per variation
+     */
+    public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIORecommendationsQueryBuilder {
+        self.variationsMap = variationsMap
+        return self
+    }
 
     /**
      Build the request object with all of the provided data
@@ -140,6 +153,6 @@ public class CIORecommendationsQueryBuilder {
      ```
      */
     public func build() -> CIORecommendationsQuery {
-        return CIORecommendationsQuery(podID: podID, itemID: itemID, term: term, filters: filters, numResults: numResults, section: section, hiddenFields: hiddenFields, preFilterExpression: preFilterExpression)
+        return CIORecommendationsQuery(podID: podID, itemID: itemID, term: term, filters: filters, numResults: numResults, section: section, hiddenFields: hiddenFields, preFilterExpression: preFilterExpression, variationsMap: variationsMap)
     }
 }

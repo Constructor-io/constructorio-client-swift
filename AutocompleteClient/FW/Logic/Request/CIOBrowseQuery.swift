@@ -91,6 +91,7 @@ public struct CIOBrowseQuery: CIORequestData {
         - section: The section to return results from
         - hiddenFields: The list of hidden metadata fields to return
         - hiddenFacets: The list of hidden facest to return
+        - variationsMap: The variation map to use with the result set
         - groupsSortOption: The sort method/order for groups
         - preFilterExpression: The pre filter expression used to refine results
 
@@ -101,8 +102,14 @@ public struct CIOBrowseQuery: CIORequestData {
                          (key: "Brand", value: "Kraft Foods")]
      
      let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
+     
+     let variationsMap = CIOQueryVariationsMap(
+        GroupBy: [GroupByOption(name: "Country", field: "data.Country")],
+        Values: ["price": ValueOption(aggregation: "min", field: "data.price")],
+        Dtype: "array"
+     )
 
-     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], preFilterExpression: preFilterExpression)
+     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], variationsMap: variationsMap, preFilterExpression: preFilterExpression)
      ```
      */
     public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil, preFilterExpression: String? = nil) {
