@@ -528,7 +528,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(autocompleteResult)
-            XCTAssertEqual(autocompleteResult?.result.labels["is_sponsored"], true)
+            XCTAssertEqual(autocompleteResult?.result.labels["is_sponsored"] as! Bool, true)
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -765,7 +765,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(searchResult)
-            XCTAssertEqual(searchResult.labels["is_sponsored"], true)
+            XCTAssertEqual(searchResult.labels["is_sponsored"] as! Bool, true)
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -1102,7 +1102,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(browseResult)
-            XCTAssertEqual(browseResult.labels["is_sponsored"], true)
+            XCTAssertEqual(browseResult.labels["is_sponsored"] as! Bool, true)
             expectation.fulfill()
         })
         self.wait(for: expectation)

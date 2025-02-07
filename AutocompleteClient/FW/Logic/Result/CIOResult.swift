@@ -51,7 +51,7 @@ public class CIOResult: NSObject {
     /**
      Labels associated with the result item
      */
-    public let labels: [String: Bool]
+    public let labels: [String: Any]
 
     /**
      Create a result object
@@ -73,7 +73,7 @@ public class CIOResult: NSObject {
 
         let strategyData = json["strategy"] as? JSONObject ?? [String: Any]()
 
-        let labels = json["labels"] as? [String: Bool] ?? [:]
+        let labels = json["labels"] as? [String: Any] ?? [:]
 
         let strategy = CIORecommendationsStrategy(json: strategyData)!
 

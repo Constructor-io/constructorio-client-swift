@@ -48,7 +48,8 @@
       "value": "Item5",
       "is_slotted": true,
       "labels": {
-        "is_sponsored": true
+        "is_sponsored": true,
+        "__cnstrc_new_arrivals": { "display_name": "New Arrival", "test": "test"}
       }
     }, {
       "matched_terms": ["item"],
