@@ -172,17 +172,20 @@ class SearchResponseParserTests: XCTestCase {
             XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
         }
     }
-    
+
     func testSearchParser_ParsingJSONString_ParsesLabels() {
         let data = TestResource.load(name: TestResource.Response.searchJSONRefinedContentFilename)
         do {
             let response = try self.parser.parse(searchResponseData: data)
             let labels = response.results[0].labels
-            let newArrivals = labels["__cnstrc_new_arrivals"] as! [String: Any]
 
-            XCTAssertEqual(labels["is_sponsored"] as! Bool, true)
-            XCTAssertEqual(newArrivals["display_name"] as! String, "New Arrival")
-            XCTAssertEqual(newArrivals["test"] as! String, "test")
+            if let newArrivals = labels["__cnstrc_new_arrivals"] as? [String: Any] {
+                XCTAssertEqual(labels["is_sponsored"] as? Bool, true)
+                XCTAssertEqual(newArrivals["display_name"] as? String, "New Arrival")
+                XCTAssertEqual(newArrivals["test"] as? String, "test")
+            } else {
+                XCTFail("Expected '__cnstrc_new_arrivals' to be a dictionary")
+            }
 
         } catch {
             XCTFail("Parse should never throw an exception when a valid JSON string is passed.")
