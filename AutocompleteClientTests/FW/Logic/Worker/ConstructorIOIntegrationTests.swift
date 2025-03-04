@@ -523,12 +523,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
         let query = CIOAutocompleteQuery(query: "item")
         self.constructor.autocomplete(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
-            let responseData = response.data!
-            let autocompleteResult = responseData.sections["Products"]?[0]
 
-            XCTAssertNil(cioError)
-            XCTAssertNotNil(autocompleteResult)
-            XCTAssertEqual(autocompleteResult?.result.labels["is_sponsored"] as! Bool, true)
+            if let responseData = response.data,
+               let autocompleteResult = responseData.sections["Products"]?.first,
+               let isSponsored = autocompleteResult.result.labels["is_sponsored"] as? Bool {
+                
+                XCTAssertNil(cioError)
+                XCTAssertNotNil(autocompleteResult)
+                XCTAssertEqual(isSponsored, true)
+            } else {
+                XCTFail("Expected valid response data, autocomplete result, and 'is_sponsored' label")
+            }
+
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -760,12 +766,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
         let query = CIOSearchQuery(query: "item")
         constructorClient.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
-            let responseData = response.data!
-            let searchResult = responseData.results[0]
-
-            XCTAssertNil(cioError)
-            XCTAssertNotNil(searchResult)
-            XCTAssertEqual(searchResult.labels["is_sponsored"] as! Bool, true)
+            
+            if let responseData = response.data,
+               let searchResult = responseData.results.first,
+               let isSponsored = searchResult.labels["is_sponsored"] as? Bool {
+                
+                XCTAssertNil(cioError)
+                XCTAssertNotNil(searchResult)
+                XCTAssertEqual(isSponsored, true)
+            } else {
+                XCTFail("Expected valid response data, search result, and 'is_sponsored' label")
+            }
+            
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -1097,12 +1109,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
         let query = CIOBrowseQuery(filterName: "Brand", filterValue: "XYZ")
         constructorClient.browse(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
-            let responseData = response.data!
-            let browseResult = responseData.results[0]
 
-            XCTAssertNil(cioError)
-            XCTAssertNotNil(browseResult)
-            XCTAssertEqual(browseResult.labels["is_sponsored"] as! Bool, true)
+            if let responseData = response.data,
+               let browseResult = responseData.results.first,
+               let isSponsored = browseResult.labels["is_sponsored"] as? Bool {
+
+                XCTAssertNil(cioError)
+                XCTAssertNotNil(browseResult)
+                XCTAssertEqual(isSponsored, true)
+            } else {
+                XCTFail("Expected valid response data, browse result, and 'is_sponsored' label")
+            }
+
             expectation.fulfill()
         })
         self.wait(for: expectation)
