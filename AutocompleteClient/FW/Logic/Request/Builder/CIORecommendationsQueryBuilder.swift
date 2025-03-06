@@ -24,6 +24,11 @@ public class CIORecommendationsQueryBuilder {
     var itemID: String?
 
     /**
+     The item variation id to retrieve recommendations for (strategy specific)
+     */
+    var variationID: String?
+
+    /**
      The term to use to refine results (strategy specific)
      */
     var term: String?
@@ -42,12 +47,12 @@ public class CIORecommendationsQueryBuilder {
      The section to return results from
      */
     var section: String?
-    
+
     /**
      The list of hidden metadata fields to return
      */
     var hiddenFields: [String]?
-    
+
     /**
      The pre filter expression used to refine results
      Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.com/reference/shared-filter-expressions
@@ -61,7 +66,7 @@ public class CIORecommendationsQueryBuilder {
 
     /**
      Create a Recommendations request query builder
-     
+
      - Parameters:
         - podID: The pod ID
      */
@@ -74,6 +79,14 @@ public class CIORecommendationsQueryBuilder {
      */
     public func setItemID(_ itemID: String) -> CIORecommendationsQueryBuilder {
         self.itemID = itemID
+        return self
+    }
+
+    /**
+     Add an item variation id to retrieve recommendations for (strategy specific)
+     */
+    public func setVariationID(_ variationID: String) -> CIORecommendationsQueryBuilder {
+        self.variationID = variationID
         return self
     }
 
@@ -108,7 +121,7 @@ public class CIORecommendationsQueryBuilder {
         self.section = section
         return self
     }
-    
+
     /**
      Add a list of hidden metadata fields to return
      */
@@ -143,6 +156,7 @@ public class CIORecommendationsQueryBuilder {
      let query = CIORecommendationsQueryBuilder(query: "blue")
         .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
         .setItemID("ITEM_123_456")
+        .setVariationID("ITEM_123_456_red")
         .setNumResults(10)
         .setSection("Products")
         .setHiddenFields(["hidden_price_field", "color_swatches"])
@@ -153,6 +167,6 @@ public class CIORecommendationsQueryBuilder {
      ```
      */
     public func build() -> CIORecommendationsQuery {
-        return CIORecommendationsQuery(podID: podID, itemID: itemID, term: term, filters: filters, numResults: numResults, section: section, hiddenFields: hiddenFields, preFilterExpression: preFilterExpression, variationsMap: variationsMap)
+        return CIORecommendationsQuery(podID: podID, itemID: itemID, variationID: variationID, term: term, filters: filters, numResults: numResults, section: section, hiddenFields: hiddenFields, preFilterExpression: preFilterExpression, variationsMap: variationsMap)
     }
 }

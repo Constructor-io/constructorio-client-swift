@@ -73,6 +73,18 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testRecommendations_AttachesVariationIDParameter() {
+        let itemID = "P910293"
+        let variationID = "P910293_382352"
+        let query = CIORecommendationsQuery(podID: "item_page_1", itemID: itemID, variationID: variationID)
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with a variation id should send a valid request.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&item_id=\(itemID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)&variation_id=\(variationID)"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
+
     func testRecommendations_AttachesTermParameter() {
         let term = "pizza"
         let query = CIORecommendationsQuery(podID: "item_page_1", term: term)
@@ -216,6 +228,21 @@ class ConstructorIORecommendationsTests: XCTestCase {
 
         let builder = CIOBuilder(expectation: "Calling Recommendations with an item id should send a valid request.", builder: http(200))
         stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&item_id=\(itemID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), builder.create())
+
+        self.constructor.recommendations(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
+
+    func testRecommendations_UsingRecommendationsQueryBuilder_AttachesVariationIDParameter() {
+        let itemID = "P910293"
+        let variationID = "P910293_382352"
+        let query = CIORecommendationsQueryBuilder(podID: "item_page_1")
+            .setItemID(itemID)
+            .setVariationID(variationID)
+            .build()
+
+        let builder = CIOBuilder(expectation: "Calling Recommendations with a variation id should send a valid request.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pods/item_page_1?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&item_id=\(itemID)&key=\(kRegexAutocompleteKey)&num_results=5&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)&variation_id=\(variationID)"), builder.create())
 
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
