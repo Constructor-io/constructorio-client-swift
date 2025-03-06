@@ -71,6 +71,20 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.httpMethod, "GET")
     }
 
+    func testRecommendationsQueryBuilder_WithVariationId() {
+        let query = CIORecommendationsQuery(podID: self.podID, itemID: "lemon_chicken", variationID: "lemon_chicken_spicy")
+        builder.build(trackData: query)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/recommendations/v1/pods/\(podID)?"))
+        XCTAssertTrue(url.contains("item_id=lemon_chicken"), "URL should contain the item_id URL parameter.")
+        XCTAssertTrue(url.contains("variation_id=lemon_chicken_spicy"), "URL should contain the variation_id URL parameter.")
+        XCTAssertTrue(url.contains("c=cioios-"), "URL should contain the version string.")
+        XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain api key.")
+        XCTAssertEqual(request.httpMethod, "GET")
+    }
+
     func testRecommendationsQueryBuilder_WithFacetFilters() {
         let facetFilters = [
             (key: "Nutrition", value: "Organic"),
@@ -139,7 +153,7 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
 
         XCTAssertTrue(url.hasPrefix("\(customBaseURL)/recommendations/v1/pods/\(podID)?"))
     }
-    
+
     func testRecommendationsQueryBuilder_WithHiddenFields() {
         let hiddenFields = ["hiddenField1", "hiddenField2"]
         let query = CIORecommendationsQuery(podID: self.podID, hiddenFields: hiddenFields)

@@ -169,6 +169,7 @@ struct Constants {
         static let section = "section"
         static let numResults = "num_results"
         static let itemID = "item_id"
+        static let variationID = "variation_id"
         static let term = "term"
         static let groupFilter = "filters[group_id]"
         static let facetFilterKey = { (key: String) -> String in "filters[\(key)]" }

@@ -23,6 +23,11 @@ public struct CIORecommendationsQuery: CIORequestData {
     public let itemID: String?
 
     /**
+     The item variation id to retrieve recommendations for (strategy specific)
+     */
+    public let variationID: String?
+
+    /**
      The term to use to refine results (strategy specific)
      */
     public let term: String?
@@ -41,18 +46,17 @@ public struct CIORecommendationsQuery: CIORequestData {
      The section to return results from
      */
     public let section: String
-    
+
     /**
      The list of hidden metadata fields to return
      */
     public let hiddenFields: [String]?
-    
+
     /**
      The pre filter expression used to refine results
      Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.com/reference/shared-filter-expressions
      */
     public let preFilterExpression: String?
-
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.RecommendationsQuery.format, baseURL, podID)
@@ -70,6 +74,7 @@ public struct CIORecommendationsQuery: CIORequestData {
      - Parameters:
         - podID: The pod ID
         - itemID: The item id to retrieve recommendations for (strategy specific)
+        - variationID: The item variation id to retrieve recommendations for (strategy specific)
         - term: The term to use to refine results (strategy specific)
         - filters: The filters used to refine results
         - numResults: The number of results to return
@@ -88,16 +93,17 @@ public struct CIORecommendationsQuery: CIORequestData {
         Dtype: "array"
      )
      
-     let recommendationsQuery = CIORecommendationsQuery(podID: "pod_name", itemID: "item_id", numResults: 5, section: "Products", hiddenFields: ["price_CA", "currency_CA"], preFilterExpression: preFilterExpression, variationsMap: variationsMap)
+     let recommendationsQuery = CIORecommendationsQuery(podID: "pod_name", itemID: "item_id", variationID: "variation_id", numResults: 5, section: "Products", hiddenFields: ["price_CA", "currency_CA"], preFilterExpression: preFilterExpression, variationsMap: variationsMap)
      ```
      */
-    public init(podID: String, itemID: String? = nil, term: String? = nil, filters: CIOQueryFilters? = nil, numResults: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, preFilterExpression: String? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
+    public init(podID: String, itemID: String? = nil, variationID: String? = nil, term: String? = nil, filters: CIOQueryFilters? = nil, numResults: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, preFilterExpression: String? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
         self.podID = podID
         self.filters = filters
         self.numResults = numResults != nil ? numResults! : Constants.RecommendationsQuery.defaultNumResults
         self.section = section != nil ? section! : Constants.RecommendationsQuery.defaultSectionName
         self.hiddenFields = hiddenFields
         self.itemID = itemID
+        self.variationID = variationID
         self.term = term
         self.preFilterExpression = preFilterExpression
         self.variationsMap = variationsMap
@@ -106,6 +112,7 @@ public struct CIORecommendationsQuery: CIORequestData {
     func decorateRequest(requestBuilder: RequestBuilder) {
         requestBuilder.set(numResults: self.numResults)
         requestBuilder.set(itemID: self.itemID)
+        requestBuilder.set(variationID: self.variationID)
         requestBuilder.set(term: self.term)
         requestBuilder.set(searchSection: self.section)
         requestBuilder.set(hiddenFields: self.hiddenFields)
