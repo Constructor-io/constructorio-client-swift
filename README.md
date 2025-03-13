@@ -176,10 +176,11 @@ constructorIO.recommendations(forQuery: query) { (response) in
 }
 ```
 
-### With an item id for the alternative/complementary items recommendations strategy
+### With an item id (and variation id) for the alternative/complementary items recommendations strategy
 ```swift
 let itemId = "P18232"
-let query = CIORecommendationsQuery(podID: "pdp_complementary_items", itemID: itemId)
+let variationId = "P18232-123"
+let query = CIORecommendationsQuery(podID: "pdp_complementary_items", itemID: itemId, variationID: variationId)
 
 constructorIO.recommendations(forQuery: query) { (response) in
   let data = response.data!
