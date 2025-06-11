@@ -1541,5 +1541,49 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+
+    // MARK: - New Sponsored Listings & Items Tests
+
+    func testSearchResultsLoaded_withItemsParam() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let items = [CIOItem(customerID: "10001"), CIOItem(customerID: "10002", variationID: "var2")]
+        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, items: items, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseResultsLoaded_withItemsParam() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let items = [CIOItem(customerID: "10001"), CIOItem(customerID: "10002", variationID: "var2")]
+        self.constructor.trackBrowseResultsLoaded(filterName: groupFilterName, filterValue: groupFilterValue, resultCount: resultCount, items: items, resultID: resultID, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testSearchResultsLoaded_withSponsoredListingsParams() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, slAdvertiser: "adv123", slCampaignID: "cmp456", slCampaignOwner: "owner789", completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseResultsLoaded_withSponsoredListingsParams() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackBrowseResultsLoaded(filterName: groupFilterName, filterValue: groupFilterValue, resultCount: resultCount, resultID: resultID, slAdvertiser: "adv123", slCampaignID: "cmp456", slCampaignOwner: "owner789", completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 }
 // swiftlint:enable type_body_length file_length

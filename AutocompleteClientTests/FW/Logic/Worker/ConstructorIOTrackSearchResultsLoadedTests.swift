@@ -84,4 +84,26 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+
+    func testTrackSearchResultsLoaded_WithSponsoredListingsParams() {
+        let searchTerm = "term_search"
+        let resultCount = 12
+        let slAdvertiser = "adv123"
+        let slCampaignID = "cmp456"
+        let slCampaignOwner = "owner789"
+        let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded should include sponsored listing params.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/search_result_load\\?_dt=\\(kRegexTimestamp)&c=\\(kRegexVersion)&i=\\(kRegexClientID)&key=\\(kRegexAutocompleteKey)&s=\\(kRegexSession)&\\(TestConstants.defaultSegments)"), builder.create())
+        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, slAdvertiser: slAdvertiser, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)
+        self.wait(for: builder.expectation)
+    }
+
+    func testTrackSearchResultsLoaded_WithItemsParam() {
+        let searchTerm = "term_search"
+        let resultCount = 12
+        let items = [CIOItem(customerID: "abc", variationID: "var1"), CIOItem(customerID: "xyz")]
+        let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded should send items.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/search_result_load\\?_dt=\\(kRegexTimestamp)&c=\\(kRegexVersion)&i=\\(kRegexClientID)&key=\\(kRegexAutocompleteKey)&s=\\(kRegexSession)&\\(TestConstants.defaultSegments)"), builder.create())
+        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, items: items)
+        self.wait(for: builder.expectation)
+    }
 }

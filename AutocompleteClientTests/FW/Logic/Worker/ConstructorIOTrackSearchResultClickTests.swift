@@ -144,4 +144,17 @@ class ConstructorIOTrackSearchResultClickTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+
+    func testTrackSearchResultClick_WithSponsoredListingsParams() {
+        let searchTerm = "corn"
+        let itemName = "green-giant-corn-can-12oz"
+        let customerID = "customerID123"
+        let slAdvertiser = "adv123"
+        let slCampaignID = "cmp456"
+        let slCampaignOwner = "owner789"
+        let builder = CIOBuilder(expectation: "Calling trackSearchResultClick should include sponsored listing params.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/click_through\\?_dt=\\(kRegexTimestamp)&c=\\(kRegexVersion)&customer_id=customerID123&i=\\(kRegexClientID)&key=\\(kRegexAutocompleteKey)&name=green-giant-corn-can-12oz&s=\\(kRegexSession)&section=Products&\\(TestConstants.defaultSegments)&sl_advertiser=adv123&sl_campaign_id=cmp456&sl_campaign_owner=owner789"), builder.create())
+        self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: nil, slAdvertiser: slAdvertiser, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)
+        self.wait(for: builder.expectation)
+    }
 }

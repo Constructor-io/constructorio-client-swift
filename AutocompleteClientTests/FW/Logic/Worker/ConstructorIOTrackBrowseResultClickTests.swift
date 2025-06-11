@@ -125,4 +125,17 @@ class ConstructorIOTrackBrowseResultClickTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+
+    func testTrackBrowseResultClick_WithSponsoredListingsParams() {
+        let filterName = "potato"
+        let filterValue = "russet"
+        let customerID = "customerID123"
+        let slAdvertiser = "adv123"
+        let slCampaignID = "cmp456"
+        let slCampaignOwner = "owner789"
+        let builder = CIOBuilder(expectation: "Calling trackBrowseResultClick should include sponsored listing params.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_click\\?_dt=\\(kRegexTimestamp)&c=\\(kRegexVersion)&i=\\(kRegexClientID)&key=\\(kRegexAutocompleteKey)&s=\\(kRegexSession)&\\(TestConstants.defaultSegments)&sl_advertiser=adv123&sl_campaign_id=cmp456&sl_campaign_owner=owner789"), builder.create())
+        self.constructor.trackBrowseResultClick(customerID: customerID, filterName: filterName, filterValue: filterValue, resultPositionOnPage: nil, sectionName: nil, slAdvertiser: slAdvertiser, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)
+        self.wait(for: builder.expectation)
+    }
 }
