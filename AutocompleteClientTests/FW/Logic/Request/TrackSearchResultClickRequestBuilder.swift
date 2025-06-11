@@ -93,4 +93,15 @@ class TrackSearchResultClickRequestBuilderTests: XCTestCase {
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
     }
+
+    func testTrackSearchResultClickBuilder_WithSponsoredListingsParams() {
+        let slCampaignOwner = "owner789"
+        let tracker = CIOTrackSearchResultClickData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, sectionName: sectionName, slCampaignOwner: slCampaignOwner)
+
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+
+        XCTAssertTrue(url.contains("sl_campaign_owner=\(slCampaignOwner)"))
+    }
 }
