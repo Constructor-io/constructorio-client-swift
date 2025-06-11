@@ -70,7 +70,7 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
     func testTrackSearchResultsLoadedBuilder_WithSponsoredListingsParams() {
         let slCampaignID = "cmp456"
         let slCampaignOwner = "owner789"
-        let items = [CIOItem(customerID: "abc", variationID: nil, quantity: nil, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)]
+        let items = [CIOItem(customerID: "abc", slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)]
         let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, items: items)
         builder.build(trackData: tracker)
         let request = builder.getRequest()

@@ -72,8 +72,8 @@ class TrackBrowseResultsLoadedRequestBuilderTests: XCTestCase {
     
     func testTrackBrowseResultsLoadedBuilder_WithItemsParam() {
         let items = [
-            CIOItem(customerID: "custID1", variationID: "var1", quantity: 2),
-            CIOItem(customerID: "custID2", quantity: 1)
+            CIOItem(customerID: "custID1", variationID: "var1"),
+            CIOItem(customerID: "custID2", variationID: "var2")
         ]
         let tracker = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, items: items)
         builder.build(trackData: tracker)
