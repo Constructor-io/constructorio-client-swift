@@ -20,7 +20,6 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
     var sectionName: String?
     let resultID: String?
     let variationID: String?
-    let slAdvertiser: String?
     let slCampaignID: String?
     let slCampaignOwner: String?
     let analyticsTags: [String: String]?
@@ -29,7 +28,7 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
         return String(format: Constants.TrackBrowseResultClick.format, baseURL)
     }
 
-    init(filterName: String, filterValue: String, customerID: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, variationID: String? = nil, slAdvertiser: String? = nil, slCampaignID: String? = nil, slCampaignOwner: String? = nil, analyticsTags: [String: String]? = nil) {
+    init(filterName: String, filterValue: String, customerID: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, variationID: String? = nil, slCampaignID: String? = nil, slCampaignOwner: String? = nil, analyticsTags: [String: String]? = nil) {
         self.filterName = filterName
         self.filterValue = filterValue
         self.customerID = customerID
@@ -37,7 +36,6 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
         self.sectionName = sectionName
         self.resultID = resultID
         self.variationID = variationID
-        self.slAdvertiser = slAdvertiser
         self.slCampaignID = slCampaignID
         self.slCampaignOwner = slCampaignOwner
         self.analyticsTags = analyticsTags
@@ -67,9 +65,6 @@ struct CIOTrackBrowseResultClickData: CIORequestData {
         }
         if self.resultID != nil {
             dict["result_id"] = self.resultID
-        }
-        if let advertiser = self.slAdvertiser {
-            dict["sl_advertiser"] = advertiser
         }
         if let campaignID = self.slCampaignID {
             dict["sl_campaign_id"] = campaignID

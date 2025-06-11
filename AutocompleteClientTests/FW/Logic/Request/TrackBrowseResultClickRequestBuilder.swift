@@ -76,17 +76,15 @@ class TrackBrowseResultClickRequestBuilderTests: XCTestCase {
     }
 
     func testTrackBrowseResultClickBuilder_WithSponsoredListingsParams() {
-        let slAdvertiser = "adv123"
         let slCampaignID = "cmp456"
         let slCampaignOwner = "owner789"
-        let tracker = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, slAdvertiser: slAdvertiser, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)
+        let tracker = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)
 
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertEqual(request.httpMethod, "POST")
-        XCTAssertEqual(payload?["sl_advertiser"] as? String, slAdvertiser)
         XCTAssertEqual(payload?["sl_campaign_id"] as? String, slCampaignID)
         XCTAssertEqual(payload?["sl_campaign_owner"] as? String, slCampaignOwner)
     }

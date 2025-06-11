@@ -18,25 +18,19 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
     let url: String
     let customerIDs: [String]?
     let items: [CIOItem]?
-    let slAdvertiser: String?
-    let slCampaignID: String?
-    let slCampaignOwner: String?
     let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackSearchResultsLoaded.format, baseURL)
     }
 
-    init(searchTerm: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available", customerIDs: [String]? = nil, items: [CIOItem]? = nil, slAdvertiser: String? = nil, slCampaignID: String? = nil, slCampaignOwner: String? = nil, analyticsTags: [String: String]? = nil) {
+    init(searchTerm: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available", customerIDs: [String]? = nil, items: [CIOItem]? = nil, analyticsTags: [String: String]? = nil) {
         self.searchTerm = searchTerm
         self.resultCount = resultCount
         self.resultID = resultID
         self.url = url
         self.customerIDs = customerIDs
         self.items = items
-        self.slAdvertiser = slAdvertiser
-        self.slCampaignID = slCampaignID
-        self.slCampaignOwner = slCampaignOwner
         self.analyticsTags = analyticsTags
     }
 
@@ -59,6 +53,12 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
                 if let variationID = item.variationID {
                     obj["variation_id"] = variationID
                 }
+                if let campaignID = item.slCampaignID {
+                    obj["sl_campaign_id"] = campaignID
+                }
+                if let campaignOwner = item.slCampaignOwner {
+                    obj["sl_campaign_owner"] = campaignOwner
+                }
                 return obj
             }
             dict["items"] = itemsArray
@@ -69,16 +69,6 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
 
         if self.resultID != nil {
             dict["result_id"] = self.resultID
-        }
-
-        if let advertiser = self.slAdvertiser {
-            dict["sl_advertiser"] = advertiser
-        }
-        if let campaignID = self.slCampaignID {
-            dict["sl_campaign_id"] = campaignID
-        }
-        if let campaignOwner = self.slCampaignOwner {
-            dict["sl_campaign_owner"] = campaignOwner
         }
 
         if (self.analyticsTags != nil) {

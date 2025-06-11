@@ -68,18 +68,20 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
     }
 
     func testTrackSearchResultsLoadedBuilder_WithSponsoredListingsParams() {
-        let slAdvertiser = "adv123"
         let slCampaignID = "cmp456"
         let slCampaignOwner = "owner789"
-        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, slAdvertiser: slAdvertiser, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)
+        let items = [CIOItem(customerID: "abc", variationID: nil, quantity: nil, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)]
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, items: items)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
 
         XCTAssertEqual(request.httpMethod, "POST")
-        XCTAssertEqual(payload?["sl_advertiser"] as? String, slAdvertiser)
-        XCTAssertEqual(payload?["sl_campaign_id"] as? String, slCampaignID)
-        XCTAssertEqual(payload?["sl_campaign_owner"] as? String, slCampaignOwner)
+        let loadedItems = payload?["items"] as? [[String: Any]] ?? []
+
+        XCTAssertEqual(loadedItems.count, 1)
+        XCTAssertEqual(loadedItems[0]["sl_campaign_id"] as? String, slCampaignID)
+        XCTAssertEqual(loadedItems[0]["sl_campaign_owner"] as? String, slCampaignOwner)
     }
 
     func testTrackSearchResultsLoadedBuilder_WithItemsParam() {

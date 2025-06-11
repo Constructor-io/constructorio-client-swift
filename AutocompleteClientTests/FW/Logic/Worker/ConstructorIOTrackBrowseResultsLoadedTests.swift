@@ -72,22 +72,4 @@ class ConstructorIOTrackBrowseResultsLoadedTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-
-    func testTrackBrowseResultsLoaded_WithSponsoredListingsParams() {
-        let slAdvertiser = "adv123"
-        let slCampaignID = "cmp456"
-        let slCampaignOwner = "owner789"
-        let builder = CIOBuilder(expectation: "Calling trackBrowseResultsLoaded should include sponsored listing params.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load\\?_dt=\\(kRegexTimestamp)&c=\\(kRegexVersion)&i=\\(kRegexClientID)&key=\\(kRegexAutocompleteKey)&s=\\(kRegexSession)&\\(TestConstants.defaultSegments)"), builder.create())
-        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, slAdvertiser: slAdvertiser, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)
-        self.wait(for: builder.expectation)
-    }
-
-    func testTrackBrowseResultsLoaded_WithItemsParam() {
-        let items = [CIOItem(customerID: "custID1", variationID: "var1"), CIOItem(customerID: "custID2")]
-        let builder = CIOBuilder(expectation: "Calling trackBrowseResultsLoaded should send items.", builder: http(200))
-        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/browse_result_load\\?_dt=\\(kRegexTimestamp)&c=\\(kRegexVersion)&i=\\(kRegexClientID)&key=\\(kRegexAutocompleteKey)&s=\\(kRegexSession)&\\(TestConstants.defaultSegments)"), builder.create())
-        self.constructor.trackBrowseResultsLoaded(filterName: filterName, filterValue: filterValue, resultCount: resultCount, items: items)
-        self.wait(for: builder.expectation)
-    }
 }

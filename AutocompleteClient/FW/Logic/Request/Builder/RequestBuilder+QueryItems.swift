@@ -279,13 +279,6 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.Quiz.quizSessionID, value: quizSessionID))
     }
 
-    // MARK: - Sponsored Listings
-
-    func set(slAdvertiser: String?) {
-        guard let advertiser = slAdvertiser else { return }
-        queryItems.add(URLQueryItem(name: "sl_advertiser", value: advertiser))
-    }
-
     func set(slCampaignID: String?) {
         guard let campaignID = slCampaignID else { return }
         queryItems.add(URLQueryItem(name: "sl_campaign_id", value: campaignID))
