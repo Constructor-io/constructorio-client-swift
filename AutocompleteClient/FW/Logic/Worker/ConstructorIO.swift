@@ -446,7 +446,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - resultCount: The number of results returned in total
         - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the browse
         - resultID: Identifier of result set
-        - items: The list of items returned in the browse
+        - items: The list of items returned in the browse (Preferred over customerIDs)
         - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
