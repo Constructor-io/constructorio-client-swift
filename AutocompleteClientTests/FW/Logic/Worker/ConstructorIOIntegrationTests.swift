@@ -145,6 +145,17 @@ class ConstructorIOIntegrationTests: XCTestCase {
         })
     }
 
+    func testSearchResultClick_WithSponsoredListingsParams() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        constructorClient.trackSearchResultClick(itemName: "Item1", customerID: "10001", searchTerm: "item", sectionName: "Products", slCampaignID: "camp123", slCampaignOwner: "own234",  completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+    }
+
+
     func testBrowseResultsLoaded() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackBrowseResultsLoaded(filterName: groupFilterName, filterValue: groupFilterValue, resultCount: resultCount, resultID: resultID, completionHandler: { response in

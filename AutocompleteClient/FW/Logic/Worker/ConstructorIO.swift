@@ -389,15 +389,19 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      - Parameters:
         - searchTerm: The term that the user searched for
         - resultCount: The number of search results returned in total
-        - customerIDs: The list of item id's returned in the search
+        - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the search
         - resultID: Identifier of result set
-        - items: The list of items returned in the search
+        - items: The list of items returned in the search (Preferred over customerIDs)
         - analyticsTags Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
      ```
-     constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"], items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
+     // Uses Items parameters (preferred)
+     constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
+
+     // Uses CustomerIDs parameters (deprecated)
+     constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
      ```
      */
     public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -422,7 +426,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-47398", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+     constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-47398", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2", slCampaignID: "camp123", slCampaignOwner: "own123")
      ```
      */
     public func trackSearchResultClick(itemName: String, customerID: String, variationID: String? = nil, searchTerm: String? = nil, sectionName: String? = nil, resultID: String? = nil, slCampaignID: String? = nil, slCampaignOwner: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -440,7 +444,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - filterName: The name of the primary filter that the user browsed for (i.e "color")
         - filterValue: The value of the primary filter that the user browsed for (i.e "blue")
         - resultCount: The number of results returned in total
-        - customerIDs: The list of item id's returned in the browse
+        - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the browse
         - resultID: Identifier of result set
         - items: The list of items returned in the browse
         - analyticsTags Additional analytics tags to pass
@@ -448,7 +452,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"], items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
+     // Uses items parameter (preferred)
+     constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
+
+     // Uses customerIDs parameter (deprecated)
+     constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
      ```
      */
     public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
