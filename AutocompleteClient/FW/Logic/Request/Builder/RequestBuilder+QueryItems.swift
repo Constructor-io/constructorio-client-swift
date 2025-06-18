@@ -278,4 +278,14 @@ extension RequestBuilder {
         guard let quizSessionID = quizSessionID else { return }
         queryItems.add(URLQueryItem(name: Constants.Quiz.quizSessionID, value: quizSessionID))
     }
+
+    func set(slCampaignID: String?) {
+        guard let campaignID = slCampaignID else { return }
+        queryItems.add(URLQueryItem(name: "sl_campaign_id", value: campaignID))
+    }
+
+    func set(slCampaignOwner: String?) {
+        guard let owner = slCampaignOwner else { return }
+        queryItems.add(URLQueryItem(name: "sl_campaign_owner", value: owner))
+    }
 }

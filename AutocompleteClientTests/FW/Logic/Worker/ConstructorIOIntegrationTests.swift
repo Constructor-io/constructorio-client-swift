@@ -103,6 +103,28 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testSearchResultsLoaded_withItemsParam() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let itemsSL = [CIOItem(customerID: "10001", slCampaignID: "cmp456", slCampaignOwner: "owner789"), CIOItem(customerID: "10002", variationID: "var2", slCampaignID: "cmp456", slCampaignOwner: "owner789")]
+        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, items: itemsSL, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testSearchResultsLoaded_withSponsoredListingsParams() {
+        let itemsSL = [CIOItem(customerID: "10001", slCampaignID: "cmp456", slCampaignOwner: "owner789"), CIOItem(customerID: "10002", variationID: "var2", slCampaignID: "cmp456", slCampaignOwner: "owner789")]
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, items: itemsSL, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testSearchResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackSearchResultClick(itemName: itemName, customerID: customerID, searchTerm: searchTerm, sectionName: sectionName, resultID: resultID, completionHandler: { response in
@@ -122,6 +144,17 @@ class ConstructorIOIntegrationTests: XCTestCase {
             expectation.fulfill()
         })
     }
+
+    func testSearchResultClick_WithSponsoredListingsParams() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        constructorClient.trackSearchResultClick(itemName: "Item1", customerID: "10001", searchTerm: "item", sectionName: "Products", slCampaignID: "camp123", slCampaignOwner: "own234",  completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+    }
+
 
     func testBrowseResultsLoaded() {
         let expectation = XCTestExpectation(description: "Tracking 204")
@@ -143,6 +176,28 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testBrowseResultsLoaded_withItemsParam() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let itemsSL = [CIOItem(customerID: "10001", slCampaignID: "cmp456", slCampaignOwner: "owner789"), CIOItem(customerID: "10002", variationID: "var2", slCampaignID: "cmp456", slCampaignOwner: "owner789")]
+        self.constructor.trackBrowseResultsLoaded(filterName: groupFilterName, filterValue: groupFilterValue, resultCount: resultCount, items: itemsSL, resultID: resultID, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testBrowseResultsLoaded_withSponsoredListingsParams() {
+        let itemsSL = [CIOItem(customerID: "10001", slCampaignID: "cmp456", slCampaignOwner: "owner789"), CIOItem(customerID: "10002", variationID: "var2", slCampaignID: "cmp456", slCampaignOwner: "owner789")]
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        self.constructor.trackBrowseResultsLoaded(filterName: groupFilterName, filterValue: groupFilterValue, resultCount: resultCount, items: itemsSL, resultID: resultID, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testBrowseResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackBrowseResultClick(customerID: customerID, filterName: groupFilterName, filterValue: groupFilterValue, resultPositionOnPage: resultPositionOnPage, sectionName: sectionName, resultID: resultID, completionHandler: { response in
@@ -157,6 +212,16 @@ class ConstructorIOIntegrationTests: XCTestCase {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
         let expectation = XCTestExpectation(description: "Request 204")
         constructorClient.trackBrowseResultClick(customerID: "10001", variationID: "20001", filterName: "Brand", filterValue: "XYZ", resultPositionOnPage: 1, sectionName: "Products", resultID: resultID, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+    }
+
+    func testBrowseResultClick_WithSponsoredListingsParams() {
+        let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey))
+        let expectation = XCTestExpectation(description: "Request 204")
+        constructorClient.trackBrowseResultClick(customerID: "10001", variationID: "20001", filterName: "Brand", filterValue: "XYZ", resultPositionOnPage: 1, sectionName: "Products", resultID: resultID, slCampaignID: "cmp1234", slCampaignOwner: "own1234", completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
