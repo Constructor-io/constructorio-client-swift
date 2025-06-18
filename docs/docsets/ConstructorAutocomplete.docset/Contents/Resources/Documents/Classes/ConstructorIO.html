@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 4.1.0 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 4.2.0 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -1201,9 +1201,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete0A2IOC24trackSearchResultsLoaded10searchTerm11resultCount11customerIDs0J2ID13analyticsTags17completionHandlerySS_SiSaySSGSgSSSgSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/trackSearchResultsLoaded(searchTerm:resultCount:customerIDs:resultID:analyticsTags:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC24trackSearchResultsLoaded10searchTerm11resultCount11customerIDs0J2ID13analyticsTags17completionHandlerySS_SiSaySSGSgSSSgSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackSearchResultsLoaded(searchTerm:<wbr>resultCount:<wbr>customerIDs:<wbr>resultID:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC24trackSearchResultsLoaded10searchTerm11resultCount11customerIDs5items0J2ID13analyticsTags17completionHandlerySS_SiSaySSGSgSayAA7CIOItemVGSgSSSgSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackSearchResultsLoaded(searchTerm:resultCount:customerIDs:items:resultID:analyticsTags:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC24trackSearchResultsLoaded10searchTerm11resultCount11customerIDs5items0J2ID13analyticsTags17completionHandlerySS_SiSaySSGSgSayAA7CIOItemVGSgSSSgSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackSearchResultsLoaded(searchTerm:<wbr>resultCount:<wbr>customerIDs:<wbr>items:<wbr>resultID:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1213,7 +1213,11 @@
                       <div class="abstract">
                         <p>Track when a user views a search product listing page</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">789</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
+<pre class="highlight swift"><code><span class="c1">// Uses Items parameters (preferred)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">789</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"Toothpicks"</span><span class="p">)])</span>
+
+<span class="c1">// Uses CustomerIDs parameters (deprecated)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">789</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
 </code></pre>
 
                       </div>
@@ -1221,7 +1225,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1261,7 +1265,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The list of item id&rsquo;s returned in the search</p>
+                                  <p><strong>Deprecated</strong>. Use <code>items</code> (v4.2.0) instead. The list of item id&rsquo;s returned in the search</p>
                                 </div>
                               </td>
                             </tr>
@@ -1274,6 +1278,18 @@
                               <td>
                                 <div>
                                   <p>Identifier of result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>items</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list of items returned in the search (Preferred over customerIDs)</p>
                                 </div>
                               </td>
                             </tr>
@@ -1298,9 +1314,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete0A2IOC22trackSearchResultClick8itemName10customerID09variationK010searchTerm07sectionI006resultK017completionHandlerySS_S2SSgA3LyAA20TrackingTaskResponseCcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/trackSearchResultClick(itemName:customerID:variationID:searchTerm:sectionName:resultID:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC22trackSearchResultClick8itemName10customerID09variationK010searchTerm07sectionI006resultK017completionHandlerySS_S2SSgA3LyAA20TrackingTaskResponseCcSgtF">trackSearchResultClick(itemName:<wbr>customerID:<wbr>variationID:<wbr>searchTerm:<wbr>sectionName:<wbr>resultID:<wbr>completionHandler:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC22trackSearchResultClick8itemName10customerID09variationK010searchTerm07sectionI006resultK0010slCampaignK00qR5Owner17completionHandlerySS_S2SSgA5NyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackSearchResultClick(itemName:customerID:variationID:searchTerm:sectionName:resultID:slCampaignID:slCampaignOwner:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC22trackSearchResultClick8itemName10customerID09variationK010searchTerm07sectionI006resultK0010slCampaignK00qR5Owner17completionHandlerySS_S2SSgA5NyAA20TrackingTaskResponseCcSgtF">trackSearchResultClick(itemName:<wbr>customerID:<wbr>variationID:<wbr>searchTerm:<wbr>sectionName:<wbr>resultID:<wbr>slCampaignID:<wbr>slCampaignOwner:<wbr>completionHandler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1310,7 +1326,7 @@
                       <div class="abstract">
                         <p>Track when a user clicks a result that appears within a search product listing page</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultClick</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="s">"Fashionable Toothpicks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"1234567-AB-7463"</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span>  <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultClick</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="s">"Fashionable Toothpicks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"1234567-AB-47398"</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span>  <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">,</span> <span class="nv">slCampaignID</span><span class="p">:</span> <span class="s">"camp123"</span><span class="p">,</span> <span class="nv">slCampaignOwner</span><span class="p">:</span> <span class="s">"own123"</span><span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -1318,7 +1334,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackSearchResultClick</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackSearchResultClick</span><span class="p">(</span><span class="nv">itemName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">slCampaignID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">slCampaignOwner</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1401,6 +1417,30 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>slCampaignID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The campaign ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>slCampaignOwner</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The campaign owner</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>completionHandler</em>
                                 </code>
                               </td>
@@ -1419,9 +1459,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete0A2IOC24trackBrowseResultsLoaded10filterName0H5Value11resultCount11customerIDs0K2ID13analyticsTags17completionHandlerySS_SSSiSaySSGSgSSSgSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/trackBrowseResultsLoaded(filterName:filterValue:resultCount:customerIDs:resultID:analyticsTags:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC24trackBrowseResultsLoaded10filterName0H5Value11resultCount11customerIDs0K2ID13analyticsTags17completionHandlerySS_SSSiSaySSGSgSSSgSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackBrowseResultsLoaded(filterName:<wbr>filterValue:<wbr>resultCount:<wbr>customerIDs:<wbr>resultID:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC24trackBrowseResultsLoaded10filterName0H5Value11resultCount11customerIDs5items0K2ID13analyticsTags17completionHandlerySS_SSSiSaySSGSgSayAA7CIOItemVGSgSSSgSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackBrowseResultsLoaded(filterName:filterValue:resultCount:customerIDs:items:resultID:analyticsTags:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC24trackBrowseResultsLoaded10filterName0H5Value11resultCount11customerIDs5items0K2ID13analyticsTags17completionHandlerySS_SSSiSaySSGSgSayAA7CIOItemVGSgSSSgSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackBrowseResultsLoaded(filterName:<wbr>filterValue:<wbr>resultCount:<wbr>customerIDs:<wbr>items:<wbr>resultID:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1431,7 +1471,11 @@
                       <div class="abstract">
                         <p>Track when a user views a browse product listing page</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">],</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="c1">// Uses items parameter (preferred)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"Toothpicks"</span><span class="p">)])</span>
+
+<span class="c1">// Uses customerIDs parameter (deprecated)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
 </code></pre>
 
                       </div>
@@ -1439,7 +1483,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1486,12 +1530,36 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>customerIDs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><strong>Deprecated</strong>. Use <code>items</code> (v4.2.0) instead. The list of item id&rsquo;s returned in the browse</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>resultID</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
                                   <p>Identifier of result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>items</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list of items returned in the browse (Preferred over customerIDs)</p>
                                 </div>
                               </td>
                             </tr>
@@ -1516,9 +1584,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete0A2IOC22trackBrowseResultClick10customerID09variationI010filterName0K5Value20resultPositionOnPage07sectionL00nI013analyticsTags17completionHandlerySS_SSSgS2SSiSgA2NSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/trackBrowseResultClick(customerID:variationID:filterName:filterValue:resultPositionOnPage:sectionName:resultID:analyticsTags:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC22trackBrowseResultClick10customerID09variationI010filterName0K5Value20resultPositionOnPage07sectionL00nI013analyticsTags17completionHandlerySS_SSSgS2SSiSgA2NSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackBrowseResultClick(customerID:<wbr>variationID:<wbr>filterName:<wbr>filterValue:<wbr>resultPositionOnPage:<wbr>sectionName:<wbr>resultID:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC22trackBrowseResultClick10customerID09variationI010filterName0K5Value20resultPositionOnPage07sectionL00nI0010slCampaignI00sT5Owner13analyticsTags17completionHandlerySS_SSSgS2SSiSgA4PSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackBrowseResultClick(customerID:variationID:filterName:filterValue:resultPositionOnPage:sectionName:resultID:slCampaignID:slCampaignOwner:analyticsTags:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC22trackBrowseResultClick10customerID09variationI010filterName0K5Value20resultPositionOnPage07sectionL00nI0010slCampaignI00sT5Owner13analyticsTags17completionHandlerySS_SSSgS2SSiSgA4PSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackBrowseResultClick(customerID:<wbr>variationID:<wbr>filterName:<wbr>filterValue:<wbr>resultPositionOnPage:<wbr>sectionName:<wbr>resultID:<wbr>slCampaignID:<wbr>slCampaignOwner:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1536,7 +1604,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">filterName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">filterName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">slCampaignID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">slCampaignOwner</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1613,6 +1681,30 @@
                               <td>
                                 <div>
                                   <p>Identifier of result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>slCampaignID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The campaign ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>slCampaignOwner</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The campaign owner</p>
                                 </div>
                               </td>
                             </tr>
@@ -2910,8 +3002,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2025 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2025-03-13)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2025 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2025-06-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
