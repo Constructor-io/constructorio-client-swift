@@ -68,16 +68,16 @@ public extension CIOFilterFacet {
         guard let hidden = json["hidden"] as? Bool else { return nil }
 
         let data = json["data"] as? [String: Any] ?? [:]
-        let min = json["min"] as? Int
-        let max = json["max"] as? Int
+        let min = json["min"] as? Double
+        let max = json["max"] as? Double
         let optionsObj = json["options"] as? [JSONObject]
 
         let options: [CIOFilterFacetOption] = optionsObj?.compactMap { obj in return CIOFilterFacetOption(json: obj) } ?? []
 
         self.displayName = displayName
         self.name = name
-        self.min = (min != nil) ? min! : 0
-        self.max = (max != nil) ? max! : 0
+        self.min = min.map(floor).map(Int.init) ?? 0
+        self.max = max.map(ceil).map(Int.init) ?? 0
         self.options = options
         self.type = type
         self.hidden = hidden
