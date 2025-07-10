@@ -56,6 +56,8 @@ public struct CIOBrowseItemsQuery: CIORequestData {
      The variation map to use with the result set
      */
     var variationsMap: CIOQueryVariationsMap?
+    
+    public let fmtOptions: [FmtOption]?
 
     /**
      The sort method/order for groups
@@ -89,7 +91,7 @@ public struct CIOBrowseItemsQuery: CIORequestData {
      let browseQuery = CIOBrowseItemsQuery(ids: ["123", "234"], filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"]))
      ```
      */
-    public init(ids: [String], filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil) {
+    public init(ids: [String], filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil, fmtOptions: [FmtOption]? = nil) {
         self.filters = filters
         self.page = page != nil ? page! : Constants.BrowseQuery.defaultPage
         self.perPage = perPage != nil ? perPage! : Constants.BrowseQuery.defaultPerPage
@@ -100,6 +102,7 @@ public struct CIOBrowseItemsQuery: CIORequestData {
         self.variationsMap = variationsMap
         self.groupsSortOption = groupsSortOption
         self.ids = ids
+        self.fmtOptions = fmtOptions
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -114,5 +117,6 @@ public struct CIOBrowseItemsQuery: CIORequestData {
         requestBuilder.set(variationsMap: self.variationsMap)
         requestBuilder.set(groupsSortOption: self.groupsSortOption)
         requestBuilder.set(ids: self.ids)
+        requestBuilder.set(fmtOptions: self.fmtOptions)
     }
 }

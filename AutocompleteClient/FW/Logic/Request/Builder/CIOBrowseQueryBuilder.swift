@@ -73,6 +73,8 @@ public class CIOBrowseQueryBuilder {
      Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.com/reference/shared-filter-expressions
      */
     var preFilterExpression: String?
+    
+    var fmtOptions: [FmtOption]?
 
     /**
      Create a Browse request query builder
@@ -165,6 +167,11 @@ public class CIOBrowseQueryBuilder {
         self.preFilterExpression = preFilterExpression
         return self
     }
+    
+    public func setFmtOptions(_ fmtOptions: [FmtOption]?) -> CIOBrowseQueryBuilder {
+        self.fmtOptions = fmtOptions
+        return self
+    }
 
     /**
      Build the request object set all of the provided data
@@ -191,6 +198,6 @@ public class CIOBrowseQueryBuilder {
      ```
      */
     public func build() -> CIOBrowseQuery {
-        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap, preFilterExpression: preFilterExpression)
+        return CIOBrowseQuery(filterName: filterName, filterValue: filterValue, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap, preFilterExpression: preFilterExpression, fmtOptions: fmtOptions)
     }
 }
