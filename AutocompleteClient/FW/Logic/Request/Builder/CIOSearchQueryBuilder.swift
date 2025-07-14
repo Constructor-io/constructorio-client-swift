@@ -69,6 +69,8 @@ public class CIOSearchQueryBuilder {
      */
     var preFilterExpression: String?
 
+    var fmtOptions: [FmtOption]?
+
     /**
      Create a Search request query builder
      
@@ -184,6 +186,6 @@ public class CIOSearchQueryBuilder {
      ```
      */
     public func build() -> CIOSearchQuery {
-        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap, preFilterExpression: preFilterExpression)
+        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap, preFilterExpression: preFilterExpression, fmtOptions: fmtOptions)
     }
 }
