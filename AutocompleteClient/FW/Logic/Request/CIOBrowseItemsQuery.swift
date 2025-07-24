@@ -57,6 +57,10 @@ public struct CIOBrowseItemsQuery: CIORequestData {
      */
     var variationsMap: CIOQueryVariationsMap?
     
+    /**
+     The fmt_options to use with the result set
+     Please refer to our docs for more information on available options: https://docs.constructor.com/reference/v1-browse-get-browse-results 
+     */
     public let fmtOptions: [FmtOption]?
 
     /**
@@ -88,7 +92,9 @@ public struct CIOBrowseItemsQuery: CIORequestData {
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
 
-     let browseQuery = CIOBrowseItemsQuery(ids: ["123", "234"], filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"]))
+     let fmtOptions = [("groups_max_depth": "10")]
+
+     let browseQuery = CIOBrowseItemsQuery(ids: ["123", "234"], filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"]), fmtOptions: fmtOptions)
      ```
      */
     public init(ids: [String], filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil, fmtOptions: [FmtOption]? = nil) {

@@ -90,6 +90,16 @@ class ConstructorIOBrowseTests: XCTestCase {
         self.constructor.browse(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
+    
+    func testBrowse_AttachesFmtOptions() {
+        let query = CIOBrowseQuery(filterName: "potato", filterValue: "russet", fmtOptions: [("groups_max_depth", "10")])
+
+        let builder = CIOBuilder(expectation: "Calling Browse with a group filter should have a group_id URL query item.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/browse/potato/russet?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&fmt_options%5Bgroups_max_depth%5D=10&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&num_results_per_page=30&page=1&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), builder.create())
+
+        self.constructor.browse(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
 
     func testBrowse_AttachesFacetFilter() {
         let facetFilters = [(key: "facet1", value: "Organic")]

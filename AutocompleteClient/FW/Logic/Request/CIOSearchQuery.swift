@@ -69,6 +69,10 @@ public struct CIOSearchQuery: CIORequestData {
      */
     public let preFilterExpression: String?
     
+    /**
+     The fmt_options to use with the result set
+     Please refer to our docs for more information on available options: https://docs.constructor.com/reference/v1-search-get-search-results
+     */
     public let fmtOptions: [FmtOption]?
 
     func url(with baseURL: String) -> String {
@@ -89,6 +93,7 @@ public struct CIOSearchQuery: CIORequestData {
         - hiddenFacets: The list of hidden facest to return
         - groupsSortOption: The sort method/order for groups
         - preFilterExpression: The pre filter expression used to refine results
+        - fmtOptions: The fmt options to use with the result set 
 
      ### Usage Example: ###
      ```
@@ -103,8 +108,10 @@ public struct CIOSearchQuery: CIORequestData {
         Values: ["price": ValueOption(aggregation: "min", field: "data.price")],
         Dtype: "array"
      )
+
+     let fmtOptions = [("groups_max_depth": "10")]
      
-     let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], variationsMap: variationsMap, preFilterExpression: preFilterExpression)
+     let searchQuery = CIOSearchQuery(query: "red", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], variationsMap: variationsMap, preFilterExpression: preFilterExpression, fmtOptions: fmtOptions)
      ```
      */
     public init(query: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil, preFilterExpression: String? = nil, fmtOptions: [FmtOption]? = nil) {
