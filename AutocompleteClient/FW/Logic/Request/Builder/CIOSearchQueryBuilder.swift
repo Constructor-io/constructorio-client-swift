@@ -69,6 +69,10 @@ public class CIOSearchQueryBuilder {
      */
     var preFilterExpression: String?
 
+    /**
+     The fmt_options to use with the result set
+     Please refer to our docs for more information on available options: https://docs.constructor.com/reference/v1-search-get-search-results
+     */
     var fmtOptions: [FmtOption]?
 
     /**
@@ -158,6 +162,14 @@ public class CIOSearchQueryBuilder {
      */
     public func setVariationsMap(_ variationsMap: CIOQueryVariationsMap) -> CIOSearchQueryBuilder {
         self.variationsMap = variationsMap
+        return self
+    }
+
+    /**
+     Add the fmt_options to use with result set
+     */
+    public func setFmtOptions(_ fmtOptions: [FmtOption]?) -> CIOSearchQueryBuilder {
+        self.fmtOptions = fmtOptions
         return self
     }
 

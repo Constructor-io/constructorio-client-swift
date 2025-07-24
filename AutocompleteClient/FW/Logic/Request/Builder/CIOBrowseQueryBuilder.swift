@@ -74,6 +74,10 @@ public class CIOBrowseQueryBuilder {
      */
     var preFilterExpression: String?
     
+    /**
+     The fmt_options to use with the result set
+     Please refer to our docs for more information on available options: https://docs.constructor.com/reference/v1-browse-get-browse-results 
+     */
     var fmtOptions: [FmtOption]?
 
     /**
@@ -168,6 +172,9 @@ public class CIOBrowseQueryBuilder {
         return self
     }
     
+    /**
+     Add the fmt_options to use with result set
+     */
     public func setFmtOptions(_ fmtOptions: [FmtOption]?) -> CIOBrowseQueryBuilder {
         self.fmtOptions = fmtOptions
         return self
