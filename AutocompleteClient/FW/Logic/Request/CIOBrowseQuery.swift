@@ -73,6 +73,12 @@ public struct CIOBrowseQuery: CIORequestData {
      Please refer to our docs for the syntax on adding pre filter expressions: https://docs.constructor.com/reference/shared-filter-expressions
      */
     public let preFilterExpression: String?
+    
+    /**
+     The fmt_options to use with the result set
+     Please refer to our docs for more information on available options: https://docs.constructor.com/reference/v1-browse-get-browse-results 
+     */
+    public let fmtOptions: [FmtOption]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.BrowseQuery.format, baseURL, filterName, filterValue)
@@ -94,6 +100,7 @@ public struct CIOBrowseQuery: CIORequestData {
         - variationsMap: The variation map to use with the result set
         - groupsSortOption: The sort method/order for groups
         - preFilterExpression: The pre filter expression used to refine results
+        - fmtOptions: The fmt options to use with the result set 
 
      ### Usage Example: ###
      ```
@@ -109,10 +116,12 @@ public struct CIOBrowseQuery: CIORequestData {
         Dtype: "array"
      )
 
-     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], variationsMap: variationsMap, preFilterExpression: preFilterExpression)
+     let fmtOptions = [("groups_max_depth": "10")]
+
+     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], variationsMap: variationsMap, preFilterExpression: preFilterExpression, fmtOptions: fmtOptions)
      ```
      */
-    public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil, preFilterExpression: String? = nil) {
+    public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil, preFilterExpression: String? = nil, fmtOptions: [FmtOption]? = nil) {
         self.filterName = filterName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filterValue = filterValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
         self.filters = filters
@@ -125,6 +134,7 @@ public struct CIOBrowseQuery: CIORequestData {
         self.variationsMap = variationsMap
         self.groupsSortOption = groupsSortOption
         self.preFilterExpression = preFilterExpression
+        self.fmtOptions = fmtOptions
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -139,5 +149,6 @@ public struct CIOBrowseQuery: CIORequestData {
         requestBuilder.set(variationsMap: self.variationsMap)
         requestBuilder.set(groupsSortOption: self.groupsSortOption)
         requestBuilder.set(preFilterExpression: self.preFilterExpression)
+        requestBuilder.set(fmtOptions: self.fmtOptions)
     }
 }

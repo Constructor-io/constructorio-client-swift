@@ -70,6 +70,12 @@ public class CIOSearchQueryBuilder {
     var preFilterExpression: String?
 
     /**
+     The fmt_options to use with the result set
+     Please refer to our docs for more information on available options: https://docs.constructor.com/reference/v1-search-get-search-results
+     */
+    var fmtOptions: [FmtOption]?
+
+    /**
      Create a Search request query builder
      
      - Parameters:
@@ -160,6 +166,14 @@ public class CIOSearchQueryBuilder {
     }
 
     /**
+     Add the fmt_options to use with result set
+     */
+    public func setFmtOptions(_ fmtOptions: [FmtOption]?) -> CIOSearchQueryBuilder {
+        self.fmtOptions = fmtOptions
+        return self
+    }
+
+    /**
      Build the request object with all of the provided data
      
      ### Usage Example: ###
@@ -184,6 +198,6 @@ public class CIOSearchQueryBuilder {
      ```
      */
     public func build() -> CIOSearchQuery {
-        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap, preFilterExpression: preFilterExpression)
+        return CIOSearchQuery(query: query, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap, preFilterExpression: preFilterExpression, fmtOptions: fmtOptions)
     }
 }

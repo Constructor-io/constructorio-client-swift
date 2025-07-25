@@ -97,13 +97,13 @@ class TrackSearchResultClickRequestBuilderTests: XCTestCase {
     func testTrackSearchResultClickBuilder_WithSponsoredListingsParams() {
         let slCampaignOwner = "owner789"
         let slCampaignId = "id123"
-        let tracker = CIOTrackSearchResultClickData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, sectionName: sectionName, slCampaignOwner: slCampaignOwner)
+        let tracker = CIOTrackSearchResultClickData(searchTerm: searchTerm, itemName: itemName, customerID: customerID, sectionName: sectionName, slCampaignID: slCampaignId, slCampaignOwner: slCampaignOwner)
 
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
         XCTAssertTrue(url.contains("sl_campaign_owner=\(slCampaignOwner)"))
-        XCTAssertTrue(url.contains("sl_campaign_id=\(slCampaignOwner)"))
+        XCTAssertTrue(url.contains("sl_campaign_id=\(slCampaignId)"))
     }
 }

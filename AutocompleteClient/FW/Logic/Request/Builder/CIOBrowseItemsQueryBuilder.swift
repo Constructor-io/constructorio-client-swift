@@ -62,6 +62,12 @@ public class CIOBrowseItemsQueryBuilder {
      The sort method/order for groups
      */
     var groupsSortOption: CIOGroupsSortOption?
+    
+    /**
+     The fmt_options to use with the result set
+     Please refer to our docs for more information on available options: https://docs.constructor.com/reference/v1-browse-get-browse-results 
+     */
+    var fmtOptions: [FmtOption]?
 
     /**
      Create a Browse Items request query builder
@@ -144,7 +150,15 @@ public class CIOBrowseItemsQueryBuilder {
         self.groupsSortOption = groupsSortOption
         return self
     }
-
+    
+    /**
+     Adds the fmt_options to use with result set 
+     */
+    public func setFmtOptions(_ fmtOptions: [FmtOption]?) ->
+    CIOBrowseItemsQueryBuilder {
+        self.fmtOptions = fmtOptions
+        return self
+    }
     /**
      Build the request object set all of the provided data
      
@@ -167,6 +181,6 @@ public class CIOBrowseItemsQueryBuilder {
      ```
      */
     public func build() -> CIOBrowseItemsQuery {
-        return CIOBrowseItemsQuery(ids: ids, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap)
+        return CIOBrowseItemsQuery(ids: ids, filters: filters, sortOption: sortOption, page: page, perPage: perPage, section: section, hiddenFields: hiddenFields, hiddenFacets: hiddenFacets, groupsSortOption: groupsSortOption, variationsMap: variationsMap, fmtOptions: fmtOptions)
     }
 }
