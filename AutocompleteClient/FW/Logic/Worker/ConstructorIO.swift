@@ -389,7 +389,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      - Parameters:
         - searchTerm: The term that the user searched for
         - resultCount: The number of search results returned in total
-        - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the search
+        - customerIDs: **Deprecated**. Use `items` (v4.2.1) instead. The list of item id's returned in the search
         - resultID: Identifier of result set
         - items: The list of items returned in the search (Preferred over customerIDs)
         - analyticsTags Additional analytics tags to pass
@@ -444,7 +444,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - filterName: The name of the primary filter that the user browsed for (i.e "color")
         - filterValue: The value of the primary filter that the user browsed for (i.e "blue")
         - resultCount: The number of results returned in total
-        - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the browse
+        - customerIDs: **Deprecated**. Use `items` (v4.2.1) instead. The list of item id's returned in the browse
         - resultID: Identifier of result set
         - items: The list of items returned in the browse (Preferred over customerIDs)
         - analyticsTags Additional analytics tags to pass
