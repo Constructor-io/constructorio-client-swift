@@ -85,7 +85,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackGenericResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackGenericResultClick(itemId: customerID, itemName: itemName, completionHandler: { response in
+        self.constructor.trackGenericResultClick(itemID: customerID, itemName: itemName, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -95,7 +95,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackGenericResultClick_WithVariationID() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackGenericResultClick(itemId: customerID, itemName: itemName, variationId: "var123", completionHandler: { response in
+        self.constructor.trackGenericResultClick(itemID: customerID, itemName: itemName, variationID: "var123", completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -105,7 +105,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackGenericResultClick_WithSection() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackGenericResultClick(itemId: customerID, itemName: itemName, sectionName: sectionName, completionHandler: { response in
+        self.constructor.trackGenericResultClick(itemID: customerID, itemName: itemName, sectionName: sectionName, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()

@@ -13,19 +13,19 @@ import Foundation
  */
 struct CIOTrackGenericResultClick: CIORequestData {
 
-    let itemId: String
+    let itemID: String
     let itemName: String
-    let variationId: String?
+    let variationID: String?
     let sectionName: String?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackGenericResultClick.format, baseURL)
     }
 
-    init(itemId: String, itemName: String, variationId: String? = nil, sectionName: String? = nil) {
-        self.itemId = itemId
+    init(itemID: String, itemName: String, variationID: String? = nil, sectionName: String? = nil) {
+        self.itemID = itemID
         self.itemName = itemName
-        self.variationId = variationId
+        self.variationID = variationID
         self.sectionName = sectionName
     }
 
@@ -37,8 +37,8 @@ struct CIOTrackGenericResultClick: CIORequestData {
 
     func httpBody(baseParams: [String: Any]) -> Data? {
         var dict = [
-            "item_id": self.itemId
-            "item_name": self.itemName,
+            "item_id": self.itemID,
+            "item_name": self.itemName
         ] as [String: Any]
 
         if self.variationID != nil {
