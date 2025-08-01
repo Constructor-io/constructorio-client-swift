@@ -741,6 +741,28 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     /**
+     Track when a user clicks on a generic result
+
+     - Parameters:
+        - itemID: The ID of the item that was clicked
+        - itemName: The name of the item that was clicked
+        - variationID: Optional; Variation ID of the item
+        - sectionName: Optional; The name of the section the product is in
+
+     ### Usage Example: ###
+     ```
+    
+     constructorIO.trackGenericResultClick(itemID: "7654321-BA", itemName: "Pencil", variationID: "7654321-BA-738", sectionName: "Products")
+     ```
+     */
+    public func trackGenericResultClick(itemID: String, itemName: String, variationID: String? = nil, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackGenericResultClick(itemID: itemID, itemName: itemName, variationID: variationID, sectionName: section)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
      Set a custom clientID
 
      - Parameters:
