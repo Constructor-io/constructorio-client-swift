@@ -130,7 +130,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
             XCTAssertNotNil(response.data, "Calling Browse Facets with valid parameters should return a non-nil response.")
 
             XCTAssertTrue(response.data?.totalNumResults == 9)
-            XCTAssertTrue(response.data?.facets.count == 5)
+            XCTAssertTrue(response.data?.facets.count == 7)
             XCTAssertTrue(response.data?.facets[0].name == "brand")
             XCTAssertTrue(response.data?.facets[0].displayName == "Brand")
             XCTAssertTrue(response.data?.facets[0].type == "multiple")
