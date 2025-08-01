@@ -35,6 +35,29 @@
         "type": "multiple",
         "hidden": false,
         "data": {}
+      },
+      {
+        "display_name": "Price",
+        "name": "price",
+        "data": {},
+        "type": "range",
+        "hidden": false,
+        "status": {},
+        "min": 3.99,
+        "max": 950
+      },
+      {
+        "display_name": "Price",
+        "name": "price_selected",
+        "data": {},
+        "type": "range",
+        "hidden": false,
+        "status": {
+          "min": "-inf",
+          "max": 100.25
+        },
+        "min": 41.99,
+        "max": 400
       }
     ],
     "total_num_results": 9

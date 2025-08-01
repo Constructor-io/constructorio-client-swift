@@ -52,6 +52,12 @@ public struct CIOFilterFacet {
      */
     public let data: [String: Any]
 
+    /**
+     Status of the facet option (for range type facets)
+     - An object with "min" and "max" values, if the facet type is range and the facet is selected
+     */
+    public let status: (min: String, max: String)?
+
 }
 
 public extension CIOFilterFacet {
@@ -74,6 +80,17 @@ public extension CIOFilterFacet {
 
         let options: [CIOFilterFacetOption] = optionsObj?.compactMap { obj in return CIOFilterFacetOption(json: obj) } ?? []
 
+        var status: (min: String, max: String)? = nil
+        if let statusDict = json["status"] as? [String: Any],
+           !statusDict.isEmpty,
+           let rawMin = statusDict["min"],
+           let rawMax = statusDict["max"],
+           let minStr = (rawMin as? String) ?? (rawMin as? NSNumber)?.stringValue,
+           let maxStr = (rawMax as? String) ?? (rawMax as? NSNumber)?.stringValue {
+            status = (min: minStr, max: maxStr)
+        }
+
+        self.status = status
         self.displayName = displayName
         self.name = name
         self.min = min.map(floor).map(Int.init) ?? 0

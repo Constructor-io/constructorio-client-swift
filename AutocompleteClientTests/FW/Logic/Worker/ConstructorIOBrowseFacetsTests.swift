@@ -45,11 +45,22 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
             XCTAssertNotNil(response.data, "Calling Browse Facets with valid parameters should return a non-nil response.")
 
             XCTAssertTrue(response.data?.totalNumResults == 9)
-            XCTAssertTrue(response.data?.facets.count == 5)
+            XCTAssertTrue(response.data?.facets.count == 7)
             XCTAssertTrue(response.data?.facets[0].name == "brand")
             XCTAssertTrue(response.data?.facets[0].displayName == "Brand")
             XCTAssertTrue(response.data?.facets[0].type == "multiple")
-            XCTAssertNotNil(response.data?.resultID)
+            XCTAssertTrue(response.data?.facets[0].status == nil)
+            
+            // Range Facet unselected
+            XCTAssertTrue(response.data?.facets[5].name == "price")
+            XCTAssertTrue(response.data?.facets[5].type == "range")
+            XCTAssertTrue(response.data?.facets[5].status == nil)
+            
+            // Range Facet selected
+            XCTAssertTrue(response.data?.facets[6].name == "price_selected")
+            XCTAssertTrue(response.data?.facets[6].type == "range")
+            XCTAssertTrue(response.data?.facets[6].status?.min == "-inf")
+            XCTAssertTrue(response.data?.facets[6].status?.max == "100.25")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -119,7 +130,7 @@ class ConstructorIOBrowseFacetsTests: XCTestCase {
             XCTAssertNotNil(response.data, "Calling Browse Facets with valid parameters should return a non-nil response.")
 
             XCTAssertTrue(response.data?.totalNumResults == 9)
-            XCTAssertTrue(response.data?.facets.count == 5)
+            XCTAssertTrue(response.data?.facets.count == 7)
             XCTAssertTrue(response.data?.facets[0].name == "brand")
             XCTAssertTrue(response.data?.facets[0].displayName == "Brand")
             XCTAssertTrue(response.data?.facets[0].type == "multiple")
