@@ -266,6 +266,16 @@ constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, cu
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-7463", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 ```
 
+### Sponsored Search Events
+
+```swift
+// Track when sponsored search results are loaded into view (customer ID's are the ID's of shown items)
+constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")])
+
+// Track when a sponsored search result is clicked
+constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth", sectionName: "Products", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")
+```
+
 ### Browse Events
 
 ```swift
@@ -277,6 +287,16 @@ constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Sna
 
 // Track when a browse result is clicked
 constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", variationID: "7654321-BA-738", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+```
+
+### Sponsored Browse Events
+
+```swift
+// Track when sponsored browse results are loaded into view.
+constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: "674", items: CIOItem(customerID: "10001", slCampaignID: "campaign-1", slCampaignOwner: "owner-1"))
+
+// Track when a sponsored browse result is clicked
+constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", variationID: "7654321-BA-738", resultPositionOnPage: 4, sectionName: "Products", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")
 ```
 
 ### Recommendations Events
