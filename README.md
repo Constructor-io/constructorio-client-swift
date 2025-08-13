@@ -348,4 +348,7 @@ constructorIO.trackPurchase(items: purchaseItems, revenue: 93.89, orderID: "423-
 ```swift
 // Track when a product detail page is loaded (a.k.a after a user clicks on an item)
 constructorIO.trackItemDetailLoad(customerID: "10001", itemName: "item1", variationID: "var1", sectionName: "Products")
+
+// Track when a generic result is clicked
+constructorIO.trackGenericResultClick(itemID: "product123", itemName: "Product Name", variationID: "var456", sectionName: "Products")
 ```
