@@ -261,6 +261,10 @@ struct Constants {
         static let format = "%@/v2/behavioral_action/recommendation_result_click"
     }
 
+    struct TrackGenericResultClick {
+        static let format = "%@/v2/behavioral_action/result_click"
+    }
+
     struct TrackConversion {
         static let format = "%@/v2/behavioral_action/conversion"
     }
