@@ -65,6 +65,9 @@
 		7D45384028DC16F400490BFE /* CIOQuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45383F28DC16F400490BFE /* CIOQuizQuestion.swift */; };
 		7D45384228DC181100490BFE /* CIOQuizImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45384128DC181100490BFE /* CIOQuizImages.swift */; };
 		7D45384428DC19A500490BFE /* CIOQuizOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45384328DC19A500490BFE /* CIOQuizOption.swift */; };
+		7D4E4A3B2E5B77D900D4EF5A /* CIOTrackGenericResultClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4E4A3A2E5B77D900D4EF5A /* CIOTrackGenericResultClick.swift */; };
+		7D4E4A3D2E5B786800D4EF5A /* TrackGenericResultClickRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4E4A3C2E5B786800D4EF5A /* TrackGenericResultClickRequestBuilderTests.swift */; };
+		7D4E4A3F2E5B78B200D4EF5A /* ConstructorIOTrackGenericResultClickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4E4A3E2E5B78B200D4EF5A /* ConstructorIOTrackGenericResultClickTests.swift */; };
 		7D54FF8028E3B92000A584E3 /* ConstructorIOQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D54FF7F28E3B92000A584E3 /* ConstructorIOQuizTests.swift */; };
 		7D54FF8428E3BFA400A584E3 /* response_quiz_next_question.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8328E3BFA400A584E3 /* response_quiz_next_question.json */; };
 		7D91F6F7291BE840005F9D8D /* CIOQuizResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D91F6F6291BE840005F9D8D /* CIOQuizResultsResponse.swift */; };
@@ -431,6 +434,9 @@
 		7D45383F28DC16F400490BFE /* CIOQuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuestion.swift; sourceTree = "<group>"; };
 		7D45384128DC181100490BFE /* CIOQuizImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizImages.swift; sourceTree = "<group>"; };
 		7D45384328DC19A500490BFE /* CIOQuizOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizOption.swift; sourceTree = "<group>"; };
+		7D4E4A3A2E5B77D900D4EF5A /* CIOTrackGenericResultClick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackGenericResultClick.swift; sourceTree = "<group>"; };
+		7D4E4A3C2E5B786800D4EF5A /* TrackGenericResultClickRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackGenericResultClickRequestBuilderTests.swift; sourceTree = "<group>"; };
+		7D4E4A3E2E5B78B200D4EF5A /* ConstructorIOTrackGenericResultClickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackGenericResultClickTests.swift; sourceTree = "<group>"; };
 		7D54FF7F28E3B92000A584E3 /* ConstructorIOQuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOQuizTests.swift; sourceTree = "<group>"; };
 		7D54FF8328E3BFA400A584E3 /* response_quiz_next_question.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_quiz_next_question.json; sourceTree = "<group>"; };
 		7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response_quiz_results.json; sourceTree = "<group>"; };
@@ -905,6 +911,7 @@
 				8A5572802A1429930041DB65 /* CIOBrowseGroupsQuery.swift */,
 				8DCA83DC2A1BD82F00CD2110 /* CIOBrowseFacetsQuery.swift */,
 				8D0308712A1ED6FC0084AB85 /* CIOBrowseFacetOptionsQuery.swift */,
+				7D4E4A3A2E5B77D900D4EF5A /* CIOTrackGenericResultClick.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -997,6 +1004,7 @@
 		F60FE8FF1F5C5ACD0037A0AB /* Worker */ = {
 			isa = PBXGroup;
 			children = (
+				7D4E4A3E2E5B78B200D4EF5A /* ConstructorIOTrackGenericResultClickTests.swift */,
 				08A7E4102575FA15000FA02F /* ConstructorIOTrackInputFocusTests.swift */,
 				8A93F13F2A70491D000ED6B3 /* ConstructorIOTrackQuizResultClick.swift */,
 				0855BA4D25B010CC00CC35F9 /* ConstructorIOIntegrationTests.swift */,
@@ -1052,6 +1060,7 @@
 		F60FE9071F5C5B860037A0AB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				7D4E4A3C2E5B786800D4EF5A /* TrackGenericResultClickRequestBuilderTests.swift */,
 				8A93F1452A79B365000ED6B3 /* TrackQuizResultsLoadedRequestBuilder.swift */,
 				8A93F1492A79C963000ED6B3 /* TrackQuizConversionRequestBuilder.swift */,
 				8A93F1472A79C530000ED6B3 /* TrackQuizResultClickRequestBuilder.swift */,
@@ -2497,6 +2506,7 @@
 				F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */,
 				8A93F13E2A6F44BF000ED6B3 /* CIOTrackQuizResultClickData.swift in Sources */,
 				08A7E40F2575E37A000FA02F /* CIOTrackBrowseResultsLoadedData.swift in Sources */,
+				7D4E4A3B2E5B77D900D4EF5A /* CIOTrackGenericResultClick.swift in Sources */,
 				7D06CCA328E516BC00AB6A8C /* CIOQuizResult.swift in Sources */,
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,
 				F60BEA1A1F571956008F0053 /* CIOAutocompleteDelegate.swift in Sources */,
@@ -2625,6 +2635,7 @@
 				BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */,
 				BFC9504325DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift in Sources */,
 				F66B217B21E275EE00AAB030 /* QueryItemCollectionTests.swift in Sources */,
+				7D4E4A3D2E5B786800D4EF5A /* TrackGenericResultClickRequestBuilderTests.swift in Sources */,
 				089399E12161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift in Sources */,
 				08A7E4192575FDA0000FA02F /* ConstructorIOTrackBrowseResultsLoadedTests.swift in Sources */,
 				F174C1EB1F5F4D07009E354B /* String+CharacterSetIteratorTests.swift in Sources */,
@@ -2690,6 +2701,7 @@
 				F6D2E9C420DBDDBB007F8761 /* Data+ToJSON.swift in Sources */,
 				BFC9504125DC6B9100118D4C /* ConstructorIOTrackRecommendationResultClickTests.swift in Sources */,
 				F62510D3205690670040E3DF /* ClosureDateProvider.swift in Sources */,
+				7D4E4A3F2E5B78B200D4EF5A /* ConstructorIOTrackGenericResultClickTests.swift in Sources */,
 				F674157B204D489B004F313B /* MockResponseParserDelegate.swift in Sources */,
 				F6852556213BCE9E00A27FAA /* MockCommons.swift in Sources */,
 				0855BA4E25B010CC00CC35F9 /* ConstructorIOIntegrationTests.swift in Sources */,
