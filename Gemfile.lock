@@ -109,7 +109,7 @@ GEM
     public_suffix (4.0.7)
     racc (1.8.1)
     redcarpet (3.6.0)
-    rexml (3.3.9)
+    rexml (3.4.2)
     rouge (4.3.0)
     ruby-macho (2.5.1)
     sassc (2.4.0)
