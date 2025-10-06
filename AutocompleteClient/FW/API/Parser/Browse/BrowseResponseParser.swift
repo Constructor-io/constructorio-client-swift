@@ -10,11 +10,18 @@ import Foundation
 
 class BrowseResponseParser: AbstractBrowseResponseParser {
     func parse(browseResponseData: Data) throws -> CIOBrowseResponse {
-
         do {
             let json = try JSONSerialization.jsonObject(with: browseResponseData) as? JSONObject
-
-            guard let response = json?["response"] as? JSONObject else {
+            
+            return try jsonObjectToCIOBrowseResponse(dictionary: json)
+        } catch {
+            throw CIOError(errorType: .invalidResponse)
+        }
+    }
+    
+    func jsonObjectToCIOBrowseResponse(dictionary: JSONObject?) throws -> CIOBrowseResponse {
+        do {
+            guard let response = dictionary?["response"] as? JSONObject else {
                 throw CIOError(errorType: .invalidResponse)
             }
 
@@ -30,11 +37,11 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
             let groups: [CIOFilterGroup] = groupsObj?.compactMap({ obj  in return CIOFilterGroup(json: obj) }) ?? []
             let totalNumResults = response["total_num_results"] as? Int ?? 0
             let collection: CIOCollectionData? = CIOCollectionData(json: response["collection"] as? JSONObject)
-            let resultID = json?["result_id"] as? String ?? ""
+            let resultID = dictionary?["result_id"] as? String ?? ""
             let resultSources: CIOResultSources? = CIOResultSources(json: response["result_sources"] as? JSONObject)
             let refinedContent: [CIORefinedContent] = refinedContentObj?.compactMap({ obj in return CIORefinedContent(json: obj) }) ?? []
 
-            guard let request: JSONObject = json?["request"] as? JSONObject else {
+            guard let request: JSONObject = dictionary?["request"] as? JSONObject else {
                 throw CIOError(errorType: .invalidResponse)
             }
 
@@ -53,6 +60,5 @@ class BrowseResponseParser: AbstractBrowseResponseParser {
         } catch {
             throw CIOError(errorType: .invalidResponse)
         }
-
     }
 }
