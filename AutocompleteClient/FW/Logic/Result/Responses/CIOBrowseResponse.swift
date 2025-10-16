@@ -62,3 +62,9 @@ public struct CIOBrowseResponse {
      */
     public var request: JSONObject
 }
+
+extension CIOBrowseResponse {
+    public static func response(from JSON: JSONObject) throws -> Self {
+        try BrowseResponseParser().jsonObjectToCIOBrowseResponse(dictionary: JSON)
+    }
+}
