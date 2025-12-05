@@ -88,8 +88,14 @@ public struct CIOBrowseQuery: CIORequestData {
      Create a Browse request query object
 
      - Parameters:
-        - filterName: The primary filter name that the user browsed for
-        - filterValue: The primary filter value that the user browsed for
+        - filterName: The attribute name that defines what you are browsing by.
+            - Use "group_id" by default for browsing item groups.
+            - Possible values:
+                - "group_id"
+                - "collection_id"
+                - "[facet_name]" (where the facet name corresponds with a facet defined in the catalog)
+        - filterValue: The specific value to filter by, corresponding to the `filterName`.
+            - Use the specific group ID, collection ID, or facet value you wish to query for. Eg. "sales", "mens-jeans"
         - filters: The filters used to refine results
         - page: The page number of the results
         - perPage: The number of results per page to return
@@ -103,6 +109,7 @@ public struct CIOBrowseQuery: CIORequestData {
         - fmtOptions: The fmt options to use with the result set 
 
      ### Usage Example: ###
+     To retrieve the item group with ID "sales", set filterName to "group_id" and filterValue to "sales".
      ```
      let facetFilters = [(key: "Nutrition", value: "Organic"),
                          (key: "Nutrition", value: "Natural"),
@@ -118,7 +125,7 @@ public struct CIOBrowseQuery: CIORequestData {
 
      let fmtOptions = [("groups_max_depth": "10")]
 
-     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], variationsMap: variationsMap, preFilterExpression: preFilterExpression, fmtOptions: fmtOptions)
+     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "sales", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], variationsMap: variationsMap, preFilterExpression: preFilterExpression, fmtOptions: fmtOptions)
      ```
      */
     public init(filterName: String, filterValue: String, filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil, preFilterExpression: String? = nil, fmtOptions: [FmtOption]? = nil) {
