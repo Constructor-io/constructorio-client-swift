@@ -453,10 +453,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ### Usage Example: ###
      ```
      // Uses items parameter (preferred)
-     constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
+     constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674, items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
 
      // Uses customerIDs parameter (deprecated)
-     constructorIO.trackBrowseResultsLoaded(filterName: "Category", filterValue: "Snacks", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
+     constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
      ```
      */
     public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -471,8 +471,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      - Parameters:
         - customerID: The item ID.
         - variationID: The variation ID
-        - filterName: The name of the primary filter that the user browsed for (i.e "color")
-        - filterValue: The value of the primary filter that the user browsed for (i.e "blue")
+        - filterName: The name of the primary filter that the user browsed for (i.e "group_id")
+        - filterValue: The value of the primary filter that the user browsed for (i.e "sales")
         - resultPositionOnPage: The position of clicked item
         - sectionName The name of the autocomplete section the term came from
         - resultID: Identifier of result set
@@ -483,7 +483,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackBrowseResultClick(filterName: "Category", filterValue: "Snacks", customerID: "7654321-BA", variationID: "7654321-BA-738", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+     constructorIO.trackBrowseResultClick(filterName: "group_id", filterValue: "sales", customerID: "7654321-BA", variationID: "7654321-BA-738", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
      ```
      */
     public func trackBrowseResultClick(customerID: String, variationID: String? = nil, filterName: String, filterValue: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, slCampaignID: String? = nil, slCampaignOwner: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {

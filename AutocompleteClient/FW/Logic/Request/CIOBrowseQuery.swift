@@ -88,8 +88,14 @@ public struct CIOBrowseQuery: CIORequestData {
      Create a Browse request query object
 
      - Parameters:
-        - filterName: The attribute name that defines what you are browsing by. Possible values are: "group_id," "collection_id," or "[facet_name]" where the facet name corresponds with a facet defined in the catalog. Use "group_id" by default for browsing item groups.
-        - filterValue: The specific value to filter by, corresponding to the `filterName`. Use the specific group ID, collection ID, or facet value you wish to query for. Eg. "sales", "mens-jeans"
+        - filterName: The attribute name that defines what you are browsing by.
+            - Use "group_id" by default for browsing item groups.
+            - Possible values:
+                - "group_id"
+                - "collection_id"
+                - "[facet_name]" (where the facet name corresponds with a facet defined in the catalog)
+        - filterValue: The specific value to filter by, corresponding to the `filterName`.
+            - Use the specific group ID, collection ID, or facet value you wish to query for. Eg. "sales", "mens-jeans"
         - filters: The filters used to refine results
         - page: The page number of the results
         - perPage: The number of results per page to return
