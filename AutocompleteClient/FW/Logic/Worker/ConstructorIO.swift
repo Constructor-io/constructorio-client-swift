@@ -148,7 +148,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
                          (key: "Nutrition", value: "Natural"),
                          (key: "Brand", value: "Kraft Foods")]
 
-     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "Pantry", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products")
+     let browseQuery = CIOBrowseQuery(filterName: "group_id", filterValue: "sales", filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products")
      
      constructorIO.browse(forQuery: browseQuery) { response in
         let data = response.data!
@@ -441,8 +441,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      Track when a user views a browse product listing page
 
      - Parameters:
-        - filterName: The name of the primary filter that the user browsed for (i.e "color")
-        - filterValue: The value of the primary filter that the user browsed for (i.e "blue")
+        - filterName: The name of the primary filter that the user browsed for (i.e "group_id")
+        - filterValue: The value of the primary filter that the user browsed for (i.e "sales")
         - resultCount: The number of results returned in total
         - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the browse
         - resultID: Identifier of result set
