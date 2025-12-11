@@ -84,8 +84,20 @@ public class CIOBrowseQueryBuilder {
      Create a Browse request query builder
      
      - Parameters:
-        - filterName: The primary filter name that the user browsed for
-        - filterValue: The primary filter value that the user browsed for
+        - filterName: The attribute name that defines what you are browsing by.
+            - Use "group_id" by default for browsing item groups.
+            - Possible values:
+                - "group_id"
+                - "collection_id"
+                - "[facet_name]" (where the facet name corresponds with a facet defined in the catalog)
+        - filterValue: The specific value to filter by, corresponding to the `filterName`.
+            - Use the specific group ID, collection ID, or facet value you wish to query for. Eg. "sales", "mens-jeans"
+     
+     ### Usage Example: ###
+     To retrieve the item group with ID "sales", set filterName to "group_id" and filterValue to "sales".
+     ```
+     let query = CIOBrowseQueryBuilder(filterName: "group_id", filterValue: "sales")
+     ```
      */
     public init(filterName: String, filterValue: String) {
         self.filterName = filterName
@@ -191,7 +203,7 @@ public class CIOBrowseQueryBuilder {
      
      let preFilterExpression = "{\"or\":[{\"and\":[{\"name\":\"group_id\",\"value\":\"electronics-group-id\"},{\"name\":\"Price\",\"range\":[\"-inf\",200.0]}]},{\"and\":[{\"name\":\"Type\",\"value\":\"Laptop\"},{\"not\":{\"name\":\"Price\",\"range\":[800.0,\"inf\"]}}]}]}"
      
-     let query = CIOBrowseQueryBuilder(filterName: "potato", filterValue: "russet")
+     let query = CIOBrowseQueryBuilder(filterName: "group_id", filterValue: "sales")
         .setFilters(CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters))
         .setPage(2)
         .setPerPage(40)
