@@ -16,7 +16,7 @@
     <a title="ConstructorAutocomplete  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ConstructorAutocomplete 4.4.0 Docs</a> (94% documented)</p>
+        <p><a href="index.html">ConstructorAutocomplete 4.4.1 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -220,14 +220,14 @@
             <p><img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" /> <img src="https://img.shields.io/badge/Swift-3.0+-blue.svg" alt="Swift 3+ compatible" /> <img src="https://img.shields.io/badge/Objective--C-compatible-blue.svg" alt="Objective-C compatible" /> <img  src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></p>
 <h1 id='constructor-io-swift-client' class='heading'>Constructor.io Swift Client</h1>
 
-<p>An iOS Client for <a href="http://constructor.io/">Constructor.io</a>.  <a href="http://constructor.io/">Constructor.io</a> provides search as a service that optimizes results using artificial intelligence (including natural language processing, re-ranking to optimize for conversions, and user personalization).</p>
+<p>An iOS Client for <a href="http://constructor.io/">Constructor.io</a>. <a href="http://constructor.io/">Constructor.io</a> provides search as a service that optimizes results using artificial intelligence (including natural language processing, re-ranking to optimize for conversions, and user personalization).</p>
 <h2 id='documentation' class='heading'>Documentation</h2>
 
 <p>Full API documentation is available on <a href="https://constructor-io.github.io/constructorio-client-swift/">Github Pages</a></p>
 <h2 id='1-import' class='heading'>1. Import</h2>
 <h3 id='1-a-import-using-cocoapods' class='heading'>1.a Import using CocoaPods</h3>
 
-<p>First make sure you have <a href="https://guides.cocoapods.org/using/getting-started.html">CocoaPods installed</a>.  Then create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:</p>
+<p>First make sure you have <a href="https://guides.cocoapods.org/using/getting-started.html">CocoaPods installed</a>. Then create an empty text file in your project’s root directory called ‘Podfile’. Add the following lines to the file:</p>
 <pre class="highlight plaintext"><code>target ‘YOUR_TARGET_NAME’ do
    pod ‘ConstructorAutocomplete'
 end
@@ -264,7 +264,7 @@ end
 <p>Lastly, you&rsquo;ll just need to import <code>ConstructorAutocomplete</code> to your source files to begin using it.</p>
 <h2 id='2-retrieve-an-api-key' class='heading'>2. Retrieve an API key</h2>
 
-<p>You can find this in your <a href="https://constructor.io/dashboard">Constructor.io dashboard</a>.  Contact sales if you&rsquo;d like to sign up, or support if you believe your company already has an account.</p>
+<p>You can find this in your <a href="https://constructor.io/dashboard">Constructor.io dashboard</a>. Contact sales if you&rsquo;d like to sign up, or support if you believe your company already has an account.</p>
 <h2 id='3-create-a-client-instance' class='heading'>3. Create a Client Instance</h2>
 
 <p>Make sure to import the <code>ConstructorAutocomplete</code> module at the top of your source file and then write the following</p>
@@ -342,7 +342,7 @@ end
 <span class="p">}</span>
 </code></pre>
 <h2 id='8-request-browse-results' class='heading'>8. Request Browse Results</h2>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOBrowseQuery</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"potato"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"russet"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOBrowseQuery</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">)</span>
 
 <span class="c1">// Specify the sort order in which groups are returned</span>
 <span class="k">let</span> <span class="nv">groupsSortOption</span> <span class="o">=</span> <span class="kt">CIOGroupsSortOption</span><span class="p">(</span><span class="nv">sortBy</span><span class="p">:</span> <span class="kt">CIOGroupsSortBy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nv">sortOrder</span><span class="p">:</span> <span class="kt">CIOGroupsSortOrder</span><span class="o">.</span><span class="n">ascending</span><span class="p">)</span>
@@ -407,7 +407,7 @@ end
 </code></pre>
 <h2 id='12-instrument-behavioral-events' class='heading'>12. Instrument Behavioral Events</h2>
 
-<p>The iOS Client sends behavioral events to <a href="http://constructor.io/">Constructor.io</a> in order to continuously learn and improve results for future Autosuggest and Search requests.  The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent.  Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.</p>
+<p>The iOS Client sends behavioral events to <a href="http://constructor.io/">Constructor.io</a> in order to continuously learn and improve results for future Autosuggest and Search requests. The Client only sends events in response to being called by the consuming app or in response to user interaction . For example, if the consuming app never calls the SDK code, no events will be sent. Besides the explicitly passed in event parameters, all user events contain a GUID based user ID that the client sets to identify the user as well as a session ID.</p>
 
 <p>Three types of these events exist:</p>
 
@@ -446,20 +446,20 @@ end
 </code></pre>
 <h3 id='browse-events' class='heading'>Browse Events</h3>
 <pre class="highlight swift"><code><span class="c1">// Track when browse results are loaded into view</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">)</span>
 
 <span class="c1">// Track when browse results are loaded into view with items array (supported in v3.1.2 and above)</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
 
 <span class="c1">// Track when a browse result is clicked</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7654321-BA-738"</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7654321-BA-738"</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
 </code></pre>
 <h3 id='sponsored-browse-events' class='heading'>Sponsored Browse Events</h3>
 <pre class="highlight swift"><code><span class="c1">// Track when sponsored browse results are loaded into view.</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="s">"674"</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">slCampaignID</span><span class="p">:</span> <span class="s">"campaign-1"</span><span class="p">,</span> <span class="nv">slCampaignOwner</span><span class="p">:</span> <span class="s">"owner-1"</span><span class="p">))</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="s">"674"</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">slCampaignID</span><span class="p">:</span> <span class="s">"campaign-1"</span><span class="p">,</span> <span class="nv">slCampaignOwner</span><span class="p">:</span> <span class="s">"owner-1"</span><span class="p">))</span>
 
 <span class="c1">// Track when a sponsored browse result is clicked</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7654321-BA-738"</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">slCampaignID</span><span class="p">:</span> <span class="s">"campaign-1"</span><span class="p">,</span> <span class="nv">slCampaignOwner</span><span class="p">:</span> <span class="s">"owner-1"</span><span class="p">)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7654321-BA-738"</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">slCampaignID</span><span class="p">:</span> <span class="s">"campaign-1"</span><span class="p">,</span> <span class="nv">slCampaignOwner</span><span class="p">:</span> <span class="s">"owner-1"</span><span class="p">)</span>
 </code></pre>
 <h3 id='recommendations-events' class='heading'>Recommendations Events</h3>
 <pre class="highlight swift"><code><span class="c1">// Track when recommendation results are viewed</span>
@@ -507,8 +507,8 @@ end
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2025 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2025-10-16)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2025 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2025-12-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
