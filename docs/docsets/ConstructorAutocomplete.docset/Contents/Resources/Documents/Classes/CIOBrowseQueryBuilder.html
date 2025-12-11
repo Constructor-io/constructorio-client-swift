@@ -17,7 +17,7 @@
     <a title="CIOBrowseQueryBuilder Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 4.4.0 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 4.4.1 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -249,6 +249,11 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Create a Browse request query builder</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+
+<p>To retrieve the item group with ID &ldquo;sales&rdquo;, set filterName to &ldquo;group_id&rdquo; and filterValue to &ldquo;sales&rdquo;.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOBrowseQueryBuilder</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -271,7 +276,18 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The primary filter name that the user browsed for</p>
+                                  <p>The attribute name that defines what you are browsing by.
+
+<ul>
+<li>Use &ldquo;group_id&rdquo; by default for browsing item groups.</li>
+<li>Possible values:
+
+<ul>
+<li>&ldquo;group_id&rdquo;</li>
+<li>&ldquo;collection_id&rdquo;</li>
+<li>&ldquo;[facet_name]&rdquo; (where the facet name corresponds with a facet defined in the catalog)</li>
+</ul></li>
+</ul></p>
                                 </div>
                               </td>
                             </tr>
@@ -283,7 +299,11 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The primary filter value that the user browsed for</p>
+                                  <p>The specific value to filter by, corresponding to the <code>filterName</code>.
+
+<ul>
+<li>Use the specific group ID, collection ID, or facet value you wish to query for. Eg. &ldquo;sales&rdquo;, &ldquo;mens-jeans&rdquo;</li>
+</ul></p>
                                 </div>
                               </td>
                             </tr>
@@ -611,7 +631,7 @@
 
 <span class="k">let</span> <span class="nv">preFilterExpression</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">or</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">and</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">group_id</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">electronics-group-id</span><span class="se">\"</span><span class="s">},{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Price</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">range</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">-inf</span><span class="se">\"</span><span class="s">,200.0]}]},{</span><span class="se">\"</span><span class="s">and</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Type</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Laptop</span><span class="se">\"</span><span class="s">},{</span><span class="se">\"</span><span class="s">not</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Price</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">range</span><span class="se">\"</span><span class="s">:[800.0,</span><span class="se">\"</span><span class="s">inf</span><span class="se">\"</span><span class="s">]}}]}]}"</span>
 
-<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOBrowseQueryBuilder</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"potato"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"russet"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">CIOBrowseQueryBuilder</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">)</span>
    <span class="o">.</span><span class="nf">setFilters</span><span class="p">(</span><span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">))</span>
    <span class="o">.</span><span class="nf">setPage</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
    <span class="o">.</span><span class="nf">setPerPage</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
@@ -641,8 +661,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2025 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2025-10-16)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2025 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2025-12-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>

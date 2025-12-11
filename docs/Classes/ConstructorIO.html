@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 4.4.0 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 4.4.1 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -446,7 +446,7 @@
                     <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Nutrition"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Natural"</span><span class="p">),</span>
                     <span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"Kraft Foods"</span><span class="p">)]</span>
 
-<span class="k">let</span> <span class="nv">browseQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseQuery</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Pantry"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">),</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">browseQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseQuery</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">filters</span><span class="p">:</span> <span class="kt">CIOQueryFilters</span><span class="p">(</span><span class="nv">groupFilter</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">facetFilters</span><span class="p">:</span> <span class="n">facetFilters</span><span class="p">),</span> <span class="nv">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">perPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">section</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">)</span>
 
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">browse</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">browseQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
    <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
@@ -1472,10 +1472,10 @@
                         <p>Track when a user views a browse product listing page</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
 <pre class="highlight swift"><code><span class="c1">// Uses items parameter (preferred)</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"Toothpicks"</span><span class="p">)])</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"Toothpicks"</span><span class="p">)])</span>
 
 <span class="c1">// Uses customerIDs parameter (deprecated)</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
 </code></pre>
 
                       </div>
@@ -1499,7 +1499,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The name of the primary filter that the user browsed for (i.e &ldquo;color&rdquo;)</p>
+                                  <p>The name of the primary filter that the user browsed for (i.e &ldquo;group_id&rdquo;)</p>
                                 </div>
                               </td>
                             </tr>
@@ -1511,7 +1511,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The value of the primary filter that the user browsed for (i.e &ldquo;blue&rdquo;)</p>
+                                  <p>The value of the primary filter that the user browsed for (i.e &ldquo;sales&rdquo;)</p>
                                 </div>
                               </td>
                             </tr>
@@ -1596,7 +1596,7 @@
                       <div class="abstract">
                         <p>Track when a user clicks a result that appears within a browse product listing page</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"Category"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"Snacks"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7654321-BA-738"</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultClick</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7654321-BA-738"</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -1644,7 +1644,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The name of the primary filter that the user browsed for (i.e &ldquo;color&rdquo;)</p>
+                                  <p>The name of the primary filter that the user browsed for (i.e &ldquo;group_id&rdquo;)</p>
                                 </div>
                               </td>
                             </tr>
@@ -1656,7 +1656,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The value of the primary filter that the user browsed for (i.e &ldquo;blue&rdquo;)</p>
+                                  <p>The value of the primary filter that the user browsed for (i.e &ldquo;sales&rdquo;)</p>
                                 </div>
                               </td>
                             </tr>
@@ -3088,8 +3088,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2025 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2025-10-16)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2025 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2025-12-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
