@@ -22,17 +22,19 @@ struct CIOTrackAutocompleteSelectData: CIORequestData {
     let group: CIOGroup?
     let sectionName: String
     let resultID: String?
+    let itemID: String?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackAutocompleteSelect.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
-    init(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, resultID: String? = nil) {
+    init(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, resultID: String? = nil, itemID: String? = nil) {
         self.searchTerm = searchTerm
         self.originalQuery = originalQuery
         self.group = group
         self.sectionName = sectionName
         self.resultID = resultID
+        self.itemID = itemID
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -42,6 +44,7 @@ struct CIOTrackAutocompleteSelectData: CIORequestData {
             requestBuilder.set(groupID: group.groupID)
         }
         requestBuilder.set(resultID: self.resultID)
+        requestBuilder.set(itemID: self.itemID)
         requestBuilder.set(autocompleteSection: self.sectionName)
         requestBuilder.addTriggerQueryItem()
     }
