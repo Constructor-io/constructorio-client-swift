@@ -1,173 +1,173 @@
 {
   "warnings": [
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/CIORecommendationsPod.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/CIORecommendationsPod.swift",
       "line": 15,
       "symbol": "CIORecommendationsPod.displayName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/CIORecommendationsPod.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/CIORecommendationsPod.swift",
       "line": 16,
       "symbol": "CIORecommendationsPod.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/CIOSortOption.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/CIOSortOption.swift",
       "line": 57,
       "symbol": "CIOSortOrder",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/Responses/CIOAutocompleteResponse.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/Responses/CIOAutocompleteResponse.swift",
       "line": 11,
       "symbol": "JSONObject",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/Responses/CIOAutocompleteResponse.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/Responses/CIOAutocompleteResponse.swift",
       "line": 32,
       "symbol": "CIOAutocompleteResponse.init(sections:json:request:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/Responses/CIOBrowseResponse.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/Responses/CIOBrowseResponse.swift",
       "line": 67,
       "symbol": "CIOBrowseResponse.response(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 11,
       "symbol": "AutocompleteQueryCompletionHandler",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 12,
       "symbol": "SearchQueryCompletionHandler",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 13,
       "symbol": "BrowseQueryCompletionHandler",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 14,
       "symbol": "BrowseFacetsQueryCompletionHandler",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 15,
       "symbol": "BrowseFacetOptionsQueryCompletionHandler",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 16,
       "symbol": "RecommendationsQueryCompletionHandler",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 17,
       "symbol": "TrackingCompletionHandler",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 18,
       "symbol": "QuizQuestionQueryCompletionHandler",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 19,
       "symbol": "QuizResultsQueryCompletionHandler",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 28,
       "symbol": "ConstructorIO.config",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 30,
       "symbol": "ConstructorIO.logger",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 36,
       "symbol": "ConstructorIO.sessionManager",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 38,
       "symbol": "ConstructorIO.clientID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 40,
       "symbol": "ConstructorIO.userID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 42,
       "symbol": "ConstructorIO.autocompleteParser",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 51,
       "symbol": "ConstructorIO.sessionID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
-      "line": 1145,
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "line": 1146,
       "symbol": "ConstructorIO.obfuscatePIIRequest(request:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/evan.yan/Constructor/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
-      "line": 1218,
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
+      "line": 1219,
       "symbol": "ConstructorIO.sessionDidChange(from:to:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/evan.yan/Constructor/constructorio-client-swift"
+  "source_directory": "/Users/stanleypeng/Documents/Work/constructorio-client-swift"
 }
