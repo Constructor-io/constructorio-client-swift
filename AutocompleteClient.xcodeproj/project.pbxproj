@@ -57,6 +57,13 @@
 		08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */; };
 		08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */; };
 		08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */; };
+		5FEE54792F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift */; };
+		5FEE547A2F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54782F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift */; };
+		5FEE547B2F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift */; };
+		5FEE547C2F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54782F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift */; };
+		5FEE54812F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE547D2F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift */; };
+		5FEE54822F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE547E2F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift */; };
+		5FEE54842F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54832F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift */; };
 		651F5B9E3E0C5CC7A2090EC8 /* Pods_AutocompleteClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8134D150C9D4CC91DD5715F /* Pods_AutocompleteClientTests.framework */; };
 		7D06CCA128E5122B00AB6A8C /* response_quiz_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D54FF8528E3C04C00A584E3 /* response_quiz_results.json */; };
 		7D06CCA328E516BC00AB6A8C /* CIOQuizResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D06CCA228E516BC00AB6A8C /* CIOQuizResult.swift */; };
@@ -428,6 +435,11 @@
 		08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchSubmitData.swift; sourceTree = "<group>"; };
 		453FBD0FBF9C8817B960B758 /* Pods-UserApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication.release.xcconfig"; sourceTree = "<group>"; };
 		5362DE84EA35B4B9FE26EE1F /* Pods_AutocompleteClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackMediaImpressionClickData.swift; sourceTree = "<group>"; };
+		5FEE54782F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackMediaImpressionViewData.swift; sourceTree = "<group>"; };
+		5FEE547D2F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMediaImpressionClickRequestBuilderTests.swift; sourceTree = "<group>"; };
+		5FEE547E2F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMediaImpressionViewRequestBuilderTests.swift; sourceTree = "<group>"; };
+		5FEE54832F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackMediaImpressionTests.swift; sourceTree = "<group>"; };
 		7D06CCA228E516BC00AB6A8C /* CIOQuizResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizResult.swift; sourceTree = "<group>"; };
 		7D45383928DC085600490BFE /* CIOQuizQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuery.swift; sourceTree = "<group>"; };
 		7D45383D28DC14AE00490BFE /* CIOQuizQuestionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOQuizQuestionResponse.swift; sourceTree = "<group>"; };
@@ -901,6 +913,8 @@
 				088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */,
 				BFC9503825D742.6.2118D4C /* CIOTrackRecommendationResultClickData.swift */,
 				BFC9503A25D74D3F00118D4C /* CIOTrackRecommendationResultsViewData.swift */,
+				5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift */,
+				5FEE54782F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift */,
 				F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */,
 				F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */,
 				08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */,
@@ -1004,6 +1018,7 @@
 		F60FE8FF1F5C5ACD0037A0AB /* Worker */ = {
 			isa = PBXGroup;
 			children = (
+				5FEE54832F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift */,
 				7D4E4A3E2E5B78B200D4EF5A /* ConstructorIOTrackGenericResultClickTests.swift */,
 				08A7E4102575FA15000FA02F /* ConstructorIOTrackInputFocusTests.swift */,
 				8A93F13F2A70491D000ED6B3 /* ConstructorIOTrackQuizResultClick.swift */,
@@ -1060,6 +1075,8 @@
 		F60FE9071F5C5B860037A0AB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				5FEE547D2F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift */,
+				5FEE547E2F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift */,
 				7D4E4A3C2E5B786800D4EF5A /* TrackGenericResultClickRequestBuilderTests.swift */,
 				8A93F1452A79B365000ED6B3 /* TrackQuizResultsLoadedRequestBuilder.swift */,
 				8A93F1492A79C963000ED6B3 /* TrackQuizConversionRequestBuilder.swift */,
@@ -2326,13 +2343,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2362,13 +2382,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UserApplication/Pods-UserApplication-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UserApplication/Pods-UserApplication-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UserApplication/Pods-UserApplication-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2474,6 +2497,8 @@
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
 				8D689ECD284EAC6F005B6DD6 /* CIOCollectionData.swift in Sources */,
 				BF12196C25D1FDB300496189 /* CIORecommendationsPod.swift in Sources */,
+				5FEE547B2F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift in Sources */,
+				5FEE547C2F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift in Sources */,
 				0828954C256C5A85009A00BC /* CIOSearchResponse.swift in Sources */,
 				F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */,
 				8D0308742A1ED8AF0084AB85 /* AbstractBrowseFacetOptionsResponseParser.swift in Sources */,
@@ -2644,12 +2669,15 @@
 				F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */,
 				F64F46C31F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift in Sources */,
 				F64E94E9212DC93300E50EDE /* ConstructorIOAutocompleteTests.swift in Sources */,
+				5FEE54842F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift in Sources */,
 				F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */,
 				F62510D120568F250040E3DF /* SessionManagerTests.swift in Sources */,
 				F66B216721DF87EB00AAB030 /* UIColorRGBConversionTests.swift in Sources */,
 				0879E93F215F290D00018BBA /* TrackAutocompleteSelectRequestBuilderTests.swift in Sources */,
 				F6D86B17216BAD7F00077388 /* SearchResponseParserTests.swift in Sources */,
 				F6EC29AB2175161300DCFA07 /* ClosureSessionManagerDelegate.swift in Sources */,
+				5FEE54812F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift in Sources */,
+				5FEE54822F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift in Sources */,
 				F63808FF1F5D6C1000C3B322 /* ConstructorIOTests.swift in Sources */,
 				0874A32E216BCE2700812CDC /* ConstructorIOABTestCellTests.swift in Sources */,
 				08A7E4182575FDA0000FA02F /* ConstructorIOTrackBrowseResultClickTests.swift in Sources */,
@@ -2674,6 +2702,8 @@
 				8A93F1462A79B365000ED6B3 /* TrackQuizResultsLoadedRequestBuilder.swift in Sources */,
 				F64F46A61F595B980094C697 /* CIOAutocompleteResponseParserTests.swift in Sources */,
 				08A7E41D257601CF000FA02F /* TrackBrowseResultsLoadedRequestBuilder.swift in Sources */,
+				5FEE54792F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift in Sources */,
+				5FEE547A2F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift in Sources */,
 				BFBB2BB029231E2800C458FF /* ConstructorIOQuizIntegrationTests.swift in Sources */,
 				087F4BE0228B100E0058B467 /* ConstructorIOTrackConversionTests.swift in Sources */,
 				F6D110BD21E50C7600094D71 /* AbstractAutocompleteViewModel+Mock.swift in Sources */,
@@ -2737,7 +2767,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GK53T2PMMR;
 				INFOPLIST_FILE = UserApplication/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2762,7 +2792,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GK53T2PMMR;
 				INFOPLIST_FILE = UserApplication/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2783,7 +2813,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = UserApplicationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2805,7 +2835,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = UserApplicationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2870,7 +2900,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2927,7 +2957,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2952,7 +2982,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AutocompleteClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2981,7 +3011,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AutocompleteClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3003,7 +3033,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AutocompleteClientTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3023,7 +3053,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AutocompleteClientTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -65,7 +65,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackAutocompleteSelect() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: resultID, completionHandler: { response in
+        self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: resultID, itemID: customerID, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()

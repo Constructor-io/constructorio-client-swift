@@ -46,6 +46,18 @@ class ConstructorIOTrackAutocompleteSelectTests: XCTestCase {
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName, resultID: resultID)
         self.wait(for: builder.expectation)
     }
+    
+    func testTrackAutocompleteSelect_WithItemID() {
+        let searchTerm = "corn"
+        let searchOriginalQuery = "co"
+        let searchSectionName = "Search Suggestions"
+        let itemID = "0123456789"
+        let builder = CIOBuilder(expectation: "Calling trackAutocompleteSelect should send a valid request.", builder: http(200))
+
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&original_query=co&item_id=0123456789&s=\(kRegexSession)&section=Search%20Suggestions&tr=click&\(TestConstants.defaultSegments)"), builder.create())
+        self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName, itemID: itemID)
+        self.wait(for: builder.expectation)
+    }
 
     func testTrackAutocompleteSelect_With400() {
         let expectation = self.expectation(description: "Calling trackAutocompleteSelect with 400 should return badRequest CIOError.")

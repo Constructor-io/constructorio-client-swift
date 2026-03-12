@@ -7,6 +7,8 @@ include:
   - "/**/Result/Responses/*.swift"
   - "/**/Result/*.swift"
   - "/**/Config/ConstructorIOConfig.swift"
+  - "/**/Request/CIOTrackMediaImpressionViewData.swift"
+  - "/**/Request/CIOTrackMediaImpressionClickData.swift"
 
 custom_categories:
   - name: Client
@@ -63,3 +65,7 @@ custom_categories:
       - CIOQuizOptionAttribute
       - CIOQuizImages
       - CIOQuizResult
+  - name: Tracking Data Structures
+    children:
+      - CIOTrackMediaImpressionViewData
+      - CIOTrackMediaImpressionClickData

@@ -21,6 +21,8 @@ struct TestConstants {
     static let testApiKey = "key_OucJxxrfiTVUQx0C"
     static let testConfig = ConstructorIOConfig(apiKey: testApiKey)
     static let defaultSegments = "us=cio-app&us=cio-ios"
+    static let testApiKeyWithAdPlacements = "key_x6UnCVRZaJgIHFQD"
+    static let testPlacementId = "home"
 
     static func testConstructor(_ config: ConstructorIOConfig = TestConstants.testConfig) -> ConstructorIO {
         let constructor = ConstructorIO(config: config)

@@ -36,6 +36,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Result/Responses/CIOBrowseResponse.swift",
+      "line": 67,
+      "symbol": "CIOBrowseResponse.response(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
       "line": 11,
       "symbol": "AutocompleteQueryCompletionHandler",
@@ -149,14 +156,14 @@
     },
     {
       "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
-      "line": 1145,
+      "line": 1146,
       "symbol": "ConstructorIO.obfuscatePIIRequest(request:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/stanleypeng/Documents/Work/constructorio-client-swift/AutocompleteClient/FW/Logic/Worker/ConstructorIO.swift",
-      "line": 1218,
+      "line": 1219,
       "symbol": "ConstructorIO.sessionDidChange(from:to:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

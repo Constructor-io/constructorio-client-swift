@@ -69,6 +69,7 @@ struct Constants {
         static let apiKey = "key"
         static let baseURLString = "https://ac.cnstrc.com"
         static let baseQuizURLString = "https://quizzes.cnstrc.com"
+        static let baseMediaURLString = "https://behavior.media-cnstrc.com"
         static let defaultSegments = ["cio-ios", "cio-app"]
         static let httpMethod = "GET"
         static let sessionIncrementTimeoutInSeconds: TimeInterval = 1800 // 30 mins
@@ -283,6 +284,14 @@ struct Constants {
 
     struct trackQuizConversion {
         static let format = "%@/v2/behavioral_action/quiz_conversion"
+    }
+
+    struct TrackMediaImpressionView {
+        static let format = "%@/v2/ad_behavioral_action/display_ad_view"
+    }
+
+    struct TrackMediaImpressionClick {
+        static let format = "%@/v2/ad_behavioral_action/display_ad_click"
     }
 
     struct Logging {
