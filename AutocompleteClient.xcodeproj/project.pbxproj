@@ -57,8 +57,6 @@
 		08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */; };
 		08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */; };
 		08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */; };
-		5FEE54792F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift */; };
-		5FEE547A2F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54782F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift */; };
 		5FEE547B2F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift */; };
 		5FEE547C2F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54782F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift */; };
 		5FEE54812F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE547D2F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift */; };
@@ -2702,8 +2700,6 @@
 				8A93F1462A79B365000ED6B3 /* TrackQuizResultsLoadedRequestBuilder.swift in Sources */,
 				F64F46A61F595B980094C697 /* CIOAutocompleteResponseParserTests.swift in Sources */,
 				08A7E41D257601CF000FA02F /* TrackBrowseResultsLoadedRequestBuilder.swift in Sources */,
-				5FEE54792F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift in Sources */,
-				5FEE547A2F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift in Sources */,
 				BFBB2BB029231E2800C458FF /* ConstructorIOQuizIntegrationTests.swift in Sources */,
 				087F4BE0228B100E0058B467 /* ConstructorIOTrackConversionTests.swift in Sources */,
 				F6D110BD21E50C7600094D71 /* AbstractAutocompleteViewModel+Mock.swift in Sources */,

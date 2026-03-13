@@ -56,9 +56,10 @@ class ConstructorIOTrackMediaImpressionTests: XCTestCase {
         super.tearDown()
     }
 
-    func testTrackMediaImpressionView() {
+    func testTrackMediaImpressionView() throws {
+        let bannerAdId = try XCTUnwrap(self.bannerAdId, "banner_ad_id was not fetched during setUp")
         let expectation = XCTestExpectation(description: "Tracking media impression view")
-        self.constructor.trackMediaImpressionView(bannerAdId: self.bannerAdId, placementId: TestConstants.testPlacementId, completionHandler: { response in
+        self.constructor.trackMediaImpressionView(bannerAdId: bannerAdId, placementId: TestConstants.testPlacementId, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -66,9 +67,10 @@ class ConstructorIOTrackMediaImpressionTests: XCTestCase {
         self.wait(for: [expectation], timeout: 10.0)
     }
 
-    func testTrackMediaImpressionClick() {
+    func testTrackMediaImpressionClick() throws {
+        let bannerAdId = try XCTUnwrap(self.bannerAdId, "banner_ad_id was not fetched during setUp")
         let expectation = XCTestExpectation(description: "Tracking media impression click")
-        self.constructor.trackMediaImpressionClick(bannerAdId: self.bannerAdId, placementId: TestConstants.testPlacementId, completionHandler: { response in
+        self.constructor.trackMediaImpressionClick(bannerAdId: bannerAdId, placementId: TestConstants.testPlacementId, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()

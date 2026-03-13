@@ -7,8 +7,6 @@ include:
   - "/**/Result/Responses/*.swift"
   - "/**/Result/*.swift"
   - "/**/Config/ConstructorIOConfig.swift"
-  - "/**/Request/CIOTrackMediaImpressionViewData.swift"
-  - "/**/Request/CIOTrackMediaImpressionClickData.swift"
 
 custom_categories:
   - name: Client
