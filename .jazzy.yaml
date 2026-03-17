@@ -63,7 +63,3 @@ custom_categories:
       - CIOQuizOptionAttribute
       - CIOQuizImages
       - CIOQuizResult
-  - name: Tracking Data Structures
-    children:
-      - CIOTrackMediaImpressionViewData
-      - CIOTrackMediaImpressionClickData
