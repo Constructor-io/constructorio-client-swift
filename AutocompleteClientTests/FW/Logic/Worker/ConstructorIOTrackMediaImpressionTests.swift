@@ -7,74 +7,85 @@
 //
 
 import ConstructorAutocomplete
+import OHHTTPStubs
 import XCTest
 
 class ConstructorIOTrackMediaImpressionTests: XCTestCase {
 
+    private let bannerAdId = "banner-ad-123"
+    private let placementId = TestConstants.testPlacementId
+
     var constructor: ConstructorIO!
-    var bannerAdId: String!
 
     override func setUp() {
         super.setUp()
-
-        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKeyWithAdPlacements)
-        self.constructor = ConstructorIO(config: config)
-
-        // Fetch a valid banner_ad_id from the display ads endpoint
-        let fetchExpectation = XCTestExpectation(description: "Fetch display ads to get banner_ad_id")
-        let urlString = "https://display.media-cnstrc.com/display-ads?key=\(TestConstants.testApiKeyWithAdPlacements)&placement_ids=\(TestConstants.testPlacementId)"
-        let url = URL(string: urlString)!
-
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else {
-                XCTFail("Failed to fetch display ads: \(error?.localizedDescription ?? "unknown error")")
-                fetchExpectation.fulfill()
-                return
-            }
-
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let displayAds = json["display_ads"] as? [String: Any],
-                   let ad = displayAds[TestConstants.testPlacementId] as? [String: Any],
-                   let bannerAdId = ad["banner_ad_id"] as? String {
-                    self.bannerAdId = bannerAdId
-                } else {
-                    XCTFail("Failed to parse banner_ad_id from display ads response")
-                }
-            } catch {
-                XCTFail("Failed to parse display ads JSON: \(error.localizedDescription)")
-            }
-
-            fetchExpectation.fulfill()
-        }
-        task.resume()
-
-        wait(for: [fetchExpectation], timeout: 10.0)
+        self.constructor = TestConstants.testConstructor()
     }
 
     override func tearDown() {
         super.tearDown()
+        OHHTTPStubs.removeAllStubs()
     }
 
-    func testTrackMediaImpressionView() throws {
-        let bannerAdId = try XCTUnwrap(self.bannerAdId, "banner_ad_id was not fetched during setUp")
-        let expectation = XCTestExpectation(description: "Tracking media impression view")
-        self.constructor.trackMediaImpressionView(bannerAdId: bannerAdId, placementId: TestConstants.testPlacementId, completionHandler: { response in
-            let cioError = response.error as? CIOError
-            XCTAssertNil(cioError)
-            expectation.fulfill()
-        })
-        self.wait(for: [expectation], timeout: 10.0)
+    func testTrackMediaImpressionView() {
+        let builder = CIOBuilder(expectation: "Calling trackMediaImpressionView should send a valid request.", builder: http(200))
+        stub(regex("https://behavior.media-cnstrc.com/v2/ad_behavioral_action/display_ad_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+        self.constructor.trackMediaImpressionView(bannerAdId: bannerAdId, placementId: placementId)
+        self.wait(for: builder.expectation)
     }
 
-    func testTrackMediaImpressionClick() throws {
-        let bannerAdId = try XCTUnwrap(self.bannerAdId, "banner_ad_id was not fetched during setUp")
-        let expectation = XCTestExpectation(description: "Tracking media impression click")
-        self.constructor.trackMediaImpressionClick(bannerAdId: bannerAdId, placementId: TestConstants.testPlacementId, completionHandler: { response in
-            let cioError = response.error as? CIOError
-            XCTAssertNil(cioError)
-            expectation.fulfill()
+    func testTrackMediaImpressionView_With400() {
+        let expectation = self.expectation(description: "Calling trackMediaImpressionView with 400 should return badRequest CIOError.")
+        stub(regex("https://behavior.media-cnstrc.com/v2/ad_behavioral_action/display_ad_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(400))
+        self.constructor.trackMediaImpressionView(bannerAdId: bannerAdId, placementId: placementId, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
+                XCTAssertEqual(cioError.errorType, .badRequest)
+                expectation.fulfill()
+            }
         })
-        self.wait(for: [expectation], timeout: 10.0)
+        self.wait(for: expectation)
+    }
+
+    func testTrackMediaImpressionView_With500() {
+        let expectation = self.expectation(description: "Calling trackMediaImpressionView with 500 should return internalServerError CIOError.")
+        stub(regex("https://behavior.media-cnstrc.com/v2/ad_behavioral_action/display_ad_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(500))
+        self.constructor.trackMediaImpressionView(bannerAdId: bannerAdId, placementId: placementId, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
+                XCTAssertEqual(cioError.errorType, .internalServerError)
+                expectation.fulfill()
+            }
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackMediaImpressionClick() {
+        let builder = CIOBuilder(expectation: "Calling trackMediaImpressionClick should send a valid request.", builder: http(200))
+        stub(regex("https://behavior.media-cnstrc.com/v2/ad_behavioral_action/display_ad_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+        self.constructor.trackMediaImpressionClick(bannerAdId: bannerAdId, placementId: placementId)
+        self.wait(for: builder.expectation)
+    }
+
+    func testTrackMediaImpressionClick_With400() {
+        let expectation = self.expectation(description: "Calling trackMediaImpressionClick with 400 should return badRequest CIOError.")
+        stub(regex("https://behavior.media-cnstrc.com/v2/ad_behavioral_action/display_ad_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(400))
+        self.constructor.trackMediaImpressionClick(bannerAdId: bannerAdId, placementId: placementId, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
+                XCTAssertEqual(cioError.errorType, .badRequest)
+                expectation.fulfill()
+            }
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackMediaImpressionClick_With500() {
+        let expectation = self.expectation(description: "Calling trackMediaImpressionClick with 500 should return internalServerError CIOError.")
+        stub(regex("https://behavior.media-cnstrc.com/v2/ad_behavioral_action/display_ad_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(500))
+        self.constructor.trackMediaImpressionClick(bannerAdId: bannerAdId, placementId: placementId, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
+                XCTAssertEqual(cioError.errorType, .internalServerError)
+                expectation.fulfill()
+            }
+        })
+        self.wait(for: expectation)
     }
 }
