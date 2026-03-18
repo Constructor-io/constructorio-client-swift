@@ -23,7 +23,7 @@ class TrackMediaImpressionViewRequestBuilderTests: XCTestCase {
     }
 
     func testTrackMediaImpressionViewBuilder() {
-        let tracker = CIOTrackMediaImpressionViewData(bannerAdId: bannerAdId, placementId: placementId)
+        let tracker = CIOTrackMediaImpressionData(bannerAdId: bannerAdId, placementId: placementId, action: .view)
         builder.build(trackData: tracker)
         let request = builder.getMediaRequest()
         let url = request.url!.absoluteString
@@ -39,7 +39,7 @@ class TrackMediaImpressionViewRequestBuilderTests: XCTestCase {
     }
 
     func testTrackMediaImpressionViewBuilder_WithCustomBaseURL() {
-        let tracker = CIOTrackMediaImpressionViewData(bannerAdId: bannerAdId, placementId: placementId)
+        let tracker = CIOTrackMediaImpressionData(bannerAdId: bannerAdId, placementId: placementId, action: .view)
         let customBaseURL = "https://custom-media-url.com"
         self.builder = RequestBuilder(apiKey: testACKey, baseMediaURL: customBaseURL)
         builder.build(trackData: tracker)

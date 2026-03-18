@@ -355,7 +355,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackMediaImpressionView(bannerAdId: String, placementId: String, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackMediaImpressionViewData(bannerAdId: bannerAdId, placementId: placementId)
+        let data = CIOTrackMediaImpressionData(bannerAdId: bannerAdId, placementId: placementId, action: .view)
         let request = self.buildMediaRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -374,7 +374,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackMediaImpressionClick(bannerAdId: String, placementId: String, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackMediaImpressionClickData(bannerAdId: bannerAdId, placementId: placementId)
+        let data = CIOTrackMediaImpressionData(bannerAdId: bannerAdId, placementId: placementId, action: .click)
         let request = self.buildMediaRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }

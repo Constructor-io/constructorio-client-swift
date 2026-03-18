@@ -57,8 +57,7 @@
 		08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */; };
 		08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */; };
 		08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */; };
-		5FEE547B2F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift */; };
-		5FEE547C2F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54782F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift */; };
+		5FEE547B2F61E12600A74E64 /* CIOTrackMediaImpressionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionData.swift */; };
 		5FEE54812F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE547D2F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift */; };
 		5FEE54822F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE547E2F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift */; };
 		5FEE54842F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54832F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift */; };
@@ -433,8 +432,7 @@
 		08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchSubmitData.swift; sourceTree = "<group>"; };
 		453FBD0FBF9C8817B960B758 /* Pods-UserApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-UserApplication/Pods-UserApplication.release.xcconfig"; sourceTree = "<group>"; };
 		5362DE84EA35B4B9FE26EE1F /* Pods_AutocompleteClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackMediaImpressionClickData.swift; sourceTree = "<group>"; };
-		5FEE54782F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackMediaImpressionViewData.swift; sourceTree = "<group>"; };
+		5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackMediaImpressionData.swift; sourceTree = "<group>"; };
 		5FEE547D2F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMediaImpressionClickRequestBuilderTests.swift; sourceTree = "<group>"; };
 		5FEE547E2F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMediaImpressionViewRequestBuilderTests.swift; sourceTree = "<group>"; };
 		5FEE54832F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackMediaImpressionTests.swift; sourceTree = "<group>"; };
@@ -911,8 +909,7 @@
 				088F7D1D210FA3C6005B9FB4 /* CIOTrackInputFocusData.swift */,
 				BFC9503825D742.6.2118D4C /* CIOTrackRecommendationResultClickData.swift */,
 				BFC9503A25D74D3F00118D4C /* CIOTrackRecommendationResultsViewData.swift */,
-				5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift */,
-				5FEE54782F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift */,
+				5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionData.swift */,
 				F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */,
 				F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */,
 				08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */,
@@ -2495,8 +2492,7 @@
 				F68A72FD1F56D31700FA4D1B /* DefaultSearchItemCell.swift in Sources */,
 				8D689ECD284EAC6F005B6DD6 /* CIOCollectionData.swift in Sources */,
 				BF12196C25D1FDB300496189 /* CIORecommendationsPod.swift in Sources */,
-				5FEE547B2F61E12600A74E64 /* CIOTrackMediaImpressionClickData.swift in Sources */,
-				5FEE547C2F61E12600A74E64 /* CIOTrackMediaImpressionViewData.swift in Sources */,
+				5FEE547B2F61E12600A74E64 /* CIOTrackMediaImpressionData.swift in Sources */,
 				0828954C256C5A85009A00BC /* CIOSearchResponse.swift in Sources */,
 				F67BFC9520B845D300986557 /* UISearchBar+TextField.swift in Sources */,
 				8D0308742A1ED8AF0084AB85 /* AbstractBrowseFacetOptionsResponseParser.swift in Sources */,

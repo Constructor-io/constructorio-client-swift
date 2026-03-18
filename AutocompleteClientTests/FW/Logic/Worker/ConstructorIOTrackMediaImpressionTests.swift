@@ -58,6 +58,18 @@ class ConstructorIOTrackMediaImpressionTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testTrackMediaImpressionView_WithNoConnectivity() {
+        let expectation = self.expectation(description: "Calling trackMediaImpressionView with no connectivity should return noConnection CIOError.")
+        stub(regex("https://behavior.media-cnstrc.com/v2/ad_behavioral_action/display_ad_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), noConnectivity())
+        self.constructor.trackMediaImpressionView(bannerAdId: bannerAdId, placementId: placementId, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
+                XCTAssertEqual(cioError.errorType, .noConnection)
+                expectation.fulfill()
+            }
+        })
+        self.wait(for: expectation)
+    }
+
     func testTrackMediaImpressionClick() {
         let builder = CIOBuilder(expectation: "Calling trackMediaImpressionClick should send a valid request.", builder: http(200))
         stub(regex("https://behavior.media-cnstrc.com/v2/ad_behavioral_action/display_ad_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
@@ -83,6 +95,18 @@ class ConstructorIOTrackMediaImpressionTests: XCTestCase {
         self.constructor.trackMediaImpressionClick(bannerAdId: bannerAdId, placementId: placementId, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .internalServerError)
+                expectation.fulfill()
+            }
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackMediaImpressionClick_WithNoConnectivity() {
+        let expectation = self.expectation(description: "Calling trackMediaImpressionClick with no connectivity should return noConnection CIOError.")
+        stub(regex("https://behavior.media-cnstrc.com/v2/ad_behavioral_action/display_ad_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), noConnectivity())
+        self.constructor.trackMediaImpressionClick(bannerAdId: bannerAdId, placementId: placementId, completionHandler: { response in
+            if let cioError = response.error as? CIOError {
+                XCTAssertEqual(cioError.errorType, .noConnection)
                 expectation.fulfill()
             }
         })
