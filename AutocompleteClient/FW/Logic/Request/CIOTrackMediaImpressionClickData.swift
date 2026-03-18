@@ -20,10 +20,6 @@ struct CIOTrackMediaImpressionClickData: CIORequestData {
         return String(format: Constants.TrackMediaImpressionClick.format, baseURL)
     }
 
-    func urlWithFormat(baseURL: String, format: String) -> String {
-        return String(format: format, baseURL)
-    }
-
     init(bannerAdId: String, placementId: String) {
         self.bannerAdId = bannerAdId
         self.placementId = placementId
