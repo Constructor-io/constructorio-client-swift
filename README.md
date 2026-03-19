@@ -332,6 +332,16 @@ ConstructorIo.trackQuizConversion(quizID: "coffee-quiz", quizVersionID: "1231244
 
 ```
 
+### Media Impression Events
+
+```swift
+// Track when a media impression is viewed
+ConstructorIo.trackMediaImpressionView(bannerAdId: "banner-ad-id", placementId: "placement-id")
+
+// Track when a media impression is clicked
+ConstructorIo.trackMediaImpressionClick(bannerAdId: "banner-ad-id", placementId: "placement-id")
+```
+
 ### Conversion Events
 
 ```swift

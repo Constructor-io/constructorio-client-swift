@@ -53,6 +53,11 @@ public struct ConstructorIOConfig {
     public var baseQuizURL: String?
 
     /**
+     The base URL for media tracking requests
+     */
+    public var baseMediaURL: String?
+
+    /**
      Create a configuration object
      
      - Parameters:
@@ -63,6 +68,7 @@ public struct ConstructorIOConfig {
         - segments: List of segments to associate with requets
         - baseURL: The base URL to make requests to
         - baseQuizURL: The base Quiz URL to make requests to
+        - baseMediaURL: The base Media URL to make tracking requests to
 
      ### Usage Example: ###
      ```
@@ -79,7 +85,7 @@ public struct ConstructorIOConfig {
      )
      ```
      */
-    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil, baseQuizURL: String? = nil, defaultAnalyticsTags: [String: String]? = nil) {
+    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil, baseQuizURL: String? = nil, baseMediaURL: String? = nil, defaultAnalyticsTags: [String: String]? = nil) {
         self.apiKey = apiKey
         self.resultCount = resultCount
         self.defaultItemSectionName = defaultItemSectionName
@@ -87,6 +93,7 @@ public struct ConstructorIOConfig {
         self.segments = segments
         self.baseURL = baseURL
         self.baseQuizURL = baseQuizURL
+        self.baseMediaURL = baseMediaURL
         self.defaultAnalyticsTags = defaultAnalyticsTags
     }
 

@@ -342,6 +342,44 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     /**
+     Track when a user views a media impression (display ad)
+
+     - Parameters:
+        - bannerAdId: The banner ad ID
+        - placementId: The placement ID
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackMediaImpressionView(bannerAdId: "abc123", placementId: "home")
+     ```
+     */
+    public func trackMediaImpressionView(bannerAdId: String, placementId: String, completionHandler: TrackingCompletionHandler? = nil) {
+        let data = CIOTrackMediaImpressionData(bannerAdId: bannerAdId, placementId: placementId, action: .view)
+        let request = self.buildMediaRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user clicks a media impression (display ad)
+
+     - Parameters:
+        - bannerAdId: The banner ad ID
+        - placementId: The placement ID
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackMediaImpressionClick(bannerAdId: "abc123", placementId: "home")
+     ```
+     */
+    public func trackMediaImpressionClick(bannerAdId: String, placementId: String, completionHandler: TrackingCompletionHandler? = nil) {
+        let data = CIOTrackMediaImpressionData(bannerAdId: bannerAdId, placementId: placementId, action: .click)
+        let request = self.buildMediaRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
      Track when a user selects (clicks, or navigates to via keyboard) a result that appears within autocomplete
 
      - Parameters:
@@ -814,6 +852,17 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.attachSegments(requestBuilder: requestBuilder)
         requestBuilder.build(trackData: data)
         return requestBuilder.getRequest()
+    }
+
+    private func buildMediaRequest(data: CIORequestData) -> URLRequest {
+        let requestBuilder = RequestBuilder(apiKey: self.config.apiKey, baseMediaURL: self.config.baseMediaURL ?? Constants.Query.baseMediaURLString)
+        self.attachClientID(requestBuilder: requestBuilder)
+        self.attachUserID(requestBuilder: requestBuilder)
+        self.attachSessionIDWithIncrement(requestBuilder: requestBuilder)
+        self.attachABTestCells(requestBuilder: requestBuilder)
+        self.attachSegments(requestBuilder: requestBuilder)
+        requestBuilder.build(trackData: data)
+        return requestBuilder.getMediaRequest()
     }
 
     private func buildQuizRequest(data: CIORequestData, finalize: Bool) -> URLRequest {

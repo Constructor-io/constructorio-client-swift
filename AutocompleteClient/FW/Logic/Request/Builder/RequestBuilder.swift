@@ -15,15 +15,17 @@ class RequestBuilder {
 
     let baseURL: String
     let baseQuizURL: String
+    let baseMediaURL: String
 
     var trackData: CIORequestData!
 
     var searchTerm = ""
 
-    init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider(), baseURL: String? = nil, baseQuizURL: String? = nil) {
+    init(apiKey: String, dateProvider: DateProvider = CurrentTimeDateProvider(), baseURL: String? = nil, baseQuizURL: String? = nil, baseMediaURL: String? = nil) {
         self.dateProvider = dateProvider
         self.baseURL = baseURL ?? Constants.Query.baseURLString
         self.baseQuizURL = baseQuizURL ?? Constants.Query.baseQuizURLString
+        self.baseMediaURL = baseMediaURL ?? Constants.Query.baseMediaURLString
         self.set(apiKey: apiKey)
     }
 
@@ -97,6 +99,37 @@ class RequestBuilder {
         urlComponents.queryItems = self.trackData!.queryItems(baseItems: allQueryItems.all())
 
         // Replace "+" with "%2B" in the query parameters
+        urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?
+            .replacingOccurrences(of: "+", with: "%2B")
+
+        let url = urlComponents.url!
+        let httpBody = self.trackData!.httpBody(baseParams: allQueryItems.allAsDictionary())
+
+        var request = URLRequest(url: url)
+        if httpBody != nil {
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.httpBody = httpBody
+        }
+        request.httpMethod = self.trackData!.httpMethod()
+
+        return request
+    }
+
+    final func getMediaRequest() -> URLRequest {
+        let urlString = self.trackData!.url(with: self.baseMediaURL)
+
+        var urlComponents = URLComponents(string: urlString)!
+
+        var allQueryItems = self.queryItems
+
+        let versionString = Constants.versionString()
+        allQueryItems.add(URLQueryItem(name: "c", value: versionString))
+
+        self.addDateQueryItem(queryItems: &allQueryItems)
+
+        urlComponents.queryItems = self.trackData!.queryItems(baseItems: allQueryItems.all())
+
         urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?
             .replacingOccurrences(of: "+", with: "%2B")
 
