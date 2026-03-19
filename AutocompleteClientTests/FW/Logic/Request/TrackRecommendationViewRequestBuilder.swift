@@ -68,4 +68,41 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         XCTAssertEqual(loadedItems.count, 3)
         XCTAssertEqual(loadedItems[0]["item_id"], customerIDs[0])
     }
+
+    func testTrackRecommendationResultsViewBuilder_WithSingleSeedItemId() {
+        let seedItemIds = ["seed-item-123"]
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, seedItemIds: seedItemIds)
+        builder.build(trackData: recommendationViewData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedSeedItemIds = payload?["seed_item_ids"] as? [String] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedSeedItemIds.count, 1)
+        XCTAssertEqual(loadedSeedItemIds[0], seedItemIds[0])
+    }
+
+    func testTrackRecommendationResultsViewBuilder_WithMultipleSeedItemIds() {
+        let seedItemIds = ["seed-item-123", "seed-item-456", "seed-item-789"]
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, seedItemIds: seedItemIds)
+        builder.build(trackData: recommendationViewData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedSeedItemIds = payload?["seed_item_ids"] as? [String] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedSeedItemIds.count, 3)
+        XCTAssertEqual(loadedSeedItemIds, seedItemIds)
+    }
+
+    func testTrackRecommendationResultsViewBuilder_WithEmptySeedItemIds() {
+        let seedItemIds: [String] = []
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, seedItemIds: seedItemIds)
+        builder.build(trackData: recommendationViewData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertNil(payload?["seed_item_ids"], "Empty seed_item_ids should not be included in the payload")
+    }
 }
