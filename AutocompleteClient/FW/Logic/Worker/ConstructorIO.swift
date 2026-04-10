@@ -431,7 +431,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the search
         - resultID: Identifier of result set
         - items: The list of items returned in the search (Preferred over customerIDs)
-        - analyticsTags Additional analytics tags to pass
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -486,7 +486,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the browse
         - resultID: Identifier of result set
         - items: The list of items returned in the browse (Preferred over customerIDs)
-        - analyticsTags Additional analytics tags to pass
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -513,11 +513,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - filterName: The name of the primary filter that the user browsed for (i.e "group_id")
         - filterValue: The value of the primary filter that the user browsed for (i.e "sales")
         - resultPositionOnPage: The position of clicked item
-        - sectionName The name of the autocomplete section the term came from
+        - sectionName: The name of the autocomplete section the term came from
         - resultID: Identifier of result set
         - slCampaignID: The campaign ID
         - slCampaignOwner: The campaign owner
-        - analyticsTags Additional analytics tags to pass
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -543,7 +543,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - resultCount: The total number of recommendation results
         - sectionName: The name of the autocomplete section the term came from
         - resultID: Identifier of result set
-        - analyticsTags Additional analytics tags to pass
+        - analyticsTags: Additional analytics tags to pass
         - seedItemIds: The seed item ID(s) used to generate recommendations
         - completionHandler: The callback to execute on completion.
 
@@ -572,9 +572,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - resultPage: The current page that recommedantion result is on
         - resultCount: The total number of recommendation results
         - resultPositionOnPage: The position of the recommendation result that was clicked on
-        - sectionName The name of the autocomplete section the term came from
+        - sectionName: The name of the autocomplete section the term came from
         - resultID: Identifier of result set
-        - analyticsTags Additional analytics tags to pass
+        - analyticsTags: Additional analytics tags to pass
         - seedItemIds: The seed item ID(s) used to generate recommendations
         - completionHandler: The callback to execute on completion.
 
@@ -599,11 +599,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - variationID: The variation ID
         - revenue: The revenue of the item.
         - searchTerm: The term that the user searched for if searching (defaults to 'TERM_UNKNOWN')
-        - sectionName The name of the autocomplete section the term came from (defaults to "products")
+        - sectionName: The name of the autocomplete section the term came from (defaults to "products")
         - conversionType: The type of conversion (defaults to "add_to_cart")
         - displayName: Display name for the custom conversion type
         - isCustomType: Specify if type is a custom conversion type
-        - analyticsTags Additional analytics tags to pass
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -627,8 +627,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - customerIDs: The item IDs purchased
         - revenue: The revenue of the purchase
         - orderID: The order identifier
-        - sectionName The name of the autocomplete section the term came from (defaults to "products")
-        - analyticsTags Additional analytics tags to pass
+        - sectionName: The name of the autocomplete section the term came from (defaults to "products")
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -650,8 +650,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - items: The items purchased
         - revenue: The revenue of the purchase
         - orderID: The order identifier
-        - sectionName The name of the autocomplete section the term came from (defaults to "products")
-        - analyticsTags Additional analytics tags to pass
+        - sectionName: The name of the autocomplete section the term came from (defaults to "products")
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -674,7 +674,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - itemName: The item name
         - variationID: The id of the variation
         - sectionName: The name of the section the product is in.
-        - analyticsTags Additional analytics tags to pass
+        - analyticsTags: Additional analytics tags to pass
         - url: The url of the product
      
      ### Usage Example: ###
@@ -704,8 +704,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - resultID: The identifier of result set returned by the Constructor quiz response
         - resultPage: The current page of the results
         - resultCount: The total number of results
-        - sectionName The name of the autocomplete section the results came from
-        - analyticsTags Additional analytics tags to pass
+        - sectionName: The name of the autocomplete section the results came from
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -735,8 +735,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - resultCount: The total number of results
         - numResultsPerPage: The number of results on the current page
         - resultPositionOnPage: The position of clicked item
-        - sectionName The name of the autocomplete section the result came from
-        - analyticsTags Additional analytics tags to pass
+        - sectionName: The name of the autocomplete section the result came from
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -765,8 +765,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - conversionType: The type of conversion (defaults to "add_to_cart")
         - isCustomType: The flag to specify if type is custom conversion type
         - displayName: The display name for the custom conversion type
-        - sectionName The name of the autocomplete section the result came from
-        - analyticsTags Additional analytics tags to pass
+        - sectionName: The name of the autocomplete section the result came from
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
  
      ### Usage Example: ###
