@@ -3,7 +3,6 @@ Pod::Spec.new do |spec|
   spec.version      = '4.5.0'
   spec.license      = { :type => 'MIT', :file => 'LICENSE' }
   spec.homepage     = 'https://www.constructor.io'
-  spec.authors      = { 'Zubin Tiku' => 'zubin@constructor.io', 'Christopher Gee' => 'christopher@constructor.io', 'Jimmy Li' => 'jimmy@constructor.io' }
   spec.summary      = 'Constructor.io iOS Client'
   spec.source       = { :git => 'https://github.com/Constructor-io/constructorio-client-swift.git', :tag => 'v4.5.0' }
   spec.platform     = :ios, '11.0'
