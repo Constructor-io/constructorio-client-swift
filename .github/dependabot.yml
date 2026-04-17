@@ -10,5 +10,4 @@ updates:
     # This option has no impact on security updates, which have a separate, internal limit of ten open pull requests.
     open-pull-requests-limit: 0
     reviewers:
-      - "crgee1" # Chris
-      - "jjl014" # Jimmy
+      - "Constructor-io/integrations-mobile-lib-swift-admins"
