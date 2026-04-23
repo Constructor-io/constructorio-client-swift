@@ -60,35 +60,35 @@ class TrackRecommendationResultClickRequestBuilder: XCTestCase {
         XCTAssertEqual(analyticsTagsPayload, analyticsTags)
     }
 
-    func testTrackRecommendationResultClickBuilder_WithSingleSeedItemId() {
-        let seedItemIds = ["seed-item-123"]
-        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIds: seedItemIds)
+    func testTrackRecommendationResultClickBuilder_WithSingleSeedItemID() {
+        let seedItemIDs = ["seed-item-123"]
+        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIDs: seedItemIDs)
         builder.build(trackData: recommendationClickData)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
-        let loadedSeedItemIds = payload?["seed_item_ids"] as? [String] ?? []
+        let loadedSeedItemIDs = payload?["seed_item_ids"] as? [String] ?? []
 
         XCTAssertEqual(request.httpMethod, "POST")
-        XCTAssertEqual(loadedSeedItemIds.count, 1)
-        XCTAssertEqual(loadedSeedItemIds[0], seedItemIds[0])
+        XCTAssertEqual(loadedSeedItemIDs.count, 1)
+        XCTAssertEqual(loadedSeedItemIDs[0], seedItemIDs[0])
     }
 
-    func testTrackRecommendationResultClickBuilder_WithMultipleSeedItemIds() {
-        let seedItemIds = ["seed-item-123", "seed-item-456", "seed-item-789"]
-        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIds: seedItemIds)
+    func testTrackRecommendationResultClickBuilder_WithMultipleSeedItemIDs() {
+        let seedItemIDs = ["seed-item-123", "seed-item-456", "seed-item-789"]
+        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIDs: seedItemIDs)
         builder.build(trackData: recommendationClickData)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
-        let loadedSeedItemIds = payload?["seed_item_ids"] as? [String] ?? []
+        let loadedSeedItemIDs = payload?["seed_item_ids"] as? [String] ?? []
 
         XCTAssertEqual(request.httpMethod, "POST")
-        XCTAssertEqual(loadedSeedItemIds.count, 3)
-        XCTAssertEqual(loadedSeedItemIds, seedItemIds)
+        XCTAssertEqual(loadedSeedItemIDs.count, 3)
+        XCTAssertEqual(loadedSeedItemIDs, seedItemIDs)
     }
 
-    func testTrackRecommendationResultClickBuilder_WithEmptySeedItemIds() {
-        let seedItemIds: [String] = []
-        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIds: seedItemIds)
+    func testTrackRecommendationResultClickBuilder_WithEmptySeedItemIDs() {
+        let seedItemIDs: [String] = []
+        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIDs: seedItemIDs)
         builder.build(trackData: recommendationClickData)
         let request = builder.getRequest()
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
