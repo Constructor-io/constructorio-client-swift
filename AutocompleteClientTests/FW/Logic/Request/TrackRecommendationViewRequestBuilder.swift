@@ -78,8 +78,7 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         let loadedSeedItemIDs = payload?["seed_item_ids"] as? [String] ?? []
 
         XCTAssertEqual(request.httpMethod, "POST")
-        XCTAssertEqual(loadedSeedItemIDs.count, 1)
-        XCTAssertEqual(loadedSeedItemIDs[0], seedItemIDs[0])
+        XCTAssertEqual(loadedSeedItemIDs, seedItemIDs)
     }
 
     func testTrackRecommendationResultsViewBuilder_WithMultipleSeedItemIDs() {
@@ -93,6 +92,16 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(loadedSeedItemIDs.count, 3)
         XCTAssertEqual(loadedSeedItemIDs, seedItemIDs)
+    }
+
+    func testTrackRecommendationResultsViewBuilder_WithNilSeedItemIDs() {
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, seedItemIDs: nil)
+        builder.build(trackData: recommendationViewData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertNil(payload?["seed_item_ids"], "Nil seed_item_ids should not be included in the payload")
     }
 
     func testTrackRecommendationResultsViewBuilder_WithEmptySeedItemIDs() {
