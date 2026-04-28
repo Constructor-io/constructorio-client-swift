@@ -59,4 +59,50 @@ class TrackRecommendationResultClickRequestBuilder: XCTestCase {
         XCTAssertEqual(payload?["result_position_on_page"] as? Int, resultPositionOnPage)
         XCTAssertEqual(analyticsTagsPayload, analyticsTags)
     }
+
+    func testTrackRecommendationResultClickBuilder_WithSingleSeedItemID() {
+        let seedItemIDs = ["seed-item-123"]
+        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIDs: seedItemIDs)
+        builder.build(trackData: recommendationClickData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedSeedItemIDs = payload?["seed_item_ids"] as? [String] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedSeedItemIDs, seedItemIDs)
+    }
+
+    func testTrackRecommendationResultClickBuilder_WithMultipleSeedItemIDs() {
+        let seedItemIDs = ["seed-item-123", "seed-item-456", "seed-item-789"]
+        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIDs: seedItemIDs)
+        builder.build(trackData: recommendationClickData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedSeedItemIDs = payload?["seed_item_ids"] as? [String] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedSeedItemIDs.count, 3)
+        XCTAssertEqual(loadedSeedItemIDs, seedItemIDs)
+    }
+
+    func testTrackRecommendationResultClickBuilder_WithNilSeedItemIDs() {
+        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIDs: nil)
+        builder.build(trackData: recommendationClickData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertNil(payload?["seed_item_ids"], "Nil seed_item_ids should not be included in the payload")
+    }
+
+    func testTrackRecommendationResultClickBuilder_WithEmptySeedItemIDs() {
+        let seedItemIDs: [String] = []
+        let recommendationClickData = CIOTrackRecommendationResultClickData(podID: podID, customerID: customerID, seedItemIDs: seedItemIDs)
+        builder.build(trackData: recommendationClickData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertNil(payload?["seed_item_ids"], "Empty seed_item_ids should not be included in the payload")
+    }
 }

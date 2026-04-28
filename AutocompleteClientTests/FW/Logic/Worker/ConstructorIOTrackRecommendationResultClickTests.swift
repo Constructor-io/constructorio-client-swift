@@ -116,4 +116,16 @@ class ConstructorIOTrackRecommendationResultClickTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
+
+    func testTrackRecommendationResultClick_WithSeedItemIDs() {
+        let podID = "item_page_1"
+        let customerID = "customerID123"
+        let seedItemIDs = ["seed-item-123", "seed-item-456"]
+
+        let builder = CIOBuilder(expectation: "Calling trackRecommendationResultClick should send a valid request with seed item IDs.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+
+        self.constructor.trackRecommendationResultClick(podID: podID, customerID: customerID, seedItemIDs: seedItemIDs)
+        self.wait(for: builder.expectation)
+    }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Struct encapsulating the parameters that must/can be set set in order to track browse result click
+ Struct encapsulating the parameters that should be set in order to track recommendations result click
  */
 struct CIOTrackRecommendationResultClickData: CIORequestData {
 
@@ -24,12 +24,13 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
     let sectionName: String?
     let resultID: String?
     let analyticsTags: [String: String]?
+    let seedItemIDs: [String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackRecommendationResultClick.format, baseURL)
     }
 
-    init(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil) {
+    init(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, seedItemIDs: [String]? = nil) {
         self.podID = podID
         self.strategyID = strategyID
         self.customerID = customerID
@@ -41,6 +42,7 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
         self.sectionName = sectionName
         self.resultID = resultID
         self.analyticsTags = analyticsTags
+        self.seedItemIDs = seedItemIDs
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -81,6 +83,9 @@ struct CIOTrackRecommendationResultClickData: CIORequestData {
         }
         if (self.analyticsTags != nil) {
             dict["analytics_tags"] = self.analyticsTags
+        }
+        if let seedItemIDs = self.seedItemIDs, !seedItemIDs.isEmpty {
+            dict["seed_item_ids"] = seedItemIDs
         }
 
         dict["beacon"] = true
