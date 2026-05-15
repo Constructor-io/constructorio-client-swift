@@ -128,7 +128,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizNextQuestion_WithSingleTypeUsingSingleAnswer() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"]])
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"]], quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID)
         constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -158,7 +158,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizNextQuestion_WithSingleTypeUsingWrongAnswerType() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1", "2"]])
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1", "2"]], quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID)
         constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
 
@@ -173,7 +173,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizNextQuestion_WithMultipleTypeUsingMultipleAnswer() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"]])
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"]], quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID)
         constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -197,7 +197,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizNextQuestion_WithMultipleTypeUsingWrongAnswerType() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["true"]])
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["true"]], quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID)
         constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
 
@@ -212,7 +212,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizNextQuestion_WithCoverTypeUsingCoverAnswer() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"], ["seen"]])
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"], ["seen"]], quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID)
         constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -237,7 +237,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizNextQuestion_WithCoverTypeUsingWrongAnswerType() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"], ["true"]])
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"], ["true"]], quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID)
         constructorClient.getQuizNextQuestion(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
 
@@ -252,7 +252,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizResults() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"], ["true"], ["seen"]])
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"], ["seen"], ["true"]], quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID)
         constructorClient.getQuizResults(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
@@ -276,7 +276,7 @@ class ConstructorIOQuizIntegrationTests: XCTestCase {
     func testGetQuizResults_WithVersionIDAndSessionID() {
         let constructorClient = ConstructorIO(config: ConstructorIOConfig(apiKey: unitTestKey))
         let expectation = XCTestExpectation(description: "Request 200")
-        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"], ["true"], ["seen"]], quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID)
+        let query = CIOQuizQuery(quizID: "test-quiz", answers: [["1"], ["1", "2"], ["seen"], ["true"]], quizVersionID: self.quizVersionID, quizSessionID: self.quizSessionID)
         constructorClient.getQuizResults(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!

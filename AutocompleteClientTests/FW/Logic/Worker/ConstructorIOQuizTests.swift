@@ -7,6 +7,7 @@
 //
 
 import ConstructorAutocomplete
+import OHHTTPStubs
 import XCTest
 
 class ConstructorIOQuizTests: XCTestCase {
@@ -21,7 +22,7 @@ class ConstructorIOQuizTests: XCTestCase {
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        OHHTTPStubs.removeAllStubs()
         super.tearDown()
     }
 
@@ -78,14 +79,14 @@ class ConstructorIOQuizTests: XCTestCase {
         })
         self.wait(for: expectation)
     }
-    
+
     func testQuizResults_WithValidRequest_ReturnsNonNilResponseWithRequestObject() {
         let expectation = self.expectation(description: "Calling Quiz Results with valid parameters should return a non-nil response with the request object.")
 
         let query = CIOQuizQuery(quizID: "test-quiz", answers: [["2"], ["2, 3"]])
 
         let dataToReturn = TestResource.load(name: TestResource.Response.quizResultsJSONFilename)
-        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/results?_dt=\(kRegexTimestamp)&a=2&a=2,3&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(200, data: dataToReturn))
+        stub(regex("https://quizzes.cnstrc.com/v1/quizzes/test-quiz/results?_dt=\(kRegexTimestamp)&a=2&a=2,%203&c=\(kRegexVersion)&i=\(kRegexClientID)&key=ZqXaOfXuBWD4s3XzCI1q&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(200, data: dataToReturn))
 
         self.constructor.getQuizResults(forQuery: query, completionHandler: { response in
             XCTAssertNotNil(response.data?.results, "Calling Quiz Results next with valid parameters should return a non-nil response with request object")
