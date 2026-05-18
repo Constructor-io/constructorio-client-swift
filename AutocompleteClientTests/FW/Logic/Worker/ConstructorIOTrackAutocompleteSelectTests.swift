@@ -54,7 +54,7 @@ class ConstructorIOTrackAutocompleteSelectTests: XCTestCase {
         let itemID = "0123456789"
         let builder = CIOBuilder(expectation: "Calling trackAutocompleteSelect should send a valid request.", builder: http(200))
 
-        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&original_query=co&item_id=0123456789&s=\(kRegexSession)&section=Search%20Suggestions&tr=click&\(TestConstants.defaultSegments)"), builder.create())
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/select?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&item_id=0123456789&key=\(kRegexAutocompleteKey)&original_query=co&s=\(kRegexSession)&section=Search%20Suggestions&tr=click&\(TestConstants.defaultSegments)"), builder.create())
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: searchOriginalQuery, sectionName: searchSectionName, itemID: itemID)
         self.wait(for: builder.expectation)
     }

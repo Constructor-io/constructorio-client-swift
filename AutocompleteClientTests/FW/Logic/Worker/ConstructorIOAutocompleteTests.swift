@@ -7,6 +7,7 @@
 //
 
 import ConstructorAutocomplete
+import OHHTTPStubs
 import XCTest
 
 class ConstructorIOAutocompleteTests: XCTestCase {
@@ -16,6 +17,11 @@ class ConstructorIOAutocompleteTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.constructor = TestConstants.testConstructor()
+    }
+
+    override func tearDown() {
+        OHHTTPStubs.removeAllStubs()
+        super.tearDown()
     }
 
     func testAutocomplete_With200() {

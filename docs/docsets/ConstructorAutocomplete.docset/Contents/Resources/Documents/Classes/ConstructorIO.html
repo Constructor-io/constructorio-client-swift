@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 4.5.0 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 4.6.0 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -1454,6 +1454,18 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>completionHandler</em>
                                 </code>
                               </td>
@@ -1724,6 +1736,18 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>completionHandler</em>
                                 </code>
                               </td>
@@ -1833,6 +1857,18 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the autocomplete section the term came from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>resultID</em>
                                 </code>
                               </td>
@@ -1869,6 +1905,18 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>completionHandler</em>
                                 </code>
                               </td>
@@ -1887,9 +1935,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultsView5podID03numF6Viewed11customerIDs10resultPage0N5Count11sectionName0nI013analyticsTags17completionHandlerySS_SiSgSaySSGSgA2NSSSgAQSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/trackRecommendationResultsView(podID:numResultsViewed:customerIDs:resultPage:resultCount:sectionName:resultID:analyticsTags:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultsView5podID03numF6Viewed11customerIDs10resultPage0N5Count11sectionName0nI013analyticsTags17completionHandlerySS_SiSgSaySSGSgA2NSSSgAQSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackRecommendationResultsView(podID:<wbr>numResultsViewed:<wbr>customerIDs:<wbr>resultPage:<wbr>resultCount:<wbr>sectionName:<wbr>resultID:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultsView5podID03numF6Viewed11customerIDs10resultPage0N5Count11sectionName0nI013analyticsTags08seedItemM017completionHandlerySS_SiSgSaySSGSgA2OSSSgARSDyS2SGSgAQyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackRecommendationResultsView(podID:numResultsViewed:customerIDs:resultPage:resultCount:sectionName:resultID:analyticsTags:seedItemIDs:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultsView5podID03numF6Viewed11customerIDs10resultPage0N5Count11sectionName0nI013analyticsTags08seedItemM017completionHandlerySS_SiSgSaySSGSgA2OSSSgARSDyS2SGSgAQyAA20TrackingTaskResponseCcSgtF">trackRecommendationResultsView(podID:<wbr>numResultsViewed:<wbr>customerIDs:<wbr>resultPage:<wbr>resultCount:<wbr>sectionName:<wbr>resultID:<wbr>analyticsTags:<wbr>seedItemIDs:<wbr>completionHandler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1899,7 +1947,7 @@
                       <div class="abstract">
                         <p>Track when a user views a pod of recommendation results</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">],</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">],</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">,</span> <span class="nv">seedItemIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"seed-item-123"</span><span class="p">])</span>
 </code></pre>
 
                       </div>
@@ -1907,7 +1955,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackRecommendationResultsView</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">seedItemIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1959,7 +2007,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The current page that recommedantion result is on</p>
+                                  <p>The current page that recommendation result is on</p>
                                 </div>
                               </td>
                             </tr>
@@ -2002,6 +2050,30 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>seedItemIDs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The item ID(s) used as seeds when generating recommendations for this pod</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>completionHandler</em>
                                 </code>
                               </td>
@@ -2020,9 +2092,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultClick5podID08strategyI008customerI009variationI017numResultsPerPage06resultP00Q5Count0q10PositionOnP011sectionName0qI013analyticsTags17completionHandlerySS_SSSgSSAQSiSgA3r2QSDyS2SGSgyAA20TrackingTaskResponseCcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/trackRecommendationResultClick(podID:strategyID:customerID:variationID:numResultsPerPage:resultPage:resultCount:resultPositionOnPage:sectionName:resultID:analyticsTags:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultClick5podID08strategyI008customerI009variationI017numResultsPerPage06resultP00Q5Count0q10PositionOnP011sectionName0qI013analyticsTags17completionHandlerySS_SSSgSSAQSiSgA3r2QSDyS2SGSgyAA20TrackingTaskResponseCcSgtF">trackRecommendationResultClick(podID:<wbr>strategyID:<wbr>customerID:<wbr>variationID:<wbr>numResultsPerPage:<wbr>resultPage:<wbr>resultCount:<wbr>resultPositionOnPage:<wbr>sectionName:<wbr>resultID:<wbr>analyticsTags:<wbr>completionHandler:<wbr>)</a>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultClick5podID08strategyI008customerI009variationI017numResultsPerPage06resultP00Q5Count0q10PositionOnP011sectionName0qI013analyticsTags11seedItemIDs17completionHandlerySS_SSSgSSARSiSgA3s2RSDyS2SGSgSaySSGSgyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackRecommendationResultClick(podID:strategyID:customerID:variationID:numResultsPerPage:resultPage:resultCount:resultPositionOnPage:sectionName:resultID:analyticsTags:seedItemIDs:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC30trackRecommendationResultClick5podID08strategyI008customerI009variationI017numResultsPerPage06resultP00Q5Count0q10PositionOnP011sectionName0qI013analyticsTags11seedItemIDs17completionHandlerySS_SSSgSSARSiSgA3s2RSDyS2SGSgSaySSGSgyAA20TrackingTaskResponseCcSgtF">trackRecommendationResultClick(podID:<wbr>strategyID:<wbr>customerID:<wbr>variationID:<wbr>numResultsPerPage:<wbr>resultPage:<wbr>resultCount:<wbr>resultPositionOnPage:<wbr>sectionName:<wbr>resultID:<wbr>analyticsTags:<wbr>seedItemIDs:<wbr>completionHandler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2032,7 +2104,7 @@
                       <div class="abstract">
                         <p>Track when a user clicks an item that appears within a list of recommendation results</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultClick</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">strategyID</span><span class="p">:</span> <span class="s">"best_sellers"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"P183021"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7281930"</span><span class="p">,</span> <span class="nv">numResultsPerPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackRecommendationResultClick</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="s">"pdp_best_sellers"</span><span class="p">,</span> <span class="nv">strategyID</span><span class="p">:</span> <span class="s">"best_sellers"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"P183021"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7281930"</span><span class="p">,</span> <span class="nv">numResultsPerPage</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">,</span> <span class="nv">seedItemIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"seed-item-123"</span><span class="p">])</span>
 </code></pre>
 
                       </div>
@@ -2040,7 +2112,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackRecommendationResultClick</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">strategyID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">numResultsPerPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackRecommendationResultClick</span><span class="p">(</span><span class="nv">podID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">strategyID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">numResultsPerPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultPositionOnPage</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">resultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">analyticsTags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">seedItemIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -2116,7 +2188,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The current page that recommedantion result is on</p>
+                                  <p>The current page that recommendation result is on</p>
                                 </div>
                               </td>
                             </tr>
@@ -2147,12 +2219,48 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the autocomplete section the term came from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>resultID</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
                                   <p>Identifier of result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>seedItemIDs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The item ID(s) used as seeds when generating recommendations for this pod</p>
                                 </div>
                               </td>
                             </tr>
@@ -2268,6 +2376,18 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the autocomplete section the term came from (defaults to &ldquo;products&rdquo;)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>conversionType</em>
                                 </code>
                               </td>
@@ -2298,6 +2418,18 @@
                               <td>
                                 <div>
                                   <p>Specify if type is a custom conversion type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
                                 </div>
                               </td>
                             </tr>
@@ -2389,6 +2521,30 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the autocomplete section the term came from (defaults to &ldquo;products&rdquo;)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>completionHandler</em>
                                 </code>
                               </td>
@@ -2468,6 +2624,30 @@
                               <td>
                                 <div>
                                   <p>The order identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the autocomplete section the term came from (defaults to &ldquo;products&rdquo;)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
                                 </div>
                               </td>
                             </tr>
@@ -2565,6 +2745,18 @@
                               <td>
                                 <div>
                                   <p>The name of the section the product is in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
                                 </div>
                               </td>
                             </tr>
@@ -2686,6 +2878,30 @@
                               <td>
                                 <div>
                                   <p>The total number of results</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the autocomplete section the results came from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
                                 </div>
                               </td>
                             </tr>
@@ -2873,6 +3089,30 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the autocomplete section the result came from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>completionHandler</em>
                                 </code>
                               </td>
@@ -3036,6 +3276,30 @@
                               <td>
                                 <div>
                                   <p>The display name for the custom conversion type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the autocomplete section the result came from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>analyticsTags</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Additional analytics tags to pass</p>
                                 </div>
                               </td>
                             </tr>
@@ -3246,8 +3510,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-03-19)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-04-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
