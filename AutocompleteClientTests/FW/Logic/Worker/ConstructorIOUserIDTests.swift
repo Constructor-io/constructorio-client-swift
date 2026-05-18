@@ -7,6 +7,7 @@
 //
 
 import ConstructorAutocomplete
+import OHHTTPStubs
 import XCTest
 
 class ConstructorIOUserIDTests: XCTestCase {
@@ -17,6 +18,11 @@ class ConstructorIOUserIDTests: XCTestCase {
         super.setUp()
         self.constructor = TestConstants.testConstructor()
         self.constructor.userID = "abcdefg"
+    }
+
+    override func tearDown() {
+        OHHTTPStubs.removeAllStubs()
+        super.tearDown()
     }
 
     func testAutocomplete() {

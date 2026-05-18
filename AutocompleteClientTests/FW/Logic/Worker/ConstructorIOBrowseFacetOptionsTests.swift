@@ -7,6 +7,7 @@
 //
 
 import ConstructorAutocomplete
+import OHHTTPStubs
 import XCTest
 
 class ConstructorIOBrowseFacetOptionsTests: XCTestCase {
@@ -19,7 +20,7 @@ class ConstructorIOBrowseFacetOptionsTests: XCTestCase {
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        OHHTTPStubs.removeAllStubs()
         super.tearDown()
     }
 
