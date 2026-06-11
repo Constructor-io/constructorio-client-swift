@@ -380,6 +380,30 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     /**
+     Track when items are viewably impressed per MRC guidelines (50% visible for 1 second)
+
+     - Parameters:
+        - items: The list of items that were impressed
+        - searchTerm: Optional search term associated with the impression
+        - filterName: Optional filter name associated with the impression
+        - filterValue: Optional filter value associated with the impression
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackResultsImpressionView(
+         items: [CIOResultItem(itemID: "item-123", itemName: "Blue Widget")],
+         searchTerm: "widget"
+     )
+     ```
+     */
+    public func trackResultsImpressionView(items: [CIOResultItem], searchTerm: String? = nil, filterName: String? = nil, filterValue: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let data = CIOTrackResultsImpressionViewData(items: items, searchTerm: searchTerm, filterName: filterName, filterValue: filterValue)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
      Track when a user selects (clicks, or navigates to via keyboard) a result that appears within autocomplete
 
      - Parameters:

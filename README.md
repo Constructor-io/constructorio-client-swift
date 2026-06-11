@@ -342,6 +342,17 @@ ConstructorIo.trackMediaImpressionView(bannerAdId: "banner-ad-id", placementId: 
 ConstructorIo.trackMediaImpressionClick(bannerAdId: "banner-ad-id", placementId: "placement-id")
 ```
 
+### Results Impression Events
+
+```swift
+// Track when items are viewably impressed (50% visible for 1 second per MRC guidelines)
+let items = [
+  CIOResultItem(itemID: "item-123", itemName: "Blue Widget"),
+  CIOResultItem(itemID: "item-456", itemName: "Red Widget", variationID: "var-789")
+]
+constructorIO.trackResultsImpressionView(items: items, searchTerm: "widget")
+```
+
 ### Conversion Events
 
 ```swift

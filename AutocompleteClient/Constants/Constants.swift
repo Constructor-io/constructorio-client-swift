@@ -294,6 +294,10 @@ struct Constants {
         static let format = "%@/v2/ad_behavioral_action/display_ad_click"
     }
 
+    struct TrackResultsImpressionView {
+        static let format = "%@/v2/behavioral_action/impression_view"
+    }
+
     struct Logging {
         private static let prefix = "[ConstructorIO]:"
         private static let format: (_ message: String) -> String = { message in return "\(Logging.prefix) \(message)" }
