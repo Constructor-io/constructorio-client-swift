@@ -23,12 +23,13 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
     let customerIDs: [String]?
     let analyticsTags: [String: String]?
     let seedItemIDs: [String]?
+    let items: [CIOItem]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackRecommendationResultsView.format, baseURL)
     }
 
-    init(podID: String, numResultsViewed: Int? = nil, customerIDs: [String]? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, url: String = "Not Available", analyticsTags: [String: String]? = nil, seedItemIDs: [String]? = nil) {
+    init(podID: String, numResultsViewed: Int? = nil, customerIDs: [String]? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, url: String = "Not Available", analyticsTags: [String: String]? = nil, seedItemIDs: [String]? = nil, items: [CIOItem]? = nil) {
         self.podID = podID
         self.url = url
         self.numResultsViewed = numResultsViewed
@@ -39,6 +40,7 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
         self.customerIDs = customerIDs
         self.analyticsTags = analyticsTags
         self.seedItemIDs = seedItemIDs
+        self.items = items
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {}
@@ -68,10 +70,25 @@ struct CIOTrackRecommendationResultsViewData: CIORequestData {
         if self.resultID != nil {
             dict["result_id"] = self.resultID
         }
-        if let loadedCustomerIDs = self.customerIDs {
-            let items = loadedCustomerIDs.map { ["item_id": $0] }
-            dict["items"] = items
-       }
+        if let providedItems = self.items {
+            let itemsArray = providedItems.map { item -> [String: String] in
+                var obj: [String: String] = ["item_id": item.customerID]
+                if let variationID = item.variationID {
+                    obj["variation_id"] = variationID
+                }
+                if let campaignID = item.slCampaignID {
+                    obj["sl_campaign_id"] = campaignID
+                }
+                if let campaignOwner = item.slCampaignOwner {
+                    obj["sl_campaign_owner"] = campaignOwner
+                }
+                return obj
+            }
+            dict["items"] = itemsArray
+        } else if let loadedCustomerIDs = self.customerIDs {
+            let itemsArray = loadedCustomerIDs.map { ["item_id": $0] }
+            dict["items"] = itemsArray
+        }
         if (self.analyticsTags != nil) {
             dict["analytics_tags"] = self.analyticsTags
         }

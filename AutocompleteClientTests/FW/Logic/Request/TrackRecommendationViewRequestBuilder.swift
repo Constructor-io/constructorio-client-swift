@@ -69,6 +69,56 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         XCTAssertEqual(loadedItems[0]["item_id"], customerIDs[0])
     }
 
+    func testTrackRecommendationResultsViewBuilder_WithItemsParam() {
+        let items = [
+            CIOItem(customerID: "custID1", variationID: "var1"),
+            CIOItem(customerID: "custID2", variationID: "var2")
+        ]
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, items: items)
+        builder.build(trackData: recommendationViewData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedItems = payload?["items"] as? [[String: Any]] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedItems.count, 2)
+        XCTAssertEqual(loadedItems[0]["item_id"] as? String, items[0].customerID)
+        XCTAssertEqual(loadedItems[0]["variation_id"] as? String, items[0].variationID)
+        XCTAssertEqual(loadedItems[1]["item_id"] as? String, items[1].customerID)
+        XCTAssertEqual(loadedItems[1]["variation_id"] as? String, items[1].variationID)
+    }
+
+    func testTrackRecommendationResultsViewBuilder_WithSponsoredListingsParams() {
+        let slCampaignID = "cmp456"
+        let slCampaignOwner = "owner789"
+        let items = [CIOItem(customerID: "custID1", variationID: nil, quantity: nil, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)]
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, items: items)
+        builder.build(trackData: recommendationViewData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedItems = payload?["items"] as? [[String: Any]] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedItems.count, 1)
+        XCTAssertEqual(loadedItems[0]["sl_campaign_id"] as? String, slCampaignID)
+        XCTAssertEqual(loadedItems[0]["sl_campaign_owner"] as? String, slCampaignOwner)
+    }
+
+    func testTrackRecommendationResultsViewBuilder_WithItemsParamPreferredOverCustomerIDs() {
+        let customerIDs = ["custID1", "custID2", "custID3"]
+        let items = [CIOItem(customerID: "itemID1", variationID: "var1")]
+        let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, customerIDs: customerIDs, items: items)
+        builder.build(trackData: recommendationViewData)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedItems = payload?["items"] as? [[String: Any]] ?? []
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(loadedItems.count, 1)
+        XCTAssertEqual(loadedItems[0]["item_id"] as? String, items[0].customerID)
+        XCTAssertEqual(loadedItems[0]["variation_id"] as? String, items[0].variationID)
+    }
+
     func testTrackRecommendationResultsViewBuilder_WithSingleSeedItemID() {
         let seedItemIDs = ["seed-item-123"]
         let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, seedItemIDs: seedItemIDs)
