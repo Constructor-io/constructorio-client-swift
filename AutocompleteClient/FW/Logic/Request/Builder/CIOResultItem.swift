@@ -12,11 +12,11 @@ import Foundation
  Struct encapsulating a result item for viewable impression tracking
  */
 public struct CIOResultItem {
-    var itemID: String
-    var itemName: String?
-    var variationID: String?
-    var slCampaignID: String?
-    var slCampaignOwner: String?
+    let itemID: String
+    let itemName: String?
+    let variationID: String?
+    let slCampaignID: String?
+    let slCampaignOwner: String?
 
     public init(itemID: String, itemName: String? = nil, variationID: String? = nil,
                 slCampaignID: String? = nil, slCampaignOwner: String? = nil) {

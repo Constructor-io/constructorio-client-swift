@@ -397,7 +397,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      )
      ```
      */
-    public func trackResultsImpressionView(items: [CIOResultItem], searchTerm: String? = nil, filterName: String? = nil, filterValue: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackResultsImpressionView(
+        items: [CIOResultItem],
+        searchTerm: String? = nil,
+        filterName: String? = nil,
+        filterValue: String? = nil,
+        completionHandler: TrackingCompletionHandler? = nil
+    ) {
         let data = CIOTrackResultsImpressionViewData(items: items, searchTerm: searchTerm, filterName: filterName, filterValue: filterValue)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
