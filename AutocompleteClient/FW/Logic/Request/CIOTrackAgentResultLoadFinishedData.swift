@@ -15,7 +15,7 @@ struct CIOTrackAgentResultLoadFinishedData: CIORequestData {
 
     let intent: String
     let searchResultCount: Int
-    var sectionName: String?
+    let sectionName: String?
     let intentResultID: String?
 
     func url(with baseURL: String) -> String {

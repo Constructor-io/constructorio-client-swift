@@ -32,6 +32,7 @@ class TrackAgentSubmitRequestBuilderTests: XCTestCase {
         XCTAssertTrue(request.url!.absoluteString.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/assistant_submit?"))
         XCTAssertEqual(payload?["intent"] as? String, intent)
         XCTAssertNil(payload?["section"])
+        XCTAssertEqual(payload?["beacon"] as? Bool, true)
         XCTAssertEqual(payload?["key"] as? String, testACKey)
         XCTAssertTrue((payload?["c"] as? String)!.contains("cioios-"))
     }

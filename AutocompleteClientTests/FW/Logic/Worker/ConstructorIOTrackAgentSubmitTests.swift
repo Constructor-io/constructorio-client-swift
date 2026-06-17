@@ -32,6 +32,16 @@ class ConstructorIOTrackAgentSubmitTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackAgentSubmit_WithSectionFromConfig() {
+        let sectionName = "section321"
+        let builder = CIOBuilder(expectation: "Calling trackAgentSubmit should send a valid request with a section name from config.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/assistant_submit?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
+        let constructor = TestConstants.testConstructor(config)
+        constructor.trackAgentSubmit(intent: intent)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackAgentSubmit_With400() {
         let expectation = self.expectation(description: "Calling trackAgentSubmit with 400 should return badRequest CIOError.")
         let builder = CIOBuilder(expectation: "Calling trackAgentSubmit should send a valid request", builder: http(400))

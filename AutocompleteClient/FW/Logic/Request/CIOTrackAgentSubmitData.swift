@@ -14,7 +14,7 @@ import Foundation
 struct CIOTrackAgentSubmitData: CIORequestData {
 
     let intent: String
-    var sectionName: String?
+    let sectionName: String?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackAgentSubmit.format, baseURL)

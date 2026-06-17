@@ -14,7 +14,7 @@ import Foundation
 struct CIOTrackAgentResultLoadStartedData: CIORequestData {
 
     let intent: String
-    var sectionName: String?
+    let sectionName: String?
     let intentResultID: String?
 
     func url(with baseURL: String) -> String {

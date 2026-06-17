@@ -40,7 +40,9 @@ class TrackAgentResultClickRequestBuilderTests: XCTestCase {
         XCTAssertNil(payload?["item_id"])
         XCTAssertNil(payload?["item_name"])
         XCTAssertNil(payload?["variation_id"])
+        XCTAssertNil(payload?["section"])
         XCTAssertNil(payload?["intent_result_id"])
+        XCTAssertEqual(payload?["beacon"] as? Bool, true)
     }
 
     func testTrackAgentResultClickBuilder_WithOptionalParams() {

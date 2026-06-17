@@ -36,6 +36,7 @@ class TrackAgentResultLoadFinishedRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["search_result_count"] as? Int, searchResultCount)
         XCTAssertNil(payload?["section"])
         XCTAssertNil(payload?["intent_result_id"])
+        XCTAssertEqual(payload?["beacon"] as? Bool, true)
     }
 
     func testTrackAgentResultLoadFinishedBuilder_WithOptionalParams() {

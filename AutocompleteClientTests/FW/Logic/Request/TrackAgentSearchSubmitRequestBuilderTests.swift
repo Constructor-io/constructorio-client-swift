@@ -38,6 +38,8 @@ class TrackAgentSearchSubmitRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["search_result_id"] as? String, searchResultID)
         XCTAssertNil(payload?["section"])
         XCTAssertNil(payload?["intent_result_id"])
+        XCTAssertEqual(payload?["beacon"] as? Bool, true)
+        // user_input/group_id exist in the JS client typings but are intentionally never sent; guard against regression.
         XCTAssertNil(payload?["user_input"])
         XCTAssertNil(payload?["group_id"])
     }

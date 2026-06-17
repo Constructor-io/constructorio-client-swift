@@ -17,7 +17,7 @@ struct CIOTrackAgentResultViewData: CIORequestData {
     let searchResultID: String
     let numResultsViewed: Int
     let items: [CIOItem]?
-    var sectionName: String?
+    let sectionName: String?
     let intentResultID: String?
 
     func url(with baseURL: String) -> String {

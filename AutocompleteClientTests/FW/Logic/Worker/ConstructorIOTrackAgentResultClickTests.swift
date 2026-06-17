@@ -34,6 +34,16 @@ class ConstructorIOTrackAgentResultClickTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackAgentResultClick_WithSectionFromConfig() {
+        let sectionName = "section321"
+        let builder = CIOBuilder(expectation: "Calling trackAgentResultClick should send a valid request with a section name from config.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/assistant_search_result_click?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: sectionName)
+        let constructor = TestConstants.testConstructor(config)
+        constructor.trackAgentResultClick(intent: intent, searchResultID: searchResultID, itemID: itemID)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackAgentResultClick_With400() {
         let expectation = self.expectation(description: "Calling trackAgentResultClick with 400 should return badRequest CIOError.")
         let builder = CIOBuilder(expectation: "Calling trackAgentResultClick should send a valid request", builder: http(400))

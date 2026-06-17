@@ -34,6 +34,7 @@ class TrackAgentResultLoadStartedRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["intent"] as? String, intent)
         XCTAssertNil(payload?["section"])
         XCTAssertNil(payload?["intent_result_id"])
+        XCTAssertEqual(payload?["beacon"] as? Bool, true)
     }
 
     func testTrackAgentResultLoadStartedBuilder_WithOptionalParams() {

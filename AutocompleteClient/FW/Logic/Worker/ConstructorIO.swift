@@ -808,7 +808,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      - Parameters:
         - intent: The intent the user submitted
-        - sectionName: The name of the autocomplete section the term came from
+        - sectionName: The name of the section the results are associated with
         - completionHandler: The callback to execute on completion.
 
      ### Usage Example: ###
@@ -817,7 +817,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackAgentSubmit(intent: String, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackAgentSubmitData(intent: intent, sectionName: sectionName)
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentSubmitData(intent: intent, sectionName: section)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -827,7 +828,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      - Parameters:
         - intent: The intent the user submitted
-        - sectionName: The name of the autocomplete section the term came from
+        - sectionName: The name of the section the results are associated with
         - intentResultID: Identifier of the intent result set
         - completionHandler: The callback to execute on completion.
 
@@ -837,7 +838,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackAgentResultLoadStarted(intent: String, sectionName: String? = nil, intentResultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackAgentResultLoadStartedData(intent: intent, sectionName: sectionName, intentResultID: intentResultID)
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentResultLoadStartedData(intent: intent, sectionName: section, intentResultID: intentResultID)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -847,8 +849,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      - Parameters:
         - intent: The intent the user submitted
-        - searchResultCount: The number of results that were loaded
-        - sectionName: The name of the autocomplete section the term came from
+        - searchResultCount: The total number of results that were loaded
+        - sectionName: The name of the section the results are associated with
         - intentResultID: Identifier of the intent result set
         - completionHandler: The callback to execute on completion.
 
@@ -858,7 +860,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackAgentResultLoadFinished(intent: String, searchResultCount: Int, sectionName: String? = nil, intentResultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackAgentResultLoadFinishedData(intent: intent, searchResultCount: searchResultCount, sectionName: sectionName, intentResultID: intentResultID)
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentResultLoadFinishedData(intent: intent, searchResultCount: searchResultCount, sectionName: section, intentResultID: intentResultID)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -872,7 +875,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - itemID: The item ID
         - itemName: The item name
         - variationID: The variation ID
-        - sectionName: The name of the autocomplete section the term came from
+        - sectionName: The name of the section the results are associated with
         - intentResultID: Identifier of the intent result set
         - completionHandler: The callback to execute on completion.
 
@@ -896,7 +899,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - searchResultID: Identifier of the search result set
         - numResultsViewed: The count of results that is visible to the user
         - items: The items that were viewed (capped at 100)
-        - sectionName: The name of the autocomplete section the term came from
+        - sectionName: The name of the section the results are associated with
         - intentResultID: Identifier of the intent result set
         - completionHandler: The callback to execute on completion.
 
@@ -919,7 +922,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - intent: The intent the user submitted
         - searchTerm: The search term that was submitted
         - searchResultID: Identifier of the search result set
-        - sectionName: The name of the autocomplete section the term came from
+        - sectionName: The name of the section the results are associated with
         - intentResultID: Identifier of the intent result set
         - completionHandler: The callback to execute on completion.
 
@@ -929,7 +932,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackAgentSearchSubmit(intent: String, searchTerm: String, searchResultID: String, sectionName: String? = nil, intentResultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackAgentSearchSubmitData(intent: intent, searchTerm: searchTerm, searchResultID: searchResultID, sectionName: sectionName, intentResultID: intentResultID)
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentSearchSubmitData(intent: intent, searchTerm: searchTerm, searchResultID: searchResultID, sectionName: section, intentResultID: intentResultID)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }

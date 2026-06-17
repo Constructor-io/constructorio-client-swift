@@ -37,12 +37,14 @@ class TrackAgentResultViewRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["search_result_id"] as? String, searchResultID)
         XCTAssertEqual(payload?["num_results_viewed"] as? Int, numResultsViewed)
         XCTAssertNil(payload?["items"])
+        XCTAssertNil(payload?["section"])
         XCTAssertNil(payload?["intent_result_id"])
+        XCTAssertEqual(payload?["beacon"] as? Bool, true)
     }
 
     func testTrackAgentResultViewBuilder_WithItems() {
         let items = [
-            CIOItem(customerID: "item1", variationID: "var1"),
+            CIOItem(customerID: "item1", variationID: "var1", slCampaignID: "camp1", slCampaignOwner: "owner1"),
             CIOItem(customerID: "item2")
         ]
         let tracker = CIOTrackAgentResultViewData(intent: intent, searchResultID: searchResultID, numResultsViewed: numResultsViewed, items: items, sectionName: sectionName, intentResultID: intentResultID)
@@ -58,8 +60,12 @@ class TrackAgentResultViewRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payloadItems.count, 2)
         XCTAssertEqual(payloadItems[0]["item_id"], "item1")
         XCTAssertEqual(payloadItems[0]["variation_id"], "var1")
+        XCTAssertEqual(payloadItems[0]["sl_campaign_id"], "camp1")
+        XCTAssertEqual(payloadItems[0]["sl_campaign_owner"], "owner1")
         XCTAssertEqual(payloadItems[1]["item_id"], "item2")
         XCTAssertNil(payloadItems[1]["variation_id"])
+        XCTAssertNil(payloadItems[1]["sl_campaign_id"])
+        XCTAssertNil(payloadItems[1]["sl_campaign_owner"])
     }
 
     func testTrackAgentResultViewBuilder_CapsItemsAt100() {
@@ -71,6 +77,19 @@ class TrackAgentResultViewRequestBuilderTests: XCTestCase {
 
         let payloadItems = payload?["items"] as? [[String: String]] ?? []
         XCTAssertEqual(payloadItems.count, 100, "items should be capped at 100")
+        XCTAssertEqual(payloadItems[0]["item_id"], "item1")
+        XCTAssertEqual(payloadItems[99]["item_id"], "item100")
+    }
+
+    func testTrackAgentResultViewBuilder_WithExactly100Items() {
+        let items = (1...100).map { CIOItem(customerID: "item\($0)") }
+        let tracker = CIOTrackAgentResultViewData(intent: intent, searchResultID: searchResultID, numResultsViewed: numResultsViewed, items: items)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        let payloadItems = payload?["items"] as? [[String: String]] ?? []
+        XCTAssertEqual(payloadItems.count, 100, "exactly 100 items should pass through unchanged")
         XCTAssertEqual(payloadItems[0]["item_id"], "item1")
         XCTAssertEqual(payloadItems[99]["item_id"], "item100")
     }
