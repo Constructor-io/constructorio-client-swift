@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 4.6.1 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 4.7.0 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -3410,6 +3410,624 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC16trackAgentSubmit6intent11sectionName17completionHandlerySS_SSSgyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackAgentSubmit(intent:sectionName:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC16trackAgentSubmit6intent11sectionName17completionHandlerySS_SSSgyAA20TrackingTaskResponseCcSgtF">trackAgentSubmit(intent:<wbr>sectionName:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user submits a query to the agent (Agent Search Assistant)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentSubmit</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me healthy snacks"</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackAgentSubmit</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intent the user submitted</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the section the results are associated with</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC27trackAgentResultLoadStarted6intent11sectionName0iF2ID17completionHandlerySS_SSSgAIyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackAgentResultLoadStarted(intent:sectionName:intentResultID:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC27trackAgentResultLoadStarted6intent11sectionName0iF2ID17completionHandlerySS_SSSgAIyAA20TrackingTaskResponseCcSgtF">trackAgentResultLoadStarted(intent:<wbr>sectionName:<wbr>intentResultID:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when the agent begins loading results for a submitted intent (Agent Search Assistant)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentResultLoadStarted</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me healthy snacks"</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackAgentResultLoadStarted</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intent the user submitted</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the section the results are associated with</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intentResultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of the intent result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC28trackAgentResultLoadFinished6intent06searchF5Count11sectionName0iF2ID17completionHandlerySS_SiSSSgAJyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackAgentResultLoadFinished(intent:searchResultCount:sectionName:intentResultID:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC28trackAgentResultLoadFinished6intent06searchF5Count11sectionName0iF2ID17completionHandlerySS_SiSSSgAJyAA20TrackingTaskResponseCcSgtF">trackAgentResultLoadFinished(intent:<wbr>searchResultCount:<wbr>sectionName:<wbr>intentResultID:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when the agent finishes loading results for a submitted intent (Agent Search Assistant)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentResultLoadFinished</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me healthy snacks"</span><span class="p">,</span> <span class="nv">searchResultCount</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackAgentResultLoadFinished</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">searchResultCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intent the user submitted</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>searchResultCount</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The total number of results that were loaded</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the section the results are associated with</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intentResultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of the intent result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC21trackAgentResultClick6intent06searchF2ID04itemJ00K4Name09variationJ007sectionL00hfJ017completionHandlerySS_S2SSgA4MyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackAgentResultClick(intent:searchResultID:itemID:itemName:variationID:sectionName:intentResultID:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC21trackAgentResultClick6intent06searchF2ID04itemJ00K4Name09variationJ007sectionL00hfJ017completionHandlerySS_S2SSgA4MyAA20TrackingTaskResponseCcSgtF">trackAgentResultClick(intent:<wbr>searchResultID:<wbr>itemID:<wbr>itemName:<wbr>variationID:<wbr>sectionName:<wbr>intentResultID:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user clicks a result returned by the agent (Agent Search Assistant)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentResultClick</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me healthy snacks"</span><span class="p">,</span> <span class="nv">searchResultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">,</span> <span class="nv">itemID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Trail Mix"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7654321-BA-738"</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackAgentResultClick</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">searchResultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">itemID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intent the user submitted</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>searchResultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of the search result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>itemID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The item ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>itemName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The item name</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>variationID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The variation ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the section the results are associated with</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intentResultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of the intent result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC20trackAgentResultView6intent06searchF2ID16numResultsViewed5items11sectionName0hfJ017completionHandlerySS_SSSiSayAA7CIOItemVGSgSSSgAPyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackAgentResultView(intent:searchResultID:numResultsViewed:items:sectionName:intentResultID:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC20trackAgentResultView6intent06searchF2ID16numResultsViewed5items11sectionName0hfJ017completionHandlerySS_SSSiSayAA7CIOItemVGSgSSSgAPyAA20TrackingTaskResponseCcSgtF">trackAgentResultView(intent:<wbr>searchResultID:<wbr>numResultsViewed:<wbr>items:<wbr>sectionName:<wbr>intentResultID:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user views results returned by the agent (Agent Search Assistant)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentResultView</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me healthy snacks"</span><span class="p">,</span> <span class="nv">searchResultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">)])</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackAgentResultView</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">searchResultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intent the user submitted</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>searchResultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of the search result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>numResultsViewed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The count of results that is visible to the user</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>items</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The items that were viewed (capped at 100)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the section the results are associated with</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intentResultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of the intent result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC22trackAgentSearchSubmit6intent10searchTerm0I8ResultID11sectionName0hkL017completionHandlerySS_S3SSgAKyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackAgentSearchSubmit(intent:searchTerm:searchResultID:sectionName:intentResultID:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC22trackAgentSearchSubmit6intent10searchTerm0I8ResultID11sectionName0hkL017completionHandlerySS_S3SSgAKyAA20TrackingTaskResponseCcSgtF">trackAgentSearchSubmit(intent:<wbr>searchTerm:<wbr>searchResultID:<wbr>sectionName:<wbr>intentResultID:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user submits a search from within an agent result (Agent Search Assistant)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentSearchSubmit</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me healthy snacks"</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"trail mix"</span><span class="p">,</span> <span class="nv">searchResultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackAgentSearchSubmit</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">searchResultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intent the user submitted</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>searchTerm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The search term that was submitted</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>searchResultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of the search result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sectionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the section the results are associated with</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intentResultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of the intent result set</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:23ConstructorAutocomplete0A2IOC11setClientId8clientIDySS_tF"></a>
                     <a name="//apple_ref/swift/Method/setClientId(clientID:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC11setClientId8clientIDySS_tF">setClientId(clientID:<wbr>)</a>
@@ -3510,7 +4128,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-04-28)</p>
+          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-06-29)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
