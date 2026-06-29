@@ -804,6 +804,141 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     /**
+     Track when a user submits a query to the agent (Agent Search Assistant)
+
+     - Parameters:
+        - intent: The intent the user submitted
+        - sectionName: The name of the section the results are associated with
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackAgentSubmit(intent: "show me healthy snacks")
+     ```
+     */
+    public func trackAgentSubmit(intent: String, sectionName: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentSubmitData(intent: intent, sectionName: section)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when the agent begins loading results for a submitted intent (Agent Search Assistant)
+
+     - Parameters:
+        - intent: The intent the user submitted
+        - sectionName: The name of the section the results are associated with
+        - intentResultID: Identifier of the intent result set
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackAgentResultLoadStarted(intent: "show me healthy snacks", intentResultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+     ```
+     */
+    public func trackAgentResultLoadStarted(intent: String, sectionName: String? = nil, intentResultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentResultLoadStartedData(intent: intent, sectionName: section, intentResultID: intentResultID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when the agent finishes loading results for a submitted intent (Agent Search Assistant)
+
+     - Parameters:
+        - intent: The intent the user submitted
+        - searchResultCount: The total number of results that were loaded
+        - sectionName: The name of the section the results are associated with
+        - intentResultID: Identifier of the intent result set
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackAgentResultLoadFinished(intent: "show me healthy snacks", searchResultCount: 25, intentResultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+     ```
+     */
+    public func trackAgentResultLoadFinished(intent: String, searchResultCount: Int, sectionName: String? = nil, intentResultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentResultLoadFinishedData(intent: intent, searchResultCount: searchResultCount, sectionName: section, intentResultID: intentResultID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user clicks a result returned by the agent (Agent Search Assistant)
+
+     - Parameters:
+        - intent: The intent the user submitted
+        - searchResultID: Identifier of the search result set
+        - itemID: The item ID
+        - itemName: The item name
+        - variationID: The variation ID
+        - sectionName: The name of the section the results are associated with
+        - intentResultID: Identifier of the intent result set
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackAgentResultClick(intent: "show me healthy snacks", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2", itemID: "7654321-BA", itemName: "Trail Mix", variationID: "7654321-BA-738")
+     ```
+     */
+    public func trackAgentResultClick(intent: String, searchResultID: String, itemID: String? = nil, itemName: String? = nil, variationID: String? = nil, sectionName: String? = nil, intentResultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentResultClickData(intent: intent, searchResultID: searchResultID, itemID: itemID, itemName: itemName, variationID: variationID, sectionName: section, intentResultID: intentResultID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user views results returned by the agent (Agent Search Assistant)
+
+     - Parameters:
+        - intent: The intent the user submitted
+        - searchResultID: Identifier of the search result set
+        - numResultsViewed: The count of results that is visible to the user
+        - items: The items that were viewed (capped at 100)
+        - sectionName: The name of the section the results are associated with
+        - intentResultID: Identifier of the intent result set
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackAgentResultView(intent: "show me healthy snacks", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2", numResultsViewed: 5, items: [CIOItem(customerID: "7654321-BA")])
+     ```
+     */
+    public func trackAgentResultView(intent: String, searchResultID: String, numResultsViewed: Int, items: [CIOItem]? = nil, sectionName: String? = nil, intentResultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentResultViewData(intent: intent, searchResultID: searchResultID, numResultsViewed: numResultsViewed, items: items, sectionName: section, intentResultID: intentResultID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user submits a search from within an agent result (Agent Search Assistant)
+
+     - Parameters:
+        - intent: The intent the user submitted
+        - searchTerm: The search term that was submitted
+        - searchResultID: Identifier of the search result set
+        - sectionName: The name of the section the results are associated with
+        - intentResultID: Identifier of the intent result set
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackAgentSearchSubmit(intent: "show me healthy snacks", searchTerm: "trail mix", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2")
+     ```
+     */
+    public func trackAgentSearchSubmit(intent: String, searchTerm: String, searchResultID: String, sectionName: String? = nil, intentResultID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackAgentSearchSubmitData(intent: intent, searchTerm: searchTerm, searchResultID: searchResultID, sectionName: section, intentResultID: intentResultID)
+        let request = self.buildRequest(data: data)
+        executeTracking(request, completionHandler: completionHandler)
+    }
+
+    /**
      Set a custom clientID
 
      - Parameters:
