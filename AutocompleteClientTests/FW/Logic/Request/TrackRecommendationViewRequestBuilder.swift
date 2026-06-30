@@ -56,7 +56,7 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         XCTAssertEqual(analyticsTagsPayload, analyticsTags)
     }
     
-    func testTrackRecommendationResultClickBuilder_WithItemsParam() {
+    func testTrackRecommendationResultClickBuilder_WithCustomerIDsParam() {
         let customerIDs = ["custID1", "custID2", "custID3"]
         let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
         builder.build(trackData: recommendationViewData)
@@ -87,6 +87,18 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         XCTAssertEqual(loadedItems[1]["item_id"] as? String, items[1].customerID)
         XCTAssertEqual(loadedItems[1]["variation_id"] as? String, items[1].variationID)
     }
+    
+    func testTrackRecommendationResultsViewBuilder_WithItemsParam_NoVariationID() {
+        let items = [CIOItem(customerID: "custID1")]
+        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, items: items)
+        builder.build(trackData: data)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+        let loadedItems = payload?["items"] as? [[String: Any]] ?? []
+
+        XCTAssertEqual(loadedItems[0]["item_id"] as? String, "custID1")
+        XCTAssertNil(loadedItems[0]["variation_id"], "variation_id should not be present when nil")
+    }
 
     func testTrackRecommendationResultsViewBuilder_WithSponsoredListingsParams() {
         let slCampaignID = "cmp456"
@@ -100,6 +112,7 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
 
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(loadedItems.count, 1)
+        XCTAssertEqual(loadedItems[0]["item_id"] as? String, "custID1")
         XCTAssertEqual(loadedItems[0]["sl_campaign_id"] as? String, slCampaignID)
         XCTAssertEqual(loadedItems[0]["sl_campaign_owner"] as? String, slCampaignOwner)
     }
