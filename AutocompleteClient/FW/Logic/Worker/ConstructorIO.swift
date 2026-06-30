@@ -552,9 +552,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      // Uses items parameter (preferred)
      constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, items: [CIOItem(customerID: "1234567-AB", variationID: "1234567-AB-47398"), CIOItem(customerID: "1234567-CD", variationID: "1234567-CD-8910")], resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2", seedItemIDs: ["seed-item-123"])
-    
+     
      // Uses customerIDs parameter (deprecated)
-    constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, customerIDs: ["1234567-AB", "1234567-AC"], resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2", seedItemIDs: ["seed-item-123"])
+     constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, customerIDs: ["1234567-AB", "1234567-AC"], resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2", seedItemIDs: ["seed-item-123"])
      ```
      */
     public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, seedItemIDs: [String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {

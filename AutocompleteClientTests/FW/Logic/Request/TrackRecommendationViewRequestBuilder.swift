@@ -96,6 +96,7 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
         let loadedItems = payload?["items"] as? [[String: Any]] ?? []
 
+        XCTAssertEqual(loadedItems.count, 1)
         XCTAssertEqual(loadedItems[0]["item_id"] as? String, "custID1")
         XCTAssertNil(loadedItems[0]["variation_id"], "variation_id should not be present when nil")
     }
