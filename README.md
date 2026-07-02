@@ -347,8 +347,8 @@ ConstructorIo.trackMediaImpressionClick(bannerAdId: "banner-ad-id", placementId:
 ```swift
 // Track when items are viewably impressed (50% visible for 1 second per MRC guidelines)
 let items = [
-  CIOResultItem(itemID: "item-123", itemName: "Blue Widget"),
-  CIOResultItem(itemID: "item-456", itemName: "Red Widget", variationID: "var-789")
+  CIOItem(customerID: "item-123", itemName: "Blue Widget"),
+  CIOItem(customerID: "item-456", itemName: "Red Widget", variationID: "var-789")
 ]
 constructorIO.trackResultsImpressionView(items: items, searchTerm: "widget")
 ```
