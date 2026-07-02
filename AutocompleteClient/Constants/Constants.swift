@@ -266,6 +266,30 @@ struct Constants {
         static let format = "%@/v2/behavioral_action/result_click"
     }
 
+    struct TrackAgentSubmit {
+        static let format = "%@/v2/behavioral_action/assistant_submit"
+    }
+
+    struct TrackAgentResultLoadStarted {
+        static let format = "%@/v2/behavioral_action/assistant_result_load_start"
+    }
+
+    struct TrackAgentResultLoadFinished {
+        static let format = "%@/v2/behavioral_action/assistant_result_load_finish"
+    }
+
+    struct TrackAgentResultClick {
+        static let format = "%@/v2/behavioral_action/assistant_search_result_click"
+    }
+
+    struct TrackAgentResultView {
+        static let format = "%@/v2/behavioral_action/assistant_search_result_view"
+    }
+
+    struct TrackAgentSearchSubmit {
+        static let format = "%@/v2/behavioral_action/assistant_search_submit"
+    }
+
     struct TrackConversion {
         static let format = "%@/v2/behavioral_action/conversion"
     }
