@@ -37,7 +37,7 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         XCTAssertEqual(payload?["url"] as? String, "Not Available")
     }
 
-    func testTrackRecommendationResultClickBuilder_WithOptionalParams() {
+    func testTrackRecommendationResultsViewBuilder_WithOptionalParams() {
         let analyticsTags = ["test": "testing", "version": "123"]
         let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID, analyticsTags: analyticsTags)
         builder.build(trackData: recommendationViewData)
@@ -56,7 +56,7 @@ class TrackRecommendationResultsViewRequestBuilder: XCTestCase {
         XCTAssertEqual(analyticsTagsPayload, analyticsTags)
     }
     
-    func testTrackRecommendationResultClickBuilder_WithCustomerIDsParam() {
+    func testTrackRecommendationResultsViewBuilder_WithCustomerIDsParam() {
         let customerIDs = ["custID1", "custID2", "custID3"]
         let recommendationViewData = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: sectionName, resultID: resultID)
         builder.build(trackData: recommendationViewData)

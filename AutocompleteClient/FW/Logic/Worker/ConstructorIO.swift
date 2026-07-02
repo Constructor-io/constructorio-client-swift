@@ -538,8 +538,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      - Parameters:
         - podID: The pod ID
         - numResultsViewed: The count of results that is visible to the user
-        - customerIDs: The list of item id's returned in the browse (**Deprecated**. Use `items` (v4.2.0) instead.)
-        - items: The list of items returned in the search (Preferred over customerIDs)
+        - customerIDs: The list of item id's returned in the recommendation pod (**Deprecated**. Use `items` (v4.2.0) instead.)
+        - items: The list of items returned in the recommendation pod (Preferred over customerIDs)
         - resultPage: The current page that recommendation result is on
         - resultCount: The total number of recommendation results
         - sectionName: The name of the autocomplete section the term came from
