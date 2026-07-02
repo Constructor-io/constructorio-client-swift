@@ -66,6 +66,9 @@
 		30DC8B3897E361EB4ADC91D5 /* ConstructorIOTrackAgentResultClickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B647AA1B70A24E3B043AB6A /* ConstructorIOTrackAgentResultClickTests.swift */; };
 		449B02753FBBE5501BD3269B /* ConstructorIOTrackAgentSearchSubmitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18BD16D9DFC799A5BC5D5 /* ConstructorIOTrackAgentSearchSubmitTests.swift */; };
 		4F30F4822C4C805F450EB488 /* CIOTrackAgentSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54889113E31C87DDB613F090 /* CIOTrackAgentSearchSubmitData.swift */; };
+		5F12F5692FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12F5682FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift */; };
+		5F12F56B2FDAF53A002945A3 /* TrackResultsImpressionViewRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12F56A2FDAF53A002945A3 /* TrackResultsImpressionViewRequestBuilderTests.swift */; };
+		5F12F56D2FDAF555002945A3 /* ConstructorIOTrackResultsImpressionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12F56C2FDAF555002945A3 /* ConstructorIOTrackResultsImpressionViewTests.swift */; };
 		5FEE547B2F61E12600A74E64 /* CIOTrackMediaImpressionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionData.swift */; };
 		5FEE54812F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE547D2F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift */; };
 		5FEE54822F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE547E2F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift */; };
@@ -455,6 +458,9 @@
 		4D00CDA834603F215E1B1457 /* CIOTrackAgentResultLoadFinishedData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOTrackAgentResultLoadFinishedData.swift; sourceTree = "<group>"; };
 		5362DE84EA35B4B9FE26EE1F /* Pods_AutocompleteClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54889113E31C87DDB613F090 /* CIOTrackAgentSearchSubmitData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOTrackAgentSearchSubmitData.swift; sourceTree = "<group>"; };
+		5F12F5682FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackResultsImpressionViewData.swift; sourceTree = "<group>"; };
+		5F12F56A2FDAF53A002945A3 /* TrackResultsImpressionViewRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackResultsImpressionViewRequestBuilderTests.swift; sourceTree = "<group>"; };
+		5F12F56C2FDAF555002945A3 /* ConstructorIOTrackResultsImpressionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackResultsImpressionViewTests.swift; sourceTree = "<group>"; };
 		5FEE54772F61E12600A74E64 /* CIOTrackMediaImpressionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackMediaImpressionData.swift; sourceTree = "<group>"; };
 		5FEE547D2F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMediaImpressionClickRequestBuilderTests.swift; sourceTree = "<group>"; };
 		5FEE547E2F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMediaImpressionViewRequestBuilderTests.swift; sourceTree = "<group>"; };
@@ -952,6 +958,7 @@
 				F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */,
 				7D45383928DC085600490BFE /* CIOQuizQuery.swift */,
 				BF02E29E28B5739C0062B44F /* CIOItem.swift */,
+				5F12F5682FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift */,
 				8D4F1ACD29357FA000803327 /* CIOBrowseItemsQuery.swift */,
 				8A5572802A1429930041DB65 /* CIOBrowseGroupsQuery.swift */,
 				8DCA83DC2A1BD82F00CD2110 /* CIOBrowseFacetsQuery.swift */,
@@ -1055,6 +1062,7 @@
 		F60FE8FF1F5C5ACD0037A0AB /* Worker */ = {
 			isa = PBXGroup;
 			children = (
+				5F12F56C2FDAF555002945A3 /* ConstructorIOTrackResultsImpressionViewTests.swift */,
 				5FEE54832F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift */,
 				7D4E4A3E2E5B78B200D4EF5A /* ConstructorIOTrackGenericResultClickTests.swift */,
 				08A7E4102575FA15000FA02F /* ConstructorIOTrackInputFocusTests.swift */,
@@ -1118,6 +1126,7 @@
 		F60FE9071F5C5B860037A0AB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				5F12F56A2FDAF53A002945A3 /* TrackResultsImpressionViewRequestBuilderTests.swift */,
 				5FEE547D2F61E25E00A74E64 /* TrackMediaImpressionClickRequestBuilderTests.swift */,
 				5FEE547E2F61E25E00A74E64 /* TrackMediaImpressionViewRequestBuilderTests.swift */,
 				7D4E4A3C2E5B786800D4EF5A /* TrackGenericResultClickRequestBuilderTests.swift */,
@@ -2579,6 +2588,7 @@
 				F6D2E9CC20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift in Sources */,
 				8A93F13E2A6F44BF000ED6B3 /* CIOTrackQuizResultClickData.swift in Sources */,
 				08A7E40F2575E37A000FA02F /* CIOTrackBrowseResultsLoadedData.swift in Sources */,
+				5F12F5692FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift in Sources */,
 				7D4E4A3B2E5B77D900D4EF5A /* CIOTrackGenericResultClick.swift in Sources */,
 				7D06CCA328E516BC00AB6A8C /* CIOQuizResult.swift in Sources */,
 				F650154E1F58724B008E50C0 /* UIColor+RGB.swift in Sources */,
@@ -2714,6 +2724,7 @@
 				BFC9502625D206C400118D4C /* RecommendationsQueryRequestBuilderTests.swift in Sources */,
 				BFC9504325DC76D900118D4C /* ConstructorIOTrackRecommendationResultsViewTests.swift in Sources */,
 				F66B217B21E275EE00AAB030 /* QueryItemCollectionTests.swift in Sources */,
+				5F12F56D2FDAF555002945A3 /* ConstructorIOTrackResultsImpressionViewTests.swift in Sources */,
 				7D4E4A3D2E5B786800D4EF5A /* TrackGenericResultClickRequestBuilderTests.swift in Sources */,
 				089399E12161C51800BFE3D9 /* TrackSearchSubmitRequestBuilder.swift in Sources */,
 				08A7E4192575FDA0000FA02F /* ConstructorIOTrackBrowseResultsLoadedTests.swift in Sources */,
@@ -2723,6 +2734,7 @@
 				F63374B01F5AA1C000E481E7 /* ExpectationHandler.swift in Sources */,
 				F64F46C31F59A63B0094C697 /* ClosureAutocompleteViewModelDelegate.swift in Sources */,
 				F64E94E9212DC93300E50EDE /* ConstructorIOAutocompleteTests.swift in Sources */,
+				5F12F56B2FDAF53A002945A3 /* TrackResultsImpressionViewRequestBuilderTests.swift in Sources */,
 				5FEE54842F61E28500A74E64 /* ConstructorIOTrackMediaImpressionTests.swift in Sources */,
 				F64E94E6212D87E200E50EDE /* CIOBuilder.swift in Sources */,
 				F62510D120568F250040E3DF /* SessionManagerTests.swift in Sources */,
@@ -3095,6 +3107,7 @@
 			baseConfigurationReference = D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AutocompleteClientTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3115,6 +3128,7 @@
 			baseConfigurationReference = A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AutocompleteClientTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
