@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 4.7.0 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 4.8.0 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -1153,6 +1153,112 @@
                               <td>
                                 <div>
                                   <p>The placement ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC26trackResultsImpressionView5items10searchTerm10filterName0K5Value17completionHandlerySayAA7CIOItemVG_SSSgA2MyAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackResultsImpressionView(items:searchTerm:filterName:filterValue:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC26trackResultsImpressionView5items10searchTerm10filterName0K5Value17completionHandlerySayAA7CIOItemVG_SSSgA2MyAA20TrackingTaskResponseCcSgtF">trackResultsImpressionView(items:<wbr>searchTerm:<wbr>filterName:<wbr>filterValue:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when items are viewably impressed per MRC guidelines (50% visible for 1 second)</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackResultsImpressionView</span><span class="p">(</span>
+    <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"item-123"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Blue Widget"</span><span class="p">)],</span>
+    <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"widget"</span>
+<span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackResultsImpressionView</span><span class="p">(</span>
+    <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">],</span>
+    <span class="nv">searchTerm</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">filterName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">filterValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>items</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list of items that were impressed</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>searchTerm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional search term associated with the impression</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filterName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional filter name associated with the impression</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filterValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional filter value associated with the impression</p>
                                 </div>
                               </td>
                             </tr>
@@ -4128,7 +4234,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-06-29)</p>
+          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-07-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
