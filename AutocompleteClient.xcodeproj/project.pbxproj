@@ -66,7 +66,6 @@
 		30DC8B3897E361EB4ADC91D5 /* ConstructorIOTrackAgentResultClickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B647AA1B70A24E3B043AB6A /* ConstructorIOTrackAgentResultClickTests.swift */; };
 		449B02753FBBE5501BD3269B /* ConstructorIOTrackAgentSearchSubmitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E18BD16D9DFC799A5BC5D5 /* ConstructorIOTrackAgentSearchSubmitTests.swift */; };
 		4F30F4822C4C805F450EB488 /* CIOTrackAgentSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54889113E31C87DDB613F090 /* CIOTrackAgentSearchSubmitData.swift */; };
-		5F12F5672FDAE553002945A3 /* CIOResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12F5662FDAE553002945A3 /* CIOResultItem.swift */; };
 		5F12F5692FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12F5682FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift */; };
 		5F12F56B2FDAF53A002945A3 /* TrackResultsImpressionViewRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12F56A2FDAF53A002945A3 /* TrackResultsImpressionViewRequestBuilderTests.swift */; };
 		5F12F56D2FDAF555002945A3 /* ConstructorIOTrackResultsImpressionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12F56C2FDAF555002945A3 /* ConstructorIOTrackResultsImpressionViewTests.swift */; };
@@ -459,7 +458,6 @@
 		4D00CDA834603F215E1B1457 /* CIOTrackAgentResultLoadFinishedData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOTrackAgentResultLoadFinishedData.swift; sourceTree = "<group>"; };
 		5362DE84EA35B4B9FE26EE1F /* Pods_AutocompleteClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54889113E31C87DDB613F090 /* CIOTrackAgentSearchSubmitData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOTrackAgentSearchSubmitData.swift; sourceTree = "<group>"; };
-		5F12F5662FDAE553002945A3 /* CIOResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOResultItem.swift; sourceTree = "<group>"; };
 		5F12F5682FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackResultsImpressionViewData.swift; sourceTree = "<group>"; };
 		5F12F56A2FDAF53A002945A3 /* TrackResultsImpressionViewRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackResultsImpressionViewRequestBuilderTests.swift; sourceTree = "<group>"; };
 		5F12F56C2FDAF555002945A3 /* ConstructorIOTrackResultsImpressionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackResultsImpressionViewTests.swift; sourceTree = "<group>"; };
@@ -960,6 +958,7 @@
 				F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */,
 				7D45383928DC085600490BFE /* CIOQuizQuery.swift */,
 				BF02E29E28B5739C0062B44F /* CIOItem.swift */,
+				5F12F5682FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift */,
 				8D4F1ACD29357FA000803327 /* CIOBrowseItemsQuery.swift */,
 				8A5572802A1429930041DB65 /* CIOBrowseGroupsQuery.swift */,
 				8DCA83DC2A1BD82F00CD2110 /* CIOBrowseFacetsQuery.swift */,
@@ -1109,8 +1108,6 @@
 		F60FE9021F5C5B120037A0AB /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				5F12F5682FDAE58B002945A3 /* CIOTrackResultsImpressionViewData.swift */,
-				5F12F5662FDAE553002945A3 /* CIOResultItem.swift */,
 				F67BFC9620B84C2600986557 /* QueryItemCollection.swift */,
 				F192DDED1F5F123400114C8C /* RequestBuilder.swift */,
 				F685255E2141543C00A27FAA /* RequestBuilder+QueryItems.swift */,
@@ -2574,7 +2571,6 @@
 				F192DDEE1F5F123400114C8C /* RequestBuilder.swift in Sources */,
 				BF02E29F28B5739C0062B44F /* CIOItem.swift in Sources */,
 				F638090B1F5E855B00C3B322 /* BoldAttributesProvider.swift in Sources */,
-				5F12F5672FDAE553002945A3 /* CIOResultItem.swift in Sources */,
 				088F7D26210FA43C005B9FB4 /* DateProvider.swift in Sources */,
 				7D91F6F7291BE840005F9D8D /* CIOQuizResultsResponse.swift in Sources */,
 				F1F68DDD1F58B7D600B42602 /* Constants.swift in Sources */,

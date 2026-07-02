@@ -21,7 +21,7 @@ class TrackResultsImpressionViewRequestBuilderTests: XCTestCase {
     }
 
     func testTrackResultsImpressionViewBuilder() {
-        let items = [CIOResultItem(itemID: "item-1", itemName: "Item One")]
+        let items = [CIOItem(customerID: "item-1", itemName: "Item One")]
         let tracker = CIOTrackResultsImpressionViewData(items: items)
         builder.build(trackData: tracker)
         let request = builder.getRequest()
@@ -42,8 +42,8 @@ class TrackResultsImpressionViewRequestBuilderTests: XCTestCase {
 
     func testTrackResultsImpressionViewBuilder_WithMultipleItems() {
         let items = [
-            CIOResultItem(itemID: "item-1", itemName: "Item One", variationID: "var-1"),
-            CIOResultItem(itemID: "item-2", itemName: "Item Two", slCampaignID: "camp-1", slCampaignOwner: "owner-a")
+            CIOItem(customerID: "item-1", itemName: "Item One", variationID: "var-1"),
+            CIOItem(customerID: "item-2", itemName: "Item Two", slCampaignID: "camp-1", slCampaignOwner: "owner-a")
         ]
         let tracker = CIOTrackResultsImpressionViewData(items: items)
         builder.build(trackData: tracker)
@@ -60,7 +60,7 @@ class TrackResultsImpressionViewRequestBuilderTests: XCTestCase {
     }
 
     func testTrackResultsImpressionViewBuilder_WithSearchTerm() {
-        let items = [CIOResultItem(itemID: "item-1", itemName: "Item One")]
+        let items = [CIOItem(customerID: "item-1", itemName: "Item One")]
         let tracker = CIOTrackResultsImpressionViewData(items: items, searchTerm: "shoes")
         builder.build(trackData: tracker)
         let request = builder.getRequest()
@@ -70,7 +70,7 @@ class TrackResultsImpressionViewRequestBuilderTests: XCTestCase {
     }
 
     func testTrackResultsImpressionViewBuilder_WithFilters() {
-        let items = [CIOResultItem(itemID: "item-1", itemName: "Item One")]
+        let items = [CIOItem(customerID: "item-1", itemName: "Item One")]
         let tracker = CIOTrackResultsImpressionViewData(items: items, filterName: "category_id", filterValue: "shoes-123")
         builder.build(trackData: tracker)
         let request = builder.getRequest()
@@ -83,7 +83,7 @@ class TrackResultsImpressionViewRequestBuilderTests: XCTestCase {
     func testTrackResultsImpressionViewBuilder_WithCustomBaseURL() {
         let customBaseURL = "https://custom-url.com"
         self.builder = RequestBuilder(apiKey: testACKey, baseURL: customBaseURL)
-        let items = [CIOResultItem(itemID: "item-1", itemName: "Item One")]
+        let items = [CIOItem(customerID: "item-1", itemName: "Item One")]
         let tracker = CIOTrackResultsImpressionViewData(items: items)
         builder.build(trackData: tracker)
         let request = builder.getRequest()

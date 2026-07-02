@@ -31,7 +31,7 @@ class ConstructorIOTrackResultsImpressionViewTests: XCTestCase {
             capturedRequest = request
             return builder.create()(request)
         }
-        let items = [CIOResultItem(itemID: "item-1", itemName: "Item One")]
+        let items = [CIOItem(customerID: "item-1", itemName: "Item One")]
         self.constructor.trackResultsImpressionView(items: items, searchTerm: "shoes", completionHandler: { response in
             XCTAssertNil(response.error, "Happy-path tracking call should not return an error")
         })
@@ -55,7 +55,7 @@ class ConstructorIOTrackResultsImpressionViewTests: XCTestCase {
             capturedRequest = request
             return builder.create()(request)
         }
-        let items = [CIOResultItem(itemID: "item-1", itemName: "Item One")]
+        let items = [CIOItem(customerID: "item-1", itemName: "Item One")]
         self.constructor.trackResultsImpressionView(items: items, filterName: "category_id", filterValue: "shoes-123", completionHandler: { response in
             XCTAssertNil(response.error, "Happy-path tracking call should not return an error")
         })
@@ -72,7 +72,7 @@ class ConstructorIOTrackResultsImpressionViewTests: XCTestCase {
     func testTrackResultsImpressionView_With400() {
         let expectation = self.expectation(description: "Calling trackResultsImpressionView with 400 should return badRequest CIOError.")
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/impression_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(400))
-        let items = [CIOResultItem(itemID: "item-1", itemName: "Item One")]
+        let items = [CIOItem(customerID: "item-1", itemName: "Item One")]
         self.constructor.trackResultsImpressionView(items: items, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .badRequest)
@@ -85,7 +85,7 @@ class ConstructorIOTrackResultsImpressionViewTests: XCTestCase {
     func testTrackResultsImpressionView_With500() {
         let expectation = self.expectation(description: "Calling trackResultsImpressionView with 500 should return internalServerError CIOError.")
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/impression_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), http(500))
-        let items = [CIOResultItem(itemID: "item-1", itemName: "Item One")]
+        let items = [CIOItem(customerID: "item-1", itemName: "Item One")]
         self.constructor.trackResultsImpressionView(items: items, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .internalServerError)
@@ -98,13 +98,29 @@ class ConstructorIOTrackResultsImpressionViewTests: XCTestCase {
     func testTrackResultsImpressionView_WithNoConnectivity() {
         let expectation = self.expectation(description: "Calling trackResultsImpressionView with no connectivity should return noConnection CIOError.")
         stub(regex("https://ac.cnstrc.com/v2/behavioral_action/impression_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), noConnectivity())
-        let items = [CIOResultItem(itemID: "item-1", itemName: "Item One")]
+        let items = [CIOItem(customerID: "item-1", itemName: "Item One")]
         self.constructor.trackResultsImpressionView(items: items, completionHandler: { response in
             if let cioError = response.error as? CIOError {
                 XCTAssertEqual(cioError.errorType, .noConnection)
                 expectation.fulfill()
             }
         })
+        self.wait(for: expectation)
+    }
+
+    func testTrackResultsImpressionView_WithEmptyItems() {
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/impression_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)")) { _ in
+            XCTFail("No network request should be made when items is empty")
+            return OHHTTPStubsResponse(data: Data(), statusCode: 200, headers: nil)
+        }
+        self.constructor.trackResultsImpressionView(items: [], searchTerm: "shoes", completionHandler: { _ in
+            XCTFail("Completion handler should not be called when items is empty")
+        })
+
+        let expectation = self.expectation(description: "Wait to ensure no request is fired")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            expectation.fulfill()
+        }
         self.wait(for: expectation)
     }
 }

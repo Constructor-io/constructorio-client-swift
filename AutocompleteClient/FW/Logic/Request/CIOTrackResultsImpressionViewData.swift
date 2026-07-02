@@ -13,7 +13,7 @@ import Foundation
  */
 struct CIOTrackResultsImpressionViewData: CIORequestData {
 
-    let items: [CIOResultItem]
+    let items: [CIOItem]
     let searchTerm: String?
     let filterName: String?
     let filterValue: String?
@@ -22,7 +22,7 @@ struct CIOTrackResultsImpressionViewData: CIORequestData {
         return String(format: Constants.TrackResultsImpressionView.format, baseURL)
     }
 
-    init(items: [CIOResultItem], searchTerm: String? = nil,
+    init(items: [CIOItem], searchTerm: String? = nil,
          filterName: String? = nil, filterValue: String? = nil) {
         self.items = items
         self.searchTerm = searchTerm
@@ -38,7 +38,7 @@ struct CIOTrackResultsImpressionViewData: CIORequestData {
 
     func httpBody(baseParams: [String: Any]) -> Data? {
         let itemDicts: [[String: Any]] = items.map { item in
-            var dict: [String: Any] = ["item_id": item.itemID]
+            var dict: [String: Any] = ["item_id": item.customerID]
             if let name = item.itemName { dict["item_name"] = name }
             if let vid = item.variationID { dict["variation_id"] = vid }
             if let cid = item.slCampaignID { dict["sl_campaign_id"] = cid }
