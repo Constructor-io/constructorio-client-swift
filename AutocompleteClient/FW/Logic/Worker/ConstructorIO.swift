@@ -436,10 +436,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     // Uses Items parameters (preferred)
+     // Uses items parameter (preferred)
      constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
 
-     // Uses CustomerIDs parameters (deprecated)
+     // Uses customerIDs parameter (deprecated)
      constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
      ```
      */
@@ -538,8 +538,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      - Parameters:
         - podID: The pod ID
         - numResultsViewed: The count of results that is visible to the user
-        - customerIDs: The items that were loaded
-        - items: The items that were loaded (preferred over customerIDs as it supports variation IDs)
+        - customerIDs: The list of item id's returned in the browse (**Deprecated**. Use `items` (v4.2.0) instead.)
+        - items: The list of items returned in the search (Preferred over customerIDs)
         - resultPage: The current page that recommendation result is on
         - resultCount: The total number of recommendation results
         - sectionName: The name of the autocomplete section the term came from
