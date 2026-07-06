@@ -111,6 +111,20 @@ class ConstructorIOTrackRecommendationResultsViewTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testTrackRecommendationResultsView_WithItems() {
+        let podID = "item_page_1"
+        let items = [
+            CIOItem(customerID: "custID1", variationID: "var1"),
+            CIOItem(customerID: "custID2", variationID: "var2")
+        ]
+
+        let builder = CIOBuilder(expectation: "Calling trackRecommendationResultsView should send a valid request with items.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/recommendation_result_view?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+
+        self.constructor.trackRecommendationResultsView(podID: podID, items: items)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackRecommendationResultsView_WithSeedItemIDs() {
         let podID = "item_page_1"
         let seedItemIDs = ["seed-item-123", "seed-item-456"]

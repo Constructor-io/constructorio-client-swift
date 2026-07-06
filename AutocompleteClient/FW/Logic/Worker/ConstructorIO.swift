@@ -467,10 +467,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     // Uses Items parameters (preferred)
+     // Uses items parameter (preferred)
      constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
 
-     // Uses CustomerIDs parameters (deprecated)
+     // Uses customerIDs parameter (deprecated)
      constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
      ```
      */
@@ -569,7 +569,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      - Parameters:
         - podID: The pod ID
         - numResultsViewed: The count of results that is visible to the user
-        - customerIDs: The items that were loaded
+        - customerIDs: The list of item id's returned in the recommendation pod (**Deprecated**. Use `items` (v4.2.0) instead.)
+        - items: The list of items returned in the recommendation pod (Preferred over customerIDs)
         - resultPage: The current page that recommendation result is on
         - resultCount: The total number of recommendation results
         - sectionName: The name of the autocomplete section the term came from
@@ -580,13 +581,16 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"], resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2", seedItemIDs: ["seed-item-123"])
+     // Uses items parameter (preferred)
+     constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, items: [CIOItem(customerID: "1234567-AB", variationID: "1234567-AB-47398"), CIOItem(customerID: "1234567-CD", variationID: "1234567-CD-8910")], resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2", seedItemIDs: ["seed-item-123"])
+     
+     // Uses customerIDs parameter (deprecated)
+     constructorIO.trackRecommendationResultsView(podID: "pdp_best_sellers", numResultsViewed: 5, customerIDs: ["1234567-AB", "1234567-AC"], resultPage: 1, resultCount: 10, resultID: "179b8a0e-3799-4a31-be87-127b06871de2", seedItemIDs: ["seed-item-123"])
      ```
      */
-    public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, customerIDs: [String]? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, seedItemIDs: [String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+    public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, seedItemIDs: [String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags), seedItemIDs: seedItemIDs)
-
+        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags), seedItemIDs: seedItemIDs, items: items)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
