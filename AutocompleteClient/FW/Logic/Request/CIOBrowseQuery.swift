@@ -102,7 +102,7 @@ public struct CIOBrowseQuery: CIORequestData {
         - sortOption: The sort method/order for results
         - section: The section to return results from
         - hiddenFields: The list of hidden metadata fields to return
-        - hiddenFacets: The list of hidden facest to return
+        - hiddenFacets: The list of hidden facets to return
         - variationsMap: The variation map to use with the result set
         - groupsSortOption: The sort method/order for groups
         - preFilterExpression: The pre filter expression used to refine results

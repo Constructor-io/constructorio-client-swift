@@ -90,7 +90,7 @@ public struct CIOSearchQuery: CIORequestData {
         - sortOption: The sort method/order for results
         - section: The section to return results from
         - hiddenFields: The list of hidden metadata fields to return
-        - hiddenFacets: The list of hidden facest to return
+        - hiddenFacets: The list of hidden facets to return
         - groupsSortOption: The sort method/order for groups
         - preFilterExpression: The pre filter expression used to refine results
         - fmtOptions: The fmt options to use with the result set 
