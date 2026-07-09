@@ -941,7 +941,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         constructorClient.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
-            let facet = responseData.facets.first
+            let facet = responseData.facets.first { $0.name == "Color" }
             let facetData = facet?.data
             let facetHidden = facet?.hidden
 
@@ -1318,7 +1318,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         constructorClient.browseItems(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
-            let facet = responseData.facets.first
+            let facet = responseData.facets.first { $0.name == "Color" }
             let facetData = facet?.data
             let facetHidden = facet?.hidden
 
