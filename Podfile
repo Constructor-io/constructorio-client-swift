@@ -1,4 +1,4 @@
-xcodeproj "AutocompleteClient.xcodeproj"
+project "AutocompleteClient.xcodeproj"
 
 source 'https://github.com/CocoaPods/Specs.git'
 
