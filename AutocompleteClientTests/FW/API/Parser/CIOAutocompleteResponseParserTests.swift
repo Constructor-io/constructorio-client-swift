@@ -183,7 +183,6 @@ class CIOAutocompleteResponseParserTests: XCTestCase {
     func testParsingJSONWithoutTotalNumResultsPerSection_ReturnsEmptyDictionary() {
         let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename)
         do {
-            responseParser.maxGroups = 0
             let response = try responseParser.parse(autocompleteResponseData: data)
             XCTAssertTrue(response.totalNumResultsPerSection.isEmpty, "totalNumResultsPerSection should be empty when field is not present in JSON")
         } catch {
