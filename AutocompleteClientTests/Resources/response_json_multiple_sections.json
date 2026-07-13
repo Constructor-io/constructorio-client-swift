@@ -320,6 +320,10 @@
       }
     ]
   },
+  "total_num_results_per_section": {
+      "Products": 156,
+      "Search Suggestions": 23
+  },
   "request": {
       "num_results_per_page": 20,
       "sort_by": "relevance",

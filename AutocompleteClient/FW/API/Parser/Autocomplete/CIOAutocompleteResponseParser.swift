@@ -40,7 +40,9 @@ public struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser 
         var metadata = json
         metadata[Constants.Response.singleSectionResultField] = nil
 
-        return CIOAutocompleteResponse(sections: [Constants.Response.singleSectionResultField: results], json: json, request: request)
+        let totalNumResultsPerSection = json["total_num_results_per_section"] as? [String: Int] ?? [:]
+
+        return CIOAutocompleteResponse(sections: [Constants.Response.singleSectionResultField: results], json: json, request: request, totalNumResultsPerSection: totalNumResultsPerSection)
     }
 
     private func parse(multiSectionJson json: JSONObject) throws -> CIOAutocompleteResponse {
@@ -59,7 +61,10 @@ public struct CIOAutocompleteResponseParser: AbstractAutocompleteResponseParser 
 
         var metadata = json
         metadata[Constants.Response.multiSectionResultField] = nil
-        return CIOAutocompleteResponse(sections: results, json: json, request: request)
+
+        let totalNumResultsPerSection = json["total_num_results_per_section"] as? [String: Int] ?? [:]
+
+        return CIOAutocompleteResponse(sections: results, json: json, request: request, totalNumResultsPerSection: totalNumResultsPerSection)
     }
 
     fileprivate func jsonToAutocompleteItems(jsonObjects: [JSONObject]) -> [CIOAutocompleteResult] {
