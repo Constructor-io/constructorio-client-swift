@@ -208,6 +208,9 @@
       }
     ]
   },
+  "total_num_results_per_section": {
+      "Search Suggestions": 15
+  },
   "request": {
       "num_results_per_page": 20,
       "sort_by": "relevance",

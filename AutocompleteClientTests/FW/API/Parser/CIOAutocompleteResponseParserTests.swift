@@ -156,4 +156,37 @@ class CIOAutocompleteResponseParserTests: XCTestCase {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
     }
+
+    func testParsingMultipleSectionJSONString_HasCorrectTotalNumResultsPerSection() {
+        let data = TestResource.load(name: TestResource.Response.multipleSectionsJSONFilename)
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            XCTAssertEqual(response.totalNumResultsPerSection["Products"], 156)
+            XCTAssertEqual(response.totalNumResultsPerSection["Search Suggestions"], 23)
+            XCTAssertEqual(response.totalNumResultsPerSection.count, 2)
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
+    func testParsingSingleSectionJSONString_HasCorrectTotalNumResultsPerSection() {
+        let data = TestResource.load(name: TestResource.Response.singleSectionJSONFilename)
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            XCTAssertEqual(response.totalNumResultsPerSection["Search Suggestions"], 15)
+            XCTAssertEqual(response.totalNumResultsPerSection.count, 1)
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
+
+    func testParsingJSONWithoutTotalNumResultsPerSection_ReturnsEmptyDictionary() {
+        let data = TestResource.load(name: TestResource.Response.multipleGroupsJSONFilename)
+        do {
+            let response = try responseParser.parse(autocompleteResponseData: data)
+            XCTAssertTrue(response.totalNumResultsPerSection.isEmpty, "totalNumResultsPerSection should be empty when field is not present in JSON")
+        } catch {
+            XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
+        }
+    }
 }

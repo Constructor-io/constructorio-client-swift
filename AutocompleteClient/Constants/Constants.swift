@@ -181,6 +181,7 @@ struct Constants {
     struct Response {
         static let singleSectionResultField = "suggestions"
         static let multiSectionResultField = "sections"
+        static let totalNumResultsPerSectionField = "total_num_results_per_section"
     }
 
     struct Result {
