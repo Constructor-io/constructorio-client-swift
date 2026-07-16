@@ -30,7 +30,8 @@ public struct CIOAutocompleteResponse {
     public var request: JSONObject
 
     /**
-     Total number of results per section
+     Total number of results available per section, keyed by section name.
+     Will be empty if the server did not include `total_num_results_per_section` in the response.
      */
     public let totalNumResultsPerSection: [String: Int]
 
