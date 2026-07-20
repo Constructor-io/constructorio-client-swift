@@ -750,7 +750,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data: CIOTrackQuizResultsLoadedData = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
