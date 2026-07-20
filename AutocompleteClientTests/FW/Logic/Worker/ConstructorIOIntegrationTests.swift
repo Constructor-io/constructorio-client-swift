@@ -941,14 +941,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
         constructorClient.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
-            let facet = responseData.facets.first { $0.name == "Color" }
-            let facetData = facet?.data
-            let facetHidden = facet?.hidden
+            guard let facet = responseData.facets.first(where: { $0.name == "Color" }) else {
+                XCTFail("Expected facet with name 'Color' not found")
+                expectation.fulfill()
+                return
+            }
+            let facetData = facet.data
+            let facetHidden = facet.hidden
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(facetData)
             XCTAssertEqual(facetHidden, false)
-            XCTAssertEqual(facetData?["cheese"] as? String, "pizza")
+            XCTAssertEqual(facetData["cheese"] as? String, "pizza")
             expectation.fulfill()
         })
         self.wait(for: expectation)
@@ -1318,14 +1322,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
         constructorClient.browseItems(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             let responseData = response.data!
-            let facet = responseData.facets.first { $0.name == "Color" }
-            let facetData = facet?.data
-            let facetHidden = facet?.hidden
+            guard let facet = responseData.facets.first(where: { $0.name == "Color" }) else {
+                XCTFail("Expected facet with name 'Color' not found")
+                expectation.fulfill()
+                return
+            }
+            let facetData = facet.data
+            let facetHidden = facet.hidden
 
             XCTAssertNil(cioError)
             XCTAssertNotNil(facetData)
             XCTAssertEqual(facetHidden, false)
-            XCTAssertEqual(facetData?["cheese"] as? String, "pizza")
+            XCTAssertEqual(facetData["cheese"] as? String, "pizza")
             expectation.fulfill()
         })
         self.wait(for: expectation)
