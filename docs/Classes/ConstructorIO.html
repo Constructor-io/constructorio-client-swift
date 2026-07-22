@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 4.9.1 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 4.9.2 Docs</a> (94% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -588,7 +588,7 @@
    <span class="nv">groupsMaxDepth</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">)</span>
 
-<span class="n">constructor</span><span class="o">.</span><span class="nf">browseGroups</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">browseGroupsQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">browseGroups</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">browseGroupsQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
     <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
     <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="o">!</span>
 <span class="p">}</span>
@@ -718,7 +718,7 @@
                       <div class="abstract">
                         <p>Get browse facet options results for a query.</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">browseFacetOptionsQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseFacetOptionsQuery</span><span class="p">(</span><span class="nv">facetNme</span><span class="p">:</span> <span class="s">"price"</span><span class="p">,</span> <span class="nv">showHiddenFacets</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">browseFacetOptionsQuery</span> <span class="o">=</span> <span class="kt">CIOBrowseFacetOptionsQuery</span><span class="p">(</span><span class="nv">facetName</span><span class="p">:</span> <span class="s">"price"</span><span class="p">,</span> <span class="nv">showHiddenFacets</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
 
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">browseFacetOptions</span><span class="p">(</span><span class="nv">forQuery</span><span class="p">:</span> <span class="n">browseFacetOptionsQuery</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
    <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">!</span>
@@ -1350,6 +1350,18 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>group</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The group to search within. Only required if searching within a group, i.e. &ldquo;Pumpkin in Canned Goods&rdquo;</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>resultID</em>
                                 </code>
                               </td>
@@ -1447,6 +1459,18 @@
                             <tr>
                               <td>
                                 <code>
+                                <em>group</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The group to search within. Only required if searching within a group, i.e. &ldquo;Pumpkin in Canned Goods&rdquo;</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
                                 <em>completionHandler</em>
                                 </code>
                               </td>
@@ -1478,7 +1502,7 @@
                         <p>Track when a user views a search product listing page</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
 <pre class="highlight swift"><code><span class="c1">// Uses items parameter (preferred)</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">789</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"Toothpicks"</span><span class="p">)])</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">789</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Toothpicks"</span><span class="p">)])</span>
 
 <span class="c1">// Uses customerIDs parameter (deprecated)</span>
 <span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackSearchResultsLoaded</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"tooth"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">789</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
@@ -1536,24 +1560,24 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>resultID</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Identifier of result set</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
                                 <em>items</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
                                   <p>The list of items returned in the search (Preferred over customerIDs)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of result set</p>
                                 </div>
                               </td>
                             </tr>
@@ -1748,10 +1772,10 @@
                         <p>Track when a user views a browse product listing page</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
 <pre class="highlight swift"><code><span class="c1">// Uses items parameter (preferred)</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"Toothpicks"</span><span class="p">)])</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"123-AB"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Toothpicks"</span><span class="p">)])</span>
 
 <span class="c1">// Uses customerIDs parameter (deprecated)</span>
-<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"1234567-AB"</span><span class="p">,</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="s">"1234576-DE"</span><span class="p">])</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackBrowseResultsLoaded</span><span class="p">(</span><span class="nv">filterName</span><span class="p">:</span> <span class="s">"group_id"</span><span class="p">,</span> <span class="nv">filterValue</span><span class="p">:</span> <span class="s">"sales"</span><span class="p">,</span> <span class="nv">resultCount</span><span class="p">:</span> <span class="mi">674</span><span class="p">,</span> <span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"123-AB"</span><span class="p">,</span> <span class="s">"456-CD"</span><span class="p">])</span>
 </code></pre>
 
                       </div>
@@ -1818,24 +1842,24 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>resultID</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Identifier of result set</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
                                 <em>items</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
                                   <p>The list of items returned in the browse (Preferred over customerIDs)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resultID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier of result set</p>
                                 </div>
                               </td>
                             </tr>
@@ -2697,7 +2721,7 @@
                       <div class="abstract">
                         <p>Track when a user completes an order (usually fired on order confirmation page)</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackPurchase</span><span class="p">(</span><span class="nv">customerIDs</span><span class="p">:</span> <span class="p">[</span><span class="s">"123-AB"</span><span class="p">,</span> <span class="s">"456-CD"</span><span class="p">],</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">34.49</span><span class="p">,</span> <span class="nv">orderID</span><span class="p">:</span> <span class="s">"343-315"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackPurchase</span><span class="p">(</span><span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"123-AB"</span><span class="p">),</span> <span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"456-CD"</span><span class="p">)],</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">34.49</span><span class="p">,</span> <span class="nv">orderID</span><span class="p">:</span> <span class="s">"343-315"</span><span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -2806,7 +2830,7 @@
                       <div class="abstract">
                         <p>Track when a user views a product detail page</p>
 <h3 id='usage-example' class='heading'>Usage Example:</h3>
-<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackItemDetailLoad</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Pencil"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7654321-BA-738"</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="s">"test.com/764321"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackItemDetailLoad</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"7654321-BA"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Pencil"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"7654321-BA-738"</span><span class="p">,</span> <span class="nv">sectionName</span><span class="p">:</span> <span class="s">"Products"</span><span class="p">,</span> <span class="nv">url</span><span class="p">:</span> <span class="s">"test.com/764321"</span><span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -4250,7 +4274,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-07-16)</p>
+          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-07-22)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
