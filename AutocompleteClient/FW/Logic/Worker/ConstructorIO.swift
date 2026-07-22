@@ -202,7 +202,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         groupsMaxDepth: 5
      )
 
-     constructor.browseGroups(forQuery: browseGroupsQuery) { response in
+     constructorIO.browseGroups(forQuery: browseGroupsQuery) { response in
          let data = response.data!
          let error = response.error!
      }
@@ -244,7 +244,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     let browseFacetOptionsQuery = CIOBrowseFacetOptionsQuery(facetNme: "price", showHiddenFacets: true)
+     let browseFacetOptionsQuery = CIOBrowseFacetOptionsQuery(facetName: "price", showHiddenFacets: true)
 
      constructorIO.browseFacetOptions(forQuery: browseFacetOptionsQuery) { response in
         let data = response.data!
@@ -417,7 +417,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - searchTerm: The term that the user selected
         - originalQuery: The current text in the input field
         - sectionName: The name of the autocomplete section the term came from (usually "Search Suggestions")
-        - The group to search within. Only required if searching within a group, i.e. "Pumpkin in Canned Goods"
+        - group: The group to search within. Only required if searching within a group, i.e. "Pumpkin in Canned Goods"
         - resultID: Identifier of result set
         - itemID: The ID of the item that was selected
         - completionHandler: The callback to execute on completion.
@@ -439,7 +439,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      - Parameters:
         - searchTerm: The term that the user searched for
         - originalQuery: The current text in the input field
-        - The group to search within. Only required if searching within a group, i.e. "Pumpkin in Canned Goods"
+        - group: The group to search within. Only required if searching within a group, i.e. "Pumpkin in Canned Goods"
         - completionHandler: The callback to execute on completion.
 
      ### Usage Example: ###
@@ -460,15 +460,15 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - searchTerm: The term that the user searched for
         - resultCount: The number of search results returned in total
         - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the search
-        - resultID: Identifier of result set
         - items: The list of items returned in the search (Preferred over customerIDs)
+        - resultID: Identifier of result set
         - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
      ```
      // Uses items parameter (preferred)
-     constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
+     constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", itemName: "Toothpicks")])
 
      // Uses customerIDs parameter (deprecated)
      constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
@@ -515,18 +515,18 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - filterValue: The value of the primary filter that the user browsed for (i.e "sales")
         - resultCount: The number of results returned in total
         - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the browse
-        - resultID: Identifier of result set
         - items: The list of items returned in the browse (Preferred over customerIDs)
+        - resultID: Identifier of result set
         - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
      ```
      // Uses items parameter (preferred)
-     constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674, items: [CIOItem(id: "1234567-AB", name: "Toothpicks")])
+     constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674, items: [CIOItem(customerID: "123-AB", itemName: "Toothpicks")])
 
      // Uses customerIDs parameter (deprecated)
-     constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
+     constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674, customerIDs: ["123-AB", "456-CD"])
      ```
      */
     public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -691,7 +691,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackPurchase(customerIDs: ["123-AB", "456-CD"], revenue: 34.49, orderID: "343-315")
+     constructorIO.trackPurchase(items: [CIOItem(customerID: "123-AB"), CIOItem(customerID: "456-CD")], revenue: 34.49, orderID: "343-315")
      ```
      */
     public func trackPurchase(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -714,7 +714,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      
      ### Usage Example: ###
      ```
-     constructorIO.trackItemDetailLoad(customerID: "7654321-BA", itemName: "Pencil", variationID: "7654321-BA-738", sectionName: "Products", "test.com/764321")
+     constructorIO.trackItemDetailLoad(customerID: "7654321-BA", itemName: "Pencil", variationID: "7654321-BA-738", sectionName: "Products", url: "test.com/764321")
      ```
      */
     public func trackItemDetailLoad(customerID: String, itemName: String, variationID: String? = nil, sectionName: String? = nil, url: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
@@ -750,7 +750,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }

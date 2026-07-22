@@ -69,6 +69,7 @@ public struct ConstructorIOConfig {
         - baseURL: The base URL to make requests to
         - baseQuizURL: The base Quiz URL to make requests to
         - baseMediaURL: The base Media URL to make tracking requests to
+        - defaultAnalyticsTags: Additional analytics tags to include with all requests
 
      ### Usage Example: ###
      ```

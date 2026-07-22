@@ -83,7 +83,7 @@ public struct CIOBrowseItemsQuery: CIORequestData {
         - sortOption: The sort method/order for results
         - section: The section to return results from
         - hiddenFields: The list of hidden metadata fields to return
-        - hiddenFacets: The list of hidden facest to return
+        - hiddenFacets: The list of hidden facets to return
         - groupsSortOption: The sort method/order for groups
 
      ### Usage Example: ###
@@ -94,7 +94,7 @@ public struct CIOBrowseItemsQuery: CIORequestData {
 
      let fmtOptions = [("groups_max_depth": "10")]
 
-     let browseQuery = CIOBrowseItemsQuery(ids: ["123", "234"], filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"]), fmtOptions: fmtOptions)
+     let browseQuery = CIOBrowseItemsQuery(ids: ["123", "234"], filters: CIOQueryFilters(groupFilter: nil, facetFilters: facetFilters), page: 1, perPage: 30, section: "Products", hiddenFields: ["price_CA", "currency_CA"], hiddenFacets: ["brand", "price_CA"], fmtOptions: fmtOptions)
      ```
      */
     public init(ids: [String], filters: CIOQueryFilters? = nil, sortOption: CIOSortOption? = nil, page: Int? = nil, perPage: Int? = nil, section: String? = nil, hiddenFields: [String]? = nil, hiddenFacets: [String]? = nil, groupsSortOption: CIOGroupsSortOption? = nil, variationsMap: CIOQueryVariationsMap? = nil, fmtOptions: [FmtOption]? = nil) {
