@@ -29,7 +29,7 @@ extension RequestBuilder {
     func set(analyticsTags: [String: String]?) {
         guard let analyticsTags = analyticsTags else { return }
         analyticsTags.forEach {
-            queryItems.add(URLQueryItem(name: Constants.Track.analyticsTagsKey($0.key), value: $0.value))
+            queryItems.add(URLQueryItem(name: Constants.Track.analyticTagKey($0.key), value: $0.value))
         }
     }
 

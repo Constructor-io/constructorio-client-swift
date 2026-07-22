@@ -217,7 +217,7 @@ struct Constants {
         static let orderID = "order_id"
         static let defaultConversionType = "add_to_cart"
         static let conversionType = "type"
-        static let analyticsTagsKey = { (key: String) -> String in "analytics_tags[\(key)]" }
+        static let analyticTagKey = { (key: String) -> String in "analytics_tags[\(key)]" }
     }
 
     struct TrackSessionStart {
