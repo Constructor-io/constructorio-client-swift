@@ -33,6 +33,46 @@ class ConstructorIOTrackSearchSubmitTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackSearchSubmit_WithDefaultAnalyticsTagsOnly() {
+        let searchTerm = "corn"
+        let searchOriginalQuery = "corn"
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultAnalyticsTags: ["default_tag": "default_value"])
+        let constructor = TestConstants.testConstructor(config)
+        let builder = CIOBuilder(expectation: "Calling trackSearchSubmit with only defaultAnalyticsTags should send the default tags.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&analytics_tags%5Bdefault_tag%5D=default_value&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&original_query=corn&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+        constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery)
+        self.wait(for: builder.expectation)
+    }
+
+    func testTrackSearchSubmit_WithAnalyticsTagsOnly() {
+        let searchTerm = "corn"
+        let searchOriginalQuery = "corn"
+        let builder = CIOBuilder(expectation: "Calling trackSearchSubmit with only analyticsTags should send the passed tags.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&analytics_tags%5Btag1%5D=value1&analytics_tags%5Btag2%5D=value2&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&original_query=corn&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+        self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery, analyticsTags: ["tag1": "value1", "tag2": "value2"])
+        self.wait(for: builder.expectation)
+    }
+
+    func testTrackSearchSubmit_WithDefaultAndAnalyticsTagsMerged() {
+        let searchTerm = "corn"
+        let searchOriginalQuery = "corn"
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultAnalyticsTags: ["default_tag": "default_value"])
+        let constructor = TestConstants.testConstructor(config)
+        let builder = CIOBuilder(expectation: "Calling trackSearchSubmit with both should merge defaultAnalyticsTags and analyticsTags.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&analytics_tags%5Bdefault_tag%5D=default_value&analytics_tags%5Btag1%5D=value1&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&original_query=corn&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+        constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery, analyticsTags: ["tag1": "value1"])
+        self.wait(for: builder.expectation)
+    }
+
+    func testTrackSearchSubmit_WithNoAnalyticsTags() {
+        let searchTerm = "corn"
+        let searchOriginalQuery = "corn"
+        let builder = CIOBuilder(expectation: "Calling trackSearchSubmit with no analytics tags should not send any.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&original_query=corn&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+        self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery)
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackSearchSubmit_With400() {
         let expectation = self.expectation(description: "Calling trackSearchSubmit with 400 should return badRequest CIOError.")
         let searchTerm = "corn"

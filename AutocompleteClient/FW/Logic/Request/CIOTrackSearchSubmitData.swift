@@ -16,15 +16,17 @@ struct CIOTrackSearchSubmitData: CIORequestData {
     let searchTerm: String
     let originalQuery: String
     let group: CIOGroup?
+    let analyticsTags: [String: String]?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackSearchSubmit.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
     }
 
-    init(searchTerm: String, originalQuery: String, group: CIOGroup? = nil) {
+    init(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil) {
         self.searchTerm = searchTerm
         self.originalQuery = originalQuery
         self.group = group
+        self.analyticsTags = analyticsTags
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
@@ -33,5 +35,6 @@ struct CIOTrackSearchSubmitData: CIORequestData {
             requestBuilder.set(groupName: group.displayName)
             requestBuilder.set(groupID: group.groupID)
         }
+        requestBuilder.set(analyticsTags: self.analyticsTags)
     }
 }
