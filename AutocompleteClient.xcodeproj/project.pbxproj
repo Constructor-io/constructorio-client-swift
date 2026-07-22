@@ -2404,13 +2404,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AutocompleteClientTests/Pods-AutocompleteClientTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2443,13 +2439,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UserApplication/Pods-UserApplication-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UserApplication/Pods-UserApplication-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2836,7 +2828,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BFC17B2DD098BEA7AF8F0E7E /* Pods-UserApplication.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2861,7 +2852,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 453FBD0FBF9C8817B960B758 /* Pods-UserApplication.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3106,7 +3096,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D8824AB4E0C4BF784703D6BA /* Pods-AutocompleteClientTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AutocompleteClientTests/Info.plist;
@@ -3127,7 +3116,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A466AF5E4660C198B64CE5CE /* Pods-AutocompleteClientTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AutocompleteClientTests/Info.plist;
