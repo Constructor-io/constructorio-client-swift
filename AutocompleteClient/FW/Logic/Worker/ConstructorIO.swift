@@ -1006,13 +1006,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
     
     private func mergeDictionary(baseDictionary: [String: String]?, newDictionary: [String: String]?) -> [String: String]? {
-        if (newDictionary == nil || newDictionary!.isEmpty) {
-            return baseDictionary
-        } else if (baseDictionary != nil && !baseDictionary!.isEmpty) {
-            return baseDictionary!.merging(newDictionary!) { (_, new) in new }
+         guard let newDictionary = newDictionary, !newDictionary.isEmpty else {
+            return baseDictionary?.isEmpty == true ? nil : baseDictionary
         }
-
-        return newDictionary
+        guard let baseDictionary = baseDictionary, !baseDictionary.isEmpty else {
+            return newDictionary
+        }
+        return baseDictionary.merging(newDictionary) { (_, new) in new }
     }
 
 
