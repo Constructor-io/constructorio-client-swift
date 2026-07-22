@@ -440,6 +440,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - searchTerm: The term that the user searched for
         - originalQuery: The current text in the input field
         - group: The group to search within. Only required if searching within a group, i.e. "Pumpkin in Canned Goods"
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
 
      ### Usage Example: ###
@@ -447,8 +448,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackSearchSubmit(searchTerm: "apple", originalQuery: "app")
      ```
      */
-    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
+    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -1005,13 +1006,13 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
     
     private func mergeDictionary(baseDictionary: [String: String]?, newDictionary: [String: String]?) -> [String: String]? {
-        if (newDictionary == nil || newDictionary!.isEmpty) {
-            return baseDictionary
-        } else if (baseDictionary != nil && !baseDictionary!.isEmpty) {
-            return baseDictionary!.merging(newDictionary!) { (_, new) in new }
+         guard let newDictionary = newDictionary, !newDictionary.isEmpty else {
+            return baseDictionary?.isEmpty == true ? nil : baseDictionary
         }
-        
-        return nil
+        guard let baseDictionary = baseDictionary, !baseDictionary.isEmpty else {
+            return newDictionary
+        }
+        return baseDictionary.merging(newDictionary) { (_, new) in new }
     }
 
 
