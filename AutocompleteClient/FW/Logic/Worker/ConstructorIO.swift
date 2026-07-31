@@ -1005,8 +1005,18 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.sessionID = sessionID
     }
     
+
+    /**
+     Merge two dictionaries, with values in `newDictionary` taking precedence over matching keys in `baseDictionary`
+
+     - Parameters:
+        - baseDictionary: The dictionary to merge into
+        - newDictionary: The dictionary whose values override the base dictionary's values
+
+     - Returns: The merged dictionary, or `nil` when both dictionaries are nil or empty.
+     */
     private func mergeDictionary(baseDictionary: [String: String]?, newDictionary: [String: String]?) -> [String: String]? {
-         guard let newDictionary = newDictionary, !newDictionary.isEmpty else {
+        guard let newDictionary = newDictionary, !newDictionary.isEmpty else {
             return baseDictionary?.isEmpty == true ? nil : baseDictionary
         }
         guard let baseDictionary = baseDictionary, !baseDictionary.isEmpty else {
