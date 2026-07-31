@@ -64,6 +64,17 @@ class ConstructorIOTrackSearchSubmitTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackSearchSubmit_WithAnalyticsTagsOverridingDefault() {
+        let searchTerm = "corn"
+        let searchOriginalQuery = "corn"
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultAnalyticsTags: ["default_tag": "default_value"])
+        let constructor = TestConstants.testConstructor(config)
+        let builder = CIOBuilder(expectation: "Calling trackSearchSubmit with analyticsTags overriding a defaultAnalyticsTags key should send only the per-request value.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/autocomplete/corn/search?_dt=\(kRegexTimestamp)&analytics_tags%5Bdefault_tag%5D=overridden_value&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&original_query=corn&s=\(kRegexSession)&\(TestConstants.defaultSegments)"), builder.create())
+        constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: searchOriginalQuery, analyticsTags: ["default_tag": "overridden_value"])
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackSearchSubmit_WithNoAnalyticsTags() {
         let searchTerm = "corn"
         let searchOriginalQuery = "corn"
