@@ -440,6 +440,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - searchTerm: The term that the user searched for
         - originalQuery: The current text in the input field
         - group: The group to search within. Only required if searching within a group, i.e. "Pumpkin in Canned Goods"
+        - analyticsTags: Additional analytics tags to pass
         - completionHandler: The callback to execute on completion.
 
      ### Usage Example: ###
@@ -447,8 +448,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackSearchSubmit(searchTerm: "apple", originalQuery: "app")
      ```
      */
-    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
+    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -475,7 +476,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultID: resultID, url: "Not Available", customerIDs: customerIDs, items: items, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultID: resultID, url: "Not Available", customerIDs: customerIDs, items: items, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -530,7 +531,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID, url: "Not Available", customerIDs: customerIDs, items: items, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID, url: "Not Available", customerIDs: customerIDs, items: items, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -558,7 +559,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackBrowseResultClick(customerID: String, variationID: String? = nil, filterName: String, filterValue: String, resultPositionOnPage: Int?, sectionName: String? = nil, resultID: String? = nil, slCampaignID: String? = nil, slCampaignOwner: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID, variationID: variationID, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID, variationID: variationID, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -590,7 +591,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackRecommendationResultsView(podID: String, numResultsViewed: Int? = nil, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, seedItemIDs: [String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags), seedItemIDs: seedItemIDs, items: items)
+        let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags), seedItemIDs: seedItemIDs, items: items)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -620,7 +621,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackRecommendationResultClick(podID: String, strategyID: String? = nil, customerID: String, variationID: String? = nil, numResultsPerPage: Int? = nil, resultPage: Int? = nil, resultCount: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, seedItemIDs: [String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags), seedItemIDs: seedItemIDs)
+        let data = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags), seedItemIDs: seedItemIDs)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -650,7 +651,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let type = conversionType ?? Constants.Track.defaultConversionType
         let term = searchTerm == nil ? "TERM_UNKNOWN" : (searchTerm!.isEmpty) ? "TERM_UNKNOWN" : searchTerm
-        let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue, conversionType: type, variationID: variationID, displayName: displayName, isCustomType: isCustomType, analyticsTags: analyticsTags)
+        let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue, conversionType: type, variationID: variationID, displayName: displayName, isCustomType: isCustomType, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -673,7 +674,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackPurchase(customerIDs: [String], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackPurchaseData(customerIDs: customerIDs, sectionName: section, revenue: revenue, orderID: orderID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackPurchaseData(customerIDs: customerIDs, sectionName: section, revenue: revenue, orderID: orderID, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -696,7 +697,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackPurchase(items: [CIOItem], sectionName: String? = nil, revenue: Double? = nil, orderID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackPurchaseData(items: items, sectionName: section, revenue: revenue, orderID: orderID, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackPurchaseData(items: items, sectionName: section, revenue: revenue, orderID: orderID, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -719,7 +720,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackItemDetailLoad(customerID: String, itemName: String, variationID: String? = nil, sectionName: String? = nil, url: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: section, url: url ?? "Not Available", analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: section, url: url ?? "Not Available", analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -750,7 +751,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackQuizResultsLoaded(quizID: String, quizVersionID: String, quizSessionID: String, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -781,7 +782,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackQuizResultClick(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, resultID: String? = nil, resultPage: Int? = nil, resultCount: Int? = nil, numResultsPerPage: Int? = nil, resultPositionOnPage: Int? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackQuizResultClickData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, resultID: resultID, resultPage: resultPage, resultCount: resultCount, numResultsPerPage: numResultsPerPage, resultPositionOnPage: resultPositionOnPage, sectionName: section, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackQuizResultClickData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, resultID: resultID, resultPage: resultPage, resultCount: resultCount, numResultsPerPage: numResultsPerPage, resultPositionOnPage: resultPositionOnPage, sectionName: section, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -811,7 +812,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackQuizConversion(quizID: String, quizVersionID: String, quizSessionID: String, customerID: String, variationID: String? = nil, itemName: String? = nil, revenue: Double? = nil, conversionType: String? = nil, isCustomType: Bool? = nil, displayName: String? = nil, sectionName: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackQuizConversionData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, revenue: revenue, conversionType: conversionType, isCustomType: isCustomType, displayName: displayName, sectionName: section, analyticsTags: mergeDictionary(baseDictionary: self.config.defaultAnalyticsTags, newDictionary: analyticsTags))
+        let data = CIOTrackQuizConversionData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, revenue: revenue, conversionType: conversionType, isCustomType: isCustomType, displayName: displayName, sectionName: section, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
@@ -1004,14 +1005,24 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         self.sessionID = sessionID
     }
     
-    private func mergeDictionary(baseDictionary: [String: String]?, newDictionary: [String: String]?) -> [String: String]? {
-        if (newDictionary == nil || newDictionary!.isEmpty) {
-            return baseDictionary
-        } else if (baseDictionary != nil && !baseDictionary!.isEmpty) {
-            return baseDictionary!.merging(newDictionary!) { (_, new) in new }
+
+    /**
+     Merge default and per-request analytics tags, with values in `newAnalyticsTags` taking precedence over matching keys in `defaultAnalyticsTags`
+
+     - Parameters:
+        - defaultAnalyticsTags: The analytics tags to merge into
+        - newAnalyticsTags: The analytics tags whose values override the default analytics tags' values
+
+     - Returns: The merged analytics tags, or `nil` when both are nil or empty.
+     */
+    private func mergeAnalyticsTags(defaultAnalyticsTags: [String: String]?, newAnalyticsTags: [String: String]?) -> [String: String]? {
+        guard let newAnalyticsTags = newAnalyticsTags, !newAnalyticsTags.isEmpty else {
+            return defaultAnalyticsTags?.isEmpty == true ? nil : defaultAnalyticsTags
         }
-        
-        return nil
+        guard let defaultAnalyticsTags = defaultAnalyticsTags, !defaultAnalyticsTags.isEmpty else {
+            return newAnalyticsTags
+        }
+        return defaultAnalyticsTags.merging(newAnalyticsTags) { (_, new) in new }
     }
 
 

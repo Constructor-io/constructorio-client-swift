@@ -70,4 +70,23 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         XCTAssertFalse(url.contains("group%5Bgroup_name%5D"), "URL shouldn't contain a URL query item with group id if item outside a group")
         XCTAssertFalse(url.contains("group%5Bgroup_id%5D"), "URL shouldn't contain a URL query item with group name if item outside a group")
     }
+
+    func testTrackSearchSubmitBuilder_WithAnalyticsTags() {
+        let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, analyticsTags: ["tag1": "value1", "tag2": "value2"])
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+
+        XCTAssertTrue(url.contains("analytics_tags%5Btag1%5D=value1"), "URL should contain a nested query item for each analytics tag")
+        XCTAssertTrue(url.contains("analytics_tags%5Btag2%5D=value2"), "URL should contain a nested query item for each analytics tag")
+    }
+
+    func testTrackSearchSubmitBuilder_WithoutAnalyticsTags() {
+        let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, analyticsTags: nil)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+
+        XCTAssertFalse(url.contains("analytics_tags"), "URL shouldn't contain analytics tags query items when none are provided")
+    }
 }

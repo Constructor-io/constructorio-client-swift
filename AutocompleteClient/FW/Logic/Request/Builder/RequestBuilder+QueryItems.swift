@@ -26,6 +26,13 @@ extension RequestBuilder {
         queryItems.add(URLQueryItem(name: Constants.Track.groupID, value: groupID))
     }
 
+    func set(analyticsTags: [String: String]?) {
+        guard let analyticsTags = analyticsTags else { return }
+        analyticsTags.forEach {
+            queryItems.add(URLQueryItem(name: Constants.Track.analyticsTagsKey($0.key), value: $0.value))
+        }
+    }
+
     func set(searchTerm: String) {
         queryItems.add(URLQueryItem(name: Constants.Track.searchTerm, value: searchTerm))
     }

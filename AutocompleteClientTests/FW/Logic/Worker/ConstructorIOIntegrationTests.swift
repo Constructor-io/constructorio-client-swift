@@ -811,7 +811,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.constructor.search(forQuery: query, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNotNil(cioError)
-            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page: ensure this value is less than or equal to 200")
+            XCTAssertEqual(cioError?.errorMessage, "num_results_per_page: Input should be less than or equal to 200")
             expectation.fulfill()
         })
         self.wait(for: expectation)
