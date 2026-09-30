@@ -17,24 +17,43 @@ struct CIOTrackSearchSubmitData: CIORequestData {
     let originalQuery: String
     let group: CIOGroup?
     let analyticsTags: [String: String]?
+    let section: String?
 
     func url(with baseURL: String) -> String {
-        return String(format: Constants.TrackSearchSubmit.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+        return String(format: Constants.TrackSearchSubmit.format, baseURL)
     }
 
-    init(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil) {
+    init(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, section: String? = nil) {
         self.searchTerm = searchTerm
         self.originalQuery = originalQuery
         self.group = group
         self.analyticsTags = analyticsTags
+        self.section = section
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(originalQuery: self.originalQuery)
+        requestBuilder.set(autocompleteSection: self.section)
+    }
+
+    func httpMethod() -> String {
+        return "POST"
+    }
+
+    // The endpoint rejects unknown body properties, so base params are sent only as query items
+    func httpBody(baseParams: [String: Any]) -> Data? {
+        var dict = [
+            "search_term": self.searchTerm,
+            "user_input": self.originalQuery
+        ] as [String: Any]
+
         if let group = self.group {
-            requestBuilder.set(groupName: group.displayName)
-            requestBuilder.set(groupID: group.groupID)
+            dict["filters"] = ["group_id": group.groupID]
         }
-        requestBuilder.set(analyticsTags: self.analyticsTags)
+
+        if self.analyticsTags != nil {
+            dict["analytics_tags"] = self.analyticsTags
+        }
+
+        return try? JSONSerialization.data(withJSONObject: dict)
     }
 }

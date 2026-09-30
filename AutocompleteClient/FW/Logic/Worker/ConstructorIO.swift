@@ -441,6 +441,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - originalQuery: The current text in the input field
         - group: The group to search within. Only required if searching within a group, i.e. "Pumpkin in Canned Goods"
         - analyticsTags: Additional analytics tags to pass
+        - section: The name of the section the search was submitted in (defaults to "Products")
         - completionHandler: The callback to execute on completion.
 
      ### Usage Example: ###
@@ -448,8 +449,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackSearchSubmit(searchTerm: "apple", originalQuery: "app")
      ```
      */
-    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
+    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, section: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = section ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags), section: sectionName)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }

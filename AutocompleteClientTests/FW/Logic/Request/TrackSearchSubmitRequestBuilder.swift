@@ -16,15 +16,15 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
     fileprivate let originalQuery = "testing#@#??!!asd"
     fileprivate let group = CIOGroup(displayName: "groupName1", groupID: "groupID2", path: "path/to/group")
 
-    fileprivate var encodedSearchTerm: String = ""
-    fileprivate var encodedOriginalQuery: String = ""
     fileprivate var builder: RequestBuilder!
 
     override func setUp() {
         super.setUp()
-        self.encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        self.encodedOriginalQuery = originalQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
+    }
+
+    private func payload(_ request: URLRequest) -> [String: Any]? {
+        return request.httpBody.flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) as? [String: Any] }
     }
 
     func testTrackSearchSubmitBuilder() {
@@ -32,12 +32,23 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         builder.build(trackData: tracker)
         let request = builder.getRequest()
         let url = request.url!.absoluteString
+        let payload = self.payload(request)
 
-        XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/autocomplete/\(encodedSearchTerm)/search?"))
-        XCTAssertTrue(url.contains("original_query=\(encodedOriginalQuery)"), "URL should contain the original query")
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/search?"))
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
+        XCTAssertFalse(url.contains("original_query"), "URL shouldn't contain the original query")
+        XCTAssertEqual(payload?["search_term"] as? String, searchTerm)
+        XCTAssertEqual(payload?["user_input"] as? String, originalQuery)
+    }
+
+    func testTrackSearchSubmitBuilder_OnlySendsSupportedBodyProperties() {
+        let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group, analyticsTags: ["tag1": "value1"])
+        builder.build(trackData: tracker)
+        let payload = self.payload(builder.getRequest())
+
+        XCTAssertEqual(Set(payload.map { Array($0.keys) } ?? []), ["search_term", "user_input", "filters", "analytics_tags"], "Body should only contain properties accepted by the endpoint")
     }
 
     func testTrackSearchSubmitBuilder_WithCustomBaseURL() {
@@ -48,45 +59,56 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix(customBaseURL))
+        XCTAssertTrue(url.hasPrefix("\(customBaseURL)/v2/behavioral_action/search?"))
+    }
+
+    func testTrackSearchSubmitBuilder_WithSection() {
+        let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, section: "Search Suggestions")
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+
+        XCTAssertTrue(url.contains("section=Search%20Suggestions"), "URL should contain the section")
+        XCTAssertNil(self.payload(request)?["section"], "Body shouldn't contain the section")
+    }
+
+    func testTrackSearchSubmitBuilder_WithoutSection() {
+        let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery)
+        builder.build(trackData: tracker)
+        let url = builder.getRequest().url!.absoluteString
+
+        XCTAssertFalse(url.contains("section="), "URL shouldn't contain a section when none is provided")
     }
 
     func testTrackSearchSubmitBuilder_WithGroup() {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group)
         builder.build(trackData: tracker)
-        let request = builder.getRequest()
-        let url = request.url!.absoluteString
+        let payload = self.payload(builder.getRequest())
 
-        XCTAssertTrue(url.contains("group%5Bgroup_name%5D=groupName1"), "URL should contain a URL query item with group name if item in group")
-        XCTAssertTrue(url.contains("group%5Bgroup_id%5D=groupID2"), "URL should contain a URL query item with group id if item in group")
+        XCTAssertEqual(payload?["filters"] as? [String: String], ["group_id": "groupID2"], "Body should contain the group id in filters if item in group")
     }
 
     func testTrackSearchSubmitBuilder_WithoutGroup() {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: nil)
         builder.build(trackData: tracker)
-        let request = builder.getRequest()
-        let url = request.url!.absoluteString
+        let payload = self.payload(builder.getRequest())
 
-        XCTAssertFalse(url.contains("group%5Bgroup_name%5D"), "URL shouldn't contain a URL query item with group id if item outside a group")
-        XCTAssertFalse(url.contains("group%5Bgroup_id%5D"), "URL shouldn't contain a URL query item with group name if item outside a group")
+        XCTAssertNil(payload?["filters"], "Body shouldn't contain filters if item outside a group")
     }
 
     func testTrackSearchSubmitBuilder_WithAnalyticsTags() {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, analyticsTags: ["tag1": "value1", "tag2": "value2"])
         builder.build(trackData: tracker)
-        let request = builder.getRequest()
-        let url = request.url!.absoluteString
+        let payload = self.payload(builder.getRequest())
 
-        XCTAssertTrue(url.contains("analytics_tags%5Btag1%5D=value1"), "URL should contain a nested query item for each analytics tag")
-        XCTAssertTrue(url.contains("analytics_tags%5Btag2%5D=value2"), "URL should contain a nested query item for each analytics tag")
+        XCTAssertEqual(payload?["analytics_tags"] as? [String: String], ["tag1": "value1", "tag2": "value2"])
     }
 
     func testTrackSearchSubmitBuilder_WithoutAnalyticsTags() {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, analyticsTags: nil)
         builder.build(trackData: tracker)
-        let request = builder.getRequest()
-        let url = request.url!.absoluteString
+        let payload = self.payload(builder.getRequest())
 
-        XCTAssertFalse(url.contains("analytics_tags"), "URL shouldn't contain analytics tags query items when none are provided")
+        XCTAssertNil(payload?["analytics_tags"], "Body shouldn't contain analytics tags when none are provided")
     }
 }
