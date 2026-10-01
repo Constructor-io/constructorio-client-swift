@@ -38,17 +38,18 @@ class ConstructorIOTrackSearchSubmitTests: XCTestCase {
         }
     }
 
-    func testTrackSearchSubmit() {
-        var payload: [String: Any]?
+    func testTrackSearchSubmit() throws {
+        var capturedPayload: [String: Any]?
         let builder = CIOBuilder(expectation: "Calling trackSearchSubmit should send a valid request.", builder: http(200))
-        stubCapturingPayload(builder) { payload = $0 }
+        stubCapturingPayload(builder) { capturedPayload = $0 }
         self.constructor.trackSearchSubmit(searchTerm: "corn", originalQuery: "cor")
         self.wait(for: builder.expectation)
 
-        XCTAssertEqual(payload?["search_term"] as? String, "corn")
-        XCTAssertEqual(payload?["user_input"] as? String, "cor")
-        XCTAssertNil(payload?["filters"], "filters should not be present when no group is provided")
-        XCTAssertNil(payload?["analytics_tags"], "analytics_tags should not be present when none are provided")
+        let payload = try XCTUnwrap(capturedPayload, "Expected non-nil body payload")
+        XCTAssertEqual(payload["search_term"] as? String, "corn")
+        XCTAssertEqual(payload["user_input"] as? String, "cor")
+        XCTAssertNil(payload["filters"], "filters should not be present when no group is provided")
+        XCTAssertNil(payload["analytics_tags"], "analytics_tags should not be present when none are provided")
     }
 
     func testTrackSearchSubmit_WithGroup() {

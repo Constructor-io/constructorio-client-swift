@@ -43,12 +43,12 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["user_input"] as? String, originalQuery)
     }
 
-    func testTrackSearchSubmitBuilder_OnlySendsSupportedBodyProperties() {
+    func testTrackSearchSubmitBuilder_OnlySendsSupportedBodyProperties() throws {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group, analyticsTags: ["tag1": "value1"])
         builder.build(trackData: tracker)
-        let payload = self.payload(builder.getRequest())
+        let payload = try XCTUnwrap(self.payload(builder.getRequest()), "Expected non-nil body payload")
 
-        XCTAssertEqual(Set(payload.map { Array($0.keys) } ?? []), ["search_term", "user_input", "filters", "analytics_tags"], "Body should only contain properties accepted by the endpoint")
+        XCTAssertEqual(Set(payload.keys), ["search_term", "user_input", "filters", "analytics_tags"], "Body should only contain properties accepted by the endpoint")
     }
 
     func testTrackSearchSubmitBuilder_WithCustomBaseURL() {
@@ -88,12 +88,12 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["filters"] as? [String: String], ["group_id": "groupID2"], "Body should contain the group id in filters if item in group")
     }
 
-    func testTrackSearchSubmitBuilder_WithoutGroup() {
+    func testTrackSearchSubmitBuilder_WithoutGroup() throws {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: nil)
         builder.build(trackData: tracker)
-        let payload = self.payload(builder.getRequest())
+        let payload = try XCTUnwrap(self.payload(builder.getRequest()), "Expected non-nil body payload")
 
-        XCTAssertNil(payload?["filters"], "Body shouldn't contain filters if item outside a group")
+        XCTAssertNil(payload["filters"], "Body shouldn't contain filters if item outside a group")
     }
 
     func testTrackSearchSubmitBuilder_WithAnalyticsTags() {
@@ -104,11 +104,11 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["analytics_tags"] as? [String: String], ["tag1": "value1", "tag2": "value2"])
     }
 
-    func testTrackSearchSubmitBuilder_WithoutAnalyticsTags() {
+    func testTrackSearchSubmitBuilder_WithoutAnalyticsTags() throws {
         let tracker = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, analyticsTags: nil)
         builder.build(trackData: tracker)
-        let payload = self.payload(builder.getRequest())
+        let payload = try XCTUnwrap(self.payload(builder.getRequest()), "Expected non-nil body payload")
 
-        XCTAssertNil(payload?["analytics_tags"], "Body shouldn't contain analytics tags when none are provided")
+        XCTAssertNil(payload["analytics_tags"], "Body shouldn't contain analytics tags when none are provided")
     }
 }
