@@ -351,7 +351,8 @@ extension CIOAutocompleteViewController: UITableViewDelegate, UITableViewDataSou
         constructorIO.trackAutocompleteSelect(searchTerm: result.result.value, originalQuery: viewModel.searchTerm, sectionName: sectionName, group: result.group)
 
         // Track search
-        constructorIO.trackSearchSubmit(searchTerm: result.result.value, originalQuery: viewModel.searchTerm, group: result.group)
+        let filters = result.group.flatMap { CIOSearchFilters(groupID: $0.groupID) }
+        constructorIO.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: result.result.value, userInput: viewModel.searchTerm, filters: filters))
 
         self.delegate?.autocompleteController?(controller: self, didSelectResult: result)
     }
@@ -404,7 +405,7 @@ extension CIOAutocompleteViewController: UISearchBarDelegate {
 
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // Track search
-        self.constructorIO.trackSearchSubmit(searchTerm: viewModel.searchTerm, originalQuery: viewModel.searchTerm)
+        self.constructorIO.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: viewModel.searchTerm, userInput: viewModel.searchTerm))
     }
 
     public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {

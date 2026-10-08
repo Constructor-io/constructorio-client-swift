@@ -57,6 +57,8 @@
 		08C1E6052193BE3600A2E24E /* CIOTrackPurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1E6042193BE3600A2E24E /* CIOTrackPurchaseData.swift */; };
 		08C1E6072193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */; };
 		08FFB76C215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */; };
+		B7C3E1205D2B4F6A9E8C1B02 /* CIOSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C3E1215D2B4F6A9E8C1B02 /* CIOSearchFilters.swift */; };
+		B7C3E1225D2B4F6A9E8C1B03 /* CIOTrackSearchSubmitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C3E1235D2B4F6A9E8C1B03 /* CIOTrackSearchSubmitRequest.swift */; };
 		08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */; };
 		0D6F0DA342504F8D1DB657B5 /* TrackAgentResultViewRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD016CFF1317FE8714751737 /* TrackAgentResultViewRequestBuilderTests.swift */; };
 		120264B1D888913DB32E9BDD /* ConstructorIOTrackAgentResultLoadStartedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AB45915473F18E0232C00 /* ConstructorIOTrackAgentResultLoadStartedTests.swift */; };
@@ -450,6 +452,8 @@
 		08C1E6042193BE3600A2E24E /* CIOTrackPurchaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackPurchaseData.swift; sourceTree = "<group>"; };
 		08C1E6062193C29C00A2E24E /* TrackPurchaseRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPurchaseRequestBuilderTests.swift; sourceTree = "<group>"; };
 		08FFB76B215EBBF8008CAA7D /* CIOTrackAutocompleteSelectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIOTrackAutocompleteSelectData.swift; sourceTree = "<group>"; };
+		B7C3E1215D2B4F6A9E8C1B02 /* CIOSearchFilters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOSearchFilters.swift; sourceTree = "<group>"; };
+		B7C3E1235D2B4F6A9E8C1B03 /* CIOTrackSearchSubmitRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchSubmitRequest.swift; sourceTree = "<group>"; };
 		08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIOTrackSearchSubmitData.swift; sourceTree = "<group>"; };
 		14F639EF2F5B572DE847C09B /* ConstructorIOTrackAgentResultViewTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackAgentResultViewTests.swift; sourceTree = "<group>"; };
 		2B2AB45915473F18E0232C00 /* ConstructorIOTrackAgentResultLoadStartedTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConstructorIOTrackAgentResultLoadStartedTests.swift; sourceTree = "<group>"; };
@@ -955,6 +959,8 @@
 				F6DF7B9320849E8D00A7CDAD /* CIOTrackSearchResultClickData.swift */,
 				F6D2E9CB20E21022007F8761 /* CIOTrackSearchResultsLoadedData.swift */,
 				08FFB76D215EC1DF008CAA7D /* CIOTrackSearchSubmitData.swift */,
+				B7C3E1235D2B4F6A9E8C1B03 /* CIOTrackSearchSubmitRequest.swift */,
+				B7C3E1215D2B4F6A9E8C1B02 /* CIOSearchFilters.swift */,
 				F685255C21414E1D00A27FAA /* CIOTrackSessionStartData.swift */,
 				7D45383928DC085600490BFE /* CIOQuizQuery.swift */,
 				BF02E29E28B5739C0062B44F /* CIOItem.swift */,
@@ -2594,6 +2600,8 @@
 				BF380F1627E12623005E01F5 /* CIOSearchQueryBuilder.swift in Sources */,
 				F6852559213D604900A27FAA /* AutocompleteResultCount.swift in Sources */,
 				08FFB76E215EC1E2008CAA7D /* CIOTrackSearchSubmitData.swift in Sources */,
+				B7C3E1225D2B4F6A9E8C1B03 /* CIOTrackSearchSubmitRequest.swift in Sources */,
+				B7C3E1205D2B4F6A9E8C1B02 /* CIOSearchFilters.swift in Sources */,
 				0828954D256C5A85009A00BC /* CIOAutocompleteResponse.swift in Sources */,
 				0828954B256C5A85009A00BC /* CIOSearchRedirectInfo.swift in Sources */,
 				08289544256C5A85009A00BC /* CIOSortOption.swift in Sources */,

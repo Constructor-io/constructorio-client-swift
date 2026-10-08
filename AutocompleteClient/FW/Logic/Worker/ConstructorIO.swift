@@ -447,7 +447,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     public func trackSearchSubmit(_ request: CIOTrackSearchSubmitRequest, completionHandler: TrackingCompletionHandler? = nil) {
         let sectionName = request.section ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackSearchSubmitData(searchTerm: request.searchTerm, userInput: request.userInput, filters: request.filters, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags), section: sectionName)
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackSearchSubmitData(searchTerm: request.searchTerm, userInput: request.userInput, filters: request.filters, analyticsTags: mergedTags, section: sectionName)
         let urlRequest = self.buildRequest(data: data)
         executeTracking(urlRequest, completionHandler: completionHandler)
     }
