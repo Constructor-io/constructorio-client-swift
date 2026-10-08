@@ -434,7 +434,26 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     /**
-     Track when a user submits a search (pressing enter within input element, or clicking submit element)
+     Track when a user submits a search (pressing enter within input element, or clicking submit button)
+
+     - Parameters:
+        - request: The search submit request. See `CIOTrackSearchSubmitRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: "apple", userInput: "app"))
+     ```
+     */
+    public func trackSearchSubmit(_ request: CIOTrackSearchSubmitRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.section ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackSearchSubmitData(searchTerm: request.searchTerm, userInput: request.userInput, filters: request.filters, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags), section: sectionName)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user submits a search (pressing enter within input element, or clicking submit button)
 
      - Parameters:
         - searchTerm: The term that the user searched for
@@ -449,11 +468,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackSearchSubmit(searchTerm: "apple", originalQuery: "app")
      ```
      */
+    @available(*, deprecated, message: "Use trackSearchSubmit(_:completionHandler:) with CIOTrackSearchSubmitRequest instead")
     public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, section: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = section ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags), section: sectionName)
-        let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        let filters = group.flatMap { CIOSearchFilters(groupID: $0.groupID) }
+        trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: searchTerm, userInput: originalQuery, filters: filters, analyticsTags: analyticsTags, section: section), completionHandler: completionHandler)
     }
 
     /**

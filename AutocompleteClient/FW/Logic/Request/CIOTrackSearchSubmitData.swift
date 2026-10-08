@@ -14,8 +14,8 @@ import Foundation
 struct CIOTrackSearchSubmitData: CIORequestData {
 
     let searchTerm: String
-    let originalQuery: String
-    let group: CIOGroup?
+    let userInput: String
+    let filters: CIOSearchFilters?
     let analyticsTags: [String: String]?
     let section: String?
 
@@ -23,10 +23,10 @@ struct CIOTrackSearchSubmitData: CIORequestData {
         return String(format: Constants.TrackSearchSubmit.format, baseURL)
     }
 
-    init(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, section: String? = nil) {
+    init(searchTerm: String, userInput: String, filters: CIOSearchFilters? = nil, analyticsTags: [String: String]? = nil, section: String? = nil) {
         self.searchTerm = searchTerm
-        self.originalQuery = originalQuery
-        self.group = group
+        self.userInput = userInput
+        self.filters = filters
         self.analyticsTags = analyticsTags
         self.section = section
     }
@@ -39,19 +39,19 @@ struct CIOTrackSearchSubmitData: CIORequestData {
         return "POST"
     }
 
-    // The endpoint rejects unknown body properties, so base params are sent only as query items
+    // The endpoint rejects unknown body properties, so base params are only sent as query items
     func httpBody(baseParams: [String: Any]) -> Data? {
         var dict = [
             "search_term": self.searchTerm,
-            "user_input": self.originalQuery
+            "user_input": self.userInput
         ] as [String: Any]
 
-        if let group = self.group {
-            dict["filters"] = ["group_id": group.groupID]
+        if let filters = self.filters {
+            dict["filters"] = ["group_id": filters.groupID]
         }
 
-        if self.analyticsTags != nil {
-            dict["analytics_tags"] = self.analyticsTags
+        if let analyticsTags = self.analyticsTags {
+            dict["analytics_tags"] = analyticsTags
         }
 
         return try? JSONSerialization.data(withJSONObject: dict)
