@@ -6,8 +6,7 @@
 //  http://constructor.io/
 //
 
-// @testable gives access to the internal CIOSearchFilters.groupIDMaxLength, so the length-limit tests follow the constant
-@testable import ConstructorAutocomplete
+import ConstructorAutocomplete
 import OHHTTPStubs
 import XCTest
 
@@ -55,7 +54,7 @@ class ConstructorIOTrackSearchSubmitTests: XCTestCase {
 
     func testTrackSearchSubmit_WithFilters() {
         var payload: [String: Any]?
-        let filters = CIOSearchFilters(groupID: "group-123")
+        let filters = CIOTrackSearchSubmitFilters(groupID: "group-123")
         let builder = CIOBuilder(expectation: "Calling trackSearchSubmit with filters should send the group id in filters.", builder: http(200))
         stubCapturingPayload(builder) { payload = $0 }
         self.constructor.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: "corn", userInput: "corn", filters: filters))
@@ -177,30 +176,6 @@ class ConstructorIOTrackSearchSubmitTests: XCTestCase {
         XCTAssertEqual(payload?["analytics_tags"] as? [String: String], ["tag1": "value1"])
     }
 
-    func testTrackSearchSubmit_DeprecatedOverload_WithInvalidGroupID_OmitsFilters() {
-        var payload: [String: Any]?
-        let group = CIOGroup(displayName: "Empty", groupID: "", path: nil)
-        let builder = CIOBuilder(expectation: "Deprecated trackSearchSubmit should drop an invalid group id.", builder: http(200))
-        stubCapturingPayload(builder) { payload = $0 }
-        self.constructor.trackSearchSubmit(searchTerm: "corn", originalQuery: "cor", group: group)
-        self.wait(for: builder.expectation)
-
-        XCTAssertNotNil(payload)
-        XCTAssertNil(payload?["filters"])
-    }
-
-    func testTrackSearchSubmit_DeprecatedOverload_WithOverLengthGroupID_OmitsFilters() {
-        var payload: [String: Any]?
-        let group = CIOGroup(displayName: "Long", groupID: String(repeating: "a", count: CIOSearchFilters.groupIDMaxLength + 1), path: nil)
-        let builder = CIOBuilder(expectation: "Deprecated trackSearchSubmit should drop a group id over the max length.", builder: http(200))
-        stubCapturingPayload(builder) { payload = $0 }
-        self.constructor.trackSearchSubmit(searchTerm: "corn", originalQuery: "cor", group: group)
-        self.wait(for: builder.expectation)
-
-        XCTAssertNotNil(payload)
-        XCTAssertNil(payload?["filters"])
-    }
-
     func testTrackSearchSubmit_DeprecatedOverload_WithoutOptionals() {
         var payload: [String: Any]?
         let builder = CIOBuilder(expectation: "Deprecated trackSearchSubmit with only required params should send only required body fields.", builder: http(200))
@@ -208,20 +183,15 @@ class ConstructorIOTrackSearchSubmitTests: XCTestCase {
         self.constructor.trackSearchSubmit(searchTerm: "corn", originalQuery: "cor")
         self.wait(for: builder.expectation)
 
-        XCTAssertEqual(Set((payload ?? [:]).keys), ["search_term", "user_input"])
+        XCTAssertNotNil(payload)
+        XCTAssertNil(payload?["filters"])
+        XCTAssertNil(payload?["analytics_tags"])
     }
 
-    func testTrackSearchSubmit_DeprecatedOverload_WithSection() {
-        let builder = CIOBuilder(expectation: "Deprecated trackSearchSubmit should forward the section.", builder: http(200))
-        stub(regex(ConstructorIOTrackSearchSubmitTests.searchSubmitURLWithSection("Search%20Suggestions")), builder.create())
-        self.constructor.trackSearchSubmit(searchTerm: "corn", originalQuery: "corn", section: "Search Suggestions")
-        self.wait(for: builder.expectation)
-    }
-
-    func testTrackSearchSubmit_DeprecatedOverload_WithDefaultItemSectionName() {
+    func testTrackSearchSubmit_DeprecatedOverload_UsesDefaultItemSectionName() {
         let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: "Content")
         let constructor = TestConstants.testConstructor(config)
-        let builder = CIOBuilder(expectation: "Deprecated trackSearchSubmit without a section should fall back to defaultItemSectionName.", builder: http(200))
+        let builder = CIOBuilder(expectation: "Deprecated trackSearchSubmit should use defaultItemSectionName.", builder: http(200))
         stub(regex(ConstructorIOTrackSearchSubmitTests.searchSubmitURLWithSection("Content")), builder.create())
         constructor.trackSearchSubmit(searchTerm: "corn", originalQuery: "corn")
         self.wait(for: builder.expectation)

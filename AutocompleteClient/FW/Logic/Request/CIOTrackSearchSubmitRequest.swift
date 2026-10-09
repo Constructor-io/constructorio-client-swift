@@ -14,19 +14,19 @@ import Foundation
 public struct CIOTrackSearchSubmitRequest {
 
     /**
-     The term that the user searched for (max 250 characters)
+     The term that the user searched for
      */
     public let searchTerm: String
 
     /**
-     The current text in the input field (max 250 characters)
+     The current text in the input field
      */
     public let userInput: String
 
     /**
      The filters applied by the search. Only a group id is supported, i.e. "Pumpkin in Canned Goods"
      */
-    public let filters: CIOSearchFilters?
+    public let filters: CIOTrackSearchSubmitFilters?
 
     /**
      Additional custom analytics tags to be sent with the event. Merged with the default analytics tags
@@ -42,13 +42,13 @@ public struct CIOTrackSearchSubmitRequest {
      Create a search submit request
 
      - Parameters:
-        - searchTerm: The term that the user searched for (max 250 characters)
-        - userInput: The current text in the input field (max 250 characters)
+        - searchTerm: The term that the user searched for
+        - userInput: The current text in the input field
         - filters: The filters applied by the search
         - analyticsTags: Additional custom analytics tags to be sent with the event
         - section: The section of the index to use
      */
-    public init(searchTerm: String, userInput: String, filters: CIOSearchFilters? = nil, analyticsTags: [String: String]? = nil, section: String? = nil) {
+    public init(searchTerm: String, userInput: String, filters: CIOTrackSearchSubmitFilters? = nil, analyticsTags: [String: String]? = nil, section: String? = nil) {
         self.searchTerm = searchTerm
         self.userInput = userInput
         self.filters = filters

@@ -461,7 +461,6 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - originalQuery: The current text in the input field
         - group: The group to search within. Only required if searching within a group, i.e. "Pumpkin in Canned Goods"
         - analyticsTags: Additional analytics tags to pass
-        - section: The name of the section the search was submitted in (defaults to "Products")
         - completionHandler: The callback to execute on completion.
 
      ### Usage Example: ###
@@ -470,9 +469,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     @available(*, deprecated, message: "Use trackSearchSubmit(_:completionHandler:) with CIOTrackSearchSubmitRequest instead")
-    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, section: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let filters = group.flatMap { CIOSearchFilters(groupID: $0.groupID) }
-        trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: searchTerm, userInput: originalQuery, filters: filters, analyticsTags: analyticsTags, section: section), completionHandler: completionHandler)
+    public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let filters = group.map { CIOTrackSearchSubmitFilters(groupID: $0.groupID) }
+        trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: searchTerm, userInput: originalQuery, filters: filters, analyticsTags: analyticsTags), completionHandler: completionHandler)
     }
 
     /**

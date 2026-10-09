@@ -351,7 +351,7 @@ extension CIOAutocompleteViewController: UITableViewDelegate, UITableViewDataSou
         constructorIO.trackAutocompleteSelect(searchTerm: result.result.value, originalQuery: viewModel.searchTerm, sectionName: sectionName, group: result.group)
 
         // Track search
-        let filters = result.group.flatMap { CIOSearchFilters(groupID: $0.groupID) }
+        let filters = result.group.map { CIOTrackSearchSubmitFilters(groupID: $0.groupID) }
         constructorIO.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: result.result.value, userInput: viewModel.searchTerm, filters: filters))
 
         self.delegate?.autocompleteController?(controller: self, didSelectResult: result)

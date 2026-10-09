@@ -14,7 +14,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
     fileprivate let testACKey = "asdf1213123"
     fileprivate let searchTerm = "😃test ink[]"
     fileprivate let userInput = "testing#@#??!!asd"
-    fileprivate let filters = CIOSearchFilters(groupID: "groupID2")
+    fileprivate let filters = CIOTrackSearchSubmitFilters(groupID: "groupID2")
 
     fileprivate var builder: RequestBuilder!
 
@@ -129,22 +129,9 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
     }
 }
 
-class CIOSearchFiltersTests: XCTestCase {
+class CIOTrackSearchSubmitFiltersTests: XCTestCase {
 
     func testInit_WithValidGroupID() {
-        XCTAssertEqual(CIOSearchFilters(groupID: "group-123")?.groupID, "group-123")
-    }
-
-    func testInit_WithEmptyGroupID_ReturnsNil() {
-        XCTAssertNil(CIOSearchFilters(groupID: ""))
-    }
-
-    func testInit_WithMaxLengthGroupID() {
-        let groupID = String(repeating: "a", count: CIOSearchFilters.groupIDMaxLength)
-        XCTAssertEqual(CIOSearchFilters(groupID: groupID)?.groupID, groupID)
-    }
-
-    func testInit_WithGroupIDOverMaxLength_ReturnsNil() {
-        XCTAssertNil(CIOSearchFilters(groupID: String(repeating: "a", count: CIOSearchFilters.groupIDMaxLength + 1)))
+        XCTAssertEqual(CIOTrackSearchSubmitFilters(groupID: "group-123").groupID, "group-123")
     }
 }

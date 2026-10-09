@@ -15,7 +15,7 @@ struct CIOTrackSearchSubmitData: CIORequestData {
 
     let searchTerm: String
     let userInput: String
-    let filters: CIOSearchFilters?
+    let filters: CIOTrackSearchSubmitFilters?
     let analyticsTags: [String: String]?
     let section: String?
 
@@ -23,7 +23,7 @@ struct CIOTrackSearchSubmitData: CIORequestData {
         return String(format: Constants.TrackSearchSubmit.format, baseURL)
     }
 
-    init(searchTerm: String, userInput: String, filters: CIOSearchFilters? = nil, analyticsTags: [String: String]? = nil, section: String? = nil) {
+    init(searchTerm: String, userInput: String, filters: CIOTrackSearchSubmitFilters? = nil, analyticsTags: [String: String]? = nil, section: String? = nil) {
         self.searchTerm = searchTerm
         self.userInput = userInput
         self.filters = filters

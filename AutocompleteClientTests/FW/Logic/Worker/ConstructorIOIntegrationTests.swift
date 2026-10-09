@@ -75,7 +75,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackSearchSubmit() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        let filters = CIOSearchFilters(groupID: group.groupID)
+        let filters = CIOTrackSearchSubmitFilters(groupID: group.groupID)
         self.constructor.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: searchTerm, userInput: originalQuery, filters: filters), completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
