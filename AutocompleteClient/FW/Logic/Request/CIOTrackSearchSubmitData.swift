@@ -14,27 +14,46 @@ import Foundation
 struct CIOTrackSearchSubmitData: CIORequestData {
 
     let searchTerm: String
-    let originalQuery: String
-    let group: CIOGroup?
+    let userInput: String
+    let filters: CIOTrackSearchSubmitFilters?
     let analyticsTags: [String: String]?
+    let section: String?
 
     func url(with baseURL: String) -> String {
-        return String(format: Constants.TrackSearchSubmit.format, baseURL, self.searchTerm.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+        return String(format: Constants.TrackSearchSubmit.format, baseURL)
     }
 
-    init(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil) {
+    init(searchTerm: String, userInput: String, filters: CIOTrackSearchSubmitFilters? = nil, analyticsTags: [String: String]? = nil, section: String? = nil) {
         self.searchTerm = searchTerm
-        self.originalQuery = originalQuery
-        self.group = group
+        self.userInput = userInput
+        self.filters = filters
         self.analyticsTags = analyticsTags
+        self.section = section
     }
 
     func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(originalQuery: self.originalQuery)
-        if let group = self.group {
-            requestBuilder.set(groupName: group.displayName)
-            requestBuilder.set(groupID: group.groupID)
+        requestBuilder.set(autocompleteSection: self.section)
+    }
+
+    func httpMethod() -> String {
+        return "POST"
+    }
+
+    // The endpoint rejects unknown body properties, so base params are only sent as query items
+    func httpBody(baseParams: [String: Any]) -> Data? {
+        var dict = [
+            "search_term": self.searchTerm,
+            "user_input": self.userInput
+        ] as [String: Any]
+
+        if let filters = self.filters {
+            dict["filters"] = ["group_id": filters.groupID]
         }
-        requestBuilder.set(analyticsTags: self.analyticsTags)
+
+        if let analyticsTags = self.analyticsTags {
+            dict["analytics_tags"] = analyticsTags
+        }
+
+        return try? JSONSerialization.data(withJSONObject: dict)
     }
 }
