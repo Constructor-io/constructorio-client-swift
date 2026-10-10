@@ -284,6 +284,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     /**
      Get the results of every pod on a recommendation page.
 
+     Beta: available to a small group of users and may change. Contact your Customer Success Manager to request access.
+
      Each pod in `pods` carries its own `resultID` (also set on the pod's `response`). Send that ID with the pod's recommendation view and click events. The page's top-level `resultID` identifies the page request and is not a tracking ID.
 
      - Parameters:
