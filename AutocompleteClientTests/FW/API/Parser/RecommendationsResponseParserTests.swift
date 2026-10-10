@@ -100,4 +100,62 @@ class RecommendationsResponseParserTests: XCTestCase {
             XCTFail("Parser should never throw an exception when a valid JSON string is passed.")
         }
     }
+
+    func testRecommendationPageParser_ParsesPerPodResultIDs() {
+        let json = """
+        {
+          "request": { "page_id": "pdp_b2c", "item_id": "product-123" },
+          "response": {
+            "page_id": "pdp_b2c",
+            "display_name": "PDP - B2C",
+            "page_type": "pdp",
+            "pods": [
+              {
+                "pod_id": "similar_items",
+                "request": { "item_id": "product-123", "num_results": 12 },
+                "response": {
+                  "results": [ { "data": { "id": "product-987" }, "value": "Red Running Shoe", "is_slotted": false, "labels": {}, "strategy": { "id": "alternative_items" } } ],
+                  "total_num_results": 1,
+                  "pod": { "id": "similar_items", "display_name": "Similar Items" }
+                },
+                "result_id": "a1b2c3d4-0000-0000-0000-000000000001"
+              },
+              {
+                "pod_id": "complete_the_look",
+                "request": { "item_id": "product-123", "num_results": 8 },
+                "response": { "results": [], "total_num_results": 0 },
+                "result_id": "a1b2c3d4-0000-0000-0000-000000000002"
+              }
+            ]
+          },
+          "result_id": "a1b2c3d4-0000-0000-0000-0000000000ff"
+        }
+        """
+        do {
+            let page = try RecommendationPageResponseParser().parse(recommendationPageResponseData: json.data(using: .utf8)!)
+
+            XCTAssertEqual(page.resultID, "a1b2c3d4-0000-0000-0000-0000000000ff")
+            XCTAssertEqual(page.pageID, "pdp_b2c")
+            XCTAssertEqual(page.pageType, "pdp")
+            XCTAssertEqual(page.pods.map { $0.podID }, ["similar_items", "complete_the_look"])
+            XCTAssertEqual(page.pods[0].resultID, "a1b2c3d4-0000-0000-0000-000000000001")
+            XCTAssertEqual(page.pods[0].response.resultID, "a1b2c3d4-0000-0000-0000-000000000001")
+            XCTAssertEqual(page.pods[0].response.pod.id, "similar_items")
+            XCTAssertEqual(page.pods[0].response.results.count, 1)
+            XCTAssertEqual(page.pods[0].response.request["pod_id"] as? String, "similar_items")
+            XCTAssertEqual(page.pods[1].resultID, "a1b2c3d4-0000-0000-0000-000000000002")
+            XCTAssertEqual(page.pods[1].response.pod.id, "complete_the_look", "A pod without a pod object falls back to its pod_id")
+            XCTAssertEqual(page.pods[1].response.results.count, 0)
+            XCTAssertFalse(page.pods.contains { $0.resultID == page.resultID })
+        } catch {
+            XCTFail("Parser should not throw for a valid page response: \(error)")
+        }
+    }
+
+    func testRecommendationPageParser_WithoutPods_ThrowsAnException() {
+        let data = "{ \"response\": {} }".data(using: .utf8)!
+        XCTAssertThrowsError(try RecommendationPageResponseParser().parse(recommendationPageResponseData: data)) { error in
+            XCTAssertEqual((error as? CIOError)?.errorType, .invalidResponse)
+        }
+    }
 }
