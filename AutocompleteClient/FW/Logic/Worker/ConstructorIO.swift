@@ -14,6 +14,7 @@ public typealias BrowseQueryCompletionHandler = (BrowseTaskResponse) -> Void
 public typealias BrowseFacetsQueryCompletionHandler = (BrowseFacetsTaskResponse) -> Void
 public typealias BrowseFacetOptionsQueryCompletionHandler = (BrowseFacetOptionsTaskResponse) -> Void
 public typealias RecommendationsQueryCompletionHandler = (RecommendationsTaskResponse) -> Void
+public typealias RecommendationPageQueryCompletionHandler = (RecommendationPageTaskResponse) -> Void
 public typealias TrackingCompletionHandler = (TrackingTaskResponse) -> Void
 public typealias QuizQuestionQueryCompletionHandler = (QuizQuestionTaskResponse) -> Void
 public typealias QuizResultsQueryCompletionHandler = (QuizResultsTaskResponse) -> Void
@@ -45,6 +46,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     var browseFacetsParser: AbstractBrowseFacetsResponseParser = DependencyContainer.sharedInstance.browseFacetsResponseParser()
     var browseFacetOptionsParser: AbstractBrowseFacetOptionsResponseParser = DependencyContainer.sharedInstance.browseFacetOptionsResponseParser()
     var recommendationsParser: AbstractRecommendationsResponseParser = DependencyContainer.sharedInstance.recommendationsResponseParser()
+    var recommendationPageParser = RecommendationPageResponseParser()
     var quizQuestionParser: AbstractQuizQuestionResponseParser = DependencyContainer.sharedInstance.quizQuestionResponseParser()
     var quizResultsParser: AbstractQuizResultsResponseParser = DependencyContainer.sharedInstance.quizResultsResponseParser()
 
@@ -277,6 +279,31 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func recommendations(forQuery query: CIORecommendationsQuery, completionHandler: @escaping RecommendationsQueryCompletionHandler) {
         let request = self.buildRequest(data: query)
         executeRecommendations(request, completionHandler: completionHandler)
+    }
+
+    /**
+     Get the results of every pod on a recommendation page.
+
+     Each pod in `pods` carries its own `resultID` (also set on the pod's `response`). Send that ID with the pod's recommendation view and click events. The page's top-level `resultID` identifies the page request and is not a tracking ID.
+
+     - Parameters:
+        - query: The page query, with page-wide values and per-pod overrides.
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     let query = CIORecommendationPageQuery(pageID: "pdp_b2c", itemID: "item_id")
+
+     constructorIO.recommendationPage(forQuery: query) { response in
+        response.data?.pods.forEach { pod in
+            // render pod.response; track with pod.podID and pod.resultID
+        }
+     }
+     ```
+     */
+    public func recommendationPage(forQuery query: CIORecommendationPageQuery, completionHandler: @escaping RecommendationPageQueryCompletionHandler) {
+        let request = self.buildRequest(data: query)
+        executeRecommendationPage(request, completionHandler: completionHandler)
     }
 
     /**
@@ -1242,6 +1269,29 @@ public class ConstructorIO: CIOSessionManagerDelegate {
                 dispatchHandlerOnMainQueue(RecommendationsTaskResponse(data: parsedResponse))
             } catch {
                 dispatchHandlerOnMainQueue(RecommendationsTaskResponse(error: error))
+            }
+        }
+    }
+
+    private func executeRecommendationPage(_ request: URLRequest, completionHandler: @escaping RecommendationPageQueryCompletionHandler) {
+        let dispatchHandlerOnMainQueue = { response in
+            DispatchQueue.main.async {
+                completionHandler(response)
+            }
+        }
+
+        self.networkClient.execute(request) { response in
+            if let error = response.error {
+                dispatchHandlerOnMainQueue(RecommendationPageTaskResponse(error: error))
+                return
+            }
+
+            let data = response.data!
+            do {
+                let parsedResponse = try self.recommendationPageParser.parse(recommendationPageResponseData: data)
+                dispatchHandlerOnMainQueue(RecommendationPageTaskResponse(data: parsedResponse))
+            } catch {
+                dispatchHandlerOnMainQueue(RecommendationPageTaskResponse(error: error))
             }
         }
     }

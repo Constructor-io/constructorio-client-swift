@@ -165,6 +165,12 @@ struct Constants {
         static let defaultShowHiddenFacets = false
     }
 
+    struct RecommendationPageQuery {
+        static let format = "%@/recommendations/v1/pages/%@"
+        static let podOverridesKey = { (podID: String) -> String in "pod_overrides[\(podID)]" }
+        static let filterMatchTypeKey = { (key: String) -> String in "filter_match_types[\(key)]" }
+    }
+
     struct RecommendationsQuery {
         static let format = "%@/recommendations/v1/pods/%@"
         static let section = "section"
