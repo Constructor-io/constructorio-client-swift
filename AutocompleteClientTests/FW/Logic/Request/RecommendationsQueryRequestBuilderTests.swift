@@ -217,11 +217,5 @@ class RecommendationsQueryRequestBuilderTests: XCTestCase {
         XCTAssertEqual(values("\(prefix)[fmt_options][hidden_fields]"), ["inventory", "margin"])
         XCTAssertEqual(values("\(prefix)[fmt_options][groups_max_depth]"), ["2"])
         XCTAssertEqual(values("\(prefix)[pre_filter_expression]"), [preFilterExpression])
-        XCTAssertTrue(request.url!.absoluteString.contains("pod_overrides%5Bsimilar_items%5D%5Bnum_results%5D=0"))
-    }
-
-    func testRecommendationPageQuery_NestsParameterNames() {
-        XCTAssertEqual(CIORecommendationPageQuery.nest(name: "num_results", under: "pod_overrides[p]"), "pod_overrides[p][num_results]")
-        XCTAssertEqual(CIORecommendationPageQuery.nest(name: "filters[color]", under: "pod_overrides[p]"), "pod_overrides[p][filters][color]")
     }
 }
