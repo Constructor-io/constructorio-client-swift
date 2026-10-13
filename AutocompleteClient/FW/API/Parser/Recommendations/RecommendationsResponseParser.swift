@@ -62,7 +62,8 @@ class RecommendationPageResponseParser {
             var podRequest = podObj["request"] as? JSONObject ?? [:]
             podRequest["pod_id"] = podID
             var podResponse = podObj["response"] as? JSONObject ?? ["results": [JSONObject](), "total_num_results": 0]
-            if podResponse["pod"] as? JSONObject == nil {
+            // The pod parser force-unwraps the pod object, so replace one it can't parse
+            if (podResponse["pod"] as? JSONObject).flatMap(CIORecommendationsPod.init(json:)) == nil {
                 podResponse["pod"] = ["id": podID, "display_name": podID]
             }
 

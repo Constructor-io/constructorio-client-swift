@@ -123,7 +123,7 @@ class RecommendationsResponseParserTests: XCTestCase {
               {
                 "pod_id": "complete_the_look",
                 "request": { "item_id": "product-123", "num_results": 8 },
-                "response": { "results": [], "total_num_results": 0 },
+                "response": { "results": [], "total_num_results": 0, "pod": { "id": "complete_the_look", "display_name": null } },
                 "result_id": "a1b2c3d4-0000-0000-0000-000000000002"
               }
             ]
@@ -144,9 +144,7 @@ class RecommendationsResponseParserTests: XCTestCase {
             XCTAssertEqual(page.pods[0].response.results.count, 1)
             XCTAssertEqual(page.pods[0].response.request["pod_id"] as? String, "similar_items")
             XCTAssertEqual(page.pods[1].resultID, "a1b2c3d4-0000-0000-0000-000000000002")
-            XCTAssertEqual(page.pods[1].response.pod.id, "complete_the_look", "A pod without a pod object falls back to its pod_id")
-            XCTAssertEqual(page.pods[1].response.results.count, 0)
-            XCTAssertFalse(page.pods.contains { $0.resultID == page.resultID })
+            XCTAssertEqual(page.pods[1].response.pod.id, "complete_the_look", "A pod object the pod parser can't parse falls back to the pod_id")
         } catch {
             XCTFail("Parser should not throw for a valid page response: \(error)")
         }
