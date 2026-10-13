@@ -59,7 +59,7 @@ public struct CIORecommendationPageResponse {
     public let pageType: String?
 
     /**
-     The pods, in the page's configured order
+     The pods, in the page's configured order. An item appears in at most one pod on the page.
      */
     public let pods: [CIORecommendationPagePod]
 

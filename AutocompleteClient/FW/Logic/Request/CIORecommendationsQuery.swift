@@ -124,8 +124,8 @@ public struct CIORecommendationsQuery: CIORequestData {
 }
 
 /**
- Values that can be set per pod on a recommendation page request. Each value replaces (is not merged with) the page-wide value for that pod.
- `hiddenFields` is sent inside `fmt_options`, so an override with either `fmtOptions` or `hiddenFields` replaces all page-wide `fmtOptions` and `hiddenFields` for that pod.
+ Values for the parameters of a recommendation page request that can be set per pod. Used for both the page-wide values (`shared`) and each per-pod override (`podOverrides`).
+ In an override, each value replaces (is not merged with) the page-wide value for that pod. `hiddenFields` is sent inside `fmt_options`, so an override with either `fmtOptions` or `hiddenFields` replaces all page-wide `fmtOptions` and `hiddenFields` for that pod.
  */
 public struct CIORecommendationPagePodOverride {
     /**
