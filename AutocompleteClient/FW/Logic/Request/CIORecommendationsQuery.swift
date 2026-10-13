@@ -125,6 +125,7 @@ public struct CIORecommendationsQuery: CIORequestData {
 
 /**
  Values that can be set per pod on a recommendation page request. Each value replaces (is not merged with) the page-wide value for that pod.
+ `hiddenFields` is sent inside `fmt_options`, so an override with either `fmtOptions` or `hiddenFields` replaces all page-wide `fmtOptions` and `hiddenFields` for that pod.
  */
 public struct CIORecommendationPagePodOverride {
     /**
@@ -143,7 +144,7 @@ public struct CIORecommendationPagePodOverride {
     public let filterMatchTypes: [String: String]?
 
     /**
-     The list of hidden metadata fields to return
+     The list of hidden metadata fields to return. Sent inside `fmt_options`.
      */
     public let hiddenFields: [String]?
 
@@ -158,7 +159,7 @@ public struct CIORecommendationPagePodOverride {
     public let variationsMap: CIOQueryVariationsMap?
 
     /**
-     The format options used to refine the result groups
+     The format options used to refine the result groups. In an override, replaces the page-wide `hiddenFields` too.
      */
     public let fmtOptions: [FmtOption]?
 
@@ -214,7 +215,7 @@ public struct CIORecommendationPageQuery: CIORequestData {
     public let itemID: String?
 
     /**
-     The item variation id to retrieve recommendations for (item-based pods)
+     The item variation id to retrieve recommendations for (item-based pods). Requires `itemID`.
      */
     public let variationID: String?
 
@@ -234,7 +235,7 @@ public struct CIORecommendationPageQuery: CIORequestData {
     public let shared: CIORecommendationPagePodOverride
 
     /**
-     Per-pod values keyed by pod ID. Each replaces (is not merged with) the page-wide value for that pod.
+     Per-pod values keyed by pod ID. Each replaces (is not merged with) the page-wide value for that pod; an override with `fmtOptions` or `hiddenFields` replaces both page-wide values.
      */
     public let podOverrides: [String: CIORecommendationPagePodOverride]?
 
@@ -248,7 +249,7 @@ public struct CIORecommendationPageQuery: CIORequestData {
      - Parameters:
         - pageID: The page ID
         - itemID: The item id to retrieve recommendations for (item-based pods)
-        - variationID: The item variation id to retrieve recommendations for (item-based pods)
+        - variationID: The item variation id to retrieve recommendations for (item-based pods). Requires `itemID`.
         - term: The term to use to refine results (term-based pods)
         - section: The section to return results from
         - shared: Page-wide values for the parameters that can also be set per pod
@@ -294,7 +295,7 @@ public struct CIORecommendationPageQuery: CIORequestData {
     }
 
     // "filters[color]" -> "<prefix>[filters][color]", "num_results" -> "<prefix>[num_results]"
-    static func nest(name: String, under prefix: String) -> String {
+    private static func nest(name: String, under prefix: String) -> String {
         guard let bracketIndex = name.firstIndex(of: "[") else {
             return "\(prefix)[\(name)]"
         }

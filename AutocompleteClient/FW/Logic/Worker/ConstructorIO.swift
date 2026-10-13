@@ -288,6 +288,10 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      Each pod in `pods` carries its own `resultID` (also set on the pod's `response`). Send that ID with the pod's recommendation view and click events. The page's top-level `resultID` identifies the page request and is not a tracking ID.
 
+     Each entry in `podOverrides` replaces (is not merged with) the page-wide value for that pod. `hiddenFields` is sent inside `fmt_options`, so an override with either `fmtOptions` or `hiddenFields` replaces all page-wide `fmtOptions` and `hiddenFields` for that pod.
+
+     Please refer to our docs for details: https://docs.constructor.com/reference/v1-recommendations-get-page-results
+
      - Parameters:
         - query: The page query, with page-wide values and per-pod overrides.
         - completionHandler: The callback to execute on completion.

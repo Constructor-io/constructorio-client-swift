@@ -38,7 +38,6 @@ public struct CIORecommendationsResponse {
     public var request: JSONObject
 }
 
-
 /**
  Struct representing a recommendation page response from the server.
  `resultID` identifies the page request and is not a tracking id: send each pod's own `resultID` with that pod's tracking events.
