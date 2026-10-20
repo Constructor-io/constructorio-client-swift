@@ -348,7 +348,11 @@ constructorIO.trackAgentResultLoadStarted(intent: "show me running shoes", inten
 constructorIO.trackAgentResultLoadFinished(intent: "show me running shoes", searchResultCount: 3, intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
 
 // Track when the user views the products in an agent result
-constructorIO.trackAgentResultView(intent: "show me running shoes", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2", numResultsViewed: 2, items: [CIOItem(customerID: "1234567-AB", itemName: "Trail Runner"), CIOItem(customerID: "1234765-CD", itemName: "Road Runner")], intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
+let agentItems = [
+  CIOItem(customerID: "1234567-AB", itemName: "Trail Runner"),
+  CIOItem(customerID: "1234765-CD", itemName: "Road Runner")
+]
+constructorIO.trackAgentResultView(intent: "show me running shoes", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2", numResultsViewed: 2, items: agentItems, intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
 
 // Track when the user clicks a product in an agent result
 constructorIO.trackAgentResultClick(intent: "show me running shoes", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2", itemID: "1234567-AB", itemName: "Trail Runner", intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
