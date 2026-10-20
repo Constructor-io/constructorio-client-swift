@@ -248,6 +248,7 @@ Three types of these events exist:
 5. **Recommendation Events** measure user interaction with recommendations
 6. **Quiz Events** measure user interaction with quiz results
 7. **Conversion Events** measure user events like `add to cart` or `purchase`
+8. **AI Shopping Agent Events** measure user interaction with AI Shopping Agent results
 
 ### Autocomplete Events
 
@@ -330,6 +331,30 @@ ConstructorIo.trackQuizResultsLoaded(quizID: "coffee-quiz", quizVersionID: "1231
 // Track when a quiz result is converted on
 ConstructorIo.trackQuizConversion(quizID: "coffee-quiz", quizVersionID: "1231244", quizSessionID: "123", customerID: "123", variationID: "167", itemName: "espresso", revenue: 20.0)
 
+```
+
+### AI Shopping Agent Events
+
+Supported in v4.7.0 and above. `intentResultID` is the intent result ID from the AI Shopping Agent response. `searchResultID` is the result ID of the search result that the item belongs to.
+
+```swift
+// Track when the user submits a question to the agent
+constructorIO.trackAgentSubmit(intent: "show me running shoes")
+
+// Track when agent results start loading
+constructorIO.trackAgentResultLoadStarted(intent: "show me running shoes", intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
+
+// Track when agent results finish loading
+constructorIO.trackAgentResultLoadFinished(intent: "show me running shoes", searchResultCount: 3, intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
+
+// Track when the user views the products in an agent result
+constructorIO.trackAgentResultView(intent: "show me running shoes", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2", numResultsViewed: 2, items: [CIOItem(customerID: "1234567-AB", itemName: "Trail Runner"), CIOItem(customerID: "1234765-CD", itemName: "Road Runner")], intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
+
+// Track when the user clicks a product in an agent result
+constructorIO.trackAgentResultClick(intent: "show me running shoes", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2", itemID: "1234567-AB", itemName: "Trail Runner", intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
+
+// Track when the user selects a search term that the agent suggested
+constructorIO.trackAgentSearchSubmit(intent: "show me running shoes", searchTerm: "trail running shoes", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2", intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
 ```
 
 ### Media Impression Events
