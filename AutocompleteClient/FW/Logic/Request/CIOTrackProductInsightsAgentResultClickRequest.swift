@@ -29,7 +29,7 @@ public struct CIOTrackProductInsightsAgentResultClickRequest {
     public let seedItemID: String
 
     /**
-     The position of the clicked item in the list of recommendations
+     The zero-based position of the clicked item in the list of recommendations
      */
     public let position: Int?
 
@@ -80,7 +80,7 @@ public struct CIOTrackProductInsightsAgentResultClickRequest {
         - itemID: The ID of the clicked recommended product
         - question: The question that produced the answer containing the clicked recommendation
         - seedItemID: The ID of the product whose page the Product Insights Agent is on
-        - position: The position of the clicked item in the list of recommendations
+        - position: The zero-based position of the clicked item in the list of recommendations
         - seedItemName: The name of the product whose page the Product Insights Agent is on
         - seedVariationID: The variation ID of the product whose page the Product Insights Agent is on
         - qnaResultID: The ID of the answer result returned by the Product Insights Agent

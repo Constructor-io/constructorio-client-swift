@@ -1043,7 +1043,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     constructorIO.trackProductInsightsAgentViews(CIOTrackProductInsightsAgentViewsRequest(itemID: "10001", questions: [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")], viewTimespans: [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792550405.123), end: Date(timeIntervalSince1970: 1792550410.456))], itemName: "Item1", variationID: "10001-A"))
+     constructorIO.trackProductInsightsAgentViews(CIOTrackProductInsightsAgentViewsRequest(itemID: "10001", questions: [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")], viewTimespans: [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.125), end: Date(timeIntervalSince1970: 1792636810.5))], itemName: "Item1", variationID: "10001-A"))
      ```
      */
     public func trackProductInsightsAgentViews(_ request: CIOTrackProductInsightsAgentViewsRequest, completionHandler: TrackingCompletionHandler? = nil) {
@@ -1123,7 +1123,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
      ### Usage Example: ###
      ```
-     constructorIO.trackProductInsightsAgentResultClick(CIOTrackProductInsightsAgentResultClickRequest(itemID: "10002", question: "Why choose this?", seedItemID: "10001", position: 3, seedItemName: "Item1", qnaResultID: "qna-result-123", itemName: "Item1", variationID: "10001-A"))
+     constructorIO.trackProductInsightsAgentResultClick(CIOTrackProductInsightsAgentResultClickRequest(itemID: "10002", question: "Why choose this?", seedItemID: "10001", position: 3, seedItemName: "Item1", seedVariationID: "10001-A", qnaResultID: "qna-result-123", itemName: "Item2", variationID: "10002-A"))
      ```
      */
     public func trackProductInsightsAgentResultClick(_ request: CIOTrackProductInsightsAgentResultClickRequest, completionHandler: TrackingCompletionHandler? = nil) {

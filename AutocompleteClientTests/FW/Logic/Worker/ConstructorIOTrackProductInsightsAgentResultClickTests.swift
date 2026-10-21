@@ -20,8 +20,8 @@ class ConstructorIOTrackProductInsightsAgentResultClickTests: XCTestCase {
     let seedItemName: String = "Item1"
     let seedVariationID: String = "10001-A"
     let qnaResultID: String = "qna-result-123"
-    let itemName: String = "Item1"
-    let variationID: String = "10001-A"
+    let itemName: String = "Item2"
+    let variationID: String = "10002-A"
     let threadID: String = "thread-123"
     let sectionName: String = "Search Suggestions"
     let analyticsTags: [String: String] = ["tag1": "value1"]

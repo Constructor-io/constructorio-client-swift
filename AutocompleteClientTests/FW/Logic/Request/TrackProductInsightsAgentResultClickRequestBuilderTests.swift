@@ -19,8 +19,8 @@ class TrackProductInsightsAgentResultClickRequestBuilderTests: XCTestCase {
     fileprivate let seedItemName: String = "Item1"
     fileprivate let seedVariationID: String = "10001-A"
     fileprivate let qnaResultID: String = "qna-result-123"
-    fileprivate let itemName: String = "Item1"
-    fileprivate let variationID: String = "10001-A"
+    fileprivate let itemName: String = "Item2"
+    fileprivate let variationID: String = "10002-A"
     fileprivate let threadID: String = "thread-123"
     fileprivate let sectionName: String = "Search Suggestions"
     fileprivate let analyticsTags: [String: String] = ["tag1": "value1"]

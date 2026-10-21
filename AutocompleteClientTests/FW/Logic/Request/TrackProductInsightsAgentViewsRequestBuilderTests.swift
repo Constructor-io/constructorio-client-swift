@@ -14,7 +14,7 @@ class TrackProductInsightsAgentViewsRequestBuilderTests: XCTestCase {
     fileprivate let testACKey = "asdf1213123"
     fileprivate let itemID: String = "10001"
     fileprivate let questions: [CIOProductInsightsAgentQuestion] = [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")]
-    fileprivate let viewTimespans: [CIOProductInsightsAgentViewTimespan] = [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.123), end: Date(timeIntervalSince1970: 1792636810.456))]
+    fileprivate let viewTimespans: [CIOProductInsightsAgentViewTimespan] = [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.125), end: Date(timeIntervalSince1970: 1792636810.5))]
     fileprivate let itemName: String = "Item1"
     fileprivate let variationID: String = "10001-A"
     fileprivate let threadID: String = "thread-123"
@@ -43,7 +43,7 @@ class TrackProductInsightsAgentViewsRequestBuilderTests: XCTestCase {
         XCTAssertFalse(request.url!.absoluteString.contains("section="))
         XCTAssertEqual(payload?["item_id"] as? String, itemID)
         XCTAssertEqual(payload?["questions"] as? [[String: String]], [["question": "Why choose this?", "question_topic": "highlights"], ["question": "How is this product made?"]])
-        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.123Z", "end": "2026-10-22T02:40:10.456Z"]])
+        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.125Z", "end": "2026-10-22T02:40:10.500Z"]])
         XCTAssertNil(payload?["item_name"])
         XCTAssertNil(payload?["variation_id"])
         XCTAssertNil(payload?["thread_id"])
@@ -62,7 +62,7 @@ class TrackProductInsightsAgentViewsRequestBuilderTests: XCTestCase {
         XCTAssertTrue(request.url!.absoluteString.contains("section=Search%20Suggestions"))
         XCTAssertEqual(payload?["item_id"] as? String, itemID)
         XCTAssertEqual(payload?["questions"] as? [[String: String]], [["question": "Why choose this?", "question_topic": "highlights"], ["question": "How is this product made?"]])
-        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.123Z", "end": "2026-10-22T02:40:10.456Z"]])
+        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.125Z", "end": "2026-10-22T02:40:10.500Z"]])
         XCTAssertEqual(payload?["item_name"] as? String, itemName)
         XCTAssertEqual(payload?["variation_id"] as? String, variationID)
         XCTAssertEqual(payload?["thread_id"] as? String, threadID)
@@ -82,6 +82,19 @@ class TrackProductInsightsAgentViewsRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [
             ["start": "1970-01-01T00:00:00.000Z", "end": "1970-01-01T00:00:01.500Z"],
             ["start": "2026-10-22T02:40:05.000Z", "end": "2026-10-22T02:40:10.000Z"]
+        ])
+    }
+
+    func testTrackProductInsightsAgentViewsBuilder_RoundsTimespansToTheNearestMillisecond() {
+        let viewTimespans = [
+            CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.123), end: Date(timeIntervalSince1970: 1792636810.4567))
+        ]
+        let tracker = CIOTrackProductInsightsAgentViewsData(itemID: itemID, questions: questions, viewTimespans: viewTimespans)
+        builder.build(trackData: tracker)
+        let payload = self.payload(of: builder.getRequest())
+
+        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [
+            ["start": "2026-10-22T02:40:05.123Z", "end": "2026-10-22T02:40:10.457Z"]
         ])
     }
 

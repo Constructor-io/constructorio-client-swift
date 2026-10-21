@@ -46,8 +46,14 @@ public struct CIOProductInsightsAgentViewTimespan {
     // Dates are formatted as ISO-8601 strings in UTC (e.g. "2026-10-22T02:40:05.123Z") so the body stays JSON-serializable
     func toDictionary() -> [String: String] {
         return [
-            "start": CIOProductInsightsAgentViewTimespan.dateFormatter.string(from: self.start),
-            "end": CIOProductInsightsAgentViewTimespan.dateFormatter.string(from: self.end)
+            "start": CIOProductInsightsAgentViewTimespan.format(self.start),
+            "end": CIOProductInsightsAgentViewTimespan.format(self.end)
         ]
+    }
+
+    // The formatter truncates to milliseconds, so round first to avoid floating point error dropping a millisecond
+    static func format(_ date: Date) -> String {
+        let roundedInterval = (date.timeIntervalSinceReferenceDate * 1000).rounded() / 1000
+        return dateFormatter.string(from: Date(timeIntervalSinceReferenceDate: roundedInterval))
     }
 }

@@ -15,7 +15,7 @@ class ConstructorIOTrackProductInsightsAgentViewsTests: XCTestCase {
     var constructor: ConstructorIO!
     let itemID: String = "10001"
     let questions: [CIOProductInsightsAgentQuestion] = [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")]
-    let viewTimespans: [CIOProductInsightsAgentViewTimespan] = [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.123), end: Date(timeIntervalSince1970: 1792636810.456))]
+    let viewTimespans: [CIOProductInsightsAgentViewTimespan] = [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.125), end: Date(timeIntervalSince1970: 1792636810.5))]
     let itemName: String = "Item1"
     let variationID: String = "10001-A"
     let threadID: String = "thread-123"
@@ -46,7 +46,7 @@ class ConstructorIOTrackProductInsightsAgentViewsTests: XCTestCase {
         XCTAssertNotNil(payload, "Request body should contain valid JSON")
         XCTAssertEqual(payload?["item_id"] as? String, itemID)
         XCTAssertEqual(payload?["questions"] as? [[String: String]], [["question": "Why choose this?", "question_topic": "highlights"], ["question": "How is this product made?"]])
-        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.123Z", "end": "2026-10-22T02:40:10.456Z"]])
+        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.125Z", "end": "2026-10-22T02:40:10.500Z"]])
         XCTAssertNil(payload?["item_name"])
         XCTAssertNil(payload?["variation_id"])
         XCTAssertNil(payload?["thread_id"])
@@ -69,7 +69,7 @@ class ConstructorIOTrackProductInsightsAgentViewsTests: XCTestCase {
         XCTAssertNotNil(payload, "Request body should contain valid JSON")
         XCTAssertEqual(payload?["item_id"] as? String, itemID)
         XCTAssertEqual(payload?["questions"] as? [[String: String]], [["question": "Why choose this?", "question_topic": "highlights"], ["question": "How is this product made?"]])
-        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.123Z", "end": "2026-10-22T02:40:10.456Z"]])
+        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.125Z", "end": "2026-10-22T02:40:10.500Z"]])
         XCTAssertEqual(payload?["item_name"] as? String, itemName)
         XCTAssertEqual(payload?["variation_id"] as? String, variationID)
         XCTAssertEqual(payload?["thread_id"] as? String, threadID)

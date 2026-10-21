@@ -74,10 +74,36 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testTrackProductInsightsAgentFocus_WithUserIDAndTestCells() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, testCells: [CIOABTestCell(key: "search", value: "constructor")], segments: ["123", "234"], defaultAnalyticsTags: ["appVersion": "123", "appPlatform": "ios"]))
+        constructor.userID = "user-123"
+        let request = CIOTrackProductInsightsAgentFocusRequest(itemID: "10001", itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        constructor.trackProductInsightsAgentFocus(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testTrackProductInsightsAgentOutOfView() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         let request = CIOTrackProductInsightsAgentOutOfViewRequest(itemID: "10001", itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
         self.constructor.trackProductInsightsAgentOutOfView(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackProductInsightsAgentOutOfView_WithUserIDAndTestCells() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, testCells: [CIOABTestCell(key: "search", value: "constructor")], segments: ["123", "234"], defaultAnalyticsTags: ["appVersion": "123", "appPlatform": "ios"]))
+        constructor.userID = "user-123"
+        let request = CIOTrackProductInsightsAgentOutOfViewRequest(itemID: "10001", itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        constructor.trackProductInsightsAgentOutOfView(request, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -96,10 +122,36 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testTrackProductInsightsAgentView_WithUserIDAndTestCells() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, testCells: [CIOABTestCell(key: "search", value: "constructor")], segments: ["123", "234"], defaultAnalyticsTags: ["appVersion": "123", "appPlatform": "ios"]))
+        constructor.userID = "user-123"
+        let request = CIOTrackProductInsightsAgentViewRequest(itemID: "10001", questions: [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")], itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        constructor.trackProductInsightsAgentView(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testTrackProductInsightsAgentViews() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        let request = CIOTrackProductInsightsAgentViewsRequest(itemID: "10001", questions: [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")], viewTimespans: [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792550405.123), end: Date(timeIntervalSince1970: 1792550410.456))], itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        let request = CIOTrackProductInsightsAgentViewsRequest(itemID: "10001", questions: [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")], viewTimespans: [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.125), end: Date(timeIntervalSince1970: 1792636810.5))], itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
         self.constructor.trackProductInsightsAgentViews(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackProductInsightsAgentViews_WithUserIDAndTestCells() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, testCells: [CIOABTestCell(key: "search", value: "constructor")], segments: ["123", "234"], defaultAnalyticsTags: ["appVersion": "123", "appPlatform": "ios"]))
+        constructor.userID = "user-123"
+        let request = CIOTrackProductInsightsAgentViewsRequest(itemID: "10001", questions: [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")], viewTimespans: [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.125), end: Date(timeIntervalSince1970: 1792636810.5))], itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        constructor.trackProductInsightsAgentViews(request, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -118,10 +170,36 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testTrackProductInsightsAgentQuestionClick_WithUserIDAndTestCells() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, testCells: [CIOABTestCell(key: "search", value: "constructor")], segments: ["123", "234"], defaultAnalyticsTags: ["appVersion": "123", "appPlatform": "ios"]))
+        constructor.userID = "user-123"
+        let request = CIOTrackProductInsightsAgentQuestionClickRequest(itemID: "10001", question: "Why choose this?", questionTopic: "highlights", itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        constructor.trackProductInsightsAgentQuestionClick(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testTrackProductInsightsAgentQuestionSubmit() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         let request = CIOTrackProductInsightsAgentQuestionSubmitRequest(itemID: "10001", question: "Why choose this?", questionTopic: "highlights", itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
         self.constructor.trackProductInsightsAgentQuestionSubmit(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackProductInsightsAgentQuestionSubmit_WithUserIDAndTestCells() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, testCells: [CIOABTestCell(key: "search", value: "constructor")], segments: ["123", "234"], defaultAnalyticsTags: ["appVersion": "123", "appPlatform": "ios"]))
+        constructor.userID = "user-123"
+        let request = CIOTrackProductInsightsAgentQuestionSubmitRequest(itemID: "10001", question: "Why choose this?", questionTopic: "highlights", itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        constructor.trackProductInsightsAgentQuestionSubmit(request, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -140,10 +218,36 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testTrackProductInsightsAgentAnswerFeedback_WithUserIDAndTestCells() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, testCells: [CIOABTestCell(key: "search", value: "constructor")], segments: ["123", "234"], defaultAnalyticsTags: ["appVersion": "123", "appPlatform": "ios"]))
+        constructor.userID = "user-123"
+        let request = CIOTrackProductInsightsAgentAnswerFeedbackRequest(itemID: "10001", feedbackLabel: .thumbsUp, qnaResultID: "qna-result-123", itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        constructor.trackProductInsightsAgentAnswerFeedback(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testTrackProductInsightsAgentResultClick() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        let request = CIOTrackProductInsightsAgentResultClickRequest(itemID: "10002", question: "Why choose this?", seedItemID: "10001", position: 3, seedItemName: "Item1", seedVariationID: "10001-A", qnaResultID: "qna-result-123", itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        let request = CIOTrackProductInsightsAgentResultClickRequest(itemID: "10002", question: "Why choose this?", seedItemID: "10001", position: 3, seedItemName: "Item1", seedVariationID: "10001-A", qnaResultID: "qna-result-123", itemName: "Item2", variationID: "10002-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
         self.constructor.trackProductInsightsAgentResultClick(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackProductInsightsAgentResultClick_WithUserIDAndTestCells() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, testCells: [CIOABTestCell(key: "search", value: "constructor")], segments: ["123", "234"], defaultAnalyticsTags: ["appVersion": "123", "appPlatform": "ios"]))
+        constructor.userID = "user-123"
+        let request = CIOTrackProductInsightsAgentResultClickRequest(itemID: "10002", question: "Why choose this?", seedItemID: "10001", position: 3, seedItemName: "Item1", seedVariationID: "10001-A", qnaResultID: "qna-result-123", itemName: "Item2", variationID: "10002-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        constructor.trackProductInsightsAgentResultClick(request, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -155,6 +259,19 @@ class ConstructorIOIntegrationTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Tracking 204")
         let request = CIOTrackProductInsightsAgentAnswerViewRequest(itemID: "10001", question: "Why choose this?", answerText: "This product is made from recycled materials.", questionTopic: "highlights", qnaResultID: "qna-result-123", items: [CIOItem(customerID: "10002", itemName: "Item2", variationID: "10002-A", quantity: 3, slCampaignID: "camp1", slCampaignOwner: "owner1"), CIOItem(customerID: "10003")], followUpQuestions: ["What sizes are available?", "Is it machine washable?"], itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
         self.constructor.trackProductInsightsAgentAnswerView(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
+    func testTrackProductInsightsAgentAnswerView_WithUserIDAndTestCells() {
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let constructor = ConstructorIO(config: ConstructorIOConfig(apiKey: testACKey, testCells: [CIOABTestCell(key: "search", value: "constructor")], segments: ["123", "234"], defaultAnalyticsTags: ["appVersion": "123", "appPlatform": "ios"]))
+        constructor.userID = "user-123"
+        let request = CIOTrackProductInsightsAgentAnswerViewRequest(itemID: "10001", question: "Why choose this?", answerText: "This product is made from recycled materials.", questionTopic: "highlights", qnaResultID: "qna-result-123", items: [CIOItem(customerID: "10002", itemName: "Item2", variationID: "10002-A", quantity: 3, slCampaignID: "camp1", slCampaignOwner: "owner1"), CIOItem(customerID: "10003")], followUpQuestions: ["What sizes are available?", "Is it machine washable?"], itemName: "Item1", variationID: "10001-A", threadID: "thread-123", sectionName: sectionName, analyticsTags: ["tag1": "value1"])
+        constructor.trackProductInsightsAgentAnswerView(request, completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
