@@ -292,6 +292,42 @@ struct Constants {
         static let format = "%@/v2/behavioral_action/assistant_search_submit"
     }
 
+    struct TrackProductInsightsAgentFocus {
+        static let format = "%@/v2/behavioral_action/product_insights_agent_focus"
+    }
+
+    struct TrackProductInsightsAgentOutOfView {
+        static let format = "%@/v2/behavioral_action/product_insights_agent_out_of_view"
+    }
+
+    struct TrackProductInsightsAgentView {
+        static let format = "%@/v2/behavioral_action/product_insights_agent_view"
+    }
+
+    struct TrackProductInsightsAgentViews {
+        static let format = "%@/v2/behavioral_action/product_insights_agent_views"
+    }
+
+    struct TrackProductInsightsAgentQuestionClick {
+        static let format = "%@/v2/behavioral_action/product_insights_agent_question_click"
+    }
+
+    struct TrackProductInsightsAgentQuestionSubmit {
+        static let format = "%@/v2/behavioral_action/product_insights_agent_question_submit"
+    }
+
+    struct TrackProductInsightsAgentAnswerFeedback {
+        static let format = "%@/v2/behavioral_action/product_insights_agent_answer_feedback"
+    }
+
+    struct TrackProductInsightsAgentResultClick {
+        static let format = "%@/v2/behavioral_action/product_insights_agent_result_click"
+    }
+
+    struct TrackProductInsightsAgentAnswerView {
+        static let format = "%@/v2/behavioral_action/product_insights_agent_answer_view"
+    }
+
     struct TrackConversion {
         static let format = "%@/v2/behavioral_action/conversion"
     }

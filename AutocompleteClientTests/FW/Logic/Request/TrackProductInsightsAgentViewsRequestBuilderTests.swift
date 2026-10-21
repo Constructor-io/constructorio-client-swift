@@ -1,0 +1,95 @@
+//
+//  TrackProductInsightsAgentViewsRequestBuilderTests.swift
+//  Constructor.io
+//
+//  Copyright (c) Constructor.io Corporation. All rights reserved.
+//  http://constructor.io/
+//
+
+@testable import ConstructorAutocomplete
+import XCTest
+
+class TrackProductInsightsAgentViewsRequestBuilderTests: XCTestCase {
+
+    fileprivate let testACKey = "asdf1213123"
+    fileprivate let itemID: String = "10001"
+    fileprivate let questions: [CIOProductInsightsAgentQuestion] = [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")]
+    fileprivate let viewTimespans: [CIOProductInsightsAgentViewTimespan] = [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.123), end: Date(timeIntervalSince1970: 1792636810.456))]
+    fileprivate let itemName: String = "Item1"
+    fileprivate let variationID: String = "10001-A"
+    fileprivate let threadID: String = "thread-123"
+    fileprivate let sectionName: String = "Search Suggestions"
+    fileprivate let analyticsTags: [String: String] = ["tag1": "value1"]
+
+    fileprivate var builder: RequestBuilder!
+
+    override func setUp() {
+        super.setUp()
+        self.builder = RequestBuilder(apiKey: testACKey, baseURL: Constants.Query.baseURLString)
+    }
+
+    fileprivate func payload(of request: URLRequest) -> [String: Any]? {
+        return try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+    }
+
+    func testTrackProductInsightsAgentViewsBuilder() {
+        let tracker = CIOTrackProductInsightsAgentViewsData(itemID: itemID, questions: questions, viewTimespans: viewTimespans)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = self.payload(of: request)
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(request.url!.absoluteString.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/product_insights_agent_views?"))
+        XCTAssertFalse(request.url!.absoluteString.contains("section="))
+        XCTAssertEqual(payload?["item_id"] as? String, itemID)
+        XCTAssertEqual(payload?["questions"] as? [[String: String]], [["question": "Why choose this?", "question_topic": "highlights"], ["question": "How is this product made?"]])
+        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.123Z", "end": "2026-10-22T02:40:10.456Z"]])
+        XCTAssertNil(payload?["item_name"])
+        XCTAssertNil(payload?["variation_id"])
+        XCTAssertNil(payload?["thread_id"])
+        XCTAssertNil(payload?["analytics_tags"])
+        XCTAssertNil(payload?["section"])
+        XCTAssertEqual(payload?["beacon"] as? Bool, true)
+    }
+
+    func testTrackProductInsightsAgentViewsBuilder_WithAllFields() {
+        let tracker = CIOTrackProductInsightsAgentViewsData(itemID: itemID, questions: questions, viewTimespans: viewTimespans, itemName: itemName, variationID: variationID, threadID: threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = self.payload(of: request)
+
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertTrue(request.url!.absoluteString.contains("section=Search%20Suggestions"))
+        XCTAssertEqual(payload?["item_id"] as? String, itemID)
+        XCTAssertEqual(payload?["questions"] as? [[String: String]], [["question": "Why choose this?", "question_topic": "highlights"], ["question": "How is this product made?"]])
+        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [["start": "2026-10-22T02:40:05.123Z", "end": "2026-10-22T02:40:10.456Z"]])
+        XCTAssertEqual(payload?["item_name"] as? String, itemName)
+        XCTAssertEqual(payload?["variation_id"] as? String, variationID)
+        XCTAssertEqual(payload?["thread_id"] as? String, threadID)
+        XCTAssertEqual(payload?["analytics_tags"] as? [String: String], analyticsTags)
+        XCTAssertEqual(payload?["beacon"] as? Bool, true)
+    }
+
+    func testTrackProductInsightsAgentViewsBuilder_FormatsTimespansAsISO8601InUTC() {
+        let viewTimespans = [
+            CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 0), end: Date(timeIntervalSince1970: 1.5)),
+            CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805), end: Date(timeIntervalSince1970: 1792636810))
+        ]
+        let tracker = CIOTrackProductInsightsAgentViewsData(itemID: itemID, questions: questions, viewTimespans: viewTimespans)
+        builder.build(trackData: tracker)
+        let payload = self.payload(of: builder.getRequest())
+
+        XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [
+            ["start": "1970-01-01T00:00:00.000Z", "end": "1970-01-01T00:00:01.500Z"],
+            ["start": "2026-10-22T02:40:05.000Z", "end": "2026-10-22T02:40:10.000Z"]
+        ])
+    }
+
+    func testTrackProductInsightsAgentViewsBuilder_WithEmptyTimespans() {
+        let tracker = CIOTrackProductInsightsAgentViewsData(itemID: itemID, questions: questions, viewTimespans: [])
+        builder.build(trackData: tracker)
+        let payload = self.payload(of: builder.getRequest())
+
+        XCTAssertEqual((payload?["view_timespans"] as? [Any])?.count, 0)
+    }
+}

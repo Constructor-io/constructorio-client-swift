@@ -975,6 +975,186 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     }
 
     /**
+     Track when a user focuses on the Product Insights Agent input element
+
+     - Parameters:
+        - request: The focus request. See `CIOTrackProductInsightsAgentFocusRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackProductInsightsAgentFocus(CIOTrackProductInsightsAgentFocusRequest(itemID: "10001", itemName: "Item1", variationID: "10001-A"))
+     ```
+     */
+    public func trackProductInsightsAgentFocus(_ request: CIOTrackProductInsightsAgentFocusRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackProductInsightsAgentFocusData(itemID: request.itemID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when the Product Insights Agent element disappears from the visible part of the page
+
+     - Parameters:
+        - request: The out of view request. See `CIOTrackProductInsightsAgentOutOfViewRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackProductInsightsAgentOutOfView(CIOTrackProductInsightsAgentOutOfViewRequest(itemID: "10001", itemName: "Item1", variationID: "10001-A"))
+     ```
+     */
+    public func trackProductInsightsAgentOutOfView(_ request: CIOTrackProductInsightsAgentOutOfViewRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackProductInsightsAgentOutOfViewData(itemID: request.itemID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when the Product Insights Agent element appears in the visible part of the page
+
+     - Parameters:
+        - request: The view request. See `CIOTrackProductInsightsAgentViewRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackProductInsightsAgentView(CIOTrackProductInsightsAgentViewRequest(itemID: "10001", questions: [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")], itemName: "Item1", variationID: "10001-A"))
+     ```
+     */
+    public func trackProductInsightsAgentView(_ request: CIOTrackProductInsightsAgentViewRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackProductInsightsAgentViewData(itemID: request.itemID, questions: request.questions, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track the periods of time during which the Product Insights Agent element was visible on the page
+
+     - Parameters:
+        - request: The views request. See `CIOTrackProductInsightsAgentViewsRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackProductInsightsAgentViews(CIOTrackProductInsightsAgentViewsRequest(itemID: "10001", questions: [CIOProductInsightsAgentQuestion(question: "Why choose this?", questionTopic: "highlights"), CIOProductInsightsAgentQuestion(question: "How is this product made?")], viewTimespans: [CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792550405.123), end: Date(timeIntervalSince1970: 1792550410.456))], itemName: "Item1", variationID: "10001-A"))
+     ```
+     */
+    public func trackProductInsightsAgentViews(_ request: CIOTrackProductInsightsAgentViewsRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackProductInsightsAgentViewsData(itemID: request.itemID, questions: request.questions, viewTimespans: request.viewTimespans, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user clicks on a question within the Product Insights Agent
+
+     - Parameters:
+        - request: The question click request. See `CIOTrackProductInsightsAgentQuestionClickRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackProductInsightsAgentQuestionClick(CIOTrackProductInsightsAgentQuestionClickRequest(itemID: "10001", question: "Why choose this?", itemName: "Item1", variationID: "10001-A"))
+     ```
+     */
+    public func trackProductInsightsAgentQuestionClick(_ request: CIOTrackProductInsightsAgentQuestionClickRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackProductInsightsAgentQuestionClickData(itemID: request.itemID, question: request.question, questionTopic: request.questionTopic, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user submits a question to the Product Insights Agent
+
+     - Parameters:
+        - request: The question submit request. See `CIOTrackProductInsightsAgentQuestionSubmitRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackProductInsightsAgentQuestionSubmit(CIOTrackProductInsightsAgentQuestionSubmitRequest(itemID: "10001", question: "Why choose this?", itemName: "Item1", variationID: "10001-A"))
+     ```
+     */
+    public func trackProductInsightsAgentQuestionSubmit(_ request: CIOTrackProductInsightsAgentQuestionSubmitRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackProductInsightsAgentQuestionSubmitData(itemID: request.itemID, question: request.question, questionTopic: request.questionTopic, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user gives feedback on the usefulness of a Product Insights Agent answer
+
+     - Parameters:
+        - request: The answer feedback request. See `CIOTrackProductInsightsAgentAnswerFeedbackRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackProductInsightsAgentAnswerFeedback(CIOTrackProductInsightsAgentAnswerFeedbackRequest(itemID: "10001", feedbackLabel: .thumbsUp, qnaResultID: "qna-result-123", itemName: "Item1", variationID: "10001-A"))
+     ```
+     */
+    public func trackProductInsightsAgentAnswerFeedback(_ request: CIOTrackProductInsightsAgentAnswerFeedbackRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackProductInsightsAgentAnswerFeedbackData(itemID: request.itemID, feedbackLabel: request.feedbackLabel, qnaResultID: request.qnaResultID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user clicks on a recommended product within the Product Insights Agent
+
+     - Parameters:
+        - request: The result click request. See `CIOTrackProductInsightsAgentResultClickRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackProductInsightsAgentResultClick(CIOTrackProductInsightsAgentResultClickRequest(itemID: "10002", question: "Why choose this?", seedItemID: "10001", position: 3, seedItemName: "Item1", qnaResultID: "qna-result-123", itemName: "Item1", variationID: "10001-A"))
+     ```
+     */
+    public func trackProductInsightsAgentResultClick(_ request: CIOTrackProductInsightsAgentResultClickRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackProductInsightsAgentResultClickData(itemID: request.itemID, question: request.question, seedItemID: request.seedItemID, position: request.position, seedItemName: request.seedItemName, seedVariationID: request.seedVariationID, qnaResultID: request.qnaResultID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user views an answer provided by the Product Insights Agent
+
+     - Parameters:
+        - request: The answer view request. See `CIOTrackProductInsightsAgentAnswerViewRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackProductInsightsAgentAnswerView(CIOTrackProductInsightsAgentAnswerViewRequest(itemID: "10001", question: "Why choose this?", answerText: "This product is made from recycled materials.", qnaResultID: "qna-result-123", itemName: "Item1", variationID: "10001-A"))
+     ```
+     */
+    public func trackProductInsightsAgentAnswerView(_ request: CIOTrackProductInsightsAgentAnswerViewRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
+        let data = CIOTrackProductInsightsAgentAnswerViewData(itemID: request.itemID, question: request.question, answerText: request.answerText, questionTopic: request.questionTopic, qnaResultID: request.qnaResultID, items: request.items, followUpQuestions: request.followUpQuestions, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
      Set a custom clientID
 
      - Parameters:
