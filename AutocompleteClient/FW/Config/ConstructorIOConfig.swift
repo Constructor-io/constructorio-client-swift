@@ -58,6 +58,11 @@ public struct ConstructorIOConfig {
     public var baseMediaURL: String?
 
     /**
+     When enabled, every tracking event is logged to the console and delivered to any registered `CIODebugEventListener`, and a floating debug button is shown above the app to browse the events. Intended for development and QA builds only.
+     */
+    public var debugMode: Bool
+
+    /**
      Create a configuration object
      
      - Parameters:
@@ -70,6 +75,7 @@ public struct ConstructorIOConfig {
         - baseQuizURL: The base Quiz URL to make requests to
         - baseMediaURL: The base Media URL to make tracking requests to
         - defaultAnalyticsTags: Additional analytics tags to include with all requests
+        - debugMode: Log all tracking events and deliver them to registered debug listeners
 
      ### Usage Example: ###
      ```
@@ -86,7 +92,7 @@ public struct ConstructorIOConfig {
      )
      ```
      */
-    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil, baseQuizURL: String? = nil, baseMediaURL: String? = nil, defaultAnalyticsTags: [String: String]? = nil) {
+    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil, baseQuizURL: String? = nil, baseMediaURL: String? = nil, defaultAnalyticsTags: [String: String]? = nil, debugMode: Bool = false) {
         self.apiKey = apiKey
         self.resultCount = resultCount
         self.defaultItemSectionName = defaultItemSectionName
@@ -96,6 +102,7 @@ public struct ConstructorIOConfig {
         self.baseQuizURL = baseQuizURL
         self.baseMediaURL = baseMediaURL
         self.defaultAnalyticsTags = defaultAnalyticsTags
+        self.debugMode = debugMode
     }
 
 }

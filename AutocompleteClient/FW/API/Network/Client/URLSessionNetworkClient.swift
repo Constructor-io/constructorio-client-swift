@@ -17,7 +17,9 @@ class URLSessionNetworkClient: NetworkClient {
             // Check for transport errors
             if let error = error {
                 let err: Error = CIOError(errorType: CIOErrorType(rawValue: (error as NSError).code) ?? CIOErrorType.unknownError)
-                completionHandler(NetworkResponse(error: err))
+                let networkResponse = NetworkResponse(error: err)
+                networkResponse.underlyingError = error
+                completionHandler(networkResponse)
                 return
             }
 
@@ -29,6 +31,12 @@ class URLSessionNetworkClient: NetworkClient {
 
             ConstructorIO.logger.log(Constants.Logging.recieveURLResponse(httpResponse))
 
+            let respond = { (networkResponse: NetworkResponse) in
+                networkResponse.statusCode = httpResponse.statusCode
+                networkResponse.body = data
+                completionHandler(networkResponse)
+            }
+
             // Check the response for an error message
             let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any]
             if jsonObj != nil {
@@ -39,17 +47,17 @@ class URLSessionNetworkClient: NetworkClient {
             let constructorErrorType = CIOErrorType(rawValue: httpResponse.statusCode)
             if constructorErrorType != nil {
                 let constructorError = CIOError(errorType: constructorErrorType!, errorMessage: errorMessage)
-                completionHandler(NetworkResponse(error: constructorError))
+                respond(NetworkResponse(error: constructorError))
                 return
             }
 
             // No errors
             guard let data = data else {
-                completionHandler(NetworkResponse(error: CIOError(errorType: .unknownError, errorMessage: errorMessage)))
+                respond(NetworkResponse(error: CIOError(errorType: .unknownError, errorMessage: errorMessage)))
                 return
             }
 
-            completionHandler(NetworkResponse(data: data))
+            respond(NetworkResponse(data: data))
         }
 
         task.resume()

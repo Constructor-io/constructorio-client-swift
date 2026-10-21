@@ -25,11 +25,19 @@ public typealias QuizResultsQueryCompletionHandler = (QuizResultsTaskResponse) -
  */
 public class ConstructorIO: CIOSessionManagerDelegate {
 
-    public var config: ConstructorIOConfig
+    public var config: ConstructorIOConfig {
+        didSet {
+            if self.config.debugMode != oldValue.debugMode {
+                self.updateDebugOverlay()
+            }
+        }
+    }
 
     public static var logger: CIOLogger = CIOPrintLogger()
 
     private let networkClient: NetworkClient
+
+    private let debugRecorder = CIODebugRecorder()
     
     private var clientIdLoader: ClientIdLoader = CIOClientIdLoader()
 
@@ -85,6 +93,49 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
         self.sessionManager.delegate = self
         self.sessionManager.setup()
+
+        // Only show here: a client created without debug mode shouldn't hide the overlay another client turned on
+        if config.debugMode {
+            self.updateDebugOverlay()
+        }
+    }
+
+    private func updateDebugOverlay() {
+        let debugMode = self.config.debugMode
+        DispatchQueue.main.async {
+            if debugMode {
+                CIODebugOverlay.shared.show()
+            } else {
+                CIODebugOverlay.shared.hide()
+            }
+        }
+    }
+
+    /**
+     Registers a listener to receive tracking events. Events are only delivered when `debugMode` is enabled in the config. The listener is retained until removed.
+
+     - Parameters:
+        - listener: The listener to register
+
+     ### Usage Example: ###
+     ```
+     let config = ConstructorIOConfig(apiKey: "YOUR API KEY", debugMode: true)
+     let constructorIO = ConstructorIO(config: config)
+     constructorIO.addDebugEventListener(myListener)
+     ```
+     */
+    public func addDebugEventListener(_ listener: CIODebugEventListener) {
+        self.debugRecorder.addListener(listener)
+    }
+
+    /**
+     Removes a previously registered debug event listener
+
+     - Parameters:
+        - listener: The listener to remove
+     */
+    public func removeDebugEventListener(_ listener: CIODebugEventListener) {
+        self.debugRecorder.removeListener(listener)
     }
 
     /**
@@ -338,7 +389,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackInputFocus(searchTerm: String, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackInputFocusData(searchTerm: searchTerm)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .inputFocus, completionHandler: completionHandler)
     }
 
     /**
@@ -357,7 +408,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackMediaImpressionView(bannerAdId: String, placementId: String, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackMediaImpressionData(bannerAdId: bannerAdId, placementId: placementId, action: .view)
         let request = self.buildMediaRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .mediaImpressionView, completionHandler: completionHandler)
     }
 
     /**
@@ -376,7 +427,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackMediaImpressionClick(bannerAdId: String, placementId: String, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackMediaImpressionData(bannerAdId: bannerAdId, placementId: placementId, action: .click)
         let request = self.buildMediaRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .mediaImpressionClick, completionHandler: completionHandler)
     }
 
     /**
@@ -407,7 +458,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         guard !items.isEmpty else { return }
         let data = CIOTrackResultsImpressionViewData(items: items, searchTerm: searchTerm, filterName: filterName, filterValue: filterValue)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .resultsImpressionView, completionHandler: completionHandler)
     }
 
     /**
@@ -430,7 +481,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackAutocompleteSelect(searchTerm: String, originalQuery: String, sectionName: String, group: CIOGroup? = nil, resultID: String? = nil, itemID: String? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackAutocompleteSelectData(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: resultID, itemID: itemID)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .autocompleteSelect, completionHandler: completionHandler)
     }
 
     /**
@@ -451,7 +502,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackSearchSubmitData(searchTerm: searchTerm, originalQuery: originalQuery, group: group, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .searchSubmit, completionHandler: completionHandler)
     }
 
     /**
@@ -478,7 +529,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultID: resultID, url: "Not Available", customerIDs: customerIDs, items: items, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .searchResultsLoaded, completionHandler: completionHandler)
     }
 
     /**
@@ -505,7 +556,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let term = searchTerm == nil ? "TERM_UNKNOWN" : (searchTerm!.isEmpty) ? "TERM_UNKNOWN" : searchTerm
         let data = CIOTrackSearchResultClickData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, resultID: resultID, variationID: variationID, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .searchResultClick, completionHandler: completionHandler)
     }
 
     /**
@@ -533,7 +584,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
     public func trackBrowseResultsLoaded(filterName: String, filterValue: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
         let data = CIOTrackBrowseResultsLoadedData(filterName: filterName, filterValue: filterValue, resultCount: resultCount, resultID: resultID, url: "Not Available", customerIDs: customerIDs, items: items, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .browseResultsLoaded, completionHandler: completionHandler)
     }
 
     /**
@@ -561,7 +612,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackBrowseResultClickData(filterName: filterName, filterValue: filterValue, customerID: customerID, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID, variationID: variationID, slCampaignID: slCampaignID, slCampaignOwner: slCampaignOwner, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .browseResultClick, completionHandler: completionHandler)
     }
 
     /**
@@ -593,7 +644,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackRecommendationResultsViewData(podID: podID, numResultsViewed: numResultsViewed, customerIDs: customerIDs, resultPage: resultPage, resultCount: resultCount, sectionName: section, resultID: resultID, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags), seedItemIDs: seedItemIDs, items: items)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .recommendationResultsView, completionHandler: completionHandler)
     }
 
     /**
@@ -623,7 +674,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackRecommendationResultClickData(podID: podID, strategyID: strategyID, customerID: customerID, variationID: variationID, numResultsPerPage: numResultsPerPage, resultPage: resultPage, resultCount: resultCount, resultPositionOnPage: resultPositionOnPage, sectionName: section, resultID: resultID, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags), seedItemIDs: seedItemIDs)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .recommendationResultClick, completionHandler: completionHandler)
     }
 
     /**
@@ -653,7 +704,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let term = searchTerm == nil ? "TERM_UNKNOWN" : (searchTerm!.isEmpty) ? "TERM_UNKNOWN" : searchTerm
         let data = CIOTrackConversionData(searchTerm: term!, itemName: itemName, customerID: customerID, sectionName: section, revenue: revenue, conversionType: type, variationID: variationID, displayName: displayName, isCustomType: isCustomType, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .conversion, completionHandler: completionHandler)
     }
 
     /**
@@ -676,7 +727,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackPurchaseData(customerIDs: customerIDs, sectionName: section, revenue: revenue, orderID: orderID, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .purchase, completionHandler: completionHandler)
     }
 
     /**
@@ -699,7 +750,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackPurchaseData(items: items, sectionName: section, revenue: revenue, orderID: orderID, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .purchase, completionHandler: completionHandler)
     }
 
     /**
@@ -722,12 +773,12 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackItemDetailLoadData(itemName: itemName, customerID: customerID, variationID: variationID, sectionName: section, url: url ?? "Not Available", analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .itemDetailLoad, completionHandler: completionHandler)
     }
 
     private func trackSessionStart(session: Int, completionHandler: TrackingCompletionHandler? = nil) {
         let request = self.buildSessionStartRequest(session: session)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .sessionStart, completionHandler: completionHandler)
     }
 
     /**
@@ -753,7 +804,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackQuizResultsLoadedData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, resultID: resultID, resultPage: resultPage, resultCount: resultCount, sectionName: section, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .quizResultsLoaded, completionHandler: completionHandler)
     }
 
     /**
@@ -784,7 +835,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackQuizResultClickData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, resultID: resultID, resultPage: resultPage, resultCount: resultCount, numResultsPerPage: numResultsPerPage, resultPositionOnPage: resultPositionOnPage, sectionName: section, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .quizResultClick, completionHandler: completionHandler)
     }
 
     /**
@@ -814,7 +865,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackQuizConversionData(quizID: quizID, quizVersionID: quizVersionID, quizSessionID: quizSessionID, customerID: customerID, variationID: variationID, itemName: itemName, revenue: revenue, conversionType: conversionType, isCustomType: isCustomType, displayName: displayName, sectionName: section, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .quizConversion, completionHandler: completionHandler)
     }
 
     /**
@@ -836,7 +887,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackGenericResultClick(itemID: itemID, itemName: itemName, variationID: variationID, sectionName: section)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .genericResultClick, completionHandler: completionHandler)
     }
 
     /**
@@ -856,7 +907,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackAgentSubmitData(intent: intent, sectionName: section)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .agentSubmit, completionHandler: completionHandler)
     }
 
     /**
@@ -877,7 +928,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackAgentResultLoadStartedData(intent: intent, sectionName: section, intentResultID: intentResultID)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .agentResultLoadStarted, completionHandler: completionHandler)
     }
 
     /**
@@ -899,7 +950,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackAgentResultLoadFinishedData(intent: intent, searchResultCount: searchResultCount, sectionName: section, intentResultID: intentResultID)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .agentResultLoadFinished, completionHandler: completionHandler)
     }
 
     /**
@@ -924,7 +975,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackAgentResultClickData(intent: intent, searchResultID: searchResultID, itemID: itemID, itemName: itemName, variationID: variationID, sectionName: section, intentResultID: intentResultID)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .agentResultClick, completionHandler: completionHandler)
     }
 
     /**
@@ -948,7 +999,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackAgentResultViewData(intent: intent, searchResultID: searchResultID, numResultsViewed: numResultsViewed, items: items, sectionName: section, intentResultID: intentResultID)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .agentResultView, completionHandler: completionHandler)
     }
 
     /**
@@ -971,7 +1022,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         let section = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
         let data = CIOTrackAgentSearchSubmitData(intent: intent, searchTerm: searchTerm, searchResultID: searchResultID, sectionName: section, intentResultID: intentResultID)
         let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        executeTracking(request, event: .agentSearchSubmit, completionHandler: completionHandler)
     }
 
     /**
@@ -1393,7 +1444,7 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         return obfuscatedRequest
     }
 
-    private func executeTracking(_ request: URLRequest, completionHandler: TrackingCompletionHandler?) {
+    private func executeTracking(_ request: URLRequest, event eventName: CIOTrackingEventName, completionHandler: TrackingCompletionHandler?) {
         let dispatchHandlerOnMainQueue = { response in
             DispatchQueue.main.async {
                 completionHandler?(response)
@@ -1403,7 +1454,15 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         // PII detection & request obfuscation
         let requestWithoutPII = obfuscatePIIRequest(request: request)
 
+        // Captured after obfuscation so debug output never contains PII
+        let debugEvent = self.config.debugMode ? self.debugRecorder.makeEvent(name: eventName, request: requestWithoutPII) : nil
+
         self.networkClient.execute(requestWithoutPII) { response in
+            if var event = debugEvent {
+                event.complete(with: response)
+                self.debugRecorder.record(event)
+            }
+
             if let error = response.error {
                 dispatchHandlerOnMainQueue(TrackingTaskResponse(error: error))
                 return

@@ -8,4 +8,10 @@
 
 import Foundation
 
-public class NetworkResponse: TaskResponse<Data, Error> {}
+public class NetworkResponse: TaskResponse<Data, Error> {
+
+    // Raw response details, kept so debug mode can show why a request failed
+    var statusCode: Int?
+    var body: Data?
+    var underlyingError: Error?
+}
