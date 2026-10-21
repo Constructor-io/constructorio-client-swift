@@ -85,16 +85,18 @@ class TrackProductInsightsAgentViewsRequestBuilderTests: XCTestCase {
         ])
     }
 
-    func testTrackProductInsightsAgentViewsBuilder_RoundsTimespansToTheNearestMillisecond() {
+    func testTrackProductInsightsAgentViewsBuilder_FormatsTimespansToTheNearestMillisecond() {
         let viewTimespans = [
-            CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.123), end: Date(timeIntervalSince1970: 1792636810.4567))
+            CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.123), end: Date(timeIntervalSince1970: 1792636810.4567)),
+            CIOProductInsightsAgentViewTimespan(start: Date(timeIntervalSince1970: 1792636805.009), end: Date(timeIntervalSince1970: 1792636805.015))
         ]
         let tracker = CIOTrackProductInsightsAgentViewsData(itemID: itemID, questions: questions, viewTimespans: viewTimespans)
         builder.build(trackData: tracker)
         let payload = self.payload(of: builder.getRequest())
 
         XCTAssertEqual(payload?["view_timespans"] as? [[String: String]], [
-            ["start": "2026-10-22T02:40:05.123Z", "end": "2026-10-22T02:40:10.457Z"]
+            ["start": "2026-10-22T02:40:05.123Z", "end": "2026-10-22T02:40:10.457Z"],
+            ["start": "2026-10-22T02:40:05.009Z", "end": "2026-10-22T02:40:05.015Z"]
         ])
     }
 
