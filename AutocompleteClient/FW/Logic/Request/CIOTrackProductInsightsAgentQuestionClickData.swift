@@ -37,28 +37,15 @@ struct CIOTrackProductInsightsAgentQuestionClickData: CIOTrackProductInsightsAge
         self.analyticsTags = analyticsTags
     }
 
-    func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(autocompleteSection: self.sectionName)
-    }
-
-    func httpMethod() -> String {
-        return "POST"
-    }
-
-    func httpBody(baseParams: [String: Any]) -> Data? {
+    func eventFields() -> [String: Any] {
         var dict = [
-            "item_id": self.itemID,
             "question": self.question
         ] as [String: Any]
 
         if let questionTopic = self.questionTopic {
             dict["question_topic"] = questionTopic
         }
-        self.addCommonFields(to: &dict)
 
-        dict["beacon"] = true
-        dict.merge(baseParams) { current, _ in current }
-
-        return try? JSONSerialization.data(withJSONObject: dict)
+        return dict
     }
 }

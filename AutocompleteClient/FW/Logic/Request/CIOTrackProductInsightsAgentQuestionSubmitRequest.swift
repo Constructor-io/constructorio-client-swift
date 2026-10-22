@@ -19,7 +19,7 @@ public struct CIOTrackProductInsightsAgentQuestionSubmitRequest {
     public let itemID: String
 
     /**
-     The question the user submitted
+     The question the user submitted (1-1000 characters)
      */
     public let question: String
 
@@ -58,7 +58,7 @@ public struct CIOTrackProductInsightsAgentQuestionSubmitRequest {
 
      - Parameters:
         - itemID: The ID of the product whose page the Product Insights Agent is on
-        - question: The question the user submitted
+        - question: The question the user submitted (1-1000 characters)
         - questionTopic: The topic category of the question
         - itemName: The name of the product whose page the Product Insights Agent is on
         - variationID: The variation ID of the product whose page the Product Insights Agent is on

@@ -19,7 +19,7 @@ public struct CIOTrackProductInsightsAgentResultClickRequest {
     public let itemID: String
 
     /**
-     The question that produced the answer containing the clicked recommendation
+     The question that produced the answer containing the clicked recommendation (1-1000 characters)
      */
     public let question: String
 
@@ -78,7 +78,7 @@ public struct CIOTrackProductInsightsAgentResultClickRequest {
 
      - Parameters:
         - itemID: The ID of the clicked recommended product
-        - question: The question that produced the answer containing the clicked recommendation
+        - question: The question that produced the answer containing the clicked recommendation (1-1000 characters)
         - seedItemID: The ID of the product whose page the Product Insights Agent is on
         - position: The zero-based position of the clicked item in the list of recommendations
         - seedItemName: The name of the product whose page the Product Insights Agent is on

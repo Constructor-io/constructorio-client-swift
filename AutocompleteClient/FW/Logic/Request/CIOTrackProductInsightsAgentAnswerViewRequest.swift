@@ -19,7 +19,7 @@ public struct CIOTrackProductInsightsAgentAnswerViewRequest {
     public let itemID: String
 
     /**
-     The question the answer was provided for
+     The question the answer was provided for (1-1000 characters)
      */
     public let question: String
 
@@ -78,7 +78,7 @@ public struct CIOTrackProductInsightsAgentAnswerViewRequest {
 
      - Parameters:
         - itemID: The ID of the product whose page the Product Insights Agent is on
-        - question: The question the answer was provided for
+        - question: The question the answer was provided for (1-1000 characters)
         - answerText: The text of the answer shown to the user (an empty string is allowed)
         - questionTopic: The topic category of the question
         - qnaResultID: The ID of the answer result returned by the Product Insights Agent

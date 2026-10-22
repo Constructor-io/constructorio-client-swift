@@ -376,6 +376,8 @@ let questions = [
 constructorIO.trackProductInsightsAgentView(CIOTrackProductInsightsAgentViewRequest(itemID: "1234567-AB", questions: questions, itemName: "Trail Runner"))
 
 // Track the periods of time during which the Product Insights Agent was visible
+let viewStartDate = Date()
+let viewEndDate = viewStartDate.addingTimeInterval(5)
 let viewTimespans = [CIOProductInsightsAgentViewTimespan(start: viewStartDate, end: viewEndDate)]
 constructorIO.trackProductInsightsAgentViews(CIOTrackProductInsightsAgentViewsRequest(itemID: "1234567-AB", questions: questions, viewTimespans: viewTimespans))
 

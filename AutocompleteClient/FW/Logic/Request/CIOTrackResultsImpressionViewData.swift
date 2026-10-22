@@ -38,7 +38,7 @@ struct CIOTrackResultsImpressionViewData: CIORequestData {
 
     func httpBody(baseParams: [String: Any]) -> Data? {
         var dict: [String: Any] = [
-            "items": items.map { $0.toDictionary() },
+            "items": items.map { $0.toImpressionDictionary() },
             "beacon": true
         ]
 

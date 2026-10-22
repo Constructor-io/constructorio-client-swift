@@ -35,25 +35,9 @@ struct CIOTrackProductInsightsAgentViewData: CIOTrackProductInsightsAgentData {
         self.analyticsTags = analyticsTags
     }
 
-    func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(autocompleteSection: self.sectionName)
-    }
-
-    func httpMethod() -> String {
-        return "POST"
-    }
-
-    func httpBody(baseParams: [String: Any]) -> Data? {
-        var dict = [
-            "item_id": self.itemID,
+    func eventFields() -> [String: Any] {
+        return [
             "questions": self.questions.map { $0.toDictionary() }
-        ] as [String: Any]
-
-        self.addCommonFields(to: &dict)
-
-        dict["beacon"] = true
-        dict.merge(baseParams) { current, _ in current }
-
-        return try? JSONSerialization.data(withJSONObject: dict)
+        ]
     }
 }

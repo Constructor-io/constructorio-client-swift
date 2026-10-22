@@ -37,28 +37,15 @@ struct CIOTrackProductInsightsAgentAnswerFeedbackData: CIOTrackProductInsightsAg
         self.analyticsTags = analyticsTags
     }
 
-    func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(autocompleteSection: self.sectionName)
-    }
-
-    func httpMethod() -> String {
-        return "POST"
-    }
-
-    func httpBody(baseParams: [String: Any]) -> Data? {
+    func eventFields() -> [String: Any] {
         var dict = [
-            "item_id": self.itemID,
             "feedback_label": self.feedbackLabel.rawValue
         ] as [String: Any]
 
         if let qnaResultID = self.qnaResultID {
             dict["qna_result_id"] = qnaResultID
         }
-        self.addCommonFields(to: &dict)
 
-        dict["beacon"] = true
-        dict.merge(baseParams) { current, _ in current }
-
-        return try? JSONSerialization.data(withJSONObject: dict)
+        return dict
     }
 }

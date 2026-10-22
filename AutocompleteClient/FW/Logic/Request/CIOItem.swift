@@ -25,8 +25,9 @@ public struct CIOItem {
         self.slCampaignOwner = slCampaignOwner
     }
 
-    // Builds the item object sent in tracking request bodies. `quantity` is never included
-    func toDictionary() -> [String: String] {
+    // Builds the item object sent by trackResultsImpressionView and trackProductInsightsAgentAnswerView.
+    // Other events send different item shapes (e.g. purchase sends quantity, and ASA/search/browse/recommendations omit item_name)
+    func toImpressionDictionary() -> [String: String] {
         var dict = ["item_id": self.customerID]
         if let itemName = self.itemName {
             dict["item_name"] = itemName

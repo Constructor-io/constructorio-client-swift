@@ -85,6 +85,15 @@ class ConstructorIOTrackProductInsightsAgentQuestionSubmitTests: XCTestCase {
         self.wait(for: builder.expectation)
     }
 
+    func testTrackProductInsightsAgentQuestionSubmit_RequestSectionOverridesConfig() {
+        let builder = CIOBuilder(expectation: "Calling trackProductInsightsAgentQuestionSubmit should prefer the request section name over the config default.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/v2/behavioral_action/product_insights_agent_question_submit?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Search%20Suggestions&\(TestConstants.defaultSegments)"), builder.create())
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: "section321")
+        let constructor = TestConstants.testConstructor(config)
+        constructor.trackProductInsightsAgentQuestionSubmit(CIOTrackProductInsightsAgentQuestionSubmitRequest(itemID: itemID, question: question, sectionName: sectionName))
+        self.wait(for: builder.expectation)
+    }
+
     func testTrackProductInsightsAgentQuestionSubmit_MergesDefaultAnalyticsTags() {
         let builder = CIOBuilder(expectation: "Calling trackProductInsightsAgentQuestionSubmit should merge defaultAnalyticsTags and analyticsTags.", builder: http(200))
         var capturedRequest: URLRequest?

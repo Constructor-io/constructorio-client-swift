@@ -45,17 +45,8 @@ struct CIOTrackProductInsightsAgentAnswerViewData: CIOTrackProductInsightsAgentD
         self.analyticsTags = analyticsTags
     }
 
-    func decorateRequest(requestBuilder: RequestBuilder) {
-        requestBuilder.set(autocompleteSection: self.sectionName)
-    }
-
-    func httpMethod() -> String {
-        return "POST"
-    }
-
-    func httpBody(baseParams: [String: Any]) -> Data? {
+    func eventFields() -> [String: Any] {
         var dict = [
-            "item_id": self.itemID,
             "question": self.question,
             "answer_text": self.answerText
         ] as [String: Any]
@@ -67,16 +58,12 @@ struct CIOTrackProductInsightsAgentAnswerViewData: CIOTrackProductInsightsAgentD
             dict["qna_result_id"] = qnaResultID
         }
         if let items = self.items {
-            dict["items"] = items.prefix(100).map { $0.toDictionary() }
+            dict["items"] = items.prefix(100).map { $0.toImpressionDictionary() }
         }
         if let followUpQuestions = self.followUpQuestions {
             dict["follow_up_questions"] = followUpQuestions.prefix(100).map { ["value": $0] }
         }
-        self.addCommonFields(to: &dict)
 
-        dict["beacon"] = true
-        dict.merge(baseParams) { current, _ in current }
-
-        return try? JSONSerialization.data(withJSONObject: dict)
+        return dict
     }
 }
