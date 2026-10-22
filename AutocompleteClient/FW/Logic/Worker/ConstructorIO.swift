@@ -987,11 +987,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackProductInsightsAgentFocus(_ request: CIOTrackProductInsightsAgentFocusRequest, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
-        let data = CIOTrackProductInsightsAgentFocusData(itemID: request.itemID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
-        let urlRequest = self.buildRequest(data: data)
-        executeTracking(urlRequest, completionHandler: completionHandler)
+        trackProductInsightsAgent(sectionName: request.sectionName, analyticsTags: request.analyticsTags, completionHandler: completionHandler) { sectionName, analyticsTags in
+            CIOTrackProductInsightsAgentFocusData(itemID: request.itemID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        }
     }
 
     /**
@@ -1007,11 +1005,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackProductInsightsAgentOutOfView(_ request: CIOTrackProductInsightsAgentOutOfViewRequest, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
-        let data = CIOTrackProductInsightsAgentOutOfViewData(itemID: request.itemID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
-        let urlRequest = self.buildRequest(data: data)
-        executeTracking(urlRequest, completionHandler: completionHandler)
+        trackProductInsightsAgent(sectionName: request.sectionName, analyticsTags: request.analyticsTags, completionHandler: completionHandler) { sectionName, analyticsTags in
+            CIOTrackProductInsightsAgentOutOfViewData(itemID: request.itemID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        }
     }
 
     /**
@@ -1027,11 +1023,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackProductInsightsAgentView(_ request: CIOTrackProductInsightsAgentViewRequest, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
-        let data = CIOTrackProductInsightsAgentViewData(itemID: request.itemID, questions: request.questions, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
-        let urlRequest = self.buildRequest(data: data)
-        executeTracking(urlRequest, completionHandler: completionHandler)
+        trackProductInsightsAgent(sectionName: request.sectionName, analyticsTags: request.analyticsTags, completionHandler: completionHandler) { sectionName, analyticsTags in
+            CIOTrackProductInsightsAgentViewData(itemID: request.itemID, questions: request.questions, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        }
     }
 
     /**
@@ -1047,11 +1041,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackProductInsightsAgentViews(_ request: CIOTrackProductInsightsAgentViewsRequest, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
-        let data = CIOTrackProductInsightsAgentViewsData(itemID: request.itemID, questions: request.questions, viewTimespans: request.viewTimespans, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
-        let urlRequest = self.buildRequest(data: data)
-        executeTracking(urlRequest, completionHandler: completionHandler)
+        trackProductInsightsAgent(sectionName: request.sectionName, analyticsTags: request.analyticsTags, completionHandler: completionHandler) { sectionName, analyticsTags in
+            CIOTrackProductInsightsAgentViewsData(itemID: request.itemID, questions: request.questions, viewTimespans: request.viewTimespans, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        }
     }
 
     /**
@@ -1067,11 +1059,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackProductInsightsAgentQuestionClick(_ request: CIOTrackProductInsightsAgentQuestionClickRequest, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
-        let data = CIOTrackProductInsightsAgentQuestionClickData(itemID: request.itemID, question: request.question, questionTopic: request.questionTopic, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
-        let urlRequest = self.buildRequest(data: data)
-        executeTracking(urlRequest, completionHandler: completionHandler)
+        trackProductInsightsAgent(sectionName: request.sectionName, analyticsTags: request.analyticsTags, completionHandler: completionHandler) { sectionName, analyticsTags in
+            CIOTrackProductInsightsAgentQuestionClickData(itemID: request.itemID, question: request.question, questionTopic: request.questionTopic, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        }
     }
 
     /**
@@ -1087,11 +1077,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackProductInsightsAgentQuestionSubmit(_ request: CIOTrackProductInsightsAgentQuestionSubmitRequest, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
-        let data = CIOTrackProductInsightsAgentQuestionSubmitData(itemID: request.itemID, question: request.question, questionTopic: request.questionTopic, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
-        let urlRequest = self.buildRequest(data: data)
-        executeTracking(urlRequest, completionHandler: completionHandler)
+        trackProductInsightsAgent(sectionName: request.sectionName, analyticsTags: request.analyticsTags, completionHandler: completionHandler) { sectionName, analyticsTags in
+            CIOTrackProductInsightsAgentQuestionSubmitData(itemID: request.itemID, question: request.question, questionTopic: request.questionTopic, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        }
     }
 
     /**
@@ -1107,11 +1095,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackProductInsightsAgentAnswerFeedback(_ request: CIOTrackProductInsightsAgentAnswerFeedbackRequest, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
-        let data = CIOTrackProductInsightsAgentAnswerFeedbackData(itemID: request.itemID, feedbackLabel: request.feedbackLabel, qnaResultID: request.qnaResultID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
-        let urlRequest = self.buildRequest(data: data)
-        executeTracking(urlRequest, completionHandler: completionHandler)
+        trackProductInsightsAgent(sectionName: request.sectionName, analyticsTags: request.analyticsTags, completionHandler: completionHandler) { sectionName, analyticsTags in
+            CIOTrackProductInsightsAgentAnswerFeedbackData(itemID: request.itemID, feedbackLabel: request.feedbackLabel, qnaResultID: request.qnaResultID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        }
     }
 
     /**
@@ -1127,11 +1113,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackProductInsightsAgentResultClick(_ request: CIOTrackProductInsightsAgentResultClickRequest, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
-        let data = CIOTrackProductInsightsAgentResultClickData(itemID: request.itemID, question: request.question, seedItemID: request.seedItemID, position: request.position, seedItemName: request.seedItemName, seedVariationID: request.seedVariationID, qnaResultID: request.qnaResultID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
-        let urlRequest = self.buildRequest(data: data)
-        executeTracking(urlRequest, completionHandler: completionHandler)
+        trackProductInsightsAgent(sectionName: request.sectionName, analyticsTags: request.analyticsTags, completionHandler: completionHandler) { sectionName, analyticsTags in
+            CIOTrackProductInsightsAgentResultClickData(itemID: request.itemID, question: request.question, seedItemID: request.seedItemID, position: request.position, seedItemName: request.seedItemName, seedVariationID: request.seedVariationID, qnaResultID: request.qnaResultID, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        }
     }
 
     /**
@@ -1147,11 +1131,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      */
     public func trackProductInsightsAgentAnswerView(_ request: CIOTrackProductInsightsAgentAnswerViewRequest, completionHandler: TrackingCompletionHandler? = nil) {
-        let sectionName = request.sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
-        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags)
-        let data = CIOTrackProductInsightsAgentAnswerViewData(itemID: request.itemID, question: request.question, answerText: request.answerText, questionTopic: request.questionTopic, qnaResultID: request.qnaResultID, items: request.items, followUpQuestions: request.followUpQuestions, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: mergedTags)
-        let urlRequest = self.buildRequest(data: data)
-        executeTracking(urlRequest, completionHandler: completionHandler)
+        trackProductInsightsAgent(sectionName: request.sectionName, analyticsTags: request.analyticsTags, completionHandler: completionHandler) { sectionName, analyticsTags in
+            CIOTrackProductInsightsAgentAnswerViewData(itemID: request.itemID, question: request.question, answerText: request.answerText, questionTopic: request.questionTopic, qnaResultID: request.qnaResultID, items: request.items, followUpQuestions: request.followUpQuestions, itemName: request.itemName, variationID: request.variationID, threadID: request.threadID, sectionName: sectionName, analyticsTags: analyticsTags)
+        }
     }
 
     /**
@@ -1205,6 +1187,22 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         return defaultAnalyticsTags.merging(newAnalyticsTags) { (_, new) in new }
     }
 
+
+    /**
+     Resolve the section and analytics tags shared by every Product Insights Agent event, then build and send the request
+
+     - Parameters:
+        - sectionName: The section passed on the request, falling back to the configured default section, then "Products"
+        - analyticsTags: The analytics tags passed on the request, merged with the configured default analytics tags
+        - completionHandler: The callback to execute on completion.
+        - makeData: Builds the event's request data from the resolved section and analytics tags
+     */
+    private func trackProductInsightsAgent(sectionName: String?, analyticsTags: [String: String]?, completionHandler: TrackingCompletionHandler?, makeData: (String, [String: String]?) -> CIOTrackProductInsightsAgentData) {
+        let resolvedSectionName = sectionName ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let mergedTags = mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags)
+        let urlRequest = self.buildRequest(data: makeData(resolvedSectionName, mergedTags))
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
 
     private func buildRequest(data: CIORequestData) -> URLRequest {
         let requestBuilder = RequestBuilder(apiKey: self.config.apiKey, baseURL: self.config.baseURL ?? Constants.Query.baseURLString)

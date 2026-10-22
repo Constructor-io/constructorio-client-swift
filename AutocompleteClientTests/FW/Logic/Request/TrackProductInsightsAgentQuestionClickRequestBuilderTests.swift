@@ -68,5 +68,6 @@ class TrackProductInsightsAgentQuestionClickRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["thread_id"] as? String, threadID)
         XCTAssertEqual(payload?["analytics_tags"] as? [String: String], analyticsTags)
         XCTAssertEqual(payload?["beacon"] as? Bool, true)
+        XCTAssertEqual(payload.map { Set($0.keys) }, ["_dt", "analytics_tags", "beacon", "c", "item_id", "item_name", "key", "question", "question_topic", "section", "thread_id", "variation_id"], "the body should only contain keys accepted by the API")
     }
 }

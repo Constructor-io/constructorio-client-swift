@@ -35,11 +35,15 @@ public struct CIOProductInsightsAgentViewTimespan {
         self.end = end
     }
 
-    // ISO8601DateFormatter is thread-safe, so a single shared instance is used for all timespans
-    static let dateFormatter: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+    // A fixed-format DateFormatter is used instead of ISO8601DateFormatter because setting
+    // `.withFractionalSeconds` throws an exception on iOS 11.0 and 11.1. DateFormatter is thread-safe,
+    // so a single shared instance is used for all timespans
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.calendar = Calendar(identifier: .gregorian)
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         return formatter
     }()
 

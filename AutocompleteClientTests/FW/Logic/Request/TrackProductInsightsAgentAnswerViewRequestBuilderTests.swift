@@ -80,6 +80,7 @@ class TrackProductInsightsAgentAnswerViewRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["thread_id"] as? String, threadID)
         XCTAssertEqual(payload?["analytics_tags"] as? [String: String], analyticsTags)
         XCTAssertEqual(payload?["beacon"] as? Bool, true)
+        XCTAssertEqual(payload.map { Set($0.keys) }, ["_dt", "analytics_tags", "answer_text", "beacon", "c", "follow_up_questions", "item_id", "item_name", "items", "key", "qna_result_id", "question", "question_topic", "section", "thread_id", "variation_id"], "the body should only contain keys accepted by the API")
     }
 
     func testTrackProductInsightsAgentAnswerViewBuilder_SendsEmptyAnswerText() {
