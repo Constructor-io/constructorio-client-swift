@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set in order to track a Product Insights Agent answer view
  */
-struct CIOTrackProductInsightsAgentAnswerViewData: CIORequestData {
+struct CIOTrackProductInsightsAgentAnswerViewData: CIOTrackProductInsightsAgentData {
 
     let itemID: String
     let question: String
@@ -67,47 +67,16 @@ struct CIOTrackProductInsightsAgentAnswerViewData: CIORequestData {
             dict["qna_result_id"] = qnaResultID
         }
         if let items = self.items {
-            dict["items"] = items.prefix(100).map { $0.productInsightsAgentDictionary() }
+            dict["items"] = items.prefix(100).map { $0.toDictionary() }
         }
         if let followUpQuestions = self.followUpQuestions {
             dict["follow_up_questions"] = followUpQuestions.prefix(100).map { ["value": $0] }
         }
-        if let itemName = self.itemName {
-            dict["item_name"] = itemName
-        }
-        if let variationID = self.variationID {
-            dict["variation_id"] = variationID
-        }
-        if let threadID = self.threadID {
-            dict["thread_id"] = threadID
-        }
-        if let analyticsTags = self.analyticsTags {
-            dict["analytics_tags"] = analyticsTags
-        }
+        self.addCommonFields(to: &dict)
 
         dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }
 
         return try? JSONSerialization.data(withJSONObject: dict)
-    }
-}
-
-private extension CIOItem {
-    // Only the keys accepted by the API are sent. `quantity` is rejected with a 400, so it is never included
-    func productInsightsAgentDictionary() -> [String: String] {
-        var dict = ["item_id": self.customerID]
-        if let itemName = self.itemName {
-            dict["item_name"] = itemName
-        }
-        if let variationID = self.variationID {
-            dict["variation_id"] = variationID
-        }
-        if let campaignID = self.slCampaignID {
-            dict["sl_campaign_id"] = campaignID
-        }
-        if let campaignOwner = self.slCampaignOwner {
-            dict["sl_campaign_owner"] = campaignOwner
-        }
-        return dict
     }
 }

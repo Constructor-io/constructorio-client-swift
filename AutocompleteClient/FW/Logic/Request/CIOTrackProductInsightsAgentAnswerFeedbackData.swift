@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set in order to track a Product Insights Agent answer feedback
  */
-struct CIOTrackProductInsightsAgentAnswerFeedbackData: CIORequestData {
+struct CIOTrackProductInsightsAgentAnswerFeedbackData: CIOTrackProductInsightsAgentData {
 
     let itemID: String
     let feedbackLabel: CIOProductInsightsAgentFeedbackLabel
@@ -54,18 +54,7 @@ struct CIOTrackProductInsightsAgentAnswerFeedbackData: CIORequestData {
         if let qnaResultID = self.qnaResultID {
             dict["qna_result_id"] = qnaResultID
         }
-        if let itemName = self.itemName {
-            dict["item_name"] = itemName
-        }
-        if let variationID = self.variationID {
-            dict["variation_id"] = variationID
-        }
-        if let threadID = self.threadID {
-            dict["thread_id"] = threadID
-        }
-        if let analyticsTags = self.analyticsTags {
-            dict["analytics_tags"] = analyticsTags
-        }
+        self.addCommonFields(to: &dict)
 
         dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }

@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set in order to track a Product Insights Agent result click
  */
-struct CIOTrackProductInsightsAgentResultClickData: CIORequestData {
+struct CIOTrackProductInsightsAgentResultClickData: CIOTrackProductInsightsAgentData {
 
     let itemID: String
     let question: String
@@ -72,18 +72,7 @@ struct CIOTrackProductInsightsAgentResultClickData: CIORequestData {
         if let qnaResultID = self.qnaResultID {
             dict["qna_result_id"] = qnaResultID
         }
-        if let itemName = self.itemName {
-            dict["item_name"] = itemName
-        }
-        if let variationID = self.variationID {
-            dict["variation_id"] = variationID
-        }
-        if let threadID = self.threadID {
-            dict["thread_id"] = threadID
-        }
-        if let analyticsTags = self.analyticsTags {
-            dict["analytics_tags"] = analyticsTags
-        }
+        self.addCommonFields(to: &dict)
 
         dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }

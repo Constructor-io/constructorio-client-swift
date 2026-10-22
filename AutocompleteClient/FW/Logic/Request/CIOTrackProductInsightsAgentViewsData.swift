@@ -11,7 +11,7 @@ import Foundation
 /**
  Struct encapsulating the parameters that must/can be set in order to track a Product Insights Agent views
  */
-struct CIOTrackProductInsightsAgentViewsData: CIORequestData {
+struct CIOTrackProductInsightsAgentViewsData: CIOTrackProductInsightsAgentData {
 
     let itemID: String
     let questions: [CIOProductInsightsAgentQuestion]
@@ -52,18 +52,7 @@ struct CIOTrackProductInsightsAgentViewsData: CIORequestData {
             "view_timespans": self.viewTimespans.map { $0.toDictionary() }
         ] as [String: Any]
 
-        if let itemName = self.itemName {
-            dict["item_name"] = itemName
-        }
-        if let variationID = self.variationID {
-            dict["variation_id"] = variationID
-        }
-        if let threadID = self.threadID {
-            dict["thread_id"] = threadID
-        }
-        if let analyticsTags = self.analyticsTags {
-            dict["analytics_tags"] = analyticsTags
-        }
+        self.addCommonFields(to: &dict)
 
         dict["beacon"] = true
         dict.merge(baseParams) { current, _ in current }
