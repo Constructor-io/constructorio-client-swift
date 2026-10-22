@@ -26,7 +26,8 @@ public struct CIOItem {
     }
 
     // Builds the item object sent by trackResultsImpressionView and trackProductInsightsAgentAnswerView.
-    // Other events send different item shapes (e.g. purchase sends quantity, and ASA/search/browse/recommendations omit item_name)
+    // Other events send different item shapes (purchase repeats each item `quantity` times and sends only item_id/variation_id,
+    // and ASA/search/browse/recommendations omit item_name)
     func toImpressionDictionary() -> [String: String] {
         var dict = ["item_id": self.customerID]
         if let itemName = self.itemName {

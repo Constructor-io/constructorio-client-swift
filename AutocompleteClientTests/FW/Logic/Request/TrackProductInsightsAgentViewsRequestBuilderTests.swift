@@ -101,6 +101,31 @@ class TrackProductInsightsAgentViewsRequestBuilderTests: XCTestCase {
         ])
     }
 
+    func testTrackProductInsightsAgentViewsBuilder_TimespanFormatterIsPinnedToUTCAndGregorian() {
+        // The formatted strings above only match on any host if these are set explicitly, so pin them directly
+        let formatter = CIOProductInsightsAgentViewTimespan.dateFormatter
+        XCTAssertEqual(formatter.timeZone.secondsFromGMT(), 0)
+        XCTAssertEqual(formatter.locale.identifier, "en_US_POSIX")
+        XCTAssertEqual(formatter.calendar.identifier, .gregorian)
+        XCTAssertEqual(formatter.dateFormat, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    }
+
+    func testTrackProductInsightsAgentViewsBuilder_TimespansRoundTripAsISO8601() {
+        let start = Date(timeIntervalSince1970: 1792636805.125)
+        let end = Date(timeIntervalSince1970: 1792636810.5)
+        let tracker = CIOTrackProductInsightsAgentViewsData(itemID: itemID, questions: questions, viewTimespans: [CIOProductInsightsAgentViewTimespan(start: start, end: end)])
+        builder.build(trackData: tracker)
+        let payload = self.payload(of: builder.getRequest())
+        let timespan = (payload?["view_timespans"] as? [[String: String]])?.first
+
+        let parser = ISO8601DateFormatter()
+        parser.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        let parsedStart = timespan?["start"].flatMap { parser.date(from: $0) }
+        let parsedEnd = timespan?["end"].flatMap { parser.date(from: $0) }
+        XCTAssertEqual(parsedStart?.timeIntervalSince1970 ?? 0, start.timeIntervalSince1970, accuracy: 0.001)
+        XCTAssertEqual(parsedEnd?.timeIntervalSince1970 ?? 0, end.timeIntervalSince1970, accuracy: 0.001)
+    }
+
     func testTrackProductInsightsAgentViewsBuilder_WithEmptyTimespans() {
         let tracker = CIOTrackProductInsightsAgentViewsData(itemID: itemID, questions: questions, viewTimespans: [])
         builder.build(trackData: tracker)
