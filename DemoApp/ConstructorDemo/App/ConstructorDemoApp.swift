@@ -13,6 +13,7 @@ struct ConstructorDemoApp: App {
 
     @StateObject private var service: ConstructorService
     @StateObject private var search: SearchModel
+    @StateObject private var featured: FeaturedModel
     @StateObject private var cart = Cart()
 
     init() {
@@ -23,6 +24,7 @@ struct ConstructorDemoApp: App {
         let service = ConstructorService(apiKey: apiKey, debugMode: debugMode)
         _service = StateObject(wrappedValue: service)
         _search = StateObject(wrappedValue: SearchModel(service: service))
+        _featured = StateObject(wrappedValue: FeaturedModel(service: service))
     }
 
     var body: some Scene {
@@ -30,6 +32,7 @@ struct ConstructorDemoApp: App {
             RootView()
                 .environmentObject(self.service)
                 .environmentObject(self.search)
+                .environmentObject(self.featured)
                 .environmentObject(self.cart)
         }
     }

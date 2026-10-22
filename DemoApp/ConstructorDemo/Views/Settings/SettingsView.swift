@@ -46,6 +46,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+            .homeLogo()
             .onAppear { self.apiKey = self.service.apiKey }
         }
     }

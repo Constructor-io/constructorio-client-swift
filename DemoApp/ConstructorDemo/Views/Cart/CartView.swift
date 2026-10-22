@@ -51,6 +51,7 @@ struct CartView: View {
                 }
             }
             .navigationTitle("Cart")
+            .homeLogo()
             .alert("Order placed", isPresented: Binding(get: { self.lastOrderID != nil }, set: { if !$0 { self.lastOrderID = nil } })) {
                 Button("OK", role: .cancel) {}
             } message: {

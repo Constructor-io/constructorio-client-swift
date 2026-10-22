@@ -23,6 +23,8 @@ final class SearchModel: ObservableObject {
     @Published private(set) var totalResults = 0
     @Published private(set) var isLoading = false
     @Published private(set) var offlineReason: String?
+    /// Bumped by reset() so the Shop tab can also pop back to its root
+    @Published private(set) var resetCount = 0
 
     private let service: ConstructorService
     private var pendingAutocomplete: DispatchWorkItem?
@@ -49,6 +51,13 @@ final class SearchModel: ObservableObject {
         self.runSearch(suggestion)
     }
 
+    // Popular searches are picked from an empty field, so the term doubles as the original query
+    func selectPopularSearch(_ term: String) {
+        self.constructor.trackAutocompleteSelect(searchTerm: term, originalQuery: term, sectionName: DemoConfig.suggestionsSectionName)
+        self.constructor.trackSearchSubmit(searchTerm: term, originalQuery: term)
+        self.runSearch(term)
+    }
+
     func submit() {
         let term = self.trimmedQuery
         guard !term.isEmpty else { return }
@@ -58,6 +67,20 @@ final class SearchModel: ObservableObject {
 
     func resultTapped(_ product: Product) {
         self.constructor.trackSearchResultClick(itemName: product.name, customerID: product.customerID, variationID: product.variationID, searchTerm: self.submittedTerm, resultID: self.resultID)
+    }
+
+    /// Back to an empty search, as if the Shop tab was just opened. Responses still in flight are ignored.
+    func reset() {
+        self.pendingAutocomplete?.cancel()
+        self.submittedTerm = nil
+        self.query = ""
+        self.suggestions = []
+        self.products = []
+        self.resultID = nil
+        self.totalResults = 0
+        self.isLoading = false
+        self.offlineReason = nil
+        self.resetCount += 1
     }
 
     // MARK: Requests

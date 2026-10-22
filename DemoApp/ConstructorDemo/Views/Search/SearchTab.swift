@@ -19,6 +19,8 @@ struct SearchTab: View {
             List {
                 if !self.model.suggestions.isEmpty {
                     self.suggestionsSection
+                } else if self.searchFocused && self.model.query.isEmpty {
+                    self.popularSection
                 } else if self.model.submittedTerm != nil {
                     if let reason = self.model.offlineReason {
                         self.offlineSection(reason: reason)
@@ -31,11 +33,16 @@ struct SearchTab: View {
             .listStyle(.insetGrouped)
             .safeAreaInset(edge: .top) { self.searchField }
             .navigationTitle("Shop")
+            .homeLogo()
             .navigationDestination(for: Product.self) { product in
                 ProductDetailView(product: product, searchTerm: self.model.submittedTerm)
             }
             .onChange(of: self.searchFocused) { focused in
                 if focused { self.model.inputFocused() }
+            }
+            .onChange(of: self.model.resetCount) { _ in
+                self.searchFocused = false
+                self.path = []
             }
         }
     }
@@ -63,6 +70,21 @@ struct SearchTab: View {
         .padding(.horizontal)
         .padding(.bottom, 6)
         .background(Color(.systemGroupedBackground))
+    }
+
+    private var popularSection: some View {
+        Section("Popular searches") {
+            ForEach(DemoConfig.popularSearches, id: \.self) { term in
+                Button {
+                    self.searchFocused = false
+                    self.model.selectPopularSearch(term)
+                } label: {
+                    Label(term.capitalized, systemImage: "arrow.up.right")
+                }
+                .foregroundStyle(.primary)
+                .accessibilityIdentifier("popular-search")
+            }
+        }
     }
 
     private var suggestionsSection: some View {

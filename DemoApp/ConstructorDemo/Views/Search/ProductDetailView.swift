@@ -60,7 +60,7 @@ struct ProductDetailView: View {
     private func trackLoadOnce() {
         guard !self.hasTrackedLoad else { return }
         self.hasTrackedLoad = true
-        self.service.constructor.trackItemDetailLoad(customerID: "", itemName: self.product.name, variationID: self.product.variationID, url: self.product.url)
+        self.service.constructor.trackItemDetailLoad(customerID: self.product.customerID, itemName: self.product.name, variationID: self.product.variationID, url: self.product.url)
     }
 
     private func addToCart() {

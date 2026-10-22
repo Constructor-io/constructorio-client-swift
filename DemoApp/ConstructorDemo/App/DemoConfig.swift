@@ -26,4 +26,11 @@ enum DemoConfig {
     static let suggestionsSectionName = "Search Suggestions"
 
     static let resultsPerPage = 20
+
+    /// Shown under the search field while it's focused and empty
+    static let popularSearches = ["apple", "milk", "bread", "eggs", "coffee"]
+
+    /// The Home carousel shows results for this term
+    static let featuredSearchTerm = "fruit"
+    static let featuredCount = 10
 }

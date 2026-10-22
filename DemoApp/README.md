@@ -8,7 +8,7 @@ A small SwiftUI shop for trying out the SDK's tracking **debug mode**, and later
 2. Select the `ConstructorDemo` scheme and an iOS 16+ simulator.
 3. Run.
 
-The demo starts with debug mode **on** and uses the public demo index (`key_K2hlXt5aVSwoI1Uw`), which is a grocery store. Change the key in the **Settings** tab.
+The demo opens on the **Home** tab. Tap the green **FreshCart** logo at the top of any screen to come back to it. Home shows a carousel of featured products. **Start shopping** opens the Shop tab with an empty search, closing any search or product page left open there. It starts with debug mode **on** and uses the public demo index (`key_K2hlXt5aVSwoI1Uw`), which is a grocery store. Change the key in the **Settings** tab.
 
 ## The search journey
 
@@ -17,6 +17,7 @@ Each step fires the tracking call a real integration should make:
 | Step in the app | Event |
 | --- | --- |
 | Tap the search field | `input_focus` |
+| Tap a popular search (shown while the field is empty) | `autocomplete_select` + `search_submit` |
 | Tap a suggestion | `autocomplete_select` |
 | Press Search on the keyboard | `search_submit` |
 | Results appear | `search_results_loaded` |
@@ -53,9 +54,10 @@ These tests hit the live API.
 ConstructorDemo/
   App/          entry point, tabs, config (API key)
   Services/     ConstructorService (owns the client),
-                SearchModel (search journey + tracking), SampleCatalog (offline fallback)
+                SearchModel (search journey + tracking), FeaturedModel (Home carousel),
+                SampleCatalog (offline fallback)
   Models/       Product, Cart
-  Views/        Search, Cart, Settings
+  Views/        Home, Search, Cart, Settings
 ```
 
 ## Journey file

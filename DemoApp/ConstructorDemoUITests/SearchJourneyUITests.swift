@@ -28,6 +28,8 @@ final class SearchJourneyUITests: XCTestCase {
     }
 
     private func search(_ term: String, in app: XCUIApplication) {
+        // The app opens on Home
+        app.tabBars.buttons["Shop"].tap()
         let searchField = app.textFields["Search products"]
         XCTAssertTrue(searchField.waitForExistence(timeout: 10))
         searchField.tap()
@@ -88,9 +90,64 @@ final class SearchJourneyUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Cart"].waitForExistence(timeout: 10))
         app.tabBars.buttons["Settings"].tap()
         XCTAssertTrue(app.navigationBars["Settings"].waitForExistence(timeout: 10))
-        app.tabBars.buttons["Shop"].tap()
         self.search("milk", in: app)
         XCTAssertTrue(app.buttons.matching(identifier: "search-result").firstMatch.waitForExistence(timeout: self.networkTimeout))
+    }
+
+    func testHomeLogo_returnsToHome() {
+        let app = self.launch(debugMode: false)
+
+        app.tabBars.buttons["Cart"].tap()
+        XCTAssertTrue(app.navigationBars["Cart"].waitForExistence(timeout: 10))
+        app.buttons["home-logo"].tap()
+        XCTAssertTrue(app.buttons["Start shopping"].waitForExistence(timeout: 10), "Should be back on Home")
+    }
+
+    func testPopularSearch_tracksSelectAndSubmit() {
+        let app = self.launch(debugMode: true)
+
+        app.tabBars.buttons["Shop"].tap()
+        let searchField = app.textFields["Search products"]
+        XCTAssertTrue(searchField.waitForExistence(timeout: 10))
+        searchField.tap()
+
+        let popular = app.buttons.matching(identifier: "popular-search").firstMatch
+        XCTAssertTrue(popular.waitForExistence(timeout: 10), "Popular searches should show while the field is empty")
+        popular.tap()
+        XCTAssertTrue(app.buttons.matching(identifier: "search-result").firstMatch.waitForExistence(timeout: self.networkTimeout))
+
+        app.buttons["cio-debug-button"].tap()
+        for event in ["input_focus", "autocomplete_select", "search_submit", "search_results_loaded"] {
+            XCTAssertTrue(app.cells["cio-debug-event-\(event)"].waitForExistence(timeout: self.networkTimeout), "\(event) should be recorded")
+        }
+    }
+
+    func testStartShopping_resetsSearch() {
+        let app = self.launch(debugMode: false)
+
+        self.search("apple", in: app)
+        let firstResult = app.buttons.matching(identifier: "search-result").firstMatch
+        XCTAssertTrue(firstResult.waitForExistence(timeout: self.networkTimeout))
+        firstResult.tap()
+        XCTAssertTrue(app.buttons["Add to Cart"].waitForExistence(timeout: 10))
+
+        app.tabBars.buttons["Home"].tap()
+        app.buttons["Start shopping"].tap()
+
+        let searchField = app.textFields["Search products"]
+        XCTAssertTrue(searchField.waitForExistence(timeout: 10), "Shop should be back at its root")
+        XCTAssertEqual(searchField.value as? String, "Search products", "Search field should be empty")
+        XCTAssertTrue(app.staticTexts["What are you looking for?"].exists)
+        XCTAssertFalse(app.buttons.matching(identifier: "search-result").firstMatch.exists)
+    }
+
+    func testHomeCarousel_opensProduct() {
+        let app = self.launch(debugMode: false)
+
+        let card = app.buttons.matching(identifier: "featured-product").firstMatch
+        XCTAssertTrue(card.waitForExistence(timeout: self.networkTimeout))
+        card.tap()
+        XCTAssertTrue(app.buttons["Add to Cart"].waitForExistence(timeout: 10))
     }
 
     func testDebugModeOff_showsNoOverlay() {
