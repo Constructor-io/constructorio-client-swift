@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "fileVersion": "2026-10-22.4",
+  "journeys": [
+    {
+      "id": "search_to_purchase",
+      "name": "Search to purchase",
+      "description": "Search for a product, open it from the results, add it to the cart and check out.",
+      "steps": [
+        {
+          "id": "focus",
+          "instruction": "Tap the search field",
+          "event": "input_focus",
+          "params": []
+        },
+        {
+          "id": "submit",
+          "instruction": "Type a search and submit it",
+          "event": "search_submit",
+          "params": [
+            {
+              "name": "term",
+              "required": true
+            },
+            {
+              "name": "original_query",
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": "results",
+          "instruction": "Wait for the search results to appear",
+          "event": "search_results_loaded",
+          "params": [
+            {
+              "name": "search_term",
+              "required": true,
+              "equals": {
+                "step": "submit",
+                "param": "term"
+              }
+            },
+            {
+              "name": "result_count",
+              "required": true,
+              "min": 0
+            },
+            {
+              "name": "items[].item_id",
+              "required": true,
+              "message": "Pass the IDs of the items shown in the results."
+            },
+            {
+              "name": "result_id",
+              "recommended": true,
+              "message": "Pass the result_id from the search response so clicks can be attributed."
+            }
+          ]
+        },
+        {
+          "id": "click",
+          "instruction": "Tap a product in the results",
+          "event": "search_result_click",
+          "params": [
+            {
+              "name": "customer_id",
+              "required": true,
+              "in": {
+                "step": "results",
+                "param": "items[].item_id"
+              },
+              "message": "The clicked item should be one of the items reported as loaded."
+            },
+            {
+              "name": "name",
+              "required": true
+            },
+            {
+              "name": "term",
+              "required": true,
+              "equals": {
+                "step": "submit",
+                "param": "term"
+              }
+            },
+            {
+              "name": "result_id",
+              "recommended": true,
+              "equals": {
+                "step": "results",
+                "param": "result_id"
+              }
+            },
+            {
+              "name": "variation_id",
+              "recommended": true
+            }
+          ]
+        },
+        {
+          "id": "item_detail",
+          "instruction": "Wait for the product page to open",
+          "event": "item_detail_load",
+          "params": [
+            {
+              "name": "item_id",
+              "required": true,
+              "equals": {
+                "step": "click",
+                "param": "customer_id"
+              },
+              "message": "Pass the ID of the product being shown, the same one that was clicked."
+            },
+            {
+              "name": "item_name",
+              "required": true
+            },
+            {
+              "name": "variation_id",
+              "recommended": true
+            },
+            {
+              "name": "url",
+              "recommended": true
+            }
+          ]
+        },
+        {
+          "id": "add_to_cart",
+          "instruction": "Add the product to the cart",
+          "event": "conversion",
+          "conversionType": "add_to_cart",
+          "params": [
+            {
+              "name": "item_id",
+              "required": true,
+              "equals": {
+                "step": "click",
+                "param": "customer_id"
+              },
+              "message": "Add the same item that was clicked."
+            },
+            {
+              "name": "item_name",
+              "required": true
+            },
+            {
+              "name": "search_term",
+              "recommended": true,
+              "equals": {
+                "step": "submit",
+                "param": "term"
+              }
+            },
+            {
+              "name": "revenue",
+              "recommended": true,
+              "min": 0
+            },
+            {
+              "name": "variation_id",
+              "recommended": true
+            }
+          ]
+        },
+        {
+          "id": "purchase",
+          "instruction": "Place the order",
+          "event": "purchase",
+          "params": [
+            {
+              "name": "items[].item_id",
+              "required": true,
+              "contains": {
+                "step": "add_to_cart",
+                "param": "item_id"
+              },
+              "message": "The purchased items should include the item added to the cart."
+            },
+            {
+              "name": "revenue",
+              "recommended": true,
+              "min": 0
+            },
+            {
+              "name": "order_id",
+              "recommended": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "search_suggestion_to_purchase",
+      "name": "Search Suggestion to Purchase",
+      "description": "Search, pick a suggestion, open a product from the results, add it to the cart and check out.",
+      "steps": [
+        {
+          "id": "focus",
+          "instruction": "Tap the search field",
+          "event": "input_focus",
+          "order": 1,
+          "params": []
+        },
+        {
+          "id": "submit",
+          "instruction": "Type part of a search and submit it",
+          "event": "search_submit",
+          "order": 2,
+          "params": [
+            {
+              "name": "term",
+              "required": true
+            },
+            {
+              "name": "original_query",
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": "select",
+          "instruction": "Tap a search suggestion",
+          "event": "autocomplete_select",
+          "order": 2,
+          "params": [
+            {
+              "name": "term",
+              "required": true,
+              "message": "Pass the suggestion the user tapped."
+            },
+            {
+              "name": "original_query",
+              "required": true,
+              "message": "Pass the text the user had typed before tapping the suggestion."
+            },
+            {
+              "name": "section",
+              "required": true,
+              "message": "Pass the autocomplete section the suggestion came from, for example Search Suggestions."
+            }
+          ]
+        },
+        {
+          "id": "results",
+          "instruction": "Wait for the results for the suggestion to appear",
+          "event": "search_results_loaded",
+          "order": 3,
+          "params": [
+            {
+              "name": "search_term",
+              "required": true,
+              "equals": {
+                "step": "select",
+                "param": "term"
+              },
+              "message": "The results should be for the suggestion that was selected."
+            },
+            {
+              "name": "result_count",
+              "required": true,
+              "min": 0
+            },
+            {
+              "name": "items[].item_id",
+              "required": true,
+              "message": "Pass the IDs of the items shown in the results."
+            },
+            {
+              "name": "result_id",
+              "recommended": true,
+              "message": "Pass the result_id from the search response so clicks can be attributed."
+            }
+          ]
+        },
+        {
+          "id": "click",
+          "instruction": "Tap a product in the results",
+          "event": "search_result_click",
+          "order": 4,
+          "params": [
+            {
+              "name": "customer_id",
+              "required": true,
+              "in": {
+                "step": "results",
+                "param": "items[].item_id"
+              },
+              "message": "The clicked item should be one of the items reported as loaded."
+            },
+            {
+              "name": "name",
+              "required": true
+            },
+            {
+              "name": "term",
+              "required": true,
+              "equals": {
+                "step": "select",
+                "param": "term"
+              }
+            },
+            {
+              "name": "result_id",
+              "recommended": true,
+              "equals": {
+                "step": "results",
+                "param": "result_id"
+              }
+            },
+            {
+              "name": "variation_id",
+              "recommended": true
+            }
+          ]
+        },
+        {
+          "id": "item_detail",
+          "instruction": "Wait for the product page to open",
+          "event": "item_detail_load",
+          "order": 5,
+          "params": [
+            {
+              "name": "item_id",
+              "required": true,
+              "equals": {
+                "step": "click",
+                "param": "customer_id"
+              },
+              "message": "Pass the ID of the product being shown, the same one that was clicked."
+            },
+            {
+              "name": "item_name",
+              "required": true
+            },
+            {
+              "name": "variation_id",
+              "recommended": true
+            },
+            {
+              "name": "url",
+              "recommended": true
+            }
+          ]
+        },
+        {
+          "id": "add_to_cart",
+          "instruction": "Add the product to the cart",
+          "event": "conversion",
+          "conversionType": "add_to_cart",
+          "order": 6,
+          "params": [
+            {
+              "name": "item_id",
+              "required": true,
+              "equals": {
+                "step": "click",
+                "param": "customer_id"
+              },
+              "message": "Add the same item that was clicked."
+            },
+            {
+              "name": "item_name",
+              "required": true
+            },
+            {
+              "name": "search_term",
+              "recommended": true,
+              "equals": {
+                "step": "select",
+                "param": "term"
+              }
+            },
+            {
+              "name": "revenue",
+              "recommended": true,
+              "min": 0
+            },
+            {
+              "name": "variation_id",
+              "recommended": true
+            }
+          ]
+        },
+        {
+          "id": "purchase",
+          "instruction": "Place the order",
+          "event": "purchase",
+          "order": 7,
+          "params": [
+            {
+              "name": "items[].item_id",
+              "required": true,
+              "contains": {
+                "step": "add_to_cart",
+                "param": "item_id"
+              },
+              "message": "The purchased items should include the item added to the cart."
+            },
+            {
+              "name": "revenue",
+              "recommended": true,
+              "min": 0
+            },
+            {
+              "name": "order_id",
+              "recommended": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

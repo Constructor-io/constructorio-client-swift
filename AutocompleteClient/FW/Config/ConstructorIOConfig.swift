@@ -63,6 +63,11 @@ public struct ConstructorIOConfig {
     public var debugMode: Bool
 
     /**
+     Where debug mode loads journey definitions from. Without it, the Journeys tab has nothing to test.
+     */
+    public var debugJourneysURL: URL?
+
+    /**
      Create a configuration object
      
      - Parameters:
@@ -76,6 +81,7 @@ public struct ConstructorIOConfig {
         - baseMediaURL: The base Media URL to make tracking requests to
         - defaultAnalyticsTags: Additional analytics tags to include with all requests
         - debugMode: Log all tracking events and deliver them to registered debug listeners
+        - debugJourneysURL: Where debug mode fetches journey definitions from
 
      ### Usage Example: ###
      ```
@@ -92,7 +98,7 @@ public struct ConstructorIOConfig {
      )
      ```
      */
-    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil, baseQuizURL: String? = nil, baseMediaURL: String? = nil, defaultAnalyticsTags: [String: String]? = nil, debugMode: Bool = false) {
+    public init(apiKey: String, resultCount: AutocompleteResultCount? = nil, defaultItemSectionName: String? = nil, testCells: [CIOABTestCell]? = nil, segments: [String]? = nil, baseURL: String? = nil, baseQuizURL: String? = nil, baseMediaURL: String? = nil, defaultAnalyticsTags: [String: String]? = nil, debugMode: Bool = false, debugJourneysURL: URL? = nil) {
         self.apiKey = apiKey
         self.resultCount = resultCount
         self.defaultItemSectionName = defaultItemSectionName
@@ -103,6 +109,7 @@ public struct ConstructorIOConfig {
         self.baseMediaURL = baseMediaURL
         self.defaultAnalyticsTags = defaultAnalyticsTags
         self.debugMode = debugMode
+        self.debugJourneysURL = debugJourneysURL
     }
 
 }

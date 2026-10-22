@@ -36,6 +36,22 @@ enum CIODebugStyle {
         return nil
     }
 
+    static let warning = UIColor(red: 0.85, green: 0.55, blue: 0.05, alpha: 1)
+
+    static func symbol(_ name: String) -> UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: name)
+        }
+        return nil
+    }
+
+    static func tinted(_ name: String, _ color: UIColor) -> UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: name)?.withTintColor(color, renderingMode: .alwaysOriginal)
+        }
+        return nil
+    }
+
     static let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss.SSS"

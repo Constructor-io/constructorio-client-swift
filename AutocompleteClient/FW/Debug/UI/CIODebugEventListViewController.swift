@@ -28,7 +28,7 @@ final class CIODebugEventListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Constructor Events"
+        self.title = "Events"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.close))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(self.clear))
         self.tableView.register(CIODebugEventCell.self, forCellReuseIdentifier: CIODebugEventListViewController.cellIdentifier)

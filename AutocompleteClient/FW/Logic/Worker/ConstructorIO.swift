@@ -102,8 +102,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
 
     private func updateDebugOverlay() {
         let debugMode = self.config.debugMode
+        let journeysURL = self.config.debugJourneysURL
         DispatchQueue.main.async {
             if debugMode {
+                CIOJourneyLibrary.shared.url = journeysURL
+                CIOJourneyLibrary.shared.refresh()
                 CIODebugOverlay.shared.show()
             } else {
                 CIODebugOverlay.shared.hide()

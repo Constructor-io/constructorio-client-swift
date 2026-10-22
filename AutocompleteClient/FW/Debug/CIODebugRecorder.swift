@@ -44,6 +44,7 @@ class CIODebugRecorder {
         DispatchQueue.main.async {
             print(Constants.Logging.debugEvent(event))
             CIODebugEventLog.shared.append(event)
+            CIOJourneySession.shared.record(event)
             listeners.forEach { $0.didTrack(event: event) }
         }
     }

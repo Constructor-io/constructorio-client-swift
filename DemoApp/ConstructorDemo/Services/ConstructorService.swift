@@ -31,7 +31,7 @@ final class ConstructorService: ObservableObject {
     }
 
     private static func makeClient(apiKey: String, debugMode: Bool) -> ConstructorIO {
-        let config = ConstructorIOConfig(apiKey: apiKey, segments: ["demo-app"], debugMode: debugMode)
+        let config = ConstructorIOConfig(apiKey: apiKey, segments: ["demo-app"], debugMode: debugMode, debugJourneysURL: DemoConfig.journeysURL)
         return ConstructorIO(config: config)
     }
 }

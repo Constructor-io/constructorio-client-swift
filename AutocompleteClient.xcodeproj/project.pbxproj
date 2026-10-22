@@ -379,6 +379,16 @@
 		F6F1D707234B693D0092341D /* response_search_json_variations.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F1D706234B693D0092341D /* response_search_json_variations.json */; };
 		F6F1D709234B6BFA0092341D /* response_search_json_invalid_variations.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F1D708234B6BFA0092341D /* response_search_json_invalid_variations.json */; };
 		F6F1D70B234B6FD50092341D /* response_search_json_variation_custom_data.json in Resources */ = {isa = PBXBuildFile; fileRef = F6F1D70A234B6FD50092341D /* response_search_json_variation_custom_data.json */; };
+		16FB296D0BDC8CD00689A2C2 /* CIOJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13F126D7815A18191C8AFB /* CIOJourney.swift */; };
+		64BB5C634D9909856C5A61B6 /* CIODebugEvent+Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C44FE9487BB934B67C86ED /* CIODebugEvent+Parameters.swift */; };
+		B885A4051FC4156141751B06 /* CIOJourneyLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB487432B9B527D919D910B1 /* CIOJourneyLibrary.swift */; };
+		C2E19A427EC00E6C122DE662 /* CIOJourneyReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62B9B651ED1F10C6E4E35B5 /* CIOJourneyReport.swift */; };
+		8765B8F94DCDCCD96A92855B /* CIOJourneyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D2ED344A1C579B96F2E57 /* CIOJourneyValidator.swift */; };
+		104513AB919A2C9671096DEF /* CIOJourneySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0370387932B2B9B138D33FE /* CIOJourneySession.swift */; };
+		A8F1CD51CD6DE30BF89FA497 /* CIODebugTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5801701AB52620DEB9E4687 /* CIODebugTabBarController.swift */; };
+		B93F86FCF185E1BE36C3BB5F /* CIOJourneyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F9075D77F0D4A3088AADC /* CIOJourneyListViewController.swift */; };
+		F71B81DC9A3635376157C783 /* CIOJourneyRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1430911E3C432F4663D9FE7B /* CIOJourneyRunViewController.swift */; };
+		2B2C06AFB321C04C1562E013 /* CIOJourneyTooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FE036C2E4EDF0A53A690DC /* CIOJourneyTooltipView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -791,6 +801,16 @@
 		FCDD43C82A37AACDD98C0BE8 /* CIODebugStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIODebugStyle.swift; sourceTree = "<group>"; };
 		FD016CFF1317FE8714751737 /* TrackAgentResultViewRequestBuilderTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrackAgentResultViewRequestBuilderTests.swift; sourceTree = "<group>"; };
 		FFD18C54E183B1297B1D1C15 /* TrackAgentSearchSubmitRequestBuilderTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrackAgentSearchSubmitRequestBuilderTests.swift; sourceTree = "<group>"; };
+		CF13F126D7815A18191C8AFB /* CIOJourney.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOJourney.swift; sourceTree = "<group>"; };
+		41C44FE9487BB934B67C86ED /* CIODebugEvent+Parameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CIODebugEvent+Parameters.swift"; sourceTree = "<group>"; };
+		EB487432B9B527D919D910B1 /* CIOJourneyLibrary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOJourneyLibrary.swift; sourceTree = "<group>"; };
+		F62B9B651ED1F10C6E4E35B5 /* CIOJourneyReport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOJourneyReport.swift; sourceTree = "<group>"; };
+		9C1D2ED344A1C579B96F2E57 /* CIOJourneyValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOJourneyValidator.swift; sourceTree = "<group>"; };
+		E0370387932B2B9B138D33FE /* CIOJourneySession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOJourneySession.swift; sourceTree = "<group>"; };
+		D5801701AB52620DEB9E4687 /* CIODebugTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIODebugTabBarController.swift; sourceTree = "<group>"; };
+		856F9075D77F0D4A3088AADC /* CIOJourneyListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOJourneyListViewController.swift; sourceTree = "<group>"; };
+		1430911E3C432F4663D9FE7B /* CIOJourneyRunViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOJourneyRunViewController.swift; sourceTree = "<group>"; };
+		21FE036C2E4EDF0A53A690DC /* CIOJourneyTooltipView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CIOJourneyTooltipView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -905,7 +925,11 @@
 				0B415B2D4CEF013EE21CF6F7 /* CIODebugOverlay.swift */,
 				6366990455527B10A22ADC5F /* CIODebugOverlayViewController.swift */,
 				89E67A42CDA74B574C54A6CB /* CIODebugEventListViewController.swift */,
-				D1565E44EC9B7F906FB2AA32 /* CIODebugEventDetailViewController.swift */,
+				D1565E44EC9B7F906FB2AA32 /* CIODebugEventDetailViewController.swift */,				21FE036C2E4EDF0A53A690DC /* CIOJourneyTooltipView.swift */,
+
+				D5801701AB52620DEB9E4687 /* CIODebugTabBarController.swift */,
+				856F9075D77F0D4A3088AADC /* CIOJourneyListViewController.swift */,
+				1430911E3C432F4663D9FE7B /* CIOJourneyRunViewController.swift */,
 			);
 			name = UI;
 			path = UI;
@@ -2210,10 +2234,25 @@
 				384C6C22C4A18BA436A10CBE /* CIODebugEventListener.swift */,
 				94F55187538FF057A8BC23C5 /* CIODebugRecorder.swift */,
 				84A11436864B7A02AF7A7F16 /* CIODebugEventLog.swift */,
+				CC483B2A1C38B587EDF2821A /* Journey */,
 				553EE1EAA78DF21D178D6EAA /* UI */,
 			);
 			name = Debug;
 			path = Debug;
+			sourceTree = "<group>";
+		};
+		CC483B2A1C38B587EDF2821A /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				CF13F126D7815A18191C8AFB /* CIOJourney.swift */,
+				41C44FE9487BB934B67C86ED /* CIODebugEvent+Parameters.swift */,
+				EB487432B9B527D919D910B1 /* CIOJourneyLibrary.swift */,
+				F62B9B651ED1F10C6E4E35B5 /* CIOJourneyReport.swift */,
+				9C1D2ED344A1C579B96F2E57 /* CIOJourneyValidator.swift */,
+				E0370387932B2B9B138D33FE /* CIOJourneySession.swift */,
+			);
+			name = Journey;
+			path = Journey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2756,7 +2795,17 @@
 				CF51F100D1ECC8668A7CD324 /* CIODebugOverlay.swift in Sources */,
 				A92F622A9276D3F03B2A6092 /* CIODebugOverlayViewController.swift in Sources */,
 				A2BD8B43F18218963A3ADCDB /* CIODebugEventListViewController.swift in Sources */,
-				646CA0EF74B569030ADC9640 /* CIODebugEventDetailViewController.swift in Sources */,
+				646CA0EF74B569030ADC9640 /* CIODebugEventDetailViewController.swift in Sources */,				2B2C06AFB321C04C1562E013 /* CIOJourneyTooltipView.swift in Sources */,
+
+				A8F1CD51CD6DE30BF89FA497 /* CIODebugTabBarController.swift in Sources */,
+				B93F86FCF185E1BE36C3BB5F /* CIOJourneyListViewController.swift in Sources */,
+				F71B81DC9A3635376157C783 /* CIOJourneyRunViewController.swift in Sources */,
+				16FB296D0BDC8CD00689A2C2 /* CIOJourney.swift in Sources */,
+				64BB5C634D9909856C5A61B6 /* CIODebugEvent+Parameters.swift in Sources */,
+				B885A4051FC4156141751B06 /* CIOJourneyLibrary.swift in Sources */,
+				C2E19A427EC00E6C122DE662 /* CIOJourneyReport.swift in Sources */,
+				8765B8F94DCDCCD96A92855B /* CIOJourneyValidator.swift in Sources */,
+				104513AB919A2C9671096DEF /* CIOJourneySession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

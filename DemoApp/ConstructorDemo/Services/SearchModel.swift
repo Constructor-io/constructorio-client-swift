@@ -42,7 +42,10 @@ final class SearchModel: ObservableObject {
     }
 
     func selectSuggestion(_ suggestion: String) {
-        self.constructor.trackAutocompleteSelect(searchTerm: suggestion, originalQuery: self.trimmedQuery, sectionName: DemoConfig.suggestionsSectionName)
+        let typed = self.trimmedQuery
+        self.constructor.trackAutocompleteSelect(searchTerm: suggestion, originalQuery: typed, sectionName: DemoConfig.suggestionsSectionName)
+        // Selecting a suggestion submits a search for it, so it's tracked as a submit too
+        self.constructor.trackSearchSubmit(searchTerm: suggestion, originalQuery: typed)
         self.runSearch(suggestion)
     }
 

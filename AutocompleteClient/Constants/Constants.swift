@@ -330,6 +330,7 @@ struct Constants {
         static let performURLRequest: (_ request: URLRequest) -> String = { request in return Logging.format("Performing URL Request \(request)") }
         static let recieveURLResponse: (_ response: HTTPURLResponse) -> String = { response in return Logging.format("Recieved URL Response \(response.statusCode)") }
         static let debugEvent: (_ event: CIODebugEvent) -> String = { event in return Logging.format("[Debug] \(event)") }
+        static let debugMessage: (_ message: String) -> String = { message in return Logging.format("[Debug] \(message)") }
     }
 
     struct Session {

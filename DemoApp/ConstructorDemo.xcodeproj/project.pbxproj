@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -92,7 +92,6 @@
 				418FE4064F4AB3189124A7A2 /* SampleCatalog.swift */,
 				527FBB223A971CCB2D9B1B4E /* SearchModel.swift */,
 			);
-			name = Services;
 			path = Services;
 			sourceTree = "<group>";
 		};
@@ -101,7 +100,6 @@
 			children = (
 				F3C0736932D532CE5386C396 /* CartView.swift */,
 			);
-			name = Cart;
 			path = Cart;
 			sourceTree = "<group>";
 		};
@@ -111,7 +109,6 @@
 				73B2F39F49799664B60B0D38 /* Cart.swift */,
 				1929F85E76273748C029465C /* Product.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -122,7 +119,6 @@
 				E29827295F9C7CDFA4079705 /* Search */,
 				E51371476C37D378CA9664E9 /* Settings */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -150,7 +146,6 @@
 				B209D79AD9EA24BA2DA26193 /* ProductRow.swift */,
 				F3B95E12D7F1BA95B2FC2AB0 /* SearchTab.swift */,
 			);
-			name = Search;
 			path = Search;
 			sourceTree = "<group>";
 		};
@@ -161,7 +156,6 @@
 				7B176D9BA3201D11DB72BB31 /* DemoConfig.swift */,
 				EC6037B56C827365A1F33487 /* RootView.swift */,
 			);
-			name = App;
 			path = App;
 			sourceTree = "<group>";
 		};
@@ -170,7 +164,6 @@
 			children = (
 				3F5622938E9C0047EA9303D8 /* SettingsView.swift */,
 			);
-			name = Settings;
 			path = Settings;
 			sourceTree = "<group>";
 		};
@@ -182,7 +175,6 @@
 				3444C08BBCC81F7E5EA1E71C /* Services */,
 				7410E7A56B36FC7ADF60BB1D /* Views */,
 			);
-			name = ConstructorDemo;
 			path = ConstructorDemo;
 			sourceTree = "<group>";
 		};
@@ -201,7 +193,6 @@
 			children = (
 				2B5591FA91845F689C4F6B11 /* SearchJourneyUITests.swift */,
 			);
-			name = ConstructorDemoUITests;
 			path = ConstructorDemoUITests;
 			sourceTree = "<group>";
 		};
@@ -264,11 +255,9 @@
 				Base,
 			);
 			mainGroup = ECDAD87B0F014EB0D5D2EB32;
-			minimizedProjectReferenceProxies = 0;
 			packageReferences = (
 				B70EB760FE43404FF12328D4 /* XCLocalSwiftPackageReference ".." */,
 			);
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 91C887FCDF77497A55AED174 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,7 +414,10 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.constructor.ConstructorDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -514,7 +506,10 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.constructor.ConstructorDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
