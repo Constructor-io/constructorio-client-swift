@@ -24,4 +24,24 @@ public struct CIOItem {
         self.slCampaignID = slCampaignID
         self.slCampaignOwner = slCampaignOwner
     }
+
+    // Builds the item object sent by trackResultsImpressionView and trackProductInsightsAgentAnswerView.
+    // Other events send different item shapes (purchase repeats each item `quantity` times and sends only item_id/variation_id,
+    // and ASA/search/browse/recommendations omit item_name)
+    func toImpressionDictionary() -> [String: String] {
+        var dict = ["item_id": self.customerID]
+        if let itemName = self.itemName {
+            dict["item_name"] = itemName
+        }
+        if let variationID = self.variationID {
+            dict["variation_id"] = variationID
+        }
+        if let campaignID = self.slCampaignID {
+            dict["sl_campaign_id"] = campaignID
+        }
+        if let campaignOwner = self.slCampaignOwner {
+            dict["sl_campaign_owner"] = campaignOwner
+        }
+        return dict
+    }
 }
