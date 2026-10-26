@@ -485,6 +485,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
         - items: The list of items returned in the search (Preferred over customerIDs)
         - resultID: Identifier of result set
         - analyticsTags: Additional analytics tags to pass
+        - section: The section of the index to use (defaults to the configured default section, or "Products")
+        - sortOption: The sort the user had applied on the results page (`sortBy` and `sortOrder`)
+        - selectedFilters: Filters that the user had selected on the results page, keyed by facet name with the selected options as values
+        - resultPage: Current page of results. Must be 0 or greater, the endpoint rejects other values. Pass either `resultPage` or `resultOffset`, not both
+        - resultOffset: Current offset of results, used on scrolling sites. Must be 0 or greater, the endpoint rejects other values. Pass either `resultPage` or `resultOffset`, not both
         - completionHandler: The callback to execute on completion.
      
      ### Usage Example: ###
@@ -496,8 +501,9 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
      ```
      */
-    public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultID: resultID, url: "Not Available", customerIDs: customerIDs, items: items, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
+    public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, section: String? = nil, sortOption: CIOTrackSortOption? = nil, selectedFilters: [String: [String]]? = nil, resultPage: Int? = nil, resultOffset: Int? = nil, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = section ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultID: resultID, url: "Not Available", customerIDs: customerIDs, items: items, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags), section: section, sortOption: sortOption, selectedFilters: selectedFilters, resultPage: resultPage, resultOffset: resultOffset)
         let request = self.buildRequest(data: data)
         executeTracking(request, completionHandler: completionHandler)
     }
