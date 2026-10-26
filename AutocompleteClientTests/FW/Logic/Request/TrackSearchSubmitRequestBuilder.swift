@@ -35,7 +35,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         let payload = self.payload(request)
 
         XCTAssertEqual(request.httpMethod, "POST")
-        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/search?"))
+        XCTAssertTrue(url.hasPrefix("https://ac.cnstrc.com/v2/behavioral_action/search_submit?"))
         XCTAssertTrue(url.contains("c=\(Constants.versionString())"), "URL should contain the version string")
         XCTAssertTrue(url.contains("key=\(testACKey)"), "URL should contain the api key")
         XCTAssertFalse(url.contains("original_query"), "URL shouldn't contain the original query")
@@ -59,7 +59,7 @@ class TrackSearchSubmitRequestBuilderTests: XCTestCase {
         let request = builder.getRequest()
         let url = request.url!.absoluteString
 
-        XCTAssertTrue(url.hasPrefix("\(customBaseURL)/v2/behavioral_action/search?"))
+        XCTAssertTrue(url.hasPrefix("\(customBaseURL)/v2/behavioral_action/search_submit?"))
     }
 
     func testTrackSearchSubmitBuilder_WithSection() {

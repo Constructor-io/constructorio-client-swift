@@ -233,7 +233,7 @@ struct Constants {
     }
 
     struct TrackSearchSubmit {
-        static let format = "%@/v2/behavioral_action/search"
+        static let format = "%@/v2/behavioral_action/search_submit"
     }
 
     struct TrackSearchResultsLoaded {

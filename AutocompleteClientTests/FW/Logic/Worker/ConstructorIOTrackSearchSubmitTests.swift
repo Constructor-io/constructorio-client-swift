@@ -17,7 +17,7 @@ class ConstructorIOTrackSearchSubmitTests: XCTestCase {
     let searchSubmitURL = ConstructorIOTrackSearchSubmitTests.searchSubmitURLWithSection("Products")
 
     static func searchSubmitURLWithSection(_ section: String) -> String {
-        return "https://ac.cnstrc.com/v2/behavioral_action/search?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=\(section)&\(TestConstants.defaultSegments)"
+        return "https://ac.cnstrc.com/v2/behavioral_action/search_submit?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=\(section)&\(TestConstants.defaultSegments)"
     }
 
     override func setUp() {
