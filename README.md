@@ -393,7 +393,7 @@ constructorIO.trackProductInsightsAgentQuestionClick(CIOTrackProductInsightsAgen
 // Track when the user submits a question
 constructorIO.trackProductInsightsAgentQuestionSubmit(CIOTrackProductInsightsAgentQuestionSubmitRequest(itemID: "1234567-AB", question: "Is this waterproof?", questionTopic: "materials"))
 
-// Track when the user views an answer (answerText is limited to 2000 characters; items and followUpQuestions are capped at 100)
+// Track when the user views an answer (answerText over 2000 characters is truncated; items and followUpQuestions are capped at 100)
 constructorIO.trackProductInsightsAgentAnswerView(CIOTrackProductInsightsAgentAnswerViewRequest(itemID: "1234567-AB", question: "Is this waterproof?", answerText: "Yes, it has a waterproof membrane.", qnaResultID: "8c1e2b5f-0b6a-2d4c-3e9f-6f5e4d3c2b1a", items: [CIOItem(customerID: "1234765-CD", itemName: "Road Runner")], followUpQuestions: ["What sizes are available?"]))
 
 // Track when the user gives feedback on an answer

@@ -91,6 +91,44 @@ class TrackProductInsightsAgentAnswerViewRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["answer_text"] as? String, "", "an empty answer_text should be sent")
     }
 
+    func testTrackProductInsightsAgentAnswerViewBuilder_SendsAnswerTextAtExactly2000CodePoints() {
+        let answer = String(repeating: "a", count: 2000)
+        let tracker = CIOTrackProductInsightsAgentAnswerViewData(itemID: itemID, question: question, answerText: answer)
+        builder.build(trackData: tracker)
+        let payload = self.payload(of: builder.getRequest())
+
+        XCTAssertEqual(payload?["answer_text"] as? String, answer)
+    }
+
+    func testTrackProductInsightsAgentAnswerViewBuilder_TruncatesAnswerTextTo2000CodePoints() {
+        let tracker = CIOTrackProductInsightsAgentAnswerViewData(itemID: itemID, question: question, answerText: String(repeating: "a", count: 2500))
+        builder.build(trackData: tracker)
+        let payload = self.payload(of: builder.getRequest())
+
+        XCTAssertEqual(payload?["answer_text"] as? String, String(repeating: "a", count: 2000))
+    }
+
+    func testTrackProductInsightsAgentAnswerViewBuilder_TruncatesAnswerTextByCodePointsNotCharacters() {
+        // "e" + combining acute is 1 Character but 2 code points; the server counts code points
+        let tracker = CIOTrackProductInsightsAgentAnswerViewData(itemID: itemID, question: question, answerText: String(repeating: "e\u{301}", count: 1001))
+        builder.build(trackData: tracker)
+        let answer = self.payload(of: builder.getRequest())?["answer_text"] as? String
+
+        XCTAssertEqual(answer?.unicodeScalars.count, 2000)
+        XCTAssertEqual(answer, String(repeating: "e\u{301}", count: 1000))
+    }
+
+    func testTrackProductInsightsAgentAnswerViewBuilder_TruncationNeverSplitsACharacter() {
+        // The family emoji is 1 Character made of 7 code points: 285 fit (1995), and the 286th (2002) is dropped whole rather than split
+        let family = "\u{1F468}\u{200D}\u{1F469}\u{200D}\u{1F467}\u{200D}\u{1F466}"
+        let tracker = CIOTrackProductInsightsAgentAnswerViewData(itemID: itemID, question: question, answerText: String(repeating: family, count: 400))
+        builder.build(trackData: tracker)
+        let answer = self.payload(of: builder.getRequest())?["answer_text"] as? String
+
+        XCTAssertEqual(answer, String(repeating: family, count: 285))
+        XCTAssertLessThanOrEqual(answer?.unicodeScalars.count ?? Int.max, 2000)
+    }
+
     func testTrackProductInsightsAgentAnswerViewBuilder_NeverSendsItemQuantity() {
         let items = [CIOItem(customerID: "10002", quantity: 3)]
         let tracker = CIOTrackProductInsightsAgentAnswerViewData(itemID: itemID, question: question, answerText: answerText, items: items)

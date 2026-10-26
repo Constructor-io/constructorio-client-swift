@@ -279,6 +279,18 @@ class ConstructorIOIntegrationTests: XCTestCase {
         self.wait(for: expectation)
     }
 
+    func testTrackProductInsightsAgentAnswerView_WithRequiredFieldsOnlyAndLongAnswerText() {
+        // No itemName, and an answerText over the server's 2000 code point limit, which the SDK truncates
+        let expectation = XCTestExpectation(description: "Tracking 204")
+        let request = CIOTrackProductInsightsAgentAnswerViewRequest(itemID: "10001", question: "Why choose this?", answerText: String(repeating: "e\u{301}", count: 1001))
+        self.constructor.trackProductInsightsAgentAnswerView(request, completionHandler: { response in
+            let cioError = response.error as? CIOError
+            XCTAssertNil(cioError)
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
+
     func testTrackAutocompleteSelect() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         self.constructor.trackAutocompleteSelect(searchTerm: searchTerm, originalQuery: originalQuery, sectionName: sectionName, group: group, resultID: resultID, itemID: customerID, completionHandler: { response in

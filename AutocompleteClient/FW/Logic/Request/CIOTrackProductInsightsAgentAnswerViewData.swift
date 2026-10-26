@@ -48,7 +48,7 @@ struct CIOTrackProductInsightsAgentAnswerViewData: CIOTrackProductInsightsAgentD
     func eventFields() -> [String: Any] {
         var dict = [
             "question": self.question,
-            "answer_text": self.answerText
+            "answer_text": self.truncatedAnswerText()
         ] as [String: Any]
 
         if let questionTopic = self.questionTopic {
@@ -65,6 +65,24 @@ struct CIOTrackProductInsightsAgentAnswerViewData: CIOTrackProductInsightsAgentD
         }
 
         return dict
+    }
+
+    // The server rejects answer_text over 2000 Unicode code points with a 400, which drops the whole event.
+    // Truncate on character boundaries so a multi-scalar character (e.g. an accent or emoji sequence) is never split
+    private func truncatedAnswerText() -> String {
+        guard self.answerText.unicodeScalars.count > 2000 else {
+            return self.answerText
+        }
+        var scalarCount = 0
+        var endIndex = self.answerText.startIndex
+        for character in self.answerText {
+            scalarCount += character.unicodeScalars.count
+            if scalarCount > 2000 {
+                break
+            }
+            endIndex = self.answerText.index(after: endIndex)
+        }
+        return String(self.answerText[..<endIndex])
     }
 
     private func itemDictionary(from item: CIOItem) -> [String: String] {

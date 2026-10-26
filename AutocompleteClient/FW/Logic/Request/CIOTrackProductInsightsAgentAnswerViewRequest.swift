@@ -24,7 +24,7 @@ public struct CIOTrackProductInsightsAgentAnswerViewRequest {
     public let question: String
 
     /**
-     The text of the answer shown to the user (0-2000 characters; an empty string is allowed)
+     The text of the answer shown to the user (an empty string is allowed). Text over 2000 Unicode code points is truncated to fit
      */
     public let answerText: String
 
@@ -79,7 +79,7 @@ public struct CIOTrackProductInsightsAgentAnswerViewRequest {
      - Parameters:
         - itemID: The ID of the product whose page the Product Insights Agent is on
         - question: The question the answer was provided for (1-1000 characters)
-        - answerText: The text of the answer shown to the user (0-2000 characters; an empty string is allowed)
+        - answerText: The text of the answer shown to the user (an empty string is allowed). Text over 2000 Unicode code points is truncated to fit
         - questionTopic: The topic category of the question
         - qnaResultID: The ID of the answer result returned by the Product Insights Agent
         - items: The recommended items shown with the answer (capped at 100). `quantity` is not sent
