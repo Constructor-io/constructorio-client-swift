@@ -470,7 +470,8 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      */
     @available(*, deprecated, message: "Use trackSearchSubmit(_:completionHandler:) with CIOTrackSearchSubmitRequest instead")
     public func trackSearchSubmit(searchTerm: String, originalQuery: String, group: CIOGroup? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let filters = group.map { CIOTrackSearchSubmitFilters(groupID: $0.groupID) }
+        // The v2 endpoint rejects an empty group_id, omit filters if groupID is empty
+        let filters = group.flatMap { $0.groupID.isEmpty ? nil : CIOTrackSearchSubmitFilters(groupID: $0.groupID) }
         trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: searchTerm, userInput: originalQuery, filters: filters, analyticsTags: analyticsTags), completionHandler: completionHandler)
     }
 

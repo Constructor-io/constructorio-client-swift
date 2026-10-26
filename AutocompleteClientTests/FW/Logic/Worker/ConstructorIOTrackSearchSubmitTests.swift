@@ -176,6 +176,18 @@ class ConstructorIOTrackSearchSubmitTests: XCTestCase {
         XCTAssertEqual(payload?["analytics_tags"] as? [String: String], ["tag1": "value1"])
     }
 
+    func testTrackSearchSubmit_DeprecatedOverload_WithEmptyGroupID_OmitsFilters() {
+        var payload: [String: Any]?
+        let group = CIOGroup(displayName: "Canned Goods", groupID: "", path: nil)
+        let builder = CIOBuilder(expectation: "Deprecated trackSearchSubmit should omit filters when the group id is empty.", builder: http(200))
+        stubCapturingPayload(builder) { payload = $0 }
+        self.constructor.trackSearchSubmit(searchTerm: "corn", originalQuery: "cor", group: group)
+        self.wait(for: builder.expectation)
+
+        XCTAssertNotNil(payload)
+        XCTAssertNil(payload?["filters"], "filters should be omitted when the group id is empty")
+    }
+
     func testTrackSearchSubmit_DeprecatedOverload_WithoutOptionals() {
         var payload: [String: Any]?
         let builder = CIOBuilder(expectation: "Deprecated trackSearchSubmit with only required params should send only required body fields.", builder: http(200))

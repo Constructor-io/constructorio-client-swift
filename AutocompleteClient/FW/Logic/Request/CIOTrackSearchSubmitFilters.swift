@@ -10,11 +10,11 @@ import Foundation
 
 /**
  Struct encapsulating the filters that can be sent when tracking a search submission.
- Only carries `group_id` filter.
+ Only `group_id` is supported for now. Using a struct keeps the API forward-compatible if more filters are added.
  */
 public struct CIOTrackSearchSubmitFilters {
     /**
-     The id of the group applied by the search. Should be present when the user selects a search suggestion that automatically applies a group filter
+     The id of the group applied by the search. Should be present when the user selects a search suggestion that automatically applies a group filter. Must not be empty, the endpoint rejects empty values
      */
     public let groupID: String
 

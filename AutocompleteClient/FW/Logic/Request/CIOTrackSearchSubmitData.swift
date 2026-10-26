@@ -39,8 +39,8 @@ struct CIOTrackSearchSubmitData: CIORequestData {
         return "POST"
     }
 
-    // The endpoint rejects unknown body properties, so base params are only sent as query items
-    func httpBody(baseParams: [String: Any]) -> Data? {
+    // The endpoint rejects unknown body parameters, so fields in the baseParams are not included in the body
+    func httpBody(baseParams _: [String: Any]) -> Data? {
         var dict = [
             "search_term": self.searchTerm,
             "user_input": self.userInput
