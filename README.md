@@ -270,6 +270,9 @@ constructorIO.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: "toothpi
 // Track when search results are loaded into view (customer ID's are the ID's of shown items)
 constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
 
+// Track when search results are loaded into view, including the sort, selected filters and page of the results page (use `resultOffset` instead of `resultPage` on scrolling sites)
+constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB")], section: "Products", sortOption: CIOTrackSortOption(sortBy: "price", sortOrder: .descending), selectedFilters: ["brand": ["Nike", "Adidas"]], resultPage: 2)
+
 // Track when a search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-7463", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 ```
