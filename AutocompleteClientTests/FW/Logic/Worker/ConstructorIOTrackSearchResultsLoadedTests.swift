@@ -102,7 +102,7 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
     func testTrackSearchResultsLoaded_WithSection() {
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded with a section should send the section.", builder: http(200))
         stub(regex(ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Search%20Suggestions")), builder.create())
-        self.constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12, section: "Search Suggestions")
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, section: "Search Suggestions"))
         self.wait(for: builder.expectation)
     }
 
@@ -111,7 +111,7 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         let constructor = TestConstants.testConstructor(config)
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded without a section should fall back to defaultItemSectionName.", builder: http(200))
         stub(regex(ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Content")), builder.create())
-        constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12)
+        constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12))
         self.wait(for: builder.expectation)
     }
 
@@ -120,7 +120,7 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         let constructor = TestConstants.testConstructor(config)
         let builder = CIOBuilder(expectation: "A per-call section should win over defaultItemSectionName.", builder: http(200))
         stub(regex(ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Recipes")), builder.create())
-        constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12, section: "Recipes")
+        constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, section: "Recipes"))
         self.wait(for: builder.expectation)
     }
 
@@ -128,7 +128,7 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         var payload: [String: Any]?
         let builder = CIOBuilder(expectation: "section should be sent as a query item only.", builder: http(200))
         stubCapturingPayload(builder) { payload = $0 }
-        self.constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12, section: "Products")
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, section: "Products"))
         self.wait(for: builder.expectation)
 
         XCTAssertNil(payload?["section"])
@@ -138,7 +138,7 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         var payload: [String: Any]?
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded with the new params should send them in the body.", builder: http(200))
         stubCapturingPayload(builder) { payload = $0 }
-        self.constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12, sortOption: CIOTrackSortOption(sortBy: "price", sortOrder: .descending), selectedFilters: ["brand": ["Nike", "Adidas"]], resultPage: 2)
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, sortOption: CIOTrackSortOption(sortBy: "price", sortOrder: .descending), selectedFilters: ["brand": ["Nike", "Adidas"]], resultPage: 2))
         self.wait(for: builder.expectation)
 
         XCTAssertEqual(payload?["sort_by"] as? String, "price")
@@ -152,22 +152,88 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         var payload: [String: Any]?
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded with a resultOffset should send it in the body.", builder: http(200))
         stubCapturingPayload(builder) { payload = $0 }
-        self.constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12, resultOffset: 20)
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, resultOffset: 20))
         self.wait(for: builder.expectation)
 
         XCTAssertEqual(payload?["result_offset"] as? Int, 20)
         XCTAssertNil(payload?["result_page"])
     }
 
-    func testTrackSearchResultsLoaded_WithoutNewParams_OmitsThem() {
+    func testTrackSearchResultsLoaded_WithoutOptionalParams_OmitsThem() {
         var payload: [String: Any]?
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded without the new params should omit them.", builder: http(200))
         stubCapturingPayload(builder) { payload = $0 }
-        self.constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12)
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12))
         self.wait(for: builder.expectation)
 
         for key in ["sort_by", "sort_order", "selected_filters", "result_page", "result_offset"] {
             XCTAssertNil(payload?[key], "\(key) should be absent")
         }
+    }
+
+    func testTrackSearchResultsLoaded_RequestOverload_WithItemsAndResultID() {
+        var payload: [String: Any]?
+        let builder = CIOBuilder(expectation: "Calling the request overload should send items and result_id.", builder: http(200))
+        stubCapturingPayload(builder) { payload = $0 }
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, items: [CIOItem(customerID: "abc", variationID: "var1")], resultID: "result-1"))
+        self.wait(for: builder.expectation)
+
+        XCTAssertEqual(payload?["search_term"] as? String, "corn")
+        XCTAssertEqual(payload?["result_count"] as? Int, 12)
+        XCTAssertEqual(payload?["result_id"] as? String, "result-1")
+        let items = payload?["items"] as? [[String: String]]
+        XCTAssertEqual(items, [["item_id": "abc", "variation_id": "var1"]])
+    }
+
+    func testTrackSearchResultsLoaded_RequestOverload_WithDefaultAndAnalyticsTagsMerged() {
+        var payload: [String: Any]?
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultAnalyticsTags: ["default_tag": "default_value", "shared": "default"])
+        let constructor = TestConstants.testConstructor(config)
+        let builder = CIOBuilder(expectation: "Per-call analyticsTags should merge with the defaults.", builder: http(200))
+        stubCapturingPayload(builder) { payload = $0 }
+        constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, analyticsTags: ["shared": "call", "tag1": "value1"]))
+        self.wait(for: builder.expectation)
+
+        XCTAssertEqual(payload?["analytics_tags"] as? [String: String], ["default_tag": "default_value", "shared": "call", "tag1": "value1"])
+    }
+
+    func testTrackSearchResultsLoaded_DeprecatedOverload_WithCustomerIDs_SendsItems() {
+        var payload: [String: Any]?
+        let builder = CIOBuilder(expectation: "The deprecated overload should map customerIDs to items.", builder: http(200))
+        stubCapturingPayload(builder) { payload = $0 }
+        self.constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12, customerIDs: ["abc", "123"])
+        self.wait(for: builder.expectation)
+
+        XCTAssertEqual(payload?["items"] as? [[String: String]], [["item_id": "abc"], ["item_id": "123"]])
+    }
+
+    func testTrackSearchResultsLoaded_DeprecatedOverload_ItemsWinOverCustomerIDs() {
+        var payload: [String: Any]?
+        let builder = CIOBuilder(expectation: "items should win over customerIDs in the deprecated overload.", builder: http(200))
+        stubCapturingPayload(builder) { payload = $0 }
+        self.constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12, customerIDs: ["abc"], items: [CIOItem(customerID: "xyz")])
+        self.wait(for: builder.expectation)
+
+        XCTAssertEqual(payload?["items"] as? [[String: String]], [["item_id": "xyz"]])
+    }
+
+    func testTrackSearchResultsLoaded_DeprecatedOverload_UsesDefaultItemSectionName() {
+        let config = ConstructorIOConfig(apiKey: TestConstants.testApiKey, defaultItemSectionName: "Content")
+        let constructor = TestConstants.testConstructor(config)
+        let builder = CIOBuilder(expectation: "The deprecated overload should fall back to defaultItemSectionName.", builder: http(200))
+        stub(regex(ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Content")), builder.create())
+        constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12)
+        self.wait(for: builder.expectation)
+    }
+
+    func testTrackSearchResultsLoaded_DeprecatedOverload_ForwardsAnalyticsTagsAndResultID() {
+        var payload: [String: Any]?
+        let builder = CIOBuilder(expectation: "The deprecated overload should forward resultID and analyticsTags.", builder: http(200))
+        stubCapturingPayload(builder) { payload = $0 }
+        self.constructor.trackSearchResultsLoaded(searchTerm: "corn", resultCount: 12, resultID: "result-1", analyticsTags: ["tag1": "value1"])
+        self.wait(for: builder.expectation)
+
+        XCTAssertEqual(payload?["result_id"] as? String, "result-1")
+        XCTAssertEqual(payload?["analytics_tags"] as? [String: String], ["tag1": "value1"])
     }
 }
