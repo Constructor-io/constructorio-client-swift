@@ -37,8 +37,17 @@ struct CIOTrackResultsImpressionViewData: CIORequestData {
     }
 
     func httpBody(baseParams: [String: Any]) -> Data? {
+        let itemDicts: [[String: Any]] = items.map { item in
+            var dict: [String: Any] = ["item_id": item.customerID]
+            if let name = item.itemName { dict["item_name"] = name }
+            if let vid = item.variationID { dict["variation_id"] = vid }
+            if let cid = item.slCampaignID { dict["sl_campaign_id"] = cid }
+            if let owner = item.slCampaignOwner { dict["sl_campaign_owner"] = owner }
+            return dict
+        }
+
         var dict: [String: Any] = [
-            "items": items.map { $0.toImpressionDictionary() },
+            "items": itemDicts,
             "beacon": true
         ]
 

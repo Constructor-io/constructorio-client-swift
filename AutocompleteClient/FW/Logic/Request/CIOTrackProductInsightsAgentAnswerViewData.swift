@@ -58,12 +58,29 @@ struct CIOTrackProductInsightsAgentAnswerViewData: CIOTrackProductInsightsAgentD
             dict["qna_result_id"] = qnaResultID
         }
         if let items = self.items {
-            dict["items"] = items.prefix(100).map { $0.toImpressionDictionary() }
+            dict["items"] = items.prefix(100).map { self.itemDictionary(from: $0) }
         }
         if let followUpQuestions = self.followUpQuestions {
             dict["follow_up_questions"] = followUpQuestions.prefix(100).map { ["value": $0] }
         }
 
+        return dict
+    }
+
+    private func itemDictionary(from item: CIOItem) -> [String: String] {
+        var dict = ["item_id": item.customerID]
+        if let itemName = item.itemName {
+            dict["item_name"] = itemName
+        }
+        if let variationID = item.variationID {
+            dict["variation_id"] = variationID
+        }
+        if let slCampaignID = item.slCampaignID {
+            dict["sl_campaign_id"] = slCampaignID
+        }
+        if let slCampaignOwner = item.slCampaignOwner {
+            dict["sl_campaign_owner"] = slCampaignOwner
+        }
         return dict
     }
 }
