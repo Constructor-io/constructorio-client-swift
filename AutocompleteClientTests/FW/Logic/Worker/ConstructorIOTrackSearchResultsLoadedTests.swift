@@ -30,6 +30,14 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         OHHTTPStubs.removeAllStubs()
     }
 
+    private func stubCapturingPayload(_ builder: CIOBuilder, url: String? = nil, _ capture: @escaping ([String: Any]?) -> Void) {
+        stub(regex(url ?? searchResultsLoadedURL)) { request in
+            let payload = request.ohhttpStubs_httpBody.flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) as? [String: Any] }
+            capture(payload)
+            return builder.create()(request)
+        }
+    }
+
     func testTrackSearchResultsLoaded() {
         let searchTerm = "term_search"
         let resultCount = 12
@@ -91,14 +99,6 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         self.wait(for: expectation)
     }
 
-    private func stubCapturingPayload(_ builder: CIOBuilder, _ capture: @escaping ([String: Any]?) -> Void) {
-        stub(regex(searchResultsLoadedURL)) { request in
-            let payload = request.ohhttpStubs_httpBody.flatMap { try? JSONSerialization.jsonObject(with: $0, options: []) as? [String: Any] }
-            capture(payload)
-            return builder.create()(request)
-        }
-    }
-
     func testTrackSearchResultsLoaded_WithSection() {
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded with a section should send the section.", builder: http(200))
         stub(regex(ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Search%20Suggestions")), builder.create())
@@ -131,6 +131,17 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, section: "Products"))
         self.wait(for: builder.expectation)
 
+        XCTAssertNil(payload?["section"])
+    }
+
+    func testTrackSearchResultsLoaded_WithCustomSectionIsNotInBody() {
+        var payload: [String: Any]?
+        let builder = CIOBuilder(expectation: "A custom section should be sent as a query item only.", builder: http(200))
+        stubCapturingPayload(builder, url: ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Search%20Suggestions")) { payload = $0 }
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, section: "Search Suggestions"))
+        self.wait(for: builder.expectation)
+
+        XCTAssertNotNil(payload)
         XCTAssertNil(payload?["section"])
     }
 

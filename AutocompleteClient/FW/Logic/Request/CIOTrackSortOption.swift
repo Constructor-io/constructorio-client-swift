@@ -10,6 +10,7 @@ import Foundation
 
 /**
  Struct encapsulating the sort that a user had applied on a results page, sent when tracking results loaded.
+ Use this struct for tracking events; for sending requests, use `CIOSortOption` instead.
  */
 public struct CIOTrackSortOption {
     /**
