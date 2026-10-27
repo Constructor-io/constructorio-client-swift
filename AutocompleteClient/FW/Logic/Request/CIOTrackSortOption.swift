@@ -15,12 +15,12 @@ public struct CIOTrackSortOption {
     /**
      The field that the user had sorted by. Must be between 1 and 250 characters, the endpoint rejects other values
      */
-    public let sortBy: String?
+    public let sortBy: String
 
     /**
      The order of sorting, either `ascending` or `descending`
      */
-    public let sortOrder: CIOSortOrder?
+    public let sortOrder: CIOSortOrder
 
     /**
      Create a track sort option.
@@ -29,7 +29,7 @@ public struct CIOTrackSortOption {
         - sortBy: The field that the user had sorted by
         - sortOrder: The order of sorting
      */
-    public init(sortBy: String? = nil, sortOrder: CIOSortOrder? = nil) {
+    public init(sortBy: String, sortOrder: CIOSortOrder) {
         self.sortBy = sortBy
         self.sortOrder = sortOrder
     }
