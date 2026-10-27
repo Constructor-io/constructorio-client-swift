@@ -29,7 +29,21 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
         return String(format: Constants.TrackSearchResultsLoaded.format, baseURL)
     }
 
-    init(searchTerm: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available", customerIDs: [String]? = nil, items: [CIOItem]? = nil, analyticsTags: [String: String]? = nil, section: String? = nil, sortOption: CIOTrackSortOption? = nil, selectedFilters: [String: [String]]? = nil, resultPage: Int? = nil, resultOffset: Int? = nil) {
+    init(
+        searchTerm: String,
+        resultCount: Int,
+        resultID: String? = nil,
+        url: String = "Not Available",
+        customerIDs: [String]? = nil,
+        items: [CIOItem]? = nil,
+        analyticsTags: [String: String]? = nil,
+        section: String? = nil,
+        sortOption: CIOTrackSortOption? = nil,
+        selectedFilters: [String: [String]]? = nil,
+        resultPage: Int? = nil,
+        resultOffset: Int? = nil
+    ) {
+
         self.searchTerm = searchTerm
         self.resultCount = resultCount
         self.resultID = resultID
@@ -108,7 +122,7 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
         dict.merge(baseParams) { current, _ in current }
 
         // section is a query param on this endpoint, don't let the merged base params leak it into the body
-        dict["section"] = nil
+        dict.removeValue(forKey: "section")
 
         return try? JSONSerialization.data(withJSONObject: dict)
     }
