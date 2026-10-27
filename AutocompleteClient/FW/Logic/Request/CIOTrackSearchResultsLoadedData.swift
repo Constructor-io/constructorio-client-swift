@@ -43,7 +43,6 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
         resultPage: Int? = nil,
         resultOffset: Int? = nil
     ) {
-
         self.searchTerm = searchTerm
         self.resultCount = resultCount
         self.resultID = resultID
@@ -119,10 +118,8 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
         }
 
         dict["beacon"] = true
-        dict.merge(baseParams) { current, _ in current }
-
-        // section is a query param on this endpoint, don't let the merged base params leak it into the body
-        dict.removeValue(forKey: "section")
+        // section is a query param on this endpoint, don't let the base params leak it into the body
+        dict.merge(baseParams.filter { $0.key != "section" }) { current, _ in current }
 
         return try? JSONSerialization.data(withJSONObject: dict)
     }
