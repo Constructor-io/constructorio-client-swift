@@ -17,7 +17,7 @@
     <a title="ConstructorIO Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ConstructorAutocomplete 4.9.3 Docs</a> (94% documented)</p>
+        <p><a href="../index.html">ConstructorAutocomplete 4.10.0 Docs</a> (95% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -77,6 +77,47 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/CIOQuizQuery.html">CIOQuizQuery</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Tracking%20Request%20Structures.html">Tracking Request Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CIOTrackProductInsightsAgentFocusRequest.html">CIOTrackProductInsightsAgentFocusRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOTrackProductInsightsAgentOutOfViewRequest.html">CIOTrackProductInsightsAgentOutOfViewRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOTrackProductInsightsAgentViewRequest.html">CIOTrackProductInsightsAgentViewRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOTrackProductInsightsAgentViewsRequest.html">CIOTrackProductInsightsAgentViewsRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOTrackProductInsightsAgentQuestionClickRequest.html">CIOTrackProductInsightsAgentQuestionClickRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOTrackProductInsightsAgentQuestionSubmitRequest.html">CIOTrackProductInsightsAgentQuestionSubmitRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOTrackProductInsightsAgentAnswerFeedbackRequest.html">CIOTrackProductInsightsAgentAnswerFeedbackRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOTrackProductInsightsAgentResultClickRequest.html">CIOTrackProductInsightsAgentResultClickRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOTrackProductInsightsAgentAnswerViewRequest.html">CIOTrackProductInsightsAgentAnswerViewRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOProductInsightsAgentQuestion.html">CIOProductInsightsAgentQuestion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CIOProductInsightsAgentViewTimespan.html">CIOProductInsightsAgentViewTimespan</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/CIOProductInsightsAgentFeedbackLabel.html">CIOProductInsightsAgentFeedbackLabel</a>
               </li>
             </ul>
           </li>
@@ -4186,6 +4227,555 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC30trackProductInsightsAgentFocus_17completionHandleryAA08CIOTrackefgH7RequestV_yAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackProductInsightsAgentFocus(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC30trackProductInsightsAgentFocus_17completionHandleryAA08CIOTrackefgH7RequestV_yAA20TrackingTaskResponseCcSgtF">trackProductInsightsAgentFocus(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user focuses on the Product Insights Agent input element</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentFocus</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentFocusRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Item1"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"10001-A"</span><span class="p">))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackProductInsightsAgentFocus</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOTrackProductInsightsAgentFocusRequest.html">CIOTrackProductInsightsAgentFocusRequest</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The focus request. See <code><a href="../Structs/CIOTrackProductInsightsAgentFocusRequest.html">CIOTrackProductInsightsAgentFocusRequest</a></code> for the available fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC34trackProductInsightsAgentOutOfView_17completionHandleryAA08CIOTrackefghiJ7RequestV_yAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackProductInsightsAgentOutOfView(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC34trackProductInsightsAgentOutOfView_17completionHandleryAA08CIOTrackefghiJ7RequestV_yAA20TrackingTaskResponseCcSgtF">trackProductInsightsAgentOutOfView(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when the Product Insights Agent element disappears from the visible part of the page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentOutOfView</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentOutOfViewRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Item1"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"10001-A"</span><span class="p">))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackProductInsightsAgentOutOfView</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOTrackProductInsightsAgentOutOfViewRequest.html">CIOTrackProductInsightsAgentOutOfViewRequest</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The out of view request. See <code><a href="../Structs/CIOTrackProductInsightsAgentOutOfViewRequest.html">CIOTrackProductInsightsAgentOutOfViewRequest</a></code> for the available fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC29trackProductInsightsAgentView_17completionHandleryAA08CIOTrackefgH7RequestV_yAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackProductInsightsAgentView(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC29trackProductInsightsAgentView_17completionHandleryAA08CIOTrackefgH7RequestV_yAA20TrackingTaskResponseCcSgtF">trackProductInsightsAgentView(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when the Product Insights Agent element appears in the visible part of the page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentView</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentViewRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">questions</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOProductInsightsAgentQuestion</span><span class="p">(</span><span class="nv">question</span><span class="p">:</span> <span class="s">"Why choose this?"</span><span class="p">,</span> <span class="nv">questionTopic</span><span class="p">:</span> <span class="s">"highlights"</span><span class="p">),</span> <span class="kt">CIOProductInsightsAgentQuestion</span><span class="p">(</span><span class="nv">question</span><span class="p">:</span> <span class="s">"How is this product made?"</span><span class="p">)],</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Item1"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"10001-A"</span><span class="p">))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackProductInsightsAgentView</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOTrackProductInsightsAgentViewRequest.html">CIOTrackProductInsightsAgentViewRequest</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view request. See <code><a href="../Structs/CIOTrackProductInsightsAgentViewRequest.html">CIOTrackProductInsightsAgentViewRequest</a></code> for the available fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC30trackProductInsightsAgentViews_17completionHandleryAA08CIOTrackefgH7RequestV_yAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackProductInsightsAgentViews(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC30trackProductInsightsAgentViews_17completionHandleryAA08CIOTrackefgH7RequestV_yAA20TrackingTaskResponseCcSgtF">trackProductInsightsAgentViews(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track the periods of time during which the Product Insights Agent element was visible on the page</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentViews</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentViewsRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">questions</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOProductInsightsAgentQuestion</span><span class="p">(</span><span class="nv">question</span><span class="p">:</span> <span class="s">"Why choose this?"</span><span class="p">,</span> <span class="nv">questionTopic</span><span class="p">:</span> <span class="s">"highlights"</span><span class="p">),</span> <span class="kt">CIOProductInsightsAgentQuestion</span><span class="p">(</span><span class="nv">question</span><span class="p">:</span> <span class="s">"How is this product made?"</span><span class="p">)],</span> <span class="nv">viewTimespans</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOProductInsightsAgentViewTimespan</span><span class="p">(</span><span class="nv">start</span><span class="p">:</span> <span class="kt">Date</span><span class="p">(</span><span class="nv">timeIntervalSince1970</span><span class="p">:</span> <span class="mf">1792636805.125</span><span class="p">),</span> <span class="nv">end</span><span class="p">:</span> <span class="kt">Date</span><span class="p">(</span><span class="nv">timeIntervalSince1970</span><span class="p">:</span> <span class="mf">1792636810.5</span><span class="p">))],</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Item1"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"10001-A"</span><span class="p">))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackProductInsightsAgentViews</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOTrackProductInsightsAgentViewsRequest.html">CIOTrackProductInsightsAgentViewsRequest</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The views request. See <code><a href="../Structs/CIOTrackProductInsightsAgentViewsRequest.html">CIOTrackProductInsightsAgentViewsRequest</a></code> for the available fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC38trackProductInsightsAgentQuestionClick_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackProductInsightsAgentQuestionClick(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC38trackProductInsightsAgentQuestionClick_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF">trackProductInsightsAgentQuestionClick(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user clicks on a question within the Product Insights Agent</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentQuestionClick</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentQuestionClickRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">question</span><span class="p">:</span> <span class="s">"Why choose this?"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Item1"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"10001-A"</span><span class="p">))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackProductInsightsAgentQuestionClick</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOTrackProductInsightsAgentQuestionClickRequest.html">CIOTrackProductInsightsAgentQuestionClickRequest</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The question click request. See <code><a href="../Structs/CIOTrackProductInsightsAgentQuestionClickRequest.html">CIOTrackProductInsightsAgentQuestionClickRequest</a></code> for the available fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC39trackProductInsightsAgentQuestionSubmit_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackProductInsightsAgentQuestionSubmit(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC39trackProductInsightsAgentQuestionSubmit_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF">trackProductInsightsAgentQuestionSubmit(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user submits a question to the Product Insights Agent</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentQuestionSubmit</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentQuestionSubmitRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">question</span><span class="p">:</span> <span class="s">"Why choose this?"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Item1"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"10001-A"</span><span class="p">))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackProductInsightsAgentQuestionSubmit</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOTrackProductInsightsAgentQuestionSubmitRequest.html">CIOTrackProductInsightsAgentQuestionSubmitRequest</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The question submit request. See <code><a href="../Structs/CIOTrackProductInsightsAgentQuestionSubmitRequest.html">CIOTrackProductInsightsAgentQuestionSubmitRequest</a></code> for the available fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC39trackProductInsightsAgentAnswerFeedback_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackProductInsightsAgentAnswerFeedback(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC39trackProductInsightsAgentAnswerFeedback_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF">trackProductInsightsAgentAnswerFeedback(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user gives feedback on the usefulness of a Product Insights Agent answer</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentAnswerFeedback</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentAnswerFeedbackRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">feedbackLabel</span><span class="p">:</span> <span class="o">.</span><span class="n">thumbsUp</span><span class="p">,</span> <span class="nv">qnaResultID</span><span class="p">:</span> <span class="s">"qna-result-123"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Item1"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"10001-A"</span><span class="p">))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackProductInsightsAgentAnswerFeedback</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOTrackProductInsightsAgentAnswerFeedbackRequest.html">CIOTrackProductInsightsAgentAnswerFeedbackRequest</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The answer feedback request. See <code><a href="../Structs/CIOTrackProductInsightsAgentAnswerFeedbackRequest.html">CIOTrackProductInsightsAgentAnswerFeedbackRequest</a></code> for the available fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC36trackProductInsightsAgentResultClick_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackProductInsightsAgentResultClick(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC36trackProductInsightsAgentResultClick_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF">trackProductInsightsAgentResultClick(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user clicks on a recommended product within the Product Insights Agent</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentResultClick</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentResultClickRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"10002"</span><span class="p">,</span> <span class="nv">question</span><span class="p">:</span> <span class="s">"Why choose this?"</span><span class="p">,</span> <span class="nv">seedItemID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">position</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">seedItemName</span><span class="p">:</span> <span class="s">"Item1"</span><span class="p">,</span> <span class="nv">seedVariationID</span><span class="p">:</span> <span class="s">"10001-A"</span><span class="p">,</span> <span class="nv">qnaResultID</span><span class="p">:</span> <span class="s">"qna-result-123"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Item2"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"10002-A"</span><span class="p">))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackProductInsightsAgentResultClick</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOTrackProductInsightsAgentResultClickRequest.html">CIOTrackProductInsightsAgentResultClickRequest</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result click request. See <code><a href="../Structs/CIOTrackProductInsightsAgentResultClickRequest.html">CIOTrackProductInsightsAgentResultClickRequest</a></code> for the available fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:23ConstructorAutocomplete0A2IOC35trackProductInsightsAgentAnswerView_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/trackProductInsightsAgentAnswerView(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC35trackProductInsightsAgentAnswerView_17completionHandleryAA08CIOTrackefghI7RequestV_yAA20TrackingTaskResponseCcSgtF">trackProductInsightsAgentAnswerView(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Track when a user views an answer provided by the Product Insights Agent</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code><span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentAnswerView</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentAnswerViewRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"10001"</span><span class="p">,</span> <span class="nv">question</span><span class="p">:</span> <span class="s">"Why choose this?"</span><span class="p">,</span> <span class="nv">answerText</span><span class="p">:</span> <span class="s">"This product is made from recycled materials."</span><span class="p">,</span> <span class="nv">qnaResultID</span><span class="p">:</span> <span class="s">"qna-result-123"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Item1"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"10001-A"</span><span class="p">))</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">trackProductInsightsAgentAnswerView</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/CIOTrackProductInsightsAgentAnswerViewRequest.html">CIOTrackProductInsightsAgentAnswerViewRequest</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TrackingCompletionHandler</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The answer view request. See <code><a href="../Structs/CIOTrackProductInsightsAgentAnswerViewRequest.html">CIOTrackProductInsightsAgentAnswerViewRequest</a></code> for the available fields</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to execute on completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:23ConstructorAutocomplete0A2IOC11setClientId8clientIDySS_tF"></a>
                     <a name="//apple_ref/swift/Method/setClientId(clientID:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:23ConstructorAutocomplete0A2IOC11setClientId8clientIDySS_tF">setClientId(clientID:<wbr>)</a>
@@ -4286,8 +4876,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-08-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-10-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>

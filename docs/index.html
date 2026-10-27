@@ -16,7 +16,7 @@
     <a title="ConstructorAutocomplete  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ConstructorAutocomplete 4.9.3 Docs</a> (94% documented)</p>
+        <p><a href="index.html">ConstructorAutocomplete 4.10.0 Docs</a> (95% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -72,6 +72,47 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/CIOQuizQuery.html">CIOQuizQuery</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Tracking%20Request%20Structures.html">Tracking Request Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/CIOTrackProductInsightsAgentFocusRequest.html">CIOTrackProductInsightsAgentFocusRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOTrackProductInsightsAgentOutOfViewRequest.html">CIOTrackProductInsightsAgentOutOfViewRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOTrackProductInsightsAgentViewRequest.html">CIOTrackProductInsightsAgentViewRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOTrackProductInsightsAgentViewsRequest.html">CIOTrackProductInsightsAgentViewsRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOTrackProductInsightsAgentQuestionClickRequest.html">CIOTrackProductInsightsAgentQuestionClickRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOTrackProductInsightsAgentQuestionSubmitRequest.html">CIOTrackProductInsightsAgentQuestionSubmitRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOTrackProductInsightsAgentAnswerFeedbackRequest.html">CIOTrackProductInsightsAgentAnswerFeedbackRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOTrackProductInsightsAgentResultClickRequest.html">CIOTrackProductInsightsAgentResultClickRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOTrackProductInsightsAgentAnswerViewRequest.html">CIOTrackProductInsightsAgentAnswerViewRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOProductInsightsAgentQuestion.html">CIOProductInsightsAgentQuestion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/CIOProductInsightsAgentViewTimespan.html">CIOProductInsightsAgentViewTimespan</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/CIOProductInsightsAgentFeedbackLabel.html">CIOProductInsightsAgentFeedbackLabel</a>
               </li>
             </ul>
           </li>
@@ -419,6 +460,8 @@ end
 <li><strong>Recommendation Events</strong> measure user interaction with recommendations</li>
 <li><strong>Quiz Events</strong> measure user interaction with quiz results</li>
 <li><strong>Conversion Events</strong> measure user events like <code>add to cart</code> or <code>purchase</code></li>
+<li><strong>AI Shopping Agent Events</strong> measure user interaction with AI Shopping Agent results</li>
+<li><strong>Product Insights Agent Events</strong> measure user interaction with the Product Insights Agent on product detail pages</li>
 </ol>
 <h3 id='autocomplete-events' class='heading'>Autocomplete Events</h3>
 <pre class="highlight swift"><code><span class="c1">// Track when the user focuses into the search bar</span>
@@ -482,6 +525,69 @@ end
 <span class="kt">ConstructorIo</span><span class="o">.</span><span class="nf">trackQuizConversion</span><span class="p">(</span><span class="nv">quizID</span><span class="p">:</span> <span class="s">"coffee-quiz"</span><span class="p">,</span> <span class="nv">quizVersionID</span><span class="p">:</span> <span class="s">"1231244"</span><span class="p">,</span> <span class="nv">quizSessionID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">customerID</span><span class="p">:</span> <span class="s">"123"</span><span class="p">,</span> <span class="nv">variationID</span><span class="p">:</span> <span class="s">"167"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"espresso"</span><span class="p">,</span> <span class="nv">revenue</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">)</span>
 
 </code></pre>
+<h3 id='ai-shopping-agent-events' class='heading'>AI Shopping Agent Events</h3>
+
+<p>Supported in v4.7.0 and above. <code>intentResultID</code> is the intent result ID from the AI Shopping Agent response. <code>searchResultID</code> is the result ID of the search result that the item belongs to.</p>
+<pre class="highlight swift"><code><span class="c1">// Track when the user submits a question to the agent</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentSubmit</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me running shoes"</span><span class="p">)</span>
+
+<span class="c1">// Track when agent results start loading</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentResultLoadStarted</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me running shoes"</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="s">"2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f"</span><span class="p">)</span>
+
+<span class="c1">// Track when agent results finish loading</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentResultLoadFinished</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me running shoes"</span><span class="p">,</span> <span class="nv">searchResultCount</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="s">"2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f"</span><span class="p">)</span>
+
+<span class="c1">// Track when the user views the products in an agent result</span>
+<span class="k">let</span> <span class="nv">agentItems</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Trail Runner"</span><span class="p">),</span>
+  <span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Road Runner"</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentResultView</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me running shoes"</span><span class="p">,</span> <span class="nv">searchResultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">,</span> <span class="nv">numResultsViewed</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="n">agentItems</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="s">"2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f"</span><span class="p">)</span>
+
+<span class="c1">// Track when the user clicks a product in an agent result</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentResultClick</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me running shoes"</span><span class="p">,</span> <span class="nv">searchResultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">,</span> <span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Trail Runner"</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="s">"2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f"</span><span class="p">)</span>
+
+<span class="c1">// Track when the user selects a search term that the agent suggested</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackAgentSearchSubmit</span><span class="p">(</span><span class="nv">intent</span><span class="p">:</span> <span class="s">"show me running shoes"</span><span class="p">,</span> <span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"trail running shoes"</span><span class="p">,</span> <span class="nv">searchResultID</span><span class="p">:</span> <span class="s">"179b8a0e-3799-4a31-be87-127b06871de2"</span><span class="p">,</span> <span class="nv">intentResultID</span><span class="p">:</span> <span class="s">"2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f"</span><span class="p">)</span>
+</code></pre>
+<h3 id='product-insights-agent-events' class='heading'>Product Insights Agent Events</h3>
+
+<p>Each event takes a request object. <code>itemID</code> is the ID of the product whose page the Product Insights Agent is on (for <code>trackProductInsightsAgentResultClick</code>, it is the clicked recommendation and <code>seedItemID</code> is the page&rsquo;s product). <code>qnaResultID</code> is the answer result ID from the Product Insights Agent response. Every request also accepts <code>itemName</code>, <code>variationID</code>, <code>threadID</code>, <code>sectionName</code> and <code>analyticsTags</code>.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">questions</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="kt">CIOProductInsightsAgentQuestion</span><span class="p">(</span><span class="nv">question</span><span class="p">:</span> <span class="s">"Why choose this?"</span><span class="p">),</span>
+  <span class="kt">CIOProductInsightsAgentQuestion</span><span class="p">(</span><span class="nv">question</span><span class="p">:</span> <span class="s">"How is this product made?"</span><span class="p">,</span> <span class="nv">questionTopic</span><span class="p">:</span> <span class="s">"materials"</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1">// Track when the Product Insights Agent appears in the visible part of the page</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentView</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentViewRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">questions</span><span class="p">:</span> <span class="n">questions</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Trail Runner"</span><span class="p">))</span>
+
+<span class="c1">// Track the periods of time during which the Product Insights Agent was visible</span>
+<span class="k">let</span> <span class="nv">viewStartDate</span> <span class="o">=</span> <span class="kt">Date</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">viewEndDate</span> <span class="o">=</span> <span class="n">viewStartDate</span><span class="o">.</span><span class="nf">addingTimeInterval</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">viewTimespans</span> <span class="o">=</span> <span class="p">[</span><span class="kt">CIOProductInsightsAgentViewTimespan</span><span class="p">(</span><span class="nv">start</span><span class="p">:</span> <span class="n">viewStartDate</span><span class="p">,</span> <span class="nv">end</span><span class="p">:</span> <span class="n">viewEndDate</span><span class="p">)]</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentViews</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentViewsRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">questions</span><span class="p">:</span> <span class="n">questions</span><span class="p">,</span> <span class="nv">viewTimespans</span><span class="p">:</span> <span class="n">viewTimespans</span><span class="p">))</span>
+
+<span class="c1">// Track when the Product Insights Agent disappears from the visible part of the page</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentOutOfView</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentOutOfViewRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">))</span>
+
+<span class="c1">// Track when the user focuses on the Product Insights Agent input</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentFocus</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentFocusRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">))</span>
+
+<span class="c1">// Track when the user clicks on a suggested question</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentQuestionClick</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentQuestionClickRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">question</span><span class="p">:</span> <span class="s">"Why choose this?"</span><span class="p">))</span>
+
+<span class="c1">// Track when the user submits a question</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentQuestionSubmit</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentQuestionSubmitRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">question</span><span class="p">:</span> <span class="s">"Is this waterproof?"</span><span class="p">,</span> <span class="nv">questionTopic</span><span class="p">:</span> <span class="s">"materials"</span><span class="p">))</span>
+
+<span class="c1">// Track when the user views an answer (answerText over 2000 characters is truncated; items and followUpQuestions are capped at 100)</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentAnswerView</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentAnswerViewRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">question</span><span class="p">:</span> <span class="s">"Is this waterproof?"</span><span class="p">,</span> <span class="nv">answerText</span><span class="p">:</span> <span class="s">"Yes, it has a waterproof membrane."</span><span class="p">,</span> <span class="nv">qnaResultID</span><span class="p">:</span> <span class="s">"8c1e2b5f-0b6a-2d4c-3e9f-6f5e4d3c2b1a"</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">CIOItem</span><span class="p">(</span><span class="nv">customerID</span><span class="p">:</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Road Runner"</span><span class="p">)],</span> <span class="nv">followUpQuestions</span><span class="p">:</span> <span class="p">[</span><span class="s">"What sizes are available?"</span><span class="p">]))</span>
+
+<span class="c1">// Track when the user gives feedback on an answer</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentAnswerFeedback</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentAnswerFeedbackRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">feedbackLabel</span><span class="p">:</span> <span class="o">.</span><span class="n">thumbsUp</span><span class="p">,</span> <span class="nv">qnaResultID</span><span class="p">:</span> <span class="s">"8c1e2b5f-0b6a-2d4c-3e9f-6f5e4d3c2b1a"</span><span class="p">))</span>
+
+<span class="c1">// Track when the user clicks a product recommended in an answer</span>
+<span class="n">constructorIO</span><span class="o">.</span><span class="nf">trackProductInsightsAgentResultClick</span><span class="p">(</span><span class="kt">CIOTrackProductInsightsAgentResultClickRequest</span><span class="p">(</span><span class="nv">itemID</span><span class="p">:</span> <span class="s">"1234765-CD"</span><span class="p">,</span> <span class="nv">question</span><span class="p">:</span> <span class="s">"Is this waterproof?"</span><span class="p">,</span> <span class="nv">seedItemID</span><span class="p">:</span> <span class="s">"1234567-AB"</span><span class="p">,</span> <span class="nv">position</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">qnaResultID</span><span class="p">:</span> <span class="s">"8c1e2b5f-0b6a-2d4c-3e9f-6f5e4d3c2b1a"</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"Road Runner"</span><span class="p">))</span>
+</code></pre>
 <h3 id='media-impression-events' class='heading'>Media Impression Events</h3>
 <pre class="highlight swift"><code><span class="c1">// Track when a media impression is viewed</span>
 <span class="kt">ConstructorIo</span><span class="o">.</span><span class="nf">trackMediaImpressionView</span><span class="p">(</span><span class="nv">bannerAdId</span><span class="p">:</span> <span class="s">"banner-ad-id"</span><span class="p">,</span> <span class="nv">placementId</span><span class="p">:</span> <span class="s">"placement-id"</span><span class="p">)</span>
@@ -522,8 +628,8 @@ end
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-08-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2026 <a class="link" href="https://www.constructor.io" target="_blank" rel="external noopener">Zubin Tiku, Christopher Gee, and Jimmy Li</a>. All rights reserved. (Last updated: 2026-10-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
