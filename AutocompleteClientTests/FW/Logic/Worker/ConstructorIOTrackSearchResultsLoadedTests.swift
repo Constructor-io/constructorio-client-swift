@@ -16,7 +16,8 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
 
     let searchResultsLoadedURL = ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Products")
 
-    static func searchResultsLoadedURLWithSection(_ section: String) -> String {
+    private static func searchResultsLoadedURLWithSection(_ section: String) -> String {
+        let section = section.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? section
         return "https://ac.cnstrc.com/v2/behavioral_action/search_result_load?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=\(section)&\(TestConstants.defaultSegments)"
     }
 
@@ -101,7 +102,7 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
 
     func testTrackSearchResultsLoaded_WithSection() {
         let builder = CIOBuilder(expectation: "Calling trackSearchResultsLoaded with a section should send the section.", builder: http(200))
-        stub(regex(ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Search%20Suggestions")), builder.create())
+        stub(regex(ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Search Suggestions")), builder.create())
         self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, section: "Search Suggestions"))
         self.wait(for: builder.expectation)
     }
@@ -132,12 +133,15 @@ class ConstructorIOTrackSearchResultsLoadedTests: XCTestCase {
         self.wait(for: builder.expectation)
 
         XCTAssertNil(payload?["section"])
+        for key in ["key", "c", "_dt", "s", "i"] {
+            XCTAssertNotNil(payload?[key], "Base param \(key) should still be in the body")
+        }
     }
 
     func testTrackSearchResultsLoaded_WithCustomSectionIsNotInBody() {
         var payload: [String: Any]?
         let builder = CIOBuilder(expectation: "A custom section should be sent as a query item only.", builder: http(200))
-        stubCapturingPayload(builder, url: ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Search%20Suggestions")) { payload = $0 }
+        stubCapturingPayload(builder, url: ConstructorIOTrackSearchResultsLoadedTests.searchResultsLoadedURLWithSection("Search Suggestions")) { payload = $0 }
         self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "corn", resultCount: 12, section: "Search Suggestions"))
         self.wait(for: builder.expectation)
 
