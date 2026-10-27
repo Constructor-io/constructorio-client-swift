@@ -72,3 +72,9 @@ fastlane/screenshots
 fastlane/test_output
 
 coverage-reports
+
+# jazzy coverage report. It records absolute paths from whoever generated the docs.
+docs/**/undocumented.json
+.crit
+.claude
+.DS_Store
