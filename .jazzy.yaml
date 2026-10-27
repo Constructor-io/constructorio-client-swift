@@ -41,8 +41,10 @@ custom_categories:
       - CIOTrackProductInsightsAgentResultClickRequest
       - CIOTrackProductInsightsAgentViewRequest
       - CIOTrackProductInsightsAgentViewsRequest
+      - CIOTrackSearchResultsLoadedRequest
       - CIOTrackSearchSubmitFilters
       - CIOTrackSearchSubmitRequest
+      - CIOTrackSortOption
   - name: Result Request Builders
     children:
       - CIOAutocompleteQueryBuilder
