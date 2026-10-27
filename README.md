@@ -249,6 +249,7 @@ Three types of these events exist:
 6. **Quiz Events** measure user interaction with quiz results
 7. **Conversion Events** measure user events like `add to cart` or `purchase`
 8. **AI Shopping Agent Events** measure user interaction with AI Shopping Agent results
+9. **Product Insights Agent Events** measure user interaction with the Product Insights Agent on product detail pages
 
 ### Autocomplete Events
 
@@ -359,6 +360,47 @@ constructorIO.trackAgentResultClick(intent: "show me running shoes", searchResul
 
 // Track when the user selects a search term that the agent suggested
 constructorIO.trackAgentSearchSubmit(intent: "show me running shoes", searchTerm: "trail running shoes", searchResultID: "179b8a0e-3799-4a31-be87-127b06871de2", intentResultID: "2b5f8c1e-6a0b-4c2d-9f3e-1a2b3c4d5e6f")
+```
+
+### Product Insights Agent Events
+
+Each event takes a request object. `itemID` is the ID of the product whose page the Product Insights Agent is on (for `trackProductInsightsAgentResultClick`, it is the clicked recommendation and `seedItemID` is the page's product). `qnaResultID` is the answer result ID from the Product Insights Agent response. Every request also accepts `itemName`, `variationID`, `threadID`, `sectionName` and `analyticsTags`.
+
+```swift
+let questions = [
+  CIOProductInsightsAgentQuestion(question: "Why choose this?"),
+  CIOProductInsightsAgentQuestion(question: "How is this product made?", questionTopic: "materials")
+]
+
+// Track when the Product Insights Agent appears in the visible part of the page
+constructorIO.trackProductInsightsAgentView(CIOTrackProductInsightsAgentViewRequest(itemID: "1234567-AB", questions: questions, itemName: "Trail Runner"))
+
+// Track the periods of time during which the Product Insights Agent was visible
+let viewStartDate = Date()
+let viewEndDate = viewStartDate.addingTimeInterval(5)
+let viewTimespans = [CIOProductInsightsAgentViewTimespan(start: viewStartDate, end: viewEndDate)]
+constructorIO.trackProductInsightsAgentViews(CIOTrackProductInsightsAgentViewsRequest(itemID: "1234567-AB", questions: questions, viewTimespans: viewTimespans))
+
+// Track when the Product Insights Agent disappears from the visible part of the page
+constructorIO.trackProductInsightsAgentOutOfView(CIOTrackProductInsightsAgentOutOfViewRequest(itemID: "1234567-AB"))
+
+// Track when the user focuses on the Product Insights Agent input
+constructorIO.trackProductInsightsAgentFocus(CIOTrackProductInsightsAgentFocusRequest(itemID: "1234567-AB"))
+
+// Track when the user clicks on a suggested question
+constructorIO.trackProductInsightsAgentQuestionClick(CIOTrackProductInsightsAgentQuestionClickRequest(itemID: "1234567-AB", question: "Why choose this?"))
+
+// Track when the user submits a question
+constructorIO.trackProductInsightsAgentQuestionSubmit(CIOTrackProductInsightsAgentQuestionSubmitRequest(itemID: "1234567-AB", question: "Is this waterproof?", questionTopic: "materials"))
+
+// Track when the user views an answer (answerText over 2000 characters is truncated; items and followUpQuestions are capped at 100)
+constructorIO.trackProductInsightsAgentAnswerView(CIOTrackProductInsightsAgentAnswerViewRequest(itemID: "1234567-AB", question: "Is this waterproof?", answerText: "Yes, it has a waterproof membrane.", qnaResultID: "8c1e2b5f-0b6a-2d4c-3e9f-6f5e4d3c2b1a", items: [CIOItem(customerID: "1234765-CD", itemName: "Road Runner")], followUpQuestions: ["What sizes are available?"]))
+
+// Track when the user gives feedback on an answer
+constructorIO.trackProductInsightsAgentAnswerFeedback(CIOTrackProductInsightsAgentAnswerFeedbackRequest(itemID: "1234567-AB", feedbackLabel: .thumbsUp, qnaResultID: "8c1e2b5f-0b6a-2d4c-3e9f-6f5e4d3c2b1a"))
+
+// Track when the user clicks a product recommended in an answer
+constructorIO.trackProductInsightsAgentResultClick(CIOTrackProductInsightsAgentResultClickRequest(itemID: "1234765-CD", question: "Is this waterproof?", seedItemID: "1234567-AB", position: 0, qnaResultID: "8c1e2b5f-0b6a-2d4c-3e9f-6f5e4d3c2b1a", itemName: "Road Runner"))
 ```
 
 ### Media Impression Events

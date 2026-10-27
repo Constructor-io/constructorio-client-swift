@@ -3,6 +3,8 @@ skip_undocumented: true
 include:
   - "/**/Worker/ConstructorIO.swift"
   - "/**/Request/*Query.swift"
+  - "/**/Request/CIOTrackProductInsightsAgent*Request.swift"
+  - "/**/Request/CIOProductInsightsAgent*.swift"
   - "/**/Request/Builder/*QueryBuilder.swift"
   - "/**/Result/Responses/*.swift"
   - "/**/Result/*.swift"
@@ -24,6 +26,20 @@ custom_categories:
       - CIORecommendationsQuery
       - CIOSearchQuery
       - CIOQuizQuery
+  - name: Tracking Request Structures
+    children:
+      - CIOTrackProductInsightsAgentFocusRequest
+      - CIOTrackProductInsightsAgentOutOfViewRequest
+      - CIOTrackProductInsightsAgentViewRequest
+      - CIOTrackProductInsightsAgentViewsRequest
+      - CIOTrackProductInsightsAgentQuestionClickRequest
+      - CIOTrackProductInsightsAgentQuestionSubmitRequest
+      - CIOTrackProductInsightsAgentAnswerFeedbackRequest
+      - CIOTrackProductInsightsAgentResultClickRequest
+      - CIOTrackProductInsightsAgentAnswerViewRequest
+      - CIOProductInsightsAgentQuestion
+      - CIOProductInsightsAgentViewTimespan
+      - CIOProductInsightsAgentFeedbackLabel
   - name: Result Request Builders
     children:
       - CIOAutocompleteQueryBuilder
