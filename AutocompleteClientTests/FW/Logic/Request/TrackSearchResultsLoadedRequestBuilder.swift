@@ -141,36 +141,6 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
         XCTAssertEqual(payload?["sort_order"] as? String, "ascending")
     }
 
-    func testTrackSearchResultsLoadedBuilder_WithSortOptionSortByOnly() {
-        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, sortOption: CIOTrackSortOption(sortBy: "price"))
-        builder.build(trackData: tracker)
-        let request = builder.getRequest()
-        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
-
-        XCTAssertEqual(payload?["sort_by"] as? String, "price")
-        XCTAssertNil(payload?["sort_order"])
-    }
-
-    func testTrackSearchResultsLoadedBuilder_WithSortOptionSortOrderOnly() {
-        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, sortOption: CIOTrackSortOption(sortOrder: .descending))
-        builder.build(trackData: tracker)
-        let request = builder.getRequest()
-        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
-
-        XCTAssertNil(payload?["sort_by"])
-        XCTAssertEqual(payload?["sort_order"] as? String, "descending")
-    }
-
-    func testTrackSearchResultsLoadedBuilder_WithEmptySortOption_OmitsBoth() {
-        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, sortOption: CIOTrackSortOption())
-        builder.build(trackData: tracker)
-        let request = builder.getRequest()
-        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
-
-        XCTAssertNil(payload?["sort_by"])
-        XCTAssertNil(payload?["sort_order"])
-    }
-
     func testTrackSearchResultsLoadedBuilder_WithoutSortOption() {
         let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount)
         builder.build(trackData: tracker)

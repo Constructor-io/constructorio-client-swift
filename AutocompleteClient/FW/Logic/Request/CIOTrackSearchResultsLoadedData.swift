@@ -87,12 +87,9 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
             dict["analytics_tags"] = self.analyticsTags
         }
 
-        if let sortBy = self.sortOption?.sortBy {
-            dict["sort_by"] = sortBy
-        }
-
-        if let sortOrder = self.sortOption?.sortOrder {
-            dict["sort_order"] = sortOrder.rawValue
+        if let sortOption = self.sortOption {
+            dict["sort_by"] = sortOption.sortBy
+            dict["sort_order"] = sortOption.sortOrder.rawValue
         }
 
         if let selectedFilters = self.selectedFilters {
