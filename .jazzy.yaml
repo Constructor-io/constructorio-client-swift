@@ -4,6 +4,7 @@ include:
   - "/**/Worker/ConstructorIO.swift"
   - "/**/Request/*Query.swift"
   - "/**/Request/Builder/*QueryBuilder.swift"
+  - "/**/Request/CIOTrack*.swift"
   - "/**/Result/Responses/*.swift"
   - "/**/Result/*.swift"
   - "/**/Config/ConstructorIOConfig.swift"
@@ -24,6 +25,10 @@ custom_categories:
       - CIORecommendationsQuery
       - CIOSearchQuery
       - CIOQuizQuery
+  - name: Tracking Request Structures
+    children:
+      - CIOTrackSearchSubmitRequest
+      - CIOTrackSearchSubmitFilters
   - name: Result Request Builders
     children:
       - CIOAutocompleteQueryBuilder
