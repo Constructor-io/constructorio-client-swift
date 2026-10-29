@@ -267,7 +267,13 @@ constructorIO.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: "toothpi
 ### Search Events
 
 ```swift
-// Track when search results are loaded into view (customer ID's are the ID's of shown items)
+// Track when search results are loaded into view (items are the items shown)
+constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB"), CIOItem(customerID: "1234765-CD")]))
+
+// Track when search results are loaded into view, including the section, sort, selected filters and page of the results page (use `resultOffset` instead of `resultPage` on scrolling sites)
+constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB")], section: "Products", sortOption: CIOTrackSortOption(sortBy: "price", sortOrder: .descending), selectedFilters: ["brand": ["Nike", "Adidas"]], resultPage: 2))
+
+// Deprecated: use the request overload above. Track when search results are loaded into view (customer ID's are the ID's of shown items)
 constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
 
 // Track when a search result is clicked
@@ -278,7 +284,7 @@ constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", custome
 
 ```swift
 // Track when sponsored search results are loaded into view (customer ID's are the ID's of shown items)
-constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")])
+constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")]))
 
 // Track when a sponsored search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth", sectionName: "Products", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")
