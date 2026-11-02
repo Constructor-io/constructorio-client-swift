@@ -1,6 +1,5 @@
 # Maintainers
 
-> [!NOTE]
 > Only CocoaPods maintainers (trunk owners of `ConstructorAutocomplete`) can deploy to CocoaPods. Anyone with push access to `master` can run the other steps, so if you aren't an owner, run the script with `--until release` and ask an owner to publish to CocoaPods. See [One-time setup](#one-time-setup) to become one.
 
 ## Publishing a release
