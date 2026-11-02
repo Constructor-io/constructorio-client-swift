@@ -404,7 +404,8 @@ sed -i '' \
   -e "s/:tag => 'v$CURRENT_VERSION'/:tag => '$TAG'/" \
   "$PODSPEC"
 
-grep -q "spec.version      = '$NEW_VERSION'" "$PODSPEC" || fail "Failed to update spec.version in $PODSPEC"
+[ "$(sed -n "s/^ *spec\.version *= *'\(.*\)'.*/\1/p" "$PODSPEC")" = "$NEW_VERSION" ] \
+  || fail "Failed to update spec.version in $PODSPEC"
 grep -q ":tag => '$TAG'" "$PODSPEC" || fail "Failed to update :tag in $PODSPEC"
 
 git --no-pager diff --stat -- "$INFO_PLIST" "$PODSPEC"
