@@ -450,3 +450,7 @@ constructorIO.trackItemDetailLoad(customerID: "10001", itemName: "item1", variat
 // Track when a generic result is clicked
 constructorIO.trackGenericResultClick(itemID: "product123", itemName: "Product Name", variationID: "var456", sectionName: "Products")
 ```
+
+# Maintainers
+
+See [MAINTAINERS.md](MAINTAINERS.md) for how to publish a release.
