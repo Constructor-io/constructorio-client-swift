@@ -279,6 +279,12 @@ if ! git diff --quiet || ! git diff --cached --quiet; then
   fail "You have uncommitted changes to tracked files. Commit or discard them first."
 fi
 
+# The commit stages all of docs/, and the printed undo cleans it, so stray files there would
+# either ship in the release or be deleted
+UNTRACKED_DOCS="$(git ls-files --others --exclude-standard -- "$DOCS_DIR")"
+[ -z "$UNTRACKED_DOCS" ] || fail "You have untracked files in $DOCS_DIR/. Move or delete them first:
+$UNTRACKED_DOCS"
+
 # 2. Get onto an up-to-date master
 step "Updating $MAIN_BRANCH"
 
@@ -438,7 +444,9 @@ step "Tagging $TAG and pushing to $REMOTE/$MAIN_BRANCH"
 
 confirm "Push the 'Version Bump' commit and tag $TAG to $REMOTE/$MAIN_BRANCH?"
 remote_run git tag -a "$TAG" -m "$MESSAGE"
-remote_run git push "$REMOTE" "$MAIN_BRANCH" --follow-tags
+# Atomic, so the tag (which is the SPM release) can't go out without the commit, and only
+# this release's tag is pushed
+remote_run git push --atomic "$REMOTE" "$MAIN_BRANCH" "refs/tags/$TAG"
 reached push
 
 # 8. GitHub release
