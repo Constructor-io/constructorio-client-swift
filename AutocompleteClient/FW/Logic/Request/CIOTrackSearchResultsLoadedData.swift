@@ -19,12 +19,30 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
     let customerIDs: [String]?
     let items: [CIOItem]?
     let analyticsTags: [String: String]?
+    let section: String?
+    let sortOption: CIOTrackSortOption?
+    let selectedFilters: [String: [String]]?
+    let resultPage: Int?
+    let resultOffset: Int?
 
     func url(with baseURL: String) -> String {
         return String(format: Constants.TrackSearchResultsLoaded.format, baseURL)
     }
 
-    init(searchTerm: String, resultCount: Int, resultID: String? = nil, url: String = "Not Available", customerIDs: [String]? = nil, items: [CIOItem]? = nil, analyticsTags: [String: String]? = nil) {
+    init(
+        searchTerm: String,
+        resultCount: Int,
+        resultID: String? = nil,
+        url: String = "Not Available",
+        customerIDs: [String]? = nil,
+        items: [CIOItem]? = nil,
+        analyticsTags: [String: String]? = nil,
+        section: String? = nil,
+        sortOption: CIOTrackSortOption? = nil,
+        selectedFilters: [String: [String]]? = nil,
+        resultPage: Int? = nil,
+        resultOffset: Int? = nil
+    ) {
         self.searchTerm = searchTerm
         self.resultCount = resultCount
         self.resultID = resultID
@@ -32,9 +50,16 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
         self.customerIDs = customerIDs
         self.items = items
         self.analyticsTags = analyticsTags
+        self.section = section
+        self.sortOption = sortOption
+        self.selectedFilters = selectedFilters
+        self.resultPage = resultPage
+        self.resultOffset = resultOffset
     }
 
-    func decorateRequest(requestBuilder: RequestBuilder) {}
+    func decorateRequest(requestBuilder: RequestBuilder) {
+        requestBuilder.set(autocompleteSection: self.section)
+    }
 
     func httpMethod() -> String {
         return "POST"
@@ -75,8 +100,26 @@ struct CIOTrackSearchResultsLoadedData: CIORequestData {
             dict["analytics_tags"] = self.analyticsTags
         }
 
+        if let sortOption = self.sortOption {
+            dict["sort_by"] = sortOption.sortBy
+            dict["sort_order"] = sortOption.sortOrder.rawValue
+        }
+
+        if let selectedFilters = self.selectedFilters {
+            dict["selected_filters"] = selectedFilters
+        }
+
+        if let resultPage = self.resultPage {
+            dict["result_page"] = resultPage
+        }
+
+        if let resultOffset = self.resultOffset {
+            dict["result_offset"] = resultOffset
+        }
+
         dict["beacon"] = true
-        dict.merge(baseParams) { current, _ in current }
+        // section is a query param on this endpoint, don't let the base params leak it into the body
+        dict.merge(baseParams.filter { $0.key != "section" }) { current, _ in current }
 
         return try? JSONSerialization.data(withJSONObject: dict)
     }

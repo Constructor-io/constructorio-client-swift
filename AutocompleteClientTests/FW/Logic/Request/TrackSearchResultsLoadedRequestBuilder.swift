@@ -108,4 +108,122 @@ class TrackSearchResultsLoadedRequestBuilderTests: XCTestCase {
 
         XCTAssertTrue(url.hasPrefix(customBaseURL))
     }
+
+    func testTrackSearchResultsLoadedBuilder_WithSection() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, section: "Search Suggestions")
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertTrue(url.contains("section=Search%20Suggestions"))
+        XCTAssertNil(payload?["section"], "section belongs in the query, not the body")
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithoutSection() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let url = request.url!.absoluteString
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertFalse(url.contains("section="))
+        XCTAssertNil(payload?["section"])
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithSortOption() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, sortOption: CIOTrackSortOption(sortBy: "price", sortOrder: .ascending))
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(payload?["sort_by"] as? String, "price")
+        XCTAssertEqual(payload?["sort_order"] as? String, "ascending")
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithoutSortOption() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertNil(payload?["sort_by"])
+        XCTAssertNil(payload?["sort_order"])
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithSelectedFilters() {
+        let selectedFilters = ["brand": ["Nike", "Adidas"], "color": ["red"]]
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, selectedFilters: selectedFilters)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(payload?["selected_filters"] as? [String: [String]], selectedFilters)
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithEmptySelectedFilters_IsSentAsIs() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, selectedFilters: [:])
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(payload?["selected_filters"] as? [String: [String]], [:])
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithoutSelectedFilters() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertNil(payload?["selected_filters"])
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithResultPage() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultPage: 3)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(payload?["result_page"] as? Int, 3)
+        XCTAssertNil(payload?["result_offset"])
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithResultOffset() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultOffset: 40)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(payload?["result_offset"] as? Int, 40)
+        XCTAssertNil(payload?["result_page"])
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithZeroResultPage_IsForwarded() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultPage: 0)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(payload?["result_page"] as? Int, 0)
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithZeroResultOffset_IsForwarded() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultOffset: 0)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertEqual(payload?["result_offset"] as? Int, 0)
+    }
+
+    func testTrackSearchResultsLoadedBuilder_WithoutResultPageAndResultOffset() {
+        let tracker = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount)
+        builder.build(trackData: tracker)
+        let request = builder.getRequest()
+        let payload = try? JSONSerialization.jsonObject(with: request.httpBody!, options: []) as? [String: Any]
+
+        XCTAssertNil(payload?["result_page"])
+        XCTAssertNil(payload?["result_offset"])
+    }
 }
