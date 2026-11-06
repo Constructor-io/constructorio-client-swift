@@ -6,6 +6,7 @@ include:
   - "/**/Request/CIOTrackProductInsightsAgent*Request.swift"
   - "/**/Request/CIOProductInsightsAgent*.swift"
   - "/**/Request/Builder/*QueryBuilder.swift"
+  - "/**/Request/CIOTrack*.swift"
   - "/**/Result/Responses/*.swift"
   - "/**/Result/*.swift"
   - "/**/Config/ConstructorIOConfig.swift"
@@ -28,18 +29,20 @@ custom_categories:
       - CIOQuizQuery
   - name: Tracking Request Structures
     children:
-      - CIOTrackProductInsightsAgentFocusRequest
-      - CIOTrackProductInsightsAgentOutOfViewRequest
-      - CIOTrackProductInsightsAgentViewRequest
-      - CIOTrackProductInsightsAgentViewsRequest
-      - CIOTrackProductInsightsAgentQuestionClickRequest
-      - CIOTrackProductInsightsAgentQuestionSubmitRequest
-      - CIOTrackProductInsightsAgentAnswerFeedbackRequest
-      - CIOTrackProductInsightsAgentResultClickRequest
-      - CIOTrackProductInsightsAgentAnswerViewRequest
+      - CIOProductInsightsAgentFeedbackLabel
       - CIOProductInsightsAgentQuestion
       - CIOProductInsightsAgentViewTimespan
-      - CIOProductInsightsAgentFeedbackLabel
+      - CIOTrackProductInsightsAgentAnswerFeedbackRequest
+      - CIOTrackProductInsightsAgentAnswerViewRequest
+      - CIOTrackProductInsightsAgentFocusRequest
+      - CIOTrackProductInsightsAgentOutOfViewRequest
+      - CIOTrackProductInsightsAgentQuestionClickRequest
+      - CIOTrackProductInsightsAgentQuestionSubmitRequest
+      - CIOTrackProductInsightsAgentResultClickRequest
+      - CIOTrackProductInsightsAgentViewRequest
+      - CIOTrackProductInsightsAgentViewsRequest
+      - CIOTrackSearchSubmitFilters
+      - CIOTrackSearchSubmitRequest
   - name: Result Request Builders
     children:
       - CIOAutocompleteQueryBuilder
