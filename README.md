@@ -266,9 +266,11 @@ constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth"
 
 ### Search Events
 
+`resultID` is required on search results loaded events when the search response returns a `result_id`. Use the `resultID` from the `CIOSearchResponse` that produced the results.
+
 ```swift
 // Track when search results are loaded into view (customer ID's are the ID's of shown items)
-constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
+constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"], resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 
 // Track when a search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", variationID: "1234567-AB-7463", searchTerm: "tooth", sectionName: "Products",  resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
@@ -286,12 +288,14 @@ constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", custome
 
 ### Browse Events
 
+`resultID` is required on browse results loaded events when the browse response returns a `result_id`. Use the `resultID` from the `CIOBrowseResponse` that produced the results.
+
 ```swift
 // Track when browse results are loaded into view
-constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674)
+constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674, resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 
 // Track when browse results are loaded into view with items array (supported in v3.1.2 and above)
-constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
+constructorIO.trackBrowseResultsLoaded(filterName: "group_id", filterValue: "sales", resultCount: 674, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"], resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 
 // Track when a browse result is clicked
 constructorIO.trackBrowseResultClick(filterName: "group_id", filterValue: "sales", customerID: "7654321-BA", variationID: "7654321-BA-738", resultPositionOnPage: 4, sectionName: "Products", resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
