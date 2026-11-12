@@ -266,7 +266,7 @@ constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth"
 
 ### Search Events
 
-`resultID` is required on search results loaded events when the search response returns a `result_id`. Use the `resultID` from the `CIOSearchResponse` that produced the results.
+`resultID` is required on search results loaded events. Pass the `resultID` from the `CIOSearchResponse` that produced the results.
 
 ```swift
 // Track when search results are loaded into view (customer ID's are the ID's of shown items)
@@ -288,7 +288,7 @@ constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", custome
 
 ### Browse Events
 
-`resultID` is required on browse results loaded events when the browse response returns a `result_id`. Use the `resultID` from the `CIOBrowseResponse` that produced the results.
+`resultID` is required on browse results loaded events. Pass the `resultID` from the `CIOBrowseResponse` that produced the results.
 
 ```swift
 // Track when browse results are loaded into view
