@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- Struct encapsulating the parameters that can be passed to constructorIO.trackSearchResultsLoaded() function.
- */
+/// Struct encapsulating the parameters that can be passed to constructorIO.trackSearchResultsLoaded() function.
 public struct CIOTrackSearchResultsLoadedRequest {
 
     /**
@@ -78,7 +76,18 @@ public struct CIOTrackSearchResultsLoadedRequest {
         - resultPage: Current page of results
         - resultOffset: Current offset of results
      */
-    public init(searchTerm: String, resultCount: Int, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, section: String? = nil, sortOption: CIOTrackSortOption? = nil, selectedFilters: [String: [String]]? = nil, resultPage: Int? = nil, resultOffset: Int? = nil) {
+    public init(
+        searchTerm: String,
+        resultCount: Int,
+        items: [CIOItem]? = nil,
+        resultID: String? = nil,
+        analyticsTags: [String: String]? = nil,
+        section: String? = nil,
+        sortOption: CIOTrackSortOption? = nil,
+        selectedFilters: [String: [String]]? = nil,
+        resultPage: Int? = nil,
+        resultOffset: Int? = nil
+    ) {
         self.searchTerm = searchTerm
         self.resultCount = resultCount
         self.items = items
