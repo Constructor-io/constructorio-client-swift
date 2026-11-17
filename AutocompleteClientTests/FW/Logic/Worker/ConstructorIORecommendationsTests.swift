@@ -335,4 +335,27 @@ class ConstructorIORecommendationsTests: XCTestCase {
         self.constructor.recommendations(forQuery: query, completionHandler: { response in })
         self.wait(for: builder.expectation)
     }
+
+    func testRecommendationPage_CreatesValidRequest() {
+        let query = CIORecommendationPageQuery(pageID: "pdp_b2c")
+
+        let builder = CIOBuilder(expectation: "Calling recommendationPage should send a valid request.", builder: http(200))
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pages/pdp_b2c?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), builder.create())
+
+        self.constructor.recommendationPage(forQuery: query, completionHandler: { response in })
+        self.wait(for: builder.expectation)
+    }
+
+    func testRecommendationPage_ReturnsErrorObject_IfAPIReturnsInvalidResponse() {
+        let expectation = self.expectation(description: "Calling recommendationPage returns non-nil error if API errors out.")
+        let query = CIORecommendationPageQuery(pageID: "pdp_b2c")
+
+        stub(regex("https://ac.cnstrc.com/recommendations/v1/pages/pdp_b2c?_dt=\(kRegexTimestamp)&c=\(kRegexVersion)&i=\(kRegexClientID)&key=\(kRegexAutocompleteKey)&s=\(kRegexSession)&section=Products&\(TestConstants.defaultSegments)"), http(404))
+
+        self.constructor.recommendationPage(forQuery: query, completionHandler: { response in
+            XCTAssertNotNil(response.error, "Calling recommendationPage returns non-nil error if API errors out.")
+            expectation.fulfill()
+        })
+        self.wait(for: expectation)
+    }
 }

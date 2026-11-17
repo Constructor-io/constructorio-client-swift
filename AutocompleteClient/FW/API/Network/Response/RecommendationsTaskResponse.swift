@@ -9,3 +9,5 @@
 import UIKit
 
 public class RecommendationsTaskResponse: TaskResponse<CIORecommendationsResponse, Error> {}
+
+public class RecommendationPageTaskResponse: TaskResponse<CIORecommendationPageResponse, Error> {}
