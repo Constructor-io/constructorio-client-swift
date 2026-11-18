@@ -479,6 +479,40 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      Track when a user views a search product listing page
 
      - Parameters:
+        - request: The search results loaded request. See `CIOTrackSearchResultsLoadedRequest` for the available fields
+        - completionHandler: The callback to execute on completion.
+
+     ### Usage Example: ###
+     ```
+     constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", itemName: "Toothpicks")]))
+
+     // With more parameters
+     constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", itemName: "Toothpicks")], section: "Products", sortOption: CIOTrackSortOption(sortBy: "price", sortOrder: .descending), selectedFilters: ["brand": ["Nike", "Adidas"]], resultPage: 1))
+     ```
+     */
+    public func trackSearchResultsLoaded(_ request: CIOTrackSearchResultsLoadedRequest, completionHandler: TrackingCompletionHandler? = nil) {
+        let section = request.section ?? self.config.defaultItemSectionName ?? Constants.Track.defaultItemSectionName
+        let data = CIOTrackSearchResultsLoadedData(
+            searchTerm: request.searchTerm,
+            resultCount: request.resultCount,
+            resultID: request.resultID,
+            url: "Not Available",
+            items: request.items,
+            analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: request.analyticsTags),
+            section: section,
+            sortOption: request.sortOption,
+            selectedFilters: request.selectedFilters,
+            resultPage: request.resultPage,
+            resultOffset: request.resultOffset
+        )
+        let urlRequest = self.buildRequest(data: data)
+        executeTracking(urlRequest, completionHandler: completionHandler)
+    }
+
+    /**
+     Track when a user views a search product listing page
+
+     - Parameters:
         - searchTerm: The term that the user searched for
         - resultCount: The number of search results returned in total
         - customerIDs: **Deprecated**. Use `items` (v4.2.0) instead. The list of item id's returned in the search
@@ -496,10 +530,11 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, customerIDs: ["1234567-AB", "1234765-CD", "1234576-DE"])
      ```
      */
+    @available(*, deprecated, message: "Use trackSearchResultsLoaded(_:completionHandler:) with CIOTrackSearchResultsLoadedRequest instead")
     public func trackSearchResultsLoaded(searchTerm: String, resultCount: Int, customerIDs: [String]? = nil, items: [CIOItem]? = nil, resultID: String? = nil, analyticsTags: [String: String]? = nil, completionHandler: TrackingCompletionHandler? = nil) {
-        let data = CIOTrackSearchResultsLoadedData(searchTerm: searchTerm, resultCount: resultCount, resultID: resultID, url: "Not Available", customerIDs: customerIDs, items: items, analyticsTags: mergeAnalyticsTags(defaultAnalyticsTags: self.config.defaultAnalyticsTags, newAnalyticsTags: analyticsTags))
-        let request = self.buildRequest(data: data)
-        executeTracking(request, completionHandler: completionHandler)
+        // items take precedence over the legacy customerIDs
+        let loadedItems = items ?? customerIDs?.map { CIOItem(customerID: $0) }
+        trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: searchTerm, resultCount: resultCount, items: loadedItems, resultID: resultID, analyticsTags: analyticsTags), completionHandler: completionHandler)
     }
 
     /**

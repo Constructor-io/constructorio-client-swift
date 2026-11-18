@@ -280,7 +280,7 @@ constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", custome
 
 ```swift
 // Track when sponsored search results are loaded into view (customer ID's are the ID's of shown items)
-constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")])
+constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")]))
 
 // Track when a sponsored search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth", sectionName: "Products", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")
