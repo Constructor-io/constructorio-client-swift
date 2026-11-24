@@ -9,6 +9,9 @@ include:
   - "/**/Result/Responses/*.swift"
   - "/**/Result/*.swift"
   - "/**/Config/ConstructorIOConfig.swift"
+  - "/**/Debug/CIODebugEvent.swift"
+  - "/**/Debug/CIODebugEventListener.swift"
+  - "/**/Debug/CIOTrackingEventName.swift"
 
 custom_categories:
   - name: Client
@@ -40,6 +43,11 @@ custom_categories:
       - CIOProductInsightsAgentQuestion
       - CIOProductInsightsAgentViewTimespan
       - CIOProductInsightsAgentFeedbackLabel
+  - name: Debug Mode
+    children:
+      - CIODebugEvent
+      - CIODebugEventListener
+      - CIOTrackingEventName
   - name: Result Request Builders
     children:
       - CIOAutocompleteQueryBuilder
