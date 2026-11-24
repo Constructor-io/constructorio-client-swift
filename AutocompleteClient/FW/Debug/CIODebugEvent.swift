@@ -79,6 +79,8 @@ public struct CIODebugEvent {
         guard self.error == nil else {
             return false
         }
+        // Without an error and without a status code, the event counts as succeeded. URLSessionNetworkClient always sets a status code when there is no error,
+        // so only test code gets here, for example a network client double that answers with `NetworkResponse(data:)`, whose successes should not show up as failures.
         guard let statusCode = self.statusCode else {
             return true
         }

@@ -129,7 +129,7 @@ class ConstructorIODebugModeDeliveryTests: XCTestCase {
             completed.fulfill()
         }
 
-        // The event is waiting on the main queue when the listener is removed
+        // The event is waiting on the main queue when the listener is removed. This test runs on the main thread, so the event cannot be delivered before `wait` below lets the main queue run.
         self.networkClient.completeAll()
         self.constructor.removeDebugEventListener(self.collector)
         self.wait(for: [completed], timeout: self.timeout)

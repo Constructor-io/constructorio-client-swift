@@ -70,6 +70,7 @@ class CIODebugRecorder {
     func finish(_ pendingEvent: PendingEvent, with response: NetworkResponse) {
         let event = CIODebugEvent(sequence: pendingEvent.sequence, name: pendingEvent.name, firedAt: pendingEvent.firedAt, request: pendingEvent.request, response: response)
 
+        // The block holds the recorder until it has run, on purpose: the event of a request in flight is still delivered after its client is gone. The client itself is not held.
         DispatchQueue.main.async {
             ConstructorIO.logger.log(Constants.Logging.debugEvent(event))
 

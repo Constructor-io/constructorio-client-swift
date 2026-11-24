@@ -10,7 +10,8 @@ import Foundation
 
 public class NetworkResponse: TaskResponse<Data, Error> {
 
-    // The details below describe the raw response. They are kept so that debug mode can show why a request failed.
+    // The details below describe the raw response. They are kept so that debug mode can show why a request failed, and only debug mode reads them.
+    // They and the initializers below are internal on purpose: they are not part of the public API of the SDK, although NetworkResponse is public.
 
     // The HTTP status code, nil if no HTTP response was received
     private(set) var statusCode: Int?
