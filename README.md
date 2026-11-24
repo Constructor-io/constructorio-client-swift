@@ -454,3 +454,82 @@ constructorIO.trackItemDetailLoad(customerID: "10001", itemName: "item1", variat
 // Track when a generic result is clicked
 constructorIO.trackGenericResultClick(itemID: "product123", itemName: "Product Name", variationID: "var456", sectionName: "Products")
 ```
+
+## 13. Debug Mode
+
+Debug mode helps you check that your tracking is wired up correctly, without a network proxy. While it is enabled, the client logs every tracking event it sends, together with its request and the outcome of that request. It is meant for development and QA builds, do not enable it in production.
+
+```swift
+let config = ConstructorIOConfig(
+   apiKey: "YOUR API KEY",
+   debugMode: true
+)
+
+// Create the client instance
+let constructorIO = ConstructorIO(config: config)
+
+// Debug mode can also be switched after instantiating the client instance, which applies to the next tracking calls
+constructorIO.config.debugMode = false
+```
+
+An event is logged once the response to its request has arrived:
+
+```
+[ConstructorIO]: [Debug] #1 search_submit OK
+  GET https://ac.cnstrc.com/autocomplete/apple/search?key=...&original_query=app&...
+
+[ConstructorIO]: [Debug] #2 purchase FAILED
+  POST https://ac.cnstrc.com/v2/behavioral_action/purchase?key=...&section=Products&...
+  body: {"order_id":"343-315","items":[{"item_id":"123-AB"}],...}
+  status code: 400
+  error: The message returned by the API
+  response: {"message":"The message returned by the API"}
+```
+
+The number tells in which order the tracking methods were called on that client instance, and the name is one of the `CIOTrackingEventName` values. An event is `FAILED` when its request did not get a complete response, or got one with a status code outside of the 2xx range.
+
+A few things to keep in mind:
+
+- The events are logged through `ConstructorIO.logger`, and the default logger only prints in debug builds of the SDK. Set a logger of your own to see the events in other builds, such as a release build that is handed to QA:
+
+  ```swift
+  class ConsoleLogger: CIOLogger {
+      func log(_ message: String) {
+          print(message)
+      }
+  }
+
+  ConstructorIO.logger = ConsoleLogger()
+  ```
+
+- Requests are shown exactly as they were sent. PII found in the URL path and query is obfuscated, but request and response bodies are not redacted.
+- The client sends a `session_start` event on its own when a new session starts, which happens once the current session is 30 minutes old or when you set a session ID. Such an event shows up between your own events.
+- A tracking call that sends no request produces no event. `trackResultsImpressionView` does nothing when it is called without items.
+
+### Listening to the events
+
+To use the events in your app, for example to list them on a debug screen or to assert on them in your tests, add a listener. It is called on the main queue with a `CIODebugEvent` for every tracking event, once the request of the event has completed and before the completion handler of the tracking call.
+
+```swift
+class TrackingLog: CIODebugEventListener {
+    func didTrack(event: CIODebugEvent) {
+        if event.succeeded {
+            print("\(event.name.rawValue) was sent")
+        } else {
+            print("\(event.name.rawValue) failed: \(event.errorMessage ?? "")")
+        }
+    }
+}
+
+// Keep the listener in a property as well, as the client does not retain it
+let trackingLog = TrackingLog()
+self.trackingLog = trackingLog
+constructorIO.addDebugEventListener(trackingLog)
+
+// Stop listening
+constructorIO.removeDebugEventListener(trackingLog)
+```
+
+Events are delivered in the order in which their responses arrive, so use `event.sequence` to tell in which order they were fired. Add and remove listeners on the main queue.
+
+A listener receives the events of the client instance it was added to. A `CIOAutocompleteViewController` uses a client instance of its own, created from the config the controller was initialized with. The controller creates it at the end of `viewDidLoad`, so its `constructorIO` property is still `nil` in `autocompleteControllerDidLoad(controller:)`. Add the listener in `autocompleteControllerWillAppear(controller:)` instead.
