@@ -20,13 +20,13 @@ class AutocompleteDataSourceTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_styleSearchBarCalled_onLoad() {
-        let expectation = self.expectation(description: self.uiCustomizationExpectationDescription(methodName: "styleSearchBar"))
+    func test_customizeSearchControllerCalled_onLoad() {
+        let expectation = self.expectation(description: self.uiCustomizationExpectationDescription(methodName: "customizeSearchController"))
         let viewController = CIOAutocompleteViewController.instantiate()
 
         class TestUICustomization: ExpectationHandler, CIOAutocompleteUICustomization {
 
-            func styleSearchBar(searchBar: UISearchBar, in autocompleteController: CIOAutocompleteViewController) {
+            func customizeSearchController(searchController: UISearchController, in autocompleteController: CIOAutocompleteViewController) {
                 self.expectation.fulfill()
             }
         }
