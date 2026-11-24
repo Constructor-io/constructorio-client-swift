@@ -36,7 +36,7 @@ public struct CIOTrackSortOption {
     }
 
     /**
-     Create a `CIOTrackSortOption` from `CIOSortOption` from `CIOSearchResponse`
+     Create a track sort option from a `CIOSortOption`, such as one returned in `CIOSearchResponse.sortOptions`
 
      - Parameters:
         - sortOption: The sort option that the user had applied
