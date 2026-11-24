@@ -23,11 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
     var cart: Cart = Cart()
     var cartPersistence = CartPersistence()
     
+    private var cartObserver: NSObjectProtocol?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         self.cart = self.cartPersistence.loadCart() ?? Cart()
         
-        self.showAutocompleteViewControllerAsRoot()
+        // On iOS 13 and later SceneDelegate creates the window, once the scene connects
+        if #unavailable(iOS 13.0) {
+            self.showAutocompleteViewControllerAsRoot(in: UIWindow(frame: UIScreen.main.bounds))
+        }
         return true
     }
     
@@ -53,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func showAutocompleteViewControllerAsRoot() {
+    func showAutocompleteViewControllerAsRoot(in window: UIWindow) {
         // Instantiate the autocomplete controller
         let key = "key_K2hlXt5aVSwoI1Uw"
         let config = ConstructorIOConfig(apiKey: key,
@@ -74,12 +79,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CIOAutocompleteDelegate, 
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.barTintColor = bgColor
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         
-        // Listen for cart changes and react to item being add event
-        NotificationCenter.default.addObserver(forName: kNotificationDidAddItemToCart, object: nil, queue: OperationQueue.main) { notification in
+        // Listen for cart changes and react to item being add event.
+        // A scene can connect again while the app keeps running, so the observer of the previous controller is removed first
+        if let cartObserver = self.cartObserver {
+            NotificationCenter.default.removeObserver(cartObserver)
+        }
+        self.cartObserver = NotificationCenter.default.addObserver(forName: kNotificationDidAddItemToCart, object: nil, queue: OperationQueue.main) { notification in
             guard let item = notification.cartItem() else { return }
             guard let constructor = viewController.constructorIO else { return }
             constructor.trackConversion(itemName: item.title, customerID: "a-customer-id", revenue: Double(item.price))
