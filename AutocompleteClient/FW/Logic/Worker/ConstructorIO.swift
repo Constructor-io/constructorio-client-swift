@@ -486,8 +486,25 @@ public class ConstructorIO: CIOSessionManagerDelegate {
      ```
      constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", itemName: "Toothpicks")]))
 
-     // With more parameters
-     constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", itemName: "Toothpicks")], section: "Products", sortOption: CIOTrackSortOption(sortBy: "price", sortOrder: .descending), selectedFilters: ["brand": ["Nike", "Adidas"]], resultPage: 1))
+     // Built from a `CIOSearchResponse`
+     let response: CIOSearchResponse // Assume this is populated from a `constructorIO.search` call
+     let items = response.results.compactMap { searchResult -> CIOItem? in
+         guard let id = searchResult.data.id else { return nil }
+         return CIOItem(customerID: id, itemName: searchResult.value, variationID: searchResult.data.variationId)
+     }
+     let selectedSort = response.sortOptions
+         .first(where: { $0.status == "selected" })
+         .map { CIOTrackSortOption(sortOption: $0) }
+
+     constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(
+         searchTerm: response.request["term"] as? String,
+         resultCount: response.totalNumResults,
+         items: items,
+         resultID: response.resultID,
+         section: response.request["section"] as? String,
+         sortOption: selectedSort,
+         resultPage: response.request["page"] as? Int
+     ))
      ```
      */
     public func trackSearchResultsLoaded(_ request: CIOTrackSearchResultsLoadedRequest, completionHandler: TrackingCompletionHandler? = nil) {

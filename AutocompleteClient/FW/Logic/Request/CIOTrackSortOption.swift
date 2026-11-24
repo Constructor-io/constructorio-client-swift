@@ -34,4 +34,14 @@ public struct CIOTrackSortOption {
         self.sortBy = sortBy
         self.sortOrder = sortOrder
     }
+
+    /**
+     Create a `CIOTrackSortOption` from `CIOSortOption` from `CIOSearchResponse`
+
+     - Parameters:
+        - sortOption: The sort option that the user had applied
+     */
+    public init(sortOption: CIOSortOption) {
+        self.init(sortBy: sortOption.sortBy, sortOrder: sortOption.sortOrder)
+    }
 }
