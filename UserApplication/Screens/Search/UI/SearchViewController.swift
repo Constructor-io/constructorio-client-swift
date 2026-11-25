@@ -104,7 +104,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
             guard let sself = self else { return }
          
             // track search results loaded
-            sself.viewModel.constructor.trackSearchResultsLoaded(searchTerm: sself.viewModel.searchTerm, resultCount: newItems.count, completionHandler: nil)
+            sself.viewModel.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: sself.viewModel.searchTerm, resultCount: newItems.count), completionHandler: nil)
            
             let itemCountPost = self?.viewModel.searchResults?.count ?? 0
             
@@ -147,7 +147,7 @@ extension SearchViewController{
             guard let sself = self else { return }
             
             // track search results loaded
-            sself.viewModel.constructor.trackSearchResultsLoaded(searchTerm: sself.viewModel.searchTerm, resultCount: sself.viewModel.searchResults?.count ?? 0, completionHandler: nil)
+            sself.viewModel.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: sself.viewModel.searchTerm, resultCount: sself.viewModel.searchResults?.count ?? 0), completionHandler: nil)
             
             // reload table view
             sself.collectionView.reloadData()
