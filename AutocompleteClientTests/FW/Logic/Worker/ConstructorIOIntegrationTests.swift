@@ -303,7 +303,8 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackSearchSubmit() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackSearchSubmit(searchTerm: searchTerm, originalQuery: originalQuery, group: group, completionHandler: { response in
+        let filters = CIOTrackSearchSubmitFilters(groupID: group.groupID)
+        self.constructor.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: searchTerm, userInput: originalQuery, filters: filters), completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -343,7 +344,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
 
     func testTrackSearchResultsLoaded() {
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, completionHandler: { response in
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: searchTerm, resultCount: resultCount), completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -364,7 +365,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     func testSearchResultsLoaded_withItemsParam() {
         let expectation = XCTestExpectation(description: "Tracking 204")
         let itemsSL = [CIOItem(customerID: "10001", slCampaignID: "cmp456", slCampaignOwner: "owner789"), CIOItem(customerID: "10002", variationID: "var2", slCampaignID: "cmp456", slCampaignOwner: "owner789")]
-        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, items: itemsSL, completionHandler: { response in
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: searchTerm, resultCount: resultCount, items: itemsSL), completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()
@@ -375,7 +376,7 @@ class ConstructorIOIntegrationTests: XCTestCase {
     func testSearchResultsLoaded_withSponsoredListingsParams() {
         let itemsSL = [CIOItem(customerID: "10001", slCampaignID: "cmp456", slCampaignOwner: "owner789"), CIOItem(customerID: "10002", variationID: "var2", slCampaignID: "cmp456", slCampaignOwner: "owner789")]
         let expectation = XCTestExpectation(description: "Tracking 204")
-        self.constructor.trackSearchResultsLoaded(searchTerm: searchTerm, resultCount: resultCount, items: itemsSL, completionHandler: { response in
+        self.constructor.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: searchTerm, resultCount: resultCount, items: itemsSL), completionHandler: { response in
             let cioError = response.error as? CIOError
             XCTAssertNil(cioError)
             expectation.fulfill()

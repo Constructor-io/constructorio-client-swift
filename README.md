@@ -261,7 +261,7 @@ constructorIO.trackInputFocus(searchTerm: "")
 constructorIO.trackAutocompleteSelect(searchTerm: "toothpicks", originalQuery: "tooth", sectionName: "Search Suggestions", group: CIOGroup(displayName: "Dental Health", groupID: "dental-92dk2", path: "health-2911e/dental-92dk2"), resultID: "179b8a0e-3799-4a31-be87-127b06871de2")
 
 // Track when the user submits a search (either by selecting a suggestion or not selecting a suggestion)
-constructorIO.trackSearchSubmit(searchTerm: "toothpicks", originalQuery: "tooth")
+constructorIO.trackSearchSubmit(CIOTrackSearchSubmitRequest(searchTerm: "toothpicks", userInput: "tooth"))
 ```
 
 ### Search Events
@@ -280,7 +280,7 @@ constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", custome
 
 ```swift
 // Track when sponsored search results are loaded into view (customer ID's are the ID's of shown items)
-constructorIO.trackSearchResultsLoaded(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")])
+constructorIO.trackSearchResultsLoaded(CIOTrackSearchResultsLoadedRequest(searchTerm: "tooth", resultCount: 789, items: [CIOItem(customerID: "1234567-AB", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")]))
 
 // Track when a sponsored search result is clicked
 constructorIO.trackSearchResultClick(itemName: "Fashionable Toothpicks", customerID: "1234567-AB", searchTerm: "tooth", sectionName: "Products", slCampaignID: "campaign-1", slCampaignOwner: "owner-1")
